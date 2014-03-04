@@ -1,4 +1,4 @@
-module SOFA
+module ERFA
 
 using BinDeps
 @BinDeps.load_dependencies

@@ -7,7 +7,7 @@ Installation
 ------------
 
 ```jlcon
-julia> Pkg.install("ERFA")
+julia> Pkg.add("ERFA")
 ```
 
 Example

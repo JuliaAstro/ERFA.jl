@@ -52,8 +52,7 @@ export
     eraUtctai,
     eraUtcut1
 
-using BinDeps
-@BinDeps.load_dependencies
+include("../deps/deps.jl")
 
 function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
     r1 = [0.]

@@ -1,4 +1,4 @@
-include("ERFA.jl")
+include("../src/ERFA.jl")
 using ERFA
 using .Test
 

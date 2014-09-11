@@ -2,6 +2,7 @@ module ERFA
 
 export
     eraCal2jd,
+    eraDat,
     eraD2dtf,
     eraDtf2d,
     eraEe00a,
@@ -34,6 +35,18 @@ export
     eraGst94,
     eraJd2cal,
     eraJdcalf,
+    eraPmat00,
+    eraPmat06,
+    eraPmat76,
+    eraNum00a,
+    eraNum00b,
+    eraNum06a,
+    eraNut00a,
+    eraNut00b,
+    eraNut06a,
+    eraNut80,
+    eraNutm80,
+    eraObl80,
     eraTaitt,
     eraTaiut1,
     eraTaiutc,
@@ -85,6 +98,15 @@ function eraJdcalf(ndp::Integer, d1::Real, d2::Real)
     iymdf[1], iymdf[2], iymdf[3], iymdf[4]
 end
 
+function eraDat(iy::Integer, im::Integer, id::Integer, fd::Real)
+    d = [0.]
+    i = ccall((:eraDat, liberfa), Cint,
+              (Cint, Cint, Cint, Float64, Ptr{Float64}),
+              iy, im, id, fd, d)
+    @assert i == 0
+    d[1]
+end
+
 function eraD2dtf(scale::ByteString, ndp::Integer, d1::Real, d2::Real)
     iy = Int32[0]
     imo = Int32[0]
@@ -105,6 +127,42 @@ function eraDtf2d(scale::ByteString, iy::Integer, imo::Integer, id::Integer, ih:
               scale, iy, imo, id, ih, imi, sec, r1, r2)
     @assert i == 0
     r1[1], r2[1]
+end
+
+for f in (:eraNutm80,
+          :eraPmat00,
+          :eraPmat06,
+          :eraPmat76)
+    @eval begin
+        function ($f)(a::Float64, b::Float64)
+            r = [zeros(3), zeros(3), zeros(3)]
+            ccall(($(Expr(:quote,f)),liberfa),
+                  Void,
+                  (Float64, Float64, Ptr{Float64}),
+                  a, b, r)
+            r
+        end
+    end
+end
+
+for f in (:eraNum00a,
+          :eraNum00b,
+          :eraNum06a,
+          :eraNut00a,
+          :eraNut00b,
+          :eraNut06a,
+          :eraNut80)
+    @eval begin
+        function ($f)(a::Float64, b::Float64)
+            r1 = [0.]
+            r2 = [0.]
+            ccall(($(Expr(:quote,f)),liberfa),
+                  Void,
+                  (Float64, Float64, Ptr{Float64}, Ptr{Float64}),
+                  a, b, r1, r2)
+            r1[1], r2[1]
+        end
+    end
 end
 
 function eraTf2d(s::Char, ihour::Integer, imin::Integer, sec::Real)

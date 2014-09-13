@@ -257,6 +257,23 @@ obl = eraObl06(2400000.5, 54388.0)
 obl = eraObl80(2400000.5, 54388.0)
 @test_approx_eq_eps obl 0.409075134764381621 1e-16
 
+# eraPlan94
+pv = eraPlan94(2400000.5, -320000., 3)
+@test_approx_eq_eps pv[1]  0.9308038666832975759 1e-11
+@test_approx_eq_eps pv[2]  0.3258319040261346000 1e-11
+@test_approx_eq_eps pv[3]  0.1422794544481140560 1e-11
+@test_approx_eq_eps pv[4]  -0.6429458958255170006e-2 1e-11
+@test_approx_eq_eps pv[5]  0.1468570657704237764e-1 1e-11
+@test_approx_eq_eps pv[6]  0.6406996426270981189e-2 1e-11
+
+pv = eraPlan94(2400000.5, 43999.9, 1)
+@test_approx_eq_eps pv[1]  0.2945293959257430832 1e-11
+@test_approx_eq_eps pv[2]  -0.2452204176601049596 1e-11
+@test_approx_eq_eps pv[3]  -0.1615427700571978153 1e-11
+@test_approx_eq_eps pv[4]  0.1413867871404614441e-1 1e-11
+@test_approx_eq_eps pv[5]  0.1946548301104706582e-1 1e-11
+@test_approx_eq_eps pv[6]  0.8929809783898904786e-2 1e-11
+
 # eraPmat00
 rbp = eraPmat00(2400000.5, 50123.9999)
 @test_approx_eq_eps rbp[1]  0.9999995505175087260 1e-12

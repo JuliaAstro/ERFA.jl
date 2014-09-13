@@ -46,6 +46,7 @@ export
     eraNutm80,
     eraObl06,
     eraObl80,
+    eraPlan94,
     eraPmat00,
     eraPmat06,
     eraPmat76,
@@ -139,7 +140,24 @@ function eraNumat(epsa::Real, dpsi::Real, deps::Real)
           epsa, dpsi, deps, rmatn)
     rmatn
 end
-     
+
+function eraPlan94(date1::Float64, date2::Float64, np::Int64)
+    pv = zeros(6)
+    i = ccall((:eraPlan94, liberfa),
+              Int64,
+              (Float64, Float64, Int64, Ptr{Float64}),
+              date1, date2, np, pv)
+    if i == -1
+        error("illegal np,  not in range(1,8) for planet")
+    elseif i == 1
+        warn("year outside range(1000:3000)")
+    elseif i == 2
+        error("computation failed to converge")
+    elseif i == 0
+        return pv
+    end
+end
+
 for f in (:eraNum00a,
           :eraNum00b,
           :eraNum06a,

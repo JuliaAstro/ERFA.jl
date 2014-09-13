@@ -35,18 +35,20 @@ export
     eraGst94,
     eraJd2cal,
     eraJdcalf,
-    eraPmat00,
-    eraPmat06,
-    eraPmat76,
     eraNum00a,
     eraNum00b,
     eraNum06a,
+    eraNumat,
     eraNut00a,
     eraNut00b,
     eraNut06a,
     eraNut80,
     eraNutm80,
+    eraObl06,
     eraObl80,
+    eraPmat00,
+    eraPmat06,
+    eraPmat76,
     eraTaitt,
     eraTaiut1,
     eraTaiutc,
@@ -129,13 +131,25 @@ function eraDtf2d(scale::ByteString, iy::Integer, imo::Integer, id::Integer, ih:
     r1[1], r2[1]
 end
 
-for f in (:eraNutm80,
+function eraNumat(epsa::Real, dpsi::Real, deps::Real)
+    rmatn = zeros(9)
+    ccall((:eraNumat,liberfa),
+          Void,
+          (Float64, Float64, Float64, Ptr{Float64}),
+          epsa, dpsi, deps, rmatn)
+    rmatn
+end
+     
+for f in (:eraNum00a,
+          :eraNum00b,
+          :eraNum06a,
+          :eraNutm80,
           :eraPmat00,
           :eraPmat06,
           :eraPmat76)
     @eval begin
         function ($f)(a::Float64, b::Float64)
-            r = [zeros(3), zeros(3), zeros(3)]
+            r = zeros(9)
             ccall(($(Expr(:quote,f)),liberfa),
                   Void,
                   (Float64, Float64, Ptr{Float64}),
@@ -145,10 +159,7 @@ for f in (:eraNutm80,
     end
 end
 
-for f in (:eraNum00a,
-          :eraNum00b,
-          :eraNum06a,
-          :eraNut00a,
+for f in (:eraNut00a,
           :eraNut00b,
           :eraNut06a,
           :eraNut80)
@@ -202,7 +213,9 @@ for f in (:eraEe00a,
           :eraEra00,
           :eraGmst82,
           :eraGst00b,
-          :eraGst94)
+          :eraGst94,
+          :eraObl06,
+          :eraObl80)
     @eval ($f)(d1::Real, d2::Real) = ccall(($(Expr(:quote,f)),liberfa), Float64, (Float64,Float64), d1, d2)
 end
 
@@ -213,7 +226,6 @@ for f in (:eraTaitt,
           :eraTdbtcb,
           :eraTttai,
           :eraTttcg,
-          :eraUt1tai,
           :eraUtctai)
     @eval begin
         function ($f)(a::Float64, b::Float64)
@@ -246,6 +258,7 @@ for f in (:eraTaiut1,
           :eraTdbtt,
           :eraTttdb,
           :eraTtut1,
+          :eraUt1tai,
           :eraUt1tt,
           :eraUt1utc,
           :eraUtcut1)

@@ -14,6 +14,7 @@ export
     eraEpb2jd,
     eraEpj,
     eraEpj2jd,
+    eraEpv00,
     eraEqeq94,
     eraEra00,
     eraFad03,
@@ -132,6 +133,19 @@ function eraDtf2d(scale::ByteString, iy::Integer, imo::Integer, id::Integer, ih:
     r1[1], r2[1]
 end
 
+function eraEpv00(date1::Float64, date2::Float64)
+    pvh = zeros(6)
+    pvb = zeros(6)
+    i = ccall((:eraEpv00, liberfa),
+              Cint,
+              (Float64, Float64, Ptr{Float64}, Ptr{Float64}),
+              date1, date2, pvh, pvb)
+    if i == 1
+        warn("date outside the range 1900-2100 AD")
+    end
+    pvh, pvb
+end
+
 function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn = zeros(9)
     ccall((:eraNumat,liberfa),
@@ -144,13 +158,14 @@ end
 function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     pv = zeros(6)
     i = ccall((:eraPlan94, liberfa),
-              Int64,
+              Cint,
               (Float64, Float64, Int64, Ptr{Float64}),
               date1, date2, np, pv)
     if i == -1
         error("illegal np,  not in range(1,8) for planet")
     elseif i == 1
         warn("year outside range(1000:3000)")
+        return pv
     elseif i == 2
         error("computation failed to converge")
     elseif i == 0

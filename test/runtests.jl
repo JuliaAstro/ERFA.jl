@@ -81,6 +81,21 @@ dj0,dj1 = eraEpj2jd(1996.8)
 @test_approx_eq_eps dj0  2400000.5 1e-9
 @test_approx_eq_eps dj1  50375.7 1e-9
 
+# eraEpv00
+pvh,pvb = eraEpv00(2400000.5, 53411.52501161)
+@test_approx_eq_eps pvh[1]  -0.7757238809297706813 1e-14
+@test_approx_eq_eps pvh[2]  0.5598052241363340596 1e-14
+@test_approx_eq_eps pvh[3]  0.2426998466481686993 1e-14
+@test_approx_eq_eps pvh[4]  -0.1091891824147313846e-1 1e-15
+@test_approx_eq_eps pvh[5]  -0.1247187268440845008e-1 1e-15
+@test_approx_eq_eps pvh[6]  -0.5407569418065039061e-2 1e-15
+@test_approx_eq_eps pvb[1]  -0.7714104440491111971 1e-14
+@test_approx_eq_eps pvb[2]  0.5598412061824171323 1e-14
+@test_approx_eq_eps pvb[3]  0.2425996277722452400 1e-14
+@test_approx_eq_eps pvb[4]  -0.1091874268116823295e-1 1e-15
+@test_approx_eq_eps pvb[5]  -0.1246525461732861538e-1 1e-15
+@test_approx_eq_eps pvb[6]  -0.5404773180966231279e-2 1e-15
+
 # eraEqeq94
 ee = eraEqeq94(2400000.5, 41234.0)
 @test_approx_eq_eps ee  0.5357758254609256894e-4 1e-17

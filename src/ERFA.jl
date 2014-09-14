@@ -1,9 +1,20 @@
 module ERFA
 
 export
+    PosVel
+
+export
+    eraA2af,
+    eraA2tf,
+    eraBp00,
+    eraBp06,
     eraCal2jd,
+    eraC2i00a,
+    eraC2i00b,
+    eraC2i06a,
     eraDat,
     eraD2dtf,
+    eraD2tf,
     eraDtf2d,
     eraEe00a,
     eraEe00b,
@@ -36,6 +47,8 @@ export
     eraGst94,
     eraJd2cal,
     eraJdcalf,
+    eraLDBODY,
+    eraLdn,
     eraNum00a,
     eraNum00b,
     eraNum06a,
@@ -51,6 +64,10 @@ export
     eraPmat00,
     eraPmat06,
     eraPmat76,
+    eraPnm00a,
+    eraPnm00b,
+    eraPnm06a,
+    eraPnm80,
     eraTaitt,
     eraTaiut1,
     eraTaiutc,
@@ -70,6 +87,21 @@ export
     eraUtcut1
 
 include("../deps/deps.jl")
+
+immutable PosVel
+    p1::Float64
+    p2::Float64
+    p3::Float64
+    v1::Float64
+    v2::Float64
+    v3::Float64
+end
+
+immutable eraLDBODY
+    bm::Float64
+    dl::Float64
+    pv::PosVel
+end
 
 function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
     r1 = [0.]
@@ -146,6 +178,16 @@ function eraEpv00(date1::Float64, date2::Float64)
     pvh, pvb
 end
 
+function eraLdn(l::Array{eraLDBODY}, ob::Array{Float64}, sc::Array{Float64})
+    sn = zeros(3)
+    n = length(l)
+    ccall((:eraLdn, liberfa),
+          Void,
+          (Cint, Ptr{eraLDBODY}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
+          n, l, ob, sc, sn)
+    sn
+end
+
 function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn = zeros(9)
     ccall((:eraNumat,liberfa),
@@ -173,13 +215,52 @@ function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     end
 end
 
-for f in (:eraNum00a,
+for f in (:eraA2af,
+          :eraA2tf,
+          :eraD2tf)
+    @eval begin
+        function ($f)(ndp::Int64, a::Float64)
+            s = "+"
+            i = Int32[0, 0, 0, 0]
+            ccall(($(Expr(:quote,f)),liberfa),
+                  Void,
+                  (Int64, Float64, Ptr{ASCIIString}, Ptr{Cint}),
+                  ndp, a, &s, i)
+            s[1], i[1], i[2], i[3], i[4]
+        end
+    end
+end
+    
+for f in (:eraBp00,
+          :eraBp06)
+    @eval begin
+        function ($f)(a::Float64, b::Float64)
+            rb = zeros(9)
+            rp = zeros(9)
+            rbp = zeros(9)
+            ccall(($(Expr(:quote,f)),liberfa),
+                  Void,
+                  (Float64, Float64, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
+                  a, b, rb, rp, rbp)
+            rb, rp, rbp
+        end
+    end
+end
+
+for f in (:eraC2i00a,
+          :eraC2i00b,
+          :eraC2i06a,
+          :eraNum00a,
           :eraNum00b,
           :eraNum06a,
           :eraNutm80,
           :eraPmat00,
           :eraPmat06,
-          :eraPmat76)
+          :eraPmat76,
+          :eraPnm00a,
+          :eraPnm00b,
+          :eraPnm06a,
+          :eraPnm80)
     @eval begin
         function ($f)(a::Float64, b::Float64)
             r = zeros(9)

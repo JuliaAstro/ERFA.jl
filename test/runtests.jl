@@ -32,6 +32,108 @@ d = d1 + d2
 @test_approx_eq_eps d 2457073.056310000 5e-10
 
 ## test from t_erfa_c.c
+# eraA2af
+@test eraA2af(4, 2.345) == ('+', 134, 21, 30, 9706)
+
+# eraA2tf
+@test eraA2tf(4, -3.01234) == ('-', 11, 30, 22, 6484)
+
+# eraBp00
+rb, rp,rbp = eraBp00(2400000.5, 50123.9999)
+@test_approx_eq_eps rb[1]  0.9999999999999942498 1e-12
+@test_approx_eq_eps rb[2]  -0.7078279744199196626e-7 1e-16
+@test_approx_eq_eps rb[3]  0.8056217146976134152e-7 1e-16
+@test_approx_eq_eps rb[4]  0.7078279477857337206e-7 1e-16
+@test_approx_eq_eps rb[5]  0.9999999999999969484 1e-12
+@test_approx_eq_eps rb[6]  0.3306041454222136517e-7 1e-16
+@test_approx_eq_eps rb[7]  -0.8056217380986972157e-7 1e-16
+@test_approx_eq_eps rb[8]  -0.3306040883980552500e-7 1e-16
+@test_approx_eq_eps rb[9]  0.9999999999999962084 1e-12
+@test_approx_eq_eps rp[1]  0.9999995504864048241 1e-12
+@test_approx_eq_eps rp[2]  0.8696113836207084411e-3 1e-14
+@test_approx_eq_eps rp[3]  0.3778928813389333402e-3 1e-14
+@test_approx_eq_eps rp[4]  -0.8696113818227265968e-3 1e-14
+@test_approx_eq_eps rp[5]  0.9999996218879365258 1e-12
+@test_approx_eq_eps rp[6]  -0.1690679263009242066e-6 1e-14
+@test_approx_eq_eps rp[7]  -0.3778928854764695214e-3 1e-14
+@test_approx_eq_eps rp[8]  -0.1595521004195286491e-6 1e-14
+@test_approx_eq_eps rp[9]  0.9999999285984682756 1e-12
+@test_approx_eq_eps rbp[1]  0.9999995505175087260 1e-12
+@test_approx_eq_eps rbp[2]  0.8695405883617884705e-3 1e-14
+@test_approx_eq_eps rbp[3]  0.3779734722239007105e-3 1e-14
+@test_approx_eq_eps rbp[4]  -0.8695405990410863719e-3 1e-14
+@test_approx_eq_eps rbp[5]  0.9999996219494925900 1e-12
+@test_approx_eq_eps rbp[6]  -0.1360775820404982209e-6 1e-14
+@test_approx_eq_eps rbp[7]  -0.3779734476558184991e-3 1e-14
+@test_approx_eq_eps rbp[8]  -0.1925857585832024058e-6 1e-14
+@test_approx_eq_eps rbp[9]  0.9999999285680153377 1e-12
+
+# eraBp06
+rb, rp,rbp = eraBp06(2400000.5, 50123.9999)
+@test_approx_eq_eps rb[1]  0.9999999999999942497 1e-12
+@test_approx_eq_eps rb[2]  -0.7078368960971557145e-7 1e-14
+@test_approx_eq_eps rb[3]  0.8056213977613185606e-7 1e-14
+@test_approx_eq_eps rb[4]  0.7078368694637674333e-7 1e-14
+@test_approx_eq_eps rb[5]  0.9999999999999969484 1e-12
+@test_approx_eq_eps rb[6]  0.3305943742989134124e-7 1e-14
+@test_approx_eq_eps rb[7]  -0.8056214211620056792e-7 1e-14
+@test_approx_eq_eps rb[8]  -0.3305943172740586950e-7 1e-14
+@test_approx_eq_eps rb[9]  0.9999999999999962084 1e-12
+@test_approx_eq_eps rp[1]  0.9999995504864960278 1e-12
+@test_approx_eq_eps rp[2]  0.8696112578855404832e-3 1e-14
+@test_approx_eq_eps rp[3]  0.3778929293341390127e-3 1e-14
+@test_approx_eq_eps rp[4]  -0.8696112560510186244e-3 1e-14
+@test_approx_eq_eps rp[5]  0.9999996218880458820 1e-12
+@test_approx_eq_eps rp[6]  -0.1691646168941896285e-6 1e-14
+@test_approx_eq_eps rp[7]  -0.3778929335557603418e-3 1e-14
+@test_approx_eq_eps rp[8]  -0.1594554040786495076e-6 1e-14
+@test_approx_eq_eps rp[9]  0.9999999285984501222 1e-12
+@test_approx_eq_eps rbp[1]  0.9999995505176007047 1e-12
+@test_approx_eq_eps rbp[2]  0.8695404617348208406e-3 1e-14
+@test_approx_eq_eps rbp[3]  0.3779735201865589104e-3 1e-14
+@test_approx_eq_eps rbp[4]  -0.8695404723772031414e-3 1e-14
+@test_approx_eq_eps rbp[5]  0.9999996219496027161 1e-12
+@test_approx_eq_eps rbp[6]  -0.1361752497080270143e-6 1e-14
+@test_approx_eq_eps rbp[7]  -0.3779734957034089490e-3 1e-14
+@test_approx_eq_eps rbp[8]  -0.1924880847894457113e-6 1e-14
+@test_approx_eq_eps rbp[9]  0.9999999285679971958 1e-12
+
+# eraC2i00a
+rc2i = eraC2i00a(2400000.5, 53736.0)
+@test_approx_eq_eps rc2i[1]  0.9999998323037165557 1e-12
+@test_approx_eq_eps rc2i[2]  0.5581526348992140183e-9 1e-12
+@test_approx_eq_eps rc2i[3]  -0.5791308477073443415e-3 1e-12
+@test_approx_eq_eps rc2i[4]  -0.2384266227870752452e-7 1e-12
+@test_approx_eq_eps rc2i[5]  0.9999999991917405258 1e-12
+@test_approx_eq_eps rc2i[6]  -0.4020594955028209745e-4 1e-12
+@test_approx_eq_eps rc2i[7]  0.5791308472168152904e-3 1e-12
+@test_approx_eq_eps rc2i[8]  0.4020595661591500259e-4 1e-12
+@test_approx_eq_eps rc2i[9]  0.9999998314954572304 1e-12
+
+# eraC2i00b
+rc2i = eraC2i00b(2400000.5, 53736.0)
+@test_approx_eq_eps rc2i[1]  0.9999998323040954356 1e-12
+@test_approx_eq_eps rc2i[2]  0.5581526349131823372e-9 1e-12
+@test_approx_eq_eps rc2i[3]  -0.5791301934855394005e-3 1e-12
+@test_approx_eq_eps rc2i[4]  -0.2384239285499175543e-7 1e-12
+@test_approx_eq_eps rc2i[5]  0.9999999991917574043 1e-12
+@test_approx_eq_eps rc2i[6]  -0.4020552974819030066e-4 1e-12
+@test_approx_eq_eps rc2i[7]  0.5791301929950208873e-3 1e-12
+@test_approx_eq_eps rc2i[8]  0.4020553681373720832e-4 1e-12
+@test_approx_eq_eps rc2i[9]  0.9999998314958529887 1e-12
+
+# eraC2i06a
+rc2i = eraC2i06a(2400000.5, 53736.0)
+@test_approx_eq_eps rc2i[1]  0.9999998323037159379 1e-12
+@test_approx_eq_eps rc2i[2]  0.5581121329587613787e-9 1e-12
+@test_approx_eq_eps rc2i[3]  -0.5791308487740529749e-3 1e-12
+@test_approx_eq_eps rc2i[4]  -0.2384253169452306581e-7 1e-12
+@test_approx_eq_eps rc2i[5]  0.9999999991917467827 1e-12
+@test_approx_eq_eps rc2i[6]  -0.4020579392895682558e-4 1e-12
+@test_approx_eq_eps rc2i[7]  0.5791308482835292617e-3 1e-12
+@test_approx_eq_eps rc2i[8]  0.4020580099454020310e-4 1e-12
+@test_approx_eq_eps rc2i[9]  0.9999998314954628695 1e-12
+
 # eraCal2jd
 dmj0, dmj = eraCal2jd(2003, 6, 1)
 @test_approx_eq_eps dmj0  2400000.5 1e-9
@@ -46,6 +148,9 @@ d = eraDat(2008, 1, 17, 0.0)
 # eraD2dtf
 y,m,d,H,M,S,F = eraD2dtf("UTC", 5, 2400000.5, 49533.99999)
 @test (y,m,d,H,M,S,F) == (1994,6,30,23,59,60,13599)
+
+# eraD2tf
+@test eraD2tf(4, -0.987654321) == ('-', 23, 42, 13, 3333)
 
 # eraDtf2d
 jd1, jd2 = eraDtf2d("UTC", 1994, 6, 30, 23, 59, 60.13599)
@@ -180,6 +285,24 @@ y, m, d, fd = eraJd2cal(2400000.5, 50123.9999)
 # eraJdcalf
 y, m, d, fd = eraJdcalf(4, 2400000.5, 50123.9999)
 @test (y, m, d, fd) == (1996, 2, 10, 9999)
+
+# eraLdn
+sc = [-0.763276255, -0.608633767, -0.216735543]
+ob = [-0.974170437, -0.2115201, -0.0917583114]
+pv1 = PosVel(-7.81014427,-5.60956681,-1.98079819,
+             0.0030723249,-0.00406995477,-0.00181335842)
+pv2 = PosVel(0.738098796, 4.63658692,1.9693136,
+             -0.00755816922, 0.00126913722, 0.000727999001)
+pv3 = PosVel(-0.000712174377, -0.00230478303, -0.00105865966,
+             6.29235213e-6, -3.30888387e-7, -2.96486623e-7)
+b1 = eraLDBODY(0.00028574, 3e-10, pv1)
+b2 = eraLDBODY(0.00095435, 3e-9, pv2)
+b3 = eraLDBODY(1.0, 6e-6, pv3)
+l = [b1, b2, b3]
+sn = eraLdn(l, ob, sc)
+@test_approx_eq_eps sn[1]  -0.7632762579693333866 1e-12
+@test_approx_eq_eps sn[2]  -0.6086337636093002660 1e-12
+@test_approx_eq_eps sn[3]  -0.2167355420646328159 1e-12
 
 # eraNum00a
 rmatn = eraNum00a(2400000.5, 53736.0)
@@ -324,6 +447,54 @@ rmatp = eraPmat76(2400000.5, 50123.9999)
 @test_approx_eq_eps rmatp[7]  -0.3779153474950335077e-3 1e-14
 @test_approx_eq_eps rmatp[8]  -0.1643306746147366896e-6 1e-14
 @test_approx_eq_eps rmatp[9]  0.9999999285899790119 1e-12
+
+# eraPnm00a
+rbpn = eraPnm00a(2400000.5, 50123.9999)
+@test_approx_eq_eps rbpn[1]  0.9999995832793134257 1e-12
+@test_approx_eq_eps rbpn[2]  0.8372384254137809439e-3 1e-14
+@test_approx_eq_eps rbpn[3]  0.3639684306407150645e-3 1e-14
+@test_approx_eq_eps rbpn[4]  -0.8372535226570394543e-3 1e-14
+@test_approx_eq_eps rbpn[5]  0.9999996486491582471 1e-12
+@test_approx_eq_eps rbpn[6]  0.4132915262664072381e-4 1e-14
+@test_approx_eq_eps rbpn[7]  -0.3639337004054317729e-3 1e-14
+@test_approx_eq_eps rbpn[8]  -0.4163386925461775873e-4 1e-14
+@test_approx_eq_eps rbpn[9]  0.9999999329094390695 1e-12
+
+# eraPnm00b
+rbpn = eraPnm00b(2400000.5, 50123.9999)
+@test_approx_eq_eps rbpn[1]  0.9999995832776208280 1e-12
+@test_approx_eq_eps rbpn[2]  0.8372401264429654837e-3 1e-14
+@test_approx_eq_eps rbpn[3]  0.3639691681450271771e-3 1e-14
+@test_approx_eq_eps rbpn[4]  -0.8372552234147137424e-3 1e-14
+@test_approx_eq_eps rbpn[5]  0.9999996486477686123 1e-12
+@test_approx_eq_eps rbpn[6]  0.4132832190946052890e-4 1e-14
+@test_approx_eq_eps rbpn[7]  -0.3639344385341866407e-3 1e-14
+@test_approx_eq_eps rbpn[8]  -0.4163303977421522785e-4 1e-14
+@test_approx_eq_eps rbpn[9]  0.9999999329092049734 1e-12
+
+# eraPnm06a
+rbpn = eraPnm06a(2400000.5, 50123.9999)
+@test_approx_eq_eps rbpn[1]  0.9999995832794205484 1e-12
+@test_approx_eq_eps rbpn[2]  0.8372382772630962111e-3 1e-14
+@test_approx_eq_eps rbpn[3]  0.3639684771140623099e-3 1e-14
+@test_approx_eq_eps rbpn[4]  -0.8372533744743683605e-3 1e-14
+@test_approx_eq_eps rbpn[5]  0.9999996486492861646 1e-12
+@test_approx_eq_eps rbpn[6]  0.4132905944611019498e-4 1e-14
+@test_approx_eq_eps rbpn[7]  -0.3639337469629464969e-3 1e-14
+@test_approx_eq_eps rbpn[8]  -0.4163377605910663999e-4 1e-14
+@test_approx_eq_eps rbpn[9]  0.9999999329094260057 1e-12
+
+# eraPnm80
+rmatpn = eraPnm80(2400000.5, 50123.9999)
+@test_approx_eq_eps rmatpn[1]  0.9999995831934611169 1e-12
+@test_approx_eq_eps rmatpn[2]  0.8373654045728124011e-3 1e-14
+@test_approx_eq_eps rmatpn[3]  0.3639121916933106191e-3 1e-14
+@test_approx_eq_eps rmatpn[4]  -0.8373804896118301316e-3 1e-14
+@test_approx_eq_eps rmatpn[5]  0.9999996485439674092 1e-12
+@test_approx_eq_eps rmatpn[6]  0.4130202510421549752e-4 1e-14
+@test_approx_eq_eps rmatpn[7]  -0.3638774789072144473e-3 1e-14
+@test_approx_eq_eps rmatpn[8]  -0.4160674085851722359e-4 1e-14
+@test_approx_eq_eps rmatpn[9]  0.9999999329310274805 1e-12
 
 # eraTaitt
 t1, t2 = eraTaitt(2453750.5, 0.892482639)

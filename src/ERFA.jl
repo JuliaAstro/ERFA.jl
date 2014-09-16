@@ -1,9 +1,6 @@
 module ERFA
 
 export
-    PosVel
-
-export
     eraA2af,
     eraA2tf,
     eraBp00,
@@ -20,6 +17,7 @@ export
     eraEe00b,
     eraEe06a,
     eraEect00,
+    eraEform,
     eraEo06a,
     eraEpb,
     eraEpb2jd,
@@ -87,21 +85,7 @@ export
     eraUtcut1
 
 include("../deps/deps.jl")
-
-immutable PosVel
-    p1::Float64
-    p2::Float64
-    p3::Float64
-    v1::Float64
-    v2::Float64
-    v3::Float64
-end
-
-immutable eraLDBODY
-    bm::Float64
-    dl::Float64
-    pv::PosVel
-end
+include("erfa_common.jl")
 
 function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
     r1 = [0.]
@@ -111,6 +95,18 @@ function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
               iy, imo, id, r1, r2)
     @assert i == 0
     r1[1], r2[1]
+end
+
+function eraEform(n::Integer)
+    a = [0.]
+    f = [0.]
+    i = ccall((:eraEform,liberfa),Cint,
+              (Cint,Ptr{Cdouble},Ptr{Cdouble}),
+              n,a,f)
+    if i == -1
+        error("illegal identifier")
+    end
+    a[1], f[1]
 end
 
 function eraJd2cal(d1::Real, d2::Real)
@@ -176,6 +172,12 @@ function eraEpv00(date1::Float64, date2::Float64)
         warn("date outside the range 1900-2100 AD")
     end
     pvh, pvb
+end
+
+function eraLDBODY(bm::Cdouble, dl::Cdouble, pv::Array{Float64})
+    p = Array_3_Cdouble(pv[1], pv[2], pv[3])
+    v = Array_3_Cdouble(pv[4], pv[5], pv[6])
+    eraLDBODY(bm, dl, Array_2_Array_3_Cdouble(p, v))
 end
 
 function eraLdn(l::Array{eraLDBODY}, ob::Array{Float64}, sc::Array{Float64})

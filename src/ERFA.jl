@@ -1,19 +1,29 @@
 module ERFA
 
 export
+    eraA2af,
+    eraA2tf,
+    eraBp00,
+    eraBp06,
     eraCal2jd,
+    eraC2i00a,
+    eraC2i00b,
+    eraC2i06a,
     eraDat,
     eraD2dtf,
+    eraD2tf,
     eraDtf2d,
     eraEe00a,
     eraEe00b,
     eraEe06a,
     eraEect00,
+    eraEform,
     eraEo06a,
     eraEpb,
     eraEpb2jd,
     eraEpj,
     eraEpj2jd,
+    eraEpv00,
     eraEqeq94,
     eraEra00,
     eraFad03,
@@ -35,6 +45,8 @@ export
     eraGst94,
     eraJd2cal,
     eraJdcalf,
+    eraLDBODY,
+    eraLdn,
     eraNum00a,
     eraNum00b,
     eraNum06a,
@@ -50,6 +62,10 @@ export
     eraPmat00,
     eraPmat06,
     eraPmat76,
+    eraPnm00a,
+    eraPnm00b,
+    eraPnm06a,
+    eraPnm80,
     eraTaitt,
     eraTaiut1,
     eraTaiutc,
@@ -69,6 +85,7 @@ export
     eraUtcut1
 
 include("../deps/deps.jl")
+include("erfa_common.jl")
 
 function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
     r1 = [0.]
@@ -78,6 +95,18 @@ function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
               iy, imo, id, r1, r2)
     @assert i == 0
     r1[1], r2[1]
+end
+
+function eraEform(n::Integer)
+    a = [0.]
+    f = [0.]
+    i = ccall((:eraEform,liberfa),Cint,
+              (Cint,Ptr{Cdouble},Ptr{Cdouble}),
+              n,a,f)
+    if i == -1
+        error("illegal identifier")
+    end
+    a[1], f[1]
 end
 
 function eraJd2cal(d1::Real, d2::Real)
@@ -132,6 +161,35 @@ function eraDtf2d(scale::ByteString, iy::Integer, imo::Integer, id::Integer, ih:
     r1[1], r2[1]
 end
 
+function eraEpv00(date1::Float64, date2::Float64)
+    pvh = zeros(6)
+    pvb = zeros(6)
+    i = ccall((:eraEpv00, liberfa),
+              Cint,
+              (Float64, Float64, Ptr{Float64}, Ptr{Float64}),
+              date1, date2, pvh, pvb)
+    if i == 1
+        warn("date outside the range 1900-2100 AD")
+    end
+    pvh, pvb
+end
+
+function eraLDBODY(bm::Cdouble, dl::Cdouble, pv::Array{Float64})
+    p = Array_3_Cdouble(pv[1], pv[2], pv[3])
+    v = Array_3_Cdouble(pv[4], pv[5], pv[6])
+    eraLDBODY(bm, dl, Array_2_Array_3_Cdouble(p, v))
+end
+
+function eraLdn(l::Array{eraLDBODY}, ob::Array{Float64}, sc::Array{Float64})
+    sn = zeros(3)
+    n = length(l)
+    ccall((:eraLdn, liberfa),
+          Void,
+          (Cint, Ptr{eraLDBODY}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
+          n, l, ob, sc, sn)
+    sn
+end
+
 function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn = zeros(9)
     ccall((:eraNumat,liberfa),
@@ -144,13 +202,14 @@ end
 function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     pv = zeros(6)
     i = ccall((:eraPlan94, liberfa),
-              Int64,
+              Cint,
               (Float64, Float64, Int64, Ptr{Float64}),
               date1, date2, np, pv)
     if i == -1
         error("illegal np,  not in range(1,8) for planet")
     elseif i == 1
         warn("year outside range(1000:3000)")
+        return pv
     elseif i == 2
         error("computation failed to converge")
     elseif i == 0
@@ -158,13 +217,52 @@ function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     end
 end
 
-for f in (:eraNum00a,
+for f in (:eraA2af,
+          :eraA2tf,
+          :eraD2tf)
+    @eval begin
+        function ($f)(ndp::Int64, a::Float64)
+            s = "+"
+            i = Int32[0, 0, 0, 0]
+            ccall(($(Expr(:quote,f)),liberfa),
+                  Void,
+                  (Int64, Float64, Ptr{ASCIIString}, Ptr{Cint}),
+                  ndp, a, &s, i)
+            s[1], i[1], i[2], i[3], i[4]
+        end
+    end
+end
+    
+for f in (:eraBp00,
+          :eraBp06)
+    @eval begin
+        function ($f)(a::Float64, b::Float64)
+            rb = zeros(9)
+            rp = zeros(9)
+            rbp = zeros(9)
+            ccall(($(Expr(:quote,f)),liberfa),
+                  Void,
+                  (Float64, Float64, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
+                  a, b, rb, rp, rbp)
+            rb, rp, rbp
+        end
+    end
+end
+
+for f in (:eraC2i00a,
+          :eraC2i00b,
+          :eraC2i06a,
+          :eraNum00a,
           :eraNum00b,
           :eraNum06a,
           :eraNutm80,
           :eraPmat00,
           :eraPmat06,
-          :eraPmat76)
+          :eraPmat76,
+          :eraPnm00a,
+          :eraPnm00b,
+          :eraPnm06a,
+          :eraPnm80)
     @eval begin
         function ($f)(a::Float64, b::Float64)
             r = zeros(9)

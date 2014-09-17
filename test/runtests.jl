@@ -38,6 +38,14 @@ d = d1 + d2
 # eraA2tf
 @test eraA2tf(4, -3.01234) == ('-', 11, 30, 22, 6484)
 
+# eraAnp
+r = eraAnp(-0.1)
+@test_approx_eq_eps r  6.183185307179586477 1e-15
+
+# eraAnpm
+r = eraAnpm(-4.0)
+@test_approx_eq_eps r  2.283185307179586477 1e-15
+
 # eraBp00
 rb, rp,rbp = eraBp00(2400000.5, 50123.9999)
 @test_approx_eq_eps rb[1]  0.9999999999999942498 1e-12
@@ -406,6 +414,20 @@ obl = eraObl06(2400000.5, 54388.0)
 obl = eraObl80(2400000.5, 54388.0)
 @test_approx_eq_eps obl 0.409075134764381621 1e-16
 
+# eraPap
+a = [1.,0.1,0.2]
+b = [-3.,1e-3,0.2]
+theta = eraPap(a,b)
+@test_approx_eq_eps theta  0.3671514267841113674 1e-12
+
+# eraPas
+p = eraPas(1.0,0.1,0.2,-1.0)
+@test_approx_eq_eps p  -2.724544922932270424 1e-12
+
+# eraPdp
+ab =eraPdp([2.,2.,3.],[1.,3.,4.])
+@test_approx_eq_eps ab  20 1e-12
+
 # eraPlan94
 pv = eraPlan94(2400000.5, -320000., 3)
 @test_approx_eq_eps pv[1]  0.9308038666832975759 1e-11
@@ -507,6 +529,74 @@ rmatpn = eraPnm80(2400000.5, 50123.9999)
 @test_approx_eq_eps rmatpn[8]  -0.4160674085851722359e-4 1e-14
 @test_approx_eq_eps rmatpn[9]  0.9999999329310274805 1e-12
 
+# eraRxp
+r = [[2.0,3.0,2.0],
+     [3.0,2.0,3.0],
+     [3.0,4.0,5.0]]
+p = [0.2,1.5,0.1]
+rp = eraRxp(r, p)
+@test_approx_eq_eps rp[1]  5.1 1e-12
+@test_approx_eq_eps rp[2]  3.9 1e-12
+@test_approx_eq_eps rp[3]  7.1 1e-12
+
+# eraRxpv
+r = [[2.0,3.0,2.0],
+     [3.0,2.0,3.0],
+     [3.0,4.0,5.0]]
+pv = [[0.2,1.5,0.1],
+      [1.5,0.2,0.1]]
+rpv = eraRxpv(r, pv)
+@test_approx_eq_eps rpv[1]  5.1 1e-12
+@test_approx_eq_eps rpv[4]  3.8 1e-12
+@test_approx_eq_eps rpv[2]  3.9 1e-12
+@test_approx_eq_eps rpv[5]  5.2 1e-12
+@test_approx_eq_eps rpv[3]  7.1 1e-12
+@test_approx_eq_eps rpv[6]  5.8 1e-12
+
+# eraRxr
+a = [[2.0,3.0,2.0],
+     [3.0,2.0,3.0],
+     [3.0,4.0,5.0]]
+b = [[1.0,2.0,2.0],
+     [4.0,1.0,1.0],
+     [3.0,0.0,1.0]]
+atb = eraRxr(a, b)
+@test_approx_eq_eps atb[1]  20.0 1e-12
+@test_approx_eq_eps atb[2]   7.0 1e-12
+@test_approx_eq_eps atb[3]   9.0 1e-12
+@test_approx_eq_eps atb[4]  20.0 1e-12
+@test_approx_eq_eps atb[5]   8.0 1e-12
+@test_approx_eq_eps atb[6]  11.0 1e-12
+@test_approx_eq_eps atb[7]  34.0 1e-12
+@test_approx_eq_eps atb[8]  10.0 1e-12
+@test_approx_eq_eps atb[9]  15.0 1e-12
+
+# eraS00a
+s = eraS00a(2400000.5, 52541.0)
+@test_approx_eq_eps s  -0.1340684448919163584e-7 1e-18
+
+# eraS00b
+s = eraS00b(2400000.5, 52541.0)
+@test_approx_eq_eps s  -0.1340695782951026584e-7 1e-18
+
+# eraS06a
+s = eraS06a(2400000.5, 52541.0)
+@test_approx_eq_eps s  -0.1340680437291812383e-7 1e-18
+
+# eraSepp
+a = [1.,0.1,0.2]
+b = [-3.,1e-3,0.2]
+s = eraSepp(a,b)
+@test_approx_eq_eps s  2.860391919024660768 1e-12
+
+# eraSeps
+s = eraSeps(1.,.1,.2,-3.)
+@test_approx_eq_eps s  2.346722016996998842 1e-14
+
+# eraSp00
+s = eraSp00(2400000.5, 52541.0)
+@test_approx_eq_eps s  -0.6216698469981019309e-11 1e-12
+
 # eraTaitt
 t1, t2 = eraTaitt(2453750.5, 0.892482639)
 @test_approx_eq_eps t1  2453750.5 1e-6
@@ -545,6 +635,45 @@ t1, t2 = eraTdbtt(2453750.5,  0.892855137, -0.000201)
 # eraTf2d
 d = eraTf2d('+',23,55,10.9)
 @test_approx_eq_eps d  0.9966539351851851852 1e-12
+
+# eraTr
+r = [[2.0,3.0,2.0],
+     [3.0,2.0,3.0],
+     [3.0,4.0,5.0]]
+rt = eraTr(r)
+@test_approx_eq_eps rt[1]  2.0 0.0
+@test_approx_eq_eps rt[2]  3.0 0.0
+@test_approx_eq_eps rt[3]  3.0 0.0
+@test_approx_eq_eps rt[4]  3.0 0.0
+@test_approx_eq_eps rt[5]  2.0 0.0
+@test_approx_eq_eps rt[6]  4.0 0.0
+@test_approx_eq_eps rt[7]  2.0 0.0
+@test_approx_eq_eps rt[8]  3.0 0.0
+@test_approx_eq_eps rt[9]  5.0 0.0
+
+# eraTrxp
+r = [[2.0,3.0,2.0],
+     [3.0,2.0,3.0],
+     [3.0,4.0,5.0]]
+p = [0.2,1.5,0.1]
+trp = eraTrxp(r, p)
+@test_approx_eq_eps trp[1]  5.2 1e-12
+@test_approx_eq_eps trp[2]  4.0 1e-12
+@test_approx_eq_eps trp[3]  5.4 1e-12
+
+# eraTrxpv
+r = [[2.0,3.0,2.0],
+     [3.0,2.0,3.0],
+     [3.0,4.0,5.0]]
+pv = [[0.2,1.5,0.1],
+      [1.5,0.2,0.1]]
+trpv = eraTrxpv(r, pv)
+@test_approx_eq_eps trpv[1]  5.2 1e-12
+@test_approx_eq_eps trpv[2]  4.0 1e-12
+@test_approx_eq_eps trpv[3]  5.4 1e-12
+@test_approx_eq_eps trpv[4]  3.9 1e-12
+@test_approx_eq_eps trpv[5]  5.3 1e-12
+@test_approx_eq_eps trpv[6]  4.1 1e-12
 
 # eraTttai
 t1, t2 = eraTttai(2453750.5, 0.892482639)

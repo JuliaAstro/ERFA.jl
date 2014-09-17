@@ -3,6 +3,8 @@ module ERFA
 export
     eraA2af,
     eraA2tf,
+    eraAnp,
+    eraAnpm,
     eraBp00,
     eraBp06,
     eraCal2jd,
@@ -58,6 +60,9 @@ export
     eraNutm80,
     eraObl06,
     eraObl80,
+    eraPap,
+    eraPas,
+    eraPdp,
     eraPlan94,
     eraPmat00,
     eraPmat06,
@@ -66,6 +71,18 @@ export
     eraPnm00b,
     eraPnm06a,
     eraPnm80,
+    eraRxp,
+    eraRxpv,
+    eraRxr,
+    eraS00a,
+    eraS00b,
+    eraS06a,
+    eraSp00,
+    eraSepp,
+    eraSeps,
+    eraTr,
+    eraTrxp,
+    eraTrxpv,
     eraTaitt,
     eraTaiut1,
     eraTaiutc,
@@ -217,6 +234,23 @@ function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     end
 end
 
+function eraRxr(a::Array{Cdouble},b::Array{Cdouble})
+    atb = zeros(9)
+    ccall((:eraRxr,liberfa),
+          Void,
+          (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          a,b,atb)
+    atb
+end
+
+function eraTr(r::Array{Cdouble})
+    rt = zeros(9)
+    ccall((:eraTr,liberfa),Void,
+          (Ptr{Cdouble},Ptr{Cdouble}),
+          r,rt)
+    rt
+end
+
 for f in (:eraA2af,
           :eraA2tf,
           :eraD2tf)
@@ -232,7 +266,16 @@ for f in (:eraA2af,
         end
     end
 end
-    
+
+for f in (:eraAnp,
+          :eraAnpm)
+    @eval begin
+        function ($f)(a::Cdouble)
+            ccall(($(Expr(:quote,f)),liberfa),Cdouble,(Cdouble,),a)
+        end
+    end
+end
+
 for f in (:eraBp00,
           :eraBp06)
     @eval begin
@@ -331,7 +374,11 @@ for f in (:eraEe00a,
           :eraGst00b,
           :eraGst94,
           :eraObl06,
-          :eraObl80)
+          :eraObl80,
+          :eraS00a,
+          :eraS00b,
+          :eraS06a,
+          :eraSp00)
     @eval ($f)(d1::Real, d2::Real) = ccall(($(Expr(:quote,f)),liberfa), Float64, (Float64,Float64), d1, d2)
 end
 
@@ -387,6 +434,51 @@ for f in (:eraTaiut1,
                       a, b, c, r1, r2)
             @assert i == 0
             r1[1], r2[1]
+        end
+    end
+end
+
+for f in (:eraPap,
+          :eraPdp,
+          :eraSepp)
+    @eval begin
+        function ($f)(a::Array{Cdouble}, b::Array{Cdouble})
+            ccall(($(Expr(:quote,f)),liberfa),Cdouble,(Ptr{Cdouble},Ptr{Cdouble}),a,b)
+        end
+    end
+end
+
+for f in (:eraPas,
+          :eraSeps)
+    @eval begin
+        function ($f)(al::Cdouble,ap::Cdouble,bl::Cdouble,bp::Cdouble)
+            ccall(($(Expr(:quote,f)),liberfa),Cdouble,(Cdouble,Cdouble,Cdouble,Cdouble),al,ap,bl,bp)
+        end
+    end
+end
+
+for f in (:eraRxp,
+          :eraTrxp)
+    @eval begin
+        function ($f)(r::Array{Cdouble}, p::Array{Cdouble})
+            rp = zeros(3)
+            ccall(($(Expr(:quote,f)),liberfa), Void,
+                  (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+                  r,p,rp)
+            rp
+        end
+    end
+end
+
+for f in (:eraRxpv,
+          :eraTrxpv)
+    @eval begin
+        function ($f)(r::Array{Cdouble}, p::Array{Cdouble})
+            rp = zeros(6)
+            ccall(($(Expr(:quote,f)),liberfa), Void,
+                  (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+                  r,p,rp)
+            rp
         end
     end
 end

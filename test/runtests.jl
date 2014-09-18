@@ -148,6 +148,11 @@ rc2i = eraC2i06a(2400000.5, 53736.0)
 @test_approx_eq_eps rc2i[8]  0.4020580099454020310e-4 1e-12
 @test_approx_eq_eps rc2i[9]  0.9999998314954628695 1e-12
 
+# eraC2s
+t,p = eraC2s([100.,-50.,25.])
+@test_approx_eq_eps t  -0.4636476090008061162 1e-15
+@test_approx_eq_eps p  0.2199879773954594463 1e-15
+
 # eraCal2jd
 dmj0, dmj = eraCal2jd(2003, 6, 1)
 @test_approx_eq_eps dmj0  2400000.5 1e-9
@@ -487,6 +492,12 @@ obl = eraObl06(2400000.5, 54388.0)
 obl = eraObl80(2400000.5, 54388.0)
 @test_approx_eq_eps obl 0.409075134764381621 1e-16
 
+# eraP2s
+theta, phi, r = eraP2s([100.,-50.,25.])
+@test_approx_eq_eps theta  -0.4636476090008061162 1e-12
+@test_approx_eq_eps phi  0.2199879773954594463 1e-12
+@test_approx_eq_eps r  114.5643923738960002 1e-12
+
 # eraPap
 a = [1.,0.1,0.2]
 b = [-3.,1e-3,0.2]
@@ -719,6 +730,17 @@ rpom = eraPom00(xp, yp, sp)
 @test_approx_eq_eps rpom[8]  0.1860359247002414021e-5 1e-16
 @test_approx_eq_eps rpom[9]  0.9999999999982370039 1e-12
 
+# eraPv2s
+pv = [[-0.4514964673880165,0.03093394277342585,0.05594668105108779],
+      [1.292270850663260e-5,2.652814182060692e-6,2.568431853930293e-6]]
+theta, phi, r, td, pd, rd = eraPv2s(pv)
+@test_approx_eq_eps theta  3.073185307179586515 1e-12
+@test_approx_eq_eps phi  0.1229999999999999992 1e-12
+@test_approx_eq_eps r  0.4559999999999999757 1e-12
+@test_approx_eq_eps td  -0.7800000000000000364e-5 1e-16
+@test_approx_eq_eps pd  0.9010000000000001639e-5 1e-16
+@test_approx_eq_eps rd  -0.1229999999999999832e-4 1e-16
+
 # eraRx
 phi = 0.3456789
 r = [[2.0,3.0,2.0],
@@ -832,6 +854,27 @@ s = eraS06(2400000.5, 53736.0, x, y)
 # eraS06a
 s = eraS06a(2400000.5, 52541.0)
 @test_approx_eq_eps s  -0.1340680437291812383e-7 1e-18
+
+# eraS2c
+c = eraS2c(3.0123, -0.999)
+@test_approx_eq_eps c[1]  -0.5366267667260523906 1e-12
+@test_approx_eq_eps c[2]   0.0697711109765145365 1e-12
+@test_approx_eq_eps c[3]  -0.8409302618566214041 1e-12
+
+# eraS2p
+p = eraS2p(-3.21, 0.123, 0.456)
+@test_approx_eq_eps p[1]  -0.4514964673880165228 1e-12
+@test_approx_eq_eps p[2]   0.0309339427734258688 1e-12
+@test_approx_eq_eps p[3]   0.0559466810510877933 1e-12
+
+# eraS2pv
+pv = eraS2pv(-3.21, 0.123, 0.456, -7.8e-6, 9.01e-6, -1.23e-5)
+@test_approx_eq_eps pv[1]  -0.4514964673880165228 1e-12
+@test_approx_eq_eps pv[2]   0.0309339427734258688 1e-12
+@test_approx_eq_eps pv[3]   0.0559466810510877933 1e-12
+@test_approx_eq_eps pv[4]   0.1292270850663260170e-4 1e-16
+@test_approx_eq_eps pv[5]   0.2652814182060691422e-5 1e-16
+@test_approx_eq_eps pv[6]   0.2568431853930292259e-5 1e-16
 
 # eraSepp
 a = [1.,0.1,0.2]

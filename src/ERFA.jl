@@ -12,6 +12,7 @@ export
     eraC2i00a,
     eraC2i00b,
     eraC2i06a,
+    eraC2ixy,
     eraC2ixys,
     eraDat,
     eraD2dtf,
@@ -45,6 +46,7 @@ export
     eraFasa03,
     eraFaur03,
     eraFave03,
+    eraFw2m,
     eraGmst00,
     eraGmst06,
     eraGmst82,
@@ -75,6 +77,7 @@ export
     eraPmat06,
     eraPmat76,
     eraPn00,
+    eraPn06,
     eraPnm00a,
     eraPnm00b,
     eraPnm06a,
@@ -242,19 +245,6 @@ function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn
 end
 
-function eraPn00(date1::Float64, date2::Float64, dpsi::Float64, deps::Float64)
-    epsa = [0.]
-    rb = zeros(9)
-    rp = zeros(9)
-    rbp = zeros(9)
-    rn = zeros(9)
-    rbpn = zeros(9)
-    ccall((:eraPn00, liberfa),Void,
-          (Float64, Float64, Float64, Float64, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
-          date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
-    epsa[1], rb, rp, rbp, rn, rbpn
-end
-
 function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     pv = zeros(6)
     i = ccall((:eraPlan94, liberfa),Cint,
@@ -353,6 +343,19 @@ for f in (:eraC2ixys,
     end
 end
 
+for f in (:eraC2ixy,
+          :eraFw2m)
+    @eval begin
+        function ($f)(x::Cdouble, y::Cdouble, s::Cdouble, t::Cdouble)
+            r = zeros(9)
+            ccall(($(Expr(:quote,f)),liberfa),Void,
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+                  x, y, s, t, r)
+            r
+        end
+    end
+end
+
 for f in (:eraC2i00a,
           :eraC2i00b,
           :eraC2i06a,
@@ -374,6 +377,24 @@ for f in (:eraC2i00a,
                   (Float64, Float64, Ptr{Float64}),
                   a, b, r)
             r
+        end
+    end
+end
+
+for f in (:eraPn00,
+          :eraPn06)
+    @eval begin
+        function ($f)(date1::Float64, date2::Float64, dpsi::Float64, deps::Float64)
+            epsa = [0.]
+            rb = zeros(9)
+            rp = zeros(9)
+            rbp = zeros(9)
+            rn = zeros(9)
+            rbpn = zeros(9)
+            ccall(($(Expr(:quote,f)), liberfa),Void,
+                  (Float64, Float64, Float64, Float64, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
+                  date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
+            epsa[1], rb, rp, rbp, rn, rbpn
         end
     end
 end

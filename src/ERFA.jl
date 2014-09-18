@@ -11,10 +11,12 @@ export
     eraC2i00a,
     eraC2i00b,
     eraC2i06a,
+    eraC2ixys,
     eraDat,
     eraD2dtf,
     eraD2tf,
     eraDtf2d,
+    eraEe00,
     eraEe00a,
     eraEe00b,
     eraEe06a,
@@ -42,8 +44,12 @@ export
     eraFasa03,
     eraFaur03,
     eraFave03,
+    eraGmst00,
+    eraGmst06,
     eraGmst82,
+    eraGst00a,
     eraGst00b,
+    eraGst06a,
     eraGst94,
     eraJd2cal,
     eraJdcalf,
@@ -67,15 +73,22 @@ export
     eraPmat00,
     eraPmat06,
     eraPmat76,
+    eraPn00,
     eraPnm00a,
     eraPnm00b,
     eraPnm06a,
     eraPnm80,
+    eraPom00,
+    eraRx,
+    eraRy,
+    eraRz,
     eraRxp,
     eraRxpv,
     eraRxr,
+    eraS00,
     eraS00a,
     eraS00b,
+    eraS06,
     eraS06a,
     eraSp00,
     eraSepp,
@@ -216,10 +229,22 @@ function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn
 end
 
+function eraPn00(date1::Float64, date2::Float64, dpsi::Float64, deps::Float64)
+    epsa = [0.]
+    rb = zeros(9)
+    rp = zeros(9)
+    rbp = zeros(9)
+    rn = zeros(9)
+    rbpn = zeros(9)
+    ccall((:eraPn00, liberfa),Void,
+          (Float64, Float64, Float64, Float64, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
+          date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
+    epsa[1], rb, rp, rbp, rn, rbpn
+end
+
 function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     pv = zeros(6)
-    i = ccall((:eraPlan94, liberfa),
-              Cint,
+    i = ccall((:eraPlan94, liberfa),Cint,
               (Float64, Float64, Int64, Ptr{Float64}),
               date1, date2, np, pv)
     if i == -1
@@ -292,6 +317,20 @@ for f in (:eraBp00,
     end
 end
 
+
+for f in (:eraC2ixys,
+          :eraPom00)
+    @eval begin
+        function ($f)(x::Cdouble, y::Cdouble, s::Cdouble)
+            r = zeros(9)
+            ccall(($(Expr(:quote,f)),liberfa),Void,
+                  (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+                  x, y, s, r)
+            r
+        end
+    end
+end
+
 for f in (:eraC2i00a,
           :eraC2i00b,
           :eraC2i06a,
@@ -309,8 +348,7 @@ for f in (:eraC2i00a,
     @eval begin
         function ($f)(a::Float64, b::Float64)
             r = zeros(9)
-            ccall(($(Expr(:quote,f)),liberfa),
-                  Void,
+            ccall(($(Expr(:quote,f)),liberfa),Void,
                   (Float64, Float64, Ptr{Float64}),
                   a, b, r)
             r
@@ -359,6 +397,16 @@ for f in (:eraFad03,
           :eraFaur03,
           :eraFave03)
     @eval ($f)(d::Real) = ccall(($(Expr(:quote,f)),liberfa), Float64, (Float64,), d)
+end
+
+for f in (:eraEe00,
+          :eraGmst00,
+          :eraGmst06,
+          :eraGst00a,
+          :eraGst06a,
+          :eraS00,
+          :eraS06)
+    @eval ($f)(d1::Real,d2::Real,t1::Real,t2::Real) = ccall(($(Expr(:quote,f)),liberfa), Float64, (Float64,Float64,Float64,Float64), d1,d2,t1,t2)
 end
 
 for f in (:eraEe00a,
@@ -466,6 +514,19 @@ for f in (:eraRxp,
                   (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
                   r,p,rp)
             rp
+        end
+    end
+end
+
+for f in (:eraRx,
+          :eraRy,
+          :eraRz)
+    @eval begin
+        function ($f)(a::Cdouble, r::Array{Cdouble})
+            ccall(($(Expr(:quote,f)),liberfa),Void,
+                  (Cdouble,Ptr{Cdouble}),
+                  a,r)
+            r
         end
     end
 end

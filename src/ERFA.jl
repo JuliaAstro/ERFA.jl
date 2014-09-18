@@ -3,6 +3,7 @@ module ERFA
 export
     eraA2af,
     eraA2tf,
+    eraAf2a,
     eraAnp,
     eraAnpm,
     eraBp00,
@@ -112,10 +113,22 @@ export
     eraUt1tt,
     eraUt1utc,
     eraUtctai,
-    eraUtcut1
+    eraUtcut1,
+    eraXy06,
+    eraXys00a,
+    eraXys00b,
+    eraXys06a
 
 include("../deps/deps.jl")
 include("erfa_common.jl")
+
+function eraAf2a(s::Char,ideg::Integer,iamin::Integer,asec::Real)
+    rad = [0.]
+    i = ccall((:eraAf2a,liberfa),Cint,
+              (Char,Cint,Cint,Cdouble,Ptr{Cdouble}),
+              s,ideg,iamin,asec,rad)
+    rad
+end
 
 function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
     r1 = [0.]
@@ -274,6 +287,15 @@ function eraTr(r::Array{Cdouble})
           (Ptr{Cdouble},Ptr{Cdouble}),
           r,rt)
     rt
+end
+
+function eraXy06(date1::Real,date2::Real)
+    x = [0.]
+    y = [0.]
+    ccall((:eraXy06,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+          date1,date2,x,y)
+    x[1], y[1]
 end
 
 for f in (:eraA2af,
@@ -540,6 +562,22 @@ for f in (:eraRxpv,
                   (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
                   r,p,rp)
             rp
+        end
+    end
+end
+
+for f in (:eraXys00a,
+          :eraXys00b,
+          :eraXys06a)
+    @eval begin
+        function ($f)(date1::Float64, date2::Float64)
+            x = [0.]
+            y = [0.]
+            s = [0.]
+            ccall(($(Expr(:quote,f)),liberfa), Void,
+                  (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+                  date1,date2,x,y,s)
+            x[1], y[1], s[1]
         end
     end
 end

@@ -38,6 +38,12 @@ d = d1 + d2
 # eraA2tf
 @test eraA2tf(4, -3.01234) == ('-', 11, 30, 22, 6484)
 
+# eraAf2a
+r = eraAf2a('-', 45, 13, 27.2)
+@test_approx_eq_eps r  -0.7893115794313644842 1e-15
+r = eraAf2a('+', 45, 13, 27.2)
+@test_approx_eq_eps r  0.7893115794313644842 1e-15
+
 # eraAnp
 r = eraAnp(-0.1)
 @test_approx_eq_eps r  6.183185307179586477 1e-15
@@ -882,3 +888,26 @@ u1, u2 = eraUtctai(2453750.5, 0.892100694)
 u1, u2 = eraUtcut1(2453750.5, 0.892100694, 0.3341)
 @test_approx_eq_eps u1  2453750.5 1e-6
 @test_approx_eq_eps u2  0.8921045608981481481 1e-13
+
+# eraXy06
+x, y = eraXy06(2400000.5, 53736.0)
+@test_approx_eq_eps x  0.5791308486706010975e-3 1e-16
+@test_approx_eq_eps y  0.4020579816732958141e-4 1e-17
+
+# eraXys00a
+x, y, s = eraXys00a(2400000.5, 53736.0)
+@test_approx_eq_eps x  0.5791308472168152904e-3 1e-16
+@test_approx_eq_eps y  0.4020595661591500259e-4 1e-17
+@test_approx_eq_eps s  -0.1220040848471549623e-7 1e-20
+
+# eraXys00b
+x, y, s = eraXys00b(2400000.5, 53736.0)
+@test_approx_eq_eps x  0.5791301929950208873e-3 1e-16
+@test_approx_eq_eps y  0.4020553681373720832e-4 1e-16
+@test_approx_eq_eps s  -0.1220027377285083189e-7 1e-19
+
+# eraXys06a
+x, y, s = eraXys06a(2400000.5, 53736.0)
+@test_approx_eq_eps x  0.5791308482835292617e-3 1e-16
+@test_approx_eq_eps y  0.4020580099454020310e-4 1e-15
+@test_approx_eq_eps s  -0.1220032294164579896e-7 1e-19

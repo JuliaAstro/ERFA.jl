@@ -58,6 +58,9 @@ export
     eraFasa03,
     eraFaur03,
     eraFave03,
+    eraFk52h,
+    eraFk5hip,
+    eraFk5hz,
     eraFw2m,
     eraFw2xy,
     eraGc2gd,
@@ -72,6 +75,8 @@ export
     eraGst06,
     eraGst06a,
     eraGst94,
+    eraH2fk5,
+    eraHfk5z,
     eraJd2cal,
     eraJdcalf,
     eraLDBODY,
@@ -132,6 +137,7 @@ export
     eraSp00,
     eraSepp,
     eraSeps,
+    eraStarpm,
     eraStarpv,
     eraTaitt,
     eraTaiut1,
@@ -291,6 +297,24 @@ function eraEpv00(date1::Float64, date2::Float64)
     pvh, pvb
 end
 
+function eraFk5hip()
+    r5h = zeros(9)
+    s5h = zeros(3)
+    ccall((:eraFk5hip,liberfa),Void,
+          (Ptr{Cdouble},Ptr{Cdouble}),
+          r5h,s5h)
+    r5h,s5h
+end
+
+function eraFk5hz(r5::Cdouble,d5::Cdouble,date1::Cdouble,date2::Cdouble)
+    rh = [0.]
+    dh = [0.]
+    ccall((:eraFk5hz,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+          r5,d5,date1,date2,rh,dh)
+    rh[1],dh[1]
+end
+
 function eraFw2xy(gamb::Cdouble,phib::Cdouble,psi::Cdouble,eps::Cdouble)
     x =[0.]
     y = [0.]
@@ -299,7 +323,6 @@ function eraFw2xy(gamb::Cdouble,phib::Cdouble,psi::Cdouble,eps::Cdouble)
           gamb,phib,psi,eps,x,y)
     x[1], y[1]
 end
-
 
 function eraGc2gd(n::Integer,xyz::Array{Cdouble})
     elong = [0.]
@@ -359,6 +382,17 @@ function eraGst06(uta::Cdouble,utb::Cdouble,tta::Cdouble,ttb::Cdouble,rnpb::Arra
     ccall((:eraGst06,liberfa),Cdouble,
           (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
           uta,utb,tta,ttb,rnpb)
+end
+
+function eraHfk5z(rh::Cdouble,dh::Cdouble,date1::Cdouble,date2::Cdouble)
+    r5 = [0.]
+    d5 = [0.]
+    dr5 = [0.]
+    dd5 = [0.]
+    ccall((:eraHfk5z,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          rh,dh,date1,date2,r5,d5,dr5,dd5)
+    r5[1],d5[1],dr5[1],dd5[1]
 end
 
 function eraLDBODY(bm::Cdouble, dl::Cdouble, pv::Array{Float64})
@@ -572,6 +606,30 @@ function eraS2pv(theta::Cdouble,phi::Cdouble,r::Cdouble,td::Cdouble,pd::Cdouble,
           (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
           theta,phi,r,td,pd,rd,pv)
     pv
+end
+
+function eraStarpm(ra1::Cdouble,dec1::Cdouble,pmr1::Cdouble,pmd1::Cdouble,px1::Cdouble,rv1::Cdouble,ep1a::Cdouble,ep1b::Cdouble,ep2a::Cdouble,ep2b::Cdouble)
+    ra2 = [0.]
+    dec2 = [0.]
+    pmr2 = [0.]
+    pmd2 = [0.]
+    px2 = [0.]
+    rv2 = [0.]
+    i = ccall((:eraStarpm,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+              ra1,dec1,pmr1,pmd1,px1,rv1,ep1a,ep1b,ep2a,ep2b,ra2,dec2,pmr2,pmd2,px2,rv2)
+    if i == -1
+        error("system error")
+    elseif i == 1
+        warn("distance overridden")
+        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
+    elseif i == 2
+        warn("excessive velocity")
+        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
+    elseif i == 4
+        error("solution didn't converge")
+    end
+    ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
 end
 
 function eraStarpv(ra::Cdouble,dec::Cdouble,pmr::Cdouble,pmd::Cdouble,px::Cdouble,rv::Cdouble)
@@ -809,6 +867,24 @@ for f in (:eraNut00a,
                   (Float64, Float64, Ptr{Float64}, Ptr{Float64}),
                   a, b, r1, r2)
             r1[1], r2[1]
+        end
+    end
+end
+
+for f in (:eraFk52h,
+          :eraH2fk5)
+    @eval begin
+        function ($f)(ra::Cdouble,dec::Cdouble,dra::Cdouble,ddec::Cdouble,px::Cdouble,rv::Cdouble)
+            r = [0.]
+            d = [0.]
+            dr = [0.]
+            dd = [0.]
+            p = [0.]
+            v = [0.]
+            ccall(($(Expr(:quote,f)),liberfa),Void,
+                  (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+                  ra,dec,dra,ddec,px,rv,r,d,dr,dd,p,v)
+            r[1],d[1],dr[1],dd[1],p[1],v[1]
         end
     end
 end

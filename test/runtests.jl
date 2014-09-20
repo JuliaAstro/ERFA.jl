@@ -794,6 +794,25 @@ pv = eraPlan94(2400000.5, 43999.9, 1)
 @test_approx_eq_eps pv[5]  0.1946548301104706582e-1 1e-11
 @test_approx_eq_eps pv[6]  0.8929809783898904786e-2 1e-11
 
+# eraPmsafe
+ra1 = 1.234
+dec1 = 0.789
+pmr1 = 1e-5
+pmd1 = -2e-5
+px1 = 1e-2
+rv1 = 10.0
+ep1a = 2400000.5
+ep1b = 48348.5625
+ep2a = 2400000.5
+ep2b = 51544.5
+ra2, dec2, pmr2, pmd2, px2, rv2 = eraPmsafe(ra1, dec1, pmr1, pmd1, px1,rv1, ep1a, ep1b, ep2a, ep2b)
+@test_approx_eq_eps ra2  1.234087484501017061 1e-12
+@test_approx_eq_eps dec2  0.7888249982450468574 1e-12
+@test_approx_eq_eps pmr2  0.9996457663586073988e-5 1e-12
+@test_approx_eq_eps pmd2  -0.2000040085106737816e-4 1e-16
+@test_approx_eq_eps px2  0.9999997295356765185e-2 1e-12
+@test_approx_eq_eps rv2  10.38468380113917014 1e-10
+
 # eraPmat00
 rbp = eraPmat00(2400000.5, 50123.9999)
 @test_approx_eq_eps rbp[1]  0.9999995505175087260 1e-12
@@ -1174,6 +1193,17 @@ theta, phi, r, td, pd, rd = eraPv2s(pv)
 @test_approx_eq_eps pd  0.9010000000000001639e-5 1e-16
 @test_approx_eq_eps rd  -0.1229999999999999832e-4 1e-16
 
+# eraPvstar
+pv = [[126668.5912743160601,2136.792716839935195,-245251.2339876830091],
+      [-0.4051854035740712739e-2,-0.6253919754866173866e-2,0.1189353719774107189e-1]]
+ra, dec, pmr, pmd, px, rv = eraPvstar(pv)
+@test_approx_eq_eps ra  0.1686756e-1 1e-12
+@test_approx_eq_eps dec  -1.093989828 1e-12
+@test_approx_eq_eps pmr  -0.178323516e-4 1e-16
+@test_approx_eq_eps pmd  0.2336024047e-5 1e-16
+@test_approx_eq_eps px  0.74723 1e-12
+@test_approx_eq_eps rv  -21.6 1e-11
+
 # eraPvtob
 elong = 2.0
 phi = 0.5
@@ -1347,6 +1377,21 @@ s = eraSeps(1.,.1,.2,-3.)
 # eraSp00
 s = eraSp00(2400000.5, 52541.0)
 @test_approx_eq_eps s  -0.6216698469981019309e-11 1e-12
+
+# eraStarpv
+ra =   0.01686756
+dec = -1.093989828
+pmr = -1.78323516e-5
+pmd =  2.336024047e-6
+px =   0.74723
+rv = -21.6
+pv = eraStarpv(ra, dec, pmr, pmd, px, rv)
+@test_approx_eq_eps pv[1]  126668.5912743160601 1e-10
+@test_approx_eq_eps pv[2]  2136.792716839935195 1e-12
+@test_approx_eq_eps pv[3]  -245251.2339876830091 1e-10
+@test_approx_eq_eps pv[4]  -0.4051854035740712739e-2 1e-13
+@test_approx_eq_eps pv[5]  -0.6253919754866173866e-2 1e-15
+@test_approx_eq_eps pv[6]  0.1189353719774107189e-1 1e-13
 
 # eraTaitt
 t1, t2 = eraTaitt(2453750.5, 0.892482639)

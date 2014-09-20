@@ -98,6 +98,7 @@ export
     eraPmat00,
     eraPmat06,
     eraPmat76,
+    eraPmsafe,
     eraPn00,
     eraPn00a,
     eraPn00b,
@@ -111,6 +112,7 @@ export
     eraPr00,
     eraPrec76,
     eraPv2s,
+    eraPvstar,
     eraPvtob,
     eraPvup,
     eraRx,
@@ -130,6 +132,7 @@ export
     eraSp00,
     eraSepp,
     eraSeps,
+    eraStarpv,
     eraTaitt,
     eraTaiut1,
     eraTaiutc,
@@ -455,6 +458,31 @@ function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     end
 end
 
+function eraPmsafe(ra1::Cdouble,dec1::Cdouble,pmr1::Cdouble,pmd1::Cdouble,px1::Cdouble,rv1::Cdouble,ep1a::Cdouble,ep1b::Cdouble,ep2a::Cdouble,ep2b::Cdouble)
+    ra2 = [0.]
+    dec2 = [0.]
+    pmr2 = [0.]
+    pmd2 = [0.]
+    px2 = [0.]
+    rv2 = [0.]
+    i = ccall((:eraPmsafe,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+              ra1,dec1,pmr1,pmd1,px1,rv1,ep1a,ep1b,ep2a,ep2b,ra2,dec2,pmr2,pmd2,px2,rv2)
+    if i == -1
+        error("system error")
+    elseif i == 1
+        warn("distance overridden")
+        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
+    elseif i == 2
+        warn("excessive velocity")
+        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
+    elseif i == 4
+        warn("solution didn't converge")
+        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
+    end
+    ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
+end
+
 function eraPrec76(ep01::Cdouble,ep02::Cdouble,ep11::Cdouble,ep12::Cdouble)
     zeta = [0.]
     z = [0.]
@@ -476,6 +504,25 @@ function eraPv2s(pv::Array{Cdouble})
           (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
           pv,theta,phi,r,td,pd,rd)
     theta[1], phi[1], r[1], td[1], pd[1], rd[1]
+end
+
+function eraPvstar(pv::Array{Cdouble})
+    ra = [0.]
+    dec = [0.]
+    pmr = [0.]
+    pmd = [0.]
+    px = [0.]
+    rv = [0.]
+    i = ccall((:eraPvstar,liberfa),Cint,
+              (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+              pv,ra,dec,pmr,pmd,px,rv)
+    if i == -1
+        error("superluminal speed")
+    elseif i == -2
+        warn("null position vector")
+        return ra[1],dec[1],pmr[1],pmd[1],px[1],rv[1]
+    end
+    ra[1],dec[1],pmr[1],pmd[1],px[1],rv[1]
 end
 
 function eraPvtob(elong::Cdouble,phi::Cdouble,height::Cdouble,xp::Cdouble,yp::Cdouble,sp::Cdouble,theta::Cdouble)
@@ -524,6 +571,23 @@ function eraS2pv(theta::Cdouble,phi::Cdouble,r::Cdouble,td::Cdouble,pd::Cdouble,
     ccall((:eraS2pv,liberfa),Void,
           (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
           theta,phi,r,td,pd,rd,pv)
+    pv
+end
+
+function eraStarpv(ra::Cdouble,dec::Cdouble,pmr::Cdouble,pmd::Cdouble,px::Cdouble,rv::Cdouble)
+    pv = zeros(6)
+    i = ccall((:eraStarpv,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
+              ra,dec,pmr,pmd,px,rv,pv)
+    if i == 1
+        warn("distance overridden")
+        return pv
+    elseif i == 2
+        warn("excessive speed ")
+        return pv
+    elseif i == 4
+        error("solution didn't converge")
+    end
     pv
 end
 

@@ -6,6 +6,7 @@ export
     eraAf2a,
     eraAnp,
     eraAnpm,
+    eraBi00,
     eraBp00,
     eraBp06,
     eraCal2jd,
@@ -13,8 +14,14 @@ export
     eraC2i00a,
     eraC2i00b,
     eraC2i06a,
+    eraC2ibpn,
     eraC2ixy,
     eraC2ixys,
+    eraC2t00a,
+    eraC2t00b,
+    eraC2t06a,
+    eraC2tpe,
+    eraC2txy,
     eraDat,
     eraD2dtf,
     eraD2tf,
@@ -48,6 +55,10 @@ export
     eraFaur03,
     eraFave03,
     eraFw2m,
+    eraGc2gd,
+    eraGc2gde,
+    eraGd2gc,
+    eraGd2gce,
     eraGmst00,
     eraGmst06,
     eraGmst82,
@@ -79,13 +90,18 @@ export
     eraPmat06,
     eraPmat76,
     eraPn00,
+    eraPn00a,
+    eraPn00b,
     eraPn06,
+    eraPn06a,
     eraPnm00a,
     eraPnm00b,
     eraPnm06a,
     eraPnm80,
     eraPom00,
     eraPv2s,
+    eraPvtob,
+    eraPvup,
     eraRx,
     eraRy,
     eraRz,
@@ -103,9 +119,6 @@ export
     eraSp00,
     eraSepp,
     eraSeps,
-    eraTr,
-    eraTrxp,
-    eraTrxpv,
     eraTaitt,
     eraTaiut1,
     eraTaiutc,
@@ -113,7 +126,11 @@ export
     eraTcgtt,
     eraTdbtcb,
     eraTdbtt,
+    eraTf2a,
     eraTf2d,
+    eraTr,
+    eraTrxp,
+    eraTrxpv,
     eraTttai,
     eraTttcg,
     eraTttdb,
@@ -131,12 +148,31 @@ export
 include("../deps/deps.jl")
 include("erfa_common.jl")
 
-function eraAf2a(s::Char,ideg::Integer,iamin::Integer,asec::Real)
-    rad = [0.]
-    i = ccall((:eraAf2a,liberfa),Cint,
-              (Char,Cint,Cint,Cdouble,Ptr{Cdouble}),
-              s,ideg,iamin,asec,rad)
-    rad
+function eraBi00()
+    dpsibi = [0.]
+    depsbi = [0.]
+    dra = [0.]
+    ccall((:eraBi00,liberfa),Void,
+          (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          dpsibi,depsbi,dra)
+    dpsibi[1], depsbi[1], dra[1]
+end
+
+function eraC2ibpn(date1::Cdouble,date2::Cdouble,rbpn::Array{Cdouble})
+    rc2i = zeros(9)
+    ccall((:eraC2ibpn,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+          date1,date2,rbpn,rc2i)
+    rc2i
+end
+
+function eraC2s(p::Array{Cdouble})
+    theta = [0.]
+    phi = [0.]
+    ccall((:eraC2s,liberfa),Void,
+          (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          p,theta,phi)
+    theta[1], phi[1]
 end
 
 function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
@@ -147,15 +183,6 @@ function eraCal2jd(iy::Integer, imo::Integer, id::Integer)
               iy, imo, id, r1, r2)
     @assert i == 0
     r1[1], r2[1]
-end
-
-function eraC2s(p::Array{Cdouble})
-    theta = [0.]
-    phi = [0.]
-    ccall((:eraC2s,liberfa),Void,
-          (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
-          p,theta,phi)
-    theta[1], phi[1]
 end
 
 function eraEform(n::Integer)
@@ -235,6 +262,60 @@ function eraEpv00(date1::Float64, date2::Float64)
     pvh, pvb
 end
 
+function eraGc2gd(n::Integer,xyz::Array{Cdouble})
+    elong = [0.]
+    phi = [0.]
+    height = [0.]
+    i = ccall((:eraGc2gd,liberfa),Cint,
+              (Cint,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+              n,xyz,elong,phi,height)
+    if i == -1
+        error("illegal identifier")
+    elseif i == -2
+        error("internal error")
+    end
+    elong[1],phi[1],height[1]
+end
+
+function eraGc2gde(a::Cdouble,f::Cdouble,xyz::Array{Cdouble})
+    elong = [0.]
+    phi = [0.]
+    height = [0.]
+    i = ccall((:eraGc2gde,liberfa),Cint,
+              (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+              a,f,xyz,elong,phi,height)
+    if i == -1
+        error("illegal f")
+    elseif i == -2
+        error("internal a")
+    end
+    elong[1],phi[1],height[1]
+end
+
+function eraGd2gc(n::Integer,elong::Cdouble,phi::Cdouble,height::Cdouble)
+    xyz = zeros(3)
+    i = ccall((:eraGd2gc,liberfa),Cint,
+              (Cint,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
+              n,elong,phi,height,xyz)
+    if i == -1
+        error("illegal identifier")
+    elseif i == -2
+        error("illegal case")
+    end
+    xyz
+end
+
+function eraGd2gce(a::Cdouble,f::Cdouble,elong::Cdouble,phi::Cdouble,height::Cdouble)
+    xyz = zeros(3)
+    i = ccall((:eraGd2gce,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
+              a,f,elong,phi,height,xyz)
+    if i == -1
+        error("illegal case")
+    end
+    xyz
+end
+
 function eraLDBODY(bm::Cdouble, dl::Cdouble, pv::Array{Float64})
     p = Array_3_Cdouble(pv[1], pv[2], pv[3])
     v = Array_3_Cdouble(pv[4], pv[5], pv[6])
@@ -300,6 +381,21 @@ function eraPv2s(pv::Array{Cdouble})
     theta[1], phi[1], r[1], td[1], pd[1], rd[1]
 end
 
+function eraPvtob(elong::Cdouble,phi::Cdouble,height::Cdouble,xp::Cdouble,yp::Cdouble,sp::Cdouble,theta::Cdouble)
+    pv = zeros(6)
+    ccall((:eraPvtob,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
+          elong,phi,height,xp,yp,sp,theta,pv)
+    pv
+end
+
+function eraPvup(dt::Cdouble,pv::Array{Cdouble})
+    p = zeros(3)
+    ccall((:eraPvup,liberfa),Void,
+          (Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+          dt,pv,p)
+    p
+end
 
 function eraRxr(a::Array{Cdouble},b::Array{Cdouble})
     atb = zeros(9)
@@ -351,6 +447,21 @@ function eraXy06(date1::Real,date2::Real)
     x[1], y[1]
 end
 
+for f in (:eraAf2a,
+          :eraTf2a,
+          :eraTf2d)
+    @eval begin
+        function ($f)(s::Char,ideg::Integer,iamin::Integer,asec::Real)
+            rad = [0.]
+            i = ccall(($(Expr(:quote,f)),liberfa),Cint,
+                       (Cchar,Cint,Cint,Cdouble,Ptr{Cdouble}),
+                       s,ideg,iamin,asec,rad)
+            @assert i == 0
+            rad[1]
+        end
+    end              
+end
+
 for f in (:eraA2af,
           :eraA2tf,
           :eraD2tf)
@@ -358,8 +469,7 @@ for f in (:eraA2af,
         function ($f)(ndp::Int64, a::Float64)
             s = "+"
             i = Int32[0, 0, 0, 0]
-            ccall(($(Expr(:quote,f)),liberfa),
-                  Void,
+            ccall(($(Expr(:quote,f)),liberfa),Void,
                   (Int64, Float64, Ptr{ASCIIString}, Ptr{Cint}),
                   ndp, a, &s, i)
             s[1], i[1], i[2], i[3], i[4]
@@ -419,6 +529,34 @@ for f in (:eraC2ixy,
     end
 end
 
+for f in (:eraC2t00a,
+          :eraC2t00b,
+          :eraC2t06a)
+    @eval begin
+        function ($f)(tta::Cdouble,ttb::Cdouble,uta::Cdouble,utb::Cdouble,xp::Cdouble,yp::Cdouble)
+            rc2t =zeros(9)
+            ccall(($(Expr(:quote,f)),liberfa),Void,
+                  (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
+                  tta,ttb,uta,utb,xp,yp,rc2t)
+            rc2t
+        end
+    end
+end
+
+
+for f in (:eraC2tpe,
+          :eraC2txy)
+    @eval begin
+        function ($f)(tta::Cdouble,ttb::Cdouble,uta::Cdouble,utb::Cdouble,x::Cdouble,y::Cdouble,xp::Cdouble,yp::Cdouble)
+            rc2t =zeros(9)
+            ccall(($(Expr(:quote,f)),liberfa),Void,
+                  (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
+                  tta,ttb,uta,utb,x,y,xp,yp,rc2t)
+            rc2t
+        end
+    end
+end
+
 for f in (:eraC2i00a,
           :eraC2i00b,
           :eraC2i06a,
@@ -462,6 +600,27 @@ for f in (:eraPn00,
     end
 end
 
+for f in (:eraPn00a,
+          :eraPn00b,
+          :eraPn06a)
+    @eval begin
+        function ($f)(date1::Float64, date2::Float64)
+            dpsi = [0.]
+            deps = [0.]
+            epsa = [0.]
+            rb = zeros(9)
+            rp = zeros(9)
+            rbp = zeros(9)
+            rn = zeros(9)
+            rbpn = zeros(9)
+            ccall(($(Expr(:quote,f)), liberfa),Void,
+                  (Float64, Float64, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
+                  date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
+            dpsi[1], deps[1], epsa[1], rb, rp, rbp, rn, rbpn
+        end
+    end
+end
+
 for f in (:eraNut00a,
           :eraNut00b,
           :eraNut06a,
@@ -477,15 +636,6 @@ for f in (:eraNut00a,
             r1[1], r2[1]
         end
     end
-end
-
-function eraTf2d(s::Char, ihour::Integer, imin::Integer, sec::Real)
-    days = [0.]
-    i = ccall((:eraTf2d,liberfa), Cint,
-              (Cchar,Cint,Cint,Float64,Ptr{Float64}),
-              s, ihour, imin, sec, days)
-    @assert i == 0
-    days[1]
 end
 
 for f in (:eraFad03,

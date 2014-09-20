@@ -9,6 +9,7 @@ export
     eraBi00,
     eraBp00,
     eraBp06,
+    eraBpn2xy,
     eraCal2jd,
     eraC2s,
     eraC2i00a,
@@ -20,6 +21,8 @@ export
     eraC2t00a,
     eraC2t00b,
     eraC2t06a,
+    eraC2tcio,
+    eraC2teqx,
     eraC2tpe,
     eraC2txy,
     eraDat,
@@ -33,6 +36,7 @@ export
     eraEect00,
     eraEform,
     eraEo06a,
+    eraEors,
     eraEpb,
     eraEpb2jd,
     eraEpj,
@@ -55,6 +59,7 @@ export
     eraFaur03,
     eraFave03,
     eraFw2m,
+    eraFw2xy,
     eraGc2gd,
     eraGc2gde,
     eraGd2gc,
@@ -64,6 +69,7 @@ export
     eraGmst82,
     eraGst00a,
     eraGst00b,
+    eraGst06,
     eraGst06a,
     eraGst94,
     eraJd2cal,
@@ -81,10 +87,13 @@ export
     eraNutm80,
     eraObl06,
     eraObl80,
+    eraP06e,
     eraP2s,
     eraPap,
     eraPas,
+    eraPb06,
     eraPdp,
+    eraPfw06,
     eraPlan94,
     eraPmat00,
     eraPmat06,
@@ -99,6 +108,8 @@ export
     eraPnm06a,
     eraPnm80,
     eraPom00,
+    eraPr00,
+    eraPrec76,
     eraPv2s,
     eraPvtob,
     eraPvup,
@@ -158,6 +169,15 @@ function eraBi00()
     dpsibi[1], depsbi[1], dra[1]
 end
 
+function eraBpn2xy(rbpn::Array{Cdouble})
+    x = [0.]
+    y = [0.]
+    ccall((:eraBpn2xy,liberfa),Void,
+          (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          rbpn,x,y)
+    x[1], y[1]
+end
+
 function eraC2ibpn(date1::Cdouble,date2::Cdouble,rbpn::Array{Cdouble})
     rc2i = zeros(9)
     ccall((:eraC2ibpn,liberfa),Void,
@@ -195,6 +215,12 @@ function eraEform(n::Integer)
         error("illegal identifier")
     end
     a[1], f[1]
+end
+
+function eraEors(rnpb::Array{Cdouble},s::Cdouble)
+    ccall((:eraEors,liberfa),Cdouble,
+          (Ptr{Cdouble},Cdouble),
+          rnpb,s)
 end
 
 function eraJd2cal(d1::Real, d2::Real)
@@ -262,6 +288,16 @@ function eraEpv00(date1::Float64, date2::Float64)
     pvh, pvb
 end
 
+function eraFw2xy(gamb::Cdouble,phib::Cdouble,psi::Cdouble,eps::Cdouble)
+    x =[0.]
+    y = [0.]
+    ccall((:eraFw2xy,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+          gamb,phib,psi,eps,x,y)
+    x[1], y[1]
+end
+
+
 function eraGc2gd(n::Integer,xyz::Array{Cdouble})
     elong = [0.]
     phi = [0.]
@@ -316,6 +352,12 @@ function eraGd2gce(a::Cdouble,f::Cdouble,elong::Cdouble,phi::Cdouble,height::Cdo
     xyz
 end
 
+function eraGst06(uta::Cdouble,utb::Cdouble,tta::Cdouble,ttb::Cdouble,rnpb::Array{Cdouble})
+    ccall((:eraGst06,liberfa),Cdouble,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble}),
+          uta,utb,tta,ttb,rnpb)
+end
+
 function eraLDBODY(bm::Cdouble, dl::Cdouble, pv::Array{Float64})
     p = Array_3_Cdouble(pv[1], pv[2], pv[3])
     v = Array_3_Cdouble(pv[4], pv[5], pv[6])
@@ -341,6 +383,29 @@ function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn
 end
 
+function eraP06e(date1::Cdouble,date2::Cdouble)
+    eps0 = [0.]
+    psia = [0.]
+    oma = [0.]
+    bpa = [0.]
+    bqa = [0.]
+    pia = [0.]
+    bpia = [0.]
+    epsa = [0.]
+    chia = [0.]
+    za = [0.]
+    zetaa = [0.]
+    thetaa = [0.]
+    pa = [0.]
+    gam = [0.]
+    phi = [0.]
+    psi = [0.]
+    ccall((:eraP06e,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          date1,date2,eps0,psia,oma,bpa,bqa,pia,bpia,epsa,chia,za,zetaa,thetaa,pa,gam,phi,psi)
+    eps0[1],psia[1],oma[1],bpa[1],bqa[1],pia[1],bpia[1],epsa[1],chia[1],za[1],zetaa[1],thetaa[1],pa[1],gam[1],phi[1],psi[1]
+end
+
 function eraP2s(p::Array{Cdouble})
     theta = [0.]
     phi = [0.]
@@ -349,6 +414,28 @@ function eraP2s(p::Array{Cdouble})
           (Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
           p,theta,phi,r)
     theta[1], phi[1], r[1]
+end
+
+function eraPb06(date1::Cdouble,date2::Cdouble)
+    bzeta = [0.]
+    bz = [0.]
+    btheta = [0.]
+    ccall((:eraPb06,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          date1,date2,bzeta,bz,btheta)
+    bzeta[1],bz[1],btheta[1]
+end
+
+
+function eraPfw06(date1::Cdouble,date2::Cdouble)
+    gamb = [0.]
+    phib = [0.]
+    psib = [0.]
+    epsa = [0.]
+    ccall((:eraPfw06,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          date1,date2,gamb,phib,psib,epsa)
+    gamb[1],phib[1],psib[1],epsa[1]
 end
 
 function eraPlan94(date1::Float64, date2::Float64, np::Int64)
@@ -366,6 +453,16 @@ function eraPlan94(date1::Float64, date2::Float64, np::Int64)
     elseif i == 0
         return pv
     end
+end
+
+function eraPrec76(ep01::Cdouble,ep02::Cdouble,ep11::Cdouble,ep12::Cdouble)
+    zeta = [0.]
+    z = [0.]
+    theta = [0.]
+    ccall((:eraPrec76,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          ep01,ep02,ep11,ep12,zeta,z,theta)
+    zeta[1],z[1],theta[1]
 end
 
 function eraPv2s(pv::Array{Cdouble})
@@ -516,6 +613,19 @@ for f in (:eraC2ixys,
     end
 end
 
+for f in (:eraC2tcio,
+          :eraC2teqx)
+    @eval begin
+        function ($f)(rc2i::Array{Cdouble}, era::Cdouble, rpom::Array{Cdouble})
+            rc2t = zeros(9)
+            ccall((:eraC2tcio,liberfa),Void,
+                  (Ptr{Cdouble},Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+                  rc2i,era,rpom,rc2t)
+            rc2t
+        end
+    end
+end
+
 for f in (:eraC2ixy,
           :eraFw2m)
     @eval begin
@@ -624,7 +734,8 @@ end
 for f in (:eraNut00a,
           :eraNut00b,
           :eraNut06a,
-          :eraNut80)
+          :eraNut80,
+          :eraPr00)
     @eval begin
         function ($f)(a::Float64, b::Float64)
             r1 = [0.]

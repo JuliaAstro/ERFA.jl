@@ -53,7 +53,7 @@ end
 
 zero(::Type{Array_3_Array_3_Cdouble}) = Array_3_Array_3_Cdouble(fill(zero(Array_3_Cdouble),3)...)
 
-immutable eraASTROM
+type eraASTROM
     pmt::Cdouble
     eb::Array_3_Cdouble
     eh::Array_3_Cdouble

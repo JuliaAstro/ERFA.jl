@@ -3,9 +3,15 @@ module ERFA
 export
     eraA2af,
     eraA2tf,
+    eraAb,
     eraAf2a,
     eraAnp,
     eraAnpm,
+    eraApcg,
+    eraApcg13,
+    eraApci,
+    eraApci13,
+    eraASTROM,
     eraBi00,
     eraBp00,
     eraBp06,
@@ -84,7 +90,9 @@ export
     eraJd2cal,
     eraJdcalf,
     eraLDBODY,
+    eraLd,
     eraLdn,
+    eraLdsun,
     eraNum00a,
     eraNum00b,
     eraNum06a,
@@ -193,6 +201,102 @@ export
 
 include("../deps/deps.jl")
 include("erfa_common.jl")
+
+function getindex(A::Array_3_Cdouble, i::Int64)
+    if i === 1
+        return A.d1
+    elseif i === 2
+        return A.d2
+    elseif i === 3
+        return A.d3
+    end
+end
+
+function getindex(A::Array_3_Array_3_Cdouble, i::Int64)
+    if i === 1
+        return getindex(A.d1,1)
+    elseif i === 2
+        return getindex(A.d1,2)
+    elseif i === 3
+        return getindex(A.d1,3)
+    elseif i === 4
+        return getindex(A.d2,1)
+    elseif i === 5
+        return getindex(A.d2,2)
+    elseif i === 6
+        return getindex(A.d2,3)
+    elseif i === 7
+        return getindex(A.d3,1)
+    elseif i === 8
+        return getindex(A.d3,2)
+    elseif i === 9
+        return getindex(A.d3,3)
+    end
+end
+
+function eraASTROM(pmt::Float64, eb::Array{Float64}, eh::Array{Float64}, em::Float64, v::Array{Float64}, bm1::Float64, bpn::Array{Float64}, along::Float64, phi::Float64, xpl::Float64, ypl::Float64, sphi::Float64, cphi::Float64, diurab::Float64, eral::Float64, refa::Float64, refb::Float64) 
+    eraASTROM(pmt,
+              Array_3_Cdouble(eb[1], eb[2], eb[3]),
+              Array_3_Cdouble(eh[1], eh[2], eh[3]),
+              em,
+              Array_3_Cdouble(v[1], v[2], v[3]),
+              bm1,
+              Array_3_Array_3_Cdouble(Array_3_Cdouble(bpn[1],bpn[2],bpn[3]),
+                                      Array_3_Cdouble(bpn[4],bpn[5],bpn[6]),
+                                      Array_3_Cdouble(bpn[7],bpn[8],bpn[9])),
+              along,
+              phi, 
+              xpl, 
+              ypl, 
+              sphi, 
+              cphi, 
+              diurab, 
+              eral, 
+              refa, 
+              refb)
+end
+
+function eraAb(pnat::Array{Cdouble},v::Array{Cdouble},s::Cdouble,bm1::Cdouble)
+    ppr = zeros(3)
+    ccall((:eraAb,liberfa),Void,
+          (Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Ptr{Cdouble}),
+          pnat,v,s,bm1,ppr)
+    ppr
+end
+
+function eraApcg(date1::Cdouble,date2::Cdouble,ebpv::Array{Cdouble},ehp::Array{Cdouble})
+#    astrom = eraASTROM(0.0,Array_3_Cdouble(0.0,0.0,0.0),Array_3_Cdouble(0.0,0.0,0.0),0.0,Array_3_Cdouble(0.0,0.0,0.0),0.0,Array_3_Array_3_Cdouble(Array_3_Cdouble(0.0,0.0,0.0),Array_3_Cdouble(0.0,0.0,0.0),Array_3_Cdouble(0.0,0.0,0.0)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    ccall((:eraApcg,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{eraASTROM}),
+          date1,date2,ebpv,ehp,&astrom)
+    astrom
+end
+
+function eraApcg13(date1::Cdouble,date2::Cdouble)
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    ccall((:eraApcg13,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{eraASTROM}),
+          date1,date2,&astrom)
+    astrom
+end
+
+function eraApci(date1::Cdouble,date2::Cdouble,ebpv::Array{Cdouble},ehp::Array{Cdouble},x::Cdouble,y::Cdouble,s::Cdouble)
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    ccall((:eraApci,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Cdouble,Ptr{eraASTROM}),
+          date1,date2,ebpv,ehp,x,y,s,&astrom)
+    astrom
+end
+
+function eraApci13(date1::Cdouble,date2::Cdouble)
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    eo = [0.]
+    ccall((:eraApci13,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble}),
+          date1,date2,&astrom,eo)
+    astrom, eo
+end
 
 function eraBi00()
     dpsibi = [0.]
@@ -449,20 +553,34 @@ function eraLDBODY(bm::Cdouble, dl::Cdouble, pv::Array{Float64})
     eraLDBODY(bm, dl, Array_2_Array_3_Cdouble(p, v))
 end
 
+function eraLd(bm::Cdouble,p::Array{Cdouble},q::Array{Cdouble},e::Array{Cdouble},em::Cdouble,dlim::Cdouble)
+    p1 = zeros(3)
+    ccall((:eraLd,liberfa),Void,
+          (Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Ptr{Cdouble}),
+          bm,p,q,e,em,dlim,p1)
+    p1
+end
+
 function eraLdn(l::Array{eraLDBODY}, ob::Array{Float64}, sc::Array{Float64})
     sn = zeros(3)
     n = length(l)
-    ccall((:eraLdn, liberfa),
-          Void,
+    ccall((:eraLdn, liberfa),Void,
           (Cint, Ptr{eraLDBODY}, Ptr{Float64}, Ptr{Float64}, Ptr{Float64}),
           n, l, ob, sc, sn)
     sn
 end
 
+function eraLdsun(p::Array{Cdouble},e::Array{Cdouble},em::Cdouble)
+    p1 = zeros(3)
+    ccall((:eraLdsun,liberfa),Void,
+          (Ptr{Cdouble},Ptr{Cdouble},Cdouble,Ptr{Cdouble}),
+          p,e,em,p1)
+    p1
+end
+
 function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn = zeros(9)
-    ccall((:eraNumat,liberfa),
-          Void,
+    ccall((:eraNumat,liberfa),Void,
           (Float64, Float64, Float64, Ptr{Float64}),
           epsa, dpsi, deps, rmatn)
     rmatn

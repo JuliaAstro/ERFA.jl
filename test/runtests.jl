@@ -176,6 +176,20 @@ astrom, eo = eraApci13(date1, date2)
 @test_approx_eq_eps astrom.bpn[9]  0.9999992057833604343 1e-12
 @test_approx_eq_eps eo  -0.2900618712657375647e-2 1e-12
 
+# eraAtciq
+date1 = 2456165.5
+date2 = 0.401182685
+astrom, eo = eraApci13(date1, date2)
+rc = 2.71
+dc = 0.174
+pr = 1e-5
+pd = 5e-6
+px = 0.1
+rv = 55.0
+ri, di = eraAtciq(rc, dc, pr, pd, px, rv, astrom)
+@test_approx_eq_eps ri  2.710121572969038991 1e-12
+@test_approx_eq_eps di  0.1729371367218230438 1e-12
+
 # eraBi00
 dp, de, dr = eraBi00()
 @test_approx_eq_eps dp  -0.2025309152835086613e-6 1e-15

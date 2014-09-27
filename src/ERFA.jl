@@ -1,6 +1,8 @@
 module ERFA
 
 export
+    eraASTROM,
+    eraLDBODY,
     eraA2af,
     eraA2tf,
     eraAb,
@@ -11,7 +13,7 @@ export
     eraApcg13,
     eraApci,
     eraApci13,
-    eraASTROM,
+    eraAtciq,
     eraBi00,
     eraBp00,
     eraBp06,
@@ -89,7 +91,6 @@ export
     eraIr,
     eraJd2cal,
     eraJdcalf,
-    eraLDBODY,
     eraLd,
     eraLdn,
     eraLdsun,
@@ -295,7 +296,16 @@ function eraApci13(date1::Cdouble,date2::Cdouble)
     ccall((:eraApci13,liberfa),Void,
           (Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble}),
           date1,date2,&astrom,eo)
-    astrom, eo
+    astrom, eo[1]
+end
+
+function eraAtciq(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::Cdouble,astrom::eraASTROM)
+    ri = [0.]
+    di = [0.]
+    ccall((:eraAtciq,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,pr,pd,px,rv,&astrom,ri,di)
+    ri[1], di[1]
 end
 
 function eraBi00()

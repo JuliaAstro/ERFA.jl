@@ -59,6 +59,7 @@ export
     eraDat,
     eraD2dtf,
     eraD2tf,
+    eraDtdb,
     eraDtf2d,
     eraEe00,
     eraEe00a,
@@ -615,6 +616,12 @@ function eraCr(p::Array{Cdouble})
     ccall((:eraCr,liberfa),Void,(Ptr{Cdouble},Ptr{Cdouble}),
           p,r)
     r
+end
+
+function eraDtdb(date1::Cdouble,date2::Cdouble,ut::Cdouble,elong::Cdouble,u::Cdouble,v::Cdouble)
+    ccall((:eraDtdb,liberfa),Cdouble,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble),
+          date1,date2,ut,elong,u,v)
 end
 
 function eraEform(n::Integer)

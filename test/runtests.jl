@@ -1010,6 +1010,10 @@ y,m,d,H,M,S,F = eraD2dtf("UTC", 5, 2400000.5, 49533.99999)
 # eraD2tf
 @test eraD2tf(4, -0.987654321) == ('-', 23, 42, 13, 3333)
 
+# eraDtdb
+d = eraDtdb(2448939.5, 0.123, 0.76543, 5.0123, 5525.242, 3190.0)
+@test_approx_eq_eps d  -0.1280368005936998991e-2 1e-17
+
 # eraDtf2d
 jd1, jd2 = eraDtf2d("UTC", 1994, 6, 30, 23, 59, 60.13599)
 @test_approx_eq_eps jd1+jd2  2449534.49999 1e-6

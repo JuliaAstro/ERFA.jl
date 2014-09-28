@@ -13,7 +13,27 @@ export
     eraApcg13,
     eraApci,
     eraApci13,
+    eraApco,
+    eraApco13,
+    eraApcs,
+    eraApcs13,
+    eraAper,
+    eraAper13,
+    eraApio,
+    eraApio13,
+    eraAtci13,
     eraAtciq,
+    eraAtciqn,
+    eraAtciqz,
+    eraAtco13,
+    eraAtic13,
+    eraAticq,
+    eraAticqn,
+    eraAtio13,
+    eraAtioq,
+    eraAtoc13,
+    eraAtoi13,
+    eraAtoiq,
     eraBi00,
     eraBp00,
     eraBp06,
@@ -119,7 +139,9 @@ export
     eraPmat00,
     eraPmat06,
     eraPmat76,
+    eraPmpx,
     eraPmsafe,
+    eraPmpx,
     eraPn,
     eraPn00,
     eraPn00a,
@@ -147,6 +169,7 @@ export
     eraPvup,
     eraPvxpv,
     eraPxp,
+    eraRefco,
     eraRm2v,
     eraRv2m,
     eraRx,
@@ -299,6 +322,89 @@ function eraApci13(date1::Cdouble,date2::Cdouble)
     astrom, eo[1]
 end
 
+function eraApco(date1::Cdouble,date2::Cdouble,ebpv::Array{Cdouble},ehp::Array{Cdouble},x::Cdouble,y::Cdouble,s::Cdouble,theta::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,sp::Cdouble,refa::Cdouble,refb::Cdouble)
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    ccall((:eraApco,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{eraASTROM}),
+          date1,date2,ebpv,ehp,x,y,s,theta,elong,phi,hm,xp,yp,sp,refa,refb,&astrom)
+    astrom
+end
+
+function eraApco13(utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    eo = [0.]
+    i = ccall((:eraApco13,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble}),
+              utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,&astrom,eo)
+    if i == -1
+        error("unacceptable date")
+    elseif i == +1
+        warn("dubious year")
+    end
+    astrom, eo[1]
+end
+
+function eraApcs(date1::Cdouble,date2::Cdouble,pv::Array{Cdouble},ebpv::Array{Cdouble},ehp::Array{Cdouble})
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    ccall((:eraApcs,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{eraASTROM}),
+          date1,date2,pv,ebpv,ehp,&astrom)
+    astrom
+end
+
+function eraApcs13(date1::Cdouble,date2::Cdouble,pv::Array{Cdouble})
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    ccall((:eraApcs13,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{eraASTROM}),
+          date1,date2,pv,&astrom)
+    astrom
+end
+
+function eraAper(theta::Cdouble,astrom::eraASTROM)
+    ccall((:eraAper,liberfa),Void,
+          (Cdouble,Ptr{eraASTROM}),
+          theta,&astrom)
+    astrom
+end
+
+function eraAper13(ut11::Cdouble,ut12::Cdouble,astrom::eraASTROM)
+    ccall((:eraAper13,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{eraASTROM}),
+          ut11,ut12,&astrom)
+    astrom
+end
+
+function eraApio(sp::Cdouble,theta::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,refa::Cdouble,refb::Cdouble)
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    ccall((:eraApio,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{eraASTROM}),
+          sp,theta,elong,phi,hm,xp,yp,refa,refb,&astrom)
+    astrom
+end
+
+function eraApio13(utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)    
+    astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+    i = ccall((:eraApio13,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{eraASTROM}),
+              utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,&astrom)
+    if i == -1
+        error("unacceptable date")
+    elseif i == +1
+        warn("dubious year")
+    end
+    astrom
+end
+
+function eraAtci13(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::Cdouble,date1::Cdouble,date2::Cdouble)
+    ri = [0.]
+    di = [0.]
+    eo = [0.]
+    ccall((:eraAtci13,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,pr,pd,px,rv,date1,date2,ri,di,eo)
+    ri[1], di[1], eo[1]
+end
+
 function eraAtciq(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::Cdouble,astrom::eraASTROM)
     ri = [0.]
     di = [0.]
@@ -306,6 +412,141 @@ function eraAtciq(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv
           (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble},Ptr{Cdouble}),
           rc,dc,pr,pd,px,rv,&astrom,ri,di)
     ri[1], di[1]
+end
+
+function eraAtciqn(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::Cdouble,astrom::eraASTROM,b::Array{eraLDBODY})
+    ri = [0.]
+    di = [0.]
+    n = length(b)
+    ccall((:eraAtciqn,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{eraASTROM},Cint,Ptr{eraLDBODY},Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,pr,pd,px,rv,&astrom,n,b,ri,di)
+    ri[1], di[1]
+end
+
+function eraAtciqz(rc::Cdouble,dc::Cdouble,astrom::eraASTROM)
+    ri = [0.]
+    di = [0.]
+    ccall((:eraAtciqz,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,&astrom,ri,di)
+    ri[1], di[1]
+end
+
+function eraAtco13(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::Cdouble,utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)
+    aob = [0.]
+    zob = [0.]
+    hob = [0.]
+    dob = [0.]
+    rob = [0.]
+    eo = [0.]
+    i = ccall((:eraAtco13,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+              rc,dc,pr,pd,px,rv,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,aob,zob,hob,dob,rob,eo)
+    if i == -1
+        error("unacceptable date")
+    elseif i == +1
+        warn("dubious year")
+    end
+    aob[1],zob[1],hob[1],dob[1],rob[1],eo[1]
+end
+
+function eraAtic13(ri::Cdouble,di::Cdouble,date1::Cdouble,date2::Cdouble)
+    rc = [0.]
+    dc = [0.]
+    eo = [0.]
+    ccall((:eraAtic13,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          ri,di,date1,date2,rc,dc,eo)
+    rc[1],dc[1],eo[1]
+end
+
+function eraAticq(ri::Cdouble,di::Cdouble,astrom::eraASTROM)
+    rc = [0.]
+    dc = [0.]
+    ccall((:eraAticq,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          ri,di,&astrom,rc,dc)
+    rc[1],dc[1]
+end
+
+function eraAticqn(ri::Cdouble,di::Cdouble,astrom::eraASTROM,b::Array{eraLDBODY})
+    rc = [0.]
+    dc = [0.]
+    n = length(b)
+    ccall((:eraAticqn,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{eraASTROM},Cint,Ptr{eraLDBODY},Ptr{Cdouble},Ptr{Cdouble}),
+          ri,di,&astrom,n,b,rc,dc)
+    rc[1],dc[1]
+end
+
+function eraAtio13(ri::Cdouble,di::Cdouble,utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)
+    aob = [0.]
+    zob = [0.]
+    hob = [0.]
+    dob = [0.]
+    rob = [0.]
+    i = ccall((:eraAtio13,liberfa),Cint,
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+              ri,di,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,aob,zob,hob,dob,rob)
+    if i == -1
+        error("unacceptable date")
+    elseif i == +1
+        warn("dubious year")
+    end
+    aob[1],zob[1],hob[1],dob[1],rob[1]
+end
+
+function eraAtioq(ri::Cdouble,di::Cdouble,astrom::eraASTROM)
+    aob = [0.]
+    zob = [0.]
+    hob = [0.]
+    dob = [0.]
+    rob = [0.]
+    ccall((:eraAtioq,liberfa),Void,
+          (Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          ri,di,&astrom,aob,zob,hob,dob,rob)
+    aob[1],zob[1],hob[1],dob[1],rob[1]
+end
+
+function eraAtoc13(typeofcoordinates::Char,ob1::Cdouble,ob2::Cdouble,utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)
+    rc = [0.]
+    dc = [0.]
+    if !(typeofcoordinates in ('R', 'r', 'H', 'h', 'A', 'a'))
+        typeofcoordinates = 'A'
+    end
+    i = ccall((:eraAtoc13,liberfa),Cint,
+              (Ptr{Char},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+              &typeofcoordinates,ob1,ob2,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,rc,dc)
+    if i == -1
+        error("unacceptable date")
+    elseif i == +1
+        warn("dubious year")
+    end
+    rc[1],dc[1]
+end
+
+function eraAtoi13(typeofcoordinates::Char,ob1::Cdouble,ob2::Cdouble,utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)
+    ri = [0.]
+    di = [0.]
+    i = ccall((:eraAtoi13,liberfa),Cint,
+              (Ptr{Char},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+              &typeofcoordinates,ob1,ob2,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,ri,di)
+    if i == -1
+        error("unacceptable date")
+    elseif i == +1
+        warn("dubious year")
+    end
+    ri[1],di[1]
+end
+
+function eraAtoiq(typeofcoordinates::Char,ob1::Cdouble,ob2::Cdouble,astrom::eraASTROM)
+    ri = [0.]
+    di = [0.]
+    ccall((:eraAtoiq,liberfa),
+          Void,(Ptr{Char},Cdouble,Cdouble,Ptr{eraASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          &typeofcoordinates,ob1,ob2,&astrom,ri,di)
+    ri[1],di[1]
 end
 
 function eraBi00()
@@ -588,6 +829,14 @@ function eraLdsun(p::Array{Cdouble},e::Array{Cdouble},em::Cdouble)
     p1
 end
 
+function eraPmpx(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::Cdouble,pmt::Cdouble,vob::Array{Cdouble})
+    pco = zeros(3)
+    ccall((:eraPmpx,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,pr,pd,px,rv,pmt,vob,pco)
+    pco
+end
+
 function eraNumat(epsa::Real, dpsi::Real, deps::Real)
     rmatn = zeros(9)
     ccall((:eraNumat,liberfa),Void,
@@ -694,13 +943,10 @@ function eraPmsafe(ra1::Cdouble,dec1::Cdouble,pmr1::Cdouble,pmd1::Cdouble,px1::C
         error("system error")
     elseif i == 1
         warn("distance overridden")
-        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
     elseif i == 2
         warn("excessive velocity")
-        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
     elseif i == 4
-        warn("solution didn't converge")
-        return ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
+        error("solution didn't converge")
     end
     ra2[1],dec2[1],pmr2[1],pmd2[1],px2[1],rv2[1]
 end
@@ -797,6 +1043,15 @@ function eraPvtob(elong::Cdouble,phi::Cdouble,height::Cdouble,xp::Cdouble,yp::Cd
     pv
 end
 
+function eraRefco(phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)
+    refa = [0.]
+    refb = [0.]
+    ccall((:eraRefco,liberfa),Void,
+          (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+          phpa,tk,rh,wl,refa,refb)
+    refa[1],refb[1]
+end
+
 function eraPvu(dt::Cdouble,pv::Array{Cdouble})
     upv = zeros(6)
     ccall((:eraPvu,liberfa),Void,
@@ -804,7 +1059,6 @@ function eraPvu(dt::Cdouble,pv::Array{Cdouble})
           dt,pv,upv)
     upv
 end
-
 
 function eraPvup(dt::Cdouble,pv::Array{Cdouble})
     p = zeros(3)

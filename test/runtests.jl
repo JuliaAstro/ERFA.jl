@@ -176,6 +176,254 @@ astrom, eo = eraApci13(date1, date2)
 @test_approx_eq_eps astrom.bpn[9]  0.9999992057833604343 1e-12
 @test_approx_eq_eps eo  -0.2900618712657375647e-2 1e-12
 
+# eraApco
+date1 = 2456384.5
+date2 = 0.970031644
+ebpv = [[-0.974170438,-0.211520082,-0.0917583024],
+        [0.00364365824,-0.0154287319,-0.00668922024]]
+ehp = [-0.973458265,-0.209215307,-0.0906996477]
+x = 0.0013122272
+y = -2.92808623e-5
+s = 3.05749468e-8
+theta = 3.14540971
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+sp = -3.01974337e-11
+refa = 0.000201418779
+refb = -2.36140831e-7
+astrom = eraApco(date1, date2, ebpv, ehp, x, y, s,theta, elong, phi, hm, xp, yp, sp,refa, refb)
+@test_approx_eq_eps astrom.pmt  13.25248468622587269 1e-11
+@test_approx_eq_eps astrom.eb[1]  -0.9741827110630897003 1e-12
+@test_approx_eq_eps astrom.eb[2]  -0.2115130190135014340 1e-12
+@test_approx_eq_eps astrom.eb[3]  -0.09179840186968295686 1e-12
+@test_approx_eq_eps astrom.eh[1]  -0.9736425571689670428 1e-12
+@test_approx_eq_eps astrom.eh[2]  -0.2092452125848862201 1e-12
+@test_approx_eq_eps astrom.eh[3]  -0.09075578152261439954 1e-12
+@test_approx_eq_eps astrom.em  0.9998233241710617934 1e-12
+@test_approx_eq_eps astrom.v[1]  0.2078704985147609823e-4 1e-16
+@test_approx_eq_eps astrom.v[2]  -0.8955360074407552709e-4 1e-16
+@test_approx_eq_eps astrom.v[3]  -0.3863338980073114703e-4 1e-16
+@test_approx_eq_eps astrom.bm1  0.9999999950277561600 1e-12
+@test_approx_eq_eps astrom.bpn[1]  0.9999991390295159156 1e-12
+@test_approx_eq_eps astrom.bpn[4]  0.4978650072505016932e-7 1e-12
+@test_approx_eq_eps astrom.bpn[7]  0.1312227200000000000e-2 1e-12
+@test_approx_eq_eps astrom.bpn[2]  -0.1136336653771609630e-7 1e-12
+@test_approx_eq_eps astrom.bpn[5]  0.9999999995713154868 1e-12
+@test_approx_eq_eps astrom.bpn[8]  -0.2928086230000000000e-4 1e-12
+@test_approx_eq_eps astrom.bpn[3]  -0.1312227200895260194e-2 1e-12
+@test_approx_eq_eps astrom.bpn[6]  0.2928082217872315680e-4 1e-12
+@test_approx_eq_eps astrom.bpn[9]  0.9999991386008323373 1e-12
+@test_approx_eq_eps astrom.along  -0.5278008060301974337 1e-12
+@test_approx_eq_eps astrom.xpl  0.1133427418174939329e-5 1e-17
+@test_approx_eq_eps astrom.ypl  0.1453347595745898629e-5 1e-17
+@test_approx_eq_eps astrom.sphi  -0.9440115679003211329 1e-12
+@test_approx_eq_eps astrom.cphi  0.3299123514971474711 1e-12
+@test_approx_eq_eps astrom.diurab  0 1e-10
+@test_approx_eq_eps astrom.eral  2.617608903969802566 1e-12
+@test_approx_eq_eps astrom.refa  0.2014187790000000000e-3 1e-15
+@test_approx_eq_eps astrom.refb  -0.2361408310000000000e-6 1e-18
+
+# eraApco13
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+p = 2.47230737e-7
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+astrom, eo = eraApco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+@test_approx_eq_eps astrom.pmt  13.25248468622475727 1e-11
+@test_approx_eq_eps astrom.eb[1]  -0.9741827107321449445 1e-12
+@test_approx_eq_eps astrom.eb[2]  -0.2115130190489386190 1e-12
+@test_approx_eq_eps astrom.eb[3]  -0.09179840189515518726 1e-12
+@test_approx_eq_eps astrom.eh[1]  -0.9736425572586866640 1e-12
+@test_approx_eq_eps astrom.eh[2]  -0.2092452121602867431 1e-12
+@test_approx_eq_eps astrom.eh[3]  -0.09075578153903832650 1e-12
+@test_approx_eq_eps astrom.em  0.9998233240914558422 1e-12
+@test_approx_eq_eps astrom.v[1]  0.2078704986751370303e-4 1e-16
+@test_approx_eq_eps astrom.v[2]  -0.8955360100494469232e-4 1e-16
+@test_approx_eq_eps astrom.v[3]  -0.3863338978840051024e-4 1e-16
+@test_approx_eq_eps astrom.bm1  0.9999999950277561368 1e-12
+@test_approx_eq_eps astrom.bpn[1]  0.9999991390295147999 1e-12
+@test_approx_eq_eps astrom.bpn[4]  0.4978650075315529277e-7 1e-12
+@test_approx_eq_eps astrom.bpn[7]  0.001312227200850293372 1e-12
+@test_approx_eq_eps astrom.bpn[2]  -0.1136336652812486604e-7 1e-12
+@test_approx_eq_eps astrom.bpn[5]  0.9999999995713154865 1e-12
+@test_approx_eq_eps astrom.bpn[8]  -0.2928086230975367296e-4 1e-12
+@test_approx_eq_eps astrom.bpn[3]  -0.001312227201745553566 1e-12
+@test_approx_eq_eps astrom.bpn[6]  0.2928082218847679162e-4 1e-12
+@test_approx_eq_eps astrom.bpn[9]  0.9999991386008312212 1e-12
+@test_approx_eq_eps astrom.along  -0.5278008060301974337 1e-12
+@test_approx_eq_eps astrom.xpl  0.1133427418174939329e-5 1e-17
+@test_approx_eq_eps astrom.ypl  0.1453347595745898629e-5 1e-17
+@test_approx_eq_eps astrom.sphi  -0.9440115679003211329 1e-12
+@test_approx_eq_eps astrom.cphi  0.3299123514971474711 1e-12
+@test_approx_eq_eps astrom.diurab  0 1e-10
+@test_approx_eq_eps astrom.eral  2.617608909189066140 1e-12
+@test_approx_eq_eps astrom.refa  0.2014187785940396921e-3 1e-15
+@test_approx_eq_eps astrom.refb  -0.2361408314943696227e-6 1e-18
+@test_approx_eq_eps eo  -0.003020548354802412839 1e-14
+
+# eraApcs
+date1 = 2456384.5
+date2 = 0.970031644
+pv = [[-1836024.09,1056607.72,-5998795.26],
+      [-77.0361767,-133.310856,0.0971855934]]
+ebpv = [[-0.974170438,-0.211520082,-0.0917583024],
+        [0.00364365824,-0.0154287319,-0.00668922024]]
+ehp = [-0.973458265,-0.209215307,-0.0906996477]
+astrom = eraApcs(date1, date2, pv, ebpv, ehp)
+@test_approx_eq_eps astrom.pmt  13.25248468622587269 1e-11
+@test_approx_eq_eps astrom.eb[1]  -0.9741827110630456169 1e-12
+@test_approx_eq_eps astrom.eb[2]  -0.2115130190136085494 1e-12
+@test_approx_eq_eps astrom.eb[3]  -0.09179840186973175487 1e-12
+@test_approx_eq_eps astrom.eh[1]  -0.9736425571689386099 1e-12
+@test_approx_eq_eps astrom.eh[2]  -0.2092452125849967195 1e-12
+@test_approx_eq_eps astrom.eh[3]  -0.09075578152266466572 1e-12
+@test_approx_eq_eps astrom.em  0.9998233241710457140 1e-12
+@test_approx_eq_eps astrom.v[1]  0.2078704985513566571e-4 1e-16
+@test_approx_eq_eps astrom.v[2]  -0.8955360074245006073e-4 1e-16
+@test_approx_eq_eps astrom.v[3]  -0.3863338980073572719e-4 1e-16
+@test_approx_eq_eps astrom.bm1  0.9999999950277561601 1e-12
+@test_approx_eq_eps astrom.bpn[1]  1 1e-10
+@test_approx_eq_eps astrom.bpn[4]  0 1e-10
+@test_approx_eq_eps astrom.bpn[7]  0 1e-10
+@test_approx_eq_eps astrom.bpn[2]  0 1e-10
+@test_approx_eq_eps astrom.bpn[5]  1 1e-10
+@test_approx_eq_eps astrom.bpn[8]  0 1e-10
+@test_approx_eq_eps astrom.bpn[3]  0 1e-10
+@test_approx_eq_eps astrom.bpn[6]  0 1e-10
+@test_approx_eq_eps astrom.bpn[9]  1 1e-10
+
+# eraApcs13
+date1 = 2456165.5
+date2 = 0.401182685
+pv = [[-6241497.16,401346.896,-1251136.04],
+      [-29.264597,-455.021831,0.0266151194]]
+astrom = eraApcs13(date1, date2, pv)
+@test_approx_eq_eps astrom.pmt  12.65133794027378508 1e-11
+@test_approx_eq_eps astrom.eb[1]  0.9012691529023298391 1e-12
+@test_approx_eq_eps astrom.eb[2]  -0.4173999812023068781 1e-12
+@test_approx_eq_eps astrom.eb[3]  -0.1809906511146821008 1e-12
+@test_approx_eq_eps astrom.eh[1]  0.8939939101759726824 1e-12
+@test_approx_eq_eps astrom.eh[2]  -0.4111053891734599955 1e-12
+@test_approx_eq_eps astrom.eh[3]  -0.1782336880637689334 1e-12
+@test_approx_eq_eps astrom.em  1.010428384373318379 1e-12
+@test_approx_eq_eps astrom.v[1]  0.4279877278327626511e-4 1e-16
+@test_approx_eq_eps astrom.v[2]  0.7963255057040027770e-4 1e-16
+@test_approx_eq_eps astrom.v[3]  0.3517564000441374759e-4 1e-16
+@test_approx_eq_eps astrom.bm1  0.9999999952947981330 1e-12
+@test_approx_eq_eps astrom.bpn[1]  1 1e-10
+@test_approx_eq_eps astrom.bpn[4]  0 1e-10
+@test_approx_eq_eps astrom.bpn[7]  0 1e-10
+@test_approx_eq_eps astrom.bpn[2]  0 1e-10
+@test_approx_eq_eps astrom.bpn[5]  1 1e-10
+@test_approx_eq_eps astrom.bpn[8]  0 1e-10
+@test_approx_eq_eps astrom.bpn[3]  0 1e-10
+@test_approx_eq_eps astrom.bpn[6]  0 1e-10
+@test_approx_eq_eps astrom.bpn[9]  1 1e-10
+
+# eraAper
+theta = 5.678
+pmt = 0.
+eb = zeros(3)
+eh = zeros(3)
+em = 0.
+v = zeros(3)
+bm1 = 0.
+bpn = zeros(9)
+along = 1.234
+phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb = 0., 0., 0., 0., 0., 0., 0., 0., 0.
+astrom = eraASTROM(pmt, eb, eh, em, v, bm1, bpn, along,
+                   phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb)
+astrom = eraAper(theta, astrom)
+@test_approx_eq_eps astrom.eral  6.912000000000000000 1e-12
+
+# eraAper13
+ut11 = 2456165.5
+ut12 = 0.401182685
+pmt = 0.
+eb = zeros(3)
+eh = zeros(3)
+em = 0.
+v = zeros(3)
+bm1 = 0.
+bpn = zeros(9)
+along = 1.234
+phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb = 0., 0., 0., 0., 0., 0., 0., 0., 0.
+astrom = eraASTROM(pmt, eb, eh, em, v, bm1, bpn, along,
+                   phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb)
+astrom = eraAper13(ut11, ut12, astrom)
+@test_approx_eq_eps astrom.eral  3.316236661789694933 1e-12
+
+# eraApio
+sp = -3.01974337e-11
+theta = 3.14540971
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+refa = 0.000201418779
+refb = -2.36140831e-7
+astrom = eraApio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
+@test_approx_eq_eps astrom.along  -0.5278008060301974337 1e-12
+@test_approx_eq_eps astrom.xpl  0.1133427418174939329e-5 1e-17
+@test_approx_eq_eps astrom.ypl  0.1453347595745898629e-5 1e-17
+@test_approx_eq_eps astrom.sphi  -0.9440115679003211329 1e-12
+@test_approx_eq_eps astrom.cphi  0.3299123514971474711 1e-12
+@test_approx_eq_eps astrom.diurab  0.5135843661699913529e-6 1e-12
+@test_approx_eq_eps astrom.eral  2.617608903969802566 1e-12
+@test_approx_eq_eps astrom.refa  0.2014187790000000000e-3 1e-15
+@test_approx_eq_eps astrom.refb  -0.2361408310000000000e-6 1e-18
+
+# eraApio13
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+astrom = eraApio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+@test_approx_eq_eps astrom.along  -0.5278008060301974337 1e-12
+@test_approx_eq_eps astrom.xpl  0.1133427418174939329e-5 1e-17
+@test_approx_eq_eps astrom.ypl  0.1453347595745898629e-5 1e-17
+@test_approx_eq_eps astrom.sphi  -0.9440115679003211329 1e-12
+@test_approx_eq_eps astrom.cphi  0.3299123514971474711 1e-12
+@test_approx_eq_eps astrom.diurab  0.5135843661699913529e-6 1e-12
+@test_approx_eq_eps astrom.eral  2.617608909189066140 1e-12
+@test_approx_eq_eps astrom.refa  0.2014187785940396921e-3 1e-15
+@test_approx_eq_eps astrom.refb  -0.2361408314943696227e-6 1e-18
+
+# eraAtci13
+rc = 2.71
+dc = 0.174
+pr = 1e-5
+pd = 5e-6
+px = 0.1
+rv = 55.0
+date1 = 2456165.5
+date2 = 0.401182685
+ri, di, eo = eraAtci13(rc, dc, pr, pd, px, rv, date1, date2)
+@test_approx_eq_eps ri  2.710121572969038991 1e-12
+@test_approx_eq_eps di  0.1729371367218230438 1e-12
+@test_approx_eq_eps eo  -0.002900618712657375647 1e-14
+
 # eraAtciq
 date1 = 2456165.5
 date2 = 0.401182685
@@ -189,6 +437,248 @@ rv = 55.0
 ri, di = eraAtciq(rc, dc, pr, pd, px, rv, astrom)
 @test_approx_eq_eps ri  2.710121572969038991 1e-12
 @test_approx_eq_eps di  0.1729371367218230438 1e-12
+
+# eraAtciqn
+date1 = 2456165.5
+date2 = 0.401182685
+astrom, eo = eraApci13(date1, date2)
+rc = 2.71
+dc = 0.174
+pr = 1e-5
+pd = 5e-6
+px = 0.1
+rv = 55.0
+b1 = eraLDBODY(0.00028574,3e-10,
+               [[-7.81014427,-5.60956681,-1.98079819],
+                [0.0030723249,-0.00406995477,-0.00181335842]])
+b2 = eraLDBODY(0.00095435,3e-9,
+                 [[0.738098796, 4.63658692,1.9693136],
+                  [-0.00755816922, 0.00126913722, 0.000727999001]])
+b3 = eraLDBODY(1.0,6e-6,
+                 [[-0.000712174377, -0.00230478303, -0.00105865966],
+                  [6.29235213e-6, -3.30888387e-7, -2.96486623e-7]])
+b = [b1, b2, b3]
+ri, di = eraAtciqn(rc, dc, pr, pd, px, rv, astrom, b)
+@test_approx_eq_eps ri  2.710122008105325582 1e-12
+@test_approx_eq_eps di  0.1729371916491459122 1e-12
+
+# eraAtciqz
+date1 = 2456165.5
+date2 = 0.401182685
+astrom, eo = eraApci13(date1, date2)
+rc = 2.71
+dc = 0.174
+ri, di = eraAtciqz(rc, dc, astrom)
+@test_approx_eq_eps ri  2.709994899247599271 1e-12
+@test_approx_eq_eps di  0.1728740720983623469 1e-12
+
+# eraAtco13
+rc = 2.71
+dc = 0.174
+pr = 1e-5
+pd = 5e-6
+px = 0.1
+rv = 55.0
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+aob, zob, hob, dob, rob, eo = eraAtco13(rc, dc, pr, pd, px, rv,
+                                        utc1, utc2, dut1, elong, phi, hm, xp, yp,
+                                        phpa, tc, rh, wl)
+@test_approx_eq_eps aob  0.09251774485358230653 1e-12
+@test_approx_eq_eps zob  1.407661405256767021 1e-12
+@test_approx_eq_eps hob  -0.09265154431403157925 1e-12
+@test_approx_eq_eps dob  0.1716626560075591655 1e-12
+@test_approx_eq_eps rob  2.710260453503097719 1e-12
+@test_approx_eq_eps eo  -0.003020548354802412839 1e-14
+
+# eraAtic13
+ri = 2.710121572969038991
+di = 0.1729371367218230438
+date1 = 2456165.5
+date2 = 0.401182685
+rc, dc, eo = eraAtic13(ri, di, date1, date2)
+@test_approx_eq_eps rc  2.710126504531374930 1e-12
+@test_approx_eq_eps dc  0.1740632537628342320 1e-12
+@test_approx_eq_eps eo  -0.002900618712657375647 1e-14
+
+# eraAticq
+date1 = 2456165.5
+date2 = 0.401182685
+rc, dc = eraAticq(ri, di, astrom)
+astrom, eo = eraApci13(date1, date2)
+@test_approx_eq_eps rc  2.710126504531374930 1e-12
+@test_approx_eq_eps dc  0.1740632537628342320 1e-12
+
+# eraAticqn
+date1 = 2456165.5
+date2 = 0.401182685
+astrom, eo = eraApci13(date1, date2)
+ri = 2.709994899247599271
+di = 0.1728740720983623469
+b1 = eraLDBODY(0.00028574,3e-10,
+               [[-7.81014427,-5.60956681,-1.98079819],
+                [0.0030723249,-0.00406995477,-0.00181335842]])
+b2 = eraLDBODY(0.00095435,3e-9,
+               [[0.738098796, 4.63658692,1.9693136],
+                [-0.00755816922, 0.00126913722, 0.000727999001]])
+b3 = eraLDBODY(1.0,6e-6,
+               [[-0.000712174377, -0.00230478303, -0.00105865966],
+                [6.29235213e-6, -3.30888387e-7, -2.96486623e-7]])
+b = [b1, b2, b3]
+rc, dc = eraAticqn(ri, di, astrom, b)
+@test_approx_eq_eps rc  2.709999575032685412 1e-12
+@test_approx_eq_eps dc  0.1739999656317778034 1e-12
+
+# eraAtio13
+ri = 2.710121572969038991
+di = 0.1729371367218230438
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+aob, zob, hob, dob, rob = eraAtio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+@test_approx_eq_eps aob  0.09233952224794989993 1e-12
+@test_approx_eq_eps zob  1.407758704513722461 1e-12
+@test_approx_eq_eps hob  -0.09247619879782006106 1e-12
+@test_approx_eq_eps dob  0.1717653435758265198 1e-12
+@test_approx_eq_eps rob  2.710085107986886201 1e-12
+
+# eraAtioq
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+astrom = eraApio13(utc1, utc2, dut1, elong, phi, hm, xp, yp,
+                   phpa, tc, rh, wl)
+ri = 2.710121572969038991
+di = 0.1729371367218230438
+aob, zob, hob, dob, rob = eraAtioq(ri, di, astrom)
+@test_approx_eq_eps aob  0.09233952224794989993 1e-12
+@test_approx_eq_eps zob  1.407758704513722461 1e-12
+@test_approx_eq_eps hob  -0.09247619879782006106 1e-12
+@test_approx_eq_eps dob  0.1717653435758265198 1e-12
+@test_approx_eq_eps rob  2.710085107986886201 1e-12
+
+# eraAtoc13
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+ob1 = 2.710085107986886201
+ob2 = 0.1717653435758265198
+rc, dc = eraAtoc13('r', ob1, ob2, utc1, utc2, dut1,
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+@test_approx_eq_eps rc  2.709956744661000609 1e-12
+@test_approx_eq_eps dc  0.1741696500895398562 1e-12
+ob1 = -0.09247619879782006106
+ob2 = 0.1717653435758265198
+rc, dc = eraAtoc13('h', ob1, ob2, utc1, utc2, dut1,
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+@test_approx_eq_eps rc  2.709956744661000609 1e-12
+@test_approx_eq_eps dc  0.1741696500895398562 1e-12
+ob1 = 0.09233952224794989993
+ob2 = 1.407758704513722461
+rc, dc = eraAtoc13('a', ob1, ob2, utc1, utc2, dut1,
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+@test_approx_eq_eps rc  2.709956744661000609 1e-12
+@test_approx_eq_eps dc  0.1741696500895398562 1e-12
+
+# eraAtoi13
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+ob1 = 2.710085107986886201
+ob2 = 0.1717653435758265198
+ri, di = eraAtoi13('r', ob1, ob2, utc1, utc2, dut1,
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl) 
+@test_approx_eq_eps ri  2.710121574449135955 1e-12
+@test_approx_eq_eps di  0.1729371839114567725 1e-12
+ob1 = -0.09247619879782006106
+ob2 = 0.1717653435758265198
+ri, di = eraAtoi13('h', ob1, ob2, utc1, utc2, dut1,
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl) 
+@test_approx_eq_eps ri  2.710121574449135955 1e-12
+@test_approx_eq_eps di  0.1729371839114567725 1e-12
+ob1 = 0.09233952224794989993
+ob2 = 1.407758704513722461
+ri, di = eraAtoi13('a', ob1, ob2, utc1, utc2, dut1,
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl) 
+@test_approx_eq_eps ri  2.710121574449135955 1e-12
+@test_approx_eq_eps di  0.1729371839114567728 1e-12
+
+# eraAtoiq
+utc1 = 2456384.5
+utc2 = 0.969254051
+dut1 = 0.1550675
+elong = -0.527800806
+phi = -1.2345856
+hm = 2738.0
+xp = 2.47230737e-7
+yp = 1.82640464e-6
+phpa = 731.0
+tc = 12.8
+rh = 0.59
+wl = 0.55
+astrom = eraApio13(utc1, utc2, dut1,
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+ob1 = 2.710085107986886201
+ob2 = 0.1717653435758265198
+ri, di = eraAtoiq('r', ob1, ob2, astrom)
+@test_approx_eq_eps ri  2.710121574449135955 1e-12
+@test_approx_eq_eps di  0.1729371839114567725 1e-12
+ob1 = -0.09247619879782006106
+ob2 = 0.1717653435758265198
+ri, di = eraAtoiq('h', ob1, ob2, astrom)
+@test_approx_eq_eps ri  2.710121574449135955 1e-12
+@test_approx_eq_eps di  0.1729371839114567725 1e-12
+ob1 = 0.09233952224794989993
+ob2 = 1.407758704513722461
+ri, di = eraAtoiq('a', ob1, ob2, astrom)
+@test_approx_eq_eps ri  2.710121574449135955 1e-12
+@test_approx_eq_eps di  0.1729371839114567728 1e-12
 
 # eraBi00
 dp, de, dr = eraBi00()
@@ -520,6 +1010,10 @@ y,m,d,H,M,S,F = eraD2dtf("UTC", 5, 2400000.5, 49533.99999)
 # eraD2tf
 @test eraD2tf(4, -0.987654321) == ('-', 23, 42, 13, 3333)
 
+# eraDtdb
+d = eraDtdb(2448939.5, 0.123, 0.76543, 5.0123, 5525.242, 3190.0)
+@test_approx_eq_eps d  -0.1280368005936998991e-2 1e-17
+
 # eraDtf2d
 jd1, jd2 = eraDtf2d("UTC", 1994, 6, 30, 23, 59, 60.13599)
 @test_approx_eq_eps jd1+jd2  2449534.49999 1e-6
@@ -538,7 +1032,7 @@ ee = eraEe00a(2400000.5, 53736.0)
 ee = eraEe00b(2400000.5, 53736.0)
 @test_approx_eq_eps ee  -0.8835700060003032831e-5 1e-18
 
-# eraEe06a 
+# eraEe06a
 ee = eraEe06a(2400000.5, 53736.0)
 @test_approx_eq_eps ee  -0.8834195072043790156e-5 1e-15
 
@@ -1068,6 +1562,20 @@ amb= eraPmp(a,b)
 @test_approx_eq_eps amb[2]  -1.0 1e-12
 @test_approx_eq_eps amb[3]  -1.0 1e-12
 
+# eraPmpx
+rc = 1.234
+dc = 0.789
+pr = 1e-5
+pd = -2e-5
+px = 1e-2
+rv = 10.0
+pmt = 8.75
+pob = [0.9, 0.4, 0.1]
+pco = eraPmpx(rc, dc, pr, pd, px, rv, pmt, pob)
+@test_approx_eq_eps pco[1]  0.2328137623960308440 1e-12
+@test_approx_eq_eps pco[2]  0.6651097085397855317 1e-12
+@test_approx_eq_eps pco[3]  0.7095257765896359847 1e-12
+
 # eraPmsafe
 ra1 = 1.234
 dec1 = 0.789
@@ -1591,6 +2099,15 @@ axb = eraPxp([2.0,2.0,3.0],[1.0,3.0,4.0])
 @test_approx_eq_eps axb[1]  -1.0 1e-12
 @test_approx_eq_eps axb[2]  -5.0 1e-12
 @test_approx_eq_eps axb[3]   4.0 1e-12
+
+# eraRefco
+phpa = 800.0
+tc = 10.0
+rh = 0.9
+wl = 0.4
+refa, refb = eraRefco(phpa, tc, rh, wl)
+@test_approx_eq_eps refa  0.2264949956241415009e-3 1e-15
+@test_approx_eq_eps refb  -0.2598658261729343970e-6 1e-18
 
 # eraRm2v
 w = eraRm2v([[0.0,-0.8,-0.6],

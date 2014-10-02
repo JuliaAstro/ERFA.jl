@@ -1,6 +1,38 @@
 module ERFA
 
 export
+    ERFA_DPI,
+    ERFA_D2PI,
+    ERFA_DR2D,
+    ERFA_DD2R,
+    ERFA_DR2AS,
+    ERFA_DAS2R,
+    ERFA_DS2R,
+    ERFA_TURNAS,
+    ERFA_DMAS2R,
+    ERFA_DTY,
+    ERFA_DAYSEC,
+    ERFA_DJ,
+    ERFA_DJC,
+    ERFA_DJM,
+    ERFA_DJ00,
+    ERFA_DJM0,
+    ERFA_DJM00,
+    ERFA_DJM77,
+    ERFA_TTMTAI,
+    ERFA_DAU,
+    ERFA_CMP,
+    ERFA_AULT,
+    ERFA_DC,
+    ERFA_ELG,
+    ERFA_ELB,
+    ERFA_TDB0,
+    ERFA_SRS,
+    ERFA_WGS84,
+    ERFA_GRS80,
+    ERFA_WGS72
+
+export
     eraASTROM,
     eraLDBODY,
     eraA2af,
@@ -142,7 +174,6 @@ export
     eraPmat76,
     eraPmpx,
     eraPmsafe,
-    eraPmpx,
     eraPn,
     eraPn00,
     eraPn00a,
@@ -290,7 +321,6 @@ function eraAb(pnat::Array{Cdouble},v::Array{Cdouble},s::Cdouble,bm1::Cdouble)
 end
 
 function eraApcg(date1::Cdouble,date2::Cdouble,ebpv::Array{Cdouble},ehp::Array{Cdouble})
-#    astrom = eraASTROM(0.0,Array_3_Cdouble(0.0,0.0,0.0),Array_3_Cdouble(0.0,0.0,0.0),0.0,Array_3_Cdouble(0.0,0.0,0.0),0.0,Array_3_Array_3_Cdouble(Array_3_Cdouble(0.0,0.0,0.0),Array_3_Cdouble(0.0,0.0,0.0),Array_3_Cdouble(0.0,0.0,0.0)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     astrom = eraASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros(9),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApcg,liberfa),Void,
           (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{eraASTROM}),

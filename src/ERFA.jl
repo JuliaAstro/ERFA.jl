@@ -1284,7 +1284,7 @@ for f in (:eraA2af,
             i = Int32[0, 0, 0, 0]
             ccall(($(Expr(:quote,f)),liberfa),Void,
                   (Int64, Float64, Ptr{ASCIIString}, Ptr{Cint}),
-                  ndp, a, &s, i)
+                  ndp, a, pointer(s), i)
             s[1], i[1], i[2], i[3], i[4]
         end
     end

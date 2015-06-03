@@ -127,6 +127,7 @@ export
     eraFk5hz,
     eraFw2m,
     eraFw2xy,
+    eraG2icrs,
     eraGc2gd,
     eraGc2gde,
     eraGd2gc,
@@ -141,6 +142,7 @@ export
     eraGst94,
     eraH2fk5,
     eraHfk5z,
+    eraIcrs2g,
     eraIr,
     eraJd2cal,
     eraJdcalf,
@@ -1479,7 +1481,9 @@ for f in (:eraNut00a,
           :eraNut00b,
           :eraNut06a,
           :eraNut80,
-          :eraPr00)
+          :eraPr00,
+          :eraG2icrs,
+          :eraIcrs2g)
     @eval begin
         function ($f)(a::Float64, b::Float64)
             r1 = [0.]

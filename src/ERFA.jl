@@ -1,5 +1,7 @@
 module ERFA
 
+import Base.getindex
+
 export
     ERFA_DPI,
     ERFA_D2PI,

@@ -1,6 +1,8 @@
 ERFA.jl
 =======
 
+[![Build Status](https://img.shields.io/travis/JuliaAstro/ERFA.jl.svg?style=flat-square)](https://travis-ci.org/JuliaAstro/ERFA.jl)
+
 Julia wrapper for [liberfa](https://github.com/liberfa/erfa).
 
 Installation

@@ -6,9 +6,10 @@ url = "https://github.com/liberfa/erfa/releases/download/v$version/erfa-$version
 
 # This function returns true if a library satisfies our
 # requirements. BinDeps passes to this function the library path and
-# the dlopen'ed handle. In this case, we require the library have the
-# symbol `eraAb`, which is not present in liberfa 1.0.0.
-validate(l, h) = Libdl.dlsym_e(h, "eraAb") != C_NULL
+# the dlopen'ed handle. We test is certain symbols we need exist.
+validate(l, h) = (Libdl.dlsym_e(h, "eraAb") != C_NULL &&
+                  Libdl.dlsym_e(h, "eraG2icrs") != C_NULL &&
+                  Libdl.dlsym_e(h, "eraIcrs2g") != C_NULL)
 
 erfa = library_dependency("liberfa"; validate = validate)
 provides(Sources, URI(url), erfa)

@@ -1,4 +1,5 @@
 using BinDeps
+using Compat
 @BinDeps.setup
 
 version = "1.2.0"
@@ -15,4 +16,4 @@ erfa = library_dependency("liberfa"; validate = validate)
 provides(Sources, URI(url), erfa)
 provides(BuildProcess, Autotools(libtarget="src/liberfa.la"), erfa)
 
-@BinDeps.install Dict(:liberfa => :liberfa)
+@BinDeps.install @compat Dict(:liberfa => :liberfa)

@@ -13,7 +13,20 @@ validate(l, h) = (Libdl.dlsym_e(h, "eraAb") != C_NULL &&
                   Libdl.dlsym_e(h, "eraIcrs2g") != C_NULL)
 
 erfa = library_dependency("liberfa"; validate = validate)
+
 provides(Sources, URI(url), erfa)
 provides(BuildProcess, Autotools(libtarget="src/liberfa.la"), erfa)
+
+# Windows binaries cross-compiled in erfa with
+#
+# mkdir -p /usr/lib
+# i686-w64-mingw32-gcc -Isrc -o usr/lib/liberfa.dll -O3 -shared \
+#     -static-libgcc src/*.c
+# 7za a erfa-win32.7z usr
+# x86_64-w64-mingw32-gcc -Isrc -o usr/lib/liberfa.dll -O3 -shared \
+#     -static-libgcc src/*.c
+# 7za a erfa-win64.7z usr
+
+provides(Binaries, URI("https://bintray.com/artifact/download/kbarbary/generic/erfa-win$(WORD_SIZE).7z"), erfa, os = :Windows)
 
 @BinDeps.install @compat Dict(:liberfa => :liberfa)

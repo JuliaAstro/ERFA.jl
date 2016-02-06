@@ -1,5 +1,6 @@
 module ERFA
 
+using Compat
 import Base.getindex
 
 export
@@ -262,7 +263,7 @@ export
 include("../deps/deps.jl")
 include("erfa_common.jl")
 
-function getindex(A::Array_3_Cdouble, i::Int64)
+function getindex(A::Array_3_Cdouble, i::Integer)
     if i === 1
         return A.d1
     elseif i === 2
@@ -272,7 +273,7 @@ function getindex(A::Array_3_Cdouble, i::Int64)
     end
 end
 
-function getindex(A::Array_3_Array_3_Cdouble, i::Int64)
+function getindex(A::Array_3_Array_3_Cdouble, i::Integer)
     if i === 1
         return getindex(A.d1,1)
     elseif i === 2
@@ -949,10 +950,10 @@ function eraPfw06(date1::Cdouble,date2::Cdouble)
     gamb[1],phib[1],psib[1],epsa[1]
 end
 
-function eraPlan94(date1::Float64, date2::Float64, np::Int64)
+function eraPlan94(date1::Float64, date2::Float64, np::Integer)
     pv = zeros(6)
     i = ccall((:eraPlan94, liberfa),Cint,
-              (Float64, Float64, Int64, Ptr{Float64}),
+              (Float64, Float64, Cint, Ptr{Float64}),
               date1, date2, np, pv)
     if i == -1
         error("illegal np,  not in range(1,8) for planet")
@@ -1283,13 +1284,14 @@ for f in (:eraA2af,
           :eraA2tf,
           :eraD2tf)
     @eval begin
-        function ($f)(ndp::Int64, a::Float64)
-            s = "+"
+        function ($f)(ndp::Integer, a::Float64)
+            s = Array(@compat(UInt8), 1)
+            s[1] = '+'
             i = Int32[0, 0, 0, 0]
             ccall(($(Expr(:quote,f)),liberfa),Void,
-                  (Int64, Float64, Ptr{ASCIIString}, Ptr{Cint}),
-                  ndp, a, pointer(s), i)
-            s[1], i[1], i[2], i[3], i[4]
+                  (Cint, Float64, Ptr{UInt8}, Ptr{Cint}),
+                  ndp, a, s, i)
+            @compat(Char(s[1])), i[1], i[2], i[3], i[4]
         end
     end
 end

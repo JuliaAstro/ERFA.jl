@@ -953,7 +953,7 @@ end
 function eraPlan94(date1::Float64, date2::Float64, np::Integer)
     pv = zeros(6)
     i = ccall((:eraPlan94, liberfa),Cint,
-              (Float64, Float64, Int64, Ptr{Float64}),
+              (Float64, Float64, Cint, Ptr{Float64}),
               date1, date2, np, pv)
     if i == -1
         error("illegal np,  not in range(1,8) for planet")
@@ -1289,7 +1289,7 @@ for f in (:eraA2af,
             s[1] = '+'
             i = Int32[0, 0, 0, 0]
             ccall(($(Expr(:quote,f)),liberfa),Void,
-                  (Int64, Float64, Ptr{UInt8}, Ptr{Cint}),
+                  (Cint, Float64, Ptr{UInt8}, Ptr{Cint}),
                   ndp, a, s, i)
             @compat(Char(s[1])), i[1], i[2], i[3], i[4]
         end

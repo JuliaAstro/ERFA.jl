@@ -1,5 +1,6 @@
 module ERFA
 
+using Compat
 import Base.getindex
 
 export
@@ -1284,12 +1285,13 @@ for f in (:eraA2af,
           :eraD2tf)
     @eval begin
         function ($f)(ndp::Integer, a::Float64)
-            s = "+"
+            s = Array(@compat(UInt8), 1)
+            s[1] = '+'
             i = Int32[0, 0, 0, 0]
             ccall(($(Expr(:quote,f)),liberfa),Void,
-                  (Int64, Float64, Ptr{ASCIIString}, Ptr{Cint}),
-                  ndp, a, pointer(s), i)
-            s[1], i[1], i[2], i[3], i[4]
+                  (Int64, Float64, Ptr{UInt8}, Ptr{Cint}),
+                  ndp, a, s, i)
+            @compat(Char(s[1])), i[1], i[2], i[3], i[4]
         end
     end
 end

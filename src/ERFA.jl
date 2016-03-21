@@ -1340,7 +1340,7 @@ for f in (:eraC2tcio,
     @eval begin
         function ($f)(rc2i::Array{Cdouble}, era::Cdouble, rpom::Array{Cdouble})
             rc2t = zeros(9)
-            ccall((:eraC2tcio,liberfa),Void,
+            ccall(($(Expr(:quote,f)),liberfa),Void,
                   (Ptr{Cdouble},Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
                   rc2i,era,rpom,rc2t)
             rc2t

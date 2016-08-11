@@ -1,6 +1,7 @@
 module ERFA
 
 using Compat
+import Compat.String
 import Base.getindex
 
 export
@@ -707,7 +708,7 @@ function eraDat(iy::Integer, im::Integer, id::Integer, fd::Real)
     d[1]
 end
 
-function eraD2dtf(scale::ByteString, ndp::Integer, d1::Real, d2::Real)
+function eraD2dtf(scale::String, ndp::Integer, d1::Real, d2::Real)
     iy = Int32[0]
     imo = Int32[0]
     id = Int32[0]
@@ -719,7 +720,7 @@ function eraD2dtf(scale::ByteString, ndp::Integer, d1::Real, d2::Real)
     iy[1], imo[1], id[1], ihmsf[1], ihmsf[2], ihmsf[3], ihmsf[4]
 end
 
-function eraDtf2d(scale::ByteString, iy::Integer, imo::Integer, id::Integer, ih::Integer, imi::Integer, sec::Real)
+function eraDtf2d(scale::String, iy::Integer, imo::Integer, id::Integer, ih::Integer, imi::Integer, sec::Real)
     r1 = [0.]
     r2 = [0.]
     i = ccall((:eraDtf2d,liberfa), Cint,

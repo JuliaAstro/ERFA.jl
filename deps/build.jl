@@ -2,7 +2,7 @@ using BinDeps
 using Compat
 @BinDeps.setup
 
-version = "1.2.0"
+version = "1.3.0"
 url = "https://github.com/liberfa/erfa/releases/download/v$version/erfa-$version.tar.gz"
 
 # This function returns true if a library satisfies our
@@ -10,7 +10,9 @@ url = "https://github.com/liberfa/erfa/releases/download/v$version/erfa-$version
 # the dlopen'ed handle. We test is certain symbols we need exist.
 validate(l, h) = (Libdl.dlsym_e(h, "eraAb") != C_NULL &&
                   Libdl.dlsym_e(h, "eraG2icrs") != C_NULL &&
-                  Libdl.dlsym_e(h, "eraIcrs2g") != C_NULL)
+                  Libdl.dlsym_e(h, "eraIcrs2g") != C_NULL &&
+                  Libdl.dlsym_e(h, "eraEceq06") != C_NULL &&
+                  Libdl.dlsym_e(h, "eraLtpb") != C_NULL)
 
 erfa = library_dependency("liberfa"; validate = validate)
 

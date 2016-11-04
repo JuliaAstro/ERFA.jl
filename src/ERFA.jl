@@ -97,6 +97,8 @@ export
     eraD2tf,
     eraDtdb,
     eraDtf2d,
+    eraEceq06,
+    eraEcm06,
     eraEe00,
     eraEe00a,
     eraEe00b,
@@ -110,6 +112,7 @@ export
     eraEpj,
     eraEpj2jd,
     eraEpv00,
+    eraEqec06,
     eraEqeq94,
     eraEra00,
     eraFad03,
@@ -153,6 +156,13 @@ export
     eraLd,
     eraLdn,
     eraLdsun,
+    eraLteceq,
+    eraLtecm,
+    eraLteqec,
+    eraLtp,
+    eraLtpb,
+    eraLtpecl,
+    eraLtpequ,
     eraNum00a,
     eraNum00b,
     eraNum06a,
@@ -1393,6 +1403,7 @@ end
 for f in (:eraC2i00a,
           :eraC2i00b,
           :eraC2i06a,
+          :eraEcm06,
           :eraNum00a,
           :eraNum00b,
           :eraNum06a,
@@ -1693,6 +1704,61 @@ for f in (:eraXys00a,
                   (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
                   date1,date2,x,y,s)
             x[1], y[1], s[1]
+        end
+    end
+end
+
+for f in (:eraLtecm,
+          :eraLtp,
+          :eraLtpb)
+    @eval begin
+        function ($f)(epj::Cdouble)
+            rp = zeros((3,3))
+            ccall(($(Expr(:quote,f)),liberfa), Void,
+                  (Cdouble,Ptr{Cdouble}),
+                  epj,rp)
+            rp
+        end
+    end
+end
+
+for f in (:eraLtpecl,
+          :eraLtpequ)
+    @eval begin
+        function ($f)(epj::Cdouble)
+            vec = zeros(3)
+            ccall(($(Expr(:quote,f)),liberfa), Void,
+                  (Cdouble,Ptr{Cdouble}),
+                  epj,vec)
+            vec
+        end
+    end
+end
+
+for f in (:eraEceq06,
+          :eraEqec06)
+    @eval begin
+        function ($f)(date1::Cdouble,date2::Cdouble,d1::Cdouble,d2::Cdouble)
+            r1 = [0.0]
+            r2 = [0.0]
+            ccall(($(Expr(:quote,f)),liberfa), Void,
+                  (Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+                  date1, date2, d1, d2, r1,r2)
+            r1[1], r2[1]
+        end
+    end
+end
+
+for f in (:eraLteceq,
+          :eraLteqec)
+    @eval begin
+        function ($f)(epj::Cdouble,d1::Cdouble,d2::Cdouble)
+            r1 = [0.0]
+            r2 = [0.0]
+            ccall(($(Expr(:quote,f)),liberfa), Void,
+                  (Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+                  epj, d1, d2, r1,r2)
+            r1[1], r2[1]
         end
     end
 end

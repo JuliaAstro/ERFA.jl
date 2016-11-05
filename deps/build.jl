@@ -29,6 +29,6 @@ provides(BuildProcess, Autotools(libtarget="src/liberfa.la"), erfa)
 #     -static-libgcc src/*.c
 # 7za a erfa-win64.7z usr
 
-provides(Binaries, URI("https://bintray.com/artifact/download/kbarbary/generic/erfa-win$(Sys.WORD_SIZE).7z"), erfa, os = :Windows)
+provides(Binaries, URI("https://dl.bintray.com/kbarbary/generic/erfa-$(version)-win$(Sys.WORD_SIZE).7z"), erfa, os = :Windows)
 
 @BinDeps.install @compat Dict(:liberfa => :liberfa)

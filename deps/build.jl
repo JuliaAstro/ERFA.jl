@@ -1,5 +1,4 @@
 using BinDeps
-using Compat
 @BinDeps.setup
 
 version = "1.3.0"
@@ -31,4 +30,4 @@ provides(BuildProcess, Autotools(libtarget="src/liberfa.la"), erfa)
 
 provides(Binaries, URI("https://dl.bintray.com/kbarbary/generic/erfa-$(version)-win$(Sys.WORD_SIZE).7z"), erfa, os = :Windows)
 
-@BinDeps.install @compat Dict(:liberfa => :liberfa)
+@BinDeps.install Dict(:liberfa => :liberfa)

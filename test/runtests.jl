@@ -1,5 +1,9 @@
 using ERFA
-using .Test
+
+if VERSION < v"0.7.0-DEV.2004"
+    const Test = Base.Test
+end
+using Test
 
 u1,u2 = eraDtf2d("UTC", 2010, 7, 24, 11, 18, 7.318)
 a1,a2 = eraUtctai(u1, u2)
@@ -632,19 +636,19 @@ wl = 0.55
 ob1 = 2.710085107986886201
 ob2 = 0.1717653435758265198
 ri, di = eraAtoi13('r', ob1, ob2, utc1, utc2, dut1,
-                   elong, phi, hm, xp, yp, phpa, tc, rh, wl) 
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
 @test isapprox(di, 0.1729371839114567725, atol = 1e-12)
 ob1 = -0.09247619879782006106
 ob2 = 0.1717653435758265198
 ri, di = eraAtoi13('h', ob1, ob2, utc1, utc2, dut1,
-                   elong, phi, hm, xp, yp, phpa, tc, rh, wl) 
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
 @test isapprox(di, 0.1729371839114567725, atol = 1e-12)
 ob1 = 0.09233952224794989993
 ob2 = 1.407758704513722461
 ri, di = eraAtoi13('a', ob1, ob2, utc1, utc2, dut1,
-                   elong, phi, hm, xp, yp, phpa, tc, rh, wl) 
+                   elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
 @test isapprox(di, 0.1729371839114567728, atol = 1e-12)
 

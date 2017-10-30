@@ -1,6 +1,17 @@
+__precompile__()
+
 module ERFA
 
 import Base.getindex
+
+const depsfile = joinpath(dirname(dirname(@__FILE__)),"deps","deps.jl")
+if isfile(depsfile)
+    include(depsfile)
+else
+    error("ERFA is not properly installed. Please run Pkg.build(\"ERFA\")")
+end
+
+include("erfa_common.jl")
 
 export
     ERFA_DPI,
@@ -268,9 +279,6 @@ export
     eraZp,
     eraZpv,
     eraZr
-
-include("../deps/deps.jl")
-include("erfa_common.jl")
 
 function getindex(A::Array_3_Cdouble, i::Integer)
     if i === 1

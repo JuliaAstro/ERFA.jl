@@ -27,12 +27,6 @@ const ERFA_ELB = 1.550519768e-8
 const ERFA_TDB0 = -6.55e-5
 const ERFA_SRS = 1.97412574336e-8
 
-# Skipping MacroDefinition: ERFA_DINT ( A ) ( ( A ) < 0.0 ? ceil ( A ) : floor ( A ) )
-# Skipping MacroDefinition: ERFA_DNINT ( A ) ( ( A ) < 0.0 ? ceil ( ( A ) - 0.5 ) : floor ( ( A ) + 0.5 ) )
-# Skipping MacroDefinition: ERFA_DSIGN ( A , B ) ( ( B ) < 0.0 ? - fabs ( A ) : fabs ( A ) )
-# Skipping MacroDefinition: ERFA_GMAX ( A , B ) ( ( ( A ) > ( B ) ) ? ( A ) : ( B ) )
-# Skipping MacroDefinition: ERFA_GMIN ( A , B ) ( ( ( A ) < ( B ) ) ? ( A ) : ( B ) )
-
 const ERFA_WGS84 = 1
 const ERFA_GRS80 = 2
 const ERFA_WGS72 = 3

@@ -90,7 +90,7 @@ function apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}),
               utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, astrom, eo)
     if i == -1
-        error("unacceptable date")
+        throw(ERFAException("unacceptable date"))
     elseif i == +1
         warn("dubious year")
     end
@@ -141,7 +141,7 @@ function apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
               utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, astrom)
     if i == -1
-        error("unacceptable date")
+        throw(ERFAException("unacceptable date"))
     elseif i == +1
         warn("dubious year")
     end
@@ -197,7 +197,7 @@ function atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, aob, zob, hob, dob, rob, eo)
     if i == -1
-        error("unacceptable date")
+        throw(ERFAException("unacceptable date"))
     elseif i == +1
         warn("dubious year")
     end
@@ -243,7 +243,7 @@ function atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, 
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, aob, zob, hob, dob, rob)
     if i == -1
-        error("unacceptable date")
+        throw(ERFAException("unacceptable date"))
     elseif i == +1
         warn("dubious year")
     end
@@ -272,7 +272,7 @@ function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
               (Ref{Char}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, rc, dc)
     if i == -1
-        error("unacceptable date")
+        throw(ERFAException("unacceptable date"))
     elseif i == +1
         warn("dubious year")
     end
@@ -286,7 +286,7 @@ function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
               (Ref{Char}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, ri, di)
     if i == -1
-        error("unacceptable date")
+        throw(ERFAException("unacceptable date"))
     elseif i == +1
         warn("dubious year")
     end
@@ -361,7 +361,7 @@ function eform(n)
               (Cint, Ref{Cdouble}, Ref{Cdouble}),
               n, a, f)
     if i == -1
-        error("illegal identifier")
+        throw(ERFAException("illegal identifier"))
     end
     a[], f[]
 end
@@ -472,9 +472,9 @@ function gc2gd(n, xyz)
               (Cint, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               n, xyz, elong, phi, height)
     if i == -1
-        error("illegal identifier")
+        throw(ERFAException("illegal identifier"))
     elseif i == -2
-        error("internal error")
+        throw(ERFAException("internal error"))
     end
     elong[], phi[], height[]
 end
@@ -487,9 +487,9 @@ function gc2gde(a, f, xyz)
               (Cdouble, Cdouble, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               a, f, xyz, elong, phi, height)
     if i == -1
-        error("illegal f")
+        throw(ERFAException("illegal f"))
     elseif i == -2
-        error("internal a")
+        throw(ERFAException("internal a"))
     end
     elong[], phi[], height[]
 end
@@ -500,9 +500,9 @@ function gd2gc(n, elong, phi, height)
               (Cint, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
               n, elong, phi, height, xyz)
     if i == -1
-        error("illegal identifier")
+        throw(ERFAException("illegal identifier"))
     elseif i == -2
-        error("illegal case")
+        throw(ERFAException("illegal case"))
     end
     xyz
 end
@@ -513,7 +513,7 @@ function gd2gce(a, f, elong, phi, height)
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
               a, f, elong, phi, height, xyz)
     if i == -1
-        error("illegal case")
+        throw(ERFAException("illegal case"))
     end
     xyz
 end
@@ -649,12 +649,12 @@ function plan94(date1, date2, np)
               (Cdouble, Cdouble, Cint, Ptr{Cdouble}),
               date1, date2, np, pv)
     if i == -1
-        error("illegal np,  not in range(1,8) for planet")
+        throw(ERFAException("illegal np,  not in range(1,8) for planet"))
     elseif i == 1
         warn("year outside range(1000:3000)")
         return pv
     elseif i == 2
-        error("computation failed to converge")
+        throw(ERFAException("computation failed to converge"))
     elseif i == 0
         return pv
     end
@@ -675,13 +675,13 @@ function pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b, ra2, dec2, pmr2, pmd2, px2, rv2)
     if i == -1
-        error("system error")
+        throw(ERFAException("system error"))
     elseif i == 1
         warn("distance overridden")
     elseif i == 2
         warn("excessive velocity")
     elseif i == 4
-        error("solution didn't converge")
+        throw(ERFAException("solution didn't converge"))
     end
     ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
 end
@@ -762,7 +762,7 @@ function pvstar(pv)
               (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               pv, ra, dec, pmr, pmd, px, rv)
     if i == -1
-        error("superluminal speed")
+        throw(ERFAException("superluminal speed"))
     elseif i == -2
         warn("null position vector")
         return ra[], dec[], pmr[], pmd[], px[], rv[]
@@ -871,7 +871,7 @@ function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b, ra2, dec2, pmr2, pmd2, px2, rv2)
     if i == -1
-        error("system error")
+        throw(ERFAException("system error"))
     elseif i == 1
         warn("distance overridden")
         return ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
@@ -879,7 +879,7 @@ function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
         warn("excessive velocity")
         return ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
     elseif i == 4
-        error("solution didn't converge")
+        throw(ERFAException("solution didn't converge"))
     end
     ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
 end
@@ -896,7 +896,7 @@ function starpv(ra, dec, pmr, pmd, px, rv)
         warn("excessive speed ")
         return pv
     elseif i == 4
-        error("solution didn't converge")
+        throw(ERFAException("solution didn't converge"))
     end
     pv
 end

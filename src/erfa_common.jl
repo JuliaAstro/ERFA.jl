@@ -54,3 +54,9 @@ struct LDBODY
     pv::NTuple{6,Cdouble}
 end
 
+struct ERFAExcpetion <: Exception
+    msg::String
+end
+
+Base.showerror(io::IO, ex::ERFAExcpetion) = print(io, ex.msg)
+

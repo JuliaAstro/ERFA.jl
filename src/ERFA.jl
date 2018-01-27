@@ -12,6 +12,7 @@ else
 end
 
 include("erfa_common.jl")
+include("deprecated.jl")
 
 function ASTROM(pmt, eb::AbstractArray, eh::AbstractArray, em, v::AbstractArray, bm1, bpn::AbstractArray, along, phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb)
     ASTROM(pmt,

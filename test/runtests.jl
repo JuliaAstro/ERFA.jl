@@ -967,39 +967,6 @@ dmj0, dmj = ERFA.cal2jd(2003, 6, 1)
 @test isapprox(dmj0, 2400000.5, atol = 1e-9)
 @test isapprox(dmj, 52791.0, atol = 1e-9)
 
-# ERFA.cp
-p = [0.3,1.2,-2.5]
-c = ERFA.cp(p)
-@test isapprox(c[1], 0.3, atol = 1e-12)
-@test isapprox(c[2], 1.2, atol = 1e-12)
-@test isapprox(c[3], -2.5, atol = 1e-12)
-
-# ERFA.cpv
-pv = [[0.3,1.2,-2.5];
-      [-0.5,3.1,0.9]]
-c = ERFA.cpv(pv)
-@test isapprox(c[1], 0.3, atol = 1e-12)
-@test isapprox(c[2], 1.2, atol = 1e-12)
-@test isapprox(c[3], -2.5, atol = 1e-12)
-@test isapprox(c[4], -0.5, atol = 1e-12)
-@test isapprox(c[5], 3.1, atol = 1e-12)
-@test isapprox(c[6], 0.9, atol = 1e-12)
-
-# ERFA.cr
-a = [[2.0,3.0,2.0];
-     [3.0,2.0,3.0];
-     [3.0,4.0,5.0]]
-c = ERFA.cr(a)
-@test isapprox(c[1], 2.0, atol = 1e-12)
-@test isapprox(c[2], 3.0, atol = 1e-12)
-@test isapprox(c[3], 2.0, atol = 1e-12)
-@test isapprox(c[4], 3.0, atol = 1e-12)
-@test isapprox(c[5], 2.0, atol = 1e-12)
-@test isapprox(c[6], 3.0, atol = 1e-12)
-@test isapprox(c[7], 3.0, atol = 1e-12)
-@test isapprox(c[8], 4.0, atol = 1e-12)
-@test isapprox(c[9], 5.0, atol = 1e-12)
-
 # ERFA.dat
 d = ERFA.dat(2003, 6, 1, 0.0)
 @test isapprox(d, 32.0, atol = 1e-9)

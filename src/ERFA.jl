@@ -347,29 +347,6 @@ function cal2jd(iy, imo, id)
     r1[], r2[]
 end
 
-# TODO: Delete
-function cp(p)
-    c = zeros(3)
-    ccall((:eraCp,liberfa),Void,(Ptr{Cdouble},Ptr{Cdouble}),
-          p,c)
-    c
-end
-
-function cpv(pv)
-    c = zeros((2,3))
-    ccall((:eraCpv,liberfa),Void,
-          (Ptr{Cdouble},Ptr{Cdouble}),
-          pv,c)
-    c
-end
-
-function cr(p)
-    r = zeros((3,3))
-    ccall((:eraCr,liberfa),Void,(Ptr{Cdouble},Ptr{Cdouble}),
-          p,r)
-    r
-end
-
 function dtdb(date1,date2,ut,elong,u,v)
     ccall((:eraDtdb,liberfa),Cdouble,
           (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble),
@@ -971,30 +948,6 @@ for name in ("af2a",
             rad[]
         end
     end
-end
-
-function ir()
-    r = zeros((3,3))
-    ccall((:eraIr,liberfa),Void,(Ptr{Cdouble},),r)
-    r
-end
-
-function zp()
-    p = zeros(3)
-    #ccall((:eraZp,liberfa),Void,(Ptr{Cdouble},),p)
-    p
-end
-
-function zpv()
-    pv = zeros((2,3))
-    #ccall((:eraZpv,liberfa),Void,(Ptr{Cdouble},),pv)
-    pv
-end
-
-function zr()
-    r = zeros((3,3))
-    #ccall((:eraZr,liberfa),Void,(Ptr{Cdouble},),r)
-    r
 end
 
 for name in ("a2af",

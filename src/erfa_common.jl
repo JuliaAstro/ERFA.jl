@@ -80,15 +80,6 @@ immutable LDBODY
     pv::Array_2_Array_3_Cdouble
 end
 
-immutable Array_4_Cint
-    d1::Cint
-    d2::Cint
-    d3::Cint
-    d4::Cint
-end
-
-zero(::Type{Array_4_Cint}) = Array_4_Cint(fill(zero(Cint),4)...)
-
 immutable Array_2_Cdouble
     d1::Cdouble
     d2::Cdouble

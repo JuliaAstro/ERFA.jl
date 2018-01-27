@@ -26,16 +26,16 @@ const ELB = 1.550519768e-8
 const TDB0 = -6.55e-5
 const SRS = 1.97412574336e-8
 
-@enum Ellipsoid WGS84=1 GRS80=2 WGS72=3
+@enum Ellipsoid WGS84 = 1 GRS80 = 2 WGS72 = 3
 
 mutable struct ASTROM
     pmt::Cdouble
-    eb::NTuple{3, Cdouble}
-    eh::NTuple{3, Cdouble}
+    eb::NTuple{3,Cdouble}
+    eh::NTuple{3,Cdouble}
     em::Cdouble
-    v::NTuple{3, Cdouble}
+    v::NTuple{3,Cdouble}
     bm1::Cdouble
-    bpn::NTuple{9, Cdouble}
+    bpn::NTuple{9,Cdouble}
     along::Cdouble
     phi::Cdouble
     xpl::Cdouble
@@ -51,6 +51,6 @@ end
 struct LDBODY
     bm::Cdouble
     dl::Cdouble
-    pv::NTuple{6, Cdouble}
+    pv::NTuple{6,Cdouble}
 end
 

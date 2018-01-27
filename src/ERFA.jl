@@ -13,48 +13,14 @@ end
 
 include("erfa_common.jl")
 
-function getindex(A::Array_3_Cdouble, i::Integer)
-    if i === 1
-        return A.d1
-    elseif i === 2
-        return A.d2
-    elseif i === 3
-        return A.d3
-    end
-end
-
-function getindex(A::Array_3_Array_3_Cdouble, i::Integer)
-    if i === 1
-        return getindex(A.d1,1)
-    elseif i === 2
-        return getindex(A.d1,2)
-    elseif i === 3
-        return getindex(A.d1,3)
-    elseif i === 4
-        return getindex(A.d2,1)
-    elseif i === 5
-        return getindex(A.d2,2)
-    elseif i === 6
-        return getindex(A.d2,3)
-    elseif i === 7
-        return getindex(A.d3,1)
-    elseif i === 8
-        return getindex(A.d3,2)
-    elseif i === 9
-        return getindex(A.d3,3)
-    end
-end
-
 function ASTROM(pmt::Float64, eb::Array{Float64}, eh::Array{Float64}, em::Float64, v::Array{Float64}, bm1::Float64, bpn::Array{Float64}, along::Float64, phi::Float64, xpl::Float64, ypl::Float64, sphi::Float64, cphi::Float64, diurab::Float64, eral::Float64, refa::Float64, refb::Float64)
     ASTROM(pmt,
-              Array_3_Cdouble(eb[1], eb[2], eb[3]),
-              Array_3_Cdouble(eh[1], eh[2], eh[3]),
+              (eb[1], eb[2], eb[3]),
+              (eh[1], eh[2], eh[3]),
               em,
-              Array_3_Cdouble(v[1], v[2], v[3]),
+              (v[1], v[2], v[3]),
               bm1,
-              Array_3_Array_3_Cdouble(Array_3_Cdouble(bpn[1],bpn[2],bpn[3]),
-                                      Array_3_Cdouble(bpn[4],bpn[5],bpn[6]),
-                                      Array_3_Cdouble(bpn[7],bpn[8],bpn[9])),
+              (bpn[1],bpn[2],bpn[3],bpn[4],bpn[5],bpn[6],bpn[7],bpn[8],bpn[9]),
               along,
               phi,
               xpl,
@@ -591,9 +557,7 @@ function hfk5z(rh::Cdouble,dh::Cdouble,date1::Cdouble,date2::Cdouble)
 end
 
 function LDBODY(bm::Cdouble, dl::Cdouble, pv::Array{Float64})
-    p = Array_3_Cdouble(pv[1], pv[2], pv[3])
-    v = Array_3_Cdouble(pv[4], pv[5], pv[6])
-    LDBODY(bm, dl, Array_2_Array_3_Cdouble(p, v))
+    LDBODY(bm, dl, (pv...))
 end
 
 function ld(bm::Cdouble,p::Array{Cdouble},q::Array{Cdouble},e::Array{Cdouble},em::Cdouble,dlim::Cdouble)

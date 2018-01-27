@@ -31,30 +31,14 @@ const ERFA_WGS84 = 1
 const ERFA_GRS80 = 2
 const ERFA_WGS72 = 3
 
-immutable Array_3_Cdouble
-    d1::Cdouble
-    d2::Cdouble
-    d3::Cdouble
-end
-
-zero(::Type{Array_3_Cdouble}) = Array_3_Cdouble(fill(zero(Cdouble),3)...)
-
-immutable Array_3_Array_3_Cdouble
-    d1::Array_3_Cdouble
-    d2::Array_3_Cdouble
-    d3::Array_3_Cdouble
-end
-
-zero(::Type{Array_3_Array_3_Cdouble}) = Array_3_Array_3_Cdouble(fill(zero(Array_3_Cdouble),3)...)
-
-type ASTROM
+mutable struct ASTROM
     pmt::Cdouble
-    eb::Array_3_Cdouble
-    eh::Array_3_Cdouble
+    eb::NTuple{3, Cdouble}
+    eh::NTuple{3, Cdouble}
     em::Cdouble
-    v::Array_3_Cdouble
+    v::NTuple{3, Cdouble}
     bm1::Cdouble
-    bpn::Array_3_Array_3_Cdouble
+    bpn::NTuple{9, Cdouble}
     along::Cdouble
     phi::Cdouble
     xpl::Cdouble
@@ -67,22 +51,8 @@ type ASTROM
     refb::Cdouble
 end
 
-immutable Array_2_Array_3_Cdouble
-    d1::Array_3_Cdouble
-    d2::Array_3_Cdouble
-end
-
-zero(::Type{Array_2_Array_3_Cdouble}) = Array_2_Array_3_Cdouble(fill(zero(Array_3_Cdouble),2)...)
-
-immutable LDBODY
+struct LDBODY
     bm::Cdouble
     dl::Cdouble
-    pv::Array_2_Array_3_Cdouble
+    pv::NTuple{6, Cdouble}
 end
-
-immutable Array_2_Cdouble
-    d1::Cdouble
-    d2::Cdouble
-end
-
-zero(::Type{Array_2_Cdouble}) = Array_2_Cdouble(fill(zero(Cdouble),2)...)

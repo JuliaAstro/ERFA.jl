@@ -47,7 +47,7 @@ end
 
 zero(::Type{Array_3_Array_3_Cdouble}) = Array_3_Array_3_Cdouble(fill(zero(Array_3_Cdouble),3)...)
 
-type eraASTROM
+type ASTROM
     pmt::Cdouble
     eb::Array_3_Cdouble
     eh::Array_3_Cdouble
@@ -74,7 +74,7 @@ end
 
 zero(::Type{Array_2_Array_3_Cdouble}) = Array_2_Array_3_Cdouble(fill(zero(Array_3_Cdouble),2)...)
 
-immutable eraLDBODY
+immutable LDBODY
     bm::Cdouble
     dl::Cdouble
     pv::Array_2_Array_3_Cdouble

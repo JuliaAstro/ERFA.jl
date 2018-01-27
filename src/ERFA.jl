@@ -78,24 +78,24 @@ end
 function apcg(date1::Cdouble,date2::Cdouble,ebpv::Array{Cdouble},ehp::Array{Cdouble})
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApcg,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{ASTROM}),
-          date1,date2,ebpv,ehp,&astrom)
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ref{ASTROM}),
+          date1,date2,ebpv,ehp,astrom)
     astrom
 end
 
 function apcg13(date1::Cdouble,date2::Cdouble)
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApcg13,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{ASTROM}),
-          date1,date2,&astrom)
+          (Cdouble,Cdouble,Ref{ASTROM}),
+          date1,date2,astrom)
     astrom
 end
 
 function apci(date1::Cdouble,date2::Cdouble,ebpv::Array{Cdouble},ehp::Array{Cdouble},x::Cdouble,y::Cdouble,s::Cdouble)
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApci,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Cdouble,Ptr{ASTROM}),
-          date1,date2,ebpv,ehp,x,y,s,&astrom)
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Cdouble,Ref{ASTROM}),
+          date1,date2,ebpv,ehp,x,y,s,astrom)
     astrom
 end
 
@@ -103,16 +103,16 @@ function apci13(date1::Cdouble,date2::Cdouble)
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     eo = [0.]
     ccall((:eraApci13,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{ASTROM},Ptr{Cdouble}),
-          date1,date2,&astrom,eo)
+          (Cdouble,Cdouble,Ref{ASTROM},Ptr{Cdouble}),
+          date1,date2,astrom,eo)
     astrom, eo[1]
 end
 
 function apco(date1::Cdouble,date2::Cdouble,ebpv::Array{Cdouble},ehp::Array{Cdouble},x::Cdouble,y::Cdouble,s::Cdouble,theta::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,sp::Cdouble,refa::Cdouble,refb::Cdouble)
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApco,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{ASTROM}),
-          date1,date2,ebpv,ehp,x,y,s,theta,elong,phi,hm,xp,yp,sp,refa,refb,&astrom)
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ref{ASTROM}),
+          date1,date2,ebpv,ehp,x,y,s,theta,elong,phi,hm,xp,yp,sp,refa,refb,astrom)
     astrom
 end
 
@@ -120,8 +120,8 @@ function apco13(utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cd
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     eo = [0.]
     i = ccall((:eraApco13,liberfa),Cint,
-              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{ASTROM},Ptr{Cdouble}),
-              utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,&astrom,eo)
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ref{ASTROM},Ptr{Cdouble}),
+              utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,astrom,eo)
     if i == -1
         error("unacceptable date")
     elseif i == +1
@@ -133,46 +133,46 @@ end
 function apcs(date1::Cdouble,date2::Cdouble,pv::Array{Cdouble},ebpv::Array{Cdouble},ehp::Array{Cdouble})
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApcs,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{ASTROM}),
-          date1,date2,pv,ebpv,ehp,&astrom)
+          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ref{ASTROM}),
+          date1,date2,pv,ebpv,ehp,astrom)
     astrom
 end
 
 function apcs13(date1::Cdouble,date2::Cdouble,pv::Array{Cdouble})
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApcs13,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{Cdouble},Ptr{ASTROM}),
-          date1,date2,pv,&astrom)
+          (Cdouble,Cdouble,Ptr{Cdouble},Ref{ASTROM}),
+          date1,date2,pv,astrom)
     astrom
 end
 
 function aper(theta::Cdouble,astrom::ASTROM)
     ccall((:eraAper,liberfa),Void,
-          (Cdouble,Ptr{ASTROM}),
-          theta,&astrom)
+          (Cdouble,Ref{ASTROM}),
+          theta,astrom)
     astrom
 end
 
 function aper13(ut11::Cdouble,ut12::Cdouble,astrom::ASTROM)
     ccall((:eraAper13,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{ASTROM}),
-          ut11,ut12,&astrom)
+          (Cdouble,Cdouble,Ref{ASTROM}),
+          ut11,ut12,astrom)
     astrom
 end
 
 function apio(sp::Cdouble,theta::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,refa::Cdouble,refb::Cdouble)
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     ccall((:eraApio,liberfa),Void,
-          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{ASTROM}),
-          sp,theta,elong,phi,hm,xp,yp,refa,refb,&astrom)
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ref{ASTROM}),
+          sp,theta,elong,phi,hm,xp,yp,refa,refb,astrom)
     astrom
 end
 
 function apio13(utc1::Cdouble,utc2::Cdouble,dut1::Cdouble,elong::Cdouble,phi::Cdouble,hm::Cdouble,xp::Cdouble,yp::Cdouble,phpa::Cdouble,tk::Cdouble,rh::Cdouble,wl::Cdouble)
     astrom = ASTROM(0.0,zeros(3),zeros(3),0.0,zeros(3),0.0,zeros((3,3)),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
     i = ccall((:eraApio13,liberfa),Cint,
-              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{ASTROM}),
-              utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,&astrom)
+              (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ref{ASTROM}),
+              utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,astrom)
     if i == -1
         error("unacceptable date")
     elseif i == +1
@@ -195,8 +195,8 @@ function atciq(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::C
     ri = [0.]
     di = [0.]
     ccall((:eraAtciq,liberfa),Void,
-          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
-          rc,dc,pr,pd,px,rv,&astrom,ri,di)
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ref{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,pr,pd,px,rv,astrom,ri,di)
     ri[1], di[1]
 end
 
@@ -205,8 +205,8 @@ function atciqn(rc::Cdouble,dc::Cdouble,pr::Cdouble,pd::Cdouble,px::Cdouble,rv::
     di = [0.]
     n = length(b)
     ccall((:eraAtciqn,liberfa),Void,
-          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{ASTROM},Cint,Ptr{LDBODY},Ptr{Cdouble},Ptr{Cdouble}),
-          rc,dc,pr,pd,px,rv,&astrom,n,b,ri,di)
+          (Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ref{ASTROM},Cint,Ptr{LDBODY},Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,pr,pd,px,rv,astrom,n,b,ri,di)
     ri[1], di[1]
 end
 
@@ -214,8 +214,8 @@ function atciqz(rc::Cdouble,dc::Cdouble,astrom::ASTROM)
     ri = [0.]
     di = [0.]
     ccall((:eraAtciqz,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
-          rc,dc,&astrom,ri,di)
+          (Cdouble,Cdouble,Ref{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          rc,dc,astrom,ri,di)
     ri[1], di[1]
 end
 
@@ -251,8 +251,8 @@ function aticq(ri::Cdouble,di::Cdouble,astrom::ASTROM)
     rc = [0.]
     dc = [0.]
     ccall((:eraAticq,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
-          ri,di,&astrom,rc,dc)
+          (Cdouble,Cdouble,Ref{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          ri,di,astrom,rc,dc)
     rc[1],dc[1]
 end
 
@@ -261,8 +261,8 @@ function aticqn(ri::Cdouble,di::Cdouble,astrom::ASTROM,b::Array{LDBODY})
     dc = [0.]
     n = length(b)
     ccall((:eraAticqn,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{ASTROM},Cint,Ptr{LDBODY},Ptr{Cdouble},Ptr{Cdouble}),
-          ri,di,&astrom,n,b,rc,dc)
+          (Cdouble,Cdouble,Ref{ASTROM},Cint,Ptr{LDBODY},Ptr{Cdouble},Ptr{Cdouble}),
+          ri,di,astrom,n,b,rc,dc)
     rc[1],dc[1]
 end
 
@@ -290,8 +290,8 @@ function atioq(ri::Cdouble,di::Cdouble,astrom::ASTROM)
     dob = [0.]
     rob = [0.]
     ccall((:eraAtioq,liberfa),Void,
-          (Cdouble,Cdouble,Ptr{ASTROM},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
-          ri,di,&astrom,aob,zob,hob,dob,rob)
+          (Cdouble,Cdouble,Ref{ASTROM},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),
+          ri,di,astrom,aob,zob,hob,dob,rob)
     aob[1],zob[1],hob[1],dob[1],rob[1]
 end
 
@@ -302,8 +302,8 @@ function atoc13(typeofcoordinates::Char,ob1::Cdouble,ob2::Cdouble,utc1::Cdouble,
         typeofcoordinates = 'A'
     end
     i = ccall((:eraAtoc13,liberfa),Cint,
-              (Ptr{Char},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
-              &typeofcoordinates,ob1,ob2,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,rc,dc)
+              (Ref{Char},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+              typeofcoordinates,ob1,ob2,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,rc,dc)
     if i == -1
         error("unacceptable date")
     elseif i == +1
@@ -316,8 +316,8 @@ function atoi13(typeofcoordinates::Char,ob1::Cdouble,ob2::Cdouble,utc1::Cdouble,
     ri = [0.]
     di = [0.]
     i = ccall((:eraAtoi13,liberfa),Cint,
-              (Ptr{Char},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
-              &typeofcoordinates,ob1,ob2,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,ri,di)
+              (Ref{Char},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Ptr{Cdouble},Ptr{Cdouble}),
+              typeofcoordinates,ob1,ob2,utc1,utc2,dut1,elong,phi,hm,xp,yp,phpa,tk,rh,wl,ri,di)
     if i == -1
         error("unacceptable date")
     elseif i == +1
@@ -330,8 +330,8 @@ function atoiq(typeofcoordinates::Char,ob1::Cdouble,ob2::Cdouble,astrom::ASTROM)
     ri = [0.]
     di = [0.]
     ccall((:eraAtoiq,liberfa),
-          Void,(Ptr{Char},Cdouble,Cdouble,Ptr{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
-          &typeofcoordinates,ob1,ob2,&astrom,ri,di)
+          Void,(Ref{Char},Cdouble,Cdouble,Ref{ASTROM},Ptr{Cdouble},Ptr{Cdouble}),
+          typeofcoordinates,ob1,ob2,astrom,ri,di)
     ri[1],di[1]
 end
 

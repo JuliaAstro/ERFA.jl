@@ -1,9 +1,6 @@
 using ERFA
 
-if VERSION < v"0.7.0-DEV.2004"
-    const Test = Base.Test
-end
-using Test
+using Compat.Test
 
 # @testset "ERFA" begin
     # @testset "Calendar Tools" begin

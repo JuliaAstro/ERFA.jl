@@ -1,6 +1,8 @@
 using BinDeps
 @BinDeps.setup
 
+using Compat.Libdl
+
 version = "1.3.0"
 url = "https://github.com/liberfa/erfa/releases/download/v$version/erfa-$version.tar.gz"
 

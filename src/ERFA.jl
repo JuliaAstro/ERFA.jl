@@ -9,9 +9,8 @@ else
     error("ERFA is not properly installed. Please run Pkg.build(\"ERFA\")")
 end
 
-if VERSION >= v"0.7.0-DEV.2915"
-    using Unicode: ucfirst
-end
+using Compat: @warn, Cvoid
+using Compat.Unicode: ucfirst
 
 include("erfa_common.jl")
 include("deprecated.jl")
@@ -38,7 +37,7 @@ end
 
 function ab(pnat, v, s, bm1)
     ppr = zeros(3)
-    ccall((:eraAb, liberfa), Void,
+    ccall((:eraAb, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Ptr{Cdouble}),
           pnat, v, s, bm1, ppr)
     ppr
@@ -46,7 +45,7 @@ end
 
 function apcg(date1, date2, ebpv, ehp)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    ccall((:eraApcg, liberfa), Void,
+    ccall((:eraApcg, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ref{ASTROM}),
           date1, date2, ebpv, ehp, astrom)
     astrom
@@ -54,7 +53,7 @@ end
 
 function apcg13(date1, date2)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    ccall((:eraApcg13, liberfa), Void,
+    ccall((:eraApcg13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, astrom)
     astrom
@@ -62,7 +61,7 @@ end
 
 function apci(date1, date2, ebpv, ehp, x, y, s)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    ccall((:eraApci, liberfa), Void,
+    ccall((:eraApci, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, ebpv, ehp, x, y, s, astrom)
     astrom
@@ -71,7 +70,7 @@ end
 function apci13(date1, date2)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     eo = Ref(0.0)
-    ccall((:eraApci13, liberfa), Void,
+    ccall((:eraApci13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}),
           date1, date2, astrom, eo)
     astrom, eo[]
@@ -79,7 +78,7 @@ end
 
 function apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    ccall((:eraApco, liberfa), Void,
+    ccall((:eraApco, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb, astrom)
     astrom
@@ -94,14 +93,14 @@ function apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
-        warn("dubious year")
+        @warn "dubious year"
     end
     astrom, eo[]
 end
 
 function apcs(date1, date2, pv, ebpv, ehp)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    ccall((:eraApcs, liberfa), Void,
+    ccall((:eraApcs, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ref{ASTROM}),
           date1, date2, pv, ebpv, ehp, astrom)
     astrom
@@ -109,21 +108,21 @@ end
 
 function apcs13(date1, date2, pv)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    ccall((:eraApcs13, liberfa), Void,
+    ccall((:eraApcs13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}, Ref{ASTROM}),
           date1, date2, pv, astrom)
     astrom
 end
 
 function aper(theta, astrom)
-    ccall((:eraAper, liberfa), Void,
+    ccall((:eraAper, liberfa), Cvoid,
           (Cdouble, Ref{ASTROM}),
           theta, astrom)
     astrom
 end
 
 function aper13(ut11, ut12, astrom)
-    ccall((:eraAper13, liberfa), Void,
+    ccall((:eraAper13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}),
           ut11, ut12, astrom)
     astrom
@@ -131,7 +130,7 @@ end
 
 function apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    ccall((:eraApio, liberfa), Void,
+    ccall((:eraApio, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           sp, theta, elong, phi, hm, xp, yp, refa, refb, astrom)
     astrom
@@ -145,7 +144,7 @@ function apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
-        warn("dubious year")
+        @warn "dubious year"
     end
     astrom
 end
@@ -154,7 +153,7 @@ function atci13(rc, dc, pr, pd, px, rv, date1, date2)
     ri = Ref(0.0)
     di = Ref(0.0)
     eo = Ref(0.0)
-    ccall((:eraAtci13, liberfa), Void,
+    ccall((:eraAtci13, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, date1, date2, ri, di, eo)
     ri[], di[], eo[]
@@ -163,7 +162,7 @@ end
 function atciq(rc, dc, pr, pd, px, rv, astrom)
     ri = Ref(0.0)
     di = Ref(0.0)
-    ccall((:eraAtciq, liberfa), Void,
+    ccall((:eraAtciq, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, astrom, ri, di)
     ri[], di[]
@@ -173,7 +172,7 @@ function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Array{LDBODY})
     ri = Ref(0.0)
     di = Ref(0.0)
     n = length(b)
-    ccall((:eraAtciqn, liberfa), Void,
+    ccall((:eraAtciqn, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Cint, Ptr{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, astrom, n, b, ri, di)
     ri[], di[]
@@ -182,7 +181,7 @@ end
 function atciqz(rc, dc, astrom)
     ri = Ref(0.0)
     di = Ref(0.0)
-    ccall((:eraAtciqz, liberfa), Void,
+    ccall((:eraAtciqz, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, astrom, ri, di)
     ri[], di[]
@@ -201,7 +200,7 @@ function atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
-        warn("dubious year")
+        @warn "dubious year"
     end
     aob[], zob[], hob[], dob[], rob[], eo[]
 end
@@ -210,7 +209,7 @@ function atic13(ri, di, date1, date2)
     rc = Ref(0.0)
     dc = Ref(0.0)
     eo = Ref(0.0)
-    ccall((:eraAtic13, liberfa), Void,
+    ccall((:eraAtic13, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, date1, date2, rc, dc, eo)
     rc[], dc[], eo[]
@@ -219,7 +218,7 @@ end
 function aticq(ri, di, astrom)
     rc = Ref(0.0)
     dc = Ref(0.0)
-    ccall((:eraAticq, liberfa), Void,
+    ccall((:eraAticq, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, rc, dc)
     rc[], dc[]
@@ -229,7 +228,7 @@ function aticqn(ri, di, astrom, b::Array{LDBODY})
     rc = Ref(0.0)
     dc = Ref(0.0)
     n = length(b)
-    ccall((:eraAticqn, liberfa), Void,
+    ccall((:eraAticqn, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Cint, Ptr{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, n, b, rc, dc)
     rc[], dc[]
@@ -247,7 +246,7 @@ function atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, 
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
-        warn("dubious year")
+        @warn "dubious year"
     end
     aob[], zob[], hob[], dob[], rob[]
 end
@@ -258,7 +257,7 @@ function atioq(ri, di, astrom)
     hob = Ref(0.0)
     dob = Ref(0.0)
     rob = Ref(0.0)
-    ccall((:eraAtioq, liberfa), Void,
+    ccall((:eraAtioq, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, aob, zob, hob, dob, rob)
     aob[], zob[], hob[], dob[], rob[]
@@ -276,7 +275,7 @@ function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
-        warn("dubious year")
+        @warn "dubious year"
     end
     rc[], dc[]
 end
@@ -290,7 +289,7 @@ function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
-        warn("dubious year")
+        @warn "dubious year"
     end
     ri[], di[]
 end
@@ -299,7 +298,7 @@ function atoiq(typeofcoordinates, ob1, ob2, astrom)
     ri = Ref(0.0)
     di = Ref(0.0)
     ccall((:eraAtoiq, liberfa),
-          Void, (Cstring, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
+          Cvoid, (Cstring, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           typeofcoordinates, ob1, ob2, astrom, ri, di)
     ri[], di[]
 end
@@ -308,7 +307,7 @@ function bi00()
     dpsibi = Ref(0.0)
     depsbi = Ref(0.0)
     dra = Ref(0.0)
-    ccall((:eraBi00, liberfa), Void,
+    ccall((:eraBi00, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           dpsibi, depsbi, dra)
     dpsibi[], depsbi[], dra[]
@@ -317,7 +316,7 @@ end
 function bpn2xy(rbpn)
     x = Ref(0.0)
     y = Ref(0.0)
-    ccall((:eraBpn2xy, liberfa), Void,
+    ccall((:eraBpn2xy, liberfa), Cvoid,
           (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           rbpn, x, y)
     x[], y[]
@@ -325,7 +324,7 @@ end
 
 function c2ibpn(date1, date2, rbpn)
     rc2i = zeros((3, 3))
-    ccall((:eraC2ibpn, liberfa), Void,
+    ccall((:eraC2ibpn, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           date1, date2, rbpn, rc2i)
     rc2i
@@ -334,7 +333,7 @@ end
 function c2s(p)
     theta = Ref(0.0)
     phi = Ref(0.0)
-    ccall((:eraC2s, liberfa), Void,
+    ccall((:eraC2s, liberfa), Cvoid,
           (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi)
     theta[], phi[]
@@ -434,7 +433,7 @@ function epv00(date1, date2)
               (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
               date1, date2, pvh, pvb)
     if i == 1
-        warn("date outside the range 1900-2100 AD")
+        @warn "date outside the range 1900-2100 AD"
     end
     pvh, pvb
 end
@@ -442,7 +441,7 @@ end
 function fk5hip()
     r5h = zeros((3, 3))
     s5h = zeros(3)
-    ccall((:eraFk5hip, liberfa), Void,
+    ccall((:eraFk5hip, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}),
           r5h, s5h)
     r5h, s5h
@@ -451,7 +450,7 @@ end
 function fk5hz(r5, d5, date1, date2)
     rh = Ref(0.0)
     dh = Ref(0.0)
-    ccall((:eraFk5hz, liberfa), Void,
+    ccall((:eraFk5hz, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           r5, d5, date1, date2, rh, dh)
     rh[], dh[]
@@ -460,7 +459,7 @@ end
 function fw2xy(gamb, phib, psi, eps)
     x = Ref(0.0)
     y = Ref(0.0)
-    ccall((:eraFw2xy, liberfa), Void,
+    ccall((:eraFw2xy, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           gamb, phib, psi, eps, x, y)
     x[], y[]
@@ -531,19 +530,19 @@ function hfk5z(rh, dh, date1, date2)
     d5 = Ref(0.0)
     dr5 = Ref(0.0)
     dd5 = Ref(0.0)
-    ccall((:eraHfk5z, liberfa), Void,
+    ccall((:eraHfk5z, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           rh, dh, date1, date2, r5, d5, dr5, dd5)
     r5[], d5[], dr5[], dd5[]
 end
 
 function LDBODY(bm, dl, pv::AbstractArray)
-    LDBODY(bm, dl, (pv...))
+    LDBODY(bm, dl, (pv...,))
 end
 
 function ld(bm, p::AbstractArray, q::AbstractArray, e::AbstractArray, em, dlim)
     p1 = zeros(3)
-    ccall((:eraLd, liberfa), Void,
+    ccall((:eraLd, liberfa), Cvoid,
           (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Ptr{Cdouble}),
           bm, p, q, e, em, dlim, p1)
     p1
@@ -552,7 +551,7 @@ end
 function ldn(l::Array{LDBODY}, ob::AbstractArray, sc::AbstractArray)
     sn = zeros(3)
     n = length(l)
-    ccall((:eraLdn, liberfa), Void,
+    ccall((:eraLdn, liberfa), Cvoid,
           (Cint, Ptr{LDBODY}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
           n, l, ob, sc, sn)
     sn
@@ -560,7 +559,7 @@ end
 
 function ldsun(p, e, em)
     p1 = zeros(3)
-    ccall((:eraLdsun, liberfa), Void,
+    ccall((:eraLdsun, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Ptr{Cdouble}),
           p, e, em, p1)
     p1
@@ -568,7 +567,7 @@ end
 
 function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
     pco = zeros(3)
-    ccall((:eraPmpx, liberfa), Void,
+    ccall((:eraPmpx, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           rc, dc, pr, pd, px, rv, pmt, vob, pco)
     pco
@@ -576,7 +575,7 @@ end
 
 function numat(epsa, dpsi, deps)
     rmatn = zeros((3, 3))
-    ccall((:eraNumat, liberfa), Void,
+    ccall((:eraNumat, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           epsa, dpsi, deps, rmatn)
     rmatn
@@ -599,7 +598,7 @@ function p06e(date1, date2)
     gam = Ref(0.0)
     phi = Ref(0.0)
     psi = Ref(0.0)
-    ccall((:eraP06e, liberfa), Void,
+    ccall((:eraP06e, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           date1, date2, eps0, psia, oma, bpa, bqa, pia, bpia, epsa, chia, za, zetaa, thetaa, pa, gam, phi, psi)
     eps0[], psia[], oma[], bpa[], bqa[], pia[], bpia[], epsa[], chia[], za[], zetaa[], thetaa[], pa[], gam[], phi[], psi[]
@@ -609,7 +608,7 @@ function p2s(p)
     theta = Ref(0.0)
     phi = Ref(0.0)
     r = Ref(0.0)
-    ccall((:eraP2s, liberfa), Void,
+    ccall((:eraP2s, liberfa), Cvoid,
           (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi, r)
     theta[], phi[], r[]
@@ -617,7 +616,7 @@ end
 
 function p2pv(p)
     pv = zeros((2, 3))
-    ccall((:eraP2pv, liberfa), Void,
+    ccall((:eraP2pv, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}),
           p, pv)
     pv
@@ -627,7 +626,7 @@ function pb06(date1, date2)
     bzeta = Ref(0.0)
     bz = Ref(0.0)
     btheta = Ref(0.0)
-    ccall((:eraPb06, liberfa), Void,
+    ccall((:eraPb06, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           date1, date2, bzeta, bz, btheta)
     bzeta[], bz[], btheta[]
@@ -639,7 +638,7 @@ function pfw06(date1, date2)
     phib = Ref(0.0)
     psib = Ref(0.0)
     epsa = Ref(0.0)
-    ccall((:eraPfw06, liberfa), Void,
+    ccall((:eraPfw06, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           date1, date2, gamb, phib, psib, epsa)
     gamb[], phib[], psib[], epsa[]
@@ -653,7 +652,7 @@ function plan94(date1, date2, np)
     if i == -1
         throw(ERFAException("illegal np,  not in range(1,8) for planet"))
     elseif i == 1
-        warn("year outside range(1000:3000)")
+        @warn "year outside range(1000:3000)"
         return pv
     elseif i == 2
         throw(ERFAException("computation failed to converge"))
@@ -679,9 +678,9 @@ function pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
     if i == -1
         throw(ERFAException("system error"))
     elseif i == 1
-        warn("distance overridden")
+        @warn "distance overridden"
     elseif i == 2
-        warn("excessive velocity")
+        @warn "excessive velocity"
     elseif i == 4
         throw(ERFAException("solution didn't converge"))
     end
@@ -691,7 +690,7 @@ end
 function pn(p::AbstractArray)
     r = Ref(0.0)
     u = zeros(3)
-    ccall((:eraPn, liberfa), Void,
+    ccall((:eraPn, liberfa), Cvoid,
           (Ptr{Cdouble}, Ref{Cdouble}, Ptr{Cdouble}),
           p, r, u)
     r[], u
@@ -699,7 +698,7 @@ end
 
 function ppsp(a, s, b)
     apsb = zeros(3)
-    ccall((:eraPpsp, liberfa), Void,
+    ccall((:eraPpsp, liberfa), Cvoid,
           (Ptr{Cdouble}, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           a, s, b, apsb)
     apsb
@@ -709,7 +708,7 @@ function prec76(ep01, ep02, ep11, ep12)
     zeta = Ref(0.0)
     z = Ref(0.0)
     theta = Ref(0.0)
-    ccall((:eraPrec76, liberfa), Void,
+    ccall((:eraPrec76, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           ep01, ep02, ep11, ep12, zeta, z, theta)
     zeta[], z[], theta[]
@@ -722,7 +721,7 @@ function pv2s(pv)
     td = Ref(0.0)
     pd = Ref(0.0)
     rd = Ref(0.0)
-    ccall((:eraPv2s, liberfa), Void,
+    ccall((:eraPv2s, liberfa), Cvoid,
           (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           pv, theta, phi, r, td, pd, rd)
     theta[], phi[], r[], td[], pd[], rd[]
@@ -730,7 +729,7 @@ end
 
 function pv2p(pv)
     p = zeros(3)
-    ccall((:eraPv2p, liberfa), Void,
+    ccall((:eraPv2p, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}),
           pv, p)
     p
@@ -738,7 +737,7 @@ end
 
 function pvdpv(a, b)
     adb = zeros(2)
-    ccall((:eraPvdpv, liberfa), Void,
+    ccall((:eraPvdpv, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
           a, b, adb)
     adb
@@ -747,7 +746,7 @@ end
 function pvm(pv)
     s = Ref(0.0)
     r = Ref(0.0)
-    ccall((:eraPvm, liberfa), Void,
+    ccall((:eraPvm, liberfa), Cvoid,
           (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           pv, r, s)
     r[], s[]
@@ -766,7 +765,7 @@ function pvstar(pv)
     if i == -1
         throw(ERFAException("superluminal speed"))
     elseif i == -2
-        warn("null position vector")
+        @warn "null position vector"
         return ra[], dec[], pmr[], pmd[], px[], rv[]
     end
     ra[], dec[], pmr[], pmd[], px[], rv[]
@@ -774,7 +773,7 @@ end
 
 function pvtob(elong, phi, height, xp, yp, sp, theta)
     pv = zeros((2, 3))
-    ccall((:eraPvtob, liberfa), Void,
+    ccall((:eraPvtob, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           elong, phi, height, xp, yp, sp, theta, pv)
     pv
@@ -783,7 +782,7 @@ end
 function refco(phpa, tk, rh, wl)
     refa = Ref(0.0)
     refb = Ref(0.0)
-    ccall((:eraRefco, liberfa), Void,
+    ccall((:eraRefco, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           phpa, tk, rh, wl, refa, refb)
     refa[], refb[]
@@ -791,7 +790,7 @@ end
 
 function pvu(dt, pv)
     upv = zeros((2, 3))
-    ccall((:eraPvu, liberfa), Void,
+    ccall((:eraPvu, liberfa), Cvoid,
           (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           dt, pv, upv)
     upv
@@ -799,7 +798,7 @@ end
 
 function pvup(dt, pv)
     p = zeros(3)
-    ccall((:eraPvup, liberfa), Void,
+    ccall((:eraPvup, liberfa), Cvoid,
           (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           dt, pv, p)
     p
@@ -807,7 +806,7 @@ end
 
 function rm2v(r)
     w = zeros(3)
-    ccall((:eraRm2v, liberfa), Void,
+    ccall((:eraRm2v, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}),
           r, w)
     w
@@ -815,7 +814,7 @@ end
 
 function rv2m(w)
     r = zeros((3, 3))
-    ccall((:eraRv2m, liberfa), Void,
+    ccall((:eraRv2m, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}),
           w, r)
     r
@@ -824,7 +823,7 @@ end
 function rxr(a, b)
     atb = zeros((3, 3))
     ccall((:eraRxr, liberfa),
-          Void,
+          Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
           a, b, atb)
     atb
@@ -832,7 +831,7 @@ end
 
 function s2c(theta, phi)
     c = zeros(3)
-    ccall((:eraS2c, liberfa), Void,
+    ccall((:eraS2c, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}),
           theta, phi, c)
     c
@@ -840,7 +839,7 @@ end
 
 function s2p(theta, phi, r)
     p = zeros(3)
-    ccall((:eraS2p, liberfa), Void,
+    ccall((:eraS2p, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           theta, phi, r, p)
     p
@@ -848,7 +847,7 @@ end
 
 function s2pv(theta, phi, r, td, pd, rd)
     pv = zeros((2, 3))
-    ccall((:eraS2pv, liberfa), Void,
+    ccall((:eraS2pv, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           theta, phi, r, td, pd, rd, pv)
     pv
@@ -856,7 +855,7 @@ end
 
 function s2xpv(s1, s2, pv)
     spv = zeros((2, 3))
-    ccall((:eraS2xpv, liberfa), Void,
+    ccall((:eraS2xpv, liberfa), Cvoid,
           (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           s1, s2, pv, spv)
     spv
@@ -875,10 +874,10 @@ function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
     if i == -1
         throw(ERFAException("system error"))
     elseif i == 1
-        warn("distance overridden")
+        @warn "distance overridden"
         return ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
     elseif i == 2
-        warn("excessive velocity")
+        @warn "excessive velocity"
         return ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
     elseif i == 4
         throw(ERFAException("solution didn't converge"))
@@ -892,10 +891,10 @@ function starpv(ra, dec, pmr, pmd, px, rv)
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
               ra, dec, pmr, pmd, px, rv, pv)
     if i == 1
-        warn("distance overridden")
+        @warn "distance overridden"
         return pv
     elseif i == 2
-        warn("excessive speed ")
+        @warn "excessive speed "
         return pv
     elseif i == 4
         throw(ERFAException("solution didn't converge"))
@@ -905,7 +904,7 @@ end
 
 function sxp(s, p)
     sp = zeros(3)
-    ccall((:eraSxp, liberfa), Void,
+    ccall((:eraSxp, liberfa), Cvoid,
           (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           s, p, sp)
     sp
@@ -913,7 +912,7 @@ end
 
 function sxpv(s, pv)
     spv = zeros((2, 3))
-    ccall((:eraSxpv, liberfa), Void,
+    ccall((:eraSxpv, liberfa), Cvoid,
           (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           s, pv, spv)
     spv
@@ -921,7 +920,7 @@ end
 
 function tr(r)
     rt = zeros((3, 3))
-    ccall((:eraTr, liberfa), Void,
+    ccall((:eraTr, liberfa), Cvoid,
           (Ptr{Cdouble}, Ptr{Cdouble}),
           r, rt)
     rt
@@ -930,7 +929,7 @@ end
 function xy06(date1, date2)
     x = Ref(0.0)
     y = Ref(0.0)
-    ccall((:eraXy06, liberfa), Void,
+    ccall((:eraXy06, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           date1, date2, x, y)
     x[], y[]
@@ -962,7 +961,7 @@ for name in ("a2af",
         function ($f)(ndp, a)
             s = Ref{Cchar}('+')
             i = zeros(Cint, 4)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cint, Cdouble, Ptr{Cchar}, Ptr{Cint}),
                   ndp, a, s, i)
             Char(s[]), i[1], i[2], i[3], i[4]
@@ -991,7 +990,7 @@ for name in ("bp00",
             rp = zeros((3, 3))
             rbp = zeros((3, 3))
             ccall(($fc, liberfa),
-                  Void,
+                  Cvoid,
                   (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   a, b, rb, rp, rbp)
             rb, rp, rbp
@@ -1007,7 +1006,7 @@ for name in ("c2ixys",
     @eval begin
         function ($f)(x, y, s)
             r = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
                   x, y, s, r)
             r
@@ -1022,7 +1021,7 @@ for name in ("c2tcio",
     @eval begin
         function ($f)(rc2i, era, rpom)
             rc2t = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Ptr{Cdouble}, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
                   rc2i, era, rpom, rc2t)
             rc2t
@@ -1037,7 +1036,7 @@ for name in ("c2ixy",
     @eval begin
         function ($f)(x, y, s, t)
             r = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
                   x, y, s, t, r)
             r
@@ -1053,7 +1052,7 @@ for name in ("c2t00a",
     @eval begin
         function ($f)(tta, ttb, uta, utb, xp, yp)
             rc2t = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
                   tta, ttb, uta, utb, xp, yp, rc2t)
             rc2t
@@ -1069,7 +1068,7 @@ for name in ("c2tpe",
     @eval begin
         function ($f)(tta, ttb, uta, utb, x, y, xp, yp)
             rc2t = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
                   tta, ttb, uta, utb, x, y, xp, yp, rc2t)
             rc2t
@@ -1097,7 +1096,7 @@ for name in ("c2i00a",
     @eval begin
         function ($f)(a, b)
             r = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ptr{Cdouble}),
                   a, b, r)
             r
@@ -1117,7 +1116,7 @@ for name in ("pn00",
             rbp = zeros((3, 3))
             rn = zeros((3, 3))
             rbpn = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
             epsa[], rb, rp, rbp, rn, rbpn
@@ -1133,7 +1132,7 @@ for name in ("pmp",
     @eval begin
         function ($f)(a, b)
             ab = zeros(3)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   a, b, ab)
             ab
@@ -1149,7 +1148,7 @@ for name in ("pvmpv",
     @eval begin
         function ($f)(a, b)
             ab = zeros((2, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   a, b, ab)
             ab
@@ -1172,7 +1171,7 @@ for name in ("pn00a",
             rbp = zeros((3, 3))
             rn = zeros((3, 3))
             rbpn = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
             dpsi[], deps[], epsa[], rb, rp, rbp, rn, rbpn
@@ -1193,7 +1192,7 @@ for name in ("nut00a",
         function ($f)(a, b)
             r1 = Ref(0.0)
             r2 = Ref(0.0)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, r1, r2)
             r1[], r2[]
@@ -1213,7 +1212,7 @@ for name in ("fk52h",
             dd = Ref(0.0)
             p = Ref(0.0)
             v = Ref(0.0)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   ra, dec, dra, ddec, px, rv, r, d, dr, dd, p, v)
             r[], d[], dr[], dd[], p[], v[]
@@ -1306,7 +1305,7 @@ for name in ("epb2jd",
         function ($f)(d)
             r1 = Ref(0.0)
             r2 = Ref(0.0)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   d, r1, r2)
             r1[], r2[]
@@ -1367,7 +1366,7 @@ for name in ("rxp",
     @eval begin
         function ($f)(r, p)
             rp = zeros(3)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   r, p, rp)
             rp
@@ -1382,7 +1381,7 @@ for name in ("rx",
     fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, r)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Ptr{Cdouble}),
                   a, r)
             r
@@ -1397,7 +1396,7 @@ for name in ("rxpv",
     @eval begin
         function ($f)(r, p)
             rp = zeros((2, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   r, p, rp)
             rp
@@ -1415,7 +1414,7 @@ for name in ("xys00a",
             x = Ref(0.0)
             y = Ref(0.0)
             s = Ref(0.0)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, x, y, s)
             x[], y[], s[]
@@ -1431,7 +1430,7 @@ for name in ("ltecm",
     @eval begin
         function ($f)(epj)
             rp = zeros((3, 3))
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Ptr{Cdouble}),
                   epj, rp)
             rp
@@ -1446,7 +1445,7 @@ for name in ("ltpecl",
     @eval begin
         function ($f)(epj)
             vec = zeros(3)
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Ptr{Cdouble}),
                   epj, vec)
             vec
@@ -1462,7 +1461,7 @@ for name in ("eceq06",
         function ($f)(date1, date2, d1, d2)
             r1 = [0.0]
             r2 = [0.0]
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
                   date1, date2, d1, d2, r1, r2)
             r1[1], r2[1]
@@ -1478,7 +1477,7 @@ for name in ("lteceq",
         function ($f)(epj, d1, d2)
             r1 = [0.0]
             r2 = [0.0]
-            ccall(($fc, liberfa), Void,
+            ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
                   epj, d1, d2, r1, r2)
             r1[1], r2[1]

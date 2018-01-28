@@ -2,10 +2,6 @@ __precompile__()
 
 module ERFA
 
-if VERSION >= v"0.7.0-DEV.2915"
-    using Unicode: titlecase
-end
-
 const depsfile = joinpath(dirname(dirname(@__FILE__)), "deps", "deps.jl")
 if isfile(depsfile)
     include(depsfile)
@@ -937,10 +933,10 @@ function xy06(date1, date2)
 end
 
 for name in ("af2a",
-          "tf2a",
-          "tf2d")
+             "tf2a",
+             "tf2d")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(s, ideg, iamin, asec)
             rad = Ref(0.0)
@@ -954,10 +950,10 @@ for name in ("af2a",
 end
 
 for name in ("a2af",
-          "a2tf",
-          "d2tf")
+             "a2tf",
+             "d2tf")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(ndp, a)
             s = Vector{UInt8}(1)
@@ -972,9 +968,9 @@ for name in ("a2af",
 end
 
 for name in ("anp",
-          "anpm")
+             "anpm")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a)
             ccall(($fc, liberfa), Cdouble, (Cdouble,), a)
@@ -983,9 +979,9 @@ for name in ("anp",
 end
 
 for name in ("bp00",
-          "bp06")
+             "bp06")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b)
             rb = zeros((3, 3))
@@ -1002,9 +998,9 @@ end
 
 
 for name in ("c2ixys",
-          "pom00")
+             "pom00")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(x, y, s)
             r = zeros((3, 3))
@@ -1017,9 +1013,9 @@ for name in ("c2ixys",
 end
 
 for name in ("c2tcio",
-          "c2teqx")
+             "c2teqx")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(rc2i, era, rpom)
             rc2t = zeros((3, 3))
@@ -1032,9 +1028,9 @@ for name in ("c2tcio",
 end
 
 for name in ("c2ixy",
-          "fw2m")
+             "fw2m")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(x, y, s, t)
             r = zeros((3, 3))
@@ -1047,10 +1043,10 @@ for name in ("c2ixy",
 end
 
 for name in ("c2t00a",
-          "c2t00b",
-          "c2t06a")
+             "c2t00b",
+             "c2t06a")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(tta, ttb, uta, utb, xp, yp)
             rc2t = zeros((3, 3))
@@ -1064,9 +1060,9 @@ end
 
 
 for name in ("c2tpe",
-          "c2txy")
+             "c2txy")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(tta, ttb, uta, utb, x, y, xp, yp)
             rc2t = zeros((3, 3))
@@ -1079,22 +1075,22 @@ for name in ("c2tpe",
 end
 
 for name in ("c2i00a",
-          "c2i00b",
-          "c2i06a",
-          "ecm06",
-          "num00a",
-          "num00b",
-          "num06a",
-          "nutm80",
-          "pmat00",
-          "pmat06",
-          "pmat76",
-          "pnm00a",
-          "pnm00b",
-          "pnm06a",
-          "pnm80")
+             "c2i00b",
+             "c2i06a",
+             "ecm06",
+             "num00a",
+             "num00b",
+             "num06a",
+             "nutm80",
+             "pmat00",
+             "pmat06",
+             "pmat76",
+             "pnm00a",
+             "pnm00b",
+             "pnm06a",
+             "pnm80")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b)
             r = zeros((3, 3))
@@ -1107,9 +1103,9 @@ for name in ("c2i00a",
 end
 
 for name in ("pn00",
-          "pn06")
+             "pn06")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(date1, date2, dpsi, deps)
             epsa = Ref(0.0)
@@ -1127,10 +1123,10 @@ for name in ("pn00",
 end
 
 for name in ("pmp",
-          "ppp",
-          "pxp")
+             "ppp",
+             "pxp")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b)
             ab = zeros(3)
@@ -1143,10 +1139,10 @@ for name in ("pmp",
 end
 
 for name in ("pvmpv",
-          "pvppv",
-          "pvxpv")
+             "pvppv",
+             "pvxpv")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b)
             ab = zeros((2, 3))
@@ -1159,10 +1155,10 @@ for name in ("pvmpv",
 end
 
 for name in ("pn00a",
-          "pn00b",
-          "pn06a")
+             "pn00b",
+             "pn06a")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(date1, date2)
             dpsi = Ref(0.0)
@@ -1182,14 +1178,14 @@ for name in ("pn00a",
 end
 
 for name in ("nut00a",
-          "nut00b",
-          "nut06a",
-          "nut80",
-          "pr00",
-          "g2icrs",
-          "icrs2g")
+             "nut00b",
+             "nut06a",
+             "nut80",
+             "pr00",
+             "g2icrs",
+             "icrs2g")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b)
             r1 = Ref(0.0)
@@ -1203,9 +1199,9 @@ for name in ("nut00a",
 end
 
 for name in ("fk52h",
-          "h2fk5")
+             "h2fk5")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(ra, dec, dra, ddec, px, rv)
             r = Ref(0.0)
@@ -1223,69 +1219,69 @@ for name in ("fk52h",
 end
 
 for name in ("fad03",
-          "fae03",
-          "faf03",
-          "faju03",
-          "fal03",
-          "falp03",
-          "fama03",
-          "fame03",
-          "fane03",
-          "faom03",
-          "fapa03",
-          "fasa03",
-          "faur03",
-          "fave03")
+             "fae03",
+             "faf03",
+             "faju03",
+             "fal03",
+             "falp03",
+             "fama03",
+             "fame03",
+             "fane03",
+             "faom03",
+             "fapa03",
+             "fasa03",
+             "faur03",
+             "fave03")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval ($f)(d) = ccall(($fc, liberfa), Cdouble, (Cdouble,), d)
 end
 
 for name in ("ee00",
-          "gmst00",
-          "gmst06",
-          "gst00a",
-          "gst06a",
-          "s00",
-          "s06")
+             "gmst00",
+             "gmst06",
+             "gst00a",
+             "gst06a",
+             "s00",
+             "s06")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval ($f)(d1, d2, t1, t2) = ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), d1, d2, t1, t2)
 end
 
 for name in ("ee00a",
-          "ee00b",
-          "ee06a",
-          "eect00",
-          "eo06a",
-          "epb",
-          "epj",
-          "eqeq94",
-          "era00",
-          "gmst82",
-          "gst00b",
-          "gst94",
-          "obl06",
-          "obl80",
-          "s00a",
-          "s00b",
-          "s06a",
-          "sp00")
+             "ee00b",
+             "ee06a",
+             "eect00",
+             "eo06a",
+             "epb",
+             "epj",
+             "eqeq94",
+             "era00",
+             "gmst82",
+             "gst00b",
+             "gst94",
+             "obl06",
+             "obl80",
+             "s00a",
+             "s00b",
+             "s06a",
+             "sp00")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval ($f)(d1, d2) = ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble), d1, d2)
 end
 
 for name in ("taitt",
-          "taiutc",
-          "tcbtdb",
-          "tcgtt",
-          "tdbtcb",
-          "tttai",
-          "tttcg",
-          "utctai")
+             "taiutc",
+             "tcbtdb",
+             "tcgtt",
+             "tdbtcb",
+             "tttai",
+             "tttcg",
+             "utctai")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b)
             r1 = Ref(0.0)
@@ -1300,9 +1296,9 @@ for name in ("taitt",
 end
 
 for name in ("epb2jd",
-          "epj2jd")
+             "epj2jd")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(d)
             r1 = Ref(0.0)
@@ -1316,15 +1312,15 @@ for name in ("epb2jd",
 end
 
 for name in ("taiut1",
-          "tdbtt",
-          "tttdb",
-          "ttut1",
-          "ut1tai",
-          "ut1tt",
-          "ut1utc",
-          "utcut1")
+             "tdbtt",
+             "tttdb",
+             "ttut1",
+             "ut1tai",
+             "ut1tt",
+             "ut1utc",
+             "utcut1")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b, c)
             r1 = Ref(0.0)
@@ -1339,10 +1335,10 @@ for name in ("taiut1",
 end
 
 for name in ("pap",
-          "pdp",
-          "sepp")
+             "pdp",
+             "sepp")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, b)
             ccall(($fc, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
@@ -1351,9 +1347,9 @@ for name in ("pap",
 end
 
 for name in ("pas",
-          "seps")
+             "seps")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(al, ap, bl, bp)
             ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), al, ap, bl, bp)
@@ -1362,9 +1358,9 @@ for name in ("pas",
 end
 
 for name in ("rxp",
-          "trxp")
+             "trxp")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(r, p)
             rp = zeros(3)
@@ -1377,10 +1373,10 @@ for name in ("rxp",
 end
 
 for name in ("rx",
-          "ry",
-          "rz")
+             "ry",
+             "rz")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(a, r)
             ccall(($fc, liberfa), Void,
@@ -1392,9 +1388,9 @@ for name in ("rx",
 end
 
 for name in ("rxpv",
-          "trxpv")
+             "trxpv")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(r, p)
             rp = zeros((2, 3))
@@ -1407,10 +1403,10 @@ for name in ("rxpv",
 end
 
 for name in ("xys00a",
-          "xys00b",
-          "xys06a")
+             "xys00b",
+             "xys06a")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(date1, date2)
             x = Ref(0.0)
@@ -1425,10 +1421,10 @@ for name in ("xys00a",
 end
 
 for name in ("ltecm",
-          "ltp",
-          "ltpb")
+             "ltp",
+             "ltpb")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(epj)
             rp = zeros((3, 3))
@@ -1441,9 +1437,9 @@ for name in ("ltecm",
 end
 
 for name in ("ltpecl",
-          "ltpequ")
+             "ltpequ")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(epj)
             vec = zeros(3)
@@ -1456,9 +1452,9 @@ for name in ("ltpecl",
 end
 
 for name in ("eceq06",
-          "eqec06")
+             "eqec06")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(date1, date2, d1, d2)
             r1 = [0.0]
@@ -1472,9 +1468,9 @@ for name in ("eceq06",
 end
 
 for name in ("lteceq",
-          "lteqec")
+             "lteqec")
     f = Symbol(name)
-    fc = "era" * titlecase(name)
+    fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(epj, d1, d2)
             r1 = [0.0]

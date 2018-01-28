@@ -9,6 +9,10 @@ else
     error("ERFA is not properly installed. Please run Pkg.build(\"ERFA\")")
 end
 
+if VERSION >= v"0.7.0-DEV.2915"
+    using Unicode: ucfirst
+end
+
 include("erfa_common.jl")
 include("deprecated.jl")
 
@@ -263,11 +267,11 @@ end
 function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
     rc = Ref(0.0)
     dc = Ref(0.0)
-    if !(typeofcoordinates in ('R', 'r', 'H', 'h', 'A', 'a'))
-        typeofcoordinates = 'A'
+    if !(typeofcoordinates in ("R", "r", "H", "h", "A", "a"))
+        typeofcoordinates = "A"
     end
     i = ccall((:eraAtoc13, liberfa), Cint,
-              (Ref{Char}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+              (Cstring, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, rc, dc)
     if i == -1
         throw(ERFAException("unacceptable date"))
@@ -281,7 +285,7 @@ function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
     ri = Ref(0.0)
     di = Ref(0.0)
     i = ccall((:eraAtoi13, liberfa), Cint,
-              (Ref{Char}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+              (Cstring, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, ri, di)
     if i == -1
         throw(ERFAException("unacceptable date"))
@@ -295,7 +299,7 @@ function atoiq(typeofcoordinates, ob1, ob2, astrom)
     ri = Ref(0.0)
     di = Ref(0.0)
     ccall((:eraAtoiq, liberfa),
-          Void, (Ref{Char}, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
+          Void, (Cstring, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           typeofcoordinates, ob1, ob2, astrom, ri, di)
     ri[], di[]
 end
@@ -941,7 +945,7 @@ for name in ("af2a",
         function ($f)(s, ideg, iamin, asec)
             rad = Ref(0.0)
             i = ccall(($fc, liberfa), Cint,
-                       (Cchar, Cint, Cint, Cdouble, Ref{Cdouble}),
+                      (Cchar, Cint, Cint, Cdouble, Ref{Cdouble}),
                        s, ideg, iamin, asec, rad)
             @assert i == 0
             rad[]
@@ -956,13 +960,12 @@ for name in ("a2af",
     fc = "era" * ucfirst(name)
     @eval begin
         function ($f)(ndp, a)
-            s = Vector{UInt8}(1)
-            s[1] = '+'
-            i = Int32[0, 0, 0, 0]
+            s = Ref{Cchar}('+')
+            i = zeros(Cint, 4)
             ccall(($fc, liberfa), Void,
-                  (Cint, Cdouble, Ptr{UInt8}, Ptr{Cint}),
+                  (Cint, Cdouble, Ptr{Cchar}, Ptr{Cint}),
                   ndp, a, s, i)
-            Char(s[1]), i[1], i[2], i[3], i[4]
+            Char(s[]), i[1], i[2], i[3], i[4]
         end
     end
 end

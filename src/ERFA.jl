@@ -2,7 +2,9 @@ __precompile__()
 
 module ERFA
 
-import Base.getindex
+if VERSION >= v"0.7.0-DEV.2915"
+    using Unicode: titlecase
+end
 
 const depsfile = joinpath(dirname(dirname(@__FILE__)), "deps", "deps.jl")
 if isfile(depsfile)

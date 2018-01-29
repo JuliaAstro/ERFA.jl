@@ -1,66 +1,41 @@
+const DPI = 3.141592653589793
+const D2PI = 6.283185307179586
+const DR2D = 57.29577951308232
+const DD2R = 0.017453292519943295
+const DR2AS = 206264.80624709636
+const DAS2R = 4.84813681109536e-6
+const DS2R = 7.27220521664304e-5
+const TURNAS = 1.296e6
+const DMAS2R = DAS2R / 1000.0
+const DTY = 365.242198781
+const DAYSEC = 86400.0
+const DJY = 365.25
+const DJC = 36525.0
+const DJM = 365250.0
+const DJ00 = 2.451545e6
+const DJM0 = 2.4000005e6
+const DJM00 = 51544.5
+const DJM77 = 43144.0
+const TTMTAI = 32.184
+const DAU = 1.4959787e11
+const CMPS = 2.99792458e8
+const AULT = 499.004782
+const DC = DAYSEC / AULT
+const ELG = 6.969290134e-10
+const ELB = 1.550519768e-8
+const TDB0 = -6.55e-5
+const SRS = 1.97412574336e-8
 
-const ERFA_DPI = 3.141592653589793
-const ERFA_D2PI = 6.283185307179586
-const ERFA_DR2D = 57.29577951308232
-const ERFA_DD2R = 0.017453292519943295
-const ERFA_DR2AS = 206264.80624709636
-const ERFA_DAS2R = 4.84813681109536e-6
-const ERFA_DS2R = 7.27220521664304e-5
-const ERFA_TURNAS = 1.296e6
-const ERFA_DMAS2R = ERFA_DAS2R / 1000.0
-const ERFA_DTY = 365.242198781
-const ERFA_DAYSEC = 86400.0
-const ERFA_DJY = 365.25
-const ERFA_DJC = 36525.0
-const ERFA_DJM = 365250.0
-const ERFA_DJ00 = 2.451545e6
-const ERFA_DJM0 = 2.4000005e6
-const ERFA_DJM00 = 51544.5
-const ERFA_DJM77 = 43144.0
-const ERFA_TTMTAI = 32.184
-const ERFA_DAU = 1.4959787e11
-const ERFA_CMPS = 2.99792458e8
-const ERFA_AULT = 499.004782
-const ERFA_DC = ERFA_DAYSEC / ERFA_AULT
-const ERFA_ELG = 6.969290134e-10
-const ERFA_ELB = 1.550519768e-8
-const ERFA_TDB0 = -6.55e-5
-const ERFA_SRS = 1.97412574336e-8
+@enum Ellipsoid WGS84 = 1 GRS80 = 2 WGS72 = 3
 
-# Skipping MacroDefinition: ERFA_DINT ( A ) ( ( A ) < 0.0 ? ceil ( A ) : floor ( A ) )
-# Skipping MacroDefinition: ERFA_DNINT ( A ) ( ( A ) < 0.0 ? ceil ( ( A ) - 0.5 ) : floor ( ( A ) + 0.5 ) )
-# Skipping MacroDefinition: ERFA_DSIGN ( A , B ) ( ( B ) < 0.0 ? - fabs ( A ) : fabs ( A ) )
-# Skipping MacroDefinition: ERFA_GMAX ( A , B ) ( ( ( A ) > ( B ) ) ? ( A ) : ( B ) )
-# Skipping MacroDefinition: ERFA_GMIN ( A , B ) ( ( ( A ) < ( B ) ) ? ( A ) : ( B ) )
-
-const ERFA_WGS84 = 1
-const ERFA_GRS80 = 2
-const ERFA_WGS72 = 3
-
-immutable Array_3_Cdouble
-    d1::Cdouble
-    d2::Cdouble
-    d3::Cdouble
-end
-
-zero(::Type{Array_3_Cdouble}) = Array_3_Cdouble(fill(zero(Cdouble),3)...)
-
-immutable Array_3_Array_3_Cdouble
-    d1::Array_3_Cdouble
-    d2::Array_3_Cdouble
-    d3::Array_3_Cdouble
-end
-
-zero(::Type{Array_3_Array_3_Cdouble}) = Array_3_Array_3_Cdouble(fill(zero(Array_3_Cdouble),3)...)
-
-type eraASTROM
+mutable struct ASTROM
     pmt::Cdouble
-    eb::Array_3_Cdouble
-    eh::Array_3_Cdouble
+    eb::NTuple{3,Cdouble}
+    eh::NTuple{3,Cdouble}
     em::Cdouble
-    v::Array_3_Cdouble
+    v::NTuple{3,Cdouble}
     bm1::Cdouble
-    bpn::Array_3_Array_3_Cdouble
+    bpn::NTuple{9,Cdouble}
     along::Cdouble
     phi::Cdouble
     xpl::Cdouble
@@ -73,31 +48,15 @@ type eraASTROM
     refb::Cdouble
 end
 
-immutable Array_2_Array_3_Cdouble
-    d1::Array_3_Cdouble
-    d2::Array_3_Cdouble
-end
-
-zero(::Type{Array_2_Array_3_Cdouble}) = Array_2_Array_3_Cdouble(fill(zero(Array_3_Cdouble),2)...)
-
-immutable eraLDBODY
+struct LDBODY
     bm::Cdouble
     dl::Cdouble
-    pv::Array_2_Array_3_Cdouble
+    pv::NTuple{6,Cdouble}
 end
 
-immutable Array_4_Cint
-    d1::Cint
-    d2::Cint
-    d3::Cint
-    d4::Cint
+struct ERFAExcpetion <: Exception
+    msg::String
 end
 
-zero(::Type{Array_4_Cint}) = Array_4_Cint(fill(zero(Cint),4)...)
+Base.showerror(io::IO, ex::ERFAExcpetion) = print(io, ex.msg)
 
-immutable Array_2_Cdouble
-    d1::Cdouble
-    d2::Cdouble
-end
-
-zero(::Type{Array_2_Cdouble}) = Array_2_Cdouble(fill(zero(Cdouble),2)...)

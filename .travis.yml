@@ -5,11 +5,14 @@ os:
 julia:
   - nightly
   - 0.6
+matrix:
+  allow_failures:
+    - julia: nightly
 notifications:
   email: false
-script:
-  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-  - julia -e 'Pkg.clone(pwd()); Pkg.build("ERFA"); Pkg.test("ERFA"; coverage=true)';
+# script:
+#   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+#   - julia -e 'Pkg.clone(pwd()); Pkg.build("ERFA"); Pkg.test("ERFA"; coverage=true)';
 after_success:
   - julia -e 'cd(Pkg.dir("ERFA")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())';
-#  - julia -e 'cd(Pkg.dir("ERFA")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())';
+    #  - julia -e 'cd(Pkg.dir("ERFA")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())';

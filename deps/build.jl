@@ -3,9 +3,9 @@ using BinaryProvider
 # This is where all binaries will get installed
 const prefix = Prefix(!isempty(ARGS) ? ARGS[1] : joinpath(@__DIR__,"usr"))
 
-liberfa = LibraryProduct(prefix, "liberfa")
-
-products = [liberfa]
+products = [
+    LibraryProduct(prefix, "liberfa", :liberfa)
+]
 
 # Download binaries from hosted location
 bin_prefix = "https://github.com/JuliaAstro/ERFABuilder/releases/download/v1.4.0"
@@ -29,10 +29,8 @@ if platform_key() in keys(download_info)
         url, tarball_hash = download_info[platform_key()]
         install(url, tarball_hash; prefix=prefix, force=true, verbose=true)
     end
-    # Finally, write out a deps.jl file that will contain mappings for each
-    # named product here: (there will be a "libfoo" variable and a "fooifier"
-    # variable, etc...)
-    @write_deps_file liberfa
+    # Finally write out a deps.jl file
+    write_deps_file(joinpath(@__DIR__, "deps.jl"), products)
 else
     error("Your platform $(Sys.MACHINE) is not supported by this package!")
 end

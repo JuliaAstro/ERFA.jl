@@ -1,5 +1,5 @@
 """
-    fk5hip(dr, dd)
+    fk5hip()
 
 FK5 to Hipparcos rotation and spin.
 
@@ -44,7 +44,7 @@ function fk5hip()
 end
 
 """
-    fk5hz(dr, dd)
+    fk5hz(r5, d5, date1, date2)
 
 Transform an FK5 (J2000.0) star position into the system of the
 Hipparcos catalogue, assuming zero Hipparcos proper motion.
@@ -122,7 +122,7 @@ function fk5hz(r5, d5, date1, date2)
 end
 
 """
-    fw2xy(dr, dd)
+    fw2xy(gamb, phib, psi, eps)
 
 CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
@@ -181,9 +181,9 @@ function fw2xy(gamb, phib, psi, eps)
 end
 
 """
-    fad03(dr, dd)
+    fad03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
+Fundamental argument, IERS Conventions (2003):
 
 mean elongation of the Moon from the Sun.
 
@@ -215,11 +215,9 @@ mean elongation of the Moon from the Sun.
 fad03
 
 """
-    fae03(dr, dd)
+    fae03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Earth.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Earth.
 
 ### Given ###
 
@@ -227,7 +225,7 @@ mean longitude of Earth.
 
 ### Returned (function value) ###
 
-         double    mean longitude of Earth, radians (Note 2)
+* Mean longitude of Earth, radians (Note 2)
 
 ### Notes ###
 
@@ -252,12 +250,10 @@ mean longitude of Earth.
 fae03
 
 """
-    faf03(dr, dd)
+    faf03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of the Moon minus mean longitude of the ascending
-node.
+Fundamental argument, IERS Conventions (2003): Mean longitude of the Moon minus
+mean longitude of the ascending node.
 
 ### Given ###
 
@@ -287,11 +283,9 @@ node.
 faf03
 
 """
-    faju03(dr, dd)
+    faju03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Jupiter.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Jupiter.
 
 ### Given ###
 
@@ -299,7 +293,7 @@ mean longitude of Jupiter.
 
 ### Returned (function value) ###
 
-         double    mean longitude of Jupiter, radians (Note 2)
+* Mean longitude of Jupiter, radians (Note 2)
 
 ### Notes ###
 
@@ -324,9 +318,9 @@ mean longitude of Jupiter.
 faju03
 
 """
-    fal03(dr, dd)
+    fal03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
+Fundamental argument, IERS Conventions (2003):
 
 mean anomaly of the Moon.
 
@@ -358,9 +352,9 @@ mean anomaly of the Moon.
 fal03
 
 """
-    falp03(dr, dd)
+    falp03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
+Fundamental argument, IERS Conventions (2003):
 
 mean anomaly of the Sun.
 
@@ -392,11 +386,9 @@ mean anomaly of the Sun.
 falp03
 
 """
-    fama03(dr, dd)
+    fama03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Mars.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Mars.
 
 ### Given ###
 
@@ -404,7 +396,7 @@ mean longitude of Mars.
 
 ### Returned (function value) ###
 
-         double    mean longitude of Mars, radians (Note 2)
+* Mean longitude of Mars, radians (Note 2)
 
 ### Notes ###
 
@@ -429,11 +421,9 @@ mean longitude of Mars.
 fama03
 
 """
-    fame03(dr, dd)
+    fame03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Mercury.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Mercury.
 
 ### Given ###
 
@@ -441,7 +431,7 @@ mean longitude of Mercury.
 
 ### Returned (function value) ###
 
-         double    mean longitude of Mercury, radians (Note 2)
+* Mean longitude of Mercury, radians (Note 2)
 
 ### Notes ###
 
@@ -466,11 +456,9 @@ mean longitude of Mercury.
 fame03
 
 """
-    fane03(dr, dd)
+    fane03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Neptune.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Neptune.
 
 ### Given ###
 
@@ -478,7 +466,7 @@ mean longitude of Neptune.
 
 ### Returned (function value) ###
 
-         double    mean longitude of Neptune, radians (Note 2)
+* Mean longitude of Neptune, radians (Note 2)
 
 ### Notes ###
 
@@ -500,11 +488,9 @@ mean longitude of Neptune.
 fane03
 
 """
-    faom03(dr, dd)
+    faom03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of the Moon's ascending node.
+Fundamental argument, IERS Conventions (2003): Mean longitude of the Moon's ascending node.
 
 ### Given ###
 
@@ -534,9 +520,9 @@ mean longitude of the Moon's ascending node.
 faom03
 
 """
-    fapa03(dr, dd)
+    fapa03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
+Fundamental argument, IERS Conventions (2003):
 
 general accumulated precession in longitude.
 
@@ -572,11 +558,9 @@ general accumulated precession in longitude.
 fapa03
 
 """
-    fasa03(dr, dd)
+    fasa03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Saturn.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Saturn.
 
 ### Given ###
 
@@ -584,7 +568,7 @@ mean longitude of Saturn.
 
 ### Returned (function value) ###
 
-         double    mean longitude of Saturn, radians (Note 2)
+* Mean longitude of Saturn, radians (Note 2)
 
 ### Notes ###
 
@@ -609,11 +593,9 @@ mean longitude of Saturn.
 fasa03
 
 """
-    faur03(dr, dd)
+    faur03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Uranus.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Uranus.
 
 ### Given ###
 
@@ -621,7 +603,7 @@ mean longitude of Uranus.
 
 ### Returned  (function value) ###
 
-         double    mean longitude of Uranus, radians (Note 2)
+* Mean longitude of Uranus, radians (Note 2)
 
 ### Notes ###
 
@@ -643,11 +625,9 @@ mean longitude of Uranus.
 faur03
 
 """
-    fave03(dr, dd)
+    fave03(t)
 
-### Fundamental argument, IERS Conventions (2003) ###
-
-mean longitude of Venus.
+Fundamental argument, IERS Conventions (2003): Mean longitude of Venus.
 
 ### Given ###
 
@@ -655,7 +635,7 @@ mean longitude of Venus.
 
 ### Returned (function value) ###
 
-         double    mean longitude of Venus, radians (Note 2)
+* Mean longitude of Venus, radians (Note 2)
 
 ### Notes ###
 
@@ -699,27 +679,27 @@ for name in ("fad03",
 end
 
 """
-    fk52h(dr, dd)
+    fk52h(ra, dec, dra, ddec, px, rv)
 
 Transform FK5 (J2000.0) star data into the Hipparcos system.
 
 ### Given (all FK5, equinox J2000.0, epoch J2000.0) ###
 
-   r5      double    RA (radians)
-   d5      double    Dec (radians)
-   dr5     double    proper motion in RA (dRA/dt, rad/Jyear)
-   dd5     double    proper motion in Dec (dDec/dt, rad/Jyear)
-   px5     double    parallax (arcsec)
-   rv5     double    radial velocity (km/s, positive = receding)
+* `r5`: RA (radians)
+* `d5`: Dec (radians)
+* `dr5`: Proper motion in RA (dRA/dt, rad/Jyear)
+* `dd5`: Proper motion in Dec (dDec/dt, rad/Jyear)
+* `px5`: Parallax (arcsec)
+* `rv5`: Radial velocity (km/s, positive = receding)
 
 ### Returned (all Hipparcos, epoch J2000.0) ###
 
-   rh      double    RA (radians)
-   dh      double    Dec (radians)
-   drh     double    proper motion in RA (dRA/dt, rad/Jyear)
-   ddh     double    proper motion in Dec (dDec/dt, rad/Jyear)
-   pxh     double    parallax (arcsec)
-   rvh     double    radial velocity (km/s, positive = receding)
+* `rh`: RA (radians)
+* `dh`: Dec (radians)
+* `drh`: proper motion in RA (dRA/dt, rad/Jyear)
+* `ddh`: proper motion in Dec (dDec/dt, rad/Jyear)
+* `pxh`: parallax (arcsec)
+* `rvh`: radial velocity (km/s, positive = receding)
 
 ### Notes ###
 
@@ -763,7 +743,7 @@ function fk52h(ra, dec, dra, ddec, px, rv)
 end
 
 """
-    fw2m(dr, dd)
+    fw2m(x, y, s, t)
 
 Form rotation matrix given the Fukushima-Williams angles.
 

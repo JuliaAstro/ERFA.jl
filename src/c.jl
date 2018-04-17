@@ -1,5 +1,5 @@
 """
-    c2ibpn(dr, dd)
+    c2ibpn(date1, date2, rbpn)
 
 Form the celestial-to-intermediate matrix for a given date given
 the bias-precession-nutation matrix.  IAU 2000.
@@ -79,7 +79,7 @@ function c2ibpn(date1, date2, rbpn)
 end
 
 """
-    c2s(dr, dd)
+    c2s(p)
 
 P-vector to spherical coordinates.
 
@@ -111,7 +111,7 @@ function c2s(p)
 end
 
 """
-    cal2jd(dr, dd)
+    cal2jd(iy, imo, id)
 
 Gregorian Calendar to Julian Date.
 
@@ -123,14 +123,6 @@ Gregorian Calendar to Julian Date.
 
 * `djm0`: MJD zero-point: always 2400000.5
 * `djm`: Modified Julian Date for 0 hrs
-
-### Returned (function value) ###
-
-             int     status:
-                         0 = OK
-                        -1 = bad year   (Note 3: JD not computed)
-                        -2 = bad month  (JD not computed)
-                        -3 = bad day    (JD computed)
 
 ### Notes ###
 
@@ -160,12 +152,18 @@ function cal2jd(iy, imo, id)
     i = ccall((:eraCal2jd, liberfa), Cint,
               (Cint, Cint, Cint, Ref{Cdouble}, Ref{Cdouble}),
               iy, imo, id, r1, r2)
-    @assert i == 0
+    if i == -1
+        throw(ERFAExcpetion("bad year"))
+    elseif i == -2
+        throw(ERFAExcpetion("bad month"))
+    elseif i == -3
+        throw(ERFAExcpetion("bad day"))
+    end
     r1[], r2[]
 end
 
 """
-    c2tcio(dr, dd)
+    c2tcio(rc2i, era, rpom)
 
 Assemble the celestial to terrestrial matrix from CIO-based
 components (the celestial-to-intermediate matrix, the Earth Rotation
@@ -219,7 +217,7 @@ Angle and the polar motion matrix).
 c2tcio
 
 """
-    c2teqx(dr, dd)
+    c2teqx(rc2i, era, rpom)
 
 Assemble the celestial to terrestrial matrix from equinox-based
 components (the celestial-to-true matrix, the Greenwich Apparent
@@ -288,7 +286,7 @@ for name in ("c2tcio",
 end
 
 """
-    c2t00a(dr, dd)
+    c2t00a(tta, ttb, uta, utb, xp, yp)
 
 Form the celestial to terrestrial matrix given the date, the UT1 and
 the polar motion, using the IAU 2000A nutation model.
@@ -364,7 +362,7 @@ the polar motion, using the IAU 2000A nutation model.
 c2t00a
 
 """
-    c2t00b(dr, dd)
+    c2t00b(tta, ttb, uta, utb, xp, yp)
 
 Form the celestial to terrestrial matrix given the date, the UT1 and
 the polar motion, using the IAU 2000B nutation model.
@@ -439,7 +437,7 @@ the polar motion, using the IAU 2000B nutation model.
 c2t00b
 
 """
-    c2t06a(dr, dd)
+    c2t06a(tta, ttb, uta, utb, xp, yp)
 
 Form the celestial to terrestrial matrix given the date, the UT1 and
 the polar motion, using the IAU 2006 precession and IAU 2000A
@@ -529,7 +527,7 @@ for name in ("c2t00a",
 end
 
 """
-    c2tpe(dr, dd)
+    c2tpe(tta, ttb, uta, utb, x, y, xp, yp)
 
 Form the celestial to terrestrial matrix given the date, the UT1,
 the nutation and the polar motion.  IAU 2000.
@@ -613,7 +611,7 @@ the nutation and the polar motion.  IAU 2000.
 c2tpe
 
 """
-    c2txy(dr, dd)
+    c2txy(tta, ttb, uta, utb, x, y, xp, yp)
 
 Form the celestial to terrestrial matrix given the date, the UT1,
 the CIP coordinates and the polar motion.  IAU 2000.
@@ -684,7 +682,7 @@ the CIP coordinates and the polar motion.  IAU 2000.
 * `eraPom00`: polar motion matrix
 * `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
 
-eference:
+### Reference ###
 
    McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
    IERS Technical Note No. 32, BKG (2004)
@@ -708,7 +706,7 @@ for name in ("c2tpe",
 end
 
 """
-    c2i00a(dr, dd)
+    c2i00a(a, b)
 
 Form the celestial-to-intermediate matrix for a given date using the
 IAU 2000A precession-nutation model.
@@ -779,7 +777,7 @@ IAU 2000A precession-nutation model.
 c2i00a
 
 """
-    c2i00b(dr, dd)
+    c2i00b(a, b)
 
 Form the celestial-to-intermediate matrix for a given date using the
 IAU 2000B precession-nutation model.
@@ -850,7 +848,7 @@ IAU 2000B precession-nutation model.
 c2i00b
 
 """
-    c2i06a(dr, dd)
+    c2i06a(a, b)
 
 Form the celestial-to-intermediate matrix for a given date using the
 IAU 2006 precession and IAU 2000A nutation models.
@@ -928,7 +926,7 @@ for name in ("c2i00a",
 end
 
 """
-    c2ixy(dr, dd)
+    c2ixy(x, y, s, t)
 
 Form the celestial to intermediate-frame-of-date matrix for a given
 date when the CIP X,Y coordinates are known.  IAU 2000.
@@ -1001,7 +999,7 @@ function c2ixy(x, y, s, t)
 end
 
 """
-    c2ixys(dr, dd)
+    c2ixys(x, y, s)
 
 Form the celestial to intermediate-frame-of-date matrix given the CIP
 X,Y and the CIO locator s.

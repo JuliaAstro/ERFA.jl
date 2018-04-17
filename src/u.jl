@@ -1,5 +1,5 @@
 """
-    ut1tai(dr, dd)
+    ut1tai(ut11, ut12, dta)
 
 Time scale transformation:  Universal Time, UT1, to International
 Atomic Time, TAI.
@@ -12,10 +12,6 @@ Atomic Time, TAI.
 ### Returned ###
 
 * `tai1`, `tai2`: TAI as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -36,7 +32,7 @@ Atomic Time, TAI.
 ut1tai
 
 """
-    ut1tt(dr, dd)
+    ut1tt(ut11, ut12, dt)
 
 Time scale transformation:  Universal Time, UT1, to Terrestrial
 Time, TT.
@@ -49,10 +45,6 @@ Time, TT.
 ### Returned ###
 
 * `tt1`, `tt2`: TT as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -72,7 +64,7 @@ Time, TT.
 ut1tt
 
 """
-    ut1utc(dr, dd)
+    ut1utc(ut11, ut12, dut1)
 
 Time scale transformation:  Universal Time, UT1, to Coordinated
 Universal Time, UTC.
@@ -85,12 +77,6 @@ Universal Time, UTC.
 ### Returned ###
 
 * `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 3,4)
-
-### Returned (function value) ###
-
-              int      status: +1 = dubious year (Note 5)
-                                0 = OK
-                               -1 = unacceptable date
 
 ### Notes ###
 
@@ -137,7 +123,7 @@ Universal Time, UTC.
 ut1utc
 
 """
-    utcut1(dr, dd)
+    utcut1(utc1, utc2, dut1)
 
 Time scale transformation:  Coordinated Universal Time, UTC, to
 Universal Time, UT1.
@@ -150,12 +136,6 @@ Universal Time, UT1.
 ### Returned ###
 
 * `ut11`, `ut12`: UT1 as a 2-part Julian Date (Note 6)
-
-### Returned (function value) ###
-
-              int      status: +1 = dubious year (Note 3)
-                                0 = OK
-                               -1 = unacceptable date
 
 ### Notes ###
 
@@ -222,7 +202,7 @@ for name in ("ut1tai",
 end
 
 """
-    utctai(dr, dd)
+    utctai(utc1, utc2)
 
 Time scale transformation:  Coordinated Universal Time, UTC, to
 International Atomic Time, TAI.
@@ -234,12 +214,6 @@ International Atomic Time, TAI.
 ### Returned ###
 
 * `tai1`, `tai2`: TAI as a 2-part Julian Date (Note 5)
-
-### Returned (function value) ###
-
-              int      status: +1 = dubious year (Note 3)
-                                0 = OK
-                               -1 = unacceptable date
 
 ### Notes ###
 
@@ -287,6 +261,10 @@ function utctai(a, b)
     i = ccall((:eraUtctai, liberfa), Cint,
                 (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                 a, b, r1, r2)
-    @assert i == 0
+    if i == 1
+        @warn "dubious year (Note 3)"
+    elseif i == -1
+        throw(ERFAException("unacceptable date"))
+    end
     r1[], r2[]
 end

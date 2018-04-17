@@ -1,5 +1,5 @@
 """
-    numat(dr, dd)
+    numat(epsa, dpsi, deps)
 
 Form the matrix of nutation.
 
@@ -48,7 +48,7 @@ function numat(epsa, dpsi, deps)
 end
 
 """
-    nut00a(dr, dd)
+    nut00a(date1, date2)
 
 Nutation, IAU 2000A model (MHB2000 luni-solar and planetary nutation
 with free core nutation omitted).
@@ -199,7 +199,7 @@ with free core nutation omitted).
 nut00a
 
 """
-    nut00b(dr, dd)
+    nut00b(date1, date2)
 
 Nutation, IAU 2000B model.
 
@@ -317,7 +317,7 @@ Nutation, IAU 2000B model.
 nut00b
 
 """
-    nut06a(dr, dd)
+    nut06a(date1, date2)
 
 IAU 2000A nutation with adjustments to match the IAU 2006
 precession.
@@ -395,7 +395,7 @@ precession.
 nut06a
 
 """
-    nut80(dr, dd)
+    nut80(date1, date2)
 
 Nutation, IAU 1980 model.
 
@@ -464,7 +464,7 @@ for name in ("nut00a",
 end
 
 """
-    num00a(dr, dd)
+    num00a(date1, date2)
 
 Form the matrix of nutation for a given date, IAU 2000A model.
 
@@ -519,7 +519,7 @@ Form the matrix of nutation for a given date, IAU 2000A model.
 num00a
 
 """
-    num00b(dr, dd)
+    num00b(date1, date2)
 
 Form the matrix of nutation for a given date, IAU 2000B model.
 
@@ -574,7 +574,7 @@ Form the matrix of nutation for a given date, IAU 2000B model.
 num00b
 
 """
-    num06a(dr, dd)
+    num06a(date1, date2)
 
 Form the matrix of nutation for a given date, IAU 2006/2000A model.
 
@@ -628,7 +628,7 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
 num06a
 
 """
-    nutm80(dr, dd)
+    nutm80(date1, date2)
 
 Form the matrix of nutation for a given date, IAU 1980 model.
 

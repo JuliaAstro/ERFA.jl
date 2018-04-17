@@ -1,19 +1,19 @@
 """
-    ab(dr, dd)
+    ab(pnat, v, s, bm1)
 
 Apply aberration to transform natural direction into proper
 direction.
 
 ### Given ###
 
-* Double[3]   natural direction to the source (unit vector)
-* Double[3]   observer barycentric velocity in units of c
-* Double      distance between the Sun and the observer (au)
-* Double      sqrt(1-|v|^2): reciprocal of Lorenz factor
+* `pnat`: Natural direction to the source (unit vector)
+* `v`: Observer barycentric velocity in units of c
+* `s`: Distance between the Sun and the observer (au)
+* `bm1`: $sqrt(1-|v|^2)$ reciprocal of Lorenz factor
 
 ### Returned ###
 
-* Double[3]   proper direction to source (unit vector)
+* `ppr`: Proper direction to source (unit vector)
 
 ### Notes ###
 
@@ -55,7 +55,7 @@ function ab(pnat, v, s, bm1)
 end
 
 """
-    apcg(dr, dd)
+    apcg(date1, date2, ebpv, ehp)
 
 For a geocentric observer, prepare star-independent astrometry
 parameters for transformations between ICRS and GCRS coordinates.
@@ -74,23 +74,23 @@ transformation chain.
 
 ### Returned ###
 
-* EraASTROM*   star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Notes ###
 
@@ -164,7 +164,7 @@ function apcg(date1, date2, ebpv, ehp)
 end
 
 """
-    apcg13(dr, dd)
+    apcg13(date1, date2)
 
 For a geocentric observer, prepare star-independent astrometry
 parameters for transformations between ICRS and GCRS coordinates.
@@ -182,23 +182,23 @@ transformation chain.
 
 ### Returned ###
 
-* EraASTROM* star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Notes ###
 
@@ -277,7 +277,7 @@ function apcg13(date1, date2)
 end
 
 """
-    apci(dr, dd)
+    apci(date1, date2, ebpv, ehp, x, y, s)
 
 For a terrestrial observer, prepare star-independent astrometry
 parameters for transformations between ICRS and geocentric CIRS
@@ -299,23 +299,23 @@ parts of the astrometric transformation chain.
 
 ### Returned ###
 
-* EraASTROM*   star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Notes ###
 
@@ -395,7 +395,7 @@ function apci(date1, date2, ebpv, ehp, x, y, s)
 end
 
 """
-    apci13(dr, dd)
+    apci13(date1, date2)
 
 For a terrestrial observer, prepare star-independent astrometry
 parameters for transformations between ICRS and geocentric CIRS
@@ -413,24 +413,24 @@ parts of the astrometric transformation chain.
 
 ### Returned ###
 
-* EraASTROM*  star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double*     equation of the origins (ERA-GST)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
+* `eo`: Equation of the origins (ERA-GST)
 
 ### Notes ###
 
@@ -514,7 +514,7 @@ function apci13(date1, date2)
 end
 
 """
-    apco(dr, dd)
+    apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
 
 For a terrestrial observer, prepare star-independent astrometry
 parameters for transformations between ICRS and observed
@@ -541,23 +541,23 @@ site coordinates.
 
 ### Returned ###
 
-* EraASTROM*   star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Notes ###
 
@@ -669,7 +669,7 @@ function apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, s
 end
 
 """
-    apco13(dr, dd)
+    apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 
 For a terrestrial observer, prepare star-independent astrometry
 parameters for transformations between ICRS and observed
@@ -697,30 +697,24 @@ parts of the ICRS/CIRS transformations.
 
 ### Returned ###
 
-* EraASTROM* star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
-* Double*    equation of the origins (ERA-GST)
-
-### Returned (function value) ###
-
-          int        status: +1 = dubious year (Note 2)
-                              0 = OK
-                             -1 = unacceptable date
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
+* `eo`: Equation of the origins (ERA-GST)
 
 ### Notes ###
 
@@ -855,7 +849,7 @@ function apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 end
 
 """
-    apcs(dr, dd)
+    apcs(date1, date2, pv, ebpv, ehp)
 
 For an observer whose geocentric position and velocity are known,
 prepare star-independent astrometry parameters for transformations
@@ -876,23 +870,23 @@ astrometric transformation chain.
 
 ### Returned ###
 
-* EraASTROM*   star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Notes ###
 
@@ -984,7 +978,7 @@ function apcs(date1, date2, pv, ebpv, ehp)
 end
 
 """
-    apcs13(dr, dd)
+    apcs13(date1, date2, pv)
 
 For an observer whose geocentric position and velocity are known,
 prepare star-independent astrometry parameters for transformations
@@ -1003,22 +997,22 @@ astrometric transformation chain.
 ### Returned ###
 
 * EraASTROM*   star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Notes ###
 
@@ -1103,7 +1097,7 @@ function apcs13(date1, date2, pv)
 end
 
 """
-    aper(dr, dd)
+    aper(theta, astrom)
 
 In the star-independent astrometry parameters, update only the
 Earth rotation angle, supplied by the caller explicitly.
@@ -1111,43 +1105,43 @@ Earth rotation angle, supplied by the caller explicitly.
 ### Given ###
 
 * `theta`: Earth rotation angle (radians, Note 2)
-* EraASTROM*  star-independent astrometry parameters:
-* Double       not used
-* Double[3]    not used
-* Double[3]    not used
-* Double       not used
-* Double[3]    not used
-* Double       not used
-* Double[3][3] not used
-* Double       longitude + s' (radians)
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: unchanged
+    * `eb`: unchanged
+    * `eh`: unchanged
+    * `em`: unchanged
+    * `v`: unchanged
+    * `bm1`: unchanged
+    * `bpn`: unchanged
+    * `along`: Longitude + s' (radians)
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Returned ###
 
-* EraASTROM*  star-independent astrometry parameters:
-* Double       unchanged
-* Double[3]    unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3][3] unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       "local" Earth rotation angle (radians)
-* Double       unchanged
-* Double       unchanged
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: unchanged
+    * `eb`: unchanged
+    * `eh`: unchanged
+    * `em`: unchanged
+    * `v`: unchanged
+    * `bm1`: unchanged
+    * `bpn`: unchanged
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Notes ###
 
@@ -1199,7 +1193,7 @@ function aper(theta, astrom)
 end
 
 """
-    aper13(dr, dd)
+    aper13(ut11, ut12, astrom)
 
 In the star-independent astrometry parameters, update only the
 Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
@@ -1208,43 +1202,43 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
 
 * `ut11`: UT1 as a 2-part...
 * `ut12`: ...Julian Date (Note 1)
-* EraASTROM*  star-independent astrometry parameters:
-* Double       not used
-* Double[3]    not used
-* Double[3]    not used
-* Double       not used
-* Double[3]    not used
-* Double       not used
-* Double[3][3] not used
-* Double       longitude + s' (radians)
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
-* Double       not used
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: unchanged
+    * `eb`: unchanged
+    * `eh`: unchanged
+    * `em`: unchanged
+    * `v`: unchanged
+    * `bm1`: unchanged
+    * `bpn`: unchanged
+    * `along`: Longitude + s' (radians)
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: unchanged
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Returned ###
 
-* EraASTROM*  star-independent astrometry parameters:
-* Double       unchanged
-* Double[3]    unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3][3] unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       unchanged
-* Double       "local" Earth rotation angle (radians)
-* Double       unchanged
-* Double       unchanged
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: unchanged
+    * `eb`: unchanged
+    * `eh`: unchanged
+    * `em`: unchanged
+    * `v`: unchanged
+    * `bm1`: unchanged
+    * `bpn`: unchanged
+    * `along`: unchanged
+    * `xpl`: unchanged
+    * `ypl`: unchanged
+    * `sphi`: unchanged
+    * `cphi`: unchanged
+    * `diurab`: unchanged
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: unchanged
+    * `refb`: unchanged
 
 ### Notes ###
 
@@ -1315,7 +1309,7 @@ function aper13(ut11, ut12, astrom)
 end
 
 """
-    apio(dr, dd)
+    apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
 
 For a terrestrial observer, prepare star-independent astrometry
 parameters for transformations between CIRS and observed
@@ -1335,23 +1329,23 @@ and the refraction constants as well as the site coordinates.
 
 ### Returned ###
 
-* EraASTROM*  star-independent astrometry parameters:
-* Double       unchanged
-* Double[3]    unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3][3] unchanged
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: unchanged
+    * `eb`: unchanged
+    * `eh`: unchanged
+    * `em`: unchanged
+    * `v`: unchanged
+    * `bm1`: unchanged
+    * `bpn`: unchanged
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Notes ###
 
@@ -1434,7 +1428,7 @@ function apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
 end
 
 """
-    apio13(dr, dd)
+    apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 
 For a terrestrial observer, prepare star-independent astrometry
 parameters for transformations between CIRS and observed
@@ -1457,29 +1451,23 @@ conditions and observing wavelength.
 
 ### Returned ###
 
-* EraASTROM*  star-independent astrometry parameters:
-* Double       unchanged
-* Double[3]    unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3]    unchanged
-* Double       unchanged
-* Double[3][3] unchanged
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
-
-### Returned (function value) ###
-
-          int         status: +1 = dubious year (Note 2)
-                               0 = OK
-                              -1 = unacceptable date
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: unchanged
+    * `eb`: unchanged
+    * `eh`: unchanged
+    * `em`: unchanged
+    * `v`: unchanged
+    * `bm1`: unchanged
+    * `bpn`: unchanged
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Notes ###
 
@@ -1608,7 +1596,7 @@ function apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 end
 
 """
-    atci13(dr, dd)
+    atci13(rc, dc, pr, pd, px, rv, date1, date2)
 
 Transform ICRS star data, epoch J2000.0, to CIRS.
 
@@ -1625,8 +1613,8 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 
 ### Returned ###
 
-* Double*  CIRS geocentric RA,Dec (radians)
-* Double*  equation of the origins (ERA-GST, Note 5)
+* `ri`, `di`: CIRS geocentric RA,Dec (radians)
+* `eo`: Equation of the origins (ERA-GST, Note 5)
 
 ### Notes ###
 
@@ -1694,7 +1682,7 @@ function atci13(rc, dc, pr, pd, px, rv, date1, date2)
 end
 
 """
-    atciq(dr, dd)
+    atciq(rc, dc, pr, pd, px, rv, astrom)
 
 Quick ICRS, epoch J2000.0, to CIRS transformation, given precomputed
 star-independent astrometry parameters.
@@ -1714,23 +1702,23 @@ can be used instead.
 * `pd`: Dec proper motion (radians/year)
 * `px`: Parallax (arcsec)
 * `rv`: Radial velocity (km/s, +ve if receding)
-* EraASTROM* star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Returned ###
 
@@ -1766,7 +1754,7 @@ function atciq(rc, dc, pr, pd, px, rv, astrom)
 end
 
 """
-    atciqn(dr, dd)
+    atciqn(rc, dc, pr, pd, px, rv, astrom, b::Vector{LDBODY})
 
 Quick ICRS, epoch J2000.0, to CIRS transformation, given precomputed
 star-independent astrometry parameters plus a list of light-
@@ -1790,27 +1778,27 @@ used.
 * `px`: Parallax (arcsec)
 * `rv`: Radial velocity (km/s, +ve if receding)
 * EraASTROM*   star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
-* Int           number of bodies (Note 3)
-* EraLDBODY[n] data for each of the n bodies (Notes 3,4):
-* Double        mass of the body (solar masses, Note 5)
-* Double        deflection limiter (Note 6)
-* [2][3]        barycentric PV of the body (au, au/day)
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
+* `n`: Number of bodies (Note 3)
+* `b::Vector{LDBODY}`: Data for each of the n bodies (Notes 3,4):
+    * `bm`: Mass of the body (solar masses, Note 5)
+    * `dl`: Deflection limiter (Note 6)
+    * `pv`: Barycentric PV of the body (au, au/day)
 
 ### Returned ###
 
@@ -1864,7 +1852,7 @@ used.
 * `eraAnp`: normalize angle into range 0 to 2pi
 
 """
-function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Array{LDBODY})
+function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Vector{LDBODY})
     ri = Ref(0.0)
     di = Ref(0.0)
     n = length(b)
@@ -1875,7 +1863,7 @@ function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Array{LDBODY})
 end
 
 """
-    atciqz(dr, dd)
+    atciqz(rc, dc, astrom)
 
 Quick ICRS to CIRS transformation, given precomputed star-
 independent astrometry parameters, and assuming zero parallax and
@@ -1892,23 +1880,23 @@ proper motion is eraAtciq.
 ### Given ###
 
 * `rc`, `dc`: ICRS astrometric RA,Dec (radians)
-* EraASTROM* star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Returned ###
 
@@ -1947,7 +1935,7 @@ function atciqz(rc, dc, astrom)
 end
 
 """
-    atco13(dr, dd)
+    atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 
 ICRS RA,Dec to observed place.  The caller supplies UTC, site
 coordinates, ambient air conditions and observing wavelength.
@@ -1976,18 +1964,12 @@ nutation, Earth orientation and refraction.
 
 ### Returned ###
 
-* Double*  observed azimuth (radians: N=0,E=90)
-* Double*  observed zenith distance (radians)
-* Double*  observed hour angle (radians)
-* Double*  observed declination (radians)
-* Double*  observed right ascension (CIO-based, radians)
-* Double*  equation of the origins (ERA-GST)
-
-### Returned (function value) ###
-
-          int      status: +1 = dubious year (Note 4)
-                            0 = OK
-                           -1 = unacceptable date
+* `aob`: Observed azimuth (radians: N=0,E=90)
+* `zob`: Observed zenith distance (radians)
+* `hob`: Observed hour angle (radians)
+* `dob`: Observed declination (radians)
+* `rob`: Observed right ascension (CIO-based, radians)
+* `eo`: Equation of the origins (ERA-GST)
 
 ### Notes ###
 
@@ -2112,7 +2094,7 @@ function atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp
 end
 
 """
-    atic13(dr, dd)
+    atic13(ri, di, date1, date2)
 
 Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
 
@@ -2193,7 +2175,7 @@ function atic13(ri, di, date1, date2)
 end
 
 """
-    aticq(dr, dd)
+    aticq(ri, di, astrom)
 
 Quick CIRS RA,Dec to ICRS astrometric place, given the star-
 independent astrometry parameters.
@@ -2207,23 +2189,23 @@ or eraApcs[13].
 ### Given ###
 
 * `ri`, `di`: CIRS RA,Dec (radians)
-* EraASTROM* star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Returned ###
 
@@ -2261,7 +2243,7 @@ function aticq(ri, di, astrom)
 end
 
 """
-    aticqn(dr, dd)
+    aticqn(ri, di, astrom, b::Array{LDBODY})
 
 Quick CIRS to ICRS astrometric place transformation, given the star-
 independent astrometry parameters plus a list of light-deflecting
@@ -2276,28 +2258,28 @@ or eraApcs[13].
 ### Given ###
 
 * `ri`, `di`: CIRS RA,Dec (radians)
-* EraASTROM*  star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
-* Int           number of bodies (Note 3)
-* EraLDBODY[n] data for each of the n bodies (Notes 3,4):
-* Double       mass of the body (solar masses, Note 5)
-* Double       deflection limiter (Note 6)
-* [2][3]       barycentric PV of the body (au, au/day)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
+* `n`: Number of bodies (Note 3)
+* `b::Vector{LDBODY}`: Data for each of the n bodies (Notes 3,4):
+    * `bm`: Mass of the body (solar masses, Note 5)
+    * `dl`: Deflection limiter (Note 6)
+    * `pv`: Barycentric PV of the body (au, au/day)
 
 ### Returned ###
 
@@ -2365,7 +2347,7 @@ function aticqn(ri, di, astrom, b::Array{LDBODY})
 end
 
 """
-    atio13(dr, dd)
+    atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 
 CIRS RA,Dec to observed place.  The caller supplies UTC, site
 coordinates, ambient air conditions and observing wavelength.
@@ -2388,17 +2370,11 @@ coordinates, ambient air conditions and observing wavelength.
 
 ### Returned ###
 
-* Double*  observed azimuth (radians: N=0,E=90)
-* Double*  observed zenith distance (radians)
-* Double*  observed hour angle (radians)
-* Double*  observed declination (radians)
-* Double*  observed right ascension (CIO-based, radians)
-
-### Returned (function value) ###
-
-          int      status: +1 = dubious year (Note 2)
-                            0 = OK
-                           -1 = unacceptable date
+* `aob`: Observed azimuth (radians: N=0,E=90)
+* `zob`: Observed zenith distance (radians)
+* `hob`: Observed hour angle (radians)
+* `dob`: Observed declination (radians)
+* `rob`: Observed right ascension (CIO-based, radians)
 
 ### Notes ###
 
@@ -2513,7 +2489,7 @@ function atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, 
 end
 
 """
-    atioq(dr, dd)
+    atioq(ri, di, astrom)
 
 Quick CIRS to observed place transformation.
 
@@ -2526,31 +2502,31 @@ calling eraApio[13] or eraApco[13].
 
 * `ri`: CIRS right ascension
 * `di`: CIRS declination
-* EraASTROM* star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Returned ###
 
-* Double*    observed azimuth (radians: N=0,E=90)
-* Double*    observed zenith distance (radians)
-* Double*    observed hour angle (radians)
-* Double*    observed declination (radians)
-* Double*    observed right ascension (CIO-based, radians)
+* `aob`: Observed azimuth (radians: N=0,E=90)
+* `zob`: Observed zenith distance (radians)
+* `hob`: Observed hour angle (radians)
+* `dob`: Observed declination (radians)
+* `rob`: Observed right ascension (CIO-based, radians)
 
 ### Notes ###
 
@@ -2619,7 +2595,7 @@ function atioq(ri, di, astrom)
 end
 
 """
-    atoc13(dr, dd)
+    atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 
 Observed place at a groundbased site to to ICRS astrometric RA,Dec.
 The caller supplies UTC, site coordinates, ambient air conditions
@@ -2645,12 +2621,6 @@ and observing wavelength.
 ### Returned ###
 
 * `rc`, `dc`: ICRS astrometric RA,Dec (radians)
-
-### Returned (function value) ###
-
-          int      status: +1 = dubious year (Note 4)
-                            0 = OK
-                           -1 = unacceptable date
 
 ### Notes ###
 
@@ -2775,7 +2745,7 @@ function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
 end
 
 """
-    atoi13(dr, dd)
+    atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 
 Observed place to CIRS.  The caller supplies UTC, site coordinates,
 ambient air conditions and observing wavelength.
@@ -2799,14 +2769,8 @@ ambient air conditions and observing wavelength.
 
 ### Returned ###
 
-* Double*  CIRS right ascension (CIO-based, radians)
-* Double*  CIRS declination (radians)
-
-### Returned (function value) ###
-
-          int      status: +1 = dubious year (Note 2)
-                            0 = OK
-                           -1 = unacceptable date
+* `ri`: CIRS right ascension (CIO-based, radians)
+* `di`: CIRS declination (radians)
 
 ### Notes ###
 
@@ -2927,7 +2891,7 @@ function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
 end
 
 """
-    atoiq(dr, dd)
+    atoiq(typeofcoordinates, ob1, ob2, astrom)
 
 Quick observed place to CIRS, given the star-independent astrometry
 parameters.
@@ -2942,28 +2906,28 @@ calling eraApio[13] or eraApco[13].
 * `type`: Type of coordinates: "R", "H" or "A" (Note 1)
 * `ob1`: Observed Az, HA or RA (radians; Az is N=0,E=90)
 * `ob2`: Observed ZD or Dec (radians)
-* EraASTROM* star-independent astrometry parameters:
-* Double       PM time interval (SSB, Julian years)
-* Double[3]    SSB to observer (vector, au)
-* Double[3]    Sun to observer (unit vector)
-* Double       distance from Sun to observer (au)
-* Double[3]    barycentric observer velocity (vector, c)
-* Double       sqrt(1-|v|^2): reciprocal of Lorenz factor
-* Double[3][3] bias-precession-nutation matrix
-* Double       longitude + s' (radians)
-* Double       polar motion xp wrt local meridian (radians)
-* Double       polar motion yp wrt local meridian (radians)
-* Double       sine of geodetic latitude
-* Double       cosine of geodetic latitude
-* Double       magnitude of diurnal aberration vector
-* Double       "local" Earth rotation angle (radians)
-* Double       refraction constant A (radians)
-* Double       refraction constant B (radians)
+* `astrom`: Star-independent astrometry parameters:
+    * `pmt`: PM time interval (SSB, Julian years)
+    * `eb`: SSB to observer (vector, au)
+    * `eh`: Sun to observer (unit vector)
+    * `em`: Distance from Sun to observer (au)
+    * `v`: Barycentric observer velocity (vector, c)
+    * `bm1`: $sqrt(1-|v|^2)$ Reciprocal of Lorenz factor
+    * `bpn`: Bias-precession-nutation matrix
+    * `along`: Longitude + s' (radians)
+    * `xp1`: Polar motion xp wrt local meridian (radians)
+    * `yp1`: Polar motion yp wrt local meridian (radians)
+    * `sphi`: Sine of geodetic latitude
+    * `cphi`: Cosine of geodetic latitude
+    * `diurab`: Magnitude of diurnal aberration vector
+    * `eral`: "Local" Earth rotation angle (radians)
+    * `refa`: Refraction constant A (radians)
+    * `refb`: Refraction constant B (radians)
 
 ### Returned ###
 
-* Double*    CIRS right ascension (CIO-based, radians)
-* Double*    CIRS declination (radians)
+* `ri`: CIRS right ascension (CIO-based, radians)
+* `di`: CIRS declination (radians)
 
 ### Notes ###
 
@@ -3023,7 +2987,7 @@ function atoiq(typeofcoordinates, ob1, ob2, astrom)
 end
 
 """
-    anp(dr, dd)
+    anp(a)
 
 Normalize angle into the range 0 <= a < 2pi.
 
@@ -3031,15 +2995,15 @@ Normalize angle into the range 0 <= a < 2pi.
 
 * `a`: Angle (radians)
 
-### Returned (function value) ###
+### Returned ###
 
-            double     angle in range 0-2pi
+* Angle in range 0-2pi
 
 """
 anp
 
 """
-    anpm(dr, dd)
+    anpm(a)
 
 Normalize angle into the range -pi <= a < +pi.
 
@@ -3047,9 +3011,9 @@ Normalize angle into the range -pi <= a < +pi.
 
 * `a`: Angle (radians)
 
-### Returned (function value) ###
+### Returned ###
 
-            double     angle in range +/-pi
+* Angle in range +/-pi
 
 """
 anpm
@@ -3066,7 +3030,7 @@ for name in ("anp",
 end
 
 """
-    a2af(dr, dd)
+    a2af(ndp, a)
 
 Decompose radians into degrees, arcminutes, arcseconds, fraction.
 
@@ -3120,7 +3084,7 @@ Decompose radians into degrees, arcminutes, arcseconds, fraction.
 a2af
 
 """
-    a2tf(dr, dd)
+    a2tf(ndp, a)
 
 Decompose radians into hours, minutes, seconds, fraction.
 
@@ -3190,7 +3154,7 @@ for name in ("a2af",
 end
 
 """
-    af2a(dr, dd)
+    af2a(s, ideg, iamin, asec)
 
 Convert degrees, arcminutes, arcseconds to radians.
 
@@ -3204,13 +3168,6 @@ Convert degrees, arcminutes, arcseconds to radians.
 ### Returned ###
 
 * `rad`: Angle in radians
-
-### Returned (function value) ###
-
-             int     status:  0 = OK
-                              1 = ideg outside range 0-359
-                              2 = iamin outside range 0-59
-                              3 = asec outside range 0-59.999...
 
 ### Notes ###
 
@@ -3228,6 +3185,12 @@ function af2a(s, ideg, iamin, asec)
     i = ccall((:eraAf2a, liberfa), Cint,
                 (Cchar, Cint, Cint, Cdouble, Ref{Cdouble}),
                 s, ideg, iamin, asec, rad)
-    @assert i == 0
+    if i == 1
+        throw(ERFAException("ideg outside range 0-359"))
+    elseif i == 2
+        throw(ERFAException("iamin outside range 0-59"))
+    elseif i == 3
+        throw(ERFAException("asec outside range 0-59.999..."))
+    end
     rad[]
 end

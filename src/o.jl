@@ -7,7 +7,7 @@ Mean obliquity of the ecliptic, IAU 2006 precession model.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Obliquity of the ecliptic (radians, Note 2)
 
@@ -51,7 +51,7 @@ Mean obliquity of the ecliptic, IAU 1980 model.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Obliquity of the ecliptic (radians, Note 2)
 

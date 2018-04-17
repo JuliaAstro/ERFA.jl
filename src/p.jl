@@ -591,7 +591,7 @@ Modulus of p-vector.
 
 * `p`: P-vector
 
-### Returned (function value) ###
+### Returned ###
 
 * Modulus
 
@@ -1965,9 +1965,9 @@ Position-angle from two p-vectors.
 * `a`: Direction of reference point
 * `b`: Direction of point whose PA is required
 
-### Returned (function value) ###
+### Returned ###
 
-          double     position angle of b with respect to a (radians)
+* Position angle of b with respect to a (radians)
 
 ### Notes ###
 
@@ -2005,9 +2005,9 @@ p-vector inner (=scalar=dot) product.
 * `a`: First p-vector
 * `b`: Second p-vector
 
-### Returned (function value) ###
+### Returned ###
 
-          double        a . b
+* ``a \cdot b``
 
 """
 pdp

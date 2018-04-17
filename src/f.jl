@@ -191,9 +191,9 @@ mean elongation of the Moon from the Sun.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-         double    D, radians (Note 2)
+* `D`, radians (Note 2)
 
 ### Notes ###
 
@@ -223,7 +223,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Earth.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Mean longitude of Earth, radians (Note 2)
 
@@ -259,9 +259,9 @@ mean longitude of the ascending node.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-         double    F, radians (Note 2)
+* `F`, radians (Note 2)
 
 ### Notes ###
 
@@ -291,7 +291,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Jupiter.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Mean longitude of Jupiter, radians (Note 2)
 
@@ -328,9 +328,9 @@ mean anomaly of the Moon.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-         double    l, radians (Note 2)
+* `l`, radians (Note 2)
 
 ### Notes ###
 
@@ -362,9 +362,9 @@ mean anomaly of the Sun.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-         double    l', radians (Note 2)
+* `l'`, radians (Note 2)
 
 ### Notes ###
 
@@ -394,7 +394,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mars.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Mean longitude of Mars, radians (Note 2)
 
@@ -429,7 +429,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mercury.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Mean longitude of Mercury, radians (Note 2)
 
@@ -464,7 +464,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Neptune.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Mean longitude of Neptune, radians (Note 2)
 
@@ -496,9 +496,9 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of the Moon's asce
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-         double    Omega, radians (Note 2)
+* `Omega`, radians (Note 2)
 
 ### Notes ###
 
@@ -530,9 +530,9 @@ general accumulated precession in longitude.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-         double    general precession in longitude, radians (Note 2)
+* General precession in longitude, radians (Note 2)
 
 ### Notes ###
 
@@ -566,7 +566,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Saturn.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Mean longitude of Saturn, radians (Note 2)
 
@@ -601,7 +601,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Uranus.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned  (function value) ###
+### Returned  ###
 
 * Mean longitude of Uranus, radians (Note 2)
 
@@ -633,7 +633,7 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Venus.
 
 * `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
 * Mean longitude of Venus, radians (Note 2)
 

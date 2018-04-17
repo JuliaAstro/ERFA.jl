@@ -12,11 +12,6 @@ Earth reference ellipsoids.
 * `a`: Equatorial radius (meters, Note 2)
 * `f`: Flattening (Note 2)
 
-### Returned (function value) ###
-
-        int         status:  0 = OK
-                            -1 = illegal identifier (Note 3)
-
 ### Notes ###
 
 1) The identifier n is a number that specifies the choice of
@@ -72,7 +67,7 @@ quantity s.
 * `rnpb`: Classical nutation x precession x bias matrix
 * `s`: The quantity s (the CIO locator)
 
-### Returned (function value) ###
+### Returned ###
 
 * The equation of the origins in radians.
 
@@ -409,9 +404,9 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    equation of the equinoxes (Note 2)
+* Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -471,9 +466,9 @@ using the truncated nutation model IAU 2000B.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    equation of the equinoxes (Note 2)
+* Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -538,9 +533,9 @@ IAU 2006/2000A precession-nutation.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    equation of the equinoxes (Note 2)
+* Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -582,7 +577,7 @@ IAU 2006/2000A precession-nutation.
 ee06a
 
 """
-    eect00(dj1, dj2)
+    eect00(date1, date2)
 
 Equation of the equinoxes complementary terms, consistent with
 IAU 2000 resolutions.
@@ -591,9 +586,9 @@ IAU 2000 resolutions.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double   complementary terms (Note 2)
+* Complementary terms (Note 2)
 
 ### Notes ###
 
@@ -676,7 +671,7 @@ IAU 2000 resolutions.
 eect00
 
 """
-    eo06a(dj1, dj2)
+    eo06a(date1, date2)
 
 Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
@@ -684,9 +679,9 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    equation of the origins in radians
+* Equation of the origins in radians
 
 ### Notes ###
 
@@ -741,9 +736,9 @@ Julian Date to Besselian Epoch.
 
 * `dj1`, `dj2`: Julian Date (see note)
 
-### Returned (function value) ###
+### Returned ###
 
-              double     Besselian Epoch.
+* Besselian Epoch.
 
 ### Note ###
 
@@ -769,9 +764,9 @@ Julian Date to Julian Epoch.
 
 * `dj1`, `dj2`: Julian Date (see note)
 
-### Returned (function value) ###
+### Returned ###
 
-              double     Julian Epoch
+* Julian Epoch
 
 ### Note ###
 
@@ -789,7 +784,7 @@ Julian Date to Julian Epoch.
 epj
 
 """
-    eqeq94(dj1, dj2)
+    eqeq94(date1, date2)
 
 Equation of the equinoxes, IAU 1994 model.
 
@@ -797,9 +792,9 @@ Equation of the equinoxes, IAU 1994 model.
 
 * `date1`, `date2`: TDB date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                 double     equation of the equinoxes (Note 2)
+* Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -851,9 +846,9 @@ Earth rotation angle (IAU 2000 model).
 
 * `dj1`, `dj2`: UT1 as a 2-part Julian Date (see note)
 
-### Returned (function value) ###
+### Returned ###
 
-             double    Earth rotation angle (radians), range 0-2pi
+* Earth rotation angle (radians), range 0-2pi
 
 ### Notes ###
 
@@ -925,9 +920,9 @@ given the nutation in longitude and the mean obliquity.
 * `epsa`: Mean obliquity (Note 2)
 * `dpsi`: Nutation in longitude (Note 3)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    equation of the equinoxes (Note 4)
+* Equation of the equinoxes (Note 4)
 
 ### Notes ###
 

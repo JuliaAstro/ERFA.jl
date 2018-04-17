@@ -1,5 +1,5 @@
 """
-    s2c(dr, dd)
+    s2c(theta, phi)
 
 Convert spherical coordinates to Cartesian.
 
@@ -22,7 +22,7 @@ function s2c(theta, phi)
 end
 
 """
-    s2p(dr, dd)
+    s2p(theta, phi, r)
 
 Convert spherical polar coordinates to p-vector.
 
@@ -51,7 +51,7 @@ function s2p(theta, phi, r)
 end
 
 """
-    s2pv(dr, dd)
+    s2pv(theta, phi, r, td, pd, rd)
 
 Convert position/velocity from spherical to Cartesian coordinates.
 
@@ -78,7 +78,7 @@ function s2pv(theta, phi, r, td, pd, rd)
 end
 
 """
-    s2xpv(dr, dd)
+    s2xpv(s1, s2, pv)
 
 Multiply a pv-vector by two scalars.
 
@@ -110,7 +110,7 @@ function s2xpv(s1, s2, pv)
 end
 
 """
-    starpm(dr, dd)
+    starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
 
 Star proper motion:  update star catalog data for space motion.
 
@@ -135,16 +135,6 @@ Star proper motion:  update star catalog data for space motion.
 * `pmd2`: Dec proper motion (radians/year), after
 * `px2`: Parallax (arcseconds), after
 * `rv2`: Radial velocity (km/s, +ve = receding), after
-
-### Returned (function value) ###
-
-          int        status:
-                        -1 = system error (should not occur)
-                         0 = no warnings or errors
-                         1 = distance overridden (Note 6)
-                         2 = excessive velocity (Note 7)
-                         4 = solution didn't converge (Note 8)
-                      else = binary logical OR of the above warnings
 
 ### Notes ###
 
@@ -239,31 +229,22 @@ function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
 end
 
 """
-    starpv(dr, dd)
+    starpv(ra, dec, pmr, pmd, px, rv)
 
 Convert star catalog coordinates to position+velocity vector.
 
 ### Given (Note 1) ###
 
-   ra     double        right ascension (radians)
-   dec    double        declination (radians)
-   pmr    double        RA proper motion (radians/year)
-   pmd    double        Dec proper motion (radians/year)
-   px     double        parallax (arcseconds)
-   rv     double        radial velocity (km/s, positive = receding)
+* `ra`: Right ascension (radians)
+* `dec`: Declination (radians)
+* `pmr`: RA proper motion (radians/year)
+* `pmd`: Dec proper motion (radians/year)
+* `px`: Parallax (arcseconds)
+* `rv`: Radial velocity (km/s, positive = receding)
 
 ### Returned (Note 2) ###
 
-   pv     double[2][3]  pv-vector (au, au/day)
-
-### Returned (function value) ###
-
-          int           status:
-                            0 = no warnings
-                            1 = distance overridden (Note 6)
-                            2 = excessive speed (Note 7)
-                            4 = solution didn't converge (Note 8)
-                         else = binary logical OR of the above
+* `pv`: pv-vector (au, au/day)
 
 ### Notes ###
 
@@ -369,7 +350,7 @@ function starpv(ra, dec, pmr, pmd, px, rv)
 end
 
 """
-    sxp(dr, dd)
+    sxp(s, p)
 
 Multiply a p-vector by a scalar.
 
@@ -396,7 +377,7 @@ function sxp(s, p)
 end
 
 """
-    sxpv(dr, dd)
+    sxpv(s, pv)
 
 Multiply a pv-vector by a scalar.
 
@@ -427,7 +408,7 @@ function sxpv(s, pv)
 end
 
 """
-    seps(dr, dd)
+    seps(al, ap, bl, bp)
 
 Angular separation between two sets of spherical coordinates.
 
@@ -438,9 +419,9 @@ Angular separation between two sets of spherical coordinates.
 * `bl`: Second longitude (radians)
 * `bp`: Second latitude (radians)
 
-### Returned (function value) ###
+### Returned ###
 
-          double       angular separation (radians)
+* Angular separation (radians)
 
 ### Called ###
 
@@ -453,7 +434,7 @@ function seps(al, ap, bl, bp)
 end
 
 """
-    sepp(dr, dd)
+    sepp(a, b)
 
 Angular separation between two p-vectors.
 
@@ -462,9 +443,9 @@ Angular separation between two p-vectors.
 * `a`: First p-vector (not necessarily unit length)
 * `b`: Second p-vector (not necessarily unit length)
 
-### Returned (function value) ###
+### Returned ###
 
-          double       angular separation (radians, always positive)
+* Angular separation (radians, always positive)
 
 ### Notes ###
 
@@ -488,7 +469,7 @@ function sepp(a, b)
 end
 
 """
-    s00a(dr, dd)
+    s00a(date1, date2)
 
 The CIO locator s, positioning the Celestial Intermediate Origin on
 the equator of the Celestial Intermediate Pole, using the IAU 2000A
@@ -498,9 +479,9 @@ precession-nutation model.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    the CIO locator s in radians (Note 2)
+* The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -560,7 +541,7 @@ precession-nutation model.
 s00a
 
 """
-    s00b(dr, dd)
+    s00b(date1, date2)
 
 The CIO locator s, positioning the Celestial Intermediate Origin on
 the equator of the Celestial Intermediate Pole, using the IAU 2000B
@@ -570,9 +551,9 @@ precession-nutation model.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    the CIO locator s in radians (Note 2)
+* The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -632,7 +613,7 @@ precession-nutation model.
 s00b
 
 """
-    s06a(dr, dd)
+    s06a(date1, date2)
 
 The CIO locator s, positioning the Celestial Intermediate Origin on
 the equator of the Celestial Intermediate Pole, using the IAU 2006
@@ -642,9 +623,9 @@ precession and IAU 2000A nutation models.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    the CIO locator s in radians (Note 2)
+* The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -706,7 +687,7 @@ precession and IAU 2000A nutation models.
 s06a
 
 """
-    sp00(dr, dd)
+    sp00(date1, date2)
 
 The TIO locator s', positioning the Terrestrial Intermediate Origin
 on the equator of the Celestial Intermediate Pole.
@@ -715,9 +696,9 @@ on the equator of the Celestial Intermediate Pole.
 
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
-### Returned (function value) ###
+### Returned ###
 
-                double    the TIO locator s' in radians (Note 2)
+* The TIO locator s' in radians (Note 2)
 
 ### Notes ###
 
@@ -764,7 +745,7 @@ for name in ("s00a",
 end
 
 """
-    s00(dr, dd)
+    s00(date1, date2, x, y)
 
 The CIO locator s, positioning the Celestial Intermediate Origin on
 the equator of the Celestial Intermediate Pole, given the CIP's X,Y
@@ -775,9 +756,9 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 * `x`, `y`: CIP coordinates (Note 3)
 
-### Returned (function value) ###
+### Returned ###
 
-                 double    the CIO locator s in radians (Note 2)
+* The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -843,7 +824,7 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 s00
 
 """
-    s06(dr, dd)
+    s06(date1, date2, x, y)
 
 The CIO locator s, positioning the Celestial Intermediate Origin on
 the equator of the Celestial Intermediate Pole, given the CIP's X,Y
@@ -854,9 +835,9 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 * `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 * `x`, `y`: CIP coordinates (Note 3)
 
-### Returned (function value) ###
+### Returned ###
 
-                 double    the CIO locator s in radians (Note 2)
+* The CIO locator s in radians (Note 2)
 
 ### Notes ###
 

@@ -1,5 +1,5 @@
 """
-    refco(dr, dd)
+    refco(phpa, tc, rh, wl)
 
 Determine the constants A and B in the atmospheric refraction model
 dZ = A tan Z + B tan^3 Z.
@@ -10,15 +10,15 @@ zenith distance.
 
 ### Given ###
 
-* Double    pressure at the observer (hPa = millibar)
-* Double    ambient temperature at the observer (deg C)
-* Double    relative humidity at the observer (range 0-1)
-* Double    wavelength (micrometers)
+* `phpa`: Pressure at the observer (hPa = millibar)
+* `tc`: Ambient temperature at the observer (deg C)
+* `rh`: Relative humidity at the observer (range 0-1)
+* `wl`: Wavelength (micrometers)
 
 ### Returned ###
 
-* Double*   tan Z coefficient (radians)
-* Double*   tan^3 Z coefficient (radians)
+* `refa`: tan Z coefficient (radians)
+* `refb`: tan^3 Z coefficient (radians)
 
 ### Notes ###
 
@@ -152,7 +152,7 @@ function refco(phpa, tk, rh, wl)
 end
 
 """
-    rm2v(dr, dd)
+    rm2v(r)
 
 Express an r-matrix as an r-vector.
 
@@ -189,7 +189,7 @@ function rm2v(r)
 end
 
 """
-    rv2m(dr, dd)
+    rv2m(w)
 
 Form the r-matrix corresponding to a given r-vector.
 
@@ -223,7 +223,7 @@ function rv2m(w)
 end
 
 """
-    rxr(dr, dd)
+    rxr(a, b)
 
 Multiply two r-matrices.
 
@@ -256,7 +256,7 @@ function rxr(a, b)
 end
 
 """
-    rx(dr, dd)
+    rx(phi, r)
 
 Rotate an r-matrix about the x-axis.
 
@@ -266,7 +266,7 @@ Rotate an r-matrix about the x-axis.
 
 ### Given and returned ###
 
-   r      double[3][3]    r-matrix, rotated
+* `r`: r-matrix, rotated
 
 ### Notes ###
 
@@ -286,7 +286,7 @@ Rotate an r-matrix about the x-axis.
 rx
 
 """
-    ry(dr, dd)
+    ry(phi, r)
 
 Rotate an r-matrix about the y-axis.
 
@@ -296,7 +296,7 @@ Rotate an r-matrix about the y-axis.
 
 ### Given and returned ###
 
-   r      double[3][3]    r-matrix, rotated
+* `r`: r-matrix, rotated
 
 ### Notes ###
 
@@ -316,7 +316,7 @@ Rotate an r-matrix about the y-axis.
 ry
 
 """
-    rz(dr, dd)
+    rz(phi, r)
 
 Rotate an r-matrix about the z-axis.
 
@@ -326,7 +326,7 @@ Rotate an r-matrix about the z-axis.
 
 ### Given and returned ###
 
-   r      double[3][3]    r-matrix, rotated
+* `r`: r-matrix, rotated
 
 ### Notes ###
 
@@ -361,7 +361,7 @@ for name in ("rx",
 end
 
 """
-    rxpv(dr, dd)
+    rxpv(r, pv)
 
 Multiply a pv-vector by an r-matrix.
 
@@ -392,7 +392,7 @@ function rxpv(r, p)
 end
 
 """
-    rxp(dr, dd)
+    rxp(r, p)
 
 Multiply a p-vector by an r-matrix.
 

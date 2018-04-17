@@ -1,5 +1,5 @@
 """
-    dtdb(dr, dd)
+    dtdb(date1, date2, ut, elong, u, v)
 
 An approximation to TDB-TT, the difference between barycentric
 dynamical time and terrestrial time, for an observer on the Earth.
@@ -42,9 +42,9 @@ Conventions (McCarthy & Petit 2003).
 * `u`: Distance from Earth spin axis (km)
 * `v`: Distance north of equatorial plane (km)
 
-### Returned (function value) ###
+### Returned ###
 
-                 double  TDB-TT (seconds)
+* TDB-TT (seconds)
 
 ### Notes ###
 
@@ -161,41 +161,36 @@ function dtdb(date1, date2, ut, elong, u, v)
 end
 
 """
-    dat(dr, dd)
+    dat(iy, im, id, fd)
 
 For a given UTC date, calculate delta(AT) = TAI-UTC.
 
-   :------------------------------------------:
-   :                                          :
-   :                 IMPORTANT                :
-   :                                          :
-   :  A new version of this function must be  :
-   :  produced whenever a new leap second is  :
-   :  announced.  There are four items to     :
-   :  change on each such occasion:           :
-   :                                          :
-   :  1) A new line must be added to the set  :
-   :     of statements that initialize the    :
-   :     array "changes".                     :
-   :                                          :
-   :  2) The constant IYV must be set to the  :
-   :     current year.                        :
-   :                                          :
-   :  3) The "Latest leap second" comment     :
-   :     below must be set to the new leap    :
-   :     second date.                         :
-   :                                          :
-   :  4) The "This revision" comment, later,  :
-   :     must be set to the current date.     :
-   :                                          :
-   :  Change (2) must also be carried out     :
-   :  whenever the function is re-issued,     :
-   :  even if no leap seconds have been       :
-   :  added.                                  :
-   :                                          :
-   :  Latest leap second:  2016 December 31   :
-   :                                          :
-   :__________________________________________:
+!!! warning "IMPORTANT"
+    A new version of this function must be
+    produced whenever a new leap second is
+    announced.  There are four items to   
+    change on each such occasion:         
+                                            
+    1) A new line must be added to the set
+        of statements that initialize the  
+        array "changes".                   
+                                            
+    2) The constant IYV must be set to the
+        current year.                      
+                                            
+    3) The "Latest leap second" comment   
+        below must be set to the new leap  
+        second date.                       
+                                            
+    4) The "This revision" comment, later,
+        must be set to the current date.   
+                                            
+    Change (2) must also be carried out   
+    whenever the function is re-issued,   
+    even if no leap seconds have been     
+    added.                                
+                                            
+    Latest leap second:  2016 December 31 
 
 ### Given ###
 
@@ -207,17 +202,6 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 ### Returned ###
 
 * `deltat`: TAI minus UTC, seconds
-
-### Returned (function value) ###
-
-          int      status (Note 5):
-                     1 = dubious year (Note 1)
-                     0 = OK
-                    -1 = bad year
-                    -2 = bad month
-                    -3 = bad day (Note 3)
-                    -4 = bad fraction (Note 4)
-                    -5 = internal error (Note 5)
 
 ### Notes ###
 
@@ -282,12 +266,24 @@ function dat(iy, im, id, fd)
     i = ccall((:eraDat, liberfa), Cint,
               (Cint, Cint, Cint, Cdouble, Ref{Cdouble}),
               iy, im, id, fd, d)
-    @assert i == 0
+    if i == 1
+        @warn "dubious year (Note 1)"
+    elseif i == -1
+        throw(ERFAException("bad year"))
+    elseif i == -2
+        throw(ERFAException("bad month"))
+    elseif i == -3
+        throw(ERFAException("bad day (Note 3)"))
+    elseif i == -4
+        throw(ERFAException("bad fraction (Note 4)"))
+    elseif i == -5
+        throw(ERFAException("internal error (Note 5)"))
+    end
     d[]
 end
 
 """
-    d2dtf(dr, dd)
+    d2dtf(scale, ndp, d1, d2)
 
 Format for output a 2-part Julian Date (or in the case of UTC a
 quasi-JD form that includes special provision for leap seconds).
@@ -302,12 +298,6 @@ quasi-JD form that includes special provision for leap seconds).
 
 * `iy`, `im`, `id`: Year, month, day in Gregorian calendar (Note 5)
 * `ihmsf`: Hours, minutes, seconds, fraction (Note 1)
-
-### Returned (function value) ###
-
-             int     status: +1 = dubious year (Note 5)
-                              0 = OK
-                             -1 = unacceptable date (Note 6)
 
 ### Notes ###
 
@@ -365,12 +355,16 @@ function d2dtf(scale::AbstractString, ndp, d1, d2)
     i = ccall((:eraD2dtf, liberfa), Cint,
               (Cstring, Cint, Cdouble, Cdouble, Ref{Cint}, Ref{Cint}, Ref{Cint}, Ptr{Cint}),
               scale, ndp, d1, d2, iy, imo, id, ihmsf)
-    @assert i == 0
+    if i == +1
+        @warn "dubious year (Note 5)"
+    elseif i == -1
+        throw(ERFAException("unacceptable date (Note 6)"))
+    end
     iy[], imo[], id[], ihmsf[1], ihmsf[2], ihmsf[3], ihmsf[4]
 end
 
 """
-    dtf2d(dr, dd)
+    dtf2d(scale, iy, imo, id, ih, imi, sec)
 
 Encode date and time fields into 2-part Julian Date (or in the case
 of UTC a quasi-JD form that includes special provision for leap
@@ -386,19 +380,6 @@ seconds).
 ### Returned ###
 
 * `d1`, `d2`: 2-part Julian Date (Notes 3,4)
-
-### Returned (function value) ###
-
-             int     status: +3 = both of next two
-                             +2 = time is after end of day (Note 5)
-                             +1 = dubious year (Note 6)
-                              0 = OK
-                             -1 = bad year
-                             -2 = bad month
-                             -3 = bad day
-                             -4 = bad hour
-                             -5 = bad minute
-                             -6 = bad second (<0)
 
 ### Notes ###
 
@@ -450,12 +431,30 @@ function dtf2d(scale::AbstractString, iy, imo, id, ih, imi, sec)
     i = ccall((:eraDtf2d, liberfa), Cint,
               (Cstring, Cint, Cint, Cint, Cint, Cint, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               scale, iy, imo, id, ih, imi, sec, r1, r2)
-    @assert i == 0
+    if i == 3
+        @warn "both of next two"
+    elseif i == 2
+        @warn "time is after end of day (Note 5)"
+    elseif i == 1
+        @warn "dubious year (Note 6)"
+    elseif i == -1
+        throw(ERFAException("bad year"))
+    elseif i == -2
+        throw(ERFAException("bad month"))
+    elseif i == -3
+        throw(ERFAException("bad day"))
+    elseif i == -4
+        throw(ERFAException("bad hour"))
+    elseif i == -5
+        throw(ERFAException("bad minute"))
+    elseif i == -6
+        throw(ERFAException("bad second (<0)"))
+    end
     r1[], r2[]
 end
 
 """
-    d2tf(dr, dd)
+    d2tf(ndp, a)
 
 Decompose days to hours, minutes, seconds, fraction.
 

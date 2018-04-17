@@ -59,4 +59,3 @@ struct ERFAExcpetion <: Exception
 end
 
 Base.showerror(io::IO, ex::ERFAExcpetion) = print(io, ex.msg)
-

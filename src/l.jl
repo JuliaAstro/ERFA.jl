@@ -1,5 +1,5 @@
 """
-    ld(dr, dd)
+    ld(bm, p, q, e, em, dlim)
 
 Apply light deflection by a solar-system body, as part of
 transforming coordinate direction into natural direction.
@@ -75,7 +75,7 @@ function ld(bm, p::AbstractArray, q::AbstractArray, e::AbstractArray, em, dlim)
 end
 
 """
-    ldn(dr, dd)
+    ldn(l::Vector{LDBODY}, ob, sc)
 
 For a star, apply light deflection by multiple solar-system bodies,
 as part of transforming coordinate direction into natural direction.
@@ -84,9 +84,9 @@ as part of transforming coordinate direction into natural direction.
 
 * `n`: Number of bodies (note 1)
 * `b`: Data for each of the n bodies (Notes 1,2):
-* Double         mass of the body (solar masses, Note 3)
-* Double         deflection limiter (Note 4)
-* [2][3]         barycentric PV of the body (au, au/day)
+    * `bm`: Mass of the body (solar masses, Note 3)
+    * `dl`: Deflection limiter (Note 4)
+    * `pv`: Barycentric PV of the body (au, au/day)
 * `ob`: Barycentric position of the observer (au)
 * `sc`: Observer to star coord direction (unit vector)
 
@@ -152,7 +152,7 @@ as part of transforming coordinate direction into natural direction.
 * `eraLd`: light deflection by a solar-system body
 
 """
-function ldn(l::Array{LDBODY}, ob::AbstractArray, sc::AbstractArray)
+function ldn(l::Vector{LDBODY}, ob::AbstractArray, sc::AbstractArray)
     sn = zeros(3)
     n = length(l)
     ccall((:eraLdn, liberfa), Cvoid,
@@ -162,7 +162,7 @@ function ldn(l::Array{LDBODY}, ob::AbstractArray, sc::AbstractArray)
 end
 
 """
-    ldsun(dr, dd)
+    ldsun(p, e, em)
 
 Deflection of starlight by the Sun.
 
@@ -376,7 +376,7 @@ for name in ("ltecm",
 end
 
 """
-    ltpecl(dr, dd)
+    ltpecl(epj)
 
 Long-term precession of the ecliptic.
 
@@ -414,7 +414,7 @@ Long-term precession of the ecliptic.
 ltpecl
 
 """
-    ltpequ(dr, dd)
+    ltpequ(epj)
 
 Long-term precession of the equator.
 
@@ -467,7 +467,7 @@ for name in ("ltpecl",
 end
 
 """
-    lteceq(dr, dd)
+    lteceq(epj, dr, dd)
 
 Transformation from ecliptic coordinates (mean equinox and ecliptic
 of date) to ICRS RA,Dec, using a long-term precession model.
@@ -520,7 +520,7 @@ of date) to ICRS RA,Dec, using a long-term precession model.
 lteceq
 
 """
-    lteqec(dr, dd)
+    lteqec(epj, dr, dd)
 
 Transformation from ICRS equatorial coordinates to ecliptic
 coordinates (mean equinox and ecliptic of date) using a long-term

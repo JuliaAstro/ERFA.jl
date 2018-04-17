@@ -1,5 +1,5 @@
 """
-    pmpx(dr, dd)
+    pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
 
 Proper motion and parallax.
 
@@ -52,7 +52,7 @@ function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
 end
 
 """
-    p06e(dr, dd)
+    p06e(date1, date2)
 
 Precession angles, IAU 2006, equinox based.
 
@@ -62,22 +62,22 @@ Precession angles, IAU 2006, equinox based.
 
 ### Returned (see Note 2) ###
 
-   eps0          double   epsilon_0
-   psia          double   psi_A
-   oma           double   omega_A
-   bpa           double   P_A
-   bqa           double   Q_A
-   pia           double   pi_A
-   bpia          double   Pi_A
-   epsa          double   obliquity epsilon_A
-   chia          double   chi_A
-   za            double   z_A
-   zetaa         double   zeta_A
-   thetaa        double   theta_A
-   pa            double   p_A
-   gam           double   F-W angle gamma_J2000
-   phi           double   F-W angle phi_J2000
-   psi           double   F-W angle psi_J2000
+* `eps0`: epsilon_0
+* `psia`: psi_A
+* `oma`: omega_A
+* `bpa`: P_A
+* `bqa`: Q_A
+* `pia`: pi_A
+* `bpia`: Pi_A
+* `epsa`: obliquity epsilon_A
+* `chia`: chi_A
+* `za`: z_A
+* `zetaa`: zeta_A
+* `thetaa`: theta_A
+* `pa`: p_A
+* `gam`: F-W angle gamma_J2000
+* `phi`: F-W angle phi_J2000
+* `psi`: F-W angle psi_J2000
 
 ### Notes ###
 
@@ -192,7 +192,7 @@ function p06e(date1, date2)
 end
 
 """
-    p2s(dr, dd)
+    p2s(p)
 
 P-vector to spherical polar coordinates.
 
@@ -229,7 +229,7 @@ function p2s(p)
 end
 
 """
-    p2pv(dr, dd)
+    p2pv(p)
 
 Extend a p-vector to a pv-vector by appending a zero velocity.
 
@@ -256,7 +256,7 @@ function p2pv(p)
 end
 
 """
-    pb06(dr, dd)
+    pb06(date1, date2)
 
 This function forms three Euler angles which implement general
 precession from epoch J2000.0, using the IAU 2006 model.  Frame
@@ -330,7 +330,7 @@ end
 
 
 """
-    pfw06(dr, dd)
+    pfw06(date1, date2)
 
 Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
@@ -414,7 +414,7 @@ function pfw06(date1, date2)
 end
 
 """
-    plan94(dr, dd)
+    plan94(date1, date2, np)
 
 Approximate heliocentric position and velocity of a nominated major
 planet:  Mercury, Venus, EMB, Mars, Jupiter, Saturn, Uranus or
@@ -429,14 +429,7 @@ Neptune (but not the Earth itself).
 
 ### Returned (argument) ###
 
-   pv     double[2][3] planet p,v (heliocentric, J2000.0, au,au/d)
-
-### Returned (function value) ###
-
-          int          status: -1 = illegal NP (outside 1-8)
-                                0 = OK
-                               +1 = warning: year outside 1000-3000
-                               +2 = warning: failed to converge
+* Planet p,v (heliocentric, J2000.0, au,au/d)
 
 ### Notes ###
 
@@ -590,7 +583,7 @@ function plan94(date1, date2, np)
 end
 
 """
-    pm(dr, dd)
+    pm(p)
 
 Modulus of p-vector.
 
@@ -600,7 +593,7 @@ Modulus of p-vector.
 
 ### Returned (function value) ###
 
-          double        modulus
+* Modulus
 
 """
 function pm(p)
@@ -608,7 +601,7 @@ function pm(p)
 end
 
 """
-    pmsafe(dr, dd)
+    pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
 
 Star proper motion:  update star catalog data for space motion, with
 special handling to handle the zero parallax case.
@@ -634,16 +627,6 @@ special handling to handle the zero parallax case.
 * `pmd2`: Dec proper motion (radians/year), after
 * `px2`: Parallax (arcseconds), after
 * `rv2`: Radial velocity (km/s, +ve = receding), after
-
-### Returned (function value) ###
-
-          int         status:
-                       -1 = system error (should not occur)
-                        0 = no warnings or errors
-                        1 = distance overridden (Note 6)
-                        2 = excessive velocity (Note 7)
-                        4 = solution didn't converge (Note 8)
-                     else = binary logical OR of the above warnings
 
 ### Notes ###
 
@@ -734,7 +717,7 @@ function pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
 end
 
 """
-    pn(dr, dd)
+    pn(p)
 
 Convert a p-vector into modulus and unit vector.
 
@@ -772,7 +755,7 @@ function pn(p::AbstractArray)
 end
 
 """
-    ppsp(dr, dd)
+    ppsp(a, s, b)
 
 P-vector plus scaled p-vector.
 
@@ -805,7 +788,7 @@ function ppsp(a, s, b)
 end
 
 """
-    prec76(dr, dd)
+    prec76(date01, date02, date11, date12)
 
 IAU 1976 precession model.
 
@@ -880,7 +863,7 @@ function prec76(ep01, ep02, ep11, ep12)
 end
 
 """
-    pv2s(dr, dd)
+    pv2s(pv)
 
 Convert position/velocity from Cartesian to spherical coordinates.
 
@@ -925,7 +908,7 @@ function pv2s(pv)
 end
 
 """
-    pv2p(dr, dd)
+    pv2p(pv)
 
 Discard velocity component of a pv-vector.
 
@@ -951,7 +934,7 @@ function pv2p(pv)
 end
 
 """
-    pvdpv(dr, dd)
+    pvdpv(a, b)
 
 Inner (=scalar=dot) product of two pv-vectors.
 
@@ -985,7 +968,7 @@ function pvdpv(a, b)
 end
 
 """
-    pvm(dr, dd)
+    pvm(pv)
 
 Modulus of pv-vector.
 
@@ -1013,29 +996,22 @@ function pvm(pv)
 end
 
 """
-    pvstar(dr, dd)
+    pvstar(pv)
 
 Convert star position+velocity vector to catalog coordinates.
 
 ### Given (Note 1) ###
 
-   pv     double[2][3]   pv-vector (au, au/day)
+* `pv`: pv-vector (au, au/day)
 
 ### Returned (Note 2) ###
 
-   ra     double         right ascension (radians)
-   dec    double         declination (radians)
-   pmr    double         RA proper motion (radians/year)
-   pmd    double         Dec proper motion (radians/year)
-   px     double         parallax (arcsec)
-   rv     double         radial velocity (km/s, positive = receding)
-
-### Returned (function value) ###
-
-          int            status:
-                            0 = OK
-                           -1 = superluminal speed (Note 5)
-                           -2 = null position vector
+* `ra`: Right ascension (radians)
+* `dec`: Declination (radians)
+* `pmr`: RA proper motion (radians/year)
+* `pmd`: Dec proper motion (radians/year)
+* `px`: Parallax (arcsec)
+* `rv`: Radial velocity (km/s, positive = receding)
 
 ### Notes ###
 
@@ -1126,7 +1102,7 @@ function pvstar(pv)
 end
 
 """
-    pvtob(dr, dd)
+    pvtob(elong, phi, height, xp, yp, sp, theta)
 
 Position and velocity of a terrestrial observing station.
 
@@ -1194,7 +1170,7 @@ function pvtob(elong, phi, height, xp, yp, sp, theta)
 end
 
 """
-    pvu(dr, dd)
+    pvu(dt, pv)
 
 Update a pv-vector.
 
@@ -1231,7 +1207,7 @@ function pvu(dt, pv)
 end
 
 """
-    pvup(dr, dd)
+    pvup(dt, pv)
 
 Update a pv-vector, discarding the velocity component.
 
@@ -1261,7 +1237,7 @@ function pvup(dt, pv)
 end
 
 """
-    pn00(dr, dd)
+    pn00(date1, date2, dpsi, deps)
 
 Precession-nutation, IAU 2000 model:  a multi-purpose function,
 supporting classical (equinox-based) use directly and CIO-based
@@ -1356,7 +1332,7 @@ use indirectly.
 pn00
 
 """
-    pn06(dr, dd)
+    pn06(date1, date2, dpsi, deps)
 
 Precession-nutation, IAU 2006 model:  a multi-purpose function,
 supporting classical (equinox-based) use directly and CIO-based use
@@ -1469,7 +1445,7 @@ for name in ("pn00",
 end
 
 """
-    pmp(dr, dd)
+    pmp(a, b)
 
 P-vector subtraction.
 
@@ -1491,7 +1467,7 @@ P-vector subtraction.
 pmp
 
 """
-    ppp(dr, dd)
+    ppp(a, b)
 
 P-vector addition.
 
@@ -1513,7 +1489,7 @@ P-vector addition.
 ppp
 
 """
-    pxp(dr, dd)
+    pxp(a, b)
 
 p-vector outer (=vector=cross) product.
 
@@ -1551,7 +1527,7 @@ for name in ("pmp",
 end
 
 """
-    pvmpv(dr, dd)
+    pvmpv(a, b)
 
 Subtract one pv-vector from another.
 
@@ -1577,7 +1553,7 @@ Subtract one pv-vector from another.
 pvmpv
 
 """
-    pvppv(dr, dd)
+    pvppv(a, b)
 
 Add one pv-vector to another.
 
@@ -1603,7 +1579,7 @@ Add one pv-vector to another.
 pvppv
 
 """
-    pvxpv(dr, dd)
+    pvxpv(a, b)
 
 Outer (=vector=cross) product of two pv-vectors.
 
@@ -1652,7 +1628,7 @@ for name in ("pvmpv",
 end
 
 """
-    pn00a(dr, dd)
+    pn00a(date1, date2)
 
 Precession-nutation, IAU 2000A model:  a multi-purpose function,
 supporting classical (equinox-based) use directly and CIO-based
@@ -1747,7 +1723,7 @@ use indirectly.
 pn00a
 
 """
-    pn00b(dr, dd)
+    pn00b(date1, date2)
 
 Precession-nutation, IAU 2000B model:  a multi-purpose function,
 supporting classical (equinox-based) use directly and CIO-based
@@ -1842,7 +1818,7 @@ use indirectly.
 pn00b
 
 """
-    pn06a(dr, dd)
+    pn06a(date1, date2)
 
 Precession-nutation, IAU 2006/2000A models:  a multi-purpose function,
 supporting classical (equinox-based) use directly and CIO-based use
@@ -1950,7 +1926,7 @@ for name in ("pn00a",
 end
 
 """
-    pas(dr, dd)
+    pas(al, ap, bl, bp)
 
 Position-angle from spherical coordinates.
 
@@ -1961,9 +1937,9 @@ Position-angle from spherical coordinates.
 * `bl`: Longitude of point B
 * `bp`: Latitude of point B
 
-### Returned (function value) ###
+### Returned ###
 
-          double     position angle of B with respect to A
+* Position angle of B with respect to A
 
 ### Notes ###
 
@@ -1980,7 +1956,7 @@ function pas(al, ap, bl, bp)
 end
 
 """
-    pap(dr, dd)
+    pap(a, b)
 
 Position-angle from two p-vectors.
 
@@ -2020,7 +1996,7 @@ Position-angle from two p-vectors.
 pap
 
 """
-    pdp(dr, dd)
+    pdp(a, b)
 
 p-vector inner (=scalar=dot) product.
 
@@ -2048,7 +2024,7 @@ for name in ("pap",
 end
 
 """
-    pr00(dr, dd)
+    pr00(date1, date2)
 
 Precession-rate part of the IAU 2000 precession-nutation models
 (part of MHB2000).
@@ -2123,7 +2099,7 @@ function pr00(a, b)
 end
 
 """
-    pmat00(dr, dd)
+    pmat00(date1, date2)
 
 Precession matrix (including frame bias) from GCRS to a specified
 date, IAU 2000 model.
@@ -2176,7 +2152,7 @@ date, IAU 2000 model.
 pmat00
 
 """
-    pmat06(dr, dd)
+    pmat06(date1, date2)
 
 Precession matrix (including frame bias) from GCRS to a specified
 date, IAU 2006 model.
@@ -2230,7 +2206,7 @@ date, IAU 2006 model.
 pmat06
 
 """
-    pmat76(dr, dd)
+    pmat76(date1, date2)
 
 Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 
@@ -2299,7 +2275,7 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 pmat76
 
 """
-    pnm00a(dr, dd)
+    pnm00a(date1, date2)
 
 Form the matrix of precession-nutation for a given date (including
 frame bias), equinox-based, IAU 2000A model.
@@ -2355,7 +2331,7 @@ frame bias), equinox-based, IAU 2000A model.
 pnm00a
 
 """
-    pnm00b(dr, dd)
+    pnm00b(date1, date2)
 
 Form the matrix of precession-nutation for a given date (including
 frame bias), equinox-based, IAU 2000B model.
@@ -2411,7 +2387,7 @@ frame bias), equinox-based, IAU 2000B model.
 pnm00b
 
 """
-    pnm06a(dr, dd)
+    pnm06a(date1, date2)
 
 Form the matrix of precession-nutation for a given date (including
 frame bias), IAU 2006 precession and IAU 2000A nutation models.
@@ -2464,7 +2440,7 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
 pnm06a
 
 """
-    pnm80(dr, dd)
+    pnm80(date1, date2)
 
 Form the matrix of precession/nutation for a given date, IAU 1976
 precession model, IAU 1980 nutation model.
@@ -2539,7 +2515,7 @@ for name in ("pmat00",
 end
 
 """
-    pom00(dr, dd)
+    pom00(xp, yp, sp)
 
 Form the matrix of polar motion for a given date, IAU 2000.
 

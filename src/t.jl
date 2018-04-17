@@ -1,5 +1,5 @@
 """
-    tr(dr, dd)
+    tr(r)
 
 Transpose an r-matrix.
 
@@ -29,7 +29,7 @@ function tr(r)
 end
 
 """
-    trxpv(dr, dd)
+    trxpv(r, pv)
 
 Multiply a pv-vector by the transpose of an r-matrix.
 
@@ -61,7 +61,7 @@ function trxpv(r, p)
 end
 
 """
-    trxp(dr, dd)
+    trxp(r, p)
 
 Multiply a p-vector by the transpose of an r-matrix.
 
@@ -93,7 +93,7 @@ function trxp(r, p)
 end
 
 """
-    taiut1(dr, dd)
+    taiut1(tai1, tai2, dta)
 
 Time scale transformation:  International Atomic Time, TAI, to
 Universal Time, UT1.
@@ -106,10 +106,6 @@ Universal Time, UT1.
 ### Returned ###
 
 * `ut11`, `ut12`: UT1 as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -130,7 +126,7 @@ Universal Time, UT1.
 taiut1
 
 """
-    tdbtt(dr, dd)
+    tdbtt(tdb1, tdb2, dtr)
 
 Time scale transformation:  Barycentric Dynamical Time, TDB, to
 Terrestrial Time, TT.
@@ -143,10 +139,6 @@ Terrestrial Time, TT.
 ### Returned ###
 
 * `tt1`, `tt2`: TT as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -177,7 +169,7 @@ Terrestrial Time, TT.
 tdbtt
 
 """
-    tttdb(dr, dd)
+    tttdb(tt1, tt2, dtr)
 
 Time scale transformation:  Terrestrial Time, TT, to Barycentric
 Dynamical Time, TDB.
@@ -190,10 +182,6 @@ Dynamical Time, TDB.
 ### Returned ###
 
 * `tdb1`, `tdb2`: TDB as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -224,7 +212,7 @@ Dynamical Time, TDB.
 tttdb
 
 """
-    ttut1(dr, dd)
+    ttut1(tt1, tt2, dt)
 
 Time scale transformation:  Terrestrial Time, TT, to Universal Time,
 UT1.
@@ -237,10 +225,6 @@ UT1.
 ### Returned ###
 
 * `ut11`, `ut12`: UT1 as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -279,7 +263,7 @@ for name in ("taiut1",
 end
 
 """
-    taitt(dr, dd)
+    taitt(tai1, tai2)
 
 Time scale transformation:  International Atomic Time, TAI, to
 Terrestrial Time, TT.
@@ -291,10 +275,6 @@ Terrestrial Time, TT.
 ### Returned ###
 
 * `tt1`, `tt2`: TT as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Note ###
 
@@ -315,7 +295,7 @@ Terrestrial Time, TT.
 taitt
 
 """
-    taiutc(dr, dd)
+    taiutc(tai1, tai2)
 
 Time scale transformation:  International Atomic Time, TAI, to
 Coordinated Universal Time, UTC.
@@ -327,12 +307,6 @@ Coordinated Universal Time, UTC.
 ### Returned ###
 
 * `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 1-3)
-
-### Returned (function value) ###
-
-              int      status: +1 = dubious year (Note 4)
-                                0 = OK
-                               -1 = unacceptable date
 
 ### Notes ###
 
@@ -375,7 +349,7 @@ Coordinated Universal Time, UTC.
 taiutc
 
 """
-    tcbtdb(dr, dd)
+    tcbtdb(tcb1, tcb2)
 
 Time scale transformation:  Barycentric Coordinate Time, TCB, to
 Barycentric Dynamical Time, TDB.
@@ -387,10 +361,6 @@ Barycentric Dynamical Time, TDB.
 ### Returned ###
 
 * `tdb1`, `tdb2`: TDB as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -425,7 +395,7 @@ Barycentric Dynamical Time, TDB.
 tcbtdb
 
 """
-    tcgtt(dr, dd)
+    tcgtt(tcg1, tcg2)
 
 Time scale transformation:  Geocentric Coordinate Time, TCG, to
 Terrestrial Time, TT.
@@ -437,10 +407,6 @@ Terrestrial Time, TT.
 ### Returned ###
 
 * `tt1`, `tt2`: TT as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Note ###
 
@@ -460,7 +426,7 @@ Terrestrial Time, TT.
 tcgtt
 
 """
-    tdbtcb(dr, dd)
+    tdbtcb(tdb1, tdb2)
 
 Time scale transformation:  Barycentric Dynamical Time, TDB, to
 Barycentric Coordinate Time, TCB.
@@ -472,10 +438,6 @@ Barycentric Coordinate Time, TCB.
 ### Returned ###
 
 * `tcb1`, `tcb2`: TCB as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Notes ###
 
@@ -510,7 +472,7 @@ Barycentric Coordinate Time, TCB.
 tdbtcb
 
 """
-    tttai(dr, dd)
+    tttai(tt1, tt2)
 
 Time scale transformation:  Terrestrial Time, TT, to International
 Atomic Time, TAI.
@@ -522,10 +484,6 @@ Atomic Time, TAI.
 ### Returned ###
 
 * `tai1`, `tai2`: TAI as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Note ###
 
@@ -546,7 +504,7 @@ Atomic Time, TAI.
 tttai
 
 """
-    tttcg(dr, dd)
+    tttcg(tt1, tt2)
 
 Time scale transformation:  Terrestrial Time, TT, to Geocentric
 Coordinate Time, TCG.
@@ -558,10 +516,6 @@ Coordinate Time, TCG.
 ### Returned ###
 
 * `tcg1`, `tcg2`: TCG as a 2-part Julian Date
-
-### Returned (function value) ###
-
-              int       status:  0 = OK
 
 ### Note ###
 
@@ -603,7 +557,7 @@ for name in ("taitt",
 end
 
 """
-    tf2a(dr, dd)
+    tf2a(s, ihour, imin, sec)
 
 Convert hours, minutes, seconds to radians.
 
@@ -617,13 +571,6 @@ Convert hours, minutes, seconds to radians.
 ### Returned ###
 
 * `rad`: Angle in radians
-
-### Returned (function value) ###
-
-             int     status:  0 = OK
-                              1 = ihour outside range 0-23
-                              2 = imin outside range 0-59
-                              3 = sec outside range 0-59.999...
 
 ### Notes ###
 
@@ -639,7 +586,7 @@ Convert hours, minutes, seconds to radians.
 tf2a
 
 """
-    tf2d(dr, dd)
+    tf2d(s, ihour, imin, sec)
 
 Convert hours, minutes, seconds to days.
 
@@ -653,13 +600,6 @@ Convert hours, minutes, seconds to days.
 ### Returned ###
 
 * `days`: Interval in days
-
-### Returned (function value) ###
-
-             int     status:  0 = OK
-                              1 = ihour outside range 0-23
-                              2 = imin outside range 0-59
-                              3 = sec outside range 0-59.999...
 
 ### Notes ###
 
@@ -684,7 +624,13 @@ for name in ("tf2a",
             i = ccall(($fc, liberfa), Cint,
                       (Cchar, Cint, Cint, Cdouble, Ref{Cdouble}),
                        s, ideg, iamin, asec, rad)
-            @assert i == 0
+            if i == 1
+                throw(ERFAException("ihour outside range 0-23"))
+            elseif i == 2
+                throw(ERFAException("imin outside range 0-59"))
+            elseif i == 3
+                throw(ERFAException("sec outside range 0-59.999..."))
+            end
             rad[]
         end
     end

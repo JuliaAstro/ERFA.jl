@@ -1,5 +1,5 @@
 """
-    bi00(dr, dd)
+    bi00()
 
 Frame bias components of IAU 2000 precession-nutation models (part
 of MHB2000 with additions).
@@ -49,7 +49,7 @@ function bi00()
 end
 
 """
-    bpn2xy(dr, dd)
+    bpn2xy(rbpn)
 
 Extract from the bias-precession-nutation matrix the X,Y coordinates
 of the Celestial Intermediate Pole.
@@ -92,7 +92,7 @@ function bpn2xy(rbpn)
 end
 
 """
-    bp00(dr, dd)
+    bp00(date1, date2)
 
 Frame bias and precession, IAU 2000.
 
@@ -165,7 +165,7 @@ Frame bias and precession, IAU 2000.
 bp00
 
 """
-    bp06(dr, dd)
+    bp06(date1, date2)
 
 Frame bias and precession, IAU 2006.
 

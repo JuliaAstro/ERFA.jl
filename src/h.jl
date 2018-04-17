@@ -1,5 +1,5 @@
 """
-    hfk5z(dr, dd)
+    hfk5z(rh, dh, date1, date2)
 
 Transform a Hipparcos star position into FK5 J2000.0, assuming
 zero Hipparcos proper motion.
@@ -12,10 +12,10 @@ zero Hipparcos proper motion.
 
 ### Returned (all FK5, equinox J2000.0, date date1+date2) ###
 
-   r5            double    RA (radians)
-   d5            double    Dec (radians)
-   dr5           double    FK5 RA proper motion (rad/year, Note 4)
-   dd5           double    Dec proper motion (rad/year, Note 4)
+* `r5`: RA (radians)
+* `d5`: Dec (radians)
+* `dr5`: FK5 RA proper motion (rad/year, Note 4)
+* `dd5`: Dec proper motion (rad/year, Note 4)
 
 ### Notes ###
 
@@ -84,27 +84,27 @@ function hfk5z(rh, dh, date1, date2)
 end
 
 """
-    h2fk5(dr, dd)
+    h2fk5(ra, dec, dra, ddec, px, rv)
 
 Transform Hipparcos star data into the FK5 (J2000.0) system.
 
 ### Given (all Hipparcos, epoch J2000.0) ###
 
-   rh      double    RA (radians)
-   dh      double    Dec (radians)
-   drh     double    proper motion in RA (dRA/dt, rad/Jyear)
-   ddh     double    proper motion in Dec (dDec/dt, rad/Jyear)
-   pxh     double    parallax (arcsec)
-   rvh     double    radial velocity (km/s, positive = receding)
+* `rh`: RA (radians)
+* `dh`: Dec (radians)
+* `drh`: Proper motion in RA (dRA/dt, rad/Jyear)
+* `ddh`: Proper motion in Dec (dDec/dt, rad/Jyear)
+* `pxh`: Parallax (arcsec)
+* `rvh`: Radial velocity (km/s, positive = receding)
 
 ### Returned (all FK5, equinox J2000.0, epoch J2000.0) ###
 
-   r5      double    RA (radians)
-   d5      double    Dec (radians)
-   dr5     double    proper motion in RA (dRA/dt, rad/Jyear)
-   dd5     double    proper motion in Dec (dDec/dt, rad/Jyear)
-   px5     double    parallax (arcsec)
-   rv5     double    radial velocity (km/s, positive = receding)
+* `r5`: RA (radians)
+* `d5`: Dec (radians)
+* `dr5`: Proper motion in RA (dRA/dt, rad/Jyear)
+* `dd5`: Proper motion in Dec (dDec/dt, rad/Jyear)
+* `px5`: Parallax (arcsec)
+* `rv5`: Radial velocity (km/s, positive = receding)
 
 ### Notes ###
 

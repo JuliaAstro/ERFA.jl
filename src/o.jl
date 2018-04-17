@@ -1,5 +1,5 @@
 """
-    obl06(dr, dd)
+    obl06(date1, date2)
 
 Mean obliquity of the ecliptic, IAU 2006 precession model.
 
@@ -9,7 +9,7 @@ Mean obliquity of the ecliptic, IAU 2006 precession model.
 
 ### Returned (function value) ###
 
-                double   obliquity of the ecliptic (radians, Note 2)
+* Obliquity of the ecliptic (radians, Note 2)
 
 ### Notes ###
 
@@ -43,7 +43,7 @@ Mean obliquity of the ecliptic, IAU 2006 precession model.
 obl06
 
 """
-    obl80(dr, dd)
+    obl80(date1, date2)
 
 Mean obliquity of the ecliptic, IAU 1980 model.
 
@@ -53,7 +53,7 @@ Mean obliquity of the ecliptic, IAU 1980 model.
 
 ### Returned (function value) ###
 
-                 double    obliquity of the ecliptic (radians, Note 2)
+* Obliquity of the ecliptic (radians, Note 2)
 
 ### Notes ###
 

@@ -1,5 +1,5 @@
 """
-    gc2gd(dr, dd)
+    gc2gd(n, xyz)
 
 Transform geocentric coordinates to geodetic using the specified
 reference ellipsoid.
@@ -15,25 +15,14 @@ reference ellipsoid.
 * `phi`: Latitude (geodetic, radians, Note 3)
 * `height`: Height above ellipsoid (geodetic, Notes 2,3)
 
-### Returned (function value) ###
-
-          int         status:  0 = OK
-                              -1 = illegal identifier (Note 3)
-                              -2 = internal error (Note 3)
-
 ### Notes ###
 
 1) The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-      n    ellipsoid
-
-      1     ERFA_WGS84
-      2     ERFA_GRS80
-      3     ERFA_WGS72
-
-   The n value has no significance outside the ERFA software.  For
-   convenience, symbols ERFA_WGS84 etc. are defined in erfam.h.
+        * `WGS84`
+        * `GRS80`
+        * `WGS72`
 
 2) The geocentric vector (xyz, given) and height (height, returned)
    are in meters.
@@ -66,7 +55,7 @@ function gc2gd(n, xyz)
 end
 
 """
-    gc2gde(dr, dd)
+    gc2gde(a, f, xyz)
 
 Transform geocentric coordinates to geodetic for a reference
 ellipsoid of specified form.
@@ -82,12 +71,6 @@ ellipsoid of specified form.
 * `elong`: Longitude (radians, east +ve)
 * `phi`: Latitude (geodetic, radians)
 * `height`: Height above ellipsoid (geodetic, Note 4)
-
-### Returned (function value) ###
-
-           int        status:  0 = OK
-                              -1 = illegal f
-                              -2 = illegal a
 
 ### Notes ###
 
@@ -137,7 +120,7 @@ function gc2gde(a, f, xyz)
 end
 
 """
-    gd2gc(dr, dd)
+    gd2gc(n, elong, phi, height)
 
 Transform geodetic coordinates to geocentric using the specified
 reference ellipsoid.
@@ -152,12 +135,6 @@ reference ellipsoid.
 ### Returned ###
 
 * `xyz`: Geocentric vector (Note 2)
-
-### Returned (function value) ###
-
-           int        status:  0 = OK
-                              -1 = illegal identifier (Note 3)
-                              -2 = illegal case (Note 3)
 
 ### Notes ###
 
@@ -205,7 +182,7 @@ function gd2gc(n, elong, phi, height)
 end
 
 """
-    gd2gce(dr, dd)
+    gd2gce(a, f, elong, phi, height)
 
 Transform geodetic coordinates to geocentric for a reference
 ellipsoid of specified form.
@@ -222,10 +199,6 @@ ellipsoid of specified form.
 
 * `xyz`: Geocentric vector (Note 3)
 
-### Returned (function value) ###
-
-           int        status:  0 = OK
-                              -1 = illegal case (Note 4)
 ### Notes ###
 
 1) The equatorial radius, a, can be in any units, but meters is
@@ -271,7 +244,7 @@ function gd2gce(a, f, elong, phi, height)
 end
 
 """
-    gst06(dr, dd)
+    gst06(uta, utb, tta, ttb, rnpb)
 
 Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
@@ -281,9 +254,9 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 * `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 * `rnpb`: Nutation x precession x bias matrix
 
-### Returned (function value) ###
+### Returned ###
 
-            double        Greenwich apparent sidereal time (radians)
+* Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -341,7 +314,7 @@ function gst06(uta, utb, tta, ttb, rnpb)
 end
 
 """
-    gmst82(dr, dd)
+    gmst82(dj1, dj2)
 
 Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
@@ -349,9 +322,9 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
 * `dj1`, `dj2`: UT1 Julian Date (see note)
 
-### Returned (function value) ###
+### Returned ###
 
-              double    Greenwich mean sidereal time (radians)
+* Greenwich mean sidereal time (radians)
 
 ### Notes ###
 
@@ -413,9 +386,9 @@ resolutions but using the truncated nutation model IAU 2000B).
 
 * `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 
-### Returned (function value) ###
+### Returned ###
 
-              double    Greenwich apparent sidereal time (radians)
+* Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -493,9 +466,9 @@ resolutions).
 
 * `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 
-### Returned (function value) ###
+### Returned ###
 
-              double    Greenwich apparent sidereal time (radians)
+* Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -557,7 +530,7 @@ for name in ("gmst82",
 end
 
 """
-    gmst00(dr, dd)
+    gmst00(uta, utb, tta, ttb)
 
 Greenwich mean sidereal time (model consistent with IAU 2000
 resolutions).
@@ -567,9 +540,9 @@ resolutions).
 * `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 * `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
-### Returned (function value) ###
+### Returned ###
 
-              double    Greenwich mean sidereal time (radians)
+* Greenwich mean sidereal time (radians)
 
 ### Notes ###
 
@@ -628,7 +601,7 @@ resolutions).
 gmst00
 
 """
-    gmst06(dr, dd)
+    gmst06(uta, utb, tta, ttb)
 
 Greenwich mean sidereal time (consistent with IAU 2006 precession).
 
@@ -637,9 +610,9 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 * `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 * `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
-### Returned (function value) ###
+### Returned ###
 
-              double    Greenwich mean sidereal time (radians)
+* Greenwich mean sidereal time (radians)
 
 ### Notes ###
 
@@ -689,7 +662,7 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 gmst06
 
 """
-    gst00a(dr, dd)
+    gst00a(uta, utb, tta, ttb)
 
 Greenwich apparent sidereal time (consistent with IAU 2000
 resolutions).
@@ -699,9 +672,9 @@ resolutions).
 * `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 * `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
-### Returned (function value) ###
+### Returned  ###
 
-              double    Greenwich apparent sidereal time (radians)
+* Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -761,7 +734,7 @@ resolutions).
 gst00a
 
 """
-    gst06a(dr, dd)
+    gst06a(uta, utb, tta, ttb)
 
 Greenwich apparent sidereal time (consistent with IAU 2000 and 2006
 resolutions).
@@ -771,9 +744,9 @@ resolutions).
 * `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 * `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
-### Returned (function value) ###
+### Returned ###
 
-              double    Greenwich apparent sidereal time (radians)
+* Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -833,7 +806,7 @@ for name in ("gmst00",
 end
 
 """
-    g2icrs(dr, dd)
+    g2icrs(dl, db)
 
 Transformation from Galactic Coordinates to ICRS.
 

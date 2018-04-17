@@ -1,5 +1,5 @@
 """
-    xy06(dr, dd)
+    xy06(date1, date2)
 
 X,Y coordinates of celestial intermediate pole from series based
 on IAU 2006 precession and IAU 2000A nutation.
@@ -94,7 +94,7 @@ function xy06(date1, date2)
 end
 
 """
-    xys00a(dr, dd)
+    xys00a(date1, date2)
 
 For a given TT date, compute the X,Y coordinates of the Celestial
 Intermediate Pole and the CIO locator s, using the IAU 2000A
@@ -155,7 +155,7 @@ precession-nutation model.
 xys00a
 
 """
-    xys00b(dr, dd)
+    xys00b(date1, date2)
 
 For a given TT date, compute the X,Y coordinates of the Celestial
 Intermediate Pole and the CIO locator s, using the IAU 2000B
@@ -216,7 +216,7 @@ precession-nutation model.
 xys00b
 
 """
-    xys06a(dr, dd)
+    xys06a(date1, date2)
 
 For a given TT date, compute the X,Y coordinates of the Celestial
 Intermediate Pole and the CIO locator s, using the IAU 2006

@@ -1162,13 +1162,13 @@ using Compat.Test
 
     # ERFA.eform
     # @testset "eform" begin
-        a, f = ERFA.eform(1)
+        a, f = ERFA.eform(ERFA.WGS84)
         @test isapprox(a, 6378137.0, atol = 1e-10)
         @test isapprox(f, 0.0033528106647474807, atol = 1e-18)
-        a, f = ERFA.eform(2)
+        a, f = ERFA.eform(ERFA.GRS80)
         @test isapprox(a, 6378137.0, atol = 1e-10)
         @test isapprox(f, 0.0033528106811823189, atol = 1e-18)
-        a, f = ERFA.eform(3)
+        a, f = ERFA.eform(ERFA.WGS72)
         @test isapprox(a, 6378135.0, atol = 1e-10)
         @test isapprox(f, 0.0033527794541675049, atol = 1e-18)
     # end

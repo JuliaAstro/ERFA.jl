@@ -1,5 +1,5 @@
 """
-    eform(dr, dd)
+    eform(n::Ellipsoid)
 
 Earth reference ellipsoids.
 
@@ -22,14 +22,9 @@ Earth reference ellipsoids.
 1) The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-      n    ellipsoid
-
-      1     ERFA_WGS84
-      2     ERFA_GRS80
-      3     ERFA_WGS72
-
-   The n value has no significance outside the ERFA software.  For
-   convenience, symbols ERFA_WGS84 etc. are defined in erfam.h.
+        * `WGS84`
+        * `GRS80`
+        * `WGS72`
 
 2) The ellipsoid parameters are returned in the form of equatorial
    radius in meters (a) and flattening (f).  The latter is a number
@@ -54,7 +49,7 @@ Earth reference ellipsoids.
    p220.
 
 """
-function eform(n)
+function eform(n::Ellipsoid)
     a = Ref(0.0)
     f = Ref(0.0)
     i = ccall((:eraEform, liberfa), Cint,
@@ -67,7 +62,7 @@ function eform(n)
 end
 
 """
-    eors(dr, dd)
+    eors(rnpb, s)
 
 Equation of the origins, given the classical NPB matrix and the
 quantity s.
@@ -79,7 +74,7 @@ quantity s.
 
 ### Returned (function value) ###
 
-         double        the equation of the origins in radians.
+* The equation of the origins in radians.
 
 ### Notes ###
 
@@ -92,7 +87,7 @@ quantity s.
 
 2)  The algorithm is from Wallace & Capitaine (2006).
 
-eferences:
+### References ###
 
    Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
@@ -106,7 +101,7 @@ function eors(rnpb, s)
 end
 
 """
-    epv00(dr, dd)
+    epv00(date1, date2)
 
 Earth position and velocity, heliocentric and barycentric, with
 respect to the Barycentric Celestial Reference System.
@@ -119,12 +114,6 @@ respect to the Barycentric Celestial Reference System.
 
 * `pvh`: Heliocentric Earth position/velocity
 * `pvb`: Barycentric Earth position/velocity
-
-### Returned (function value) ###
-
-                int           status: 0 = OK
-                                     +1 = warning: date outside
-                                          the range 1900-2100 AD
 
 ### Notes ###
 
@@ -213,7 +202,7 @@ function epv00(date1, date2)
 end
 
 """
-    eceq06(dr, dd)
+    eceq06(date1, date2, dl, db)
 
 Transformation from ecliptic coordinates (mean equinox and ecliptic
 of date) to ICRS RA,Dec, using the IAU 2006 precession model.
@@ -268,7 +257,7 @@ of date) to ICRS RA,Dec, using the IAU 2006 precession model.
 eceq06
 
 """
-    eqec06(dr, dd)
+    eqec06(date1, date2, dr, dd)
 
 Transformation from ICRS equatorial coordinates to ecliptic
 coordinates (mean equinox and ecliptic of date) using IAU 2006
@@ -340,7 +329,7 @@ for name in ("eceq06",
 end
 
 """
-    epb2jd(dr, dd)
+    epb2jd(epj)
 
 Besselian Epoch to Julian Date.
 
@@ -368,7 +357,7 @@ Besselian Epoch to Julian Date.
 epb2jd
 
 """
-    epj2jd(dr, dd)
+    epj2jd(epj)
 
 Julian Epoch to Julian Date.
 
@@ -412,7 +401,7 @@ for name in ("epb2jd",
 end
 
 """
-    ee00a(dr, dd)
+    ee00a(dj1, dj2)
 
 Equation of the equinoxes, compatible with IAU 2000 resolutions.
 
@@ -473,7 +462,7 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
 ee00a
 
 """
-    ee00b(dr, dd)
+    ee00b(dj1, dj2)
 
 Equation of the equinoxes, compatible with IAU 2000 resolutions but
 using the truncated nutation model IAU 2000B.
@@ -540,7 +529,7 @@ using the truncated nutation model IAU 2000B.
 ee00b
 
 """
-    ee06a(dr, dd)
+    ee06a(dj1, dj2)
 
 Equation of the equinoxes, compatible with IAU 2000 resolutions and
 IAU 2006/2000A precession-nutation.
@@ -593,7 +582,7 @@ IAU 2006/2000A precession-nutation.
 ee06a
 
 """
-    eect00(dr, dd)
+    eect00(dj1, dj2)
 
 Equation of the equinoxes complementary terms, consistent with
 IAU 2000 resolutions.
@@ -687,7 +676,7 @@ IAU 2000 resolutions.
 eect00
 
 """
-    eo06a(dr, dd)
+    eo06a(dj1, dj2)
 
 Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
@@ -744,7 +733,7 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 eo06a
 
 """
-    epb(dr, dd)
+    epb(dj1, dj2)
 
 Julian Date to Besselian Epoch.
 
@@ -772,7 +761,7 @@ Julian Date to Besselian Epoch.
 epb
 
 """
-    epj(dr, dd)
+    epj(dj1, dj2)
 
 Julian Date to Julian Epoch.
 
@@ -800,7 +789,7 @@ Julian Date to Julian Epoch.
 epj
 
 """
-    eqeq94(dr, dd)
+    eqeq94(dj1, dj2)
 
 Equation of the equinoxes, IAU 1994 model.
 
@@ -854,7 +843,7 @@ Equation of the equinoxes, IAU 1994 model.
 eqeq94
 
 """
-    era00(dr, dd)
+    era00(dj1, dj2)
 
 Earth rotation angle (IAU 2000 model).
 
@@ -925,7 +914,7 @@ for name in ("ee00a",
 end
 
 """
-    ee00(dr, dd)
+    ee00(date1, date2, epsa, dpsi)
 
 The equation of the equinoxes, compatible with IAU 2000 resolutions,
 given the nutation in longitude and the mean obliquity.
@@ -985,10 +974,10 @@ given the nutation in longitude and the mean obliquity.
    IERS Technical Note No. 32, BKG (2004)
 
 """
-ee00(d1, d2, t1, t2) = ccall((:eraEe00, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), d1, d2, t1, t2)
+ee00(date1, date2, epsa, dpsi) = ccall((:eraEe00, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), date1, date2, epsa, dpsi)
 
 """
-    ecm06(dr, dd)
+    ecm06(date1, date2)
 
 ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
@@ -1047,10 +1036,10 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 * `eraRxr`: product of two r-matrices
 
 """
-function ecm06(a, b)
+function ecm06(date1, date2)
     r = zeros((3, 3))
     ccall((:eraEcm06, liberfa), Cvoid,
             (Cdouble, Cdouble, Ptr{Cdouble}),
-            a, b, r)
+            date1, date2, r)
     r
 end

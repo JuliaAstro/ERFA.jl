@@ -1,5 +1,5 @@
 """
-    jd2cal(dr, dd)
+    jd2cal(dj1, dj2)
 
 Julian Date to Gregorian year, month, day, and fraction of a day.
 
@@ -7,18 +7,12 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
 
 * `dj1`, `dj2`: Julian Date (Notes 1, 2)
 
-### Returned (arguments) ###
+### Returned ###
 
-   iy        int      year
-   im        int      month
-   id        int      day
-   fd        double   fraction of day
-
-### Returned (function value) ###
-
-             int      status:
-                         0 = OK
-                        -1 = unacceptable date (Note 1)
+* `iy`: Year
+* `im`: Month
+* `id`: Day
+* `fd`: Fraction of day
 
 ### Notes ###
 
@@ -56,12 +50,14 @@ function jd2cal(d1, d2)
     i = ccall((:eraJd2cal, liberfa), Cint,
               (Cdouble, Cdouble, Ref{Cint}, Ref{Cint}, Ref{Cint}, Ref{Cdouble}),
               d1, d2, iy, imo, id, fd)
-    @assert i == 0
+    if i == -1
+        throw(ERFAException("unacceptable date (Note 1)"))
+    end
     iy[], imo[], id[], fd[]
 end
 
 """
-    jdcalf(dr, dd)
+    jdcalf(ndp, dj1, dj2)
 
 Julian Date to Gregorian Calendar, expressed in a form convenient
 for formatting messages:  rounded to a specified precision.
@@ -73,15 +69,7 @@ for formatting messages:  rounded to a specified precision.
 
 ### Returned ###
 
-* `iymdf`: Year, month, day, fraction in Gregorian
-                      calendar
-
-### Returned (function value) ###
-
-             int      status:
-                        -1 = date out of range
-                         0 = OK
-                        +1 = NDP not 0-9 (interpreted as 0)
+* `iymdf`: Year, month, day, fraction in Gregorian calendar
 
 ### Notes ###
 
@@ -122,6 +110,11 @@ function jdcalf(ndp, d1, d2)
     i = ccall((:eraJdcalf, liberfa), Cint,
               (Cint, Cdouble, Cdouble, Ptr{Cint}),
               ndp, d1, d2, iymdf)
-    @assert i == 0
+
+    if i == -1
+        throw(ERFAException("date out of range"))
+    elseif i == 1
+        @warn "NDP not 0-9 (interpreted as 0)"
+    end
     iymdf[1], iymdf[2], iymdf[3], iymdf[4]
 end

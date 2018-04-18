@@ -59,15 +59,15 @@ the bias-precession-nutation matrix.  IAU 2000.
 
 ### References ###
 
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 function c2ibpn(date1, date2, rbpn)
@@ -141,9 +141,9 @@ Gregorian Calendar to Julian Date.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 12.92 (p604).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 12.92 (p604).
 
 """
 function cal2jd(iy, imo, id)
@@ -210,8 +210,8 @@ Angle and the polar motion matrix).
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG
+* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG
 
 """
 c2tcio
@@ -264,8 +264,8 @@ Sidereal Time and the polar motion matrix).
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 c2teqx
@@ -355,8 +355,8 @@ the polar motion, using the IAU 2000A nutation model.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 c2t00a
@@ -430,8 +430,8 @@ the polar motion, using the IAU 2000B nutation model.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 c2t00b
@@ -504,8 +504,8 @@ nutation models.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG
+* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG
 
 """
 c2t06a
@@ -604,8 +604,8 @@ the nutation and the polar motion.  IAU 2000.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 c2tpe
@@ -684,8 +684,8 @@ the CIP coordinates and the polar motion.  IAU 2000.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 c2txy
@@ -762,16 +762,16 @@ IAU 2000A precession-nutation model.
 
 ### References ###
 
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154
-   (2003)
+* "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154
+    (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 c2i00a
@@ -833,16 +833,16 @@ IAU 2000B precession-nutation model.
 
 ### References ###
 
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154
-   (2003)
+* "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154
+    (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 c2i00b
@@ -903,8 +903,8 @@ IAU 2006 precession and IAU 2000A nutation models.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG
+* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG
 
 """
 c2i06a
@@ -986,8 +986,8 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 function c2ixy(x, y, s, t)
@@ -1042,8 +1042,8 @@ X,Y and the CIO locator s.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 function c2ixys(x, y, s)

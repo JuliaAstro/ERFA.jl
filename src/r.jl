@@ -121,25 +121,25 @@ zenith distance.
 
 ### References ###
 
-   Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
-   Atmosphere", Methods of Experimental Physics: Astrophysics 12B,
-   Academic Press, 1976.
+* Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
+    Atmosphere", Methods of Experimental Physics: Astrophysics 12B,
+    Academic Press, 1976.
 
-   Gill, Adrian E., "Atmosphere-Ocean Dynamics", Academic Press,
-   1982.
+* Gill, Adrian E., "Atmosphere-Ocean Dynamics", Academic Press,
+    1982.
 
-   Green, R.M., "Spherical Astronomy", Cambridge University Press,
-   1987.
+* Green, R.M., "Spherical Astronomy", Cambridge University Press,
+    1987.
 
-   Hohenkerk, C.Y., & Sinclair, A.T., NAO Technical Note No. 63,
-   1985.
+* Hohenkerk, C.Y., & Sinclair, A.T., NAO Technical Note No. 63,
+    1985.
 
-   Rueger, J.M., "Refractive Index Formulae for Electronic Distance
-   Measurement with Radio and Millimetre Waves", in Unisurv Report
-   S-68, School of Surveying and Spatial Information Systems,
-   University of New South Wales, Sydney, Australia, 2002.
+* Rueger, J.M., "Refractive Index Formulae for Electronic Distance
+    Measurement with Radio and Millimetre Waves", in Unisurv Report
+    S-68, School of Surveying and Spatial Information Systems,
+    University of New South Wales, Sydney, Australia, 2002.
 
-   Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.
+* Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.
 
 """
 function refco(phpa, tk, rh, wl)

@@ -28,14 +28,14 @@ of MHB2000 with additions).
 
 ### References ###
 
-   Chapront, J., Chapront-Touze, M. & Francou, G., Astron.
-   Astrophys., 387, 700, 2002.
+* Chapront, J., Chapront-Touze, M. & Francou, G., Astron.
+    Astrophys., 387, 700, 2002.
 
-   Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
-   and precession   New nutation series for nonrigid Earth and
-   insights into the Earth's interior", J.Geophys.Res., 107, B4,
-   2002.  The MHB2000 code itself was obtained on 9th September 2002
-   from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
+* Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
+    and precession   New nutation series for nonrigid Earth and
+    insights into the Earth's interior", J.Geophys.Res., 107, B4,
+    2002.  The MHB2000 code itself was obtained on 9th September 2002
+    from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
 """
 function bi00()
@@ -73,13 +73,13 @@ of the Celestial Intermediate Pole.
 
 ### Reference ###
 
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154
-   (2003)
+* "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154
+    (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
 function bpn2xy(rbpn)
@@ -154,12 +154,12 @@ Frame bias and precession, IAU 2000.
 
 ### Reference ###
 
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
 bp00
@@ -223,9 +223,9 @@ Frame bias and precession, IAU 2006.
 
 ### References ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 bp06

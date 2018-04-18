@@ -37,7 +37,7 @@ Mean obliquity of the ecliptic, IAU 2006 precession model.
 
 ### Reference ###
 
-   Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 """
 obl06
@@ -81,9 +81,9 @@ Mean obliquity of the ecliptic, IAU 1980 model.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Expression 3.222-1 (p114).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Expression 3.222-1 (p114).
 
 """
 obl80

@@ -119,8 +119,8 @@ Universal Time, UT1.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992)
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
 taiut1
@@ -160,10 +160,10 @@ Terrestrial Time, TT.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   IAU 2006 Resolution 3
+* IAU 2006 Resolution 3
 
 """
 tdbtt
@@ -203,10 +203,10 @@ Dynamical Time, TDB.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   IAU 2006 Resolution 3
+* IAU 2006 Resolution 3
 
 """
 tttdb
@@ -237,8 +237,8 @@ UT1.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992)
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
 ttut1
@@ -285,11 +285,11 @@ Terrestrial Time, TT.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992)
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
 taitt
@@ -339,11 +339,11 @@ Coordinated Universal Time, UTC.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992)
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
 taiutc
@@ -389,7 +389,7 @@ Barycentric Dynamical Time, TDB.
 
 ### Reference ###
 
-   IAU 2006 Resolution B3
+* IAU 2006 Resolution B3
 
 """
 tcbtdb
@@ -417,10 +417,10 @@ Terrestrial Time, TT.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),.
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),.
+    IERS Technical Note No. 32, BKG (2004)
 
-   IAU 2000 Resolution B1.9
+* IAU 2000 Resolution B1.9
 
 """
 tcgtt
@@ -466,7 +466,7 @@ Barycentric Coordinate Time, TCB.
 
 ### Reference ###
 
-   IAU 2006 Resolution B3
+* IAU 2006 Resolution B3
 
 """
 tdbtcb
@@ -494,11 +494,11 @@ Atomic Time, TAI.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992)
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
 tttai
@@ -526,10 +526,10 @@ Coordinate Time, TCG.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   IAU 2000 Resolution B1.9
+* IAU 2000 Resolution B1.9
 
 """
 tttcg

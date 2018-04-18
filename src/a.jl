@@ -34,12 +34,12 @@ direction.
 
 ### References ###
 
-   Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-   the Astronomical Almanac, 3rd ed., University Science Books
-   (2013).
+* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+    the Astronomical Almanac, 3rd ed., University Science Books
+    (2013).
 
-   Klioner, Sergei A., "A practical relativistic model for micro-
-   arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
+* Klioner, Sergei A., "A practical relativistic model for micro-
+    arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 
 ### Called ###
 
@@ -1908,12 +1908,12 @@ proper motion is eraAtciq.
 
 ### References ###
 
-   Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-   the Astronomical Almanac, 3rd ed., University Science Books
-   (2013).
+* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+    the Astronomical Almanac, 3rd ed., University Science Books
+    (2013).
 
-   Klioner, Sergei A., "A practical relativistic model for micro-
-   arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
+* Klioner, Sergei A., "A practical relativistic model for micro-
+    arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 
 ### Called ###
 

@@ -31,11 +31,11 @@ Proper motion and parallax.
 
 ### References ###
 
-   1984 Astronomical Almanac, pp B39-B41.
+* 1984 Astronomical Almanac, pp B39-B41.
 
-   Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-   the Astronomical Almanac, 3rd ed., University Science Books
-   (2013), Section 7.2.
+* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+    the Astronomical Almanac, 3rd ed., University Science Books
+    (2013), Section 7.2.
 
 ### Called ###
 
@@ -160,7 +160,7 @@ Precession angles, IAU 2006, equinox based.
 
 ### Reference ###
 
-   Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 ### Called ###
 
@@ -395,7 +395,7 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 ### Reference ###
 
-   Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 ### Called ###
 
@@ -848,8 +848,8 @@ FK5 catalog).
 
 ### Reference ###
 
-   Lieske, J.H., 1979, Astron.Astrophys. 73, 282, equations
-   (6) & (7), p283.
+* Lieske, J.H., 1979, Astron.Astrophys. 73, 282, equations
+    (6) & (7), p283.
 
 """
 function prec76(ep01, ep02, ep11, ep12)
@@ -1079,7 +1079,7 @@ Convert star position+velocity vector to catalog coordinates.
 
 ### Reference ###
 
-   Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
+* Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
 
 """
 function pvstar(pv)
@@ -1147,12 +1147,12 @@ Position and velocity of a terrestrial observing station.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-   the Astronomical Almanac, 3rd ed., University Science Books
-   (2013), Section 7.4.3.3.
+* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+    the Astronomical Almanac, 3rd ed., University Science Books
+    (2013), Section 7.4.3.3.
 
 ### Called ###
 
@@ -1320,13 +1320,13 @@ use indirectly.
 
 ### Reference ###
 
-   Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
 pn00
@@ -1417,9 +1417,9 @@ indirectly.
 
 ### References ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 pn06
@@ -1711,13 +1711,13 @@ use indirectly.
 
 ### Reference ###
 
-   Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
 pn00a
@@ -1806,13 +1806,13 @@ use indirectly.
 
 ### Reference ###
 
-   Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003).
+* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003).
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
 pn00b
@@ -1897,7 +1897,7 @@ indirectly.
 
 ### Reference ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
 """
 pn06a
@@ -2075,18 +2075,18 @@ Precession-rate part of the IAU 2000 precession-nutation models
 
 ### References ###
 
-   Lieske, J.H., Lederle, T., Fricke, W. & Morando, B., "Expressions
-   for the precession quantities based upon the IAU (1976) System of
-   Astronomical Constants", Astron.Astrophys., 58, 1-16 (1977)
+* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B., "Expressions
+    for the precession quantities based upon the IAU (1976) System of
+    Astronomical Constants", Astron.Astrophys., 58, 1-16 (1977)
 
-   Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
-   and precession   New nutation series for nonrigid Earth and
-   insights into the Earth's interior", J.Geophys.Res., 107, B4,
-   2002.  The MHB2000 code itself was obtained on 9th September 2002
-   from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
+* Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
+    and precession   New nutation series for nonrigid Earth and
+    insights into the Earth's interior", J.Geophys.Res., 107, B4,
+    2002.  The MHB2000 code itself was obtained on 9th September 2002
+    from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
-   Wallace, P.T., "Software for Implementing the IAU 2000
-   Resolutions", in IERS Workshop 5.1 (2002).
+* Wallace, P.T., "Software for Implementing the IAU 2000
+    Resolutions", in IERS Workshop 5.1 (2002).
 
 """
 function pr00(a, b)
@@ -2144,9 +2144,9 @@ date, IAU 2000 model.
 
 ### Reference ###
 
-   IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
-   24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
-   (2000)
+* IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+    24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
+    (2000)
 
 """
 pmat00
@@ -2198,9 +2198,9 @@ date, IAU 2006 model.
 
 ### References ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 pmat06
@@ -2266,10 +2266,10 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 
 ### References ###
 
-   Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
     equations (6) & (7), p283.
 
-   Kaplan,G.H., 1981. USNO circular no. 163, pA2.
+* Kaplan,G.H., 1981. USNO circular no. 163, pA2.
 
 """
 pmat76
@@ -2323,9 +2323,9 @@ frame bias), equinox-based, IAU 2000A model.
 
 ### Reference ###
 
-   IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
-   24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
-   (2000)
+* IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+    24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
+    (2000)
 
 """
 pnm00a
@@ -2379,9 +2379,9 @@ frame bias), equinox-based, IAU 2000B model.
 
 ### Reference ###
 
-   IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
-   24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
-   (2000)
+* IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+    24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
+    (2000)
 
 """
 pnm00b
@@ -2434,7 +2434,7 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
 
 ### Reference ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
 
 """
 pnm06a
@@ -2487,9 +2487,9 @@ precession model, IAU 1980 nutation model.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 3.3 (p145).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 3.3 (p145).
 
 """
 pnm80
@@ -2557,8 +2557,8 @@ Form the matrix of polar motion for a given date, IAU 2000.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 function pom00(x, y, s)

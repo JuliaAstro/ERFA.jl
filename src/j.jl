@@ -37,9 +37,9 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 12.92 (p604).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 12.92 (p604).
 
 """
 function jd2cal(d1, d2)
@@ -100,9 +100,9 @@ for formatting messages:  rounded to a specified precision.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 12.92 (p604).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 12.92 (p604).
 
 """
 function jdcalf(ndp, d1, d2)

@@ -31,7 +31,7 @@ FK5 to Hipparcos rotation and spin.
 
 ### Reference ###
 
-   F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+* F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 
 """
 function fk5hip()
@@ -109,7 +109,7 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
 
 ### Reference ###
 
-   F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
+* F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
 
 """
 function fk5hz(r5, d5, date1, date2)
@@ -168,7 +168,7 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
 ### Reference ###
 
-   Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 """
 function fw2xy(gamb, phib, psi, eps)
@@ -205,11 +205,11 @@ mean elongation of the Moon from the Sun.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
 fad03
@@ -237,14 +237,14 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Earth.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
 """
 fae03
@@ -273,11 +273,11 @@ mean longitude of the ascending node.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
 faf03
@@ -305,14 +305,14 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Jupiter.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
 """
 faju03
@@ -342,11 +342,11 @@ mean anomaly of the Moon.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
 fal03
@@ -376,11 +376,11 @@ mean anomaly of the Sun.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
 falp03
@@ -408,14 +408,14 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mars.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
 """
 fama03
@@ -443,14 +443,14 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mercury.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
 """
 fame03
@@ -478,11 +478,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Neptune.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
 fane03
@@ -510,11 +510,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of the Moon's asce
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
 faom03
@@ -545,14 +545,14 @@ general accumulated precession in longitude.
 
 ### References ###
 
-   Kinoshita, H. and Souchay J. 1990, Celest.Mech. and Dyn.Astron.
-   48, 187
+* Kinoshita, H. and Souchay J. 1990, Celest.Mech. and Dyn.Astron.
+    48, 187
 
-   Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
-   Astron.Astrophys. 58, 1-16
+* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+    Astron.Astrophys. 58, 1-16
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 fapa03
@@ -580,14 +580,14 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Saturn.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
 """
 fasa03
@@ -615,11 +615,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Uranus.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
 faur03
@@ -647,14 +647,14 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Venus.
 
 ### References ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
 """
 fave03
@@ -726,7 +726,7 @@ Transform FK5 (J2000.0) star data into the Hipparcos system.
 
 ### Reference ###
 
-   F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+* F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 
 """
 function fk52h(ra, dec, dra, ddec, px, rv)
@@ -804,7 +804,7 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 ### Reference ###
 
-Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 """
 function fw2m(x, y, s, t)

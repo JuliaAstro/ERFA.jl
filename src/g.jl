@@ -99,9 +99,9 @@ ellipsoid of specified form.
 
 ### Reference ###
 
-   Fukushima, T., "Transformation from Cartesian to geodetic
-   coordinates accelerated by Halley's method", J.Geodesy (2006)
-   79: 689-693
+* Fukushima, T., "Transformation from Cartesian to geodetic
+    coordinates accelerated by Halley's method", J.Geodesy (2006)
+    79: 689-693
 
 """
 function gc2gde(a, f, xyz)
@@ -224,12 +224,12 @@ ellipsoid of specified form.
 
 ### References ###
 
-   Green, R.M., Spherical Astronomy, Cambridge University Press,
-   (1985) Section 4.5, p96.
+* Green, R.M., Spherical Astronomy, Cambridge University Press,
+    (1985) Section 4.5, p96.
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 4.22, p202.
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 4.22, p202.
 
 """
 function gd2gce(a, f, elong, phi, height)
@@ -304,7 +304,7 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
 ### Reference ###
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 function gst06(uta, utb, tta, ttb, rnpb)
@@ -368,10 +368,10 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
 ### References ###
 
-   Transactions of the International Astronomical Union,
-   XVIII B, 67 (1983).
+* Transactions of the International Astronomical Union,
+    XVIII B, 67 (1983).
 
-   Aoki et al., Astron. Astrophys. 105, 359-361 (1982).
+* Aoki et al., Astron. Astrophys. 105, 359-361 (1982).
 
 """
 gmst82
@@ -442,16 +442,16 @@ resolutions but using the truncated nutation model IAU 2000B).
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-   implement the IAU 2000 definition of UT1", Astronomy &
-   Astrophysics, 406, 1135-1149 (2003)
+* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &
+    Astrophysics, 406, 1135-1149 (2003)
 
-   McCarthy, D.D. & Luzum, B.J., "An abridged model of the
-   precession-nutation of the celestial pole", Celestial Mechanics &
-   Dynamical Astronomy, 85, 37-49 (2003)
+* McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+    precession-nutation of the celestial pole", Celestial Mechanics &
+    Dynamical Astronomy, 85, 37-49 (2003)
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 gst00b
@@ -513,10 +513,10 @@ resolutions).
 
 ### References ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992)
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992)
 
-   IAU Resolution C7, Recommendation 3 (1994)
+* IAU Resolution C7, Recommendation 3 (1994)
 
 """
 gst94
@@ -590,12 +590,12 @@ resolutions).
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-   implement the IAU 2000 definition of UT1", Astronomy &
-   Astrophysics, 406, 1135-1149 (2003)
+* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &
+    Astrophysics, 406, 1135-1149 (2003)
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 gmst00
@@ -655,8 +655,8 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 
 ### Reference ###
 
-   Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
-   Astron.Astrophys. 432, 355
+* Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
+    Astron.Astrophys. 432, 355
 
 """
 gmst06
@@ -723,12 +723,12 @@ resolutions).
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-   implement the IAU 2000 definition of UT1", Astronomy &
-   Astrophysics, 406, 1135-1149 (2003)
+* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &
+    Astrophysics, 406, 1135-1149 (2003)
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 gst00a
@@ -791,7 +791,7 @@ resolutions).
 
 ### Reference ###
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 gst06a
@@ -862,10 +862,10 @@ Transformation from Galactic Coordinates to ICRS.
 
 ### Reference ###
 
-   Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
-   catalogues.  Astrometric and photometric star catalogues
-   derived from the ESA Hipparcos Space Astrometry Mission.  ESA
-   Publications Division, Noordwijk, Netherlands.
+* Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
+    catalogues.  Astrometric and photometric star catalogues
+    derived from the ESA Hipparcos Space Astrometry Mission.  ESA
+    Publications Division, Noordwijk, Netherlands.
 
 """
 function g2icrs(a, b)

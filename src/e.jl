@@ -30,18 +30,18 @@ Earth reference ellipsoids.
 
 ### References ###
 
-   Department of Defense World Geodetic System 1984, National
-   Imagery and Mapping Agency Technical Report 8350.2, Third
-   Edition, p3-2.
+* Department of Defense World Geodetic System 1984, National
+    Imagery and Mapping Agency Technical Report 8350.2, Third
+    Edition, p3-2.
 
-   Moritz, H., Bull. Geodesique 66-2, 187 (1992).
+* Moritz, H., Bull. Geodesique 66-2, 187 (1992).
 
-   The Department of Defense World Geodetic System 1972, World
-   Geodetic System Committee, May 1974.
+* The Department of Defense World Geodetic System 1972, World
+    Geodetic System Committee, May 1974.
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   p220.
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    p220.
 
 """
 function eform(n::Ellipsoid)
@@ -84,9 +84,9 @@ quantity s.
 
 ### References ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   Wallace, P. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 function eors(rnpb, s)
@@ -346,7 +346,7 @@ Besselian Epoch to Julian Date.
 
 ### Reference ###
 
-   Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 
 """
 epb2jd
@@ -374,7 +374,7 @@ Julian Epoch to Julian Date.
 
 ### Reference ###
 
-   Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 
 """
 epj2jd
@@ -446,12 +446,12 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-   implement the IAU 2000 definition of UT1", Astronomy &
-   Astrophysics, 406, 1135-1149 (2003).
+* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &
+    Astrophysics, 406, 1135-1149 (2003).
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004).
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004).
 
 """
 ee00a
@@ -509,16 +509,16 @@ using the truncated nutation model IAU 2000B.
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-   implement the IAU 2000 definition of UT1", Astronomy &
-   Astrophysics, 406, 1135-1149 (2003)
+* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &
+    Astrophysics, 406, 1135-1149 (2003)
 
-   McCarthy, D.D. & Luzum, B.J., "An abridged model of the
-   precession-nutation of the celestial pole", Celestial Mechanics &
-   Dynamical Astronomy, 85, 37-49 (2003)
+* McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+    precession-nutation of the celestial pole", Celestial Mechanics &
+    Dynamical Astronomy, 85, 37-49 (2003)
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 ee00b
@@ -570,8 +570,8 @@ IAU 2006/2000A precession-nutation.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG
+* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG
 
 """
 ee06a
@@ -655,17 +655,17 @@ IAU 2000 resolutions.
 
 ### References ###
 
-   Capitaine, N. & Gontier, A.-M., Astron. Astrophys., 275,
-   645-650 (1993)
+* Capitaine, N. & Gontier, A.-M., Astron. Astrophys., 275,
+    645-650 (1993)
 
-   Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-   implement the IAU 2000 definition of UT1", Astronomy &
-   Astrophysics, 406, 1135-1149 (2003)
+* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &
+    Astrophysics, 406, 1135-1149 (2003)
 
-   IAU Resolution C7, Recommendation 3 (1994)
+* IAU Resolution C7, Recommendation 3 (1994)
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 eect00
@@ -720,9 +720,9 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
 ### References ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 eo06a
@@ -750,7 +750,7 @@ Julian Date to Besselian Epoch.
 
 ### Reference ###
 
-   Lieske, J.H., 1979. Astron.Astrophys., 73, 282.
+* Lieske, J.H., 1979. Astron.Astrophys., 73, 282.
 
 """
 epb
@@ -778,7 +778,7 @@ Julian Date to Julian Epoch.
 
 ### Reference ###
 
-   Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 
 """
 epj
@@ -829,10 +829,10 @@ Equation of the equinoxes, IAU 1994 model.
 
 ### References ###
 
-   IAU Resolution C7, Recommendation 3 (1994).
+* IAU Resolution C7, Recommendation 3 (1994).
 
-   Capitaine, N. & Gontier, A.-M., 1993, Astron. Astrophys., 275,
-   645-650.
+* Capitaine, N. & Gontier, A.-M., 1993, Astron. Astrophys., 275,
+    645-650.
 
 """
 eqeq94
@@ -885,11 +885,11 @@ Earth rotation angle (IAU 2000 model).
 
 ### References ###
 
-   Capitaine N., Guinot B. and McCarthy D.D, 2000, Astron.
-   Astrophys., 355, 398-405.
+* Capitaine N., Guinot B. and McCarthy D.D, 2000, Astron.
+    Astrophys., 355, 398-405.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 era00
@@ -961,12 +961,12 @@ given the nutation in longitude and the mean obliquity.
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-   implement the IAU 2000 definition of UT1", Astronomy &
-   Astrophysics, 406, 1135-1149 (2003)
+* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &
+    Astrophysics, 406, 1135-1149 (2003)
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 ee00(date1, date2, epsa, dpsi) = ccall((:eraEe00, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), date1, date2, epsa, dpsi)

@@ -69,7 +69,7 @@ zero Hipparcos proper motion.
 
 ### Reference ###
 
-   F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
+* F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
 
 """
 function hfk5z(rh, dh, date1, date2)
@@ -133,7 +133,7 @@ Transform Hipparcos star data into the FK5 (J2000.0) system.
 
 ### Reference ###
 
-   F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+* F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 
 """
 function h2fk5(ra, dec, dra, ddec, px, rv)

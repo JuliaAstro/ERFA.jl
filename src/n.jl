@@ -34,9 +34,9 @@ Form the matrix of nutation.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 3.222-3 (p114).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 3.222-3 (p114).
 
 """
 function numat(epsa, dpsi, deps)
@@ -176,24 +176,24 @@ with free core nutation omitted).
 
 ### References ###
 
-   Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
-   Astron.Astrophys. 387, 700
+* Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
+    Astron.Astrophys. 387, 700
 
-   Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
-   Astron.Astrophys. 58, 1-16
+* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+    Astron.Astrophys. 58, 1-16
 
-   Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
-   107, B4.  The MHB_2000 code itself was obtained on 9th September
-   2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
+* Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
+    107, B4.  The MHB_2000 code itself was obtained on 9th September
+    2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
-   Wallace, P.T., "Software for Implementing the IAU 2000
-   Resolutions", in IERS Workshop 5.1 (2002)
+* Wallace, P.T., "Software for Implementing the IAU 2000
+    Resolutions", in IERS Workshop 5.1 (2002)
 
 """
 nut00a
@@ -299,19 +299,19 @@ Nutation, IAU 2000B model.
 
 ### References ###
 
-   Lieske, J.H., Lederle, T., Fricke, W., Morando, B., "Expressions
-   for the precession quantities based upon the IAU /1976/ system of
-   astronomical constants", Astron.Astrophys. 58, 1-2, 1-16. (1977)
+* Lieske, J.H., Lederle, T., Fricke, W., Morando, B., "Expressions
+    for the precession quantities based upon the IAU /1976/ system of
+    astronomical constants", Astron.Astrophys. 58, 1-2, 1-16. (1977)
 
-   Luzum, B., private communication, 2001 (Fortran code
-   MHB_2000_SHORT)
+* Luzum, B., private communication, 2001 (Fortran code
+    MHB_2000_SHORT)
 
-   McCarthy, D.D. & Luzum, B.J., "An abridged model of the
-   precession-nutation of the celestial pole", Cel.Mech.Dyn.Astron.
-   85, 37-49 (2003)
+* McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+    precession-nutation of the celestial pole", Cel.Mech.Dyn.Astron.
+    85, 37-49 (2003)
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
 
 """
 nut00b
@@ -372,24 +372,24 @@ precession.
 
 ### References ###
 
-   Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
-   Astron.Astrophys. 387, 700
+* Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
+    Astron.Astrophys. 387, 700
 
-   Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
-   Astron.Astrophys. 58, 1-16
+* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+    Astron.Astrophys. 58, 1-16
 
-   Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
-   107, B4.  The MHB_2000 code itself was obtained on 9th September
-   2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
+* Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
+    107, B4.  The MHB_2000 code itself was obtained on 9th September
+    2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
-   Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
-   Wallace, P.T., "Software for Implementing the IAU 2000
-   Resolutions", in IERS Workshop 5.1 (2002)
+* Wallace, P.T., "Software for Implementing the IAU 2000
+    Resolutions", in IERS Workshop 5.1 (2002)
 
 """
 nut06a
@@ -438,9 +438,9 @@ Nutation, IAU 1980 model.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 3.222 (p111).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 3.222 (p111).
 
 """
 nut80
@@ -511,9 +511,9 @@ Form the matrix of nutation for a given date, IAU 2000A model.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 3.222-3 (p114).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 3.222-3 (p114).
 
 """
 num00a
@@ -566,9 +566,9 @@ Form the matrix of nutation for a given date, IAU 2000B model.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 3.222-3 (p114).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 3.222-3 (p114).
 
 """
 num00b
@@ -620,9 +620,9 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
 
 ### Reference ###
 
-   Explanatory Supplement to the Astronomical Almanac,
-   P. Kenneth Seidelmann (ed), University Science Books (1992),
-   Section 3.222-3 (p114).
+* Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 3.222-3 (p114).
 
 """
 num06a

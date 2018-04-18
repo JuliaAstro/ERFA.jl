@@ -135,23 +135,23 @@ Conventions (McCarthy & Petit 2003).
 
 ### References ###
 
-   Fairhead, L., & Bretagnon, P., Astron.Astrophys., 229, 240-247
-   (1990).
+* Fairhead, L., & Bretagnon, P., Astron.Astrophys., 229, 240-247
+    (1990).
 
-   IAU 2006 Resolution 3.
+* IAU 2006 Resolution 3.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
-   Moyer, T.D., Cel.Mech., 23, 33 (1981).
+* Moyer, T.D., Cel.Mech., 23, 33 (1981).
 
-   Murray, C.A., Vectorial Astrometry, Adam Hilger (1983).
+* Murray, C.A., Vectorial Astrometry, Adam Hilger (1983).
 
-   Seidelmann, P.K. et al., Explanatory Supplement to the
-   Astronomical Almanac, Chapter 2, University Science Books (1992).
+* Seidelmann, P.K. et al., Explanatory Supplement to the
+    Astronomical Almanac, Chapter 2, University Science Books (1992).
 
-   Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G. & Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
+* Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G. & Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
 
 """
 function dtdb(date1, date2, ut, elong, u, v)
@@ -250,11 +250,11 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 
 ### References ###
 
-1) For dates from 1961 January 1 onwards, the expressions from the
-   file ftp://maia.usno.navy.mil/ser7/tai-utc.dat are used.
+* 1) For dates from 1961 January 1 onwards, the expressions from the
+    file ftp://maia.usno.navy.mil/ser7/tai-utc.dat are used.
 
-2) The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
-   the 1992 Explanatory Supplement.
+* 2) The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
+    the 1992 Explanatory Supplement.
 
 ### Called ###
 

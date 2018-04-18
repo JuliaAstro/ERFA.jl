@@ -67,21 +67,21 @@ on IAU 2006 precession and IAU 2000A nutation.
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
-   Astron.Astrophys., 412, 567
+* Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
+    Astron.Astrophys., 412, 567
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG
+* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG
 
-   Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-   Francou, G. & Laskar, J., Astron.Astrophys., 1994, 282, 663
+* Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G. & Laskar, J., Astron.Astrophys., 1994, 282, 663
 
-   Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M., 1999,
-   Astron.Astrophys.Supp.Ser. 135, 111
+* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M., 1999,
+    Astron.Astrophys.Supp.Ser. 135, 111
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 function xy06(date1, date2)
@@ -148,8 +148,8 @@ precession-nutation model.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 xys00a
@@ -209,8 +209,8 @@ precession-nutation model.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 xys00b
@@ -269,9 +269,9 @@ precession and IAU 2000A nutation models.
 
 ### References ###
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 xys06a

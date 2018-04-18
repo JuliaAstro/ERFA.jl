@@ -53,12 +53,12 @@ transforming coordinate direction into natural direction.
 
 ### References ###
 
-   Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-   the Astronomical Almanac, 3rd ed., University Science Books
-   (2013).
+* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+    the Astronomical Almanac, 3rd ed., University Science Books
+    (2013).
 
-   Klioner, Sergei A., "A practical relativistic model for micro-
-   arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
+* Klioner, Sergei A., "A practical relativistic model for micro-
+    arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 
 ### Called ###
 
@@ -138,9 +138,9 @@ as part of transforming coordinate direction into natural direction.
 
 ### Reference ###
 
-   Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-   the Astronomical Almanac, 3rd ed., University Science Books
-   (2013), Section 7.2.4.
+* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+    the Astronomical Almanac, 3rd ed., University Science Books
+    (2013), Section 7.2.4.
 
 ### Called ###
 
@@ -251,13 +251,13 @@ ICRS equatorial to ecliptic rotation matrix, long-term.
 
 ### References ###
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-  expressions, valid for long time intervals, Astron.Astrophys. 534,
-  A22
+* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+    expressions, valid for long time intervals, Astron.Astrophys. 534,
+    A22
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-  expressions, valid for long time intervals (Corrigendum),
-  Astron.Astrophys. 541, C1
+* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+    expressions, valid for long time intervals (Corrigendum),
+    Astron.Astrophys. 541, C1
 
 """
 ltecm
@@ -301,13 +301,13 @@ Long-term precession matrix.
 
 ### References ###
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-  expressions, valid for long time intervals, Astron.Astrophys. 534,
-  A22
+* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+    expressions, valid for long time intervals, Astron.Astrophys. 534,
+    A22
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-  expressions, valid for long time intervals (Corrigendum),
-  Astron.Astrophys. 541, C1
+* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+    expressions, valid for long time intervals (Corrigendum),
+    Astron.Astrophys. 541, C1
 
 """
 ltp
@@ -348,13 +348,13 @@ Long-term precession matrix, including ICRS frame bias.
 
 ### References ###
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-  expressions, valid for long time intervals, Astron.Astrophys. 534,
-  A22
+* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+    expressions, valid for long time intervals, Astron.Astrophys. 534,
+    A22
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-  expressions, valid for long time intervals (Corrigendum),
-  Astron.Astrophys. 541, C1
+* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+    expressions, valid for long time intervals (Corrigendum),
+    Astron.Astrophys. 541, C1
 
 """
 ltpb
@@ -402,13 +402,13 @@ Long-term precession of the ecliptic.
 
 ### References ###
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-  expressions, valid for long time intervals, Astron.Astrophys. 534,
-  A22
+* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+    expressions, valid for long time intervals, Astron.Astrophys. 534,
+    A22
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-  expressions, valid for long time intervals (Corrigendum),
-  Astron.Astrophys. 541, C1
+* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+    expressions, valid for long time intervals (Corrigendum),
+    Astron.Astrophys. 541, C1
 
 """
 ltpecl
@@ -440,13 +440,13 @@ Long-term precession of the equator.
 
 ### References ###
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-  expressions, valid for long time intervals, Astron.Astrophys. 534,
-  A22
+* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+    expressions, valid for long time intervals, Astron.Astrophys. 534,
+    A22
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-  expressions, valid for long time intervals (Corrigendum),
-  Astron.Astrophys. 541, C1
+* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+    expressions, valid for long time intervals (Corrigendum),
+    Astron.Astrophys. 541, C1
 
 """
 ltpequ
@@ -508,13 +508,13 @@ of date) to ICRS RA,Dec, using a long-term precession model.
 
 ### References ###
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-  expressions, valid for long time intervals, Astron.Astrophys. 534,
-  A22
+* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+    expressions, valid for long time intervals, Astron.Astrophys. 534,
+    A22
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-  expressions, valid for long time intervals (Corrigendum),
-  Astron.Astrophys. 541, C1
+* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+    expressions, valid for long time intervals (Corrigendum),
+    Astron.Astrophys. 541, C1
 
 """
 lteceq
@@ -562,13 +562,13 @@ precession model.
 
 ### References ###
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-  expressions, valid for long time intervals, Astron.Astrophys. 534,
-  A22
+* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+    expressions, valid for long time intervals, Astron.Astrophys. 534,
+    A22
 
-  Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-  expressions, valid for long time intervals (Corrigendum),
-  Astron.Astrophys. 541, C1
+* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+    expressions, valid for long time intervals (Corrigendum),
+    Astron.Astrophys. 541, C1
 
 """
 lteqec

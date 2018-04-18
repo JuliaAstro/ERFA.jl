@@ -329,7 +329,7 @@ Convert star catalog coordinates to position+velocity vector.
 
 ### Reference ###
 
-   Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
+* Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
 
 """
 function starpv(ra, dec, pmr, pmd, px, rv)
@@ -526,16 +526,16 @@ precession-nutation model.
 
 ### References ###
 
-   Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 s00a
@@ -598,16 +598,16 @@ precession-nutation model.
 
 ### References ###
 
-   Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 s00b
@@ -668,20 +668,20 @@ precession and IAU 2000A nutation models.
 
 ### References ###
 
-   Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-   Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-   McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG
+* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG
 
-   Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 s06a
@@ -729,8 +729,8 @@ on the equator of the Celestial Intermediate Pole.
 
 ### Reference ###
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 sp00
@@ -809,16 +809,16 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 
 ### References ###
 
-   Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-   "Expressions for the Celestial Intermediate Pole and Celestial
-   Ephemeris Origin consistent with the IAU 2000A precession-
-   nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
+* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-
+    nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-   n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-        intermediate origin" (CIO) by IAU 2006 Resolution 2.
+* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-   McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG (2004)
+* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)
 
 """
 s00
@@ -890,11 +890,11 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 
 ### References ###
 
-   Capitaine, N., Wallace, P.T. & Chapront, J., 2003, Astron.
-   Astrophys. 432, 355
+* Capitaine, N., Wallace, P.T. & Chapront, J., 2003, Astron.
+    Astrophys. 432, 355
 
-   McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
-   IERS Technical Note No. 32, BKG
+* McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG
 
 """
 s06

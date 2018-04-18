@@ -55,10 +55,10 @@ Transformation from ICRS to Galactic Coordinates.
 
 ### Reference ###
 
-   Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
-   catalogues.  Astrometric and photometric star catalogues
-   derived from the ESA Hipparcos Space Astrometry Mission.  ESA
-   Publications Division, Noordwijk, Netherlands.
+* Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
+    catalogues.  Astrometric and photometric star catalogues
+    derived from the ESA Hipparcos Space Astrometry Mission.  ESA
+    Publications Division, Noordwijk, Netherlands.
 
 """
 function icrs2g(a, b)

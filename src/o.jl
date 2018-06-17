@@ -5,11 +5,11 @@ Mean obliquity of the ecliptic, IAU 2006 precession model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* Obliquity of the ecliptic (radians, Note 2)
+- Obliquity of the ecliptic (radians, Note 2)
 
 ### Notes ###
 
@@ -37,7 +37,7 @@ Mean obliquity of the ecliptic, IAU 2006 precession model.
 
 ### Reference ###
 
-* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+- Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 """
 obl06
@@ -49,11 +49,11 @@ Mean obliquity of the ecliptic, IAU 1980 model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* Obliquity of the ecliptic (radians, Note 2)
+- Obliquity of the ecliptic (radians, Note 2)
 
 ### Notes ###
 
@@ -81,7 +81,7 @@ Mean obliquity of the ecliptic, IAU 1980 model.
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Expression 3.222-1 (p114).
 

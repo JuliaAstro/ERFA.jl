@@ -6,16 +6,16 @@ transforming coordinate direction into natural direction.
 
 ### Given ###
 
-* `bm`: Mass of the gravitating body (solar masses)
-* `p`: Direction from observer to source (unit vector)
-* `q`: Direction from body to source (unit vector)
-* `e`: Direction from body to observer (unit vector)
-* `em`: Distance from body to observer (au)
-* `dlim`: Deflection limiter (Note 4)
+- `bm`: Mass of the gravitating body (solar masses)
+- `p`: Direction from observer to source (unit vector)
+- `q`: Direction from body to source (unit vector)
+- `e`: Direction from body to observer (unit vector)
+- `em`: Distance from body to observer (au)
+- `dlim`: Deflection limiter (Note 4)
 
 ### Returned ###
 
-* `p1`: Observer to deflected source (unit vector)
+- `p1`: Observer to deflected source (unit vector)
 
 ### Notes ###
 
@@ -53,17 +53,17 @@ transforming coordinate direction into natural direction.
 
 ### References ###
 
-* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+- Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
     the Astronomical Almanac, 3rd ed., University Science Books
     (2013).
 
-* Klioner, Sergei A., "A practical relativistic model for micro-
+- Klioner, Sergei A., "A practical relativistic model for micro-
     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 
 ### Called ###
 
-* `eraPdp`: scalar product of two p-vectors
-* `eraPxp`: vector product of two p-vectors
+- `eraPdp`: scalar product of two p-vectors
+- `eraPxp`: vector product of two p-vectors
 
 """
 function ld(bm, p::AbstractArray, q::AbstractArray, e::AbstractArray, em, dlim)
@@ -82,17 +82,17 @@ as part of transforming coordinate direction into natural direction.
 
 ### Given ###
 
-* `n`: Number of bodies (note 1)
-* `b`: Data for each of the n bodies (Notes 1,2):
-    * `bm`: Mass of the body (solar masses, Note 3)
-    * `dl`: Deflection limiter (Note 4)
-    * `pv`: Barycentric PV of the body (au, au/day)
-* `ob`: Barycentric position of the observer (au)
-* `sc`: Observer to star coord direction (unit vector)
+- `n`: Number of bodies (note 1)
+- `b`: Data for each of the n bodies (Notes 1,2):
+    - `bm`: Mass of the body (solar masses, Note 3)
+    - `dl`: Deflection limiter (Note 4)
+    - `pv`: Barycentric PV of the body (au, au/day)
+- `ob`: Barycentric position of the observer (au)
+- `sc`: Observer to star coord direction (unit vector)
 
 ### Returned ###
 
-* `sn`: Observer to deflected star (unit vector)
+- `sn`: Observer to deflected star (unit vector)
 
 1) The array b contains n entries, one for each body to be
    considered.  If n = 0, no gravitational light deflection will be
@@ -138,18 +138,18 @@ as part of transforming coordinate direction into natural direction.
 
 ### Reference ###
 
-* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+- Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
     the Astronomical Almanac, 3rd ed., University Science Books
     (2013), Section 7.2.4.
 
 ### Called ###
 
-* `eraCp`: copy p-vector
-* `eraPdp`: scalar product of two p-vectors
-* `eraPmp`: p-vector minus p-vector
-* `eraPpsp`: p-vector plus scaled p-vector
-* `eraPn`: decompose p-vector into modulus and direction
-* `eraLd`: light deflection by a solar-system body
+- `eraCp`: copy p-vector
+- `eraPdp`: scalar product of two p-vectors
+- `eraPmp`: p-vector minus p-vector
+- `eraPpsp`: p-vector plus scaled p-vector
+- `eraPn`: decompose p-vector into modulus and direction
+- `eraLd`: light deflection by a solar-system body
 
 """
 function ldn(l::Vector{LDBODY}, ob::AbstractArray, sc::AbstractArray)
@@ -168,13 +168,13 @@ Deflection of starlight by the Sun.
 
 ### Given ###
 
-* `p`: Direction from observer to star (unit vector)
-* `e`: Direction from Sun to observer (unit vector)
-* `em`: Distance from Sun to observer (au)
+- `p`: Direction from observer to star (unit vector)
+- `e`: Direction from Sun to observer (unit vector)
+- `em`: Distance from Sun to observer (au)
 
 ### Returned ###
 
-* `p1`: Observer to deflected star (unit vector)
+- `p1`: Observer to deflected star (unit vector)
 
 ### Notes ###
 
@@ -192,7 +192,7 @@ Deflection of starlight by the Sun.
 
 ### Called ###
 
-* `eraLd`: light deflection by a solar-system body
+- `eraLd`: light deflection by a solar-system body
 
 """
 function ldsun(p, e, em)
@@ -210,11 +210,11 @@ ICRS equatorial to ecliptic rotation matrix, long-term.
 
 ### Given ###
 
-* `epj`: Julian epoch (TT)
+- `epj`: Julian epoch (TT)
 
 ### Returned ###
 
-* `rm`: ICRS to ecliptic rotation matrix
+- `rm`: ICRS to ecliptic rotation matrix
 
 ### Notes ###
 
@@ -244,18 +244,18 @@ ICRS equatorial to ecliptic rotation matrix, long-term.
 
 ### Called ###
 
-* `eraLtpequ`: equator pole, long term
-* `eraLtpecl`: ecliptic pole, long term
-* `eraPxp`: vector product
-* `eraPn`: normalize vector
+- `eraLtpequ`: equator pole, long term
+- `eraLtpecl`: ecliptic pole, long term
+- `eraPxp`: vector product
+- `eraPn`: normalize vector
 
 ### References ###
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
     expressions, valid for long time intervals, Astron.Astrophys. 534,
     A22
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
     expressions, valid for long time intervals (Corrigendum),
     Astron.Astrophys. 541, C1
 
@@ -269,11 +269,11 @@ Long-term precession matrix.
 
 ### Given ###
 
-* `epj`: Julian epoch (TT)
+- `epj`: Julian epoch (TT)
 
 ### Returned ###
 
-* `rp`: Precession matrix, J2000.0 to date
+- `rp`: Precession matrix, J2000.0 to date
 
 ### Notes ###
 
@@ -294,18 +294,18 @@ Long-term precession matrix.
 
 ### Called ###
 
-* `eraLtpequ`: equator pole, long term
-* `eraLtpecl`: ecliptic pole, long term
-* `eraPxp`: vector product
-* `eraPn`: normalize vector
+- `eraLtpequ`: equator pole, long term
+- `eraLtpecl`: ecliptic pole, long term
+- `eraPxp`: vector product
+- `eraPn`: normalize vector
 
 ### References ###
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
     expressions, valid for long time intervals, Astron.Astrophys. 534,
     A22
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
     expressions, valid for long time intervals (Corrigendum),
     Astron.Astrophys. 541, C1
 
@@ -319,11 +319,11 @@ Long-term precession matrix, including ICRS frame bias.
 
 ### Given ###
 
-* `epj`: Julian epoch (TT)
+- `epj`: Julian epoch (TT)
 
 ### Returned ###
 
-* `rpb`: Precession-bias matrix, J2000.0 to date
+- `rpb`: Precession-bias matrix, J2000.0 to date
 
 ### Notes ###
 
@@ -348,11 +348,11 @@ Long-term precession matrix, including ICRS frame bias.
 
 ### References ###
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
     expressions, valid for long time intervals, Astron.Astrophys. 534,
     A22
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
     expressions, valid for long time intervals (Corrigendum),
     Astron.Astrophys. 541, C1
 
@@ -382,11 +382,11 @@ Long-term precession of the ecliptic.
 
 ### Given ###
 
-* `epj`: Julian epoch (TT)
+- `epj`: Julian epoch (TT)
 
 ### Returned ###
 
-* `vec`: Ecliptic pole unit vector
+- `vec`: Ecliptic pole unit vector
 
 ### Notes ###
 
@@ -402,11 +402,11 @@ Long-term precession of the ecliptic.
 
 ### References ###
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
     expressions, valid for long time intervals, Astron.Astrophys. 534,
     A22
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
     expressions, valid for long time intervals (Corrigendum),
     Astron.Astrophys. 541, C1
 
@@ -420,11 +420,11 @@ Long-term precession of the equator.
 
 ### Given ###
 
-* `epj`: Julian epoch (TT)
+- `epj`: Julian epoch (TT)
 
 ### Returned ###
 
-* `veq`: Equator pole unit vector
+- `veq`: Equator pole unit vector
 
 ### Notes ###
 
@@ -440,11 +440,11 @@ Long-term precession of the equator.
 
 ### References ###
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
     expressions, valid for long time intervals, Astron.Astrophys. 534,
     A22
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
     expressions, valid for long time intervals (Corrigendum),
     Astron.Astrophys. 541, C1
 
@@ -474,12 +474,12 @@ of date) to ICRS RA,Dec, using a long-term precession model.
 
 ### Given ###
 
-* `epj`: Julian epoch (TT)
-* `dl`, `db`: Ecliptic longitude and latitude (radians)
+- `epj`: Julian epoch (TT)
+- `dl`, `db`: Ecliptic longitude and latitude (radians)
 
 ### Returned ###
 
-* `dr`, `dd`: ICRS right ascension and declination (radians)
+- `dr`, `dd`: ICRS right ascension and declination (radians)
 
 1) No assumptions are made about whether the coordinates represent
    starlight and embody astrometric effects such as parallax or
@@ -499,20 +499,20 @@ of date) to ICRS RA,Dec, using a long-term precession model.
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraLtecm`: J2000.0 to ecliptic rotation matrix, long term
-* `eraTrxp`: product of transpose of r-matrix and p-vector
-* `eraC2s`: unit vector to spherical coordinates
-* `eraAnp`: normalize angle into range 0 to 2pi
-* `eraAnpm`: normalize angle into range +/- pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraLtecm`: J2000.0 to ecliptic rotation matrix, long term
+- `eraTrxp`: product of transpose of r-matrix and p-vector
+- `eraC2s`: unit vector to spherical coordinates
+- `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnpm`: normalize angle into range +/- pi
 
 ### References ###
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
     expressions, valid for long time intervals, Astron.Astrophys. 534,
     A22
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
     expressions, valid for long time intervals (Corrigendum),
     Astron.Astrophys. 541, C1
 
@@ -528,12 +528,12 @@ precession model.
 
 ### Given ###
 
-* `epj`: Julian epoch (TT)
-* `dr`, `dd`: ICRS right ascension and declination (radians)
+- `epj`: Julian epoch (TT)
+- `dr`, `dd`: ICRS right ascension and declination (radians)
 
 ### Returned ###
 
-* `dl`, `db`: Ecliptic longitude and latitude (radians)
+- `dl`, `db`: Ecliptic longitude and latitude (radians)
 
 1) No assumptions are made about whether the coordinates represent
    starlight and embody astrometric effects such as parallax or
@@ -553,20 +553,20 @@ precession model.
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraLtecm`: J2000.0 to ecliptic rotation matrix, long term
-* `eraRxp`: product of r-matrix and p-vector
-* `eraC2s`: unit vector to spherical coordinates
-* `eraAnp`: normalize angle into range 0 to 2pi
-* `eraAnpm`: normalize angle into range +/- pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraLtecm`: J2000.0 to ecliptic rotation matrix, long term
+- `eraRxp`: product of r-matrix and p-vector
+- `eraC2s`: unit vector to spherical coordinates
+- `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnpm`: normalize angle into range +/- pi
 
 ### References ###
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
     expressions, valid for long time intervals, Astron.Astrophys. 534,
     A22
 
-* Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+- Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
     expressions, valid for long time intervals (Corrigendum),
     Astron.Astrophys. 541, C1
 

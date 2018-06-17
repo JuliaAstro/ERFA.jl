@@ -10,15 +10,15 @@ zenith distance.
 
 ### Given ###
 
-* `phpa`: Pressure at the observer (hPa = millibar)
-* `tc`: Ambient temperature at the observer (deg C)
-* `rh`: Relative humidity at the observer (range 0-1)
-* `wl`: Wavelength (micrometers)
+- `phpa`: Pressure at the observer (hPa = millibar)
+- `tc`: Ambient temperature at the observer (deg C)
+- `rh`: Relative humidity at the observer (range 0-1)
+- `wl`: Wavelength (micrometers)
 
 ### Returned ###
 
-* `refa`: tan Z coefficient (radians)
-* `refb`: tan^3 Z coefficient (radians)
+- `refa`: tan Z coefficient (radians)
+- `refb`: tan^3 Z coefficient (radians)
 
 ### Notes ###
 
@@ -121,25 +121,25 @@ zenith distance.
 
 ### References ###
 
-* Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
+- Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
     Atmosphere", Methods of Experimental Physics: Astrophysics 12B,
     Academic Press, 1976.
 
-* Gill, Adrian E., "Atmosphere-Ocean Dynamics", Academic Press,
+- Gill, Adrian E., "Atmosphere-Ocean Dynamics", Academic Press,
     1982.
 
-* Green, R.M., "Spherical Astronomy", Cambridge University Press,
+- Green, R.M., "Spherical Astronomy", Cambridge University Press,
     1987.
 
-* Hohenkerk, C.Y., & Sinclair, A.T., NAO Technical Note No. 63,
+- Hohenkerk, C.Y., & Sinclair, A.T., NAO Technical Note No. 63,
     1985.
 
-* Rueger, J.M., "Refractive Index Formulae for Electronic Distance
+- Rueger, J.M., "Refractive Index Formulae for Electronic Distance
     Measurement with Radio and Millimetre Waves", in Unisurv Report
     S-68, School of Surveying and Spatial Information Systems,
     University of New South Wales, Sydney, Australia, 2002.
 
-* Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.
+- Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.
 
 """
 function refco(phpa, tk, rh, wl)
@@ -158,11 +158,11 @@ Express an r-matrix as an r-vector.
 
 ### Given ###
 
-* `r`: Rotation matrix
+- `r`: Rotation matrix
 
 ### Returned ###
 
-* `w`: Rotation vector (Note 1)
+- `w`: Rotation vector (Note 1)
 
 ### Notes ###
 
@@ -195,11 +195,11 @@ Form the r-matrix corresponding to a given r-vector.
 
 ### Given ###
 
-* `w`: Rotation vector (Note 1)
+- `w`: Rotation vector (Note 1)
 
 ### Returned ###
 
-* `r`: Rotation matrix
+- `r`: Rotation matrix
 
 ### Notes ###
 
@@ -229,12 +229,12 @@ Multiply two r-matrices.
 
 ### Given ###
 
-* `a`: First r-matrix
-* `b`: Second r-matrix
+- `a`: First r-matrix
+- `b`: Second r-matrix
 
 ### Returned ###
 
-* `atb`: A * b
+- `atb`: A * b
 
 ### Note ###
 
@@ -243,7 +243,7 @@ Multiply two r-matrices.
 
 ### Called ###
 
-* `eraCr`: copy r-matrix
+- `eraCr`: copy r-matrix
 
 """
 function rxr(a, b)
@@ -262,11 +262,11 @@ Rotate an r-matrix about the x-axis.
 
 ### Given ###
 
-* `phi`: Angle (radians)
+- `phi`: Angle (radians)
 
 ### Given and returned ###
 
-* `r`: r-matrix, rotated
+- `r`: r-matrix, rotated
 
 ### Notes ###
 
@@ -292,11 +292,11 @@ Rotate an r-matrix about the y-axis.
 
 ### Given ###
 
-* `theta`: Angle (radians)
+- `theta`: Angle (radians)
 
 ### Given and returned ###
 
-* `r`: r-matrix, rotated
+- `r`: r-matrix, rotated
 
 ### Notes ###
 
@@ -322,11 +322,11 @@ Rotate an r-matrix about the z-axis.
 
 ### Given ###
 
-* `psi`: Angle (radians)
+- `psi`: Angle (radians)
 
 ### Given and returned ###
 
-* `r`: r-matrix, rotated
+- `r`: r-matrix, rotated
 
 ### Notes ###
 
@@ -367,12 +367,12 @@ Multiply a pv-vector by an r-matrix.
 
 ### Given ###
 
-* `r`: R-matrix
-* `pv`: Pv-vector
+- `r`: R-matrix
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `rpv`: R * pv
+- `rpv`: R * pv
 
 ### Note ###
 
@@ -380,7 +380,7 @@ Multiply a pv-vector by an r-matrix.
 
 ### Called ###
 
-* `eraRxp`: product of r-matrix and p-vector
+- `eraRxp`: product of r-matrix and p-vector
 
 """
 function rxpv(r, p)
@@ -398,12 +398,12 @@ Multiply a p-vector by an r-matrix.
 
 ### Given ###
 
-* `r`: R-matrix
-* `p`: P-vector
+- `r`: R-matrix
+- `p`: P-vector
 
 ### Returned ###
 
-* `rp`: R * p
+- `rp`: R * p
 
 ### Note ###
 
@@ -411,7 +411,7 @@ Multiply a p-vector by an r-matrix.
 
 ### Called ###
 
-* `eraCp`: copy p-vector
+- `eraCp`: copy p-vector
 
 """
 function rxp(r, p)

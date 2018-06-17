@@ -6,11 +6,11 @@ on IAU 2006 precession and IAU 2000A nutation.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `x`, `y`: CIP X,Y coordinates (Note 2)
+- `x`, `y`: CIP X,Y coordinates (Note 2)
 
 ### Notes ###
 
@@ -50,38 +50,38 @@ on IAU 2006 precession and IAU 2000A nutation.
 
 ### Called ###
 
-* `eraFal03`: mean anomaly of the Moon
-* `eraFalp03`: mean anomaly of the Sun
-* `eraFaf03`: mean argument of the latitude of the Moon
-* `eraFad03`: mean elongation of the Moon from the Sun
-* `eraFaom03`: mean longitude of the Moon's ascending node
-* `eraFame03`: mean longitude of Mercury
-* `eraFave03`: mean longitude of Venus
-* `eraFae03`: mean longitude of Earth
-* `eraFama03`: mean longitude of Mars
-* `eraFaju03`: mean longitude of Jupiter
-* `eraFasa03`: mean longitude of Saturn
-* `eraFaur03`: mean longitude of Uranus
-* `eraFane03`: mean longitude of Neptune
-* `eraFapa03`: general accumulated precession in longitude
+- `eraFal03`: mean anomaly of the Moon
+- `eraFalp03`: mean anomaly of the Sun
+- `eraFaf03`: mean argument of the latitude of the Moon
+- `eraFad03`: mean elongation of the Moon from the Sun
+- `eraFaom03`: mean longitude of the Moon's ascending node
+- `eraFame03`: mean longitude of Mercury
+- `eraFave03`: mean longitude of Venus
+- `eraFae03`: mean longitude of Earth
+- `eraFama03`: mean longitude of Mars
+- `eraFaju03`: mean longitude of Jupiter
+- `eraFasa03`: mean longitude of Saturn
+- `eraFaur03`: mean longitude of Uranus
+- `eraFane03`: mean longitude of Neptune
+- `eraFapa03`: general accumulated precession in longitude
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
+- Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
     Astron.Astrophys., 412, 567
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
 
-* Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G. & Laskar, J., Astron.Astrophys., 1994, 282, 663
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M., 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M., 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 function xy06(date1, date2)
@@ -102,12 +102,12 @@ precession-nutation model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `x`, `y`: Celestial Intermediate Pole (Note 2)
-* `s`: The CIO locator s (Note 2)
+- `x`, `y`: Celestial Intermediate Pole (Note 2)
+- `s`: The CIO locator s (Note 2)
 
 ### Notes ###
 
@@ -142,13 +142,13 @@ precession-nutation model.
 
 ### Called ###
 
-* `eraPnm00a`: classical NPB matrix, IAU 2000A
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- `eraPnm00a`: classical NPB matrix, IAU 2000A
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -163,12 +163,12 @@ precession-nutation model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `x`, `y`: Celestial Intermediate Pole (Note 2)
-* `s`: The CIO locator s (Note 2)
+- `x`, `y`: Celestial Intermediate Pole (Note 2)
+- `s`: The CIO locator s (Note 2)
 
 ### Notes ###
 
@@ -203,13 +203,13 @@ precession-nutation model.
 
 ### Called ###
 
-* `eraPnm00b`: classical NPB matrix, IAU 2000B
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- `eraPnm00b`: classical NPB matrix, IAU 2000B
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -224,12 +224,12 @@ precession and IAU 2000A nutation models.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `x`, `y`: Celestial Intermediate Pole (Note 2)
-* `s`: The CIO locator s (Note 2)
+- `x`, `y`: Celestial Intermediate Pole (Note 2)
+- `s`: The CIO locator s (Note 2)
 
 ### Notes ###
 
@@ -263,15 +263,15 @@ precession and IAU 2000A nutation models.
 
 ### Called ###
 
-* `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraS06`: the CIO locator s, given X,Y, IAU 2006
 
 ### References ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 xys06a

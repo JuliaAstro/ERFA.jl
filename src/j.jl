@@ -5,14 +5,14 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
 
 ### Given ###
 
-* `dj1`, `dj2`: Julian Date (Notes 1, 2)
+- `dj1`, `dj2`: Julian Date (Notes 1, 2)
 
 ### Returned ###
 
-* `iy`: Year
-* `im`: Month
-* `id`: Day
-* `fd`: Fraction of day
+- `iy`: Year
+- `im`: Month
+- `id`: Day
+- `fd`: Fraction of day
 
 ### Notes ###
 
@@ -37,7 +37,7 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 12.92 (p604).
 
@@ -64,12 +64,12 @@ for formatting messages:  rounded to a specified precision.
 
 ### Given ###
 
-* `ndp`: Number of decimal places of days in fraction
-* `dj1`, `dj2`: Dj1+dj2 = Julian Date (Note 1)
+- `ndp`: Number of decimal places of days in fraction
+- `dj1`, `dj2`: Dj1+dj2 = Julian Date (Note 1)
 
 ### Returned ###
 
-* `iymdf`: Year, month, day, fraction in Gregorian calendar
+- `iymdf`: Year, month, day, fraction in Gregorian calendar
 
 ### Notes ###
 
@@ -96,11 +96,11 @@ for formatting messages:  rounded to a specified precision.
 
 ### Called ###
 
-* `eraJd2cal`: JD to Gregorian calendar
+- `eraJd2cal`: JD to Gregorian calendar
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 12.92 (p604).
 

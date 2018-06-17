@@ -5,12 +5,12 @@ Form the matrix of nutation.
 
 ### Given ###
 
-* `epsa`: Mean obliquity of date (Note 1)
-* `dpsi`, `deps`: Nutation (Note 2)
+- `epsa`: Mean obliquity of date (Note 1)
+- `dpsi`, `deps`: Nutation (Note 2)
 
 ### Returned ###
 
-* `rmatn`: Nutation matrix (Note 3)
+- `rmatn`: Nutation matrix (Note 3)
 
 ### Notes ###
 
@@ -28,13 +28,13 @@ Form the matrix of nutation.
 
 ### Called ###
 
-* `eraIr`: initialize r-matrix to identity
-* `eraRx`: rotate around X-axis
-* `eraRz`: rotate around Z-axis
+- `eraIr`: initialize r-matrix to identity
+- `eraRx`: rotate around X-axis
+- `eraRz`: rotate around Z-axis
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 3.222-3 (p114).
 
@@ -55,11 +55,11 @@ with free core nutation omitted).
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsi`, `deps`: Nutation, luni-solar + planetary (Note 2)
+- `dpsi`, `deps`: Nutation, luni-solar + planetary (Note 2)
 
 ### Notes ###
 
@@ -162,37 +162,37 @@ with free core nutation omitted).
 
 ### Called ###
 
-* `eraFal03`: mean anomaly of the Moon
-* `eraFaf03`: mean argument of the latitude of the Moon
-* `eraFaom03`: mean longitude of the Moon's ascending node
-* `eraFame03`: mean longitude of Mercury
-* `eraFave03`: mean longitude of Venus
-* `eraFae03`: mean longitude of Earth
-* `eraFama03`: mean longitude of Mars
-* `eraFaju03`: mean longitude of Jupiter
-* `eraFasa03`: mean longitude of Saturn
-* `eraFaur03`: mean longitude of Uranus
-* `eraFapa03`: general accumulated precession in longitude
+- `eraFal03`: mean anomaly of the Moon
+- `eraFaf03`: mean argument of the latitude of the Moon
+- `eraFaom03`: mean longitude of the Moon's ascending node
+- `eraFame03`: mean longitude of Mercury
+- `eraFave03`: mean longitude of Venus
+- `eraFae03`: mean longitude of Earth
+- `eraFama03`: mean longitude of Mars
+- `eraFaju03`: mean longitude of Jupiter
+- `eraFasa03`: mean longitude of Saturn
+- `eraFaur03`: mean longitude of Uranus
+- `eraFapa03`: general accumulated precession in longitude
 
 ### References ###
 
-* Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
+- Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
     Astron.Astrophys. 387, 700
 
-* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+- Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
     Astron.Astrophys. 58, 1-16
 
-* Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
+- Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
     107, B4.  The MHB_2000 code itself was obtained on 9th September
     2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
-* Wallace, P.T., "Software for Implementing the IAU 2000
+- Wallace, P.T., "Software for Implementing the IAU 2000
     Resolutions", in IERS Workshop 5.1 (2002)
 
 """
@@ -205,11 +205,11 @@ Nutation, IAU 2000B model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsi`, `deps`: Nutation, luni-solar + planetary (Note 2)
+- `dpsi`, `deps`: Nutation, luni-solar + planetary (Note 2)
 
 ### Notes ###
 
@@ -299,18 +299,18 @@ Nutation, IAU 2000B model.
 
 ### References ###
 
-* Lieske, J.H., Lederle, T., Fricke, W., Morando, B., "Expressions
+- Lieske, J.H., Lederle, T., Fricke, W., Morando, B., "Expressions
     for the precession quantities based upon the IAU /1976/ system of
     astronomical constants", Astron.Astrophys. 58, 1-2, 1-16. (1977)
 
-* Luzum, B., private communication, 2001 (Fortran code
+- Luzum, B., private communication, 2001 (Fortran code
     MHB_2000_SHORT)
 
-* McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+- McCarthy, D.D. & Luzum, B.J., "An abridged model of the
     precession-nutation of the celestial pole", Cel.Mech.Dyn.Astron.
     85, 37-49 (2003)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
 
 """
@@ -324,11 +324,11 @@ precession.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsi`, `deps`: Nutation, luni-solar + planetary (Note 2)
+- `dpsi`, `deps`: Nutation, luni-solar + planetary (Note 2)
 
 ### Notes ###
 
@@ -368,27 +368,27 @@ precession.
 
 ### Called ###
 
-* `eraNut00a`: nutation, IAU 2000A
+- `eraNut00a`: nutation, IAU 2000A
 
 ### References ###
 
-* Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
+- Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
     Astron.Astrophys. 387, 700
 
-* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+- Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
     Astron.Astrophys. 58, 1-16
 
-* Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
+- Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
     107, B4.  The MHB_2000 code itself was obtained on 9th September
     2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
-* Wallace, P.T., "Software for Implementing the IAU 2000
+- Wallace, P.T., "Software for Implementing the IAU 2000
     Resolutions", in IERS Workshop 5.1 (2002)
 
 """
@@ -401,12 +401,12 @@ Nutation, IAU 1980 model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsi`: Nutation in longitude (radians)
-* `deps`: Nutation in obliquity (radians)
+- `dpsi`: Nutation in longitude (radians)
+- `deps`: Nutation in obliquity (radians)
 
 ### Notes ###
 
@@ -434,11 +434,11 @@ Nutation, IAU 1980 model.
 
 ### Called ###
 
-* `eraAnpm`: normalize angle into range +/- pi
+- `eraAnpm`: normalize angle into range +/- pi
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 3.222 (p111).
 
@@ -470,11 +470,11 @@ Form the matrix of nutation for a given date, IAU 2000A model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rmatn`: Nutation matrix
+- `rmatn`: Nutation matrix
 
 ### Notes ###
 
@@ -507,11 +507,11 @@ Form the matrix of nutation for a given date, IAU 2000A model.
 
 ### Called ###
 
-* `eraPn00a`: bias/precession/nutation, IAU 2000A
+- `eraPn00a`: bias/precession/nutation, IAU 2000A
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 3.222-3 (p114).
 
@@ -525,11 +525,11 @@ Form the matrix of nutation for a given date, IAU 2000B model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rmatn`: Nutation matrix
+- `rmatn`: Nutation matrix
 
 ### Notes ###
 
@@ -562,11 +562,11 @@ Form the matrix of nutation for a given date, IAU 2000B model.
 
 ### Called ###
 
-* `eraPn00b`: bias/precession/nutation, IAU 2000B
+- `eraPn00b`: bias/precession/nutation, IAU 2000B
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 3.222-3 (p114).
 
@@ -580,11 +580,11 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rmatn`: Nutation matrix
+- `rmatn`: Nutation matrix
 
 ### Notes ###
 
@@ -614,13 +614,13 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
 
 ### Called ###
 
-* `eraObl06`: mean obliquity, IAU 2006
-* `eraNut06a`: nutation, IAU 2006/2000A
-* `eraNumat`: form nutation matrix
+- `eraObl06`: mean obliquity, IAU 2006
+- `eraNut06a`: nutation, IAU 2006/2000A
+- `eraNumat`: form nutation matrix
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 3.222-3 (p114).
 
@@ -634,11 +634,11 @@ Form the matrix of nutation for a given date, IAU 1980 model.
 
 ### Given ###
 
-* `date1`, `date2`: TDB date (Note 1)
+- `date1`, `date2`: TDB date (Note 1)
 
 ### Returned ###
 
-* `rmatn`: Nutation matrix
+- `rmatn`: Nutation matrix
 
 ### Notes ###
 
@@ -668,9 +668,9 @@ Form the matrix of nutation for a given date, IAU 1980 model.
 
 ### Called ###
 
-* `eraNut80`: nutation, IAU 1980
-* `eraObl80`: mean obliquity, IAU 1980
-* `eraNumat`: form nutation matrix
+- `eraNut80`: nutation, IAU 1980
+- `eraObl80`: mean obliquity, IAU 1980
+- `eraNumat`: form nutation matrix
 
 """
 nutm80

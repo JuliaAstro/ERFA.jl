@@ -6,23 +6,23 @@ reference ellipsoid.
 
 ### Given ###
 
-* `n`: Ellipsoid identifier (Note 1)
-* `xyz`: Geocentric vector (Note 2)
+- `n`: Ellipsoid identifier (Note 1)
+- `xyz`: Geocentric vector (Note 2)
 
 ### Returned ###
 
-* `elong`: Longitude (radians, east +ve, Note 3)
-* `phi`: Latitude (geodetic, radians, Note 3)
-* `height`: Height above ellipsoid (geodetic, Notes 2,3)
+- `elong`: Longitude (radians, east +ve, Note 3)
+- `phi`: Latitude (geodetic, radians, Note 3)
+- `height`: Height above ellipsoid (geodetic, Notes 2,3)
 
 ### Notes ###
 
 1) The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-        * `WGS84`
-        * `GRS80`
-        * `WGS72`
+        - `WGS84`
+        - `GRS80`
+        - `WGS72`
 
 2) The geocentric vector (xyz, given) and height (height, returned)
    are in meters.
@@ -35,8 +35,8 @@ reference ellipsoid.
 
 ### Called ###
 
-* `eraEform`: Earth reference ellipsoids
-* `eraGc2gde`: geocentric to geodetic transformation, general
+- `eraEform`: Earth reference ellipsoids
+- `eraGc2gde`: geocentric to geodetic transformation, general
 
 """
 function gc2gd(n, xyz)
@@ -62,15 +62,15 @@ ellipsoid of specified form.
 
 ### Given ###
 
-* `a`: Equatorial radius (Notes 2,4)
-* `f`: Flattening (Note 3)
-* `xyz`: Geocentric vector (Note 4)
+- `a`: Equatorial radius (Notes 2,4)
+- `f`: Flattening (Note 3)
+- `xyz`: Geocentric vector (Note 4)
 
 ### Returned ###
 
-* `elong`: Longitude (radians, east +ve)
-* `phi`: Latitude (geodetic, radians)
-* `height`: Height above ellipsoid (geodetic, Note 4)
+- `elong`: Longitude (radians, east +ve)
+- `phi`: Latitude (geodetic, radians)
+- `height`: Height above ellipsoid (geodetic, Note 4)
 
 ### Notes ###
 
@@ -99,7 +99,7 @@ ellipsoid of specified form.
 
 ### Reference ###
 
-* Fukushima, T., "Transformation from Cartesian to geodetic
+- Fukushima, T., "Transformation from Cartesian to geodetic
     coordinates accelerated by Halley's method", J.Geodesy (2006)
     79: 689-693
 
@@ -127,14 +127,14 @@ reference ellipsoid.
 
 ### Given ###
 
-* `n`: Ellipsoid identifier (Note 1)
-* `elong`: Longitude (radians, east +ve)
-* `phi`: Latitude (geodetic, radians, Note 3)
-* `height`: Height above ellipsoid (geodetic, Notes 2,3)
+- `n`: Ellipsoid identifier (Note 1)
+- `elong`: Longitude (radians, east +ve)
+- `phi`: Latitude (geodetic, radians, Note 3)
+- `height`: Height above ellipsoid (geodetic, Notes 2,3)
 
 ### Returned ###
 
-* `xyz`: Geocentric vector (Note 2)
+- `xyz`: Geocentric vector (Note 2)
 
 ### Notes ###
 
@@ -163,9 +163,9 @@ reference ellipsoid.
 
 ### Called ###
 
-* `eraEform`: Earth reference ellipsoids
-* `eraGd2gce`: geodetic to geocentric transformation, general
-* `eraZp`: zero p-vector
+- `eraEform`: Earth reference ellipsoids
+- `eraGd2gce`: geodetic to geocentric transformation, general
+- `eraZp`: zero p-vector
 
 """
 function gd2gc(n, elong, phi, height)
@@ -189,15 +189,15 @@ ellipsoid of specified form.
 
 ### Given ###
 
-* `a`: Equatorial radius (Notes 1,4)
-* `f`: Flattening (Notes 2,4)
-* `elong`: Longitude (radians, east +ve)
-* `phi`: Latitude (geodetic, radians, Note 4)
-* `height`: Height above ellipsoid (geodetic, Notes 3,4)
+- `a`: Equatorial radius (Notes 1,4)
+- `f`: Flattening (Notes 2,4)
+- `elong`: Longitude (radians, east +ve)
+- `phi`: Latitude (geodetic, radians, Note 4)
+- `height`: Height above ellipsoid (geodetic, Notes 3,4)
 
 ### Returned ###
 
-* `xyz`: Geocentric vector (Note 3)
+- `xyz`: Geocentric vector (Note 3)
 
 ### Notes ###
 
@@ -224,10 +224,10 @@ ellipsoid of specified form.
 
 ### References ###
 
-* Green, R.M., Spherical Astronomy, Cambridge University Press,
+- Green, R.M., Spherical Astronomy, Cambridge University Press,
     (1985) Section 4.5, p96.
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 4.22, p202.
 
@@ -250,13 +250,13 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
 ### Given ###
 
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
-* `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
-* `rnpb`: Nutation x precession x bias matrix
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
+- `rnpb`: Nutation x precession x bias matrix
 
 ### Returned ###
 
-* Greenwich apparent sidereal time (radians)
+- Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -296,15 +296,15 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
 ### Called ###
 
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraS06`: the CIO locator s, given X,Y, IAU 2006
-* `eraAnp`: normalize angle into range 0 to 2pi
-* `eraEra00`: Earth rotation angle, IAU 2000
-* `eraEors`: equation of the origins, given NPB matrix and s
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- `eraAnp`: normalize angle into range 0 to 2pi
+- `eraEra00`: Earth rotation angle, IAU 2000
+- `eraEors`: equation of the origins, given NPB matrix and s
 
 ### Reference ###
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 function gst06(uta, utb, tta, ttb, rnpb)
@@ -320,11 +320,11 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
 ### Given ###
 
-* `dj1`, `dj2`: UT1 Julian Date (see note)
+- `dj1`, `dj2`: UT1 Julian Date (see note)
 
 ### Returned ###
 
-* Greenwich mean sidereal time (radians)
+- Greenwich mean sidereal time (radians)
 
 ### Notes ###
 
@@ -364,14 +364,14 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
 ### Called ###
 
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### References ###
 
-* Transactions of the International Astronomical Union,
+- Transactions of the International Astronomical Union,
     XVIII B, 67 (1983).
 
-* Aoki et al., Astron. Astrophys. 105, 359-361 (1982).
+- Aoki et al., Astron. Astrophys. 105, 359-361 (1982).
 
 """
 gmst82
@@ -384,11 +384,11 @@ resolutions but using the truncated nutation model IAU 2000B).
 
 ### Given ###
 
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 
 ### Returned ###
 
-* Greenwich apparent sidereal time (radians)
+- Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -436,21 +436,21 @@ resolutions but using the truncated nutation model IAU 2000B).
 
 ### Called ###
 
-* `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-* `eraEe00b`: equation of the equinoxes, IAU 2000B
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
+- `eraEe00b`: equation of the equinoxes, IAU 2000B
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+- Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
     implement the IAU 2000 definition of UT1", Astronomy &
     Astrophysics, 406, 1135-1149 (2003)
 
-* McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+- McCarthy, D.D. & Luzum, B.J., "An abridged model of the
     precession-nutation of the celestial pole", Celestial Mechanics &
     Dynamical Astronomy, 85, 37-49 (2003)
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -464,11 +464,11 @@ resolutions).
 
 ### Given ###
 
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
 
 ### Returned ###
 
-* Greenwich apparent sidereal time (radians)
+- Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -507,16 +507,16 @@ resolutions).
 
 ### Called ###
 
-* `eraGmst82`: Greenwich mean sidereal time, IAU 1982
-* `eraEqeq94`: equation of the equinoxes, IAU 1994
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraGmst82`: Greenwich mean sidereal time, IAU 1982
+- `eraEqeq94`: equation of the equinoxes, IAU 1994
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### References ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
-* IAU Resolution C7, Recommendation 3 (1994)
+- IAU Resolution C7, Recommendation 3 (1994)
 
 """
 gst94
@@ -537,12 +537,12 @@ resolutions).
 
 ### Given ###
 
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
-* `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
 ### Returned ###
 
-* Greenwich mean sidereal time (radians)
+- Greenwich mean sidereal time (radians)
 
 ### Notes ###
 
@@ -585,16 +585,16 @@ resolutions).
 
 ### Called ###
 
-* `eraEra00`: Earth rotation angle, IAU 2000
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraEra00`: Earth rotation angle, IAU 2000
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+- Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
     implement the IAU 2000 definition of UT1", Astronomy &
     Astrophysics, 406, 1135-1149 (2003)
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -607,12 +607,12 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 
 ### Given ###
 
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
-* `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
 ### Returned ###
 
-* Greenwich mean sidereal time (radians)
+- Greenwich mean sidereal time (radians)
 
 ### Notes ###
 
@@ -650,12 +650,12 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 
 ### Called ###
 
-* `eraEra00`: Earth rotation angle, IAU 2000
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraEra00`: Earth rotation angle, IAU 2000
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### Reference ###
 
-* Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
+- Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
     Astron.Astrophys. 432, 355
 
 """
@@ -669,12 +669,12 @@ resolutions).
 
 ### Given ###
 
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
-* `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
 ### Returned  ###
 
-* Greenwich apparent sidereal time (radians)
+- Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -717,17 +717,17 @@ resolutions).
 
 ### Called ###
 
-* `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-* `eraEe00a`: equation of the equinoxes, IAU 2000A
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
+- `eraEe00a`: equation of the equinoxes, IAU 2000A
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+- Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
     implement the IAU 2000 definition of UT1", Astronomy &
     Astrophysics, 406, 1135-1149 (2003)
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -741,12 +741,12 @@ resolutions).
 
 ### Given ###
 
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
-* `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Notes 1,2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Notes 1,2)
 
 ### Returned ###
 
-* Greenwich apparent sidereal time (radians)
+- Greenwich apparent sidereal time (radians)
 
 ### Notes ###
 
@@ -786,12 +786,12 @@ resolutions).
 
 ### Called ###
 
-* `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-* `eraGst06`: Greenwich apparent ST, IAU 2006, given NPB matrix
+- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
+- `eraGst06`: Greenwich apparent ST, IAU 2006, given NPB matrix
 
 ### Reference ###
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 gst06a
@@ -812,13 +812,13 @@ Transformation from Galactic Coordinates to ICRS.
 
 ### Given ###
 
-* `dl`: Galactic longitude (radians)
-* `db`: Galactic latitude (radians)
+- `dl`: Galactic longitude (radians)
+- `db`: Galactic latitude (radians)
 
 ### Returned ###
 
-* `dr`: ICRS right ascension (radians)
-* `dd`: ICRS declination (radians)
+- `dr`: ICRS right ascension (radians)
+- `dd`: ICRS declination (radians)
 
 ### Notes ###
 
@@ -854,15 +854,15 @@ Transformation from Galactic Coordinates to ICRS.
 
 ### Called ###
 
-* `eraAnp`: normalize angle into range 0 to 2pi
-* `eraAnpm`: normalize angle into range +/- pi
-* `eraS2c`: spherical coordinates to unit vector
-* `eraTrxp`: product of transpose of r-matrix and p-vector
-* `eraC2s`: p-vector to spherical
+- `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnpm`: normalize angle into range +/- pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraTrxp`: product of transpose of r-matrix and p-vector
+- `eraC2s`: p-vector to spherical
 
 ### Reference ###
 
-* Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
+- Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
     catalogues.  Astrometric and photometric star catalogues
     derived from the ESA Hipparcos Space Astrometry Mission.  ESA
     Publications Division, Noordwijk, Netherlands.

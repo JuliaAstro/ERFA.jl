@@ -6,16 +6,16 @@ zero Hipparcos proper motion.
 
 ### Given ###
 
-* `rh`: Hipparcos RA (radians)
-* `dh`: Hipparcos Dec (radians)
-* `date1`, `date2`: TDB date (Note 1)
+- `rh`: Hipparcos RA (radians)
+- `dh`: Hipparcos Dec (radians)
+- `date1`, `date2`: TDB date (Note 1)
 
 ### Returned (all FK5, equinox J2000.0, date date1+date2) ###
 
-* `r5`: RA (radians)
-* `d5`: Dec (radians)
-* `dr5`: FK5 RA proper motion (rad/year, Note 4)
-* `dd5`: Dec proper motion (rad/year, Note 4)
+- `r5`: RA (radians)
+- `d5`: Dec (radians)
+- `dr5`: FK5 RA proper motion (rad/year, Note 4)
+- `dd5`: Dec proper motion (rad/year, Note 4)
 
 ### Notes ###
 
@@ -57,19 +57,19 @@ zero Hipparcos proper motion.
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraFk5hip`: FK5 to Hipparcos rotation and spin
-* `eraRxp`: product of r-matrix and p-vector
-* `eraSxp`: multiply p-vector by scalar
-* `eraRxr`: product of two r-matrices
-* `eraTrxp`: product of transpose of r-matrix and p-vector
-* `eraPxp`: vector product of two p-vectors
-* `eraPv2s`: pv-vector to spherical
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraFk5hip`: FK5 to Hipparcos rotation and spin
+- `eraRxp`: product of r-matrix and p-vector
+- `eraSxp`: multiply p-vector by scalar
+- `eraRxr`: product of two r-matrices
+- `eraTrxp`: product of transpose of r-matrix and p-vector
+- `eraPxp`: vector product of two p-vectors
+- `eraPv2s`: pv-vector to spherical
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### Reference ###
 
-* F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
+- F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
 
 """
 function hfk5z(rh, dh, date1, date2)
@@ -90,21 +90,21 @@ Transform Hipparcos star data into the FK5 (J2000.0) system.
 
 ### Given (all Hipparcos, epoch J2000.0) ###
 
-* `rh`: RA (radians)
-* `dh`: Dec (radians)
-* `drh`: Proper motion in RA (dRA/dt, rad/Jyear)
-* `ddh`: Proper motion in Dec (dDec/dt, rad/Jyear)
-* `pxh`: Parallax (arcsec)
-* `rvh`: Radial velocity (km/s, positive = receding)
+- `rh`: RA (radians)
+- `dh`: Dec (radians)
+- `drh`: Proper motion in RA (dRA/dt, rad/Jyear)
+- `ddh`: Proper motion in Dec (dDec/dt, rad/Jyear)
+- `pxh`: Parallax (arcsec)
+- `rvh`: Radial velocity (km/s, positive = receding)
 
 ### Returned (all FK5, equinox J2000.0, epoch J2000.0) ###
 
-* `r5`: RA (radians)
-* `d5`: Dec (radians)
-* `dr5`: Proper motion in RA (dRA/dt, rad/Jyear)
-* `dd5`: Proper motion in Dec (dDec/dt, rad/Jyear)
-* `px5`: Parallax (arcsec)
-* `rv5`: Radial velocity (km/s, positive = receding)
+- `r5`: RA (radians)
+- `d5`: Dec (radians)
+- `dr5`: Proper motion in RA (dRA/dt, rad/Jyear)
+- `dd5`: Proper motion in Dec (dDec/dt, rad/Jyear)
+- `px5`: Parallax (arcsec)
+- `rv5`: Radial velocity (km/s, positive = receding)
 
 ### Notes ###
 
@@ -122,18 +122,18 @@ Transform Hipparcos star data into the FK5 (J2000.0) system.
 
 ### Called ###
 
-* `eraStarpv`: star catalog data to space motion pv-vector
-* `eraFk5hip`: FK5 to Hipparcos rotation and spin
-* `eraRv2m`: r-vector to r-matrix
-* `eraRxp`: product of r-matrix and p-vector
-* `eraTrxp`: product of transpose of r-matrix and p-vector
-* `eraPxp`: vector product of two p-vectors
-* `eraPmp`: p-vector minus p-vector
-* `eraPvstar`: space motion pv-vector to star catalog data
+- `eraStarpv`: star catalog data to space motion pv-vector
+- `eraFk5hip`: FK5 to Hipparcos rotation and spin
+- `eraRv2m`: r-vector to r-matrix
+- `eraRxp`: product of r-matrix and p-vector
+- `eraTrxp`: product of transpose of r-matrix and p-vector
+- `eraPxp`: vector product of two p-vectors
+- `eraPmp`: p-vector minus p-vector
+- `eraPvstar`: space motion pv-vector to star catalog data
 
 ### Reference ###
 
-* F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+- F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 
 """
 function h2fk5(ra, dec, dra, ddec, px, rv)

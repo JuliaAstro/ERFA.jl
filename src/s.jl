@@ -5,12 +5,12 @@ Convert spherical coordinates to Cartesian.
 
 ### Given ###
 
-* `theta`: Longitude angle (radians)
-* `phi`: Latitude angle (radians)
+- `theta`: Longitude angle (radians)
+- `phi`: Latitude angle (radians)
 
 ### Returned ###
 
-* `c`: Direction cosines
+- `c`: Direction cosines
 
 """
 function s2c(theta, phi)
@@ -28,18 +28,18 @@ Convert spherical polar coordinates to p-vector.
 
 ### Given ###
 
-* `theta`: Longitude angle (radians)
-* `phi`: Latitude angle (radians)
-* `r`: Radial distance
+- `theta`: Longitude angle (radians)
+- `phi`: Latitude angle (radians)
+- `r`: Radial distance
 
 ### Returned ###
 
-* `p`: Cartesian coordinates
+- `p`: Cartesian coordinates
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraSxp`: multiply p-vector by scalar
+- `eraS2c`: spherical coordinates to unit vector
+- `eraSxp`: multiply p-vector by scalar
 
 """
 function s2p(theta, phi, r)
@@ -57,16 +57,16 @@ Convert position/velocity from spherical to Cartesian coordinates.
 
 ### Given ###
 
-* `theta`: Longitude angle (radians)
-* `phi`: Latitude angle (radians)
-* `r`: Radial distance
-* `td`: Rate of change of theta
-* `pd`: Rate of change of phi
-* `rd`: Rate of change of r
+- `theta`: Longitude angle (radians)
+- `phi`: Latitude angle (radians)
+- `r`: Radial distance
+- `td`: Rate of change of theta
+- `pd`: Rate of change of phi
+- `rd`: Rate of change of r
 
 ### Returned ###
 
-* `pv`: Pv-vector
+- `pv`: Pv-vector
 
 """
 function s2pv(theta, phi, r, td, pd, rd)
@@ -84,13 +84,13 @@ Multiply a pv-vector by two scalars.
 
 ### Given ###
 
-* `s1`: Scalar to multiply position component by
-* `s2`: Scalar to multiply velocity component by
-* `pv`: Pv-vector
+- `s1`: Scalar to multiply position component by
+- `s2`: Scalar to multiply velocity component by
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `spv`: Pv-vector: p scaled by s1, v scaled by s2
+- `spv`: Pv-vector: p scaled by s1, v scaled by s2
 
 ### Note ###
 
@@ -98,7 +98,7 @@ Multiply a pv-vector by two scalars.
 
 ### Called ###
 
-* `eraSxp`: multiply p-vector by scalar
+- `eraSxp`: multiply p-vector by scalar
 
 """
 function s2xpv(s1, s2, pv)
@@ -116,25 +116,25 @@ Star proper motion:  update star catalog data for space motion.
 
 ### Given ###
 
-* `ra1`: Right ascension (radians), before
-* `dec1`: Declination (radians), before
-* `pmr1`: RA proper motion (radians/year), before
-* `pmd1`: Dec proper motion (radians/year), before
-* `px1`: Parallax (arcseconds), before
-* `rv1`: Radial velocity (km/s, +ve = receding), before
-* `ep1a`: "before" epoch, part A (Note 1)
-* `ep1b`: "before" epoch, part B (Note 1)
-* `ep2a`: "after" epoch, part A (Note 1)
-* `ep2b`: "after" epoch, part B (Note 1)
+- `ra1`: Right ascension (radians), before
+- `dec1`: Declination (radians), before
+- `pmr1`: RA proper motion (radians/year), before
+- `pmd1`: Dec proper motion (radians/year), before
+- `px1`: Parallax (arcseconds), before
+- `rv1`: Radial velocity (km/s, +ve = receding), before
+- `ep1a`: "before" epoch, part A (Note 1)
+- `ep1b`: "before" epoch, part B (Note 1)
+- `ep2a`: "after" epoch, part A (Note 1)
+- `ep2b`: "after" epoch, part B (Note 1)
 
 ### Returned ###
 
-* `ra2`: Right ascension (radians), after
-* `dec2`: Declination (radians), after
-* `pmr2`: RA proper motion (radians/year), after
-* `pmd2`: Dec proper motion (radians/year), after
-* `px2`: Parallax (arcseconds), after
-* `rv2`: Radial velocity (km/s, +ve = receding), after
+- `ra2`: Right ascension (radians), after
+- `dec2`: Declination (radians), after
+- `pmr2`: RA proper motion (radians/year), after
+- `pmd2`: Dec proper motion (radians/year), after
+- `px2`: Parallax (arcseconds), after
+- `rv2`: Radial velocity (km/s, +ve = receding), after
 
 ### Notes ###
 
@@ -197,10 +197,10 @@ Star proper motion:  update star catalog data for space motion.
 
 ### Called ###
 
-* `eraStarpv`: star catalog data to space motion pv-vector
-* `eraPvu`: update a pv-vector
-* `eraPdp`: scalar product of two p-vectors
-* `eraPvstar`: space motion pv-vector to star catalog data
+- `eraStarpv`: star catalog data to space motion pv-vector
+- `eraPvu`: update a pv-vector
+- `eraPdp`: scalar product of two p-vectors
+- `eraPvstar`: space motion pv-vector to star catalog data
 
 """
 function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -235,16 +235,16 @@ Convert star catalog coordinates to position+velocity vector.
 
 ### Given (Note 1) ###
 
-* `ra`: Right ascension (radians)
-* `dec`: Declination (radians)
-* `pmr`: RA proper motion (radians/year)
-* `pmd`: Dec proper motion (radians/year)
-* `px`: Parallax (arcseconds)
-* `rv`: Radial velocity (km/s, positive = receding)
+- `ra`: Right ascension (radians)
+- `dec`: Declination (radians)
+- `pmr`: RA proper motion (radians/year)
+- `pmd`: Dec proper motion (radians/year)
+- `px`: Parallax (arcseconds)
+- `rv`: Radial velocity (km/s, positive = receding)
 
 ### Returned (Note 2) ###
 
-* `pv`: pv-vector (au, au/day)
+- `pv`: pv-vector (au, au/day)
 
 ### Notes ###
 
@@ -318,18 +318,18 @@ Convert star catalog coordinates to position+velocity vector.
 
 ### Called ###
 
-* `eraS2pv`: spherical coordinates to pv-vector
-* `eraPm`: modulus of p-vector
-* `eraZp`: zero p-vector
-* `eraPn`: decompose p-vector into modulus and direction
-* `eraPdp`: scalar product of two p-vectors
-* `eraSxp`: multiply p-vector by scalar
-* `eraPmp`: p-vector minus p-vector
-* `eraPpp`: p-vector plus p-vector
+- `eraS2pv`: spherical coordinates to pv-vector
+- `eraPm`: modulus of p-vector
+- `eraZp`: zero p-vector
+- `eraPn`: decompose p-vector into modulus and direction
+- `eraPdp`: scalar product of two p-vectors
+- `eraSxp`: multiply p-vector by scalar
+- `eraPmp`: p-vector minus p-vector
+- `eraPpp`: p-vector plus p-vector
 
 ### Reference ###
 
-* Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
+- Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
 
 """
 function starpv(ra, dec, pmr, pmd, px, rv)
@@ -356,12 +356,12 @@ Multiply a p-vector by a scalar.
 
 ### Given ###
 
-* `s`: Scalar
-* `p`: P-vector
+- `s`: Scalar
+- `p`: P-vector
 
 ### Returned ###
 
-* `sp`: S * p
+- `sp`: S * p
 
 ### Note ###
 
@@ -383,12 +383,12 @@ Multiply a pv-vector by a scalar.
 
 ### Given ###
 
-* `s`: Scalar
-* `pv`: Pv-vector
+- `s`: Scalar
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `spv`: S * pv
+- `spv`: S * pv
 
 ### Note ###
 
@@ -396,7 +396,7 @@ Multiply a pv-vector by a scalar.
 
 ### Called ###
 
-* `eraS2xpv`: multiply pv-vector by two scalars
+- `eraS2xpv`: multiply pv-vector by two scalars
 
 """
 function sxpv(s, pv)
@@ -414,19 +414,19 @@ Angular separation between two sets of spherical coordinates.
 
 ### Given ###
 
-* `al`: First longitude (radians)
-* `ap`: First latitude (radians)
-* `bl`: Second longitude (radians)
-* `bp`: Second latitude (radians)
+- `al`: First longitude (radians)
+- `ap`: First latitude (radians)
+- `bl`: Second longitude (radians)
+- `bp`: Second latitude (radians)
 
 ### Returned ###
 
-* Angular separation (radians)
+- Angular separation (radians)
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraSepp`: angular separation between two p-vectors
+- `eraS2c`: spherical coordinates to unit vector
+- `eraSepp`: angular separation between two p-vectors
 
 """
 function seps(al, ap, bl, bp)
@@ -440,12 +440,12 @@ Angular separation between two p-vectors.
 
 ### Given ###
 
-* `a`: First p-vector (not necessarily unit length)
-* `b`: Second p-vector (not necessarily unit length)
+- `a`: First p-vector (not necessarily unit length)
+- `b`: Second p-vector (not necessarily unit length)
 
 ### Returned ###
 
-* Angular separation (radians, always positive)
+- Angular separation (radians, always positive)
 
 ### Notes ###
 
@@ -459,9 +459,9 @@ Angular separation between two p-vectors.
 
 ### Called ###
 
-* `eraPxp`: vector product of two p-vectors
-* `eraPm`: modulus of p-vector
-* `eraPdp`: scalar product of two p-vectors
+- `eraPxp`: vector product of two p-vectors
+- `eraPm`: modulus of p-vector
+- `eraPdp`: scalar product of two p-vectors
 
 """
 function sepp(a, b)
@@ -477,11 +477,11 @@ precession-nutation model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* The CIO locator s in radians (Note 2)
+- The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -520,21 +520,21 @@ precession-nutation model.
 
 ### Called ###
 
-* `eraPnm00a`: classical NPB matrix, IAU 2000A
-* `eraBnp2xy`: extract CIP X,Y from the BPN matrix
-* `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- `eraPnm00a`: classical NPB matrix, IAU 2000A
+- `eraBnp2xy`: extract CIP X,Y from the BPN matrix
+- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
 
 ### References ###
 
-* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+- Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
     "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -549,11 +549,11 @@ precession-nutation model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* The CIO locator s in radians (Note 2)
+- The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -592,21 +592,21 @@ precession-nutation model.
 
 ### Called ###
 
-* `eraPnm00b`: classical NPB matrix, IAU 2000B
-* `eraBnp2xy`: extract CIP X,Y from the BPN matrix
-* `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- `eraPnm00b`: classical NPB matrix, IAU 2000B
+- `eraBnp2xy`: extract CIP X,Y from the BPN matrix
+- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
 
 ### References ###
 
-* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+- Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
     "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -621,11 +621,11 @@ precession and IAU 2000A nutation models.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* The CIO locator s in radians (Note 2)
+- The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -662,26 +662,26 @@ precession and IAU 2000A nutation models.
 
 ### Called ###
 
-* `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraS06`: the CIO locator s, given X,Y, IAU 2006
 
 ### References ###
 
-* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+- Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
     "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 s06a
@@ -694,11 +694,11 @@ on the equator of the Celestial Intermediate Pole.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* The TIO locator s' in radians (Note 2)
+- The TIO locator s' in radians (Note 2)
 
 ### Notes ###
 
@@ -729,7 +729,7 @@ on the equator of the Celestial Intermediate Pole.
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -753,12 +753,12 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
-* `x`, `y`: CIP coordinates (Note 3)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `x`, `y`: CIP coordinates (Note 3)
 
 ### Returned ###
 
-* The CIO locator s in radians (Note 2)
+- The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -798,26 +798,26 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 
 ### Called ###
 
-* `eraFal03`: mean anomaly of the Moon
-* `eraFalp03`: mean anomaly of the Sun
-* `eraFaf03`: mean argument of the latitude of the Moon
-* `eraFad03`: mean elongation of the Moon from the Sun
-* `eraFaom03`: mean longitude of the Moon's ascending node
-* `eraFave03`: mean longitude of Venus
-* `eraFae03`: mean longitude of Earth
-* `eraFapa03`: general accumulated precession in longitude
+- `eraFal03`: mean anomaly of the Moon
+- `eraFalp03`: mean anomaly of the Sun
+- `eraFaf03`: mean argument of the latitude of the Moon
+- `eraFad03`: mean elongation of the Moon from the Sun
+- `eraFaom03`: mean longitude of the Moon's ascending node
+- `eraFave03`: mean longitude of Venus
+- `eraFae03`: mean longitude of Earth
+- `eraFapa03`: general accumulated precession in longitude
 
 ### References ###
 
-* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+- Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
     "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -832,12 +832,12 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
-* `x`, `y`: CIP coordinates (Note 3)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `x`, `y`: CIP coordinates (Note 3)
 
 ### Returned ###
 
-* The CIO locator s in radians (Note 2)
+- The CIO locator s in radians (Note 2)
 
 ### Notes ###
 
@@ -879,21 +879,21 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 
 ### Called ###
 
-* `eraFal03`: mean anomaly of the Moon
-* `eraFalp03`: mean anomaly of the Sun
-* `eraFaf03`: mean argument of the latitude of the Moon
-* `eraFad03`: mean elongation of the Moon from the Sun
-* `eraFaom03`: mean longitude of the Moon's ascending node
-* `eraFave03`: mean longitude of Venus
-* `eraFae03`: mean longitude of Earth
-* `eraFapa03`: general accumulated precession in longitude
+- `eraFal03`: mean anomaly of the Moon
+- `eraFalp03`: mean anomaly of the Sun
+- `eraFaf03`: mean argument of the latitude of the Moon
+- `eraFad03`: mean elongation of the Moon from the Sun
+- `eraFaom03`: mean longitude of the Moon's ascending node
+- `eraFave03`: mean longitude of Venus
+- `eraFae03`: mean longitude of Earth
+- `eraFapa03`: general accumulated precession in longitude
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. & Chapront, J., 2003, Astron.
+- Capitaine, N., Wallace, P.T. & Chapront, J., 2003, Astron.
     Astrophys. 432, 355
 
-* McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
+- McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
 
 """

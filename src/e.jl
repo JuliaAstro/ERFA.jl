@@ -5,21 +5,21 @@ Earth reference ellipsoids.
 
 ### Given ###
 
-* `n`: Ellipsoid identifier (Note 1)
+- `n`: Ellipsoid identifier (Note 1)
 
 ### Returned ###
 
-* `a`: Equatorial radius (meters, Note 2)
-* `f`: Flattening (Note 2)
+- `a`: Equatorial radius (meters, Note 2)
+- `f`: Flattening (Note 2)
 
 ### Notes ###
 
 1) The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-        * `WGS84`
-        * `GRS80`
-        * `WGS72`
+        - `WGS84`
+        - `GRS80`
+        - `WGS72`
 
 2) The ellipsoid parameters are returned in the form of equatorial
    radius in meters (a) and flattening (f).  The latter is a number
@@ -30,16 +30,16 @@ Earth reference ellipsoids.
 
 ### References ###
 
-* Department of Defense World Geodetic System 1984, National
+- Department of Defense World Geodetic System 1984, National
     Imagery and Mapping Agency Technical Report 8350.2, Third
     Edition, p3-2.
 
-* Moritz, H., Bull. Geodesique 66-2, 187 (1992).
+- Moritz, H., Bull. Geodesique 66-2, 187 (1992).
 
-* The Department of Defense World Geodetic System 1972, World
+- The Department of Defense World Geodetic System 1972, World
     Geodetic System Committee, May 1974.
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     p220.
 
@@ -64,12 +64,12 @@ quantity s.
 
 ### Given ###
 
-* `rnpb`: Classical nutation x precession x bias matrix
-* `s`: The quantity s (the CIO locator)
+- `rnpb`: Classical nutation x precession x bias matrix
+- `s`: The quantity s (the CIO locator)
 
 ### Returned ###
 
-* The equation of the origins in radians.
+- The equation of the origins in radians.
 
 ### Notes ###
 
@@ -84,9 +84,9 @@ quantity s.
 
 ### References ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* Wallace, P. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 function eors(rnpb, s)
@@ -103,12 +103,12 @@ respect to the Barycentric Celestial Reference System.
 
 ### Given ###
 
-* `date1`, `date2`: TDB date (Note 1)
+- `date1`, `date2`: TDB date (Note 1)
 
 ### Returned ###
 
-* `pvh`: Heliocentric Earth position/velocity
-* `pvb`: Barycentric Earth position/velocity
+- `pvh`: Heliocentric Earth position/velocity
+- `pvb`: Barycentric Earth position/velocity
 
 ### Notes ###
 
@@ -204,12 +204,12 @@ of date) to ICRS RA,Dec, using the IAU 2006 precession model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian date (Note 1)
-* `dl`, `db`: Ecliptic longitude and latitude (radians)
+- `date1`, `date2`: TT as a 2-part Julian date (Note 1)
+- `dl`, `db`: Ecliptic longitude and latitude (radians)
 
 ### Returned ###
 
-* `dr`, `dd`: ICRS right ascension and declination (radians)
+- `dr`, `dd`: ICRS right ascension and declination (radians)
 
 1) The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
@@ -241,12 +241,12 @@ of date) to ICRS RA,Dec, using the IAU 2006 precession model.
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraEcm06`: J2000.0 to ecliptic rotation matrix, IAU 2006
-* `eraTrxp`: product of transpose of r-matrix and p-vector
-* `eraC2s`: unit vector to spherical coordinates
-* `eraAnp`: normalize angle into range 0 to 2pi
-* `eraAnpm`: normalize angle into range +/- pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraEcm06`: J2000.0 to ecliptic rotation matrix, IAU 2006
+- `eraTrxp`: product of transpose of r-matrix and p-vector
+- `eraC2s`: unit vector to spherical coordinates
+- `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnpm`: normalize angle into range +/- pi
 
 """
 eceq06
@@ -260,12 +260,12 @@ precession model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian date (Note 1)
-* `dr`, `dd`: ICRS right ascension and declination (radians)
+- `date1`, `date2`: TT as a 2-part Julian date (Note 1)
+- `dr`, `dd`: ICRS right ascension and declination (radians)
 
 ### Returned ###
 
-* `dl`, `db`: Ecliptic longitude and latitude (radians)
+- `dl`, `db`: Ecliptic longitude and latitude (radians)
 
 1) The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
@@ -297,12 +297,12 @@ precession model.
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraEcm06`: J2000.0 to ecliptic rotation matrix, IAU 2006
-* `eraRxp`: product of r-matrix and p-vector
-* `eraC2s`: unit vector to spherical coordinates
-* `eraAnp`: normalize angle into range 0 to 2pi
-* `eraAnpm`: normalize angle into range +/- pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraEcm06`: J2000.0 to ecliptic rotation matrix, IAU 2006
+- `eraRxp`: product of r-matrix and p-vector
+- `eraC2s`: unit vector to spherical coordinates
+- `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnpm`: normalize angle into range +/- pi
 
 """
 eqec06
@@ -330,12 +330,12 @@ Besselian Epoch to Julian Date.
 
 ### Given ###
 
-* `epb`: Besselian Epoch (e.g. 1957.3)
+- `epb`: Besselian Epoch (e.g. 1957.3)
 
 ### Returned ###
 
-* `djm0`: MJD zero-point: always 2400000.5
-* `djm`: Modified Julian Date
+- `djm0`: MJD zero-point: always 2400000.5
+- `djm`: Modified Julian Date
 
 ### Note ###
 
@@ -346,7 +346,7 @@ Besselian Epoch to Julian Date.
 
 ### Reference ###
 
-* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+- Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 
 """
 epb2jd
@@ -358,12 +358,12 @@ Julian Epoch to Julian Date.
 
 ### Given ###
 
-* `epj`: Julian Epoch (e.g. 1996.8)
+- `epj`: Julian Epoch (e.g. 1996.8)
 
 ### Returned ###
 
-* `djm0`: MJD zero-point: always 2400000.5
-* `djm`: Modified Julian Date
+- `djm0`: MJD zero-point: always 2400000.5
+- `djm`: Modified Julian Date
 
 ### Note ###
 
@@ -374,7 +374,7 @@ Julian Epoch to Julian Date.
 
 ### Reference ###
 
-* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+- Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 
 """
 epj2jd
@@ -402,11 +402,11 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* Equation of the equinoxes (Note 2)
+- Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -439,18 +439,18 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
 
 ### Called ###
 
-* `eraPr00`: IAU 2000 precession adjustments
-* `eraObl80`: mean obliquity, IAU 1980
-* `eraNut00a`: nutation, IAU 2000A
-* `eraEe00`: equation of the equinoxes, IAU 2000
+- `eraPr00`: IAU 2000 precession adjustments
+- `eraObl80`: mean obliquity, IAU 1980
+- `eraNut00a`: nutation, IAU 2000A
+- `eraEe00`: equation of the equinoxes, IAU 2000
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+- Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
     implement the IAU 2000 definition of UT1", Astronomy &
     Astrophysics, 406, 1135-1149 (2003).
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004).
 
 """
@@ -464,11 +464,11 @@ using the truncated nutation model IAU 2000B.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* Equation of the equinoxes (Note 2)
+- Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -502,22 +502,22 @@ using the truncated nutation model IAU 2000B.
 
 ### Called ###
 
-* `eraPr00`: IAU 2000 precession adjustments
-* `eraObl80`: mean obliquity, IAU 1980
-* `eraNut00b`: nutation, IAU 2000B
-* `eraEe00`: equation of the equinoxes, IAU 2000
+- `eraPr00`: IAU 2000 precession adjustments
+- `eraObl80`: mean obliquity, IAU 1980
+- `eraNut00b`: nutation, IAU 2000B
+- `eraEe00`: equation of the equinoxes, IAU 2000
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+- Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
     implement the IAU 2000 definition of UT1", Astronomy &
     Astrophysics, 406, 1135-1149 (2003)
 
-* McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+- McCarthy, D.D. & Luzum, B.J., "An abridged model of the
     precession-nutation of the celestial pole", Celestial Mechanics &
     Dynamical Astronomy, 85, 37-49 (2003)
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -531,11 +531,11 @@ IAU 2006/2000A precession-nutation.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* Equation of the equinoxes (Note 2)
+- Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -564,13 +564,13 @@ IAU 2006/2000A precession-nutation.
 
 ### Called ###
 
-* `eraAnpm`: normalize angle into range +/- pi
-* `eraGst06a`: Greenwich apparent sidereal time, IAU 2006/2000A
-* `eraGmst06`: Greenwich mean sidereal time, IAU 2006
+- `eraAnpm`: normalize angle into range +/- pi
+- `eraGst06a`: Greenwich apparent sidereal time, IAU 2006/2000A
+- `eraGmst06`: Greenwich mean sidereal time, IAU 2006
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
 
 """
@@ -584,11 +584,11 @@ IAU 2000 resolutions.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* Complementary terms (Note 2)
+- Complementary terms (Note 2)
 
 ### Notes ###
 
@@ -644,27 +644,27 @@ IAU 2000 resolutions.
 
 ### Called ###
 
-* `eraFal03`: mean anomaly of the Moon
-* `eraFalp03`: mean anomaly of the Sun
-* `eraFaf03`: mean argument of the latitude of the Moon
-* `eraFad03`: mean elongation of the Moon from the Sun
-* `eraFaom03`: mean longitude of the Moon's ascending node
-* `eraFave03`: mean longitude of Venus
-* `eraFae03`: mean longitude of Earth
-* `eraFapa03`: general accumulated precession in longitude
+- `eraFal03`: mean anomaly of the Moon
+- `eraFalp03`: mean anomaly of the Sun
+- `eraFaf03`: mean argument of the latitude of the Moon
+- `eraFad03`: mean elongation of the Moon from the Sun
+- `eraFaom03`: mean longitude of the Moon's ascending node
+- `eraFave03`: mean longitude of Venus
+- `eraFae03`: mean longitude of Earth
+- `eraFapa03`: general accumulated precession in longitude
 
 ### References ###
 
-* Capitaine, N. & Gontier, A.-M., Astron. Astrophys., 275,
+- Capitaine, N. & Gontier, A.-M., Astron. Astrophys., 275,
     645-650 (1993)
 
-* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+- Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
     implement the IAU 2000 definition of UT1", Astronomy &
     Astrophysics, 406, 1135-1149 (2003)
 
-* IAU Resolution C7, Recommendation 3 (1994)
+- IAU Resolution C7, Recommendation 3 (1994)
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -677,11 +677,11 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* Equation of the origins in radians
+- Equation of the origins in radians
 
 ### Notes ###
 
@@ -713,16 +713,16 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
 ### Called ###
 
-* `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraS06`: the CIO locator s, given X,Y, IAU 2006
-* `eraEors`: equation of the origins, given NPB matrix and s
+- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- `eraEors`: equation of the origins, given NPB matrix and s
 
 ### References ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 eo06a
@@ -734,11 +734,11 @@ Julian Date to Besselian Epoch.
 
 ### Given ###
 
-* `dj1`, `dj2`: Julian Date (see note)
+- `dj1`, `dj2`: Julian Date (see note)
 
 ### Returned ###
 
-* Besselian Epoch.
+- Besselian Epoch.
 
 ### Note ###
 
@@ -750,7 +750,7 @@ Julian Date to Besselian Epoch.
 
 ### Reference ###
 
-* Lieske, J.H., 1979. Astron.Astrophys., 73, 282.
+- Lieske, J.H., 1979. Astron.Astrophys., 73, 282.
 
 """
 epb
@@ -762,11 +762,11 @@ Julian Date to Julian Epoch.
 
 ### Given ###
 
-* `dj1`, `dj2`: Julian Date (see note)
+- `dj1`, `dj2`: Julian Date (see note)
 
 ### Returned ###
 
-* Julian Epoch
+- Julian Epoch
 
 ### Note ###
 
@@ -778,7 +778,7 @@ Julian Date to Julian Epoch.
 
 ### Reference ###
 
-* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+- Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 
 """
 epj
@@ -790,11 +790,11 @@ Equation of the equinoxes, IAU 1994 model.
 
 ### Given ###
 
-* `date1`, `date2`: TDB date (Note 1)
+- `date1`, `date2`: TDB date (Note 1)
 
 ### Returned ###
 
-* Equation of the equinoxes (Note 2)
+- Equation of the equinoxes (Note 2)
 
 ### Notes ###
 
@@ -823,15 +823,15 @@ Equation of the equinoxes, IAU 1994 model.
 
 ### Called ###
 
-* `eraAnpm`: normalize angle into range +/- pi
-* `eraNut80`: nutation, IAU 1980
-* `eraObl80`: mean obliquity, IAU 1980
+- `eraAnpm`: normalize angle into range +/- pi
+- `eraNut80`: nutation, IAU 1980
+- `eraObl80`: mean obliquity, IAU 1980
 
 ### References ###
 
-* IAU Resolution C7, Recommendation 3 (1994).
+- IAU Resolution C7, Recommendation 3 (1994).
 
-* Capitaine, N. & Gontier, A.-M., 1993, Astron. Astrophys., 275,
+- Capitaine, N. & Gontier, A.-M., 1993, Astron. Astrophys., 275,
     645-650.
 
 """
@@ -844,11 +844,11 @@ Earth rotation angle (IAU 2000 model).
 
 ### Given ###
 
-* `dj1`, `dj2`: UT1 as a 2-part Julian Date (see note)
+- `dj1`, `dj2`: UT1 as a 2-part Julian Date (see note)
 
 ### Returned ###
 
-* Earth rotation angle (radians), range 0-2pi
+- Earth rotation angle (radians), range 0-2pi
 
 ### Notes ###
 
@@ -881,14 +881,14 @@ Earth rotation angle (IAU 2000 model).
 
 ### Called ###
 
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### References ###
 
-* Capitaine N., Guinot B. and McCarthy D.D, 2000, Astron.
+- Capitaine N., Guinot B. and McCarthy D.D, 2000, Astron.
     Astrophys., 355, 398-405.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -916,13 +916,13 @@ given the nutation in longitude and the mean obliquity.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
-* `epsa`: Mean obliquity (Note 2)
-* `dpsi`: Nutation in longitude (Note 3)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `epsa`: Mean obliquity (Note 2)
+- `dpsi`: Nutation in longitude (Note 3)
 
 ### Returned ###
 
-* Equation of the equinoxes (Note 4)
+- Equation of the equinoxes (Note 4)
 
 ### Notes ###
 
@@ -957,15 +957,15 @@ given the nutation in longitude and the mean obliquity.
 
 ### Called ###
 
-* `eraEect00`: equation of the equinoxes complementary terms
+- `eraEect00`: equation of the equinoxes complementary terms
 
 ### References ###
 
-* Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+- Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
     implement the IAU 2000 definition of UT1", Astronomy &
     Astrophysics, 406, 1135-1149 (2003)
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -978,11 +978,11 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian date (Note 1)
 
 ### Returned ###
 
-* `rm`: ICRS to ecliptic rotation matrix
+- `rm`: ICRS to ecliptic rotation matrix
 
 ### Notes ###
 
@@ -1024,11 +1024,11 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
 ### Called ###
 
-* `eraObl06`: mean obliquity, IAU 2006
-* `eraPmat06`: PB matrix, IAU 2006
-* `eraIr`: initialize r-matrix to identity
-* `eraRx`: rotate around X-axis
-* `eraRxr`: product of two r-matrices
+- `eraObl06`: mean obliquity, IAU 2006
+- `eraPmat06`: PB matrix, IAU 2006
+- `eraIr`: initialize r-matrix to identity
+- `eraRx`: rotate around X-axis
+- `eraRxr`: product of two r-matrices
 
 """
 function ecm06(date1, date2)

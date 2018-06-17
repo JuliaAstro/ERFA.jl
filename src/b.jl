@@ -6,8 +6,8 @@ of MHB2000 with additions).
 
 ### Returned ###
 
-* `dpsibi`, `depsbi`: Longitude and obliquity corrections
-* `dra`: The ICRS RA of the J2000.0 mean equinox
+- `dpsibi`, `depsbi`: Longitude and obliquity corrections
+- `dra`: The ICRS RA of the J2000.0 mean equinox
 
 ### Notes ###
 
@@ -28,10 +28,10 @@ of MHB2000 with additions).
 
 ### References ###
 
-* Chapront, J., Chapront-Touze, M. & Francou, G., Astron.
+- Chapront, J., Chapront-Touze, M. & Francou, G., Astron.
     Astrophys., 387, 700, 2002.
 
-* Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
+- Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
     and precession   New nutation series for nonrigid Earth and
     insights into the Earth's interior", J.Geophys.Res., 107, B4,
     2002.  The MHB2000 code itself was obtained on 9th September 2002
@@ -56,11 +56,11 @@ of the Celestial Intermediate Pole.
 
 ### Given ###
 
-* `rbpn`: Celestial-to-true matrix (Note 1)
+- `rbpn`: Celestial-to-true matrix (Note 1)
 
 ### Returned ###
 
-* `x`, `y`: Celestial Intermediate Pole (Note 2)
+- `x`, `y`: Celestial Intermediate Pole (Note 2)
 
 ### Notes ###
 
@@ -73,12 +73,12 @@ of the Celestial Intermediate Pole.
 
 ### Reference ###
 
-* "Expressions for the Celestial Intermediate Pole and Celestial
+- "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154
     (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
@@ -98,13 +98,13 @@ Frame bias and precession, IAU 2000.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rb`: Frame bias matrix (Note 2)
-* `rp`: Precession matrix (Note 3)
-* `rbp`: Bias-precession matrix (Note 4)
+- `rb`: Frame bias matrix (Note 2)
+- `rp`: Precession matrix (Note 3)
+- `rbp`: Bias-precession matrix (Note 4)
 
 ### Notes ###
 
@@ -143,22 +143,22 @@ Frame bias and precession, IAU 2000.
 
 ### Called ###
 
-* `eraBi00`: frame bias components, IAU 2000
-* `eraPr00`: IAU 2000 precession adjustments
-* `eraIr`: initialize r-matrix to identity
-* `eraRx`: rotate around X-axis
-* `eraRy`: rotate around Y-axis
-* `eraRz`: rotate around Z-axis
-* `eraCr`: copy r-matrix
-* `eraRxr`: product of two r-matrices
+- `eraBi00`: frame bias components, IAU 2000
+- `eraPr00`: IAU 2000 precession adjustments
+- `eraIr`: initialize r-matrix to identity
+- `eraRx`: rotate around X-axis
+- `eraRy`: rotate around Y-axis
+- `eraRz`: rotate around Z-axis
+- `eraCr`: copy r-matrix
+- `eraRxr`: product of two r-matrices
 
 ### Reference ###
 
-* "Expressions for the Celestial Intermediate Pole and Celestial
+- "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
@@ -171,13 +171,13 @@ Frame bias and precession, IAU 2006.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rb`: Frame bias matrix (Note 2)
-* `rp`: Precession matrix (Note 3)
-* `rbp`: Bias-precession matrix (Note 4)
+- `rb`: Frame bias matrix (Note 2)
+- `rp`: Precession matrix (Note 3)
+- `rbp`: Bias-precession matrix (Note 4)
 
 ### Notes ###
 
@@ -214,18 +214,18 @@ Frame bias and precession, IAU 2006.
 
 ### Called ###
 
-* `eraPfw06`: bias-precession F-W angles, IAU 2006
-* `eraFw2m`: F-W angles to r-matrix
-* `eraPmat06`: PB matrix, IAU 2006
-* `eraTr`: transpose r-matrix
-* `eraRxr`: product of two r-matrices
-* `eraCr`: copy r-matrix
+- `eraPfw06`: bias-precession F-W angles, IAU 2006
+- `eraFw2m`: F-W angles to r-matrix
+- `eraPmat06`: PB matrix, IAU 2006
+- `eraTr`: transpose r-matrix
+- `eraRxr`: product of two r-matrices
+- `eraCr`: copy r-matrix
 
 ### References ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 bp06

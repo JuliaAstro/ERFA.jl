@@ -5,13 +5,13 @@ Transformation from ICRS to Galactic Coordinates.
 
 ### Given ###
 
-* `dr`: ICRS right ascension (radians)
-* `dd`: ICRS declination (radians)
+- `dr`: ICRS right ascension (radians)
+- `dd`: ICRS declination (radians)
 
 ### Returned ###
 
-* `dl`: Galactic longitude (radians)
-* `db`: Galactic latitude (radians)
+- `dl`: Galactic longitude (radians)
+- `db`: Galactic latitude (radians)
 
 ### Notes ###
 
@@ -47,15 +47,15 @@ Transformation from ICRS to Galactic Coordinates.
 
 ### Called ###
 
-* `eraAnp`: normalize angle into range 0 to 2pi
-* `eraAnpm`: normalize angle into range +/- pi
-* `eraS2c`: spherical coordinates to unit vector
-* `eraRxp`: product of r-matrix and p-vector
-* `eraC2s`: p-vector to spherical
+- `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnpm`: normalize angle into range +/- pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraRxp`: product of r-matrix and p-vector
+- `eraC2s`: p-vector to spherical
 
 ### Reference ###
 
-* Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
+- Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
     catalogues.  Astrometric and photometric star catalogues
     derived from the ESA Hipparcos Space Astrometry Mission.  ESA
     Publications Division, Noordwijk, Netherlands.

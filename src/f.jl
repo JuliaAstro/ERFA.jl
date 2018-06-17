@@ -5,8 +5,8 @@ FK5 to Hipparcos rotation and spin.
 
 ### Returned ###
 
-* `r5h`: R-matrix: FK5 rotation wrt Hipparcos (Note 2)
-* `s5h`: R-vector: FK5 spin wrt Hipparcos (Note 3)
+- `r5h`: R-matrix: FK5 rotation wrt Hipparcos (Note 2)
+- `s5h`: R-vector: FK5 spin wrt Hipparcos (Note 3)
 
 ### Notes ###
 
@@ -27,11 +27,11 @@ FK5 to Hipparcos rotation and spin.
 
 ### Called ###
 
-* `eraRv2m`: r-vector to r-matrix
+- `eraRv2m`: r-vector to r-matrix
 
 ### Reference ###
 
-* F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+- F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 
 """
 function fk5hip()
@@ -51,14 +51,14 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
 
 ### Given ###
 
-* `r5`: FK5 RA (radians), equinox J2000.0, at date
-* `d5`: FK5 Dec (radians), equinox J2000.0, at date
-* `date1`, `date2`: TDB date (Notes 1,2)
+- `r5`: FK5 RA (radians), equinox J2000.0, at date
+- `d5`: FK5 Dec (radians), equinox J2000.0, at date
+- `date1`, `date2`: TDB date (Notes 1,2)
 
 ### Returned ###
 
-* `rh`: Hipparcos RA (radians)
-* `dh`: Hipparcos Dec (radians)
+- `rh`: Hipparcos RA (radians)
+- `dh`: Hipparcos Dec (radians)
 
 ### Notes ###
 
@@ -98,18 +98,18 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
 
 ### Called ###
 
-* `eraS2c`: spherical coordinates to unit vector
-* `eraFk5hip`: FK5 to Hipparcos rotation and spin
-* `eraSxp`: multiply p-vector by scalar
-* `eraRv2m`: r-vector to r-matrix
-* `eraTrxp`: product of transpose of r-matrix and p-vector
-* `eraPxp`: vector product of two p-vectors
-* `eraC2s`: p-vector to spherical
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraS2c`: spherical coordinates to unit vector
+- `eraFk5hip`: FK5 to Hipparcos rotation and spin
+- `eraSxp`: multiply p-vector by scalar
+- `eraRv2m`: r-vector to r-matrix
+- `eraTrxp`: product of transpose of r-matrix and p-vector
+- `eraPxp`: vector product of two p-vectors
+- `eraC2s`: p-vector to spherical
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### Reference ###
 
-* F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
+- F.Mignard & M.Froeschle, 2000, Astron.Astrophys. 354, 732-739.
 
 """
 function fk5hz(r5, d5, date1, date2)
@@ -128,14 +128,14 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
 ### Given ###
 
-* `gamb`: F-W angle gamma_bar (radians)
-* `phib`: F-W angle phi_bar (radians)
-* `psi`: F-W angle psi (radians)
-* `eps`: F-W angle epsilon (radians)
+- `gamb`: F-W angle gamma_bar (radians)
+- `phib`: F-W angle phi_bar (radians)
+- `psi`: F-W angle psi (radians)
+- `eps`: F-W angle epsilon (radians)
 
 ### Returned ###
 
-* `x`, `y`: CIP unit vector X,Y
+- `x`, `y`: CIP unit vector X,Y
 
 ### Notes ###
 
@@ -163,12 +163,12 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
 ### Called ###
 
-* `eraFw2m`: F-W angles to r-matrix
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraFw2m`: F-W angles to r-matrix
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
 
 ### Reference ###
 
-* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+- Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 """
 function fw2xy(gamb, phib, psi, eps)
@@ -189,11 +189,11 @@ mean elongation of the Moon from the Sun.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* `D`, radians (Note 2)
+- `D`, radians (Note 2)
 
 ### Notes ###
 
@@ -205,10 +205,10 @@ mean elongation of the Moon from the Sun.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
@@ -221,11 +221,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Earth.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* Mean longitude of Earth, radians (Note 2)
+- Mean longitude of Earth, radians (Note 2)
 
 ### Notes ###
 
@@ -237,13 +237,13 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Earth.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
 """
@@ -257,11 +257,11 @@ mean longitude of the ascending node.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* `F`, radians (Note 2)
+- `F`, radians (Note 2)
 
 ### Notes ###
 
@@ -273,10 +273,10 @@ mean longitude of the ascending node.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
@@ -289,11 +289,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Jupiter.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* Mean longitude of Jupiter, radians (Note 2)
+- Mean longitude of Jupiter, radians (Note 2)
 
 ### Notes ###
 
@@ -305,13 +305,13 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Jupiter.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
 """
@@ -326,11 +326,11 @@ mean anomaly of the Moon.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* `l`, radians (Note 2)
+- `l`, radians (Note 2)
 
 ### Notes ###
 
@@ -342,10 +342,10 @@ mean anomaly of the Moon.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
@@ -360,11 +360,11 @@ mean anomaly of the Sun.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* `l'`, radians (Note 2)
+- `l'`, radians (Note 2)
 
 ### Notes ###
 
@@ -376,10 +376,10 @@ mean anomaly of the Sun.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
@@ -392,11 +392,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mars.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* Mean longitude of Mars, radians (Note 2)
+- Mean longitude of Mars, radians (Note 2)
 
 ### Notes ###
 
@@ -408,13 +408,13 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mars.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
 """
@@ -427,11 +427,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mercury.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* Mean longitude of Mercury, radians (Note 2)
+- Mean longitude of Mercury, radians (Note 2)
 
 ### Notes ###
 
@@ -443,13 +443,13 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mercury.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
 """
@@ -462,11 +462,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Neptune.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* Mean longitude of Neptune, radians (Note 2)
+- Mean longitude of Neptune, radians (Note 2)
 
 ### Notes ###
 
@@ -478,10 +478,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Neptune.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
@@ -494,11 +494,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of the Moon's asce
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* `Omega`, radians (Note 2)
+- `Omega`, radians (Note 2)
 
 ### Notes ###
 
@@ -510,10 +510,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of the Moon's asce
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
@@ -528,11 +528,11 @@ general accumulated precession in longitude.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* General precession in longitude, radians (Note 2)
+- General precession in longitude, radians (Note 2)
 
 ### Notes ###
 
@@ -545,13 +545,13 @@ general accumulated precession in longitude.
 
 ### References ###
 
-* Kinoshita, H. and Souchay J. 1990, Celest.Mech. and Dyn.Astron.
+- Kinoshita, H. and Souchay J. 1990, Celest.Mech. and Dyn.Astron.
     48, 187
 
-* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+- Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
     Astron.Astrophys. 58, 1-16
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -564,11 +564,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Saturn.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* Mean longitude of Saturn, radians (Note 2)
+- Mean longitude of Saturn, radians (Note 2)
 
 ### Notes ###
 
@@ -580,13 +580,13 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Saturn.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
 """
@@ -599,11 +599,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Uranus.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned  ###
 
-* Mean longitude of Uranus, radians (Note 2)
+- Mean longitude of Uranus, radians (Note 2)
 
 ### Notes ###
 
@@ -615,10 +615,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Uranus.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
 """
@@ -631,11 +631,11 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Venus.
 
 ### Given ###
 
-* `t`: TDB, Julian centuries since J2000.0 (Note 1)
+- `t`: TDB, Julian centuries since J2000.0 (Note 1)
 
 ### Returned ###
 
-* Mean longitude of Venus, radians (Note 2)
+- Mean longitude of Venus, radians (Note 2)
 
 ### Notes ###
 
@@ -647,13 +647,13 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Venus.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 
-* Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+- Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
     Astron.Astrophys.Supp.Ser. 135, 111
 
 """
@@ -685,21 +685,21 @@ Transform FK5 (J2000.0) star data into the Hipparcos system.
 
 ### Given (all FK5, equinox J2000.0, epoch J2000.0) ###
 
-* `r5`: RA (radians)
-* `d5`: Dec (radians)
-* `dr5`: Proper motion in RA (dRA/dt, rad/Jyear)
-* `dd5`: Proper motion in Dec (dDec/dt, rad/Jyear)
-* `px5`: Parallax (arcsec)
-* `rv5`: Radial velocity (km/s, positive = receding)
+- `r5`: RA (radians)
+- `d5`: Dec (radians)
+- `dr5`: Proper motion in RA (dRA/dt, rad/Jyear)
+- `dd5`: Proper motion in Dec (dDec/dt, rad/Jyear)
+- `px5`: Parallax (arcsec)
+- `rv5`: Radial velocity (km/s, positive = receding)
 
 ### Returned (all Hipparcos, epoch J2000.0) ###
 
-* `rh`: RA (radians)
-* `dh`: Dec (radians)
-* `drh`: proper motion in RA (dRA/dt, rad/Jyear)
-* `ddh`: proper motion in Dec (dDec/dt, rad/Jyear)
-* `pxh`: parallax (arcsec)
-* `rvh`: radial velocity (km/s, positive = receding)
+- `rh`: RA (radians)
+- `dh`: Dec (radians)
+- `drh`: proper motion in RA (dRA/dt, rad/Jyear)
+- `ddh`: proper motion in Dec (dDec/dt, rad/Jyear)
+- `pxh`: parallax (arcsec)
+- `rvh`: radial velocity (km/s, positive = receding)
 
 ### Notes ###
 
@@ -717,16 +717,16 @@ Transform FK5 (J2000.0) star data into the Hipparcos system.
 
 ### Called ###
 
-* `eraStarpv`: star catalog data to space motion pv-vector
-* `eraFk5hip`: FK5 to Hipparcos rotation and spin
-* `eraRxp`: product of r-matrix and p-vector
-* `eraPxp`: vector product of two p-vectors
-* `eraPpp`: p-vector plus p-vector
-* `eraPvstar`: space motion pv-vector to star catalog data
+- `eraStarpv`: star catalog data to space motion pv-vector
+- `eraFk5hip`: FK5 to Hipparcos rotation and spin
+- `eraRxp`: product of r-matrix and p-vector
+- `eraPxp`: vector product of two p-vectors
+- `eraPpp`: p-vector plus p-vector
+- `eraPvstar`: space motion pv-vector to star catalog data
 
 ### Reference ###
 
-* F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+- F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 
 """
 function fk52h(ra, dec, dra, ddec, px, rv)
@@ -749,14 +749,14 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 ### Given ###
 
-* `gamb`: F-W angle gamma_bar (radians)
-* `phib`: F-W angle phi_bar (radians)
-* `psi`: F-W angle psi (radians)
-* `eps`: F-W angle epsilon (radians)
+- `gamb`: F-W angle gamma_bar (radians)
+- `phib`: F-W angle phi_bar (radians)
+- `psi`: F-W angle psi (radians)
+- `eps`: F-W angle epsilon (radians)
 
 ### Returned ###
 
-* `r`: Rotation matrix
+- `r`: Rotation matrix
 
 ### Notes ###
 
@@ -798,13 +798,13 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 ### Called ###
 
-* `eraIr`: initialize r-matrix to identity
-* `eraRz`: rotate around Z-axis
-* `eraRx`: rotate around X-axis
+- `eraIr`: initialize r-matrix to identity
+- `eraRz`: rotate around Z-axis
+- `eraRx`: rotate around X-axis
 
 ### Reference ###
 
-* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+- Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 """
 function fw2m(x, y, s, t)

@@ -6,12 +6,12 @@ the bias-precession-nutation matrix.  IAU 2000.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
-* `rbpn`: Celestial-to-true matrix (Note 2)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `rbpn`: Celestial-to-true matrix (Note 2)
 
 ### Returned ###
 
-* `rc2i`: Celestial-to-intermediate matrix (Note 3)
+- `rc2i`: Celestial-to-intermediate matrix (Note 3)
 
 ### Notes ###
 
@@ -54,19 +54,19 @@ the bias-precession-nutation matrix.  IAU 2000.
 
 ### Called ###
 
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
 
 ### References ###
 
-* "Expressions for the Celestial Intermediate Pole and Celestial
+- "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -85,12 +85,12 @@ P-vector to spherical coordinates.
 
 ### Given ###
 
-* `p`: P-vector
+- `p`: P-vector
 
 ### Returned ###
 
-* `theta`: Longitude angle (radians)
-* `phi`: Latitude angle (radians)
+- `theta`: Longitude angle (radians)
+- `phi`: Latitude angle (radians)
 
 ### Notes ###
 
@@ -117,12 +117,12 @@ Gregorian Calendar to Julian Date.
 
 ### Given ###
 
-* `iy`, `im`, `id`: Year, month, day in Gregorian calendar (Note 1)
+- `iy`, `im`, `id`: Year, month, day in Gregorian calendar (Note 1)
 
 ### Returned ###
 
-* `djm0`: MJD zero-point: always 2400000.5
-* `djm`: Modified Julian Date for 0 hrs
+- `djm0`: MJD zero-point: always 2400000.5
+- `djm`: Modified Julian Date for 0 hrs
 
 ### Notes ###
 
@@ -141,7 +141,7 @@ Gregorian Calendar to Julian Date.
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 12.92 (p604).
 
@@ -171,13 +171,13 @@ Angle and the polar motion matrix).
 
 ### Given ###
 
-* `rc2i`: Celestial-to-intermediate matrix
-* `era`: Earth rotation angle (radians)
-* `rpom`: Polar-motion matrix
+- `rc2i`: Celestial-to-intermediate matrix
+- `era`: Earth rotation angle (radians)
+- `rpom`: Polar-motion matrix
 
 ### Returned ###
 
-* `rc2t`: Celestial-to-terrestrial matrix
+- `rc2t`: Celestial-to-terrestrial matrix
 
 ### Notes ###
 
@@ -204,13 +204,13 @@ Angle and the polar motion matrix).
 
 ### Called ###
 
-* `eraCr`: copy r-matrix
-* `eraRz`: rotate around Z-axis
-* `eraRxr`: product of two r-matrices
+- `eraCr`: copy r-matrix
+- `eraRz`: rotate around Z-axis
+- `eraRxr`: product of two r-matrices
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
 
 """
@@ -225,13 +225,13 @@ Sidereal Time and the polar motion matrix).
 
 ### Given ###
 
-* `rbpn`: Celestial-to-true matrix
-* `gst`: Greenwich (apparent) Sidereal Time (radians)
-* `rpom`: Polar-motion matrix
+- `rbpn`: Celestial-to-true matrix
+- `gst`: Greenwich (apparent) Sidereal Time (radians)
+- `rpom`: Polar-motion matrix
 
 ### Returned ###
 
-* `rc2t`: Celestial-to-terrestrial matrix (Note 2)
+- `rc2t`: Celestial-to-terrestrial matrix (Note 2)
 
 ### Notes ###
 
@@ -258,13 +258,13 @@ Sidereal Time and the polar motion matrix).
 
 ### Called ###
 
-* `eraCr`: copy r-matrix
-* `eraRz`: rotate around Z-axis
-* `eraRxr`: product of two r-matrices
+- `eraCr`: copy r-matrix
+- `eraRz`: rotate around Z-axis
+- `eraRxr`: product of two r-matrices
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -293,13 +293,13 @@ the polar motion, using the IAU 2000A nutation model.
 
 ### Given ###
 
-* `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
-* `xp`, `yp`: Coordinates of the pole (radians, Note 2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
+- `xp`, `yp`: Coordinates of the pole (radians, Note 2)
 
 ### Returned ###
 
-* `rc2t`: Celestial-to-terrestrial matrix (Note 3)
+- `rc2t`: Celestial-to-terrestrial matrix (Note 3)
 
 ### Notes ###
 
@@ -347,15 +347,15 @@ the polar motion, using the IAU 2000A nutation model.
 
 ### Called ###
 
-* `eraC2i00a`: celestial-to-intermediate matrix, IAU 2000A
-* `eraEra00`: Earth rotation angle, IAU 2000
-* `eraSp00`: the TIO locator s', IERS 2000
-* `eraPom00`: polar motion matrix
-* `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- `eraC2i00a`: celestial-to-intermediate matrix, IAU 2000A
+- `eraEra00`: Earth rotation angle, IAU 2000
+- `eraSp00`: the TIO locator s', IERS 2000
+- `eraPom00`: polar motion matrix
+- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -369,13 +369,13 @@ the polar motion, using the IAU 2000B nutation model.
 
 ### Given ###
 
-* `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
-* `xp`, `yp`: Coordinates of the pole (radians, Note 2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
+- `xp`, `yp`: Coordinates of the pole (radians, Note 2)
 
 ### Returned ###
 
-* `rc2t`: Celestial-to-terrestrial matrix (Note 3)
+- `rc2t`: Celestial-to-terrestrial matrix (Note 3)
 
 ### Notes ###
 
@@ -423,14 +423,14 @@ the polar motion, using the IAU 2000B nutation model.
 
 ### Called ###
 
-* `eraC2i00b`: celestial-to-intermediate matrix, IAU 2000B
-* `eraEra00`: Earth rotation angle, IAU 2000
-* `eraPom00`: polar motion matrix
-* `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- `eraC2i00b`: celestial-to-intermediate matrix, IAU 2000B
+- `eraEra00`: Earth rotation angle, IAU 2000
+- `eraPom00`: polar motion matrix
+- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -445,13 +445,13 @@ nutation models.
 
 ### Given ###
 
-* `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
-* `xp`, `yp`: Coordinates of the pole (radians, Note 2)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
+- `xp`, `yp`: Coordinates of the pole (radians, Note 2)
 
 ### Returned ###
 
-* `rc2t`: Celestial-to-terrestrial matrix (Note 3)
+- `rc2t`: Celestial-to-terrestrial matrix (Note 3)
 
 ### Notes ###
 
@@ -496,15 +496,15 @@ nutation models.
 
 ### Called ###
 
-* `eraC2i06a`: celestial-to-intermediate matrix, IAU 2006/2000A
-* `eraEra00`: Earth rotation angle, IAU 2000
-* `eraSp00`: the TIO locator s', IERS 2000
-* `eraPom00`: polar motion matrix
-* `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- `eraC2i06a`: celestial-to-intermediate matrix, IAU 2006/2000A
+- `eraEra00`: Earth rotation angle, IAU 2000
+- `eraSp00`: the TIO locator s', IERS 2000
+- `eraPom00`: polar motion matrix
+- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
 
 """
@@ -534,14 +534,14 @@ the nutation and the polar motion.  IAU 2000.
 
 ### Given ###
 
-* `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
-* `dpsi`, `deps`: Nutation (Note 2)
-* `xp`, `yp`: Coordinates of the pole (radians, Note 3)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
+- `dpsi`, `deps`: Nutation (Note 2)
+- `xp`, `yp`: Coordinates of the pole (radians, Note 3)
 
 ### Returned ###
 
-* `rc2t`: Celestial-to-terrestrial matrix (Note 4)
+- `rc2t`: Celestial-to-terrestrial matrix (Note 4)
 
 ### Notes ###
 
@@ -595,16 +595,16 @@ the nutation and the polar motion.  IAU 2000.
 
 ### Called ###
 
-* `eraPn00`: bias/precession/nutation results, IAU 2000
-* `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-* `eraSp00`: the TIO locator s', IERS 2000
-* `eraEe00`: equation of the equinoxes, IAU 2000
-* `eraPom00`: polar motion matrix
-* `eraC2teqx`: form equinox-based celestial-to-terrestrial matrix
+- `eraPn00`: bias/precession/nutation results, IAU 2000
+- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
+- `eraSp00`: the TIO locator s', IERS 2000
+- `eraEe00`: equation of the equinoxes, IAU 2000
+- `eraPom00`: polar motion matrix
+- `eraC2teqx`: form equinox-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -618,14 +618,14 @@ the CIP coordinates and the polar motion.  IAU 2000.
 
 ### Given ###
 
-* `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
-* `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
-* `x`, `y`: Celestial Intermediate Pole (Note 2)
-* `xp`, `yp`: Coordinates of the pole (radians, Note 3)
+- `tta`, `ttb`: TT as a 2-part Julian Date (Note 1)
+- `uta`, `utb`: UT1 as a 2-part Julian Date (Note 1)
+- `x`, `y`: Celestial Intermediate Pole (Note 2)
+- `xp`, `yp`: Coordinates of the pole (radians, Note 3)
 
 ### Returned ###
 
-* `rc2t`: Celestial-to-terrestrial matrix (Note 4)
+- `rc2t`: Celestial-to-terrestrial matrix (Note 4)
 
 ### Notes ###
 
@@ -676,15 +676,15 @@ the CIP coordinates and the polar motion.  IAU 2000.
 
 ### Called ###
 
-* `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
-* `eraEra00`: Earth rotation angle, IAU 2000
-* `eraSp00`: the TIO locator s', IERS 2000
-* `eraPom00`: polar motion matrix
-* `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
+- `eraEra00`: Earth rotation angle, IAU 2000
+- `eraSp00`: the TIO locator s', IERS 2000
+- `eraPom00`: polar motion matrix
+- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -713,11 +713,11 @@ IAU 2000A precession-nutation model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rc2i`: Celestial-to-intermediate matrix (Note 2)
+- `rc2i`: Celestial-to-intermediate matrix (Note 2)
 
 ### Notes ###
 
@@ -757,20 +757,20 @@ IAU 2000A precession-nutation model.
 
 ### Called ###
 
-* `eraPnm00a`: classical NPB matrix, IAU 2000A
-* `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
+- `eraPnm00a`: classical NPB matrix, IAU 2000A
+- `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
 
 ### References ###
 
-* "Expressions for the Celestial Intermediate Pole and Celestial
+- "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154
     (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -784,11 +784,11 @@ IAU 2000B precession-nutation model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rc2i`: Celestial-to-intermediate matrix (Note 2)
+- `rc2i`: Celestial-to-intermediate matrix (Note 2)
 
 ### Notes ###
 
@@ -828,20 +828,20 @@ IAU 2000B precession-nutation model.
 
 ### Called ###
 
-* `eraPnm00b`: classical NPB matrix, IAU 2000B
-* `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
+- `eraPnm00b`: classical NPB matrix, IAU 2000B
+- `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
 
 ### References ###
 
-* "Expressions for the Celestial Intermediate Pole and Celestial
+- "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154
     (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -855,11 +855,11 @@ IAU 2006 precession and IAU 2000A nutation models.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rc2i`: Celestial-to-intermediate matrix (Note 2)
+- `rc2i`: Celestial-to-intermediate matrix (Note 2)
 
 ### Notes ###
 
@@ -896,14 +896,14 @@ IAU 2006 precession and IAU 2000A nutation models.
 
 ### Called ###
 
-* `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-* `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-* `eraS06`: the CIO locator s, given X,Y, IAU 2006
-* `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
+- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
+- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
 
 """
@@ -933,12 +933,12 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
-* `x`, `y`: Celestial Intermediate Pole (Note 2)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `x`, `y`: Celestial Intermediate Pole (Note 2)
 
 ### Returned ###
 
-* `rc2i`: Celestial-to-intermediate matrix (Note 3)
+- `rc2i`: Celestial-to-intermediate matrix (Note 3)
 
 ### Notes ###
 
@@ -981,12 +981,12 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 
 ### Called ###
 
-* `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
-* `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
+- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """
@@ -1006,12 +1006,12 @@ X,Y and the CIO locator s.
 
 ### Given ###
 
-* `x`, `y`: Celestial Intermediate Pole (Note 1)
-* `s`: The CIO locator s (Note 2)
+- `x`, `y`: Celestial Intermediate Pole (Note 1)
+- `s`: The CIO locator s (Note 2)
 
 ### Returned ###
 
-* `rc2i`: Celestial-to-intermediate matrix (Note 3)
+- `rc2i`: Celestial-to-intermediate matrix (Note 3)
 
 ### Notes ###
 
@@ -1036,13 +1036,13 @@ X,Y and the CIO locator s.
 
 ### Called ###
 
-* `eraIr`: initialize r-matrix to identity
-* `eraRz`: rotate around Z-axis
-* `eraRy`: rotate around Y-axis
+- `eraIr`: initialize r-matrix to identity
+- `eraRz`: rotate around Z-axis
+- `eraRy`: rotate around Y-axis
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """

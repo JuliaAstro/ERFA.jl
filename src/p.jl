@@ -5,17 +5,17 @@ Proper motion and parallax.
 
 ### Given ###
 
-* `rc`, `dc`: ICRS RA,Dec at catalog epoch (radians)
-* `pr`: RA proper motion (radians/year; Note 1)
-* `pd`: Dec proper motion (radians/year)
-* `px`: Parallax (arcsec)
-* `rv`: Radial velocity (km/s, +ve if receding)
-* `pmt`: Proper motion time interval (SSB, Julian years)
-* `pob`: SSB to observer vector (au)
+- `rc`, `dc`: ICRS RA,Dec at catalog epoch (radians)
+- `pr`: RA proper motion (radians/year; Note 1)
+- `pd`: Dec proper motion (radians/year)
+- `px`: Parallax (arcsec)
+- `rv`: Radial velocity (km/s, +ve if receding)
+- `pmt`: Proper motion time interval (SSB, Julian years)
+- `pob`: SSB to observer vector (au)
 
 ### Returned ###
 
-* `pco`: Coordinate direction (BCRS unit vector)
+- `pco`: Coordinate direction (BCRS unit vector)
 
 ### Notes ###
 
@@ -31,16 +31,16 @@ Proper motion and parallax.
 
 ### References ###
 
-* 1984 Astronomical Almanac, pp B39-B41.
+- 1984 Astronomical Almanac, pp B39-B41.
 
-* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+- Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
     the Astronomical Almanac, 3rd ed., University Science Books
     (2013), Section 7.2.
 
 ### Called ###
 
-* `eraPdp`: scalar product of two p-vectors
-* `eraPn`: decompose p-vector into modulus and direction
+- `eraPdp`: scalar product of two p-vectors
+- `eraPn`: decompose p-vector into modulus and direction
 
 """
 function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
@@ -58,26 +58,26 @@ Precession angles, IAU 2006, equinox based.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned (see Note 2) ###
 
-* `eps0`: epsilon_0
-* `psia`: psi_A
-* `oma`: omega_A
-* `bpa`: P_A
-* `bqa`: Q_A
-* `pia`: pi_A
-* `bpia`: Pi_A
-* `epsa`: obliquity epsilon_A
-* `chia`: chi_A
-* `za`: z_A
-* `zetaa`: zeta_A
-* `thetaa`: theta_A
-* `pa`: p_A
-* `gam`: F-W angle gamma_J2000
-* `phi`: F-W angle phi_J2000
-* `psi`: F-W angle psi_J2000
+- `eps0`: epsilon_0
+- `psia`: psi_A
+- `oma`: omega_A
+- `bpa`: P_A
+- `bqa`: Q_A
+- `pia`: pi_A
+- `bpia`: Pi_A
+- `epsa`: obliquity epsilon_A
+- `chia`: chi_A
+- `za`: z_A
+- `zetaa`: zeta_A
+- `thetaa`: theta_A
+- `pa`: p_A
+- `gam`: F-W angle gamma_J2000
+- `phi`: F-W angle phi_J2000
+- `psi`: F-W angle psi_J2000
 
 ### Notes ###
 
@@ -160,11 +160,11 @@ Precession angles, IAU 2006, equinox based.
 
 ### Reference ###
 
-* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+- Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 ### Called ###
 
-* `eraObl06`: mean obliquity, IAU 2006
+- `eraObl06`: mean obliquity, IAU 2006
 
 """
 function p06e(date1, date2)
@@ -198,13 +198,13 @@ P-vector to spherical polar coordinates.
 
 ### Given ###
 
-* `p`: P-vector
+- `p`: P-vector
 
 ### Returned ###
 
-* `theta`: Longitude angle (radians)
-* `phi`: Latitude angle (radians)
-* `r`: Radial distance
+- `theta`: Longitude angle (radians)
+- `phi`: Latitude angle (radians)
+- `r`: Radial distance
 
 ### Notes ###
 
@@ -214,8 +214,8 @@ P-vector to spherical polar coordinates.
 
 ### Called ###
 
-* `eraC2s`: p-vector to spherical
-* `eraPm`: modulus of p-vector
+- `eraC2s`: p-vector to spherical
+- `eraPm`: modulus of p-vector
 
 """
 function p2s(p)
@@ -235,16 +235,16 @@ Extend a p-vector to a pv-vector by appending a zero velocity.
 
 ### Given ###
 
-* `p`: P-vector
+- `p`: P-vector
 
 ### Returned ###
 
-* `pv`: Pv-vector
+- `pv`: Pv-vector
 
 ### Called ###
 
-* `eraCp`: copy p-vector
-* `eraZp`: zero p-vector
+- `eraCp`: copy p-vector
+- `eraZp`: zero p-vector
 
 """
 function p2pv(p)
@@ -264,13 +264,13 @@ bias (the offset between ICRS and mean J2000.0) is included.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `bzeta`: 1st rotation: radians cw around z
-* `bz`: 3rd rotation: radians cw around z
-* `btheta`: 2nd rotation: radians ccw around y
+- `bzeta`: 1st rotation: radians cw around z
+- `bz`: 3rd rotation: radians cw around z
+- `btheta`: 2nd rotation: radians ccw around y
 
 ### Notes ###
 
@@ -314,8 +314,8 @@ bias (the offset between ICRS and mean J2000.0) is included.
 
 ### Called ###
 
-* `eraPmat06`: PB matrix, IAU 2006
-* `eraRz`: rotate around Z-axis
+- `eraPmat06`: PB matrix, IAU 2006
+- `eraRz`: rotate around Z-axis
 
 """
 function pb06(date1, date2)
@@ -336,14 +336,14 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `gamb`: F-W angle gamma_bar (radians)
-* `phib`: F-W angle phi_bar (radians)
-* `psib`: F-W angle psi_bar (radians)
-* `epsa`: F-W angle epsilon_A (radians)
+- `gamb`: F-W angle gamma_bar (radians)
+- `phib`: F-W angle phi_bar (radians)
+- `psib`: F-W angle psi_bar (radians)
+- `epsa`: F-W angle epsilon_A (radians)
 
 ### Notes ###
 
@@ -395,11 +395,11 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 ### Reference ###
 
-* Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+- Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 
 ### Called ###
 
-* `eraObl06`: mean obliquity, IAU 2006
+- `eraObl06`: mean obliquity, IAU 2006
 
 """
 function pfw06(date1, date2)
@@ -422,14 +422,14 @@ Neptune (but not the Earth itself).
 
 ### Given ###
 
-* `date1`: TDB date part A (Note 1)
-* `date2`: TDB date part B (Note 1)
-* `np`: Planet (1=Mercury, 2=Venus, 3=EMB, 4=Mars,
+- `date1`: TDB date part A (Note 1)
+- `date2`: TDB date part B (Note 1)
+- `np`: Planet (1=Mercury, 2=Venus, 3=EMB, 4=Mars,
                            5=Jupiter, 6=Saturn, 7=Uranus, 8=Neptune)
 
 ### Returned (argument) ###
 
-* Planet p,v (heliocentric, J2000.0, au,au/d)
+- Planet p,v (heliocentric, J2000.0, au,au/d)
 
 ### Notes ###
 
@@ -527,26 +527,26 @@ Neptune (but not the Earth itself).
 6) The present ERFA re-implementation of the original Simon et al.
    Fortran code differs from the original in the following respects:
 
-     *  C instead of Fortran.
+     -  C instead of Fortran.
 
-     *  The date is supplied in two parts.
+     -  The date is supplied in two parts.
 
-     *  The result is returned only in equatorial Cartesian form;
+     -  The result is returned only in equatorial Cartesian form;
         the ecliptic longitude, latitude and radius vector are not
         returned.
 
-     *  The result is in the J2000.0 equatorial frame, not ecliptic.
+     -  The result is in the J2000.0 equatorial frame, not ecliptic.
 
-     *  More is done in-line: there are fewer calls to subroutines.
+     -  More is done in-line: there are fewer calls to subroutines.
 
-     *  Different error/warning status values are used.
+     -  Different error/warning status values are used.
 
-     *  A different Kepler's-equation-solver is used (avoiding
+     -  A different Kepler's-equation-solver is used (avoiding
         use of double precision complex).
 
-     *  Polynomials in t are nested to minimize rounding errors.
+     -  Polynomials in t are nested to minimize rounding errors.
 
-     *  Explicit double constants are used to avoid mixed-mode
+     -  Explicit double constants are used to avoid mixed-mode
         expressions.
 
    None of the above changes affects the result significantly.
@@ -558,7 +558,7 @@ Neptune (but not the Earth itself).
 
 ### Called ###
 
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 Reference:  Simon, J.L, Bretagnon, P., Chapront, J.,
             Chapront-Touze, M., Francou, G., and Laskar, J.,
@@ -589,11 +589,11 @@ Modulus of p-vector.
 
 ### Given ###
 
-* `p`: P-vector
+- `p`: P-vector
 
 ### Returned ###
 
-* Modulus
+- Modulus
 
 """
 function pm(p)
@@ -608,25 +608,25 @@ special handling to handle the zero parallax case.
 
 ### Given ###
 
-* `ra1`: Right ascension (radians), before
-* `dec1`: Declination (radians), before
-* `pmr1`: RA proper motion (radians/year), before
-* `pmd1`: Dec proper motion (radians/year), before
-* `px1`: Parallax (arcseconds), before
-* `rv1`: Radial velocity (km/s, +ve = receding), before
-* `ep1a`: "before" epoch, part A (Note 1)
-* `ep1b`: "before" epoch, part B (Note 1)
-* `ep2a`: "after" epoch, part A (Note 1)
-* `ep2b`: "after" epoch, part B (Note 1)
+- `ra1`: Right ascension (radians), before
+- `dec1`: Declination (radians), before
+- `pmr1`: RA proper motion (radians/year), before
+- `pmd1`: Dec proper motion (radians/year), before
+- `px1`: Parallax (arcseconds), before
+- `rv1`: Radial velocity (km/s, +ve = receding), before
+- `ep1a`: "before" epoch, part A (Note 1)
+- `ep1b`: "before" epoch, part B (Note 1)
+- `ep2a`: "after" epoch, part A (Note 1)
+- `ep2b`: "after" epoch, part B (Note 1)
 
 ### Returned ###
 
-* `ra2`: Right ascension (radians), after
-* `dec2`: Declination (radians), after
-* `pmr2`: RA proper motion (radians/year), after
-* `pmd2`: Dec proper motion (radians/year), after
-* `px2`: Parallax (arcseconds), after
-* `rv2`: Radial velocity (km/s, +ve = receding), after
+- `ra2`: Right ascension (radians), after
+- `dec2`: Declination (radians), after
+- `pmr2`: RA proper motion (radians/year), after
+- `pmd2`: Dec proper motion (radians/year), after
+- `px2`: Parallax (arcseconds), after
+- `rv2`: Radial velocity (km/s, +ve = receding), after
 
 ### Notes ###
 
@@ -689,8 +689,8 @@ special handling to handle the zero parallax case.
 
 ### Called ###
 
-* `eraSeps`: angle between two points
-* `eraStarpm`: update star catalog data for space motion
+- `eraSeps`: angle between two points
+- `eraStarpm`: update star catalog data for space motion
 
 """
 function pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -723,12 +723,12 @@ Convert a p-vector into modulus and unit vector.
 
 ### Given ###
 
-* `p`: P-vector
+- `p`: P-vector
 
 ### Returned ###
 
-* `r`: Modulus
-* `u`: Unit vector
+- `r`: Modulus
+- `u`: Unit vector
 
 ### Notes ###
 
@@ -740,9 +740,9 @@ Convert a p-vector into modulus and unit vector.
 
 ### Called ###
 
-* `eraPm`: modulus of p-vector
-* `eraZp`: zero p-vector
-* `eraSxp`: multiply p-vector by scalar
+- `eraPm`: modulus of p-vector
+- `eraZp`: zero p-vector
+- `eraSxp`: multiply p-vector by scalar
 
 """
 function pn(p::AbstractArray)
@@ -761,13 +761,13 @@ P-vector plus scaled p-vector.
 
 ### Given ###
 
-* `a`: First p-vector
-* `s`: Scalar (multiplier for b)
-* `b`: Second p-vector
+- `a`: First p-vector
+- `s`: Scalar (multiplier for b)
+- `b`: Second p-vector
 
 ### Returned ###
 
-* `apsb`: A + s*b
+- `apsb`: A + s*b
 
 ### Note ###
 
@@ -775,8 +775,8 @@ P-vector plus scaled p-vector.
 
 ### Called ###
 
-* `eraSxp`: multiply p-vector by scalar
-* `eraPpp`: p-vector plus p-vector
+- `eraSxp`: multiply p-vector by scalar
+- `eraPpp`: p-vector plus p-vector
 
 """
 function ppsp(a, s, b)
@@ -798,14 +798,14 @@ FK5 catalog).
 
 ### Given ###
 
-* `date01`, `date02`: TDB starting date (Note 1)
-* `date11`, `date12`: TDB ending date (Note 1)
+- `date01`, `date02`: TDB starting date (Note 1)
+- `date11`, `date12`: TDB ending date (Note 1)
 
 ### Returned ###
 
-* `zeta`: 1st rotation: radians cw around z
-* `z`: 3rd rotation: radians cw around z
-* `theta`: 2nd rotation: radians ccw around y
+- `zeta`: 1st rotation: radians cw around z
+- `z`: 3rd rotation: radians cw around z
+- `theta`: 2nd rotation: radians ccw around y
 
 ### Notes ###
 
@@ -848,7 +848,7 @@ FK5 catalog).
 
 ### Reference ###
 
-* Lieske, J.H., 1979, Astron.Astrophys. 73, 282, equations
+- Lieske, J.H., 1979, Astron.Astrophys. 73, 282, equations
     (6) & (7), p283.
 
 """
@@ -869,16 +869,16 @@ Convert position/velocity from Cartesian to spherical coordinates.
 
 ### Given ###
 
-* `pv`: Pv-vector
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `theta`: Longitude angle (radians)
-* `phi`: Latitude angle (radians)
-* `r`: Radial distance
-* `td`: Rate of change of theta
-* `pd`: Rate of change of phi
-* `rd`: Rate of change of r
+- `theta`: Longitude angle (radians)
+- `phi`: Latitude angle (radians)
+- `r`: Radial distance
+- `td`: Rate of change of theta
+- `pd`: Rate of change of phi
+- `rd`: Rate of change of r
 
 ### Notes ###
 
@@ -914,15 +914,15 @@ Discard velocity component of a pv-vector.
 
 ### Given ###
 
-* `pv`: Pv-vector
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `p`: P-vector
+- `p`: P-vector
 
 ### Called ###
 
-* `eraCp`: copy p-vector
+- `eraCp`: copy p-vector
 
 """
 function pv2p(pv)
@@ -940,12 +940,12 @@ Inner (=scalar=dot) product of two pv-vectors.
 
 ### Given ###
 
-* `a`: First pv-vector
-* `b`: Second pv-vector
+- `a`: First pv-vector
+- `b`: Second pv-vector
 
 ### Returned ###
 
-* `adb`: A . b (see note)
+- `adb`: A . b (see note)
 
 ### Note ###
 
@@ -956,7 +956,7 @@ Inner (=scalar=dot) product of two pv-vectors.
 
 ### Called ###
 
-* `eraPdp`: scalar product of two p-vectors
+- `eraPdp`: scalar product of two p-vectors
 
 """
 function pvdpv(a, b)
@@ -974,16 +974,16 @@ Modulus of pv-vector.
 
 ### Given ###
 
-* `pv`: Pv-vector
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `r`: Modulus of position component
-* `s`: Modulus of velocity component
+- `r`: Modulus of position component
+- `s`: Modulus of velocity component
 
 ### Called ###
 
-* `eraPm`: modulus of p-vector
+- `eraPm`: modulus of p-vector
 
 """
 function pvm(pv)
@@ -1002,16 +1002,16 @@ Convert star position+velocity vector to catalog coordinates.
 
 ### Given (Note 1) ###
 
-* `pv`: pv-vector (au, au/day)
+- `pv`: pv-vector (au, au/day)
 
 ### Returned (Note 2) ###
 
-* `ra`: Right ascension (radians)
-* `dec`: Declination (radians)
-* `pmr`: RA proper motion (radians/year)
-* `pmd`: Dec proper motion (radians/year)
-* `px`: Parallax (arcsec)
-* `rv`: Radial velocity (km/s, positive = receding)
+- `ra`: Right ascension (radians)
+- `dec`: Declination (radians)
+- `pmr`: RA proper motion (radians/year)
+- `pmd`: Dec proper motion (radians/year)
+- `px`: Parallax (arcsec)
+- `rv`: Radial velocity (km/s, positive = receding)
 
 ### Notes ###
 
@@ -1068,18 +1068,18 @@ Convert star position+velocity vector to catalog coordinates.
 
 ### Called ###
 
-* `eraPn`: decompose p-vector into modulus and direction
-* `eraPdp`: scalar product of two p-vectors
-* `eraSxp`: multiply p-vector by scalar
-* `eraPmp`: p-vector minus p-vector
-* `eraPm`: modulus of p-vector
-* `eraPpp`: p-vector plus p-vector
-* `eraPv2s`: pv-vector to spherical
-* `eraAnp`: normalize angle into range 0 to 2pi
+- `eraPn`: decompose p-vector into modulus and direction
+- `eraPdp`: scalar product of two p-vectors
+- `eraSxp`: multiply p-vector by scalar
+- `eraPmp`: p-vector minus p-vector
+- `eraPm`: modulus of p-vector
+- `eraPpp`: p-vector plus p-vector
+- `eraPv2s`: pv-vector to spherical
+- `eraAnp`: normalize angle into range 0 to 2pi
 
 ### Reference ###
 
-* Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
+- Stumpff, P., 1985, Astron.Astrophys. 144, 232-240.
 
 """
 function pvstar(pv)
@@ -1108,16 +1108,16 @@ Position and velocity of a terrestrial observing station.
 
 ### Given ###
 
-* `elong`: Longitude (radians, east +ve, Note 1)
-* `phi`: Latitude (geodetic, radians, Note 1)
-* `hm`: Height above ref. ellipsoid (geodetic, m)
-* `xp`, `yp`: Coordinates of the pole (radians, Note 2)
-* `sp`: The TIO locator s' (radians, Note 2)
-* `theta`: Earth rotation angle (radians, Note 3)
+- `elong`: Longitude (radians, east +ve, Note 1)
+- `phi`: Latitude (geodetic, radians, Note 1)
+- `hm`: Height above ref. ellipsoid (geodetic, m)
+- `xp`, `yp`: Coordinates of the pole (radians, Note 2)
+- `sp`: The TIO locator s' (radians, Note 2)
+- `theta`: Earth rotation angle (radians, Note 3)
 
 ### Returned ###
 
-* `pv`: Position/velocity vector (m, m/s, CIRS)
+- `pv`: Position/velocity vector (m, m/s, CIRS)
 
 ### Notes ###
 
@@ -1147,18 +1147,18 @@ Position and velocity of a terrestrial observing station.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+- Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
     the Astronomical Almanac, 3rd ed., University Science Books
     (2013), Section 7.4.3.3.
 
 ### Called ###
 
-* `eraGd2gc`: geodetic to geocentric transformation
-* `eraPom00`: polar motion matrix
-* `eraTrxp`: product of transpose of r-matrix and p-vector
+- `eraGd2gc`: geodetic to geocentric transformation
+- `eraPom00`: polar motion matrix
+- `eraTrxp`: product of transpose of r-matrix and p-vector
 
 """
 function pvtob(elong, phi, height, xp, yp, sp, theta)
@@ -1176,12 +1176,12 @@ Update a pv-vector.
 
 ### Given ###
 
-* `dt`: Time interval
-* `pv`: Pv-vector
+- `dt`: Time interval
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `upv`: P updated, v unchanged
+- `upv`: P updated, v unchanged
 
 ### Notes ###
 
@@ -1194,8 +1194,8 @@ Update a pv-vector.
 
 ### Called ###
 
-* `eraPpsp`: p-vector plus scaled p-vector
-* `eraCp`: copy p-vector
+- `eraPpsp`: p-vector plus scaled p-vector
+- `eraCp`: copy p-vector
 
 """
 function pvu(dt, pv)
@@ -1213,12 +1213,12 @@ Update a pv-vector, discarding the velocity component.
 
 ### Given ###
 
-* `dt`: Time interval
-* `pv`: Pv-vector
+- `dt`: Time interval
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `p`: P-vector
+- `p`: P-vector
 
 ### Notes ###
 
@@ -1245,17 +1245,17 @@ use indirectly.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
-* `dpsi`, `deps`: Nutation (Note 2)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `dpsi`, `deps`: Nutation (Note 2)
 
 ### Returned ###
 
-* `epsa`: Mean obliquity (Note 3)
-* `rb`: Frame bias matrix (Note 4)
-* `rp`: Precession matrix (Note 5)
-* `rbp`: Bias-precession matrix (Note 6)
-* `rn`: Nutation matrix (Note 7)
-* `rbpn`: GCRS-to-true matrix (Note 8)
+- `epsa`: Mean obliquity (Note 3)
+- `rb`: Frame bias matrix (Note 4)
+- `rp`: Precession matrix (Note 5)
+- `rbp`: Bias-precession matrix (Note 6)
+- `rn`: Nutation matrix (Note 7)
+- `rbpn`: GCRS-to-true matrix (Note 8)
 
 ### Notes ###
 
@@ -1311,21 +1311,21 @@ use indirectly.
 
 ### Called ###
 
-* `eraPr00`: IAU 2000 precession adjustments
-* `eraObl80`: mean obliquity, IAU 1980
-* `eraBp00`: frame bias and precession matrices, IAU 2000
-* `eraCr`: copy r-matrix
-* `eraNumat`: form nutation matrix
-* `eraRxr`: product of two r-matrices
+- `eraPr00`: IAU 2000 precession adjustments
+- `eraObl80`: mean obliquity, IAU 1980
+- `eraBp00`: frame bias and precession matrices, IAU 2000
+- `eraCr`: copy r-matrix
+- `eraNumat`: form nutation matrix
+- `eraRxr`: product of two r-matrices
 
 ### Reference ###
 
-* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+- Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
     "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
@@ -1340,17 +1340,17 @@ indirectly.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
-* `dpsi`, `deps`: Nutation (Note 2)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `dpsi`, `deps`: Nutation (Note 2)
 
 ### Returned ###
 
-* `epsa`: Mean obliquity (Note 3)
-* `rb`: Frame bias matrix (Note 4)
-* `rp`: Precession matrix (Note 5)
-* `rbp`: Bias-precession matrix (Note 6)
-* `rn`: Nutation matrix (Note 7)
-* `rbpn`: GCRS-to-true matrix (Note 8)
+- `epsa`: Mean obliquity (Note 3)
+- `rb`: Frame bias matrix (Note 4)
+- `rp`: Precession matrix (Note 5)
+- `rbp`: Bias-precession matrix (Note 6)
+- `rn`: Nutation matrix (Note 7)
+- `rbpn`: GCRS-to-true matrix (Note 8)
 
 ### Notes ###
 
@@ -1409,17 +1409,17 @@ indirectly.
 
 ### Called ###
 
-* `eraPfw06`: bias-precession F-W angles, IAU 2006
-* `eraFw2m`: F-W angles to r-matrix
-* `eraCr`: copy r-matrix
-* `eraTr`: transpose r-matrix
-* `eraRxr`: product of two r-matrices
+- `eraPfw06`: bias-precession F-W angles, IAU 2006
+- `eraFw2m`: F-W angles to r-matrix
+- `eraCr`: copy r-matrix
+- `eraTr`: transpose r-matrix
+- `eraRxr`: product of two r-matrices
 
 ### References ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 pn06
@@ -1451,12 +1451,12 @@ P-vector subtraction.
 
 ### Given ###
 
-* `a`: First p-vector
-* `b`: Second p-vector
+- `a`: First p-vector
+- `b`: Second p-vector
 
 ### Returned ###
 
-* `amb`: A - b
+- `amb`: A - b
 
 ### Note ###
 
@@ -1473,12 +1473,12 @@ P-vector addition.
 
 ### Given ###
 
-* `a`: First p-vector
-* `b`: Second p-vector
+- `a`: First p-vector
+- `b`: Second p-vector
 
 ### Returned ###
 
-* `apb`: A + b
+- `apb`: A + b
 
 ### Note ###
 
@@ -1495,12 +1495,12 @@ p-vector outer (=vector=cross) product.
 
 ### Given ###
 
-* `a`: First p-vector
-* `b`: Second p-vector
+- `a`: First p-vector
+- `b`: Second p-vector
 
 ### Returned ###
 
-* `axb`: A x b
+- `axb`: A x b
 
 ### Note ###
 
@@ -1533,12 +1533,12 @@ Subtract one pv-vector from another.
 
 ### Given ###
 
-* `a`: First pv-vector
-* `b`: Second pv-vector
+- `a`: First pv-vector
+- `b`: Second pv-vector
 
 ### Returned ###
 
-* `amb`: A - b
+- `amb`: A - b
 
 ### Note ###
 
@@ -1547,7 +1547,7 @@ Subtract one pv-vector from another.
 
 ### Called ###
 
-* `eraPmp`: p-vector minus p-vector
+- `eraPmp`: p-vector minus p-vector
 
 """
 pvmpv
@@ -1559,12 +1559,12 @@ Add one pv-vector to another.
 
 ### Given ###
 
-* `a`: First pv-vector
-* `b`: Second pv-vector
+- `a`: First pv-vector
+- `b`: Second pv-vector
 
 ### Returned ###
 
-* `apb`: A + b
+- `apb`: A + b
 
 ### Note ###
 
@@ -1573,7 +1573,7 @@ Add one pv-vector to another.
 
 ### Called ###
 
-* `eraPpp`: p-vector plus p-vector
+- `eraPpp`: p-vector plus p-vector
 
 """
 pvppv
@@ -1585,12 +1585,12 @@ Outer (=vector=cross) product of two pv-vectors.
 
 ### Given ###
 
-* `a`: First pv-vector
-* `b`: Second pv-vector
+- `a`: First pv-vector
+- `b`: Second pv-vector
 
 ### Returned ###
 
-* `axb`: A x b
+- `axb`: A x b
 
 ### Notes ###
 
@@ -1604,9 +1604,9 @@ Outer (=vector=cross) product of two pv-vectors.
 
 ### Called ###
 
-* `eraCpv`: copy pv-vector
-* `eraPxp`: vector product of two p-vectors
-* `eraPpp`: p-vector plus p-vector
+- `eraCpv`: copy pv-vector
+- `eraPxp`: vector product of two p-vectors
+- `eraPpp`: p-vector plus p-vector
 
 """
 pvxpv
@@ -1636,17 +1636,17 @@ use indirectly.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsi`, `deps`: Nutation (Note 2)
-* `epsa`: Mean obliquity (Note 3)
-* `rb`: Frame bias matrix (Note 4)
-* `rp`: Precession matrix (Note 5)
-* `rbp`: Bias-precession matrix (Note 6)
-* `rn`: Nutation matrix (Note 7)
-* `rbpn`: GCRS-to-true matrix (Notes 8,9)
+- `dpsi`, `deps`: Nutation (Note 2)
+- `epsa`: Mean obliquity (Note 3)
+- `rb`: Frame bias matrix (Note 4)
+- `rp`: Precession matrix (Note 5)
+- `rbp`: Bias-precession matrix (Note 6)
+- `rn`: Nutation matrix (Note 7)
+- `rbpn`: GCRS-to-true matrix (Notes 8,9)
 
 ### Notes ###
 
@@ -1706,17 +1706,17 @@ use indirectly.
 
 ### Called ###
 
-* `eraNut00a`: nutation, IAU 2000A
-* `eraPn00`: bias/precession/nutation results, IAU 2000
+- `eraNut00a`: nutation, IAU 2000A
+- `eraPn00`: bias/precession/nutation results, IAU 2000
 
 ### Reference ###
 
-* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+- Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
     "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003)
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
@@ -1731,17 +1731,17 @@ use indirectly.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsi`, `deps`: Nutation (Note 2)
-* `epsa`: Mean obliquity (Note 3)
-* `rb`: Frame bias matrix (Note 4)
-* `rp`: Precession matrix (Note 5)
-* `rbp`: Bias-precession matrix (Note 6)
-* `rn`: Nutation matrix (Note 7)
-* `rbpn`: GCRS-to-true matrix (Notes 8,9)
+- `dpsi`, `deps`: Nutation (Note 2)
+- `epsa`: Mean obliquity (Note 3)
+- `rb`: Frame bias matrix (Note 4)
+- `rp`: Precession matrix (Note 5)
+- `rbp`: Bias-precession matrix (Note 6)
+- `rn`: Nutation matrix (Note 7)
+- `rbpn`: GCRS-to-true matrix (Notes 8,9)
 
 ### Notes ###
 
@@ -1801,17 +1801,17 @@ use indirectly.
 
 ### Called ###
 
-* `eraNut00b`: nutation, IAU 2000B
-* `eraPn00`: bias/precession/nutation results, IAU 2000
+- `eraNut00b`: nutation, IAU 2000B
+- `eraPn00`: bias/precession/nutation results, IAU 2000
 
 ### Reference ###
 
-* Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+- Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
     "Expressions for the Celestial Intermediate Pole and Celestial
     Ephemeris Origin consistent with the IAU 2000A precession-
     nutation model", Astron.Astrophys. 400, 1145-1154 (2003).
 
-* n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+- n.b. The celestial ephemeris origin (CEO) was renamed "celestial
     intermediate origin" (CIO) by IAU 2006 Resolution 2.
 
 """
@@ -1826,17 +1826,17 @@ indirectly.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsi`, `deps`: Nutation (Note 2)
-* `epsa`: Mean obliquity (Note 3)
-* `rb`: Frame bias matrix (Note 4)
-* `rp`: Precession matrix (Note 5)
-* `rbp`: Bias-precession matrix (Note 6)
-* `rn`: Nutation matrix (Note 7)
-* `rbpn`: GCRS-to-true matrix (Notes 8,9)
+- `dpsi`, `deps`: Nutation (Note 2)
+- `epsa`: Mean obliquity (Note 3)
+- `rb`: Frame bias matrix (Note 4)
+- `rp`: Precession matrix (Note 5)
+- `rbp`: Bias-precession matrix (Note 6)
+- `rn`: Nutation matrix (Note 7)
+- `rbpn`: GCRS-to-true matrix (Notes 8,9)
 
 ### Notes ###
 
@@ -1892,12 +1892,12 @@ indirectly.
 
 ### Called ###
 
-* `eraNut06a`: nutation, IAU 2006/2000A
-* `eraPn06`: bias/precession/nutation results, IAU 2006
+- `eraNut06a`: nutation, IAU 2006/2000A
+- `eraPn06`: bias/precession/nutation results, IAU 2006
 
 ### Reference ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
 """
 pn06a
@@ -1932,14 +1932,14 @@ Position-angle from spherical coordinates.
 
 ### Given ###
 
-* `al`: Longitude of point A (e.g. RA) in radians
-* `ap`: Latitude of point A (e.g. Dec) in radians
-* `bl`: Longitude of point B
-* `bp`: Latitude of point B
+- `al`: Longitude of point A (e.g. RA) in radians
+- `ap`: Latitude of point A (e.g. Dec) in radians
+- `bl`: Longitude of point B
+- `bp`: Latitude of point B
 
 ### Returned ###
 
-* Position angle of B with respect to A
+- Position angle of B with respect to A
 
 ### Notes ###
 
@@ -1962,12 +1962,12 @@ Position-angle from two p-vectors.
 
 ### Given ###
 
-* `a`: Direction of reference point
-* `b`: Direction of point whose PA is required
+- `a`: Direction of reference point
+- `b`: Direction of point whose PA is required
 
 ### Returned ###
 
-* Position angle of b with respect to a (radians)
+- Position angle of b with respect to a (radians)
 
 ### Notes ###
 
@@ -1986,11 +1986,11 @@ Position-angle from two p-vectors.
 
 ### Called ###
 
-* `eraPn`: decompose p-vector into modulus and direction
-* `eraPm`: modulus of p-vector
-* `eraPxp`: vector product of two p-vectors
-* `eraPmp`: p-vector minus p-vector
-* `eraPdp`: scalar product of two p-vectors
+- `eraPn`: decompose p-vector into modulus and direction
+- `eraPm`: modulus of p-vector
+- `eraPxp`: vector product of two p-vectors
+- `eraPmp`: p-vector minus p-vector
+- `eraPdp`: scalar product of two p-vectors
 
 """
 pap
@@ -2002,12 +2002,12 @@ p-vector inner (=scalar=dot) product.
 
 ### Given ###
 
-* `a`: First p-vector
-* `b`: Second p-vector
+- `a`: First p-vector
+- `b`: Second p-vector
 
 ### Returned ###
 
-* ``a \cdot b``
+- ``a \cdot b``
 
 """
 pdp
@@ -2031,11 +2031,11 @@ Precession-rate part of the IAU 2000 precession-nutation models
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `dpsipr`, `depspr`: Precession corrections (Notes 2,3)
+- `dpsipr`, `depspr`: Precession corrections (Notes 2,3)
 
 ### Notes ###
 
@@ -2075,17 +2075,17 @@ Precession-rate part of the IAU 2000 precession-nutation models
 
 ### References ###
 
-* Lieske, J.H., Lederle, T., Fricke, W. & Morando, B., "Expressions
+- Lieske, J.H., Lederle, T., Fricke, W. & Morando, B., "Expressions
     for the precession quantities based upon the IAU (1976) System of
     Astronomical Constants", Astron.Astrophys., 58, 1-16 (1977)
 
-* Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
+- Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
     and precession   New nutation series for nonrigid Earth and
     insights into the Earth's interior", J.Geophys.Res., 107, B4,
     2002.  The MHB2000 code itself was obtained on 9th September 2002
     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
-* Wallace, P.T., "Software for Implementing the IAU 2000
+- Wallace, P.T., "Software for Implementing the IAU 2000
     Resolutions", in IERS Workshop 5.1 (2002).
 
 """
@@ -2106,11 +2106,11 @@ date, IAU 2000 model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rbp`: Bias-precession matrix (Note 2)
+- `rbp`: Bias-precession matrix (Note 2)
 
 ### Notes ###
 
@@ -2140,11 +2140,11 @@ date, IAU 2000 model.
 
 ### Called ###
 
-* `eraBp00`: frame bias and precession matrices, IAU 2000
+- `eraBp00`: frame bias and precession matrices, IAU 2000
 
 ### Reference ###
 
-* IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+- IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
     (2000)
 
@@ -2159,11 +2159,11 @@ date, IAU 2006 model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rbp`: Bias-precession matrix (Note 2)
+- `rbp`: Bias-precession matrix (Note 2)
 
 ### Notes ###
 
@@ -2193,14 +2193,14 @@ date, IAU 2006 model.
 
 ### Called ###
 
-* `eraPfw06`: bias-precession F-W angles, IAU 2006
-* `eraFw2m`: F-W angles to r-matrix
+- `eraPfw06`: bias-precession F-W angles, IAU 2006
+- `eraFw2m`: F-W angles to r-matrix
 
 ### References ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 
-* Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+- Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 
 """
 pmat06
@@ -2212,11 +2212,11 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 
 ### Given ###
 
-* `date1`, `date2`: Ending date, TT (Note 1)
+- `date1`, `date2`: Ending date, TT (Note 1)
 
 ### Returned ###
 
-* `rmatp`: Precession matrix, J2000.0 -> date1+date2
+- `rmatp`: Precession matrix, J2000.0 -> date1+date2
 
 ### Notes ###
 
@@ -2258,18 +2258,18 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 
 ### Called ###
 
-* `eraPrec76`: accumulated precession angles, IAU 1976
-* `eraIr`: initialize r-matrix to identity
-* `eraRz`: rotate around Z-axis
-* `eraRy`: rotate around Y-axis
-* `eraCr`: copy r-matrix
+- `eraPrec76`: accumulated precession angles, IAU 1976
+- `eraIr`: initialize r-matrix to identity
+- `eraRz`: rotate around Z-axis
+- `eraRy`: rotate around Y-axis
+- `eraCr`: copy r-matrix
 
 ### References ###
 
-* Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+- Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
     equations (6) & (7), p283.
 
-* Kaplan,G.H., 1981. USNO circular no. 163, pA2.
+- Kaplan,G.H., 1981. USNO circular no. 163, pA2.
 
 """
 pmat76
@@ -2282,11 +2282,11 @@ frame bias), equinox-based, IAU 2000A model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rbpn`: Classical NPB matrix (Note 2)
+- `rbpn`: Classical NPB matrix (Note 2)
 
 ### Notes ###
 
@@ -2319,11 +2319,11 @@ frame bias), equinox-based, IAU 2000A model.
 
 ### Called ###
 
-* `eraPn00a`: bias/precession/nutation, IAU 2000A
+- `eraPn00a`: bias/precession/nutation, IAU 2000A
 
 ### Reference ###
 
-* IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+- IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
     (2000)
 
@@ -2338,11 +2338,11 @@ frame bias), equinox-based, IAU 2000B model.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rbpn`: Bias-precession-nutation matrix (Note 2)
+- `rbpn`: Bias-precession-nutation matrix (Note 2)
 
 ### Notes ###
 
@@ -2375,11 +2375,11 @@ frame bias), equinox-based, IAU 2000B model.
 
 ### Called ###
 
-* `eraPn00b`: bias/precession/nutation, IAU 2000B
+- `eraPn00b`: bias/precession/nutation, IAU 2000B
 
 ### Reference ###
 
-* IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+- IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
     (2000)
 
@@ -2394,11 +2394,11 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
 
 ### Given ###
 
-* `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
+- `date1`, `date2`: TT as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `rnpb`: Bias-precession-nutation matrix (Note 2)
+- `rnpb`: Bias-precession-nutation matrix (Note 2)
 
 ### Notes ###
 
@@ -2428,13 +2428,13 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
 
 ### Called ###
 
-* `eraPfw06`: bias-precession F-W angles, IAU 2006
-* `eraNut06a`: nutation, IAU 2006/2000A
-* `eraFw2m`: F-W angles to r-matrix
+- `eraPfw06`: bias-precession F-W angles, IAU 2006
+- `eraNut06a`: nutation, IAU 2006/2000A
+- `eraFw2m`: F-W angles to r-matrix
 
 ### Reference ###
 
-* Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
+- Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
 
 """
 pnm06a
@@ -2447,11 +2447,11 @@ precession model, IAU 1980 nutation model.
 
 ### Given ###
 
-* `date1`, `date2`: TDB date (Note 1)
+- `date1`, `date2`: TDB date (Note 1)
 
 ### Returned ###
 
-* `rmatpn`: Combined precession/nutation matrix
+- `rmatpn`: Combined precession/nutation matrix
 
 ### Notes ###
 
@@ -2481,13 +2481,13 @@ precession model, IAU 1980 nutation model.
 
 ### Called ###
 
-* `eraPmat76`: precession matrix, IAU 1976
-* `eraNutm80`: nutation matrix, IAU 1980
-* `eraRxr`: product of two r-matrices
+- `eraPmat76`: precession matrix, IAU 1976
+- `eraNutm80`: nutation matrix, IAU 1980
+- `eraRxr`: product of two r-matrices
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 3.3 (p145).
 
@@ -2521,12 +2521,12 @@ Form the matrix of polar motion for a given date, IAU 2000.
 
 ### Given ###
 
-* `xp`, `yp`: Coordinates of the pole (radians, Note 1)
-* `sp`: The TIO locator s' (radians, Note 2)
+- `xp`, `yp`: Coordinates of the pole (radians, Note 1)
+- `sp`: The TIO locator s' (radians, Note 2)
 
 ### Returned ###
 
-* `rpom`: Polar-motion matrix (Note 3)
+- `rpom`: Polar-motion matrix (Note 3)
 
 ### Notes ###
 
@@ -2550,14 +2550,14 @@ Form the matrix of polar motion for a given date, IAU 2000.
 
 ### Called ###
 
-* `eraIr`: initialize r-matrix to identity
-* `eraRz`: rotate around Z-axis
-* `eraRy`: rotate around Y-axis
-* `eraRx`: rotate around X-axis
+- `eraIr`: initialize r-matrix to identity
+- `eraRz`: rotate around Z-axis
+- `eraRy`: rotate around Y-axis
+- `eraRx`: rotate around X-axis
 
 ### Reference ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
 """

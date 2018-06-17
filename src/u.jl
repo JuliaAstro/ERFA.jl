@@ -6,12 +6,12 @@ Atomic Time, TAI.
 
 ### Given ###
 
-* `ut11`, `ut12`: UT1 as a 2-part Julian Date
-* `dta`: UT1-TAI in seconds
+- `ut11`, `ut12`: UT1 as a 2-part Julian Date
+- `dta`: UT1-TAI in seconds
 
 ### Returned ###
 
-* `tai1`, `tai2`: TAI as a 2-part Julian Date
+- `tai1`, `tai2`: TAI as a 2-part Julian Date
 
 ### Notes ###
 
@@ -25,7 +25,7 @@ Atomic Time, TAI.
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -39,12 +39,12 @@ Time, TT.
 
 ### Given ###
 
-* `ut11`, `ut12`: UT1 as a 2-part Julian Date
-* `dt`: TT-UT1 in seconds
+- `ut11`, `ut12`: UT1 as a 2-part Julian Date
+- `dt`: TT-UT1 in seconds
 
 ### Returned ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
+- `tt1`, `tt2`: TT as a 2-part Julian Date
 
 ### Notes ###
 
@@ -57,7 +57,7 @@ Time, TT.
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -71,12 +71,12 @@ Universal Time, UTC.
 
 ### Given ###
 
-* `ut11`, `ut12`: UT1 as a 2-part Julian Date (Note 1)
-* `dut1`: Delta UT1: UT1-UTC in seconds (Note 2)
+- `ut11`, `ut12`: UT1 as a 2-part Julian Date (Note 1)
+- `dut1`: Delta UT1: UT1-UTC in seconds (Note 2)
 
 ### Returned ###
 
-* `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 3,4)
+- `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 3,4)
 
 ### Notes ###
 
@@ -107,16 +107,16 @@ Universal Time, UTC.
 
 ### Called ###
 
-* `eraJd2cal`: JD to Gregorian calendar
-* `eraDat`: delta(AT) = TAI-UTC
-* `eraCal2jd`: Gregorian calendar to JD
+- `eraJd2cal`: JD to Gregorian calendar
+- `eraDat`: delta(AT) = TAI-UTC
+- `eraCal2jd`: Gregorian calendar to JD
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -130,12 +130,12 @@ Universal Time, UT1.
 
 ### Given ###
 
-* `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 1-4)
-* `dut1`: Delta UT1 = UT1-UTC in seconds (Note 5)
+- `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 1-4)
+- `dut1`: Delta UT1 = UT1-UTC in seconds (Note 5)
 
 ### Returned ###
 
-* `ut11`, `ut12`: UT1 as a 2-part Julian Date (Note 6)
+- `ut11`, `ut12`: UT1 as a 2-part Julian Date (Note 6)
 
 ### Notes ###
 
@@ -166,18 +166,18 @@ Universal Time, UT1.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 ### Called ###
 
-* `eraJd2cal`: JD to Gregorian calendar
-* `eraDat`: delta(AT) = TAI-UTC
-* `eraUtctai`: UTC to TAI
-* `eraTaiut1`: TAI to UT1
+- `eraJd2cal`: JD to Gregorian calendar
+- `eraDat`: delta(AT) = TAI-UTC
+- `eraUtctai`: UTC to TAI
+- `eraTaiut1`: TAI to UT1
 
 """
 utcut1
@@ -209,11 +209,11 @@ International Atomic Time, TAI.
 
 ### Given ###
 
-* `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 1-4)
+- `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 1-4)
 
 ### Returned ###
 
-* `tai1`, `tai2`: TAI as a 2-part Julian Date (Note 5)
+- `tai1`, `tai2`: TAI as a 2-part Julian Date (Note 5)
 
 ### Notes ###
 
@@ -242,16 +242,16 @@ International Atomic Time, TAI.
 
 ### Called ###
 
-* `eraJd2cal`: JD to Gregorian calendar
-* `eraDat`: delta(AT) = TAI-UTC
-* `eraCal2jd`: Gregorian calendar to JD
+- `eraJd2cal`: JD to Gregorian calendar
+- `eraDat`: delta(AT) = TAI-UTC
+- `eraCal2jd`: Gregorian calendar to JD
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """

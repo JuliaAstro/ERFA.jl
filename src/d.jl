@@ -36,15 +36,15 @@ Conventions (McCarthy & Petit 2003).
 
 ### Given ###
 
-* `date1`, `date2`: Date, TDB (Notes 1-3)
-* `ut`: Universal time (UT1, fraction of one day)
-* `elong`: Longitude (east positive, radians)
-* `u`: Distance from Earth spin axis (km)
-* `v`: Distance north of equatorial plane (km)
+- `date1`, `date2`: Date, TDB (Notes 1-3)
+- `ut`: Universal time (UT1, fraction of one day)
+- `elong`: Longitude (east positive, radians)
+- `u`: Distance from Earth spin axis (km)
+- `v`: Distance north of equatorial plane (km)
 
 ### Returned ###
 
-* TDB-TT (seconds)
+- TDB-TT (seconds)
 
 ### Notes ###
 
@@ -135,22 +135,22 @@ Conventions (McCarthy & Petit 2003).
 
 ### References ###
 
-* Fairhead, L., & Bretagnon, P., Astron.Astrophys., 229, 240-247
+- Fairhead, L., & Bretagnon, P., Astron.Astrophys., 229, 240-247
     (1990).
 
-* IAU 2006 Resolution 3.
+- IAU 2006 Resolution 3.
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Moyer, T.D., Cel.Mech., 23, 33 (1981).
+- Moyer, T.D., Cel.Mech., 23, 33 (1981).
 
-* Murray, C.A., Vectorial Astrometry, Adam Hilger (1983).
+- Murray, C.A., Vectorial Astrometry, Adam Hilger (1983).
 
-* Seidelmann, P.K. et al., Explanatory Supplement to the
+- Seidelmann, P.K. et al., Explanatory Supplement to the
     Astronomical Almanac, Chapter 2, University Science Books (1992).
 
-* Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+- Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
     Francou, G. & Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
 
 """
@@ -194,14 +194,14 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 
 ### Given ###
 
-* `iy`: UTC:  year (Notes 1 and 2)
-* `im`: Month (Note 2)
-* `id`: Day (Notes 2 and 3)
-* `fd`: Fraction of day (Note 4)
+- `iy`: UTC:  year (Notes 1 and 2)
+- `im`: Month (Note 2)
+- `id`: Day (Notes 2 and 3)
+- `fd`: Fraction of day (Note 4)
 
 ### Returned ###
 
-* `deltat`: TAI minus UTC, seconds
+- `deltat`: TAI minus UTC, seconds
 
 ### Notes ###
 
@@ -250,15 +250,15 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 
 ### References ###
 
-* 1) For dates from 1961 January 1 onwards, the expressions from the
+- 1) For dates from 1961 January 1 onwards, the expressions from the
     file ftp://maia.usno.navy.mil/ser7/tai-utc.dat are used.
 
-* 2) The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
+- 2) The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
     the 1992 Explanatory Supplement.
 
 ### Called ###
 
-* `eraCal2jd`: Gregorian calendar to JD
+- `eraCal2jd`: Gregorian calendar to JD
 
 """
 function dat(iy, im, id, fd)
@@ -290,14 +290,14 @@ quasi-JD form that includes special provision for leap seconds).
 
 ### Given ###
 
-* `scale`: Time scale ID (Note 1)
-* `ndp`: Resolution (Note 2)
-* `d1`, `d2`: Time as a 2-part Julian Date (Notes 3,4)
+- `scale`: Time scale ID (Note 1)
+- `ndp`: Resolution (Note 2)
+- `d1`, `d2`: Time as a 2-part Julian Date (Notes 3,4)
 
 ### Returned ###
 
-* `iy`, `im`, `id`: Year, month, day in Gregorian calendar (Note 5)
-* `ihmsf`: Hours, minutes, seconds, fraction (Note 1)
+- `iy`, `im`, `id`: Year, month, day in Gregorian calendar (Note 5)
+- `ihmsf`: Hours, minutes, seconds, fraction (Note 1)
 
 ### Notes ###
 
@@ -342,9 +342,9 @@ quasi-JD form that includes special provision for leap seconds).
 
 ### Called ###
 
-* `eraJd2cal`: JD to Gregorian calendar
-* `eraD2tf`: decompose days to hms
-* `eraDat`: delta(AT) = TAI-UTC
+- `eraJd2cal`: JD to Gregorian calendar
+- `eraD2tf`: decompose days to hms
+- `eraDat`: delta(AT) = TAI-UTC
 
 """
 function d2dtf(scale::AbstractString, ndp, d1, d2)
@@ -372,14 +372,14 @@ seconds).
 
 ### Given ###
 
-* `scale`: Time scale ID (Note 1)
-* `iy`, `im`, `id`: Year, month, day in Gregorian calendar (Note 2)
-* `ihr`, `imn`: Hour, minute
-* `sec`: Seconds
+- `scale`: Time scale ID (Note 1)
+- `iy`, `im`, `id`: Year, month, day in Gregorian calendar (Note 2)
+- `ihr`, `imn`: Hour, minute
+- `sec`: Seconds
 
 ### Returned ###
 
-* `d1`, `d2`: 2-part Julian Date (Notes 3,4)
+- `d1`, `d2`: 2-part Julian Date (Notes 3,4)
 
 ### Notes ###
 
@@ -420,9 +420,9 @@ seconds).
 
 ### Called ###
 
-* `eraCal2jd`: Gregorian calendar to JD
-* `eraDat`: delta(AT) = TAI-UTC
-* `eraJd2cal`: JD to Gregorian calendar
+- `eraCal2jd`: Gregorian calendar to JD
+- `eraDat`: delta(AT) = TAI-UTC
+- `eraJd2cal`: JD to Gregorian calendar
 
 """
 function dtf2d(scale::AbstractString, iy, imo, id, ih, imi, sec)
@@ -460,13 +460,13 @@ Decompose days to hours, minutes, seconds, fraction.
 
 ### Given ###
 
-* `ndp`: Resolution (Note 1)
-* `days`: Interval in days
+- `ndp`: Resolution (Note 1)
+- `days`: Interval in days
 
 ### Returned ###
 
-* `sign`: '+' or '-'
-* `ihmsf`: Hours, minutes, seconds, fraction
+- `sign`: '+' or '-'
+- `ihmsf`: Hours, minutes, seconds, fraction
 
 ### Notes ###
 

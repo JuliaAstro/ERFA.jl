@@ -5,11 +5,11 @@ Transpose an r-matrix.
 
 ### Given ###
 
-* `r`: R-matrix
+- `r`: R-matrix
 
 ### Returned ###
 
-* `rt`: Transpose
+- `rt`: Transpose
 
 ### Note ###
 
@@ -17,7 +17,7 @@ Transpose an r-matrix.
 
 ### Called ###
 
-* `eraCr`: copy r-matrix
+- `eraCr`: copy r-matrix
 
 """
 function tr(r)
@@ -35,12 +35,12 @@ Multiply a pv-vector by the transpose of an r-matrix.
 
 ### Given ###
 
-* `r`: R-matrix
-* `pv`: Pv-vector
+- `r`: R-matrix
+- `pv`: Pv-vector
 
 ### Returned ###
 
-* `trpv`: R * pv
+- `trpv`: R * pv
 
 ### Note ###
 
@@ -48,8 +48,8 @@ Multiply a pv-vector by the transpose of an r-matrix.
 
 ### Called ###
 
-* `eraTr`: transpose r-matrix
-* `eraRxpv`: product of r-matrix and pv-vector
+- `eraTr`: transpose r-matrix
+- `eraRxpv`: product of r-matrix and pv-vector
 
 """
 function trxpv(r, p)
@@ -67,12 +67,12 @@ Multiply a p-vector by the transpose of an r-matrix.
 
 ### Given ###
 
-* `r`: R-matrix
-* `p`: P-vector
+- `r`: R-matrix
+- `p`: P-vector
 
 ### Returned ###
 
-* `trp`: R * p
+- `trp`: R * p
 
 ### Note ###
 
@@ -80,8 +80,8 @@ Multiply a p-vector by the transpose of an r-matrix.
 
 ### Called ###
 
-* `eraTr`: transpose r-matrix
-* `eraRxp`: product of r-matrix and p-vector
+- `eraTr`: transpose r-matrix
+- `eraRxp`: product of r-matrix and p-vector
 
 """
 function trxp(r, p)
@@ -100,12 +100,12 @@ Universal Time, UT1.
 
 ### Given ###
 
-* `tai1`, `tai2`: TAI as a 2-part Julian Date
-* `dta`: UT1-TAI in seconds
+- `tai1`, `tai2`: TAI as a 2-part Julian Date
+- `dta`: UT1-TAI in seconds
 
 ### Returned ###
 
-* `ut11`, `ut12`: UT1 as a 2-part Julian Date
+- `ut11`, `ut12`: UT1 as a 2-part Julian Date
 
 ### Notes ###
 
@@ -119,7 +119,7 @@ Universal Time, UT1.
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -133,12 +133,12 @@ Terrestrial Time, TT.
 
 ### Given ###
 
-* `tdb1`, `tdb2`: TDB as a 2-part Julian Date
-* `dtr`: TDB-TT in seconds
+- `tdb1`, `tdb2`: TDB as a 2-part Julian Date
+- `dtr`: TDB-TT in seconds
 
 ### Returned ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
+- `tt1`, `tt2`: TT as a 2-part Julian Date
 
 ### Notes ###
 
@@ -160,10 +160,10 @@ Terrestrial Time, TT.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* IAU 2006 Resolution 3
+- IAU 2006 Resolution 3
 
 """
 tdbtt
@@ -176,12 +176,12 @@ Dynamical Time, TDB.
 
 ### Given ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
-* `dtr`: TDB-TT in seconds
+- `tt1`, `tt2`: TT as a 2-part Julian Date
+- `dtr`: TDB-TT in seconds
 
 ### Returned ###
 
-* `tdb1`, `tdb2`: TDB as a 2-part Julian Date
+- `tdb1`, `tdb2`: TDB as a 2-part Julian Date
 
 ### Notes ###
 
@@ -203,10 +203,10 @@ Dynamical Time, TDB.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* IAU 2006 Resolution 3
+- IAU 2006 Resolution 3
 
 """
 tttdb
@@ -219,12 +219,12 @@ UT1.
 
 ### Given ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
-* `dt`: TT-UT1 in seconds
+- `tt1`, `tt2`: TT as a 2-part Julian Date
+- `dt`: TT-UT1 in seconds
 
 ### Returned ###
 
-* `ut11`, `ut12`: UT1 as a 2-part Julian Date
+- `ut11`, `ut12`: UT1 as a 2-part Julian Date
 
 ### Notes ###
 
@@ -237,7 +237,7 @@ UT1.
 
 ### Reference ###
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -270,11 +270,11 @@ Terrestrial Time, TT.
 
 ### Given ###
 
-* `tai1`, `tai2`: TAI as a 2-part Julian Date
+- `tai1`, `tai2`: TAI as a 2-part Julian Date
 
 ### Returned ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
+- `tt1`, `tt2`: TT as a 2-part Julian Date
 
 ### Note ###
 
@@ -285,10 +285,10 @@ Terrestrial Time, TT.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -302,11 +302,11 @@ Coordinated Universal Time, UTC.
 
 ### Given ###
 
-* `tai1`, `tai2`: TAI as a 2-part Julian Date (Note 1)
+- `tai1`, `tai2`: TAI as a 2-part Julian Date (Note 1)
 
 ### Returned ###
 
-* `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 1-3)
+- `utc1`, `utc2`: UTC as a 2-part quasi Julian Date (Notes 1-3)
 
 ### Notes ###
 
@@ -335,14 +335,14 @@ Coordinated Universal Time, UTC.
 
 ### Called ###
 
-* `eraUtctai`: UTC to TAI
+- `eraUtctai`: UTC to TAI
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -356,11 +356,11 @@ Barycentric Dynamical Time, TDB.
 
 ### Given ###
 
-* `tcb1`, `tcb2`: TCB as a 2-part Julian Date
+- `tcb1`, `tcb2`: TCB as a 2-part Julian Date
 
 ### Returned ###
 
-* `tdb1`, `tdb2`: TDB as a 2-part Julian Date
+- `tdb1`, `tdb2`: TDB as a 2-part Julian Date
 
 ### Notes ###
 
@@ -389,7 +389,7 @@ Barycentric Dynamical Time, TDB.
 
 ### Reference ###
 
-* IAU 2006 Resolution B3
+- IAU 2006 Resolution B3
 
 """
 tcbtdb
@@ -402,11 +402,11 @@ Terrestrial Time, TT.
 
 ### Given ###
 
-* `tcg1`, `tcg2`: TCG as a 2-part Julian Date
+- `tcg1`, `tcg2`: TCG as a 2-part Julian Date
 
 ### Returned ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
+- `tt1`, `tt2`: TT as a 2-part Julian Date
 
 ### Note ###
 
@@ -417,10 +417,10 @@ Terrestrial Time, TT.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),.
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),.
     IERS Technical Note No. 32, BKG (2004)
 
-* IAU 2000 Resolution B1.9
+- IAU 2000 Resolution B1.9
 
 """
 tcgtt
@@ -433,11 +433,11 @@ Barycentric Coordinate Time, TCB.
 
 ### Given ###
 
-* `tdb1`, `tdb2`: TDB as a 2-part Julian Date
+- `tdb1`, `tdb2`: TDB as a 2-part Julian Date
 
 ### Returned ###
 
-* `tcb1`, `tcb2`: TCB as a 2-part Julian Date
+- `tcb1`, `tcb2`: TCB as a 2-part Julian Date
 
 ### Notes ###
 
@@ -466,7 +466,7 @@ Barycentric Coordinate Time, TCB.
 
 ### Reference ###
 
-* IAU 2006 Resolution B3
+- IAU 2006 Resolution B3
 
 """
 tdbtcb
@@ -479,11 +479,11 @@ Atomic Time, TAI.
 
 ### Given ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
+- `tt1`, `tt2`: TT as a 2-part Julian Date
 
 ### Returned ###
 
-* `tai1`, `tai2`: TAI as a 2-part Julian Date
+- `tai1`, `tai2`: TAI as a 2-part Julian Date
 
 ### Note ###
 
@@ -494,10 +494,10 @@ Atomic Time, TAI.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* Explanatory Supplement to the Astronomical Almanac,
+- Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992)
 
 """
@@ -511,11 +511,11 @@ Coordinate Time, TCG.
 
 ### Given ###
 
-* `tt1`, `tt2`: TT as a 2-part Julian Date
+- `tt1`, `tt2`: TT as a 2-part Julian Date
 
 ### Returned ###
 
-* `tcg1`, `tcg2`: TCG as a 2-part Julian Date
+- `tcg1`, `tcg2`: TCG as a 2-part Julian Date
 
 ### Note ###
 
@@ -526,10 +526,10 @@ Coordinate Time, TCG.
 
 ### References ###
 
-* McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+- McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
 
-* IAU 2000 Resolution B1.9
+- IAU 2000 Resolution B1.9
 
 """
 tttcg
@@ -563,14 +563,14 @@ Convert hours, minutes, seconds to radians.
 
 ### Given ###
 
-* `s`: Sign:  '-' = negative, otherwise positive
-* `ihour`: Hours
-* `imin`: Minutes
-* `sec`: Seconds
+- `s`: Sign:  '-' = negative, otherwise positive
+- `ihour`: Hours
+- `imin`: Minutes
+- `sec`: Seconds
 
 ### Returned ###
 
-* `rad`: Angle in radians
+- `rad`: Angle in radians
 
 ### Notes ###
 
@@ -592,14 +592,14 @@ Convert hours, minutes, seconds to days.
 
 ### Given ###
 
-* `s`: Sign:  '-' = negative, otherwise positive
-* `ihour`: Hours
-* `imin`: Minutes
-* `sec`: Seconds
+- `s`: Sign:  '-' = negative, otherwise positive
+- `ihour`: Hours
+- `imin`: Minutes
+- `sec`: Seconds
 
 ### Returned ###
 
-* `days`: Interval in days
+- `days`: Interval in days
 
 ### Notes ###
 

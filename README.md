@@ -1,20 +1,17 @@
-ERFA.jl
-=======
+# ERFA.jl
 
-[![Build Status](https://img.shields.io/travis/JuliaAstro/ERFA.jl.svg?style=flat-square)](https://travis-ci.org/JuliaAstro/ERFA.jl)
-[![Build status](https://img.shields.io/appveyor/ci/kbarbary/erfa-jl.svg?style=flat-square&label=windows)](https://ci.appveyor.com/project/kbarbary/erfa-jl/branch/master)
+*Julia wrapper for [liberfa](https://github.com/liberfa/erfa)*
 
-Julia wrapper for [liberfa](https://github.com/liberfa/erfa).
+[![Build Status Unix][travis-badge]][travis-url] [![Build Status Windows][av-badge]][av-url] [![Coveralls][coveralls-badge]][coveralls-url] [![Codecov][codecov-badge]][codecov-url] [![Docs Stable][docs-badge-stable]][docs-url-stable] [![Docs Latest][docs-badge-latest]][docs-url-latest]
 
-Installation
-------------
+
+## Installation
 
 ```julia
 julia> Pkg.add("ERFA")
 ```
 
-Example
--------
+## Example
 
 ```julia
 julia> using ERFA
@@ -31,3 +28,21 @@ julia> t1,t2 = ERFA.taitt(a1, a2)
 julia> ERFA.d2dtf("tt", 3, t1, t2)
 (2010,7,24,11,19,13,502)
 ```
+
+## Documentation
+
+Please refer to the [documentation][docs-url-stable] for additional
+information.
+
+[travis-badge]: https://travis-ci.org/JuliaAstro/ERFA.jl.svg?branch=master
+[travis-url]: https://travis-ci.org/JuliaAstro/ERFA.jl
+[av-badge]: https://img.shields.io/appveyor/ci/kbarbary/erfa-jl.svg?label=windows
+[av-url]: https://ci.appveyor.com/project/kbarbary/erfa-jl/branch/master
+[coveralls-badge]: https://coveralls.io/repos/github/JuliaAstro/ERFA.jl/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/JuliaAstro/ERFA.jl?branch=master
+[codecov-badge]: https://codecov.io/github/JuliaAstro/ERFA.jl/coverage.svg?branch=master
+[codecov-url]: https://codecov.io/github/JuliaAstro/ERFA.jl?branch=master
+[docs-badge-latest]: https://img.shields.io/badge/docs-latest-blue.svg
+[docs-url-latest]: https://juliaastro.github.io/ERFA.jl/latest
+[docs-badge-stable]: https://img.shields.io/badge/docs-stable-blue.svg
+[docs-url-stable]: https://juliaastro.github.io/ERFA.jl/stable

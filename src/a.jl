@@ -207,12 +207,12 @@ transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -324,12 +324,12 @@ parts of the astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -439,12 +439,12 @@ parts of the astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -566,12 +566,12 @@ site coordinates.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -895,12 +895,12 @@ astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -1021,12 +1021,12 @@ astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -1629,12 +1629,12 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -2116,12 +2116,12 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is

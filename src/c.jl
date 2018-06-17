@@ -20,12 +20,12 @@ the bias-precession-nutation matrix.  IAU 2000.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -726,12 +726,12 @@ IAU 2000A precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -797,12 +797,12 @@ IAU 2000B precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -868,12 +868,12 @@ IAU 2006 precession and IAU 2000A nutation models.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -947,12 +947,12 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution

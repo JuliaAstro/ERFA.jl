@@ -68,12 +68,12 @@ with free core nutation omitted).
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -218,12 +218,12 @@ Nutation, IAU 2000B model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -337,12 +337,12 @@ precession.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -415,12 +415,12 @@ Nutation, IAU 1980 model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -483,12 +483,12 @@ Form the matrix of nutation for a given date, IAU 2000A model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -538,12 +538,12 @@ Form the matrix of nutation for a given date, IAU 2000B model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -593,12 +593,12 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -647,12 +647,12 @@ Form the matrix of nutation for a given date, IAU 1980 model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution

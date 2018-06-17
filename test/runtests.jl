@@ -2,7 +2,7 @@ using ERFA
 
 using Compat.Test
 
-@testset "ERFA" begin
+# @testset "ERFA" begin
     # @testset "Calendar Tools" begin
         u1, u2 = ERFA.dtf2d("UTC", 2010, 7, 24, 11, 18, 7.318)
         a1, a2 = ERFA.utctai(u1, u2)
@@ -3012,4 +3012,4 @@ using Compat.Test
         @test isapprox(dl, 0.5039483649047114859, atol = 1e-14)
         @test isapprox(db, 0.5848534459726224882, atol = 1e-14)
     # end
-end
+# end

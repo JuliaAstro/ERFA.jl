@@ -6,30 +6,30 @@ direction.
 
 ### Given ###
 
-* `pnat`: Natural direction to the source (unit vector)
-* `v`: Observer barycentric velocity in units of c
-* `s`: Distance between the Sun and the observer (au)
-* `bm1`: ``\sqrt(1-|v|^2)`` reciprocal of Lorenz factor
+- `pnat`: Natural direction to the source (unit vector)
+- `v`: Observer barycentric velocity in units of c
+- `s`: Distance between the Sun and the observer (au)
+- `bm1`: ``\\sqrt{1-|v|^2}`` reciprocal of Lorenz factor
 
 ### Returned ###
 
-* `ppr`: Proper direction to source (unit vector)
+- `ppr`: Proper direction to source (unit vector)
 
 ### Notes ###
 
-1) The algorithm is based on Expr. (7.40) in the Explanatory
+1. The algorithm is based on Expr. (7.40) in the Explanatory
    Supplement (Urban & Seidelmann 2013), but with the following
    changes:
 
-   o  Rigorous rather than approximate normalization is applied.
+   -  Rigorous rather than approximate normalization is applied.
 
-   o  The gravitational potential term from Expr. (7) in
+   -  The gravitational potential term from Expr. (7) in
       Klioner (2003) is added, taking into account only the Sun's
       contribution.  This has a maximum effect of about
       0.4 microarcsecond.
 
-2) In almost all cases, the maximum accuracy will be limited by the
-   supplied velocity.  For example, if the ERFA eraEpv00 function is
+2. In almost all cases, the maximum accuracy will be limited by the
+   supplied velocity.  For example, if the ERFA `eraEpv00` function is
    used, errors of up to 5 microarcseconds could occur.
 
 ### References ###
@@ -67,44 +67,44 @@ transformation chain.
 
 ### Given ###
 
-* `date1`: TDB as a 2-part...
-* `date2`: ...Julian Date (Note 1)
-* `ebpv`: Earth barycentric pos/vel (au, au/day)
-* `ehp`: Earth heliocentric position (au)
+- `date1`: TDB as a 2-part...
+- `date2`: ...Julian Date (Note 1)
+- `ebpv`: Earth barycentric pos/vel (au, au/day)
+- `ehp`: Earth heliocentric position (au)
 
 ### Returned ###
 
-* `astrom`: Star-independent astrometry parameters:
-    * `pmt`: PM time interval (SSB, Julian years)
-    * `eb`: SSB to observer (vector, au)
-    * `eh`: Sun to observer (unit vector)
-    * `em`: Distance from Sun to observer (au)
-    * `v`: Barycentric observer velocity (vector, c)
-    * `bm1`: ``\sqrt(1-|v|^2)`` Reciprocal of Lorenz factor
-    * `bpn`: Bias-precession-nutation matrix
-    * `along`: unchanged
-    * `xpl`: unchanged
-    * `ypl`: unchanged
-    * `sphi`: unchanged
-    * `cphi`: unchanged
-    * `diurab`: unchanged
-    * `eral`: unchanged
-    * `refa`: unchanged
-    * `refb`: unchanged
+- `astrom`: Star-independent astrometry parameters:
+    - `pmt`: PM time interval (SSB, Julian years)
+    - `eb`: SSB to observer (vector, au)
+    - `eh`: Sun to observer (unit vector)
+    - `em`: Distance from Sun to observer (au)
+    - `v`: Barycentric observer velocity (vector, c)
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bpn`: Bias-precession-nutation matrix
+    - `along`: unchanged
+    - `xpl`: unchanged
+    - `ypl`: unchanged
+    - `sphi`: unchanged
+    - `cphi`: unchanged
+    - `diurab`: unchanged
+    - `eral`: unchanged
+    - `refa`: unchanged
+    - `refb`: unchanged
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-          date1          date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `date1`   |     `date2` |                    |
+   |:----------|:------------|:-------------------|
+   | 2450123.7 |         0.0 | JD method          |
+   | 2451545.0 |     -1421.3 | J2000 method       |
+   | 2400000.5 |     50123.2 | MJD method         |
+   | 2450123.5 |         0.2 | date & time method |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -118,23 +118,23 @@ transformation chain.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) All the vectors are with respect to BCRS axes.
+2. All the vectors are with respect to BCRS axes.
 
-3) This is one of several functions that inserts into the astrom
+3. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -147,12 +147,12 @@ transformation chain.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-4) The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+4. The context structure astrom produced by this function is used by
+   `eraAtciq` and `eraAticq`.
 
 ### Called ###
 
-* `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
+- `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
 
 """
 function apcg(date1, date2, ebpv, ehp)
@@ -188,7 +188,7 @@ transformation chain.
     * `eh`: Sun to observer (unit vector)
     * `em`: Distance from Sun to observer (au)
     * `v`: Barycentric observer velocity (vector, c)
-    * `bm1`: ``\sqrt(1-|v|^2)`` Reciprocal of Lorenz factor
+    * `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     * `bpn`: Bias-precession-nutation matrix
     * `along`: unchanged
     * `xpl`: unchanged

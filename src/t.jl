@@ -248,7 +248,7 @@ for name in ("taiut1",
              "tttdb",
              "ttut1")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b, c)
             r1 = Ref(0.0)
@@ -542,7 +542,7 @@ for name in ("taitt",
              "tttai",
              "tttcg")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             r1 = Ref(0.0)
@@ -617,7 +617,7 @@ tf2d
 for name in ("tf2a",
              "tf2d")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(s, ideg, iamin, asec)
             rad = Ref(0.0)

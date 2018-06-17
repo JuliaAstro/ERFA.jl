@@ -233,7 +233,7 @@ bp06
 for name in ("bp00",
              "bp06")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             rb = zeros((3, 3))

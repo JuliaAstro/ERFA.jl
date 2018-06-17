@@ -349,7 +349,7 @@ for name in ("rx",
              "ry",
              "rz")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, r)
             ccall(($fc, liberfa), Cvoid,

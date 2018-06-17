@@ -2,7 +2,7 @@ using ERFA
 
 using Compat.Test
 
-# @testset "ERFA" begin
+@testset "ERFA" begin
     # @testset "Calendar Tools" begin
         u1, u2 = ERFA.dtf2d("UTC", 2010, 7, 24, 11, 18, 7.318)
         a1, a2 = ERFA.utctai(u1, u2)
@@ -93,10 +93,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.4110930268679817955, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.1782189004872870264, atol = 1e-12)
         @test isapprox(astrom.em, 1.010465295811013146, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.4289638897813379954e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], 0.8115034021720941898e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], 0.3517555123437237778e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999951686013336, atol = 1e-15)
+        @test isapprox(astrom.v[1], 0.4289638913597693554e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], 0.8115034051581320575e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], 0.3517555136380563427e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999951686012981, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 1.0, atol = 1e-10)
         @test isapprox(astrom.bpn[4], 0.0, atol = 1e-10)
         @test isapprox(astrom.bpn[7], 0.0, atol = 1e-10)
@@ -121,10 +121,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.4110930268331896318, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.1782189006019749850, atol = 1e-12)
         @test isapprox(astrom.em, 1.010465295964664178, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.4289638897157027528e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], 0.8115034002544663526e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], 0.3517555122593144633e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999951686013498, atol = 1e-12)
+        @test isapprox(astrom.v[1], 0.4289638912941341125e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], 0.8115034032405042132e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], 0.3517555135536470279e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999951686013142, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 1.0, atol = 1e-10)
         @test isapprox(astrom.bpn[4], 0.0, atol = 1e-10)
         @test isapprox(astrom.bpn[7], 0.0, atol = 1e-10)
@@ -155,10 +155,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.4110930268679817955, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.1782189004872870264, atol = 1e-12)
         @test isapprox(astrom.em, 1.010465295811013146, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.4289638897813379954e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], 0.8115034021720941898e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], 0.3517555123437237778e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999951686013336, atol = 1e-12)
+        @test isapprox(astrom.v[1], 0.4289638913597693554e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], 0.8115034051581320575e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], 0.3517555136380563427e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999951686012981, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 0.9999991390295159156, atol = 1e-12)
         @test isapprox(astrom.bpn[4], 0.4978650072505016932e-7, atol = 1e-12)
         @test isapprox(astrom.bpn[7], 0.1312227200000000000e-2, atol = 1e-12)
@@ -183,10 +183,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.4110930268331896318, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.1782189006019749850, atol = 1e-12)
         @test isapprox(astrom.em, 1.010465295964664178, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.4289638897157027528e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], 0.8115034002544663526e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], 0.3517555122593144633e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999951686013498, atol = 1e-12)
+        @test isapprox(astrom.v[1], 0.4289638912941341125e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], 0.8115034032405042132e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], 0.3517555135536470279e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999951686013142, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 0.9999992060376761710, atol = 1e-12)
         @test isapprox(astrom.bpn[4], 0.4124244860106037157e-7, atol = 1e-12)
         @test isapprox(astrom.bpn[7], 0.1260128571051709670e-2, atol = 1e-12)
@@ -227,10 +227,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.2092452125848862201, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.09075578152261439954, atol = 1e-12)
         @test isapprox(astrom.em, 0.9998233241710617934, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.2078704985147609823e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], -0.8955360074407552709e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], -0.3863338980073114703e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999950277561600, atol = 1e-12)
+        @test isapprox(astrom.v[1], 0.2078704992916728762e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], -0.8955360107151952319e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], -0.3863338994288951082e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999950277561236, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 0.9999991390295159156, atol = 1e-12)
         @test isapprox(astrom.bpn[4], 0.4978650072505016932e-7, atol = 1e-12)
         @test isapprox(astrom.bpn[7], 0.1312227200000000000e-2, atol = 1e-12)
@@ -275,10 +275,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.2092452121602867431, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.09075578153903832650, atol = 1e-12)
         @test isapprox(astrom.em, 0.9998233240914558422, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.2078704986751370303e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], -0.8955360100494469232e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], -0.3863338978840051024e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999950277561368, atol = 1e-12)
+        @test isapprox(astrom.v[1], 0.2078704994520489246e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], -0.8955360133238868938e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], -0.3863338993055887398e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999950277561004, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 0.9999991390295147999, atol = 1e-12)
         @test isapprox(astrom.bpn[4], 0.4978650075315529277e-7, atol = 1e-12)
         @test isapprox(astrom.bpn[7], 0.001312227200850293372, atol = 1e-12)
@@ -318,10 +318,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.2092452125849967195, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.09075578152266466572, atol = 1e-12)
         @test isapprox(astrom.em, 0.9998233241710457140, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.2078704985513566571e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], -0.8955360074245006073e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], -0.3863338980073572719e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999950277561601, atol = 1e-12)
+        @test isapprox(astrom.v[1], 0.2078704993282685510e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], -0.8955360106989405683e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], -0.3863338994289409097e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999950277561237, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 1, atol = 1e-10)
         @test isapprox(astrom.bpn[4], 0, atol = 1e-10)
         @test isapprox(astrom.bpn[7], 0, atol = 1e-10)
@@ -348,10 +348,10 @@ using Compat.Test
         @test isapprox(astrom.eh[2], -0.4111053891734599955, atol = 1e-12)
         @test isapprox(astrom.eh[3], -0.1782336880637689334, atol = 1e-12)
         @test isapprox(astrom.em, 1.010428384373318379, atol = 1e-12)
-        @test isapprox(astrom.v[1], 0.4279877278327626511e-4, atol = 1e-16)
-        @test isapprox(astrom.v[2], 0.7963255057040027770e-4, atol = 1e-16)
-        @test isapprox(astrom.v[3], 0.3517564000441374759e-4, atol = 1e-16)
-        @test isapprox(astrom.bm1, 0.9999999952947981330, atol = 1e-12)
+        @test isapprox(astrom.v[1], 0.4279877294121697570e-4, atol = 1e-16)
+        @test isapprox(astrom.v[2], 0.7963255087052120678e-4, atol = 1e-16)
+        @test isapprox(astrom.v[3], 0.3517564013384691531e-4, atol = 1e-16)
+        @test isapprox(astrom.bm1, 0.9999999952947980978, atol = 1e-12)
         @test isapprox(astrom.bpn[1], 1, atol = 1e-10)
         @test isapprox(astrom.bpn[4], 0, atol = 1e-10)
         @test isapprox(astrom.bpn[7], 0, atol = 1e-10)
@@ -1836,11 +1836,11 @@ using Compat.Test
         ep2b = 51544.5
         ra2, dec2, pmr2, pmd2, px2, rv2 = ERFA.pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
         @test isapprox(ra2, 1.234087484501017061, atol = 1e-12)
-        @test isapprox(dec2, 0.7888249982450468574, atol = 1e-12)
+        @test isapprox(dec2, 0.7888249982450468567, atol = 1e-12)
         @test isapprox(pmr2, 0.9996457663586073988e-5, atol = 1e-12)
-        @test isapprox(pmd2, -0.2000040085106737816e-4, atol = 1e-16)
-        @test isapprox(px2, 0.9999997295356765185e-2, atol = 1e-12)
-        @test isapprox(rv2, 10.38468380113917014, atol = 1e-10)
+        @test isapprox(pmd2, -0.2000040085106754565e-4, atol = 1e-16)
+        @test isapprox(px2, 0.9999997295356830666e-2, atol = 1e-12)
+        @test isapprox(rv2, 10.38468380293920069, atol = 1e-10)
     # end
 
     # ERFA.pmat00
@@ -2351,10 +2351,10 @@ using Compat.Test
         ra, dec, pmr, pmd, px, rv = ERFA.pvstar(pv)
         @test isapprox(ra, 0.1686756e-1, atol = 1e-12)
         @test isapprox(dec, -1.093989828, atol = 1e-12)
-        @test isapprox(pmr, -0.178323516e-4, atol = 1e-16)
-        @test isapprox(pmd, 0.2336024047e-5, atol = 1e-16)
+        @test isapprox(pmr, -0.1783235160000472788e-4, atol = 1e-16)
+        @test isapprox(pmd, 0.2336024047000619347e-5, atol = 1e-16)
         @test isapprox(px, 0.74723, atol = 1e-12)
-        @test isapprox(rv, -21.6, atol = 1e-11)
+        @test isapprox(rv, -21.60000010107306010, atol = 1e-11)
     # end
 
     # ERFA.pvtob
@@ -2651,12 +2651,12 @@ using Compat.Test
         rv1 = -21.6
         ra2, dec2, pmr2, pmd2, px2, rv2 = ERFA.starpm(ra1, dec1, pmr1, pmd1, px1, rv1,
                                                       2400000.5, 50083.0, 2400000.5, 53736.0)
-        @test isapprox(ra2, 0.01668919069414242368, atol = 1e-13)
-        @test isapprox(dec2, -1.093966454217127879, atol = 1e-13)
-        @test isapprox(pmr2, -0.1783662682155932702e-4, atol = 1e-17)
-        @test isapprox(pmd2, 0.2338092915987603664e-5, atol = 1e-17)
-        @test isapprox(px2, 0.7473533835323493644, atol = 1e-13)
-        @test isapprox(rv2, -21.59905170476860786, atol = 1e-11)
+        @test isapprox(ra2, 0.01668919069414256149, atol = 1e-13)
+        @test isapprox(dec2, -1.093966454217127897, atol = 1e-13)
+        @test isapprox(pmr2, -0.1783662682153176524e-4, atol = 1e-17)
+        @test isapprox(pmd2, 0.2338092915983989595e-5, atol = 1e-17)
+        @test isapprox(px2, 0.7473533835317719243, atol = 1e-13)
+        @test isapprox(rv2, -21.59905170476417175, atol = 1e-11)
     # end
 
     # ERFA.starpv
@@ -2671,9 +2671,9 @@ using Compat.Test
         @test isapprox(pv[1], 126668.5912743160601, atol = 1e-10)
         @test isapprox(pv[2], 2136.792716839935195, atol = 1e-12)
         @test isapprox(pv[3], -245251.2339876830091, atol = 1e-10)
-        @test isapprox(pv[4], -0.4051854035740712739e-2, atol = 1e-13)
-        @test isapprox(pv[5], -0.6253919754866173866e-2, atol = 1e-15)
-        @test isapprox(pv[6], 0.1189353719774107189e-1, atol = 1e-13)
+        @test isapprox(pv[4], -0.4051854008955659551e-2, atol = 1e-13)
+        @test isapprox(pv[5], -0.6253919754414777970e-2, atol = 1e-15)
+        @test isapprox(pv[6], 0.1189353714588109341e-1, atol = 1e-13)
     # end
 
     # ERFA.sxp
@@ -3012,5 +3012,4 @@ using Compat.Test
         @test isapprox(dl, 0.5039483649047114859, atol = 1e-14)
         @test isapprox(db, 0.5848534459726224882, atol = 1e-14)
     # end
-# end
-
+end

@@ -363,7 +363,7 @@ for name in ("ltecm",
              "ltp",
              "ltpb")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj)
             rp = zeros((3, 3))
@@ -454,7 +454,7 @@ ltpequ
 for name in ("ltpecl",
              "ltpequ")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj)
             vec = zeros(3)
@@ -576,7 +576,7 @@ lteqec
 for name in ("lteceq",
              "lteqec")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj, d1, d2)
             r1 = [0.0]

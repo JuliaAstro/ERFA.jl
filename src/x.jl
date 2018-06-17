@@ -280,7 +280,7 @@ for name in ("xys00a",
              "xys00b",
              "xys06a")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(date1, date2)
             x = Ref(0.0)

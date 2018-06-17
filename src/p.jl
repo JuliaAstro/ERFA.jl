@@ -1427,7 +1427,7 @@ pn06
 for name in ("pn00",
              "pn06")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(date1, date2, dpsi, deps)
             epsa = Ref(0.0)
@@ -1514,7 +1514,7 @@ for name in ("pmp",
              "ppp",
              "pxp")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             ab = zeros(3)
@@ -1615,7 +1615,7 @@ for name in ("pvmpv",
              "pvppv",
              "pvxpv")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             ab = zeros((2, 3))
@@ -1906,7 +1906,7 @@ for name in ("pn00a",
              "pn00b",
              "pn06a")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(date1, date2)
             dpsi = Ref(0.0)
@@ -2007,7 +2007,7 @@ p-vector inner (=scalar=dot) product.
 
 ### Returned ###
 
-- ``a \cdot b``
+- ``a \\cdot b``
 
 """
 pdp
@@ -2015,7 +2015,7 @@ pdp
 for name in ("pap",
              "pdp")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             ccall(($fc, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
@@ -2502,7 +2502,7 @@ for name in ("pmat00",
              "pnm06a",
              "pnm80")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             r = zeros((3, 3))

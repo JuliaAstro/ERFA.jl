@@ -674,7 +674,7 @@ for name in ("fad03",
              "faur03",
              "fave03")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval ($f)(d) = ccall(($fc, liberfa), Cdouble, (Cdouble,), d)
 end
 

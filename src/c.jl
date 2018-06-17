@@ -273,7 +273,7 @@ c2teqx
 for name in ("c2tcio",
              "c2teqx")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(rc2i, era, rpom)
             rc2t = zeros((3, 3))
@@ -514,7 +514,7 @@ for name in ("c2t00a",
              "c2t00b",
              "c2t06a")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(tta, ttb, uta, utb, xp, yp)
             rc2t = zeros((3, 3))
@@ -693,7 +693,7 @@ c2txy
 for name in ("c2tpe",
              "c2txy")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(tta, ttb, uta, utb, x, y, xp, yp)
             rc2t = zeros((3, 3))
@@ -913,7 +913,7 @@ for name in ("c2i00a",
              "c2i00b",
              "c2i06a")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             r = zeros((3, 3))

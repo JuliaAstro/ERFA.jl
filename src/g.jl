@@ -17,21 +17,21 @@ reference ellipsoid.
 
 ### Notes ###
 
-1) The identifier n is a number that specifies the choice of
+1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
         - `WGS84`
         - `GRS80`
         - `WGS72`
 
-2) The geocentric vector (xyz, given) and height (height, returned)
+2. The geocentric vector (xyz, given) and height (height, returned)
    are in meters.
 
-3) An error status -1 means that the identifier n is illegal.  An
+3. An error status -1 means that the identifier n is illegal.  An
    error status -2 is theoretically impossible.  In all error cases,
    all three results are set to -1e9.
 
-4) The inverse transformation is performed in the function eraGd2gc.
+4. The inverse transformation is performed in the function eraGd2gc.
 
 ### Called ###
 
@@ -74,26 +74,26 @@ ellipsoid of specified form.
 
 ### Notes ###
 
-1) This function is based on the GCONV2H Fortran subroutine by
+1. This function is based on the GCONV2H Fortran subroutine by
    Toshio Fukushima (see reference).
 
-2) The equatorial radius, a, can be in any units, but meters is
+2. The equatorial radius, a, can be in any units, but meters is
    the conventional choice.
 
-3) The flattening, f, is (for the Earth) a value around 0.00335,
+3. The flattening, f, is (for the Earth) a value around 0.00335,
    i.e. around 1/298.
 
-4) The equatorial radius, a, and the geocentric vector, xyz,
+4. The equatorial radius, a, and the geocentric vector, xyz,
    must be given in the same units, and determine the units of
    the returned height, height.
 
-5) If an error occurs (status < 0), elong, phi and height are
+5. If an error occurs (status < 0), elong, phi and height are
    unchanged.
 
-6) The inverse transformation is performed in the function
+6. The inverse transformation is performed in the function
    eraGd2gce.
 
-7) The transformation for a standard ellipsoid (such as ERFA_WGS84) can
+7. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
    more conveniently be performed by calling eraGc2gd, which uses a
    numerical code to identify the required A and F values.
 
@@ -138,7 +138,7 @@ reference ellipsoid.
 
 ### Notes ###
 
-1) The identifier n is a number that specifies the choice of
+1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
       n    ellipsoid
@@ -150,16 +150,16 @@ reference ellipsoid.
    The n value has no significance outside the ERFA software.  For
    convenience, symbols ERFA_WGS84 etc. are defined in erfam.h.
 
-2) The height (height, given) and the geocentric vector (xyz,
+2. The height (height, given) and the geocentric vector (xyz,
    returned) are in meters.
 
-3) No validation is performed on the arguments elong, phi and
+3. No validation is performed on the arguments elong, phi and
    height.  An error status -1 means that the identifier n is
    illegal.  An error status -2 protects against cases that would
    lead to arithmetic exceptions.  In all error cases, xyz is set
    to zeros.
 
-4) The inverse transformation is performed in the function eraGc2gd.
+4. The inverse transformation is performed in the function eraGc2gd.
 
 ### Called ###
 
@@ -201,24 +201,24 @@ ellipsoid of specified form.
 
 ### Notes ###
 
-1) The equatorial radius, a, can be in any units, but meters is
+1. The equatorial radius, a, can be in any units, but meters is
    the conventional choice.
 
-2) The flattening, f, is (for the Earth) a value around 0.00335,
+2. The flattening, f, is (for the Earth) a value around 0.00335,
    i.e. around 1/298.
 
-3) The equatorial radius, a, and the height, height, must be
+3. The equatorial radius, a, and the height, height, must be
    given in the same units, and determine the units of the
    returned geocentric vector, xyz.
 
-4) No validation is performed on individual arguments.  The error
+4. No validation is performed on individual arguments.  The error
    status -1 protects against (unrealistic) cases that would lead
    to arithmetic exceptions.  If an error occurs, xyz is unchanged.
 
-5) The inverse transformation is performed in the function
+5. The inverse transformation is performed in the function
    eraGc2gde.
 
-6) The transformation for a standard ellipsoid (such as ERFA_WGS84) can
+6. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
    more conveniently be performed by calling eraGd2gc,  which uses a
    numerical code to identify the required a and f values.
 
@@ -260,7 +260,7 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
 ### Notes ###
 
-1) The UT1 and TT dates uta+utb and tta+ttb respectively, are both
+1. The UT1 and TT dates uta+utb and tta+ttb respectively, are both
    Julian Dates, apportioned in any convenient way between the
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
@@ -283,16 +283,16 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
    question and the utb argument lies in the range 0 to 1, or vice
    versa.
 
-2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+2. Both UT1 and TT are required, UT1 to predict the Earth rotation
    and TT to predict the effects of precession-nutation.  If UT1 is
    used for both purposes, errors of order 100 microarcseconds
    result.
 
-3) Although the function uses the IAU 2006 series for s+XY/2, it is
+3. Although the function uses the IAU 2006 series for s+XY/2, it is
    otherwise independent of the precession-nutation model and can in
    practice be used with any equinox-based NPB matrix.
 
-4) The result is returned in the range 0 to 2pi.
+4. The result is returned in the range 0 to 2pi.
 
 ### Called ###
 
@@ -328,7 +328,7 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
 ### Notes ###
 
-1) The UT1 date dj1+dj2 is a Julian Date, apportioned in any
+1. The UT1 date dj1+dj2 is a Julian Date, apportioned in any
    convenient way between the arguments dj1 and dj2.  For example,
    JD(UT1)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -349,14 +349,14 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
    0hrs UT1 on the day in question and the dj2 argument lies in the
    range 0 to 1, or vice versa.
 
-2) The algorithm is based on the IAU 1982 expression.  This is
+2. The algorithm is based on the IAU 1982 expression.  This is
    always described as giving the GMST at 0 hours UT1.  In fact, it
    gives the difference between the GMST and the UT, the steady
    4-minutes-per-day drawing-ahead of ST with respect to UT.  When
    whole days are ignored, the expression happens to equal the GMST
    at 0 hours UT1 each day.
 
-3) In this function, the entire UT1 (the sum of the two arguments
+3. In this function, the entire UT1 (the sum of the two arguments
    dj1 and dj2) is used directly as the argument for the standard
    formula, the constant term of which is adjusted by 12 hours to
    take account of the noon phasing of Julian Date.  The UT1 is then
@@ -392,7 +392,7 @@ resolutions but using the truncated nutation model IAU 2000B).
 
 ### Notes ###
 
-1) The UT1 date uta+utb is a Julian Date, apportioned in any
+1. The UT1 date uta+utb is a Julian Date, apportioned in any
    convenient way between the argument pair.  For example,
    JD=2450123.7 could be expressed in any of these ways, among
    others:
@@ -414,7 +414,7 @@ resolutions but using the truncated nutation model IAU 2000B).
    question and the utb argument lies in the range 0 to 1, or vice
    versa.
 
-2) The result is compatible with the IAU 2000 resolutions, except
+2. The result is compatible with the IAU 2000 resolutions, except
    that accuracy has been compromised for the sake of speed and
    convenience in two respects:
 
@@ -425,13 +425,13 @@ resolutions but using the truncated nutation model IAU 2000B).
    . The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
      is used, introducing errors of up to 1 mas.
 
-3) This GAST is compatible with the IAU 2000 resolutions and must be
+3. This GAST is compatible with the IAU 2000 resolutions and must be
    used only in conjunction with other IAU 2000 compatible
    components such as precession-nutation.
 
-4) The result is returned in the range 0 to 2pi.
+4. The result is returned in the range 0 to 2pi.
 
-5) The algorithm is from Capitaine et al. (2003) and IERS
+5. The algorithm is from Capitaine et al. (2003) and IERS
    Conventions 2003.
 
 ### Called ###
@@ -472,7 +472,7 @@ resolutions).
 
 ### Notes ###
 
-1) The UT1 date uta+utb is a Julian Date, apportioned in any
+1. The UT1 date uta+utb is a Julian Date, apportioned in any
    convenient way between the argument pair.  For example,
    JD=2450123.7 could be expressed in any of these ways, among
    others:
@@ -494,16 +494,16 @@ resolutions).
    question and the utb argument lies in the range 0 to 1, or vice
    versa.
 
-2) The result is compatible with the IAU 1982 and 1994 resolutions,
+2. The result is compatible with the IAU 1982 and 1994 resolutions,
    except that accuracy has been compromised for the sake of
    convenience in that UT is used instead of TDB (or TT) to compute
    the equation of the equinoxes.
 
-3) This GAST must be used only in conjunction with contemporaneous
+3. This GAST must be used only in conjunction with contemporaneous
    IAU standards such as 1976 precession, 1980 obliquity and 1982
    nutation.  It is not compatible with the IAU 2000 resolutions.
 
-4) The result is returned in the range 0 to 2pi.
+4. The result is returned in the range 0 to 2pi.
 
 ### Called ###
 
@@ -546,7 +546,7 @@ resolutions).
 
 ### Notes ###
 
-1) The UT1 and TT dates uta+utb and tta+ttb respectively, are both
+1. The UT1 and TT dates uta+utb and tta+ttb respectively, are both
    Julian Dates, apportioned in any convenient way between the
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
@@ -569,18 +569,18 @@ resolutions).
    question and the utb argument lies in the range 0 to 1, or vice
    versa.
 
-2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+2. Both UT1 and TT are required, UT1 to predict the Earth rotation
    and TT to predict the effects of precession.  If UT1 is used for
    both purposes, errors of order 100 microarcseconds result.
 
-3) This GMST is compatible with the IAU 2000 resolutions and must be
+3. This GMST is compatible with the IAU 2000 resolutions and must be
    used only in conjunction with other IAU 2000 compatible
    components such as precession-nutation and equation of the
    equinoxes.
 
-4) The result is returned in the range 0 to 2pi.
+4. The result is returned in the range 0 to 2pi.
 
-5) The algorithm is from Capitaine et al. (2003) and IERS
+5. The algorithm is from Capitaine et al. (2003) and IERS
    Conventions 2003.
 
 ### Called ###
@@ -616,7 +616,7 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 
 ### Notes ###
 
-1) The UT1 and TT dates uta+utb and tta+ttb respectively, are both
+1. The UT1 and TT dates uta+utb and tta+ttb respectively, are both
    Julian Dates, apportioned in any convenient way between the
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
@@ -639,14 +639,14 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
    question and the utb argument lies in the range 0 to 1, or vice
    versa.
 
-2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+2. Both UT1 and TT are required, UT1 to predict the Earth rotation
    and TT to predict the effects of precession.  If UT1 is used for
    both purposes, errors of order 100 microarcseconds result.
 
-3) This GMST is compatible with the IAU 2006 precession and must not
+3. This GMST is compatible with the IAU 2006 precession and must not
    be used with other precession models.
 
-4) The result is returned in the range 0 to 2pi.
+4. The result is returned in the range 0 to 2pi.
 
 ### Called ###
 
@@ -678,7 +678,7 @@ resolutions).
 
 ### Notes ###
 
-1) The UT1 and TT dates uta+utb and tta+ttb respectively, are both
+1. The UT1 and TT dates uta+utb and tta+ttb respectively, are both
    Julian Dates, apportioned in any convenient way between the
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
@@ -701,18 +701,18 @@ resolutions).
    question and the utb argument lies in the range 0 to 1, or vice
    versa.
 
-2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+2. Both UT1 and TT are required, UT1 to predict the Earth rotation
    and TT to predict the effects of precession-nutation.  If UT1 is
    used for both purposes, errors of order 100 microarcseconds
    result.
 
-3) This GAST is compatible with the IAU 2000 resolutions and must be
+3. This GAST is compatible with the IAU 2000 resolutions and must be
    used only in conjunction with other IAU 2000 compatible
    components such as precession-nutation.
 
-4) The result is returned in the range 0 to 2pi.
+4. The result is returned in the range 0 to 2pi.
 
-5) The algorithm is from Capitaine et al. (2003) and IERS
+5. The algorithm is from Capitaine et al. (2003) and IERS
    Conventions 2003.
 
 ### Called ###
@@ -750,7 +750,7 @@ resolutions).
 
 ### Notes ###
 
-1) The UT1 and TT dates uta+utb and tta+ttb respectively, are both
+1. The UT1 and TT dates uta+utb and tta+ttb respectively, are both
    Julian Dates, apportioned in any convenient way between the
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
@@ -773,16 +773,16 @@ resolutions).
    question and the utb argument lies in the range 0 to 1, or vice
    versa.
 
-2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+2. Both UT1 and TT are required, UT1 to predict the Earth rotation
    and TT to predict the effects of precession-nutation.  If UT1 is
    used for both purposes, errors of order 100 microarcseconds
    result.
 
-3) This GAST is compatible with the IAU 2000/2006 resolutions and
+3. This GAST is compatible with the IAU 2000/2006 resolutions and
    must be used only in conjunction with IAU 2006 precession and
    IAU 2000A nutation.
 
-4) The result is returned in the range 0 to 2pi.
+4. The result is returned in the range 0 to 2pi.
 
 ### Called ###
 
@@ -822,7 +822,7 @@ Transformation from Galactic Coordinates to ICRS.
 
 ### Notes ###
 
-1) The IAU 1958 system of Galactic coordinates was defined with
+1. The IAU 1958 system of Galactic coordinates was defined with
    respect to the now obsolete reference system FK4 B1950.0.  When
    interpreting the system in a modern context, several factors have
    to be taken into account:
@@ -850,7 +850,7 @@ Transformation from Galactic Coordinates to ICRS.
    recomputed from the canonical three angles and are given to 30
    decimal places.
 
-2) The inverse transformation is performed by the function eraIcrs2g.
+2. The inverse transformation is performed by the function eraIcrs2g.
 
 ### Called ###
 

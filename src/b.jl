@@ -11,18 +11,18 @@ of MHB2000 with additions).
 
 ### Notes ###
 
-1) The frame bias corrections in longitude and obliquity (radians)
+1. The frame bias corrections in longitude and obliquity (radians)
    are required in order to correct for the offset between the GCRS
    pole and the mean J2000.0 pole.  They define, with respect to the
    GCRS frame, a J2000.0 mean pole that is consistent with the rest
    of the IAU 2000A precession-nutation model.
 
-2) In addition to the displacement of the pole, the complete
+2. In addition to the displacement of the pole, the complete
    description of the frame bias requires also an offset in right
    ascension.  This is not part of the IAU 2000A model, and is from
    Chapront et al. (2002).  It is returned in radians.
 
-3) This is a supplemented implementation of one aspect of the IAU
+3. This is a supplemented implementation of one aspect of the IAU
    2000A nutation model, formally adopted by the IAU General
    Assembly in 2000, namely MHB2000 (Mathews et al. 2002).
 
@@ -64,11 +64,11 @@ of the Celestial Intermediate Pole.
 
 ### Notes ###
 
-1) The matrix rbpn transforms vectors from GCRS to true equator (and
+1. The matrix rbpn transforms vectors from GCRS to true equator (and
    CIO or equinox) of date, and therefore the Celestial Intermediate
    Pole unit vector is the bottom row of the matrix.
 
-2) The arguments x,y are components of the Celestial Intermediate
+2. The arguments x,y are components of the Celestial Intermediate
    Pole unit vector in the Geocentric Celestial Reference System.
 
 ### Reference ###
@@ -108,7 +108,7 @@ Frame bias and precession, IAU 2000.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -127,18 +127,18 @@ Frame bias and precession, IAU 2000.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix rb transforms vectors from GCRS to mean J2000.0 by
+2. The matrix rb transforms vectors from GCRS to mean J2000.0 by
    applying frame bias.
 
-3) The matrix rp transforms vectors from J2000.0 mean equator and
+3. The matrix rp transforms vectors from J2000.0 mean equator and
    equinox to mean equator and equinox of date by applying
    precession.
 
-4) The matrix rbp transforms vectors from GCRS to mean equator and
+4. The matrix rbp transforms vectors from GCRS to mean equator and
    equinox of date by applying frame bias then precession.  It is
    the product rp x rb.
 
-5) It is permissible to re-use the same array in the returned
+5. It is permissible to re-use the same array in the returned
    arguments.  The arrays are filled in the order given.
 
 ### Called ###
@@ -181,7 +181,7 @@ Frame bias and precession, IAU 2006.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -200,16 +200,16 @@ Frame bias and precession, IAU 2006.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix rb transforms vectors from GCRS to mean J2000.0 by
+2. The matrix rb transforms vectors from GCRS to mean J2000.0 by
    applying frame bias.
 
-3) The matrix rp transforms vectors from mean J2000.0 to mean of
+3. The matrix rp transforms vectors from mean J2000.0 to mean of
    date by applying precession.
 
-4) The matrix rbp transforms vectors from GCRS to mean of date by
+4. The matrix rbp transforms vectors from GCRS to mean of date by
    applying frame bias then precession.  It is the product rp x rb.
 
-5) It is permissible to re-use the same array in the returned
+5. It is permissible to re-use the same array in the returned
    arguments.  The arrays are filled in the order given.
 
 ### Called ###

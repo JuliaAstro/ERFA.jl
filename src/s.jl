@@ -138,7 +138,7 @@ Star proper motion:  update star catalog data for space motion.
 
 ### Notes ###
 
-1) The starting and ending TDB dates ep1a+ep1b and ep2a+ep2b are
+1. The starting and ending TDB dates ep1a+ep1b and ep2a+ep2b are
    Julian Dates, apportioned in any convenient way between the two
    parts (A and B).  For example, JD(TDB)=2450123.7 could be
    expressed in any of these ways, among others:
@@ -157,7 +157,7 @@ Star proper motion:  update star catalog data for space motion.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) In accordance with normal star-catalog conventions, the object's
+2. In accordance with normal star-catalog conventions, the object's
    right ascension and declination are freed from the effects of
    secular aberration.  The frame, which is aligned to the catalog
    equator and equinox, is Lorentzian and centered on the SSB.
@@ -168,29 +168,29 @@ Star proper motion:  update star catalog data for space motion.
 
    The parallax and radial velocity are in the same frame.
 
-3) Care is needed with units.  The star coordinates are in radians
+3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the
    parallax is in arcseconds.
 
-4) The RA proper motion is in terms of coordinate angle, not true
+4. The RA proper motion is in terms of coordinate angle, not true
    angle.  If the catalog uses arcseconds for both RA and Dec proper
    motions, the RA proper motion will need to be divided by cos(Dec)
    before use.
 
-5) Straight-line motion at constant speed, in the inertial frame,
+5. Straight-line motion at constant speed, in the inertial frame,
    is assumed.
 
-6) An extremely small (or zero or negative) parallax is interpreted
+6. An extremely small (or zero or negative) parallax is interpreted
    to mean that the object is on the "celestial sphere", the radius
    of which is an arbitrary (large) value (see the eraStarpv
    function for the value used).  When the distance is overridden in
    this way, the status, initially zero, has 1 added to it.
 
-7) If the space velocity is a significant fraction of c (see the
+7. If the space velocity is a significant fraction of c (see the
    constant VMAX in the function eraStarpv), it is arbitrarily set
    to zero.  When this action occurs, 2 is added to the status.
 
-8) The relativistic adjustment carried out in the eraStarpv function
+8. The relativistic adjustment carried out in the eraStarpv function
    involves an iterative calculation.  If the process fails to
    converge within a set number of iterations, 4 is added to the
    status.
@@ -248,7 +248,7 @@ Convert star catalog coordinates to position+velocity vector.
 
 ### Notes ###
 
-1) The star data accepted by this function are "observables" for an
+1. The star data accepted by this function are "observables" for an
    imaginary observer at the solar-system barycenter.  Proper motion
    and radial velocity are, strictly, in terms of barycentric
    coordinate time, TCB.  For most practical applications, it is
@@ -264,7 +264,7 @@ Convert star catalog coordinates to position+velocity vector.
    secular aberration.  The frame, which is aligned to the catalog
    equator and equinox, is Lorentzian and centered on the SSB.
 
-2) The resulting position and velocity pv-vector is with respect to
+2. The resulting position and velocity pv-vector is with respect to
    the same frame and, like the catalog coordinates, is freed from
    the effects of secular aberration.  Should the "coordinate
    direction", where the object was located at the catalog epoch, be
@@ -286,34 +286,34 @@ Convert star catalog coordinates to position+velocity vector.
 
    (ii) The transformation complies with special relativity.
 
-3) Care is needed with units.  The star coordinates are in radians
+3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the
    parallax is in arcseconds; the radial velocity is in km/s, but
    the pv-vector result is in au and au/day.
 
-4) The RA proper motion is in terms of coordinate angle, not true
+4. The RA proper motion is in terms of coordinate angle, not true
    angle.  If the catalog uses arcseconds for both RA and Dec proper
    motions, the RA proper motion will need to be divided by cos(Dec)
    before use.
 
-5) Straight-line motion at constant speed, in the inertial frame,
+5. Straight-line motion at constant speed, in the inertial frame,
    is assumed.
 
-6) An extremely small (or zero or negative) parallax is interpreted
+6. An extremely small (or zero or negative) parallax is interpreted
    to mean that the object is on the "celestial sphere", the radius
    of which is an arbitrary (large) value (see the constant PXMIN).
    When the distance is overridden in this way, the status,
    initially zero, has 1 added to it.
 
-7) If the space velocity is a significant fraction of c (see the
+7. If the space velocity is a significant fraction of c (see the
    constant VMAX), it is arbitrarily set to zero.  When this action
    occurs, 2 is added to the status.
 
-8) The relativistic adjustment involves an iterative calculation.
+8. The relativistic adjustment involves an iterative calculation.
    If the process fails to converge within a set number (IMAX) of
    iterations, 4 is added to the status.
 
-9) The inverse transformation is performed by the function
+9. The inverse transformation is performed by the function
    eraPvstar.
 
 ### Called ###
@@ -449,9 +449,9 @@ Angular separation between two p-vectors.
 
 ### Notes ###
 
-1) If either vector is null, a zero result is returned.
+1. If either vector is null, a zero result is returned.
 
-2) The angular separation is most simply formulated in terms of
+2. The angular separation is most simply formulated in terms of
    scalar product.  However, this gives poor accuracy for angles
    near zero and pi.  The present algorithm uses both cross product
    and dot product, to deliver full accuracy whatever the size of
@@ -485,7 +485,7 @@ precession-nutation model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -504,13 +504,13 @@ precession-nutation model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The CIO locator s is the difference between the right ascensions
+2. The CIO locator s is the difference between the right ascensions
    of the same point in two systems.  The two systems are the GCRS
    and the CIP,CIO, and the point is the ascending node of the
    CIP equator.  The CIO locator s remains a small fraction of
    1 arcsecond throughout 1900-2100.
 
-3) The series used to compute s is in fact for s+XY/2, where X and Y
+3. The series used to compute s is in fact for s+XY/2, where X and Y
    are the x and y components of the CIP unit vector;  this series
    is more compact than a direct series for s would be.  The present
    function uses the full IAU 2000A nutation model when predicting
@@ -557,7 +557,7 @@ precession-nutation model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -576,13 +576,13 @@ precession-nutation model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The CIO locator s is the difference between the right ascensions
+2. The CIO locator s is the difference between the right ascensions
    of the same point in two systems.  The two systems are the GCRS
    and the CIP,CIO, and the point is the ascending node of the
    CIP equator.  The CIO locator s remains a small fraction of
    1 arcsecond throughout 1900-2100.
 
-3) The series used to compute s is in fact for s+XY/2, where X and Y
+3. The series used to compute s is in fact for s+XY/2, where X and Y
    are the x and y components of the CIP unit vector;  this series
    is more compact than a direct series for s would be.  The present
    function uses the IAU 2000B truncated nutation model when
@@ -629,7 +629,7 @@ precession and IAU 2000A nutation models.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -648,13 +648,13 @@ precession and IAU 2000A nutation models.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The CIO locator s is the difference between the right ascensions
+2. The CIO locator s is the difference between the right ascensions
    of the same point in two systems.  The two systems are the GCRS
    and the CIP,CIO, and the point is the ascending node of the
    CIP equator.  The CIO locator s remains a small fraction of
    1 arcsecond throughout 1900-2100.
 
-3) The series used to compute s is in fact for s+XY/2, where X and Y
+3. The series used to compute s is in fact for s+XY/2, where X and Y
    are the x and y components of the CIP unit vector;  this series is
    more compact than a direct series for s would be.  The present
    function uses the full IAU 2000A nutation model when predicting
@@ -702,7 +702,7 @@ on the equator of the Celestial Intermediate Pole.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -721,7 +721,7 @@ on the equator of the Celestial Intermediate Pole.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The TIO locator s' is obtained from polar motion observations by
+2. The TIO locator s' is obtained from polar motion observations by
    numerical integration, and so is in essence unpredictable.
    However, it is dominated by a secular drift of about
    47 microarcseconds per century, which is the approximation
@@ -762,7 +762,7 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -781,20 +781,20 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The CIO locator s is the difference between the right ascensions
+2. The CIO locator s is the difference between the right ascensions
    of the same point in two systems:  the two systems are the GCRS
    and the CIP,CIO, and the point is the ascending node of the
    CIP equator.  The quantity s remains below 0.1 arcsecond
    throughout 1900-2100.
 
-3) The series used to compute s is in fact for s+XY/2, where X and Y
+3. The series used to compute s is in fact for s+XY/2, where X and Y
    are the x and y components of the CIP unit vector;  this series
    is more compact than a direct series for s would be.  This
    function requires X,Y to be supplied by the caller, who is
    responsible for providing values that are consistent with the
    supplied date.
 
-4) The model is consistent with the IAU 2000A precession-nutation.
+4. The model is consistent with the IAU 2000A precession-nutation.
 
 ### Called ###
 
@@ -841,7 +841,7 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -860,20 +860,20 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The CIO locator s is the difference between the right ascensions
+2. The CIO locator s is the difference between the right ascensions
    of the same point in two systems:  the two systems are the GCRS
    and the CIP,CIO, and the point is the ascending node of the
    CIP equator.  The quantity s remains below 0.1 arcsecond
    throughout 1900-2100.
 
-3) The series used to compute s is in fact for s+XY/2, where X and Y
+3. The series used to compute s is in fact for s+XY/2, where X and Y
    are the x and y components of the CIP unit vector;  this series
    is more compact than a direct series for s would be.  This
    function requires X,Y to be supplied by the caller, who is
    responsible for providing values that are consistent with the
    supplied date.
 
-4) The model is consistent with the "P03" precession (Capitaine et
+4. The model is consistent with the "P03" precession (Capitaine et
    al. 2003), adopted by IAU 2006 Resolution 1, 2006, and the
    IAU 2000A nutation (with P03 adjustments).
 

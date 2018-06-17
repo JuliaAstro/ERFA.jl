@@ -109,12 +109,12 @@ Universal Time, UT1.
 
 ### Notes ###
 
-1) tai1+tai2 is Julian Date, apportioned in any convenient way
+1. tai1+tai2 is Julian Date, apportioned in any convenient way
    between the two arguments, for example where tai1 is the Julian
    Day Number and tai2 is the fraction of a day.  The returned
    UT11,UT12 follow suit.
 
-2) The argument dta, i.e. UT1-TAI, is an observed quantity, and is
+2. The argument dta, i.e. UT1-TAI, is an observed quantity, and is
    available from IERS tabulations.
 
 ### Reference ###
@@ -142,12 +142,12 @@ Terrestrial Time, TT.
 
 ### Notes ###
 
-1) tdb1+tdb2 is Julian Date, apportioned in any convenient way
+1. tdb1+tdb2 is Julian Date, apportioned in any convenient way
    between the two arguments, for example where tdb1 is the Julian
    Day Number and tdb2 is the fraction of a day.  The returned
    tt1,tt2 follow suit.
 
-2) The argument dtr represents the quasi-periodic component of the
+2. The argument dtr represents the quasi-periodic component of the
    GR transformation between TT and TCB.  It is dependent upon the
    adopted solar-system ephemeris, and can be obtained by numerical
    integration, by interrogating a precomputed time ephemeris or by
@@ -155,7 +155,7 @@ Terrestrial Time, TT.
    eraDtdb.   The quantity is dominated by an annual term of 1.7 ms
    amplitude.
 
-3) TDB is essentially the same as Teph, the time argument for the
+3. TDB is essentially the same as Teph, the time argument for the
    JPL solar system ephemerides.
 
 ### References ###
@@ -185,12 +185,12 @@ Dynamical Time, TDB.
 
 ### Notes ###
 
-1) tt1+tt2 is Julian Date, apportioned in any convenient way between
+1. tt1+tt2 is Julian Date, apportioned in any convenient way between
    the two arguments, for example where tt1 is the Julian Day Number
    and tt2 is the fraction of a day.  The returned tdb1,tdb2 follow
    suit.
 
-2) The argument dtr represents the quasi-periodic component of the
+2. The argument dtr represents the quasi-periodic component of the
    GR transformation between TT and TCB.  It is dependent upon the
    adopted solar-system ephemeris, and can be obtained by numerical
    integration, by interrogating a precomputed time ephemeris or by
@@ -198,7 +198,7 @@ Dynamical Time, TDB.
    eraDtdb.   The quantity is dominated by an annual term of 1.7 ms
    amplitude.
 
-3) TDB is essentially the same as Teph, the time argument for the JPL
+3. TDB is essentially the same as Teph, the time argument for the JPL
    solar system ephemerides.
 
 ### References ###
@@ -228,12 +228,12 @@ UT1.
 
 ### Notes ###
 
-1) tt1+tt2 is Julian Date, apportioned in any convenient way between
+1. tt1+tt2 is Julian Date, apportioned in any convenient way between
    the two arguments, for example where tt1 is the Julian Day Number
    and tt2 is the fraction of a day.  The returned ut11,ut12 follow
    suit.
 
-2) The argument dt is classical Delta T.
+2. The argument dt is classical Delta T.
 
 ### Reference ###
 
@@ -310,14 +310,14 @@ Coordinated Universal Time, UTC.
 
 ### Notes ###
 
-1) tai1+tai2 is Julian Date, apportioned in any convenient way
+1. tai1+tai2 is Julian Date, apportioned in any convenient way
    between the two arguments, for example where tai1 is the Julian
    Day Number and tai2 is the fraction of a day.  The returned utc1
    and utc2 form an analogous pair, except that a special convention
    is used, to deal with the problem of leap seconds - see the next
    note.
 
-2) JD cannot unambiguously represent UTC during a leap second unless
+2. JD cannot unambiguously represent UTC during a leap second unless
    special measures are taken.  The convention in the present
    function is that the JD day represents UTC days whether the
    length is 86399, 86400 or 86401 SI seconds.  In the 1960-1972 era
@@ -325,11 +325,11 @@ Coordinated Universal Time, UTC.
    linear UTC(TAI) expression was changed, and these "mini-leaps"
    are also included in the ERFA convention.
 
-3) The function eraD2dtf can be used to transform the UTC quasi-JD
+3. The function eraD2dtf can be used to transform the UTC quasi-JD
    into calendar date and clock time, including UTC leap second
    handling.
 
-4) The warning status "dubious year" flags UTCs that predate the
+4. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
    to be trusted.  See eraDat for further details.
 
@@ -364,12 +364,12 @@ Barycentric Dynamical Time, TDB.
 
 ### Notes ###
 
-1) tcb1+tcb2 is Julian Date, apportioned in any convenient way
+1. tcb1+tcb2 is Julian Date, apportioned in any convenient way
    between the two arguments, for example where tcb1 is the Julian
    Day Number and tcb2 is the fraction of a day.  The returned
    tdb1,tdb2 follow suit.
 
-2) The 2006 IAU General Assembly introduced a conventional linear
+2. The 2006 IAU General Assembly introduced a conventional linear
    transformation between TDB and TCB.  This transformation
    compensates for the drift between TCB and terrestrial time TT,
    and keeps TDB approximately centered on TT.  Because the
@@ -384,7 +384,7 @@ Barycentric Dynamical Time, TDB.
    these difficulties whilst delivering a TDB that in practice was
    consistent with values before that date.
 
-3) TDB is essentially the same as Teph, the time argument for the
+3. TDB is essentially the same as Teph, the time argument for the
    JPL solar system ephemerides.
 
 ### Reference ###
@@ -441,12 +441,12 @@ Barycentric Coordinate Time, TCB.
 
 ### Notes ###
 
-1) tdb1+tdb2 is Julian Date, apportioned in any convenient way
+1. tdb1+tdb2 is Julian Date, apportioned in any convenient way
    between the two arguments, for example where tdb1 is the Julian
    Day Number and tdb2 is the fraction of a day.  The returned
    tcb1,tcb2 follow suit.
 
-2) The 2006 IAU General Assembly introduced a conventional linear
+2. The 2006 IAU General Assembly introduced a conventional linear
    transformation between TDB and TCB.  This transformation
    compensates for the drift between TCB and terrestrial time TT,
    and keeps TDB approximately centered on TT.  Because the
@@ -461,7 +461,7 @@ Barycentric Coordinate Time, TCB.
    these difficulties whilst delivering a TDB that in practice was
    consistent with values before that date.
 
-3) TDB is essentially the same as Teph, the time argument for the
+3. TDB is essentially the same as Teph, the time argument for the
    JPL solar system ephemerides.
 
 ### Reference ###
@@ -574,12 +574,12 @@ Convert hours, minutes, seconds to radians.
 
 ### Notes ###
 
-1)  The result is computed even if any of the range checks fail.
+1.  The result is computed even if any of the range checks fail.
 
-2)  Negative ihour, imin and/or sec produce a warning status, but
+2.  Negative ihour, imin and/or sec produce a warning status, but
     the absolute value is used in the conversion.
 
-3)  If there are multiple errors, the status value reflects only the
+3.  If there are multiple errors, the status value reflects only the
     first, the smallest taking precedence.
 
 """
@@ -603,12 +603,12 @@ Convert hours, minutes, seconds to days.
 
 ### Notes ###
 
-1)  The result is computed even if any of the range checks fail.
+1.  The result is computed even if any of the range checks fail.
 
-2)  Negative ihour, imin and/or sec produce a warning status, but
+2.  Negative ihour, imin and/or sec produce a warning status, but
     the absolute value is used in the conversion.
 
-3)  If there are multiple errors, the status value reflects only the
+3.  If there are multiple errors, the status value reflects only the
     first, the smallest taking precedence.
 
 """

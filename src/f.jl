@@ -10,18 +10,18 @@ FK5 to Hipparcos rotation and spin.
 
 ### Notes ###
 
-1) This function models the FK5 to Hipparcos transformation as a
+1. This function models the FK5 to Hipparcos transformation as a
    pure rotation and spin;  zonal errors in the FK5 catalogue are
    not taken into account.
 
-2) The r-matrix r5h operates in the sense:
+2. The r-matrix r5h operates in the sense:
 
          P_Hipparcos = r5h x P_FK5
 
    where P_FK5 is a p-vector in the FK5 frame, and P_Hipparcos is
    the equivalent Hipparcos p-vector.
 
-3) The r-vector s5h represents the time derivative of the FK5 to
+3. The r-vector s5h represents the time derivative of the FK5 to
    Hipparcos rotation.  The units are radians per year (Julian,
    TDB).
 
@@ -62,13 +62,13 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
 
 ### Notes ###
 
-1) This function converts a star position from the FK5 system to
+1. This function converts a star position from the FK5 system to
    the Hipparcos system, in such a way that the Hipparcos proper
    motion is zero.  Because such a star has, in general, a non-zero
    proper motion in the FK5 system, the function requires the date
    at which the position in the FK5 system was determined.
 
-2) The TT date date1+date2 is a Julian Date, apportioned in any
+2. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -87,14 +87,14 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-3) The FK5 to Hipparcos transformation is modeled as a pure
+3. The FK5 to Hipparcos transformation is modeled as a pure
    rotation and spin;  zonal errors in the FK5 catalogue are not
    taken into account.
 
-4) The position returned by this function is in the Hipparcos
+4. The position returned by this function is in the Hipparcos
    reference system but at date date1+date2.
 
-5) See also eraFk52h, eraH2fk5, eraHfk5z.
+5. See also eraFk52h, eraH2fk5, eraHfk5z.
 
 ### Called ###
 
@@ -139,7 +139,7 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
 ### Notes ###
 
-1) Naming the following points:
+1. Naming the following points:
 
          e = J2000.0 ecliptic pole,
          p = GCRS pole
@@ -153,7 +153,7 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
       psi = psi = pEP
       eps = epsilon = EP
 
-2) The matrix representing the combined effects of frame bias,
+2. The matrix representing the combined effects of frame bias,
    precession and nutation is:
 
       NxPxB = R_1(-epsA).R_3(-psi).R_1(phib).R_3(gamb)
@@ -197,10 +197,10 @@ mean elongation of the Moon from the Sun.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    is from Simon et al. (1994).
 
 ### References ###
@@ -229,10 +229,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Earth.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    comes from Souchay et al. (1999) after Simon et al. (1994).
 
 ### References ###
@@ -265,10 +265,10 @@ mean longitude of the ascending node.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    is from Simon et al. (1994).
 
 ### References ###
@@ -297,10 +297,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Jupiter.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    comes from Souchay et al. (1999) after Simon et al. (1994).
 
 ### References ###
@@ -334,10 +334,10 @@ mean anomaly of the Moon.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    is from Simon et al. (1994).
 
 ### References ###
@@ -368,10 +368,10 @@ mean anomaly of the Sun.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    is from Simon et al. (1994).
 
 ### References ###
@@ -400,10 +400,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mars.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    comes from Souchay et al. (1999) after Simon et al. (1994).
 
 ### References ###
@@ -435,10 +435,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Mercury.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    comes from Souchay et al. (1999) after Simon et al. (1994).
 
 ### References ###
@@ -470,10 +470,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Neptune.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    is adapted from Simon et al. (1994).
 
 ### References ###
@@ -502,10 +502,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of the Moon's asce
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    is from Simon et al. (1994).
 
 ### References ###
@@ -536,10 +536,10 @@ general accumulated precession in longitude.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003).  It
+2. The expression used is as adopted in IERS Conventions (2003).  It
    is taken from Kinoshita & Souchay (1990) and comes originally
    from Lieske et al. (1977).
 
@@ -572,10 +572,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Saturn.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    comes from Souchay et al. (1999) after Simon et al. (1994).
 
 ### References ###
@@ -607,10 +607,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Uranus.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    is adapted from Simon et al. (1994).
 
 ### References ###
@@ -639,10 +639,10 @@ Fundamental argument, IERS Conventions (2003): Mean longitude of Venus.
 
 ### Notes ###
 
-1) Though t is strictly TDB, it is usually more convenient to use
+1. Though t is strictly TDB, it is usually more convenient to use
    TT, which makes no significant difference.
 
-2) The expression used is as adopted in IERS Conventions (2003) and
+2. The expression used is as adopted in IERS Conventions (2003) and
    comes from Souchay et al. (1999) after Simon et al. (1994).
 
 ### References ###
@@ -703,17 +703,17 @@ Transform FK5 (J2000.0) star data into the Hipparcos system.
 
 ### Notes ###
 
-1) This function transforms FK5 star positions and proper motions
+1. This function transforms FK5 star positions and proper motions
    into the system of the Hipparcos catalog.
 
-2) The proper motions in RA are dRA/dt rather than
+2. The proper motions in RA are dRA/dt rather than
    cos(Dec)*dRA/dt, and are per year rather than per century.
 
-3) The FK5 to Hipparcos transformation is modeled as a pure
+3. The FK5 to Hipparcos transformation is modeled as a pure
    rotation and spin;  zonal errors in the FK5 catalog are not
    taken into account.
 
-4) See also eraH2fk5, eraFk5hz, eraHfk5z.
+4. See also eraH2fk5, eraFk5hz, eraHfk5z.
 
 ### Called ###
 
@@ -760,7 +760,7 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 ### Notes ###
 
-1) Naming the following points:
+1. Naming the following points:
 
          e = J2000.0 ecliptic pole,
          p = GCRS pole,
@@ -774,12 +774,12 @@ Form rotation matrix given the Fukushima-Williams angles.
       psi = psi = pEP
       eps = epsilon = EP
 
-2) The matrix representing the combined effects of frame bias,
+2. The matrix representing the combined effects of frame bias,
    precession and nutation is:
 
       NxPxB = R_1(-eps).R_3(-psi).R_1(phib).R_3(gamb)
 
-3) Three different matrices can be constructed, depending on the
+3. Three different matrices can be constructed, depending on the
    supplied angles:
 
    o  To obtain the nutation x precession x frame bias matrix,

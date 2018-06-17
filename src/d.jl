@@ -48,7 +48,7 @@ Conventions (McCarthy & Petit 2003).
 
 ### Notes ###
 
-1) The date date1+date2 is a Julian Date, apportioned in any
+1. The date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -71,17 +71,17 @@ Conventions (McCarthy & Petit 2003).
    the terrestrial dynamical time (TT) can be used with no practical
    effect on the accuracy of the prediction.
 
-2) TT can be regarded as a coordinate time that is realized as an
+2. TT can be regarded as a coordinate time that is realized as an
    offset of 32.184s from International Atomic Time, TAI.  TT is a
    specific linear transformation of geocentric coordinate time TCG,
    which is the time scale for the Geocentric Celestial Reference
    System, GCRS.
 
-3) TDB is a coordinate time, and is a specific linear transformation
+3. TDB is a coordinate time, and is a specific linear transformation
    of barycentric coordinate time TCB, which is the time scale for
    the Barycentric Celestial Reference System, BCRS.
 
-4) The difference TCG-TCB depends on the masses and positions of the
+4. The difference TCG-TCB depends on the masses and positions of the
    bodies of the solar system and the velocity of the Earth.  It is
    dominated by a rate difference, the residual being of a periodic
    character.  The latter, which is modeled by the present function,
@@ -93,7 +93,7 @@ Conventions (McCarthy & Petit 2003).
    surface) experiences variations in speed (with respect to the
    BCRS) and gravitational potential.
 
-5) TDB can be regarded as the same as TCB but with a rate adjustment
+5. TDB can be regarded as the same as TCB but with a rate adjustment
    to keep it close to TT, which is convenient for many applications.
    The history of successive attempts to define TDB is set out in
    Resolution 3 adopted by the IAU General Assembly in 2006, which
@@ -103,10 +103,10 @@ Conventions (McCarthy & Petit 2003).
    could introduce a linear drift between TDB and TT;  however, any
    such drift is unlikely to exceed 1 nanosecond per century.
 
-6) The geocentric TDB-TT model used in the present function is that of
+6. The geocentric TDB-TT model used in the present function is that of
    Fairhead & Bretagnon (1990), in its full form.  It was originally
    supplied by Fairhead (private communications with P.T.Wallace,
-   1990) as a Fortran subroutine.  The present C function contains an
+   1990. as a Fortran subroutine.  The present C function contains an
    adaptation of the Fairhead code.  The numerical results are
    essentially unaffected by the changes, the differences with
    respect to the Fairhead & Bretagnon original being at the 1e-20 s
@@ -123,12 +123,12 @@ Conventions (McCarthy & Petit 2003).
    model can be nullified, and the function will return the Fairhead
    & Bretagnon result alone.
 
-7) During the interval 1950-2050, the absolute accuracy is better
+7. During the interval 1950-2050, the absolute accuracy is better
    than +/- 3 nanoseconds relative to time ephemerides obtained by
    direct numerical integrations based on the JPL DE405 solar system
    ephemeris.
 
-8) It must be stressed that the present function is merely a model,
+8. It must be stressed that the present function is merely a model,
    and that numerical integration of solar-system ephemerides is the
    definitive method for predicting the relationship between TCG and
    TCB and hence between TT and TDB.
@@ -171,18 +171,18 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
     announced.  There are four items to   
     change on each such occasion:         
                                             
-    1) A new line must be added to the set
+    1. A new line must be added to the set
         of statements that initialize the  
         array "changes".                   
                                             
-    2) The constant IYV must be set to the
+    2. The constant IYV must be set to the
         current year.                      
                                             
-    3) The "Latest leap second" comment   
+    3. The "Latest leap second" comment   
         below must be set to the new leap  
         second date.                       
                                             
-    4) The "This revision" comment, later,
+    4. The "This revision" comment, later,
         must be set to the current date.   
                                             
     Change (2) must also be carried out   
@@ -205,7 +205,7 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 
 ### Notes ###
 
-1) UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
+1. UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
    to call the function with an earlier date.  If this is attempted,
    zero is returned together with a warning status.
 
@@ -220,18 +220,18 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
    This is distinct from the error status -1, which signifies a year
    so early that JD could not be computed.
 
-2) If the specified date is for a day which ends with a leap second,
+2. If the specified date is for a day which ends with a leap second,
    the TAI-UTC value returned is for the period leading up to the
    leap second.  If the date is for a day which begins as a leap
    second ends, the TAI-UTC returned is for the period following the
    leap second.
 
-3) The day number must be in the normal calendar range, for example
+3. The day number must be in the normal calendar range, for example
    1 through 30 for April.  The "almanac" convention of allowing
    such dates as January 0 and December 32 is not supported in this
    function, in order to avoid confusion near leap seconds.
 
-4) The fraction of day is used only for dates before the
+4. The fraction of day is used only for dates before the
    introduction of leap seconds, the first of which occurred at the
    end of 1971.  It is tested for validity (0 to 1 is the valid
    range) even if not used;  if invalid, zero is used and status -4
@@ -239,14 +239,14 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
    acceptable;  the resulting error is always less than 3 ms (and
    occurs only pre-1972).
 
-5) The status value returned in the case where there are multiple
+5. The status value returned in the case where there are multiple
    errors refers to the first error detected.  For example, if the
    month and day are 13 and 32 respectively, status -2 (bad month)
    will be returned.  The "internal error" status refers to a
    case that is impossible but causes some compilers to issue a
    warning.
 
-6) In cases where a valid result is not available, zero is returned.
+6. In cases where a valid result is not available, zero is returned.
 
 ### References ###
 
@@ -301,11 +301,11 @@ quasi-JD form that includes special provision for leap seconds).
 
 ### Notes ###
 
-1) scale identifies the time scale.  Only the value "UTC" (in upper
+1. scale identifies the time scale.  Only the value "UTC" (in upper
    case) is significant, and enables handling of leap seconds (see
    Note 4).
 
-2) ndp is the number of decimal places in the seconds field, and can
+2. ndp is the number of decimal places in the seconds field, and can
    have negative as well as positive values, such as:
 
    ndp         resolution
@@ -320,13 +320,13 @@ quasi-JD form that includes special provision for leap seconds).
 
    The limits are platform dependent, but a safe range is -5 to +9.
 
-3) d1+d2 is Julian Date, apportioned in any convenient way between
+3. d1+d2 is Julian Date, apportioned in any convenient way between
    the two arguments, for example where d1 is the Julian Day Number
    and d2 is the fraction of a day.  In the case of UTC, where the
    use of JD is problematical, special conventions apply:  see the
    next note.
 
-4) JD cannot unambiguously represent UTC during a leap second unless
+4. JD cannot unambiguously represent UTC during a leap second unless
    special measures are taken.  The ERFA internal convention is that
    the quasi-JD day represents UTC days whether the length is 86399,
    86400 or 86401 SI seconds.  In the 1960-1972 era there were
@@ -334,11 +334,11 @@ quasi-JD form that includes special provision for leap seconds).
    expression was changed, and these "mini-leaps" are also included
    in the ERFA convention.
 
-5) The warning status "dubious year" flags UTCs that predate the
+5. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
    to be trusted.  See eraDat for further details.
 
-6) For calendar conventions and limitations, see eraCal2jd.
+6. For calendar conventions and limitations, see eraCal2jd.
 
 ### Called ###
 
@@ -383,18 +383,18 @@ seconds).
 
 ### Notes ###
 
-1) scale identifies the time scale.  Only the value "UTC" (in upper
+1. scale identifies the time scale.  Only the value "UTC" (in upper
    case) is significant, and enables handling of leap seconds (see
    Note 4).
 
-2) For calendar conventions and limitations, see eraCal2jd.
+2. For calendar conventions and limitations, see eraCal2jd.
 
-3) The sum of the results, d1+d2, is Julian Date, where normally d1
+3. The sum of the results, d1+d2, is Julian Date, where normally d1
    is the Julian Day Number and d2 is the fraction of a day.  In the
    case of UTC, where the use of JD is problematical, special
    conventions apply:  see the next note.
 
-4) JD cannot unambiguously represent UTC during a leap second unless
+4. JD cannot unambiguously represent UTC during a leap second unless
    special measures are taken.  The ERFA internal convention is that
    the quasi-JD day represents UTC days whether the length is 86399,
    86400 or 86401 SI seconds.  In the 1960-1972 era there were
@@ -402,16 +402,16 @@ seconds).
    expression was changed, and these "mini-leaps" are also included
    in the ERFA convention.
 
-5) The warning status "time is after end of day" usually means that
+5. The warning status "time is after end of day" usually means that
    the sec argument is greater than 60.0.  However, in a day ending
    in a leap second the limit changes to 61.0 (or 59.0 in the case
    of a negative leap second).
 
-6) The warning status "dubious year" flags UTCs that predate the
+6. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
    to be trusted.  See eraDat for further details.
 
-7) Only in the case of continuous and regular time scales (TAI, TT,
+7. Only in the case of continuous and regular time scales (TAI, TT,
    TCG, TCB and TDB) is the result d1+d2 a Julian Date, strictly
    speaking.  In the other cases (UT1 and UTC) the result must be
    used with circumspection;  in particular the difference between
@@ -470,7 +470,7 @@ Decompose days to hours, minutes, seconds, fraction.
 
 ### Notes ###
 
-1) The argument ndp is interpreted as follows:
+1. The argument ndp is interpreted as follows:
 
    ndp         resolution
     :      ...0000 00 00
@@ -487,7 +487,7 @@ Decompose days to hours, minutes, seconds, fraction.
     3            0 00 00.001
     :            0 00 00.000...
 
-2) The largest positive useful value for ndp is determined by the
+2. The largest positive useful value for ndp is determined by the
    size of days, the format of double on the target platform, and
    the risk of overflowing ihmsf[3].  On a typical platform, for
    days up to 1.0, the available floating-point precision might
@@ -495,7 +495,7 @@ Decompose days to hours, minutes, seconds, fraction.
    ndp=9, set by the capacity of a 32-bit int, or ndp=4 if int is
    only 16 bits.
 
-3) The absolute value of days may exceed 1.0.  In cases where it
+3. The absolute value of days may exceed 1.0.  In cases where it
    does not, it is up to the caller to test for and handle the
    case where days is very nearly 1.0 and rounds up to 24 hours,
    by testing for ihmsf[0]=24 and setting ihmsf[0-3] to zero.

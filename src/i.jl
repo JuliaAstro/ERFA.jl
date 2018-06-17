@@ -15,7 +15,7 @@ Transformation from ICRS to Galactic Coordinates.
 
 ### Notes ###
 
-1) The IAU 1958 system of Galactic coordinates was defined with
+1. The IAU 1958 system of Galactic coordinates was defined with
    respect to the now obsolete reference system FK4 B1950.0.  When
    interpreting the system in a modern context, several factors have
    to be taken into account:
@@ -43,7 +43,7 @@ Transformation from ICRS to Galactic Coordinates.
    recomputed from the canonical three angles and are given to 30
    decimal places.
 
-2) The inverse transformation is performed by the function eraG2icrs.
+2. The inverse transformation is performed by the function eraG2icrs.
 
 ### Called ###
 

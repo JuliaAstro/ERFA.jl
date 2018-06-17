@@ -19,12 +19,12 @@ Proper motion and parallax.
 
 ### Notes ###
 
-1) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+1. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
-2) The proper motion time interval is for when the starlight
+2. The proper motion time interval is for when the starlight
    reaches the solar system barycenter.
 
-3) To avoid the need for iteration, the Roemer effect (i.e. the
+3. To avoid the need for iteration, the Roemer effect (i.e. the
    small annual modulation of the proper motion coming from the
    changing light time) is applied approximately, using the
    direction of the star at the catalog epoch.
@@ -81,7 +81,7 @@ Precession angles, IAU 2006, equinox based.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -100,7 +100,7 @@ Precession angles, IAU 2006, equinox based.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) This function returns the set of equinox based angles for the
+2. This function returns the set of equinox based angles for the
    Capitaine et al. "P03" precession theory, adopted by the IAU in
    2006.  The angles are set out in Table 1 of Hilton et al. (2006):
 
@@ -123,7 +123,7 @@ Precession angles, IAU 2006, equinox based.
 
    The returned values are all radians.
 
-3) Hilton et al. (2006) Table 1 also contains angles that depend on
+3. Hilton et al. (2006) Table 1 also contains angles that depend on
    models distinct from the P03 precession theory itself, namely the
    IAU 2000A frame bias and nutation.  The quoted polynomials are
    used in other ERFA functions:
@@ -136,26 +136,26 @@ Precession angles, IAU 2006, equinox based.
      angles that are with respect to the GCRS pole (i.e. the variants
      that include frame bias).
 
-4) The IAU resolution stipulated that the choice of parameterization
+4. The IAU resolution stipulated that the choice of parameterization
    was left to the user, and so an IAU compliant precession
    implementation can be constructed using various combinations of
    the angles returned by the present function.
 
-5) The parameterization used by ERFA is the version of the Fukushima-
+5. The parameterization used by ERFA is the version of the Fukushima-
    Williams angles that refers directly to the GCRS pole.  These
    angles may be calculated by calling the function eraPfw06.  ERFA
    also supports the direct computation of the CIP GCRS X,Y by
    series, available by calling eraXy06.
 
-6) The agreement between the different parameterizations is at the
+6. The agreement between the different parameterizations is at the
    1 microarcsecond level in the present era.
 
-7) When constructing a precession formulation that refers to the GCRS
+7. When constructing a precession formulation that refers to the GCRS
    pole rather than the dynamical pole, it may (depending on the
    choice of angles) be necessary to introduce the frame bias
    explicitly.
 
-8) It is permissible to re-use the same variable in the returned
+8. It is permissible to re-use the same variable in the returned
    arguments.  The quantities are stored in the stated order.
 
 ### Reference ###
@@ -208,9 +208,9 @@ P-vector to spherical polar coordinates.
 
 ### Notes ###
 
-1) If P is null, zero theta, phi and r are returned.
+1. If P is null, zero theta, phi and r are returned.
 
-2) At either pole, zero theta is returned.
+2. At either pole, zero theta is returned.
 
 ### Called ###
 
@@ -274,7 +274,7 @@ bias (the offset between ICRS and mean J2000.0) is included.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -293,7 +293,7 @@ bias (the offset between ICRS and mean J2000.0) is included.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The traditional accumulated precession angles zeta_A, z_A,
+2. The traditional accumulated precession angles zeta_A, z_A,
    theta_A cannot be obtained in the usual way, namely through
    polynomial expressions, because of the frame bias.  The latter
    means that two of the angles undergo rapid changes near this
@@ -303,12 +303,12 @@ bias (the offset between ICRS and mean J2000.0) is included.
    decomposition returns values which can be used in the
    conventional formulation and which include frame bias.
 
-3) The three angles are returned in the conventional order, which
+3. The three angles are returned in the conventional order, which
    is not the same as the order of the corresponding Euler
    rotations.  The precession-bias matrix is
    R_3(-z) x R_2(+theta) x R_3(-zeta).
 
-4) Should zeta_A, z_A, theta_A angles be required that do not
+4. Should zeta_A, z_A, theta_A angles be required that do not
    contain frame bias, they are available by calling the ERFA
    function eraP06e.
 
@@ -347,7 +347,7 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -366,7 +366,7 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) Naming the following points:
+2. Naming the following points:
 
          e = J2000.0 ecliptic pole,
          p = GCRS pole,
@@ -380,12 +380,12 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
       psib = psi_bar = pEP
       epsa = epsilon_A = EP
 
-3) The matrix representing the combined effects of frame bias and
+3. The matrix representing the combined effects of frame bias and
    precession is:
 
       PxB = R_1(-epsa).R_3(-psib).R_1(phib).R_3(gamb)
 
-4) The matrix representing the combined effects of frame bias,
+4. The matrix representing the combined effects of frame bias,
    precession and nutation is simply:
 
       NxPxB = R_1(-epsa-dE).R_3(-psib-dP).R_1(phib).R_3(gamb)
@@ -433,7 +433,7 @@ Neptune (but not the Earth itself).
 
 ### Notes ###
 
-1) The date date1+date2 is in the TDB time scale (in practice TT can
+1. The date date1+date2 is in the TDB time scale (in practice TT can
    be used) and is a Julian Date, apportioned in any convenient way
    between the two arguments.  For example, JD(TDB)=2450123.7 could
    be expressed in any of these ways, among others:
@@ -454,14 +454,14 @@ Neptune (but not the Earth itself).
    accuracy of the present algorithm is such that any of the methods
    is satisfactory.
 
-2) If an np value outside the range 1-8 is supplied, an error status
+2. If an np value outside the range 1-8 is supplied, an error status
    (function value -1) is returned and the pv vector set to zeroes.
 
-3) For np=3 the result is for the Earth-Moon Barycenter.  To obtain
+3. For np=3 the result is for the Earth-Moon Barycenter.  To obtain
    the heliocentric position and velocity of the Earth, use instead
    the ERFA function eraEpv00.
 
-4) On successful return, the array pv contains the following:
+4. On successful return, the array pv contains the following:
 
       pv[0][0]   x      }
       pv[0][1]   y      } heliocentric position, au
@@ -474,7 +474,7 @@ Neptune (but not the Earth itself).
    The reference frame is equatorial and is with respect to the
    mean equator and equinox of epoch J2000.0.
 
-5) The algorithm is due to J.L. Simon, P. Bretagnon, J. Chapront,
+5. The algorithm is due to J.L. Simon, P. Bretagnon, J. Chapront,
    M. Chapront-Touze, G. Francou and J. Laskar (Bureau des
    Longitudes, Paris, France).  From comparisons with JPL
    ephemeris DE102, they quote the following maximum errors
@@ -524,7 +524,7 @@ Neptune (but not the Earth itself).
       Uranus        86            7         661000      27.4
       Neptune       11            2         248000      21.4
 
-6) The present ERFA re-implementation of the original Simon et al.
+6. The present ERFA re-implementation of the original Simon et al.
    Fortran code differs from the original in the following respects:
 
      -  C instead of Fortran.
@@ -551,7 +551,7 @@ Neptune (but not the Earth itself).
 
    None of the above changes affects the result significantly.
 
-7) The returned status indicates the most serious condition
+7. The returned status indicates the most serious condition
    encountered during execution of the function.  Illegal np is
    considered the most serious, overriding failure to converge,
    which in turn takes precedence over the remote date warning.
@@ -630,7 +630,7 @@ special handling to handle the zero parallax case.
 
 ### Notes ###
 
-1) The starting and ending TDB epochs ep1a+ep1b and ep2a+ep2b are
+1. The starting and ending TDB epochs ep1a+ep1b and ep2a+ep2b are
    Julian Dates, apportioned in any convenient way between the two
    parts (A and B).  For example, JD(TDB)=2450123.7 could be
    expressed in any of these ways, among others:
@@ -649,7 +649,7 @@ special handling to handle the zero parallax case.
    resolution.  The MJD method and the date & time methods are both
    good compromises between resolution and convenience.
 
-2) In accordance with normal star-catalog conventions, the object's
+2. In accordance with normal star-catalog conventions, the object's
    right ascension and declination are freed from the effects of
    secular aberration.  The frame, which is aligned to the catalog
    equator and equinox, is Lorentzian and centered on the SSB.
@@ -660,29 +660,29 @@ special handling to handle the zero parallax case.
 
    The parallax and radial velocity are in the same frame.
 
-3) Care is needed with units.  The star coordinates are in radians
+3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the
    parallax is in arcseconds.
 
-4) The RA proper motion is in terms of coordinate angle, not true
+4. The RA proper motion is in terms of coordinate angle, not true
    angle.  If the catalog uses arcseconds for both RA and Dec proper
    motions, the RA proper motion will need to be divided by cos(Dec)
    before use.
 
-5) Straight-line motion at constant speed, in the inertial frame, is
+5. Straight-line motion at constant speed, in the inertial frame, is
    assumed.
 
-6) An extremely small (or zero or negative) parallax is overridden
+6. An extremely small (or zero or negative) parallax is overridden
    to ensure that the object is at a finite but very large distance,
    but not so large that the proper motion is equivalent to a large
    but safe speed (about 0.1c using the chosen constant).  A warning
    status of 1 is added to the status if this action has been taken.
 
-7) If the space velocity is a significant fraction of c (see the
+7. If the space velocity is a significant fraction of c (see the
    constant VMAX in the function eraStarpv), it is arbitrarily set
    to zero.  When this action occurs, 2 is added to the status.
 
-8) The relativistic adjustment carried out in the eraStarpv function
+8. The relativistic adjustment carried out in the eraStarpv function
    involves an iterative calculation.  If the process fails to
    converge within a set number of iterations, 4 is added to the
    status.
@@ -732,10 +732,10 @@ Convert a p-vector into modulus and unit vector.
 
 ### Notes ###
 
-1) If p is null, the result is null.  Otherwise the result is a unit
+1. If p is null, the result is null.  Otherwise the result is a unit
    vector.
 
-2) It is permissible to re-use the same array for any of the
+2. It is permissible to re-use the same array for any of the
    arguments.
 
 ### Called ###
@@ -809,7 +809,7 @@ FK5 catalog).
 
 ### Notes ###
 
-1) The dates date01+date02 and date11+date12 are Julian Dates,
+1. The dates date01+date02 and date11+date12 are Julian Dates,
    apportioned in any convenient way between the arguments daten1
    and daten2.  For example, JD(TDB)=2450123.7 could be expressed in
    any of these ways, among others:
@@ -830,7 +830,7 @@ FK5 catalog).
    The two dates may be expressed using different methods, but at
    the risk of losing some resolution.
 
-2) The accumulated precession angles zeta, z, theta are expressed
+2. The accumulated precession angles zeta, z, theta are expressed
    through canonical polynomials which are valid only for a limited
    time span.  In addition, the IAU 1976 precession rate is known to
    be imperfect.  The absolute accuracy of the present formulation
@@ -841,7 +841,7 @@ FK5 catalog).
    outside 4200BC to 5600AD and exceed 1000 arcsec outside 6800BC to
    8200AD.
 
-3) The three angles are returned in the conventional order, which
+3. The three angles are returned in the conventional order, which
    is not the same as the order of the corresponding Euler
    rotations.  The precession matrix is
    R_3(-z) x R_2(+theta) x R_3(-zeta).
@@ -882,7 +882,7 @@ Convert position/velocity from Cartesian to spherical coordinates.
 
 ### Notes ###
 
-1) If the position part of pv is null, theta, phi, td and pd
+1. If the position part of pv is null, theta, phi, td and pd
    are indeterminate.  This is handled by extrapolating the
    position through unit time by using the velocity part of
    pv.  This moves the origin without changing the direction
@@ -890,7 +890,7 @@ Convert position/velocity from Cartesian to spherical coordinates.
    components of pv are both null, zeroes are returned for all
    six results.
 
-2) If the position is a pole, theta, td and pd are indeterminate.
+2. If the position is a pole, theta, td and pd are indeterminate.
    In such cases zeroes are returned for all three.
 
 """
@@ -1015,11 +1015,11 @@ Convert star position+velocity vector to catalog coordinates.
 
 ### Notes ###
 
-1) The specified pv-vector is the coordinate direction (and its rate
+1. The specified pv-vector is the coordinate direction (and its rate
    of change) for the date at which the light leaving the star
    reached the solar-system barycenter.
 
-2) The star data returned by this function are "observables" for an
+2. The star data returned by this function are "observables" for an
    imaginary observer at the solar-system barycenter.  Proper motion
    and radial velocity are, strictly, in terms of barycentric
    coordinate time, TCB.  For most practical applications, it is
@@ -1049,22 +1049,22 @@ Convert star position+velocity vector to catalog coordinates.
 
    (ii) The transformation complies with special relativity.
 
-3) Care is needed with units.  The star coordinates are in radians
+3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the
    parallax is in arcseconds; the radial velocity is in km/s, but
    the pv-vector result is in au and au/day.
 
-4) The proper motions are the rate of change of the right ascension
+4. The proper motions are the rate of change of the right ascension
    and declination at the catalog epoch and are in radians per Julian
    year.  The RA proper motion is in terms of coordinate angle, not
    true angle, and will thus be numerically larger at high
    declinations.
 
-5) Straight-line motion at constant speed in the inertial frame is
+5. Straight-line motion at constant speed in the inertial frame is
    assumed.  If the speed is greater than or equal to the speed of
    light, the function aborts with an error status.
 
-6) The inverse transformation is performed by the function eraStarpv.
+6. The inverse transformation is performed by the function eraStarpv.
 
 ### Called ###
 
@@ -1121,10 +1121,10 @@ Position and velocity of a terrestrial observing station.
 
 ### Notes ###
 
-1) The terrestrial coordinates are with respect to the ERFA_WGS84
+1. The terrestrial coordinates are with respect to the ERFA_WGS84
    reference ellipsoid.
 
-2) xp and yp are the coordinates (in radians) of the Celestial
+2. xp and yp are the coordinates (in radians) of the Celestial
    Intermediate Pole with respect to the International Terrestrial
    Reference System (see IERS Conventions), measured along the
    meridians 0 and 90 deg west respectively.  sp is the TIO locator
@@ -1132,16 +1132,16 @@ Position and velocity of a terrestrial observing station.
    Origin on the equator.  For many applications, xp, yp and
    (especially) sp can be set to zero.
 
-3) If theta is Greenwich apparent sidereal time instead of Earth
+3. If theta is Greenwich apparent sidereal time instead of Earth
    rotation angle, the result is with respect to the true equator
    and equinox of date, i.e. with the x-axis at the equinox rather
    than the celestial intermediate origin.
 
-4) The velocity units are meters per UT1 second, not per SI second.
+4. The velocity units are meters per UT1 second, not per SI second.
    This is unlikely to have any practical consequences in the modern
    era.
 
-5) No validation is performed on the arguments.  Error cases that
+5. No validation is performed on the arguments.  Error cases that
    could lead to arithmetic exceptions are trapped by the eraGd2gc
    function, and the result set to zeros.
 
@@ -1185,12 +1185,12 @@ Update a pv-vector.
 
 ### Notes ###
 
-1) "Update" means "refer the position component of the vector
+1. "Update" means "refer the position component of the vector
    to a new date dt time units from the existing date".
 
-2) The time units of dt must match those of the velocity.
+2. The time units of dt must match those of the velocity.
 
-3) It is permissible for pv and upv to be the same array.
+3. It is permissible for pv and upv to be the same array.
 
 ### Called ###
 
@@ -1222,10 +1222,10 @@ Update a pv-vector, discarding the velocity component.
 
 ### Notes ###
 
-1) "Update" means "refer the position component of the vector to a
+1. "Update" means "refer the position component of the vector to a
    new date dt time units from the existing date".
 
-2) The time units of dt must match those of the velocity.
+2. The time units of dt must match those of the velocity.
 
 """
 function pvup(dt, pv)
@@ -1259,7 +1259,7 @@ use indirectly.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -1278,35 +1278,35 @@ use indirectly.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The caller is responsible for providing the nutation components;
+2. The caller is responsible for providing the nutation components;
    they are in longitude and obliquity, in radians and are with
    respect to the equinox and ecliptic of date.  For high-accuracy
    applications, free core nutation should be included as well as
    any other relevant corrections to the position of the CIP.
 
-3) The returned mean obliquity is consistent with the IAU 2000
+3. The returned mean obliquity is consistent with the IAU 2000
    precession-nutation models.
 
-4) The matrix rb transforms vectors from GCRS to J2000.0 mean
+4. The matrix rb transforms vectors from GCRS to J2000.0 mean
    equator and equinox by applying frame bias.
 
-5) The matrix rp transforms vectors from J2000.0 mean equator and
+5. The matrix rp transforms vectors from J2000.0 mean equator and
    equinox to mean equator and equinox of date by applying
    precession.
 
-6) The matrix rbp transforms vectors from GCRS to mean equator and
+6. The matrix rbp transforms vectors from GCRS to mean equator and
    equinox of date by applying frame bias then precession.  It is
    the product rp x rb.
 
-7) The matrix rn transforms vectors from mean equator and equinox of
+7. The matrix rn transforms vectors from mean equator and equinox of
    date to true equator and equinox of date by applying the nutation
    (luni-solar + planetary).
 
-8) The matrix rbpn transforms vectors from GCRS to true equator and
+8. The matrix rbpn transforms vectors from GCRS to true equator and
    equinox of date.  It is the product rn x rbp, applying frame
    bias, precession and nutation in that order.
 
-9) It is permissible to re-use the same array in the returned
+9. It is permissible to re-use the same array in the returned
    arguments.  The arrays are filled in the order given.
 
 ### Called ###
@@ -1354,7 +1354,7 @@ indirectly.
 
 ### Notes ###
 
-1)  The TT date date1+date2 is a Julian Date, apportioned in any
+1.  The TT date date1+date2 is a Julian Date, apportioned in any
     convenient way between the two arguments.  For example,
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
@@ -1373,38 +1373,38 @@ indirectly.
     optimum resolution.  The MJD method and the date & time methods
     are both good compromises between resolution and convenience.
 
-2)  The caller is responsible for providing the nutation components;
+2.  The caller is responsible for providing the nutation components;
     they are in longitude and obliquity, in radians and are with
     respect to the equinox and ecliptic of date.  For high-accuracy
     applications, free core nutation should be included as well as
     any other relevant corrections to the position of the CIP.
 
-3)  The returned mean obliquity is consistent with the IAU 2006
+3.  The returned mean obliquity is consistent with the IAU 2006
     precession.
 
-4)  The matrix rb transforms vectors from GCRS to J2000.0 mean
+4.  The matrix rb transforms vectors from GCRS to J2000.0 mean
     equator and equinox by applying frame bias.
 
-5)  The matrix rp transforms vectors from J2000.0 mean equator and
+5.  The matrix rp transforms vectors from J2000.0 mean equator and
     equinox to mean equator and equinox of date by applying
     precession.
 
-6)  The matrix rbp transforms vectors from GCRS to mean equator and
+6.  The matrix rbp transforms vectors from GCRS to mean equator and
     equinox of date by applying frame bias then precession.  It is
     the product rp x rb.
 
-7)  The matrix rn transforms vectors from mean equator and equinox
+7.  The matrix rn transforms vectors from mean equator and equinox
     of date to true equator and equinox of date by applying the
     nutation (luni-solar + planetary).
 
-8)  The matrix rbpn transforms vectors from GCRS to true equator and
+8.  The matrix rbpn transforms vectors from GCRS to true equator and
     equinox of date.  It is the product rn x rbp, applying frame
     bias, precession and nutation in that order.
 
-9)  The X,Y,Z coordinates of the Celestial Intermediate Pole are
+9.  The X,Y,Z coordinates of the Celestial Intermediate Pole are
     elements (3,1-3) of the GCRS-to-true matrix, i.e. rbpn[2][0-2].
 
-10) It is permissible to re-use the same array in the returned
+10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
 
 ### Called ###
@@ -1594,12 +1594,12 @@ Outer (=vector=cross) product of two pv-vectors.
 
 ### Notes ###
 
-1) If the position and velocity components of the two pv-vectors are
+1. If the position and velocity components of the two pv-vectors are
    ( ap, av ) and ( bp, bv ), the result, a x b, is the pair of
    vectors ( ap x bp, ap x bv + av x bp ).  The two vectors are the
    cross-product of the two p-vectors and its derivative.
 
-2) It is permissible to re-use the same array for any of the
+2. It is permissible to re-use the same array for any of the
    arguments.
 
 ### Called ###
@@ -1650,7 +1650,7 @@ use indirectly.
 
 ### Notes ###
 
-1)  The TT date date1+date2 is a Julian Date, apportioned in any
+1.  The TT date date1+date2 is a Julian Date, apportioned in any
     convenient way between the two arguments.  For example,
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
@@ -1669,39 +1669,39 @@ use indirectly.
     optimum resolution.  The MJD method and the date & time methods
     are both good compromises between resolution and convenience.
 
-2)  The nutation components (luni-solar + planetary, IAU 2000A) in
+2.  The nutation components (luni-solar + planetary, IAU 2000A) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  Free core nutation is omitted;
     for the utmost accuracy, use the eraPn00  function, where the
     nutation components are caller-specified.  For faster but
     slightly less accurate results, use the eraPn00b function.
 
-3)  The mean obliquity is consistent with the IAU 2000 precession.
+3.  The mean obliquity is consistent with the IAU 2000 precession.
 
-4)  The matrix rb transforms vectors from GCRS to J2000.0 mean
+4.  The matrix rb transforms vectors from GCRS to J2000.0 mean
     equator and equinox by applying frame bias.
 
-5)  The matrix rp transforms vectors from J2000.0 mean equator and
+5.  The matrix rp transforms vectors from J2000.0 mean equator and
     equinox to mean equator and equinox of date by applying
     precession.
 
-6)  The matrix rbp transforms vectors from GCRS to mean equator and
+6.  The matrix rbp transforms vectors from GCRS to mean equator and
     equinox of date by applying frame bias then precession.  It is
     the product rp x rb.
 
-7)  The matrix rn transforms vectors from mean equator and equinox
+7.  The matrix rn transforms vectors from mean equator and equinox
     of date to true equator and equinox of date by applying the
     nutation (luni-solar + planetary).
 
-8)  The matrix rbpn transforms vectors from GCRS to true equator and
+8.  The matrix rbpn transforms vectors from GCRS to true equator and
     equinox of date.  It is the product rn x rbp, applying frame
     bias, precession and nutation in that order.
 
-9)  The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate
+9.  The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate
     Pole are elements (3,1-3) of the GCRS-to-true matrix,
     i.e. rbpn[2][0-2].
 
-10) It is permissible to re-use the same array in the returned
+10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the order given.
 
 ### Called ###
@@ -1745,7 +1745,7 @@ use indirectly.
 
 ### Notes ###
 
-1)  The TT date date1+date2 is a Julian Date, apportioned in any
+1.  The TT date date1+date2 is a Julian Date, apportioned in any
     convenient way between the two arguments.  For example,
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
@@ -1764,39 +1764,39 @@ use indirectly.
     optimum resolution.  The MJD method and the date & time methods
     are both good compromises between resolution and convenience.
 
-2)  The nutation components (luni-solar + planetary, IAU 2000B) in
+2.  The nutation components (luni-solar + planetary, IAU 2000B) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  For more accurate results, but
     at the cost of increased computation, use the eraPn00a function.
     For the utmost accuracy, use the eraPn00  function, where the
     nutation components are caller-specified.
 
-3)  The mean obliquity is consistent with the IAU 2000 precession.
+3.  The mean obliquity is consistent with the IAU 2000 precession.
 
-4)  The matrix rb transforms vectors from GCRS to J2000.0 mean
+4.  The matrix rb transforms vectors from GCRS to J2000.0 mean
     equator and equinox by applying frame bias.
 
-5)  The matrix rp transforms vectors from J2000.0 mean equator and
+5.  The matrix rp transforms vectors from J2000.0 mean equator and
     equinox to mean equator and equinox of date by applying
     precession.
 
-6)  The matrix rbp transforms vectors from GCRS to mean equator and
+6.  The matrix rbp transforms vectors from GCRS to mean equator and
     equinox of date by applying frame bias then precession.  It is
     the product rp x rb.
 
-7)  The matrix rn transforms vectors from mean equator and equinox
+7.  The matrix rn transforms vectors from mean equator and equinox
     of date to true equator and equinox of date by applying the
     nutation (luni-solar + planetary).
 
-8)  The matrix rbpn transforms vectors from GCRS to true equator and
+8.  The matrix rbpn transforms vectors from GCRS to true equator and
     equinox of date.  It is the product rn x rbp, applying frame
     bias, precession and nutation in that order.
 
-9)  The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate
+9.  The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate
     Pole are elements (3,1-3) of the GCRS-to-true matrix,
     i.e. rbpn[2][0-2].
 
-10) It is permissible to re-use the same array in the returned
+10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
 
 ### Called ###
@@ -1840,7 +1840,7 @@ indirectly.
 
 ### Notes ###
 
-1)  The TT date date1+date2 is a Julian Date, apportioned in any
+1.  The TT date date1+date2 is a Julian Date, apportioned in any
     convenient way between the two arguments.  For example,
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
@@ -1859,35 +1859,35 @@ indirectly.
     optimum resolution.  The MJD method and the date & time methods
     are both good compromises between resolution and convenience.
 
-2)  The nutation components (luni-solar + planetary, IAU 2000A) in
+2.  The nutation components (luni-solar + planetary, IAU 2000A) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  Free core nutation is omitted;
     for the utmost accuracy, use the eraPn06 function, where the
     nutation components are caller-specified.
 
-3)  The mean obliquity is consistent with the IAU 2006 precession.
+3.  The mean obliquity is consistent with the IAU 2006 precession.
 
-4)  The matrix rb transforms vectors from GCRS to mean J2000.0 by
+4.  The matrix rb transforms vectors from GCRS to mean J2000.0 by
     applying frame bias.
 
-5)  The matrix rp transforms vectors from mean J2000.0 to mean of
+5.  The matrix rp transforms vectors from mean J2000.0 to mean of
     date by applying precession.
 
-6)  The matrix rbp transforms vectors from GCRS to mean of date by
+6.  The matrix rbp transforms vectors from GCRS to mean of date by
     applying frame bias then precession.  It is the product rp x rb.
 
-7)  The matrix rn transforms vectors from mean of date to true of
+7.  The matrix rn transforms vectors from mean of date to true of
     date by applying the nutation (luni-solar + planetary).
 
-8)  The matrix rbpn transforms vectors from GCRS to true of date
+8.  The matrix rbpn transforms vectors from GCRS to true of date
     (CIP/equinox).  It is the product rn x rbp, applying frame bias,
     precession and nutation in that order.
 
-9)  The X,Y,Z coordinates of the IAU 2006/2000A Celestial
+9.  The X,Y,Z coordinates of the IAU 2006/2000A Celestial
     Intermediate Pole are elements (3,1-3) of the GCRS-to-true
     matrix, i.e. rbpn[2][0-2].
 
-10) It is permissible to re-use the same array in the returned
+10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
 
 ### Called ###
@@ -1943,12 +1943,12 @@ Position-angle from spherical coordinates.
 
 ### Notes ###
 
-1) The result is the bearing (position angle), in radians, of point
+1. The result is the bearing (position angle), in radians, of point
    B with respect to point A.  It is in the range -pi to +pi.  The
    sense is such that if B is a small distance "east" of point A,
    the bearing is approximately +pi/2.
 
-2) Zero is returned if the two points are coincident.
+2. Zero is returned if the two points are coincident.
 
 """
 function pas(al, ap, bl, bp)
@@ -1971,18 +1971,18 @@ Position-angle from two p-vectors.
 
 ### Notes ###
 
-1) The result is the position angle, in radians, of direction b with
+1. The result is the position angle, in radians, of direction b with
    respect to direction a.  It is in the range -pi to +pi.  The
    sense is such that if b is a small distance "north" of a the
    position angle is approximately zero, and if b is a small
    distance "east" of a the position angle is approximately +pi/2.
 
-2) The vectors a and b need not be of unit length.
+2. The vectors a and b need not be of unit length.
 
-3) Zero is returned if the two directions are the same or if either
+3. Zero is returned if the two directions are the same or if either
    vector is null.
 
-4) If vector a is at a pole, the result is ill-defined.
+4. If vector a is at a pole, the result is ill-defined.
 
 ### Called ###
 
@@ -2039,7 +2039,7 @@ Precession-rate part of the IAU 2000 precession-nutation models
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2058,18 +2058,18 @@ Precession-rate part of the IAU 2000 precession-nutation models
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The precession adjustments are expressed as "nutation
+2. The precession adjustments are expressed as "nutation
    components", corrections in longitude and obliquity with respect
    to the J2000.0 equinox and ecliptic.
 
-3) Although the precession adjustments are stated to be with respect
+3. Although the precession adjustments are stated to be with respect
    to Lieske et al. (1977), the MHB2000 model does not specify which
    set of Euler angles are to be used and how the adjustments are to
    be applied.  The most literal and straightforward procedure is to
    adopt the 4-rotation epsilon_0, psi_A, omega_A, xi_A option, and
    to add dpsipr to psi_A and depspr to both omega_A and eps_A.
 
-4) This is an implementation of one aspect of the IAU 2000A nutation
+4. This is an implementation of one aspect of the IAU 2000A nutation
    model, formally adopted by the IAU General Assembly in 2000,
    namely MHB2000 (Mathews et al. 2002).
 
@@ -2114,7 +2114,7 @@ date, IAU 2000 model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2133,7 +2133,7 @@ date, IAU 2000 model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix operates in the sense V(date) = rbp * V(GCRS), where
+2. The matrix operates in the sense V(date) = rbp * V(GCRS), where
    the p-vector V(GCRS) is with respect to the Geocentric Celestial
    Reference System (IAU, 2000) and the p-vector V(date) is with
    respect to the mean equatorial triad of the given date.
@@ -2167,7 +2167,7 @@ date, IAU 2006 model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2186,7 +2186,7 @@ date, IAU 2006 model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix operates in the sense V(date) = rbp * V(GCRS), where
+2. The matrix operates in the sense V(date) = rbp * V(GCRS), where
    the p-vector V(GCRS) is with respect to the Geocentric Celestial
    Reference System (IAU, 2000) and the p-vector V(date) is with
    respect to the mean equatorial triad of the given date.
@@ -2220,7 +2220,7 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2239,13 +2239,13 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix operates in the sense V(date) = RMATP * V(J2000),
+2. The matrix operates in the sense V(date) = RMATP * V(J2000),
    where the p-vector V(J2000) is with respect to the mean
    equatorial triad of epoch J2000.0 and the p-vector V(date)
    is with respect to the mean equatorial triad of the given
    date.
 
-3) Though the matrix method itself is rigorous, the precession
+3. Though the matrix method itself is rigorous, the precession
    angles are expressed through canonical polynomials which are
    valid only for a limited time span.  In addition, the IAU 1976
    precession rate is known to be imperfect.  The absolute accuracy
@@ -2290,7 +2290,7 @@ frame bias), equinox-based, IAU 2000A model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2309,12 +2309,12 @@ frame bias), equinox-based, IAU 2000A model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix operates in the sense V(date) = rbpn * V(GCRS), where
+2. The matrix operates in the sense V(date) = rbpn * V(GCRS), where
    the p-vector V(date) is with respect to the true equatorial triad
    of date date1+date2 and the p-vector V(GCRS) is with respect to
    the Geocentric Celestial Reference System (IAU, 2000).
 
-3) A faster, but slightly less accurate result (about 1 mas), can be
+3. A faster, but slightly less accurate result (about 1 mas), can be
    obtained by using instead the eraPnm00b function.
 
 ### Called ###
@@ -2346,7 +2346,7 @@ frame bias), equinox-based, IAU 2000B model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2365,12 +2365,12 @@ frame bias), equinox-based, IAU 2000B model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix operates in the sense V(date) = rbpn * V(GCRS), where
+2. The matrix operates in the sense V(date) = rbpn * V(GCRS), where
    the p-vector V(date) is with respect to the true equatorial triad
    of date date1+date2 and the p-vector V(GCRS) is with respect to
    the Geocentric Celestial Reference System (IAU, 2000).
 
-3) The present function is faster, but slightly less accurate (about
+3. The present function is faster, but slightly less accurate (about
    1 mas), than the eraPnm00a function.
 
 ### Called ###
@@ -2402,7 +2402,7 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2421,7 +2421,7 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix operates in the sense V(date) = rnpb * V(GCRS), where
+2. The matrix operates in the sense V(date) = rnpb * V(GCRS), where
    the p-vector V(date) is with respect to the true equatorial triad
    of date date1+date2 and the p-vector V(GCRS) is with respect to
    the Geocentric Celestial Reference System (IAU, 2000).
@@ -2455,7 +2455,7 @@ precession model, IAU 1980 nutation model.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -2474,7 +2474,7 @@ precession model, IAU 1980 nutation model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The matrix operates in the sense V(date) = rmatpn * V(J2000),
+2. The matrix operates in the sense V(date) = rmatpn * V(J2000),
    where the p-vector V(date) is with respect to the true equatorial
    triad of date date1+date2 and the p-vector V(J2000) is with
    respect to the mean equatorial triad of epoch J2000.0.
@@ -2530,12 +2530,12 @@ Form the matrix of polar motion for a given date, IAU 2000.
 
 ### Notes ###
 
-1) The arguments xp and yp are the coordinates (in radians) of the
+1. The arguments xp and yp are the coordinates (in radians) of the
    Celestial Intermediate Pole with respect to the International
    Terrestrial Reference System (see IERS Conventions 2003),
    measured along the meridians to 0 and 90 deg west respectively.
 
-2) The argument sp is the TIO locator s', in radians, which
+2. The argument sp is the TIO locator s', in radians, which
    positions the Terrestrial Intermediate Origin on the equator.  It
    is obtained from polar motion observations by numerical
    integration, and so is in essence unpredictable.  However, it is
@@ -2544,7 +2544,7 @@ Form the matrix of polar motion for a given date, IAU 2000.
    where t is centuries since J2000.0.  The function eraSp00
    implements this approximation.
 
-3) The matrix operates in the sense V(TRS) = rpom * V(CIP), meaning
+3. The matrix operates in the sense V(TRS) = rpom * V(CIP), meaning
    that it is the final rotation when computing the pointing
    direction to a celestial source.
 

@@ -16,10 +16,10 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
 
 ### Notes ###
 
-1) The earliest valid date is -68569.5 (-4900 March 1).  The
+1. The earliest valid date is -68569.5 (-4900 March 1).  The
    largest value accepted is 1e9.
 
-2) The Julian Date is apportioned in any convenient way between
+2. The Julian Date is apportioned in any convenient way between
    the arguments dj1 and dj2.  For example, JD=2450123.7 could
    be expressed in any of these ways, among others:
 
@@ -30,7 +30,7 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
        2400000.5       50123.2       (MJD method)
        2450123.5           0.2       (date & time method)
 
-3) In early eras the conversion is from the "proleptic Gregorian
+3. In early eras the conversion is from the "proleptic Gregorian
    calendar";  no account is taken of the date(s) of adoption of
    the Gregorian calendar, nor is the AD/BC numbering convention
    observed.
@@ -73,7 +73,7 @@ for formatting messages:  rounded to a specified precision.
 
 ### Notes ###
 
-1) The Julian Date is apportioned in any convenient way between
+1. The Julian Date is apportioned in any convenient way between
    the arguments dj1 and dj2.  For example, JD=2450123.7 could
    be expressed in any of these ways, among others:
 
@@ -84,14 +84,14 @@ for formatting messages:  rounded to a specified precision.
        2400000.5       50123.2       (MJD method)
        2450123.5           0.2       (date & time method)
 
-2) In early eras the conversion is from the "Proleptic Gregorian
+2. In early eras the conversion is from the "Proleptic Gregorian
    Calendar";  no account is taken of the date(s) of adoption of
    the Gregorian Calendar, nor is the AD/BC numbering convention
    observed.
 
-3) Refer to the function eraJd2cal.
+3. Refer to the function eraJd2cal.
 
-4) NDP should be 4 or less if internal overflows are to be
+4. NDP should be 4 or less if internal overflows are to be
    avoided on machines which use 16-bit integers.
 
 ### Called ###

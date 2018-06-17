@@ -202,7 +202,7 @@ transformation chain.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -226,13 +226,13 @@ transformation chain.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) All the vectors are with respect to BCRS axes.
+2. All the vectors are with respect to BCRS axes.
 
-3) In cases where the caller wishes to supply his own Earth
+3. In cases where the caller wishes to supply his own Earth
    ephemeris, the function eraApcg can be used instead of the present
    function.
 
-4) This is one of several functions that inserts into the astrom
+4. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -259,7 +259,7 @@ transformation chain.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-5) The context structure astrom produced by this function is used by
+5. The context structure astrom produced by this function is used by
    eraAtciq* and eraAticq*.
 
 ### Called ###
@@ -319,7 +319,7 @@ parts of the astrometric transformation chain.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -343,14 +343,14 @@ parts of the astrometric transformation chain.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) All the vectors are with respect to BCRS axes.
+2. All the vectors are with respect to BCRS axes.
 
-3) In cases where the caller does not wish to provide the Earth
+3. In cases where the caller does not wish to provide the Earth
    ephemeris and CIP/CIO, the function eraApci13 can be used instead
    of the present function.  This computes the required quantities
    using other ERFA functions.
 
-4) This is one of several functions that inserts into the astrom
+4. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -377,7 +377,7 @@ parts of the astrometric transformation chain.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-5) The context structure astrom produced by this function is used by
+5. The context structure astrom produced by this function is used by
    eraAtciq* and eraAticq*.
 
 ### Called ###
@@ -434,7 +434,7 @@ parts of the astrometric transformation chain.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -458,13 +458,13 @@ parts of the astrometric transformation chain.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) All the vectors are with respect to BCRS axes.
+2. All the vectors are with respect to BCRS axes.
 
-3) In cases where the caller wishes to supply his own Earth
+3. In cases where the caller wishes to supply his own Earth
    ephemeris and CIP/CIO, the function eraApci can be used instead
    of the present function.
 
-4) This is one of several functions that inserts into the astrom
+4. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -491,7 +491,7 @@ parts of the astrometric transformation chain.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-5) The context structure astrom produced by this function is used by
+5. The context structure astrom produced by this function is used by
    eraAtciq* and eraAticq*.
 
 ### Called ###
@@ -561,7 +561,7 @@ site coordinates.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -585,16 +585,16 @@ site coordinates.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) The vectors eb, eh, and all the astrom vectors, are with respect
+2. The vectors eb, eh, and all the astrom vectors, are with respect
    to BCRS axes.
 
-3) The geographical coordinates are with respect to the ERFA_WGS84
+3. The geographical coordinates are with respect to the ERFA_WGS84
    reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN
    CONVENTION:  the longitude required by the present function is
    right-handed, i.e. east-positive, in accordance with geographical
    convention.
 
-4) xp and yp are the coordinates (in radians) of the Celestial
+4. xp and yp are the coordinates (in radians) of the Celestial
    Intermediate Pole with respect to the International Terrestrial
    Reference System (see IERS Conventions), measured along the
    meridians 0 and 90 deg west respectively.  sp is the TIO locator
@@ -605,22 +605,22 @@ site coordinates.
    Internally, the polar motion is stored in a form rotated onto the
    local meridian.
 
-5) The refraction constants refa and refb are for use in a
+5. The refraction constants refa and refb are for use in a
    dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
    (i.e. refracted) zenith distance and dZ is the amount of
    refraction.
 
-6) It is advisable to take great care with units, as even unlikely
+6. It is advisable to take great care with units, as even unlikely
    values of the input parameters are accepted and processed in
    accordance with the models used.
 
-7) In cases where the caller does not wish to provide the Earth
+7. In cases where the caller does not wish to provide the Earth
    Ephemeris, the Earth rotation information and refraction
    constants, the function eraApco13 can be used instead of the
    present function.  This starts from UTC and weather readings etc.
    and computes suitable values using other ERFA functions.
 
-8) This is one of several functions that inserts into the astrom
+8. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -647,8 +647,8 @@ site coordinates.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-9) The context structure astrom produced by this function is used by
-   eraAtioq, eraAtoiq, eraAtciq* and eraAticq*.
+9. The context structure astrom produced by this function is used by
+   `eraAtioq`, `eraAtoiq`, `eraAtciq` and `eraAticq`.
 
 ### Called ###
 
@@ -718,7 +718,7 @@ parts of the ICRS/CIRS transformations.
 
 ### Notes ###
 
-1)  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
+1.  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
     convenient way between the two arguments, for example where utc1
     is the Julian Day Number and utc2 is the fraction of a day.
 
@@ -732,22 +732,22 @@ parts of the ICRS/CIRS transformations.
     it implements the leap-second-ambiguity convention just
     described.
 
-2)  The warning status "dubious year" flags UTCs that predate the
+2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
     future to be trusted.  See eraDat for further details.
 
-3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
     introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4)  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the ERFA_WGS84
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
 
-5)  The polar motion xp,yp can be obtained from IERS bulletins.  The
+5.  The polar motion xp,yp can be obtained from IERS bulletins.  The
     values are the coordinates (in radians) of the Celestial
     Intermediate Pole with respect to the International Terrestrial
     Reference System (see IERS Conventions 2003), measured along the
@@ -757,7 +757,7 @@ parts of the ICRS/CIRS transformations.
     Internally, the polar motion is stored in a form rotated onto
     the local meridian.
 
-6)  If hm, the height above the ellipsoid of the observing station
+6.  If hm, the height above the ellipsoid of the observing station
     in meters, is not known but phpa, the pressure in hPa (=mB), is
     available, an adequate estimate of hm can be obtained from the
     expression
@@ -776,19 +776,19 @@ parts of the ICRS/CIRS transformations.
     the pressure and that an accurate phpa value is important for
     precise work.
 
-7)  The argument wl specifies the observing wavelength in
+7.  The argument wl specifies the observing wavelength in
     micrometers.  The transition from optical to radio is assumed to
     occur at 100 micrometers (about 3000 GHz).
 
-8)  It is advisable to take great care with units, as even unlikely
+8.  It is advisable to take great care with units, as even unlikely
     values of the input parameters are accepted and processed in
     accordance with the models used.
 
-9)  In cases where the caller wishes to supply his own Earth
+9.  In cases where the caller wishes to supply his own Earth
     ephemeris, Earth rotation information and refraction constants,
     the function eraApco can be used instead of the present function.
 
-10) This is one of several functions that inserts into the astrom
+10. This is one of several functions that inserts into the astrom
     structure star-independent parameters needed for the chain of
     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -815,7 +815,7 @@ parts of the ICRS/CIRS transformations.
     aberration and parallax (unless subsumed into the ICRS <-> GCRS
     transformation), and atmospheric refraction.
 
-11) The context structure astrom produced by this function is used
+11. The context structure astrom produced by this function is used
     by eraAtioq, eraAtoiq, eraAtciq* and eraAticq*.
 
 ### Called ###
@@ -890,7 +890,7 @@ astrometric transformation chain.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -914,9 +914,9 @@ astrometric transformation chain.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) All the vectors are with respect to BCRS axes.
+2. All the vectors are with respect to BCRS axes.
 
-3) Providing separate arguments for (i) the observer's geocentric
+3. Providing separate arguments for (i) the observer's geocentric
    position and velocity and (ii) the Earth ephemeris is done for
    convenience in the geocentric, terrestrial and Earth orbit cases.
    For deep space applications it maybe more convenient to specify
@@ -926,12 +926,12 @@ astrometric transformation chain.
    m and m/s for the geocentric vectors, au and au/day for the
    heliocentric and barycentric vectors.
 
-4) In cases where the caller does not wish to provide the Earth
+4. In cases where the caller does not wish to provide the Earth
    ephemeris, the function eraApcs13 can be used instead of the
    present function.  This computes the Earth ephemeris using the
    ERFA function eraEpv00.
 
-5) This is one of several functions that inserts into the astrom
+5. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -958,7 +958,7 @@ astrometric transformation chain.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-6) The context structure astrom produced by this function is used by
+6. The context structure astrom produced by this function is used by
    eraAtciq* and eraAticq*.
 
 ### Called ###
@@ -1016,7 +1016,7 @@ astrometric transformation chain.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -1040,19 +1040,19 @@ astrometric transformation chain.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) All the vectors are with respect to BCRS axes.
+2. All the vectors are with respect to BCRS axes.
 
-3) The observer's position and velocity pv are geocentric but with
+3. The observer's position and velocity pv are geocentric but with
    respect to BCRS axes, and in units of m and m/s.  No assumptions
    are made about proximity to the Earth, and the function can be
    used for deep space applications as well as Earth orbit and
    terrestrial.
 
-4) In cases where the caller wishes to supply his own Earth
+4. In cases where the caller wishes to supply his own Earth
    ephemeris, the function eraApcs can be used instead of the present
    function.
 
-5) This is one of several functions that inserts into the astrom
+5. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -1079,7 +1079,7 @@ astrometric transformation chain.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-6) The context structure astrom produced by this function is used by
+6. The context structure astrom produced by this function is used by
    eraAtciq* and eraAticq*.
 
 ### Called ###
@@ -1145,19 +1145,19 @@ Earth rotation angle, supplied by the caller explicitly.
 
 ### Notes ###
 
-1) This function exists to enable sidereal-tracking applications to
+1. This function exists to enable sidereal-tracking applications to
    avoid wasteful recomputation of the bulk of the astrometry
    parameters:  only the Earth rotation is updated.
 
-2) For targets expressed as equinox based positions, such as
+2. For targets expressed as equinox based positions, such as
    classical geocentric apparent (RA,Dec), the supplied theta can be
    Greenwich apparent sidereal time rather than Earth rotation
    angle.
 
-3) The function eraAper13 can be used instead of the present
+3. The function eraAper13 can be used instead of the present
    function, and starts from UT1 rather than ERA itself.
 
-4) This is one of several functions that inserts into the astrom
+4. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -1242,7 +1242,7 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
 
 ### Notes ###
 
-1) The UT1 date (n.b. not UTC) ut11+ut12 is a Julian Date,
+1. The UT1 date (n.b. not UTC) ut11+ut12 is a Julian Date,
    apportioned in any convenient way between the arguments ut11 and
    ut12.  For example, JD(UT1)=2450123.7 could be expressed in any
    of these ways, among others:
@@ -1263,12 +1263,12 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    question and the ut12 argument lies in the range 0 to 1, or vice
    versa.
 
-2) If the caller wishes to provide the Earth rotation angle itself,
+2. If the caller wishes to provide the Earth rotation angle itself,
    the function eraAper can be used instead.  One use of this
    technique is to substitute Greenwich apparent sidereal time and
    thereby to support equinox based transformations directly.
 
-3) This is one of several functions that inserts into the astrom
+3. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -1349,16 +1349,16 @@ and the refraction constants as well as the site coordinates.
 
 ### Notes ###
 
-1) sp, the TIO locator s', is a tiny quantity needed only by the
+1. sp, the TIO locator s', is a tiny quantity needed only by the
    most precise applications.  It can either be set to zero or
    predicted using the ERFA function eraSp00.
 
-2) The geographical coordinates are with respect to the ERFA_WGS84
+2. The geographical coordinates are with respect to the ERFA_WGS84
    reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
    longitude required by the present function is east-positive
    (i.e. right-handed), in accordance with geographical convention.
 
-3) The polar motion xp,yp can be obtained from IERS bulletins.  The
+3. The polar motion xp,yp can be obtained from IERS bulletins.  The
    values are the coordinates (in radians) of the Celestial
    Intermediate Pole with respect to the International Terrestrial
    Reference System (see IERS Conventions 2003), measured along the
@@ -1368,22 +1368,22 @@ and the refraction constants as well as the site coordinates.
    Internally, the polar motion is stored in a form rotated onto the
    local meridian.
 
-4) The refraction constants refa and refb are for use in a
+4. The refraction constants refa and refb are for use in a
    dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
    (i.e. refracted) zenith distance and dZ is the amount of
    refraction.
 
-5) It is advisable to take great care with units, as even unlikely
+5. It is advisable to take great care with units, as even unlikely
    values of the input parameters are accepted and processed in
    accordance with the models used.
 
-6) In cases where the caller does not wish to provide the Earth
+6. In cases where the caller does not wish to provide the Earth
    rotation information and refraction constants, the function
    eraApio13 can be used instead of the present function.  This
    starts from UTC and weather readings etc. and computes suitable
    values using other ERFA functions.
 
-7) This is one of several functions that inserts into the astrom
+7. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
    astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -1410,7 +1410,7 @@ and the refraction constants as well as the site coordinates.
    aberration and parallax (unless subsumed into the ICRS <-> GCRS
    transformation), and atmospheric refraction.
 
-8) The context structure astrom produced by this function is used by
+8. The context structure astrom produced by this function is used by
    eraAtioq and eraAtoiq.
 
 ### Called ###
@@ -1471,7 +1471,7 @@ conditions and observing wavelength.
 
 ### Notes ###
 
-1)  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
+1.  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
     convenient way between the two arguments, for example where utc1
     is the Julian Day Number and utc2 is the fraction of a day.
 
@@ -1485,22 +1485,22 @@ conditions and observing wavelength.
     it implements the leap-second-ambiguity convention just
     described.
 
-2)  The warning status "dubious year" flags UTCs that predate the
+2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the future
     to be trusted.  See eraDat for further details.
 
-3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
     introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4)  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the ERFA_WGS84
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
 
-5)  The polar motion xp,yp can be obtained from IERS bulletins.  The
+5.  The polar motion xp,yp can be obtained from IERS bulletins.  The
     values are the coordinates (in radians) of the Celestial
     Intermediate Pole with respect to the International Terrestrial
     Reference System (see IERS Conventions 2003), measured along the
@@ -1510,7 +1510,7 @@ conditions and observing wavelength.
     Internally, the polar motion is stored in a form rotated onto
     the local meridian.
 
-6)  If hm, the height above the ellipsoid of the observing station
+6.  If hm, the height above the ellipsoid of the observing station
     in meters, is not known but phpa, the pressure in hPa (=mB), is
     available, an adequate estimate of hm can be obtained from the
     expression
@@ -1529,19 +1529,19 @@ conditions and observing wavelength.
     pressure and that an accurate phpa value is important for
     precise work.
 
-7)  The argument wl specifies the observing wavelength in
+7.  The argument wl specifies the observing wavelength in
     micrometers.  The transition from optical to radio is assumed to
     occur at 100 micrometers (about 3000 GHz).
 
-8)  It is advisable to take great care with units, as even unlikely
+8.  It is advisable to take great care with units, as even unlikely
     values of the input parameters are accepted and processed in
     accordance with the models used.
 
-9)  In cases where the caller wishes to supply his own Earth
+9.  In cases where the caller wishes to supply his own Earth
     rotation information and refraction constants, the function
     eraApc can be used instead of the present function.
 
-10) This is one of several functions that inserts into the astrom
+10. This is one of several functions that inserts into the astrom
     structure star-independent parameters needed for the chain of
     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 
@@ -1568,7 +1568,7 @@ conditions and observing wavelength.
     aberration and parallax (unless subsumed into the ICRS <-> GCRS
     transformation), and atmospheric refraction.
 
-11) The context structure astrom produced by this function is used
+11. The context structure astrom produced by this function is used
     by eraAtioq and eraAtoiq.
 
 ### Called ###
@@ -1618,13 +1618,13 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 
 ### Notes ###
 
-1) Star data for an epoch other than J2000.0 (for example from the
+1. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
    preliminary call to eraPmsafe before use.
 
-2) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
-3) The TDB date date1+date2 is a Julian Date, apportioned in any
+3. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -1648,7 +1648,7 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-4) The available accuracy is better than 1 milliarcsecond, limited
+4. The available accuracy is better than 1 milliarcsecond, limited
    mainly by the precession-nutation model that is used, namely
    IAU 2000A/2006.  Very close to solar system bodies, additional
    errors of up to several milliarcseconds can occur because of
@@ -1659,7 +1659,7 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
    5 microarcseconds.  Light deflection at the Sun's limb is
    uncertain at the 0.4 mas level.
 
-5) Should the transformation to (equinox based) apparent place be
+5. Should the transformation to (equinox based) apparent place be
    required rather than (CIO based) intermediate place, subtract the
    equation of the origins from the returned right ascension:
    RA = RI - EO. (The eraAnp function can then be applied, as
@@ -1726,13 +1726,13 @@ can be used instead.
 
 ### Notes ###
 
-1) All the vectors are with respect to BCRS axes.
+1. All the vectors are with respect to BCRS axes.
 
-2) Star data for an epoch other than J2000.0 (for example from the
+2. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
    preliminary call to eraPmsafe before use.
 
-3) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+3. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
 ### Called ###
 
@@ -1806,25 +1806,25 @@ used.
 
 ### Notes ###
 
-1) Star data for an epoch other than J2000.0 (for example from the
+1. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
    preliminary call to eraPmsafe before use.
 
-2) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
-3) The struct b contains n entries, one for each body to be
+3. The struct b contains n entries, one for each body to be
    considered.  If n = 0, no gravitational light deflection will be
    applied, not even for the Sun.
 
-4) The struct b should include an entry for the Sun as well as for
+4. The struct b should include an entry for the Sun as well as for
    any planet or other body to be taken into account.  The entries
    should be in the order in which the light passes the body.
 
-5) In the entry in the b struct for body i, the mass parameter
+5. In the entry in the b struct for body i, the mass parameter
    b[i].bm can, as required, be adjusted in order to allow for such
    effects as quadrupole field.
 
-6) The deflection limiter parameter b[i].dl is phi^2/2, where phi is
+6. The deflection limiter parameter b[i].dl is phi^2/2, where phi is
    the angular separation (in radians) between star and body at
    which limiting is applied.  As phi shrinks below the chosen
    threshold, the deflection is artificially reduced, reaching zero
@@ -1837,7 +1837,7 @@ used.
       Jupiter    0.00095435     3e-9
       Saturn     0.00028574     3e-10
 
-7) For efficiency, validation of the contents of the b array is
+7. For efficiency, validation of the contents of the b array is
    omitted.  The supplied masses must be greater than zero, the
    position and velocity vectors must be right, and the deflection
    limiter greater than zero.
@@ -1973,13 +1973,13 @@ nutation, Earth orientation and refraction.
 
 ### Notes ###
 
-1)  Star data for an epoch other than J2000.0 (for example from the
+1.  Star data for an epoch other than J2000.0 (for example from the
     Hipparcos catalog, which has an epoch of J1991.25) will require
     a preliminary call to eraPmsafe before use.
 
-2)  The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+2.  The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
-3)  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
+3.  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
     convenient way between the two arguments, for example where utc1
     is the Julian Day Number and utc2 is the fraction of a day.
 
@@ -1993,29 +1993,29 @@ nutation, Earth orientation and refraction.
     it implements the leap-second-ambiguity convention just
     described.
 
-4)  The warning status "dubious year" flags UTCs that predate the
+4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
     future to be trusted.  See eraDat for further details.
 
-5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
     introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6)  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the ERFA_WGS84
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
 
-7)  The polar motion xp,yp can be obtained from IERS bulletins.  The
+7.  The polar motion xp,yp can be obtained from IERS bulletins.  The
     values are the coordinates (in radians) of the Celestial
     Intermediate Pole with respect to the International Terrestrial
     Reference System (see IERS Conventions 2003), measured along the
     meridians 0 and 90 deg west respectively.  For many
     applications, xp and yp can be set to zero.
 
-8)  If hm, the height above the ellipsoid of the observing station
+8.  If hm, the height above the ellipsoid of the observing station
     in meters, is not known but phpa, the pressure in hPa (=mB),
     is available, an adequate estimate of hm can be obtained from
     the expression
@@ -2034,11 +2034,11 @@ nutation, Earth orientation and refraction.
     the pressure and that an accurate phpa value is important for
     precise work.
 
-9)  The argument wl specifies the observing wavelength in
+9.  The argument wl specifies the observing wavelength in
     micrometers.  The transition from optical to radio is assumed to
     occur at 100 micrometers (about 3000 GHz).
 
-10) The accuracy of the result is limited by the corrections for
+10. The accuracy of the result is limited by the corrections for
     refraction, which use a simple A*tan(z) + B*tan^3(z) model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted observed
@@ -2053,7 +2053,7 @@ nutation, Earth orientation and refraction.
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
 
-11) "Observed" Az,ZD means the position that would be seen by a
+11. "Observed" Az,ZD means the position that would be seen by a
     perfect geodetically aligned theodolite.  (Zenith distance is
     used rather than altitude in order to reflect the fact that no
     allowance is made for depression of the horizon.)  This is
@@ -2064,7 +2064,7 @@ nutation, Earth orientation and refraction.
     means the position that would be seen by a perfect equatorial
     with its polar axis aligned to the Earth's axis of rotation.
 
-12) It is advisable to take great care with units, as even unlikely
+12. It is advisable to take great care with units, as even unlikely
     values of the input parameters are accepted and processed in
     accordance with the models used.
 
@@ -2111,7 +2111,7 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -2135,13 +2135,13 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    TT can be used instead of TDB without any significant impact on
    accuracy.
 
-2) Iterative techniques are used for the aberration and light
+2. Iterative techniques are used for the aberration and light
    deflection corrections so that the functions eraAtic13 (or
    eraAticq) and eraAtci13 (or eraAtciq) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
    1 nanoarcsecond.
 
-3) The available accuracy is better than 1 milliarcsecond, limited
+3. The available accuracy is better than 1 milliarcsecond, limited
    mainly by the precession-nutation model that is used, namely
    IAU 2000A/2006.  Very close to solar system bodies, additional
    errors of up to several milliarcseconds can occur because of
@@ -2152,7 +2152,7 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    5 microarcseconds.  Light deflection at the Sun's limb is
    uncertain at the 0.4 mas level.
 
-4) Should the transformation to (equinox based) J2000.0 mean place
+4. Should the transformation to (equinox based) J2000.0 mean place
    be required rather than (CIO based) ICRS coordinates, subtract the
    equation of the origins from the returned right ascension:
    RA = RI - EO.  (The eraAnp function can then be applied, as
@@ -2213,10 +2213,10 @@ or eraApcs[13].
 
 ### Notes ###
 
-1) Only the Sun is taken into account in the light deflection
+1. Only the Sun is taken into account in the light deflection
    correction.
 
-2) Iterative techniques are used for the aberration and light
+2. Iterative techniques are used for the aberration and light
    deflection corrections so that the functions eraAtic13 (or
    eraAticq) and eraAtci13 (or eraAtciq) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
@@ -2287,27 +2287,27 @@ or eraApcs[13].
 
 ### Notes ###
 
-1) Iterative techniques are used for the aberration and light
+1. Iterative techniques are used for the aberration and light
    deflection corrections so that the functions eraAticqn and
    eraAtciqn are accurate inverses; even at the edge of the Sun's
    disk the discrepancy is only about 1 nanoarcsecond.
 
-2) If the only light-deflecting body to be taken into account is the
+2. If the only light-deflecting body to be taken into account is the
    Sun, the eraAticq function can be used instead.
 
-3) The struct b contains n entries, one for each body to be
+3. The struct b contains n entries, one for each body to be
    considered.  If n = 0, no gravitational light deflection will be
    applied, not even for the Sun.
 
-4) The struct b should include an entry for the Sun as well as for
+4. The struct b should include an entry for the Sun as well as for
    any planet or other body to be taken into account.  The entries
    should be in the order in which the light passes the body.
 
-5) In the entry in the b struct for body i, the mass parameter
+5. In the entry in the b struct for body i, the mass parameter
    b[i].bm can, as required, be adjusted in order to allow for such
    effects as quadrupole field.
 
-6) The deflection limiter parameter b[i].dl is phi^2/2, where phi is
+6. The deflection limiter parameter b[i].dl is phi^2/2, where phi is
    the angular separation (in radians) between star and body at
    which limiting is applied.  As phi shrinks below the chosen
    threshold, the deflection is artificially reduced, reaching zero
@@ -2320,7 +2320,7 @@ or eraApcs[13].
       Jupiter    0.00095435     3e-9
       Saturn     0.00028574     3e-10
 
-7) For efficiency, validation of the contents of the b array is
+7. For efficiency, validation of the contents of the b array is
    omitted.  The supplied masses must be greater than zero, the
    position and velocity vectors must be right, and the deflection
    limiter greater than zero.
@@ -2378,7 +2378,7 @@ coordinates, ambient air conditions and observing wavelength.
 
 ### Notes ###
 
-1)  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
+1.  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
     convenient way between the two arguments, for example where utc1
     is the Julian Day Number and utc2 is the fraction of a day.
 
@@ -2392,29 +2392,29 @@ coordinates, ambient air conditions and observing wavelength.
     it implements the leap-second-ambiguity convention just
     described.
 
-2)  The warning status "dubious year" flags UTCs that predate the
+2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
     future to be trusted.  See eraDat for further details.
 
-3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
     introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4)  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the ERFA_WGS84
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
 
-5)  The polar motion xp,yp can be obtained from IERS bulletins.  The
+5.  The polar motion xp,yp can be obtained from IERS bulletins.  The
     values are the coordinates (in radians) of the Celestial
     Intermediate Pole with respect to the International Terrestrial
     Reference System (see IERS Conventions 2003), measured along the
     meridians 0 and 90 deg west respectively.  For many
     applications, xp and yp can be set to zero.
 
-6)  If hm, the height above the ellipsoid of the observing station
+6.  If hm, the height above the ellipsoid of the observing station
     in meters, is not known but phpa, the pressure in hPa (=mB), is
     available, an adequate estimate of hm can be obtained from the
     expression
@@ -2433,11 +2433,11 @@ coordinates, ambient air conditions and observing wavelength.
     the pressure and that an accurate phpa value is important for
     precise work.
 
-7)  The argument wl specifies the observing wavelength in
+7.  The argument wl specifies the observing wavelength in
     micrometers.  The transition from optical to radio is assumed to
     occur at 100 micrometers (about 3000 GHz).
 
-8)  "Observed" Az,ZD means the position that would be seen by a
+8.  "Observed" Az,ZD means the position that would be seen by a
     perfect geodetically aligned theodolite.  (Zenith distance is
     used rather than altitude in order to reflect the fact that no
     allowance is made for depression of the horizon.)  This is
@@ -2448,7 +2448,7 @@ coordinates, ambient air conditions and observing wavelength.
     means the position that would be seen by a perfect equatorial
     with its polar axis aligned to the Earth's axis of rotation.
 
-9)  The accuracy of the result is limited by the corrections for
+9.  The accuracy of the result is limited by the corrections for
     refraction, which use a simple A*tan(z) + B*tan^3(z) model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
@@ -2457,11 +2457,11 @@ coordinates, ambient air conditions and observing wavelength.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-10) The complementary functions eraAtio13 and eraAtoi13 are self-
+10. The complementary functions eraAtio13 and eraAtoi13 are self-
     consistent to better than 1 microarcsecond all over the
     celestial sphere.
 
-11) It is advisable to take great care with units, as even unlikely
+11. It is advisable to take great care with units, as even unlikely
     values of the input parameters are accepted and processed in
     accordance with the models used.
 
@@ -2530,11 +2530,11 @@ calling eraApio[13] or eraApco[13].
 
 ### Notes ###
 
-1) This function returns zenith distance rather than altitude in
+1. This function returns zenith distance rather than altitude in
    order to reflect the fact that no allowance is made for
    depression of the horizon.
 
-2) The accuracy of the result is limited by the corrections for
+2. The accuracy of the result is limited by the corrections for
    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
    Providing the meteorological parameters are known accurately and
    there are no gross local effects, the predicted observed
@@ -2549,18 +2549,18 @@ calling eraApio[13] or eraApco[13].
    falls off at high zenith distances, but is still better than
    0.05 arcsec at 85 degrees.
 
-3) It is advisable to take great care with units, as even unlikely
+3. It is advisable to take great care with units, as even unlikely
    values of the input parameters are accepted and processed in
    accordance with the models used.
 
-4) The CIRS RA,Dec is obtained from a star catalog mean place by
+4. The CIRS RA,Dec is obtained from a star catalog mean place by
    allowing for space motion, parallax, the Sun's gravitational lens
    effect, annual aberration and precession-nutation.  For star
    positions in the ICRS, these effects can be applied by means of
    the eraAtci13 (etc.) functions.  Starting from classical "mean
    place" systems, additional transformations will be needed first.
 
-5) "Observed" Az,El means the position that would be seen by a
+5. "Observed" Az,El means the position that would be seen by a
    perfect geodetically aligned theodolite.  This is obtained from
    the CIRS RA,Dec by allowing for Earth orientation and diurnal
    aberration, rotating from equator to horizon coordinates, and
@@ -2570,7 +2570,7 @@ calling eraApio[13] or eraApco[13].
    aligned to the Earth's axis of rotation.  Finally, the RA is
    obtained by subtracting the HA from the local ERA.
 
-6) The star-independent CIRS-to-observed-place parameters in ASTROM
+6. The star-independent CIRS-to-observed-place parameters in ASTROM
    may be computed with eraApio[13] or eraApco[13].  If nothing has
    changed significantly except the time, eraAper[13] may be used to
    perform the requisite adjustment to the astrom structure.
@@ -2624,7 +2624,7 @@ and observing wavelength.
 
 ### Notes ###
 
-1)  "Observed" Az,ZD means the position that would be seen by a
+1.  "Observed" Az,ZD means the position that would be seen by a
     perfect geodetically aligned theodolite.  (Zenith distance is
     used rather than altitude in order to reflect the fact that no
     allowance is made for depression of the horizon.)  This is
@@ -2635,14 +2635,14 @@ and observing wavelength.
     means the position that would be seen by a perfect equatorial
     with its polar axis aligned to the Earth's axis of rotation.
 
-2)  Only the first character of the type argument is significant.
+2.  Only the first character of the type argument is significant.
     "R" or "r" indicates that ob1 and ob2 are the observed right
     ascension and declination;  "H" or "h" indicates that they are
     hour angle (west +ve) and declination;  anything else ("A" or
     "a" is recommended) indicates that ob1 and ob2 are azimuth
     (north zero, east 90 deg) and zenith distance.
 
-3)  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
+3.  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
     convenient way between the two arguments, for example where utc1
     is the Julian Day Number and utc2 is the fraction of a day.
 
@@ -2656,29 +2656,29 @@ and observing wavelength.
     it implements the leap-second-ambiguity convention just
     described.
 
-4)  The warning status "dubious year" flags UTCs that predate the
+4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
     future to be trusted.  See eraDat for further details.
 
-5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
     introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6)  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the ERFA_WGS84
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
 
-7)  The polar motion xp,yp can be obtained from IERS bulletins.  The
+7.  The polar motion xp,yp can be obtained from IERS bulletins.  The
     values are the coordinates (in radians) of the Celestial
     Intermediate Pole with respect to the International Terrestrial
     Reference System (see IERS Conventions 2003), measured along the
     meridians 0 and 90 deg west respectively.  For many
     applications, xp and yp can be set to zero.
 
-8)  If hm, the height above the ellipsoid of the observing station
+8.  If hm, the height above the ellipsoid of the observing station
     in meters, is not known but phpa, the pressure in hPa (=mB), is
     available, an adequate estimate of hm can be obtained from the
     expression
@@ -2697,11 +2697,11 @@ and observing wavelength.
     the pressure and that an accurate phpa value is important for
     precise work.
 
-9)  The argument wl specifies the observing wavelength in
+9.  The argument wl specifies the observing wavelength in
     micrometers.  The transition from optical to radio is assumed to
     occur at 100 micrometers (about 3000 GHz).
 
-10) The accuracy of the result is limited by the corrections for
+10. The accuracy of the result is limited by the corrections for
     refraction, which use a simple A*tan(z) + B*tan^3(z) model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
@@ -2716,7 +2716,7 @@ and observing wavelength.
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
 
-11) It is advisable to take great care with units, as even unlikely
+11. It is advisable to take great care with units, as even unlikely
     values of the input parameters are accepted and processed in
     accordance with the models used.
 
@@ -2774,7 +2774,7 @@ ambient air conditions and observing wavelength.
 
 ### Notes ###
 
-1)  "Observed" Az,ZD means the position that would be seen by a
+1.  "Observed" Az,ZD means the position that would be seen by a
     perfect geodetically aligned theodolite.  (Zenith distance is
     used rather than altitude in order to reflect the fact that no
     allowance is made for depression of the horizon.)  This is
@@ -2785,14 +2785,14 @@ ambient air conditions and observing wavelength.
     means the position that would be seen by a perfect equatorial
     with its polar axis aligned to the Earth's axis of rotation.
 
-2)  Only the first character of the type argument is significant.
+2.  Only the first character of the type argument is significant.
     "R" or "r" indicates that ob1 and ob2 are the observed right
     ascension and declination;  "H" or "h" indicates that they are
     hour angle (west +ve) and declination;  anything else ("A" or
     "a" is recommended) indicates that ob1 and ob2 are azimuth
     (north zero, east 90 deg) and zenith distance.
 
-3)  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
+3.  utc1+utc2 is quasi Julian Date (see Note 2), apportioned in any
     convenient way between the two arguments, for example where utc1
     is the Julian Day Number and utc2 is the fraction of a day.
 
@@ -2806,29 +2806,29 @@ ambient air conditions and observing wavelength.
     it implements the leap-second-ambiguity convention just
     described.
 
-4)  The warning status "dubious year" flags UTCs that predate the
+4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
     future to be trusted.  See eraDat for further details.
 
-5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
     introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6)  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the ERFA_WGS84
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
 
-7)  The polar motion xp,yp can be obtained from IERS bulletins.  The
+7.  The polar motion xp,yp can be obtained from IERS bulletins.  The
     values are the coordinates (in radians) of the Celestial
     Intermediate Pole with respect to the International Terrestrial
     Reference System (see IERS Conventions 2003), measured along the
     meridians 0 and 90 deg west respectively.  For many
     applications, xp and yp can be set to zero.
 
-8)  If hm, the height above the ellipsoid of the observing station
+8.  If hm, the height above the ellipsoid of the observing station
     in meters, is not known but phpa, the pressure in hPa (=mB), is
     available, an adequate estimate of hm can be obtained from the
     expression
@@ -2847,11 +2847,11 @@ ambient air conditions and observing wavelength.
     the pressure and that an accurate phpa value is important for
     precise work.
 
-9)  The argument wl specifies the observing wavelength in
+9.  The argument wl specifies the observing wavelength in
     micrometers.  The transition from optical to radio is assumed to
     occur at 100 micrometers (about 3000 GHz).
 
-10) The accuracy of the result is limited by the corrections for
+10. The accuracy of the result is limited by the corrections for
     refraction, which use a simple A*tan(z) + B*tan^3(z) model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
@@ -2866,7 +2866,7 @@ ambient air conditions and observing wavelength.
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
 
-12) It is advisable to take great care with units, as even unlikely
+12. It is advisable to take great care with units, as even unlikely
     values of the input parameters are accepted and processed in
     accordance with the models used.
 
@@ -2931,7 +2931,7 @@ calling eraApio[13] or eraApco[13].
 
 ### Notes ###
 
-1) "Observed" Az,El means the position that would be seen by a
+1. "Observed" Az,El means the position that would be seen by a
    perfect geodetically aligned theodolite.  This is related to
    the observed HA,Dec via the standard rotation, using the geodetic
    latitude (corrected for polar motion), while the observed HA and
@@ -2942,7 +2942,7 @@ calling eraApio[13] or eraApco[13].
    from the observed place the effects of atmospheric refraction and
    diurnal aberration, the CIRS RA,Dec is obtained.
 
-2) Only the first character of the type argument is significant.
+2. Only the first character of the type argument is significant.
    "R" or "r" indicates that ob1 and ob2 are the observed right
    ascension and declination;  "H" or "h" indicates that they are
    hour angle (west +ve) and declination;  anything else ("A" or
@@ -2951,7 +2951,7 @@ calling eraApio[13] or eraApco[13].
    rather than altitude in order to reflect the fact that no
    allowance is made for depression of the horizon.)
 
-3) The accuracy of the result is limited by the corrections for
+3. The accuracy of the result is limited by the corrections for
    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
    Providing the meteorological parameters are known accurately and
    there are no gross local effects, the predicted observed
@@ -2966,7 +2966,7 @@ calling eraApio[13] or eraApco[13].
    falls off at high zenith distances, but is still better than
    0.05 arcsec at 85 degrees.
 
-4) It is advisable to take great care with units, as even unlikely
+4. It is advisable to take great care with units, as even unlikely
    values of the input parameters are accepted and processed in
    accordance with the models used.
 
@@ -3050,7 +3050,7 @@ Decompose radians into degrees, arcminutes, arcseconds, fraction.
 
 ### Notes ###
 
-1) The argument ndp is interpreted as follows:
+1. The argument ndp is interpreted as follows:
 
    ndp         resolution
     :      ...0000 00 00
@@ -3067,7 +3067,7 @@ Decompose radians into degrees, arcminutes, arcseconds, fraction.
     3            0 00 00.001
     :            0 00 00.000...
 
-2) The largest positive useful value for ndp is determined by the
+2. The largest positive useful value for ndp is determined by the
    size of angle, the format of doubles on the target platform, and
    the risk of overflowing idmsf[3].  On a typical platform, for
    angle up to 2pi, the available floating-point precision might
@@ -3075,7 +3075,7 @@ Decompose radians into degrees, arcminutes, arcseconds, fraction.
    ndp=9, set by the capacity of a 32-bit int, or ndp=4 if int is
    only 16 bits.
 
-3) The absolute value of angle may exceed 2pi.  In cases where it
+3. The absolute value of angle may exceed 2pi.  In cases where it
    does not, it is up to the caller to test for and handle the
    case where angle is very nearly 2pi and rounds up to 360 degrees,
    by testing for idmsf[0]=360 and setting idmsf[0-3] to zero.
@@ -3104,7 +3104,7 @@ Decompose radians into hours, minutes, seconds, fraction.
 
 ### Notes ###
 
-1) The argument ndp is interpreted as follows:
+1. The argument ndp is interpreted as follows:
 
    ndp         resolution
     :      ...0000 00 00
@@ -3121,7 +3121,7 @@ Decompose radians into hours, minutes, seconds, fraction.
     3            0 00 00.001
     :            0 00 00.000...
 
-2) The largest positive useful value for ndp is determined by the
+2. The largest positive useful value for ndp is determined by the
    size of angle, the format of doubles on the target platform, and
    the risk of overflowing ihmsf[3].  On a typical platform, for
    angle up to 2pi, the available floating-point precision might
@@ -3129,7 +3129,7 @@ Decompose radians into hours, minutes, seconds, fraction.
    ndp=9, set by the capacity of a 32-bit int, or ndp=4 if int is
    only 16 bits.
 
-3) The absolute value of angle may exceed 2pi.  In cases where it
+3. The absolute value of angle may exceed 2pi.  In cases where it
    does not, it is up to the caller to test for and handle the
    case where angle is very nearly 2pi and rounds up to 24 hours,
    by testing for ihmsf[0]=24 and setting ihmsf[0-3] to zero.
@@ -3171,12 +3171,12 @@ Convert degrees, arcminutes, arcseconds to radians.
 
 ### Notes ###
 
-1)  The result is computed even if any of the range checks fail.
+1.  The result is computed even if any of the range checks fail.
 
-2)  Negative ideg, iamin and/or asec produce a warning status, but
+2.  Negative ideg, iamin and/or asec produce a warning status, but
     the absolute value is used in the conversion.
 
-3)  If there are multiple errors, the status value reflects only the
+3.  If there are multiple errors, the status value reflects only the
     first, the smallest taking precedence.
 
 """

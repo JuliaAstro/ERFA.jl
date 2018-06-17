@@ -14,18 +14,18 @@ Earth reference ellipsoids.
 
 ### Notes ###
 
-1) The identifier n is a number that specifies the choice of
+1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
         - `WGS84`
         - `GRS80`
         - `WGS72`
 
-2) The ellipsoid parameters are returned in the form of equatorial
+2. The ellipsoid parameters are returned in the form of equatorial
    radius in meters (a) and flattening (f).  The latter is a number
    around 0.00335, i.e. around 1/298.
 
-3) For the case where an unsupported n value is supplied, zero a and
+3. For the case where an unsupported n value is supplied, zero a and
    f are returned, as well as error status.
 
 ### References ###
@@ -73,14 +73,14 @@ quantity s.
 
 ### Notes ###
 
-1)  The equation of the origins is the distance between the true
+1.  The equation of the origins is the distance between the true
     equinox and the celestial intermediate origin and, equivalently,
     the difference between Earth rotation angle and Greenwich
     apparent sidereal time (ERA-GST).  It comprises the precession
     (since J2000.0) in right ascension plus the equation of the
     equinoxes (including the small correction terms).
 
-2)  The algorithm is from Wallace & Capitaine (2006).
+2.  The algorithm is from Wallace & Capitaine (2006).
 
 ### References ###
 
@@ -112,7 +112,7 @@ respect to the Barycentric Celestial Reference System.
 
 ### Notes ###
 
-1) The TDB date date1+date2 is a Julian Date, apportioned in any
+1. The TDB date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
@@ -135,7 +135,7 @@ respect to the Barycentric Celestial Reference System.
 
    n.b. TT can be used instead of TDB in most applications.
 
-2) On return, the arrays pvh and pvb contain the following:
+2. On return, the arrays pvh and pvb contain the following:
 
       pvh[0][0]  x       }
       pvh[0][1]  y       } heliocentric position, au
@@ -156,12 +156,12 @@ respect to the Barycentric Celestial Reference System.
    The vectors are with respect to the Barycentric Celestial
    Reference System.  The time unit is one day in TDB.
 
-3) The function is a SIMPLIFIED SOLUTION from the planetary theory
+3. The function is a SIMPLIFIED SOLUTION from the planetary theory
    VSOP2000 (X. Moisson, P. Bretagnon, 2001, Celes. Mechanics &
    Dyn. Astron., 80, 3/4, 205-213) and is an adaptation of original
    Fortran code supplied by P. Bretagnon (private comm., 2000).
 
-4) Comparisons over the time span 1900-2100 with this simplified
+4. Comparisons over the time span 1900-2100 with this simplified
    solution and the JPL DE405 ephemeris give the following results:
 
                               RMS    max
@@ -179,7 +179,7 @@ respect to the Barycentric Celestial Reference System.
    by 1000 and 3000 a factor of 60.  The velocity accuracy falls off
    at about half that rate.
 
-5) It is permissible to use the same array for pvh and pvb, which
+5. It is permissible to use the same array for pvh and pvb, which
    will receive the barycentric values.
 
 """
@@ -211,7 +211,7 @@ of date) to ICRS RA,Dec, using the IAU 2006 precession model.
 
 - `dr`, `dd`: ICRS right ascension and declination (radians)
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -230,11 +230,11 @@ of date) to ICRS RA,Dec, using the IAU 2006 precession model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) No assumptions are made about whether the coordinates represent
+2. No assumptions are made about whether the coordinates represent
    starlight and embody astrometric effects such as parallax or
    aberration.
 
-3) The transformation is approximately that from ecliptic longitude
+3. The transformation is approximately that from ecliptic longitude
    and latitude (mean equinox and ecliptic of date) to mean J2000.0
    right ascension and declination, with only frame bias (always
    less than 25 mas) to disturb this classical picture.
@@ -267,7 +267,7 @@ precession model.
 
 - `dl`, `db`: Ecliptic longitude and latitude (radians)
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -286,11 +286,11 @@ precession model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) No assumptions are made about whether the coordinates represent
+2. No assumptions are made about whether the coordinates represent
    starlight and embody astrometric effects such as parallax or
    aberration.
 
-3) The transformation is approximately that from mean J2000.0 right
+3. The transformation is approximately that from mean J2000.0 right
    ascension and declination to ecliptic longitude and latitude
    (mean equinox and ecliptic of date), with only frame bias (always
    less than 25 mas) to disturb this classical picture.
@@ -410,7 +410,7 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -429,11 +429,11 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The result, which is in radians, operates in the following sense:
+2. The result, which is in radians, operates in the following sense:
 
       Greenwich apparent ST = GMST + equation of the equinoxes
 
-3) The result is compatible with the IAU 2000 resolutions.  For
+3. The result is compatible with the IAU 2000 resolutions.  For
    further details, see IERS Conventions 2003 and Capitaine et al.
    (2002).
 
@@ -472,7 +472,7 @@ using the truncated nutation model IAU 2000B.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -491,11 +491,11 @@ using the truncated nutation model IAU 2000B.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The result, which is in radians, operates in the following sense:
+2. The result, which is in radians, operates in the following sense:
 
       Greenwich apparent ST = GMST + equation of the equinoxes
 
-3) The result is compatible with the IAU 2000 resolutions except
+3. The result is compatible with the IAU 2000 resolutions except
    that accuracy has been compromised for the sake of speed.  For
    further details, see McCarthy & Luzum (2001), IERS Conventions
    2003 and Capitaine et al. (2003).
@@ -539,7 +539,7 @@ IAU 2006/2000A precession-nutation.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -558,7 +558,7 @@ IAU 2006/2000A precession-nutation.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The result, which is in radians, operates in the following sense:
+2. The result, which is in radians, operates in the following sense:
 
       Greenwich apparent ST = GMST + equation of the equinoxes
 
@@ -592,7 +592,7 @@ IAU 2000 resolutions.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -611,7 +611,7 @@ IAU 2000 resolutions.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The "complementary terms" are part of the equation of the
+2. The "complementary terms" are part of the equation of the
    equinoxes (EE), classically the difference between apparent and
    mean Sidereal Time:
 
@@ -685,7 +685,7 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -704,7 +704,7 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The equation of the origins is the distance between the true
+2. The equation of the origins is the distance between the true
    equinox and the celestial intermediate origin and, equivalently,
    the difference between Earth rotation angle and Greenwich
    apparent sidereal time (ERA-GST).  It comprises the precession
@@ -798,7 +798,7 @@ Equation of the equinoxes, IAU 1994 model.
 
 ### Notes ###
 
-1) The date date1+date2 is a Julian Date, apportioned in any
+1. The date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -817,7 +817,7 @@ Equation of the equinoxes, IAU 1994 model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The result, which is in radians, operates in the following sense:
+2. The result, which is in radians, operates in the following sense:
 
       Greenwich apparent ST = GMST + equation of the equinoxes
 
@@ -852,7 +852,7 @@ Earth rotation angle (IAU 2000 model).
 
 ### Notes ###
 
-1) The UT1 date dj1+dj2 is a Julian Date, apportioned in any
+1. The UT1 date dj1+dj2 is a Julian Date, apportioned in any
    convenient way between the arguments dj1 and dj2.  For example,
    JD(UT1)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -873,7 +873,7 @@ Earth rotation angle (IAU 2000 model).
    question and the dj2 argument lies in the range 0 to 1, or vice
    versa.
 
-2) The algorithm is adapted from Expression 22 of Capitaine et al.
+2. The algorithm is adapted from Expression 22 of Capitaine et al.
    2000.  The time argument has been expressed in days directly,
    and, to retain precision, integer contributions have been
    eliminated.  The same formulation is given in IERS Conventions
@@ -926,7 +926,7 @@ given the nutation in longitude and the mean obliquity.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -945,13 +945,13 @@ given the nutation in longitude and the mean obliquity.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The obliquity, in radians, is mean of date.
+2. The obliquity, in radians, is mean of date.
 
-3) The result, which is in radians, operates in the following sense:
+3. The result, which is in radians, operates in the following sense:
 
       Greenwich apparent ST = GMST + equation of the equinoxes
 
-4) The result is compatible with the IAU 2000 resolutions.  For
+4. The result is compatible with the IAU 2000 resolutions.  For
    further details, see IERS Conventions 2003 and Capitaine et al.
    (2002).
 
@@ -986,7 +986,7 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -1005,7 +1005,7 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-1) The matrix is in the sense
+1. The matrix is in the sense
 
       E_ep = rm x P_ICRS,
 
@@ -1013,7 +1013,7 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
    and declination axes and E_ep is the same vector with respect to
    the (inertial) ecliptic and equinox of date.
 
-2) P_ICRS is a free vector, merely a direction, typically of unit
+2. P_ICRS is a free vector, merely a direction, typically of unit
    magnitude, and not bound to any particular spatial origin, such
    as the Earth, Sun or SSB.  No assumptions are made about whether
    it represents starlight and embodies astrometric effects such as

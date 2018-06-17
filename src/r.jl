@@ -22,12 +22,12 @@ zenith distance.
 
 ### Notes ###
 
-1) The model balances speed and accuracy to give good results in
+1. The model balances speed and accuracy to give good results in
    applications where performance at low altitudes is not paramount.
    Performance is maintained across a range of conditions, and
    applies to both optical/IR and radio.
 
-2) The model omits the effects of (i) height above sea level (apart
+2. The model omits the effects of (i) height above sea level (apart
    from the reduced pressure itself), (ii) latitude (i.e. the
    flattening of the Earth), (iii) variations in tropospheric lapse
    rate and (iv) dispersive effects in the radio.
@@ -86,15 +86,15 @@ zenith distance.
    The values for Saastamoinen's formula (which includes terms
    up to tan^5) are taken from Hohenkerk and Sinclair (1985).
 
-3) A wl value in the range 0-100 selects the optical/IR case and is
+3. A wl value in the range 0-100 selects the optical/IR case and is
    wavelength in micrometers.  Any value outside this range selects
    the radio case.
 
-4) Outlandish input parameters are silently limited to
+4. Outlandish input parameters are silently limited to
    mathematically safe values.  Zero pressure is permissible, and
    causes zeroes to be returned.
 
-5) The algorithm draws on several sources, as follows:
+5. The algorithm draws on several sources, as follows:
 
    a) The formula for the saturation vapour pressure of water as
       a function of temperature and temperature is taken from
@@ -166,17 +166,17 @@ Express an r-matrix as an r-vector.
 
 ### Notes ###
 
-1) A rotation matrix describes a rotation through some angle about
+1. A rotation matrix describes a rotation through some angle about
    some arbitrary axis called the Euler axis.  The "rotation vector"
    returned by this function has the same direction as the Euler axis,
    and its magnitude is the angle in radians.  (The magnitude and
    direction can be separated by means of the function eraPn.)
 
-2) If r is null, so is the result.  If r is not a rotation matrix
+2. If r is null, so is the result.  If r is not a rotation matrix
    the result is undefined;  r must be proper (i.e. have a positive
    determinant) and real orthogonal (inverse = transpose).
 
-3) The reference frame rotates clockwise as seen looking along
+3. The reference frame rotates clockwise as seen looking along
    the rotation vector from the origin.
 
 """
@@ -203,14 +203,14 @@ Form the r-matrix corresponding to a given r-vector.
 
 ### Notes ###
 
-1) A rotation matrix describes a rotation through some angle about
+1. A rotation matrix describes a rotation through some angle about
    some arbitrary axis called the Euler axis.  The "rotation vector"
    supplied to This function has the same direction as the Euler
    axis, and its magnitude is the angle in radians.
 
-2) If w is null, the unit matrix is returned.
+2. If w is null, the unit matrix is returned.
 
-3) The reference frame rotates clockwise as seen looking along the
+3. The reference frame rotates clockwise as seen looking along the
    rotation vector from the origin.
 
 """
@@ -270,11 +270,11 @@ Rotate an r-matrix about the x-axis.
 
 ### Notes ###
 
-1) Calling this function with positive phi incorporates in the
+1. Calling this function with positive phi incorporates in the
    supplied r-matrix r an additional rotation, about the x-axis,
    anticlockwise as seen looking towards the origin from positive x.
 
-2) The additional rotation can be represented by this matrix:
+2. The additional rotation can be represented by this matrix:
 
        (  1        0            0      )
        (                               )
@@ -300,11 +300,11 @@ Rotate an r-matrix about the y-axis.
 
 ### Notes ###
 
-1) Calling this function with positive theta incorporates in the
+1. Calling this function with positive theta incorporates in the
    supplied r-matrix r an additional rotation, about the y-axis,
    anticlockwise as seen looking towards the origin from positive y.
 
-2) The additional rotation can be represented by this matrix:
+2. The additional rotation can be represented by this matrix:
 
        (  + cos(theta)     0      - sin(theta)  )
        (                                        )
@@ -330,11 +330,11 @@ Rotate an r-matrix about the z-axis.
 
 ### Notes ###
 
-1) Calling this function with positive psi incorporates in the
+1. Calling this function with positive psi incorporates in the
    supplied r-matrix r an additional rotation, about the z-axis,
    anticlockwise as seen looking towards the origin from positive z.
 
-2) The additional rotation can be represented by this matrix:
+2. The additional rotation can be represented by this matrix:
 
        (  + cos(psi)   + sin(psi)     0  )
        (                                 )

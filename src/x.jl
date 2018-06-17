@@ -14,7 +14,7 @@ on IAU 2006 precession and IAU 2000A nutation.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -33,15 +33,15 @@ on IAU 2006 precession and IAU 2000A nutation.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The X,Y coordinates are those of the unit vector towards the
+2. The X,Y coordinates are those of the unit vector towards the
    celestial intermediate pole.  They represent the combined effects
    of frame bias, precession and nutation.
 
-3) The fundamental arguments used are as adopted in IERS Conventions
+3. The fundamental arguments used are as adopted in IERS Conventions
    (2003) and are from Simon et al. (1994) and Souchay et al.
    (1999).
 
-4) This is an alternative to the angles-based method, via the ERFA
+4. This is an alternative to the angles-based method, via the ERFA
    function eraFw2xy and as used in eraXys06a for example.  The two
    methods agree at the 1 microarcsecond level (at present), a
    negligible amount compared with the intrinsic accuracy of the
@@ -111,7 +111,7 @@ precession-nutation model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -130,14 +130,14 @@ precession-nutation model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The Celestial Intermediate Pole coordinates are the x,y
+2. The Celestial Intermediate Pole coordinates are the x,y
    components of the unit vector in the Geocentric Celestial
    Reference System.
 
-3) The CIO locator s (in radians) positions the Celestial
+3. The CIO locator s (in radians) positions the Celestial
    Intermediate Origin on the equator of the CIP.
 
-4) A faster, but slightly less accurate result (about 1 mas for
+4. A faster, but slightly less accurate result (about 1 mas for
    X,Y), can be obtained by using instead the eraXys00b function.
 
 ### Called ###
@@ -172,7 +172,7 @@ precession-nutation model.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -191,14 +191,14 @@ precession-nutation model.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The Celestial Intermediate Pole coordinates are the x,y
+2. The Celestial Intermediate Pole coordinates are the x,y
    components of the unit vector in the Geocentric Celestial
    Reference System.
 
-3) The CIO locator s (in radians) positions the Celestial
+3. The CIO locator s (in radians) positions the Celestial
    Intermediate Origin on the equator of the CIP.
 
-4) The present function is faster, but slightly less accurate (about
+4. The present function is faster, but slightly less accurate (about
    1 mas in X,Y), than the eraXys00a function.
 
 ### Called ###
@@ -233,7 +233,7 @@ precession and IAU 2000A nutation models.
 
 ### Notes ###
 
-1) The TT date date1+date2 is a Julian Date, apportioned in any
+1. The TT date date1+date2 is a Julian Date, apportioned in any
    convenient way between the two arguments.  For example,
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
@@ -252,13 +252,13 @@ precession and IAU 2000A nutation models.
    optimum resolution.  The MJD method and the date & time methods
    are both good compromises between resolution and convenience.
 
-2) The Celestial Intermediate Pole coordinates are the x,y components
+2. The Celestial Intermediate Pole coordinates are the x,y components
    of the unit vector in the Geocentric Celestial Reference System.
 
-3) The CIO locator s (in radians) positions the Celestial
+3. The CIO locator s (in radians) positions the Celestial
    Intermediate Origin on the equator of the CIP.
 
-4) Series-based solutions for generating X and Y are also available:
+4. Series-based solutions for generating X and Y are also available:
    see Capitaine & Wallace (2006) and eraXy06.
 
 ### Called ###

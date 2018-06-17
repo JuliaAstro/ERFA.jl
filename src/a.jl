@@ -239,14 +239,14 @@ transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -357,14 +357,14 @@ parts of the astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -471,14 +471,14 @@ parts of the astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -627,14 +627,14 @@ site coordinates.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -795,14 +795,14 @@ parts of the ICRS/CIRS transformations.
     The various functions support different classes of observer and
     portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
     Those with names ending in "13" use contemporary ERFA models to
     compute the various ephemerides.  The others accept ephemerides
@@ -938,14 +938,14 @@ astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1059,14 +1059,14 @@ astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1164,14 +1164,14 @@ Earth rotation angle, supplied by the caller explicitly.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1275,14 +1275,14 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1390,14 +1390,14 @@ and the refraction constants as well as the site coordinates.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1548,14 +1548,14 @@ conditions and observing wavelength.
     The various functions support different classes of observer and
     portions of the transformation chain:
 
-        functions         observer        transformation
-
-     eraApcg eraApcg13    geocentric      ICRS <-> GCRS
-     eraApci eraApci13    terrestrial     ICRS <-> CIRS
-     eraApco eraApco13    terrestrial     ICRS <-> observed
-     eraApcs eraApcs13    space           ICRS <-> GCRS
-     eraAper eraAper13    terrestrial     update Earth rotation
-     eraApio eraApio13    terrestrial     CIRS <-> observed
+   |    Functions      |  Observer    | Transformation        |
+   |:------------------|:-------------|:----------------------|
+   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
+   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
+   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
+   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
+   | eraAper eraAper13 |  terrestrial | update Earth rotation |
+   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
 
     Those with names ending in "13" use contemporary ERFA models to
     compute the various ephemerides.  The others accept ephemerides

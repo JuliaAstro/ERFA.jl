@@ -187,7 +187,7 @@ for name in ("ut1tai",
              "ut1utc",
              "utcut1")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b, c)
             r1 = Ref(0.0)

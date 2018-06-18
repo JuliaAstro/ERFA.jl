@@ -310,7 +310,7 @@ eqec06
 for name in ("eceq06",
              "eqec06")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(date1, date2, d1, d2)
             r1 = [0.0]
@@ -382,7 +382,7 @@ epj2jd
 for name in ("epb2jd",
              "epj2jd")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(d)
             r1 = Ref(0.0)
@@ -904,7 +904,7 @@ for name in ("ee00a",
              "eqeq94",
              "era00")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval ($f)(d1, d2) = ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble), d1, d2)
 end
 

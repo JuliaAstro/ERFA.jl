@@ -91,6 +91,6 @@ obl80
 for name in ("obl06",
              "obl80")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval ($f)(d1, d2) = ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble), d1, d2)
 end

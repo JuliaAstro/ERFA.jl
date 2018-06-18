@@ -305,7 +305,7 @@ parts of the astrometric transformation chain.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: unchanged
     - `xpl`: unchanged
@@ -419,7 +419,7 @@ parts of the astrometric transformation chain.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: unchanged
     - `xpl`: unchanged
@@ -547,7 +547,7 @@ site coordinates.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -703,7 +703,7 @@ parts of the ICRS/CIRS transformations.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -876,7 +876,7 @@ astrometric transformation chain.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: unchanged
     - `xpl`: unchanged
@@ -1002,7 +1002,7 @@ astrometric transformation chain.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: unchanged
     - `xpl`: unchanged
@@ -1708,7 +1708,7 @@ can be used instead.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -1783,7 +1783,7 @@ used.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -1886,7 +1886,7 @@ proper motion is eraAtciq.
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -2195,7 +2195,7 @@ or eraApcs[13].
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -2264,7 +2264,7 @@ or eraApcs[13].
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -2508,7 +2508,7 @@ calling eraApio[13] or eraApco[13].
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -2912,7 +2912,7 @@ calling eraApio[13] or eraApco[13].
     - `eh`: Sun to observer (unit vector)
     - `em`: Distance from Sun to observer (au)
     - `v`: Barycentric observer velocity (vector, c)
-    - `bm1`: ``\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
+    - `bm1`: ``\\sqrt{1-|v|^2}`` Reciprocal of Lorenz factor
     - `bpn`: Bias-precession-nutation matrix
     - `along`: Longitude + s' (radians)
     - `xp1`: Polar motion xp wrt local meridian (radians)
@@ -3021,7 +3021,7 @@ anpm
 for name in ("anp",
              "anpm")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a)
             ccall(($fc, liberfa), Cdouble, (Cdouble,), a)
@@ -3140,7 +3140,7 @@ a2tf
 for name in ("a2af",
              "a2tf")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(ndp, a)
             s = Ref{Cchar}('+')

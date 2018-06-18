@@ -525,7 +525,7 @@ for name in ("gmst82",
              "gst00b",
              "gst94")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval ($f)(d1, d2) = ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble), d1, d2)
 end
 
@@ -801,7 +801,7 @@ for name in ("gmst00",
              "gst00a",
              "gst06a")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval ($f)(d1, d2, t1, t2) = ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), d1, d2, t1, t2)
 end
 

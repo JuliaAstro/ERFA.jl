@@ -450,7 +450,7 @@ for name in ("nut00a",
              "nut06a",
              "nut80")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             r1 = Ref(0.0)
@@ -680,7 +680,7 @@ for name in ("num00a",
              "num06a",
              "nutm80")
     f = Symbol(name)
-    fc = "era" * ucfirst(name)
+    fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
             r = zeros((3, 3))

@@ -9,8 +9,7 @@ else
     error("ERFA is not properly installed. Please run Pkg.build(\"ERFA\")")
 end
 
-using Compat: @warn, Cvoid
-using Compat.Unicode: ucfirst
+using Compat: @warn, Cvoid, uppercasefirst
 
 include("erfa_common.jl")
 include("deprecated.jl")

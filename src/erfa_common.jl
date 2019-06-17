@@ -162,7 +162,7 @@ struct LDBODY
     pv::NTuple{6,Cdouble}
 end
 
-struct ERFAExcpetion <: Exception
+struct ERFAException <: Exception
     msg::String
 end
 

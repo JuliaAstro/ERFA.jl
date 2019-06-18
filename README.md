@@ -2,7 +2,7 @@
 
 *Julia wrapper for [liberfa](https://github.com/liberfa/erfa)*
 
-[![Build Status Unix][travis-badge]][travis-url] [![Build Status Windows][av-badge]][av-url] [![Coveralls][coveralls-badge]][coveralls-url] [![Codecov][codecov-badge]][codecov-url] [![Docs Stable][docs-badge-stable]][docs-url-stable] [![Docs Latest][docs-badge-latest]][docs-url-latest]
+[![Build Status Unix][travis-badge]][travis-url] [![Build Status Windows][av-badge]][av-url] [![Coveralls][coveralls-badge]][coveralls-url] [![Codecov][codecov-badge]][codecov-url] [![Docs Stable][docs-badge-stable]][docs-url-stable] [![Docs Latest][docs-badge-dev]][docs-url-dev]
 
 
 ## Installation
@@ -42,7 +42,7 @@ information.
 [coveralls-url]: https://coveralls.io/github/JuliaAstro/ERFA.jl?branch=master
 [codecov-badge]: https://codecov.io/github/JuliaAstro/ERFA.jl/coverage.svg?branch=master
 [codecov-url]: https://codecov.io/github/JuliaAstro/ERFA.jl?branch=master
-[docs-badge-latest]: https://img.shields.io/badge/docs-latest-blue.svg
-[docs-url-latest]: https://juliaastro.github.io/ERFA.jl/latest
+[docs-badge-dev]: https://img.shields.io/badge/docs-dev-blue.svg
+[docs-url-dev]: https://juliaastro.github.io/ERFA.jl/dev
 [docs-badge-stable]: https://img.shields.io/badge/docs-stable-blue.svg
 [docs-url-stable]: https://juliaastro.github.io/ERFA.jl/stable

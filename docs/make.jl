@@ -1,19 +1,16 @@
 using Documenter, ERFA
 
-makedocs(
-    format = :html,
+makedocs(format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true",
+    ),
     sitename = "ERFA.jl",
-    authors = "The ERFA.jl Maintainers",
+    authors = "The JuliaAstro Contributors",
     pages = [
         "Home" => "index.md",
         "API" => "api.md",
     ],
+    doctest = false,
 )
 
-deploydocs(
-    repo = "github.com/JuliaAstro/ERFA.jl.git",
+deploydocs(repo = "github.com/JuliaAstro/ERFA.jl.git",
     target = "build",
-    deps = nothing,
-    make = nothing,
-    julia = "0.6",
 )

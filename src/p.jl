@@ -475,7 +475,7 @@ Neptune (but not the Earth itself).
    ephemeris DE102, they quote the following maximum errors
    over the interval 1800-2050:
 
-   |               | L (arcsec)  | B (arcsec) | R (km) |
+   | Body          | L (arcsec)  | B (arcsec) | R (km) |
    |:--------------|:------------|:-----------|:-------|
    | Mercury       |  4          |  1         | 300    |
    | Venus         |  5          |  1         | 800    |
@@ -493,7 +493,7 @@ Neptune (but not the Earth itself).
    Comparisons of the present function with the JPL DE200 ephemeris
    give the following RMS errors over the interval 1960-2025:
 
-   |              | position (km)   | velocity (m/s) |
+   | Body         | position (km)   | velocity (m/s) |
    |:-------------|:----------------|:---------------|
    |  Mercury     |      334        |      0.437     |
    |  Venus       |     1060        |      0.855     |
@@ -508,7 +508,7 @@ Neptune (but not the Earth itself).
    following maximum absolute differences.  (The results using
    DE406 were essentially the same.)
 
-   |           | L (arcsec) | B (arcsec)  |  R (km) | Rdot (m/s) |
+   | Body      | L (arcsec) | B (arcsec)  |  R (km) | Rdot (m/s) |
    |:----------|:-----------|:------------|:--------|:-----------|
    |  Mercury  |     7      |     1       |    500  |    0.7     |
    |  Venus    |     7      |     1       |   1100  |    0.9     |

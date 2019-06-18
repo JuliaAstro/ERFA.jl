@@ -429,7 +429,7 @@ Neptune (but not the Earth itself).
 
 ### Returned (argument) ###
 
-- Planet p,v (heliocentric, J2000.0, au,au/d)
+- Planet `p,v` (heliocentric, J2000.0, au,au/d)
 
 ### Notes ###
 
@@ -461,15 +461,10 @@ Neptune (but not the Earth itself).
    the heliocentric position and velocity of the Earth, use instead
    the ERFA function eraEpv00.
 
-4. On successful return, the array pv contains the following:
+4. On successful return, the arrays `p` and `v` contain the following:
 
-      pv[0][0]   x      }
-      pv[0][1]   y      } heliocentric position, au
-      pv[0][2]   z      }
-
-      pv[1][0]   xdot   }
-      pv[1][1]   ydot   } heliocentric velocity, au/d
-      pv[1][2]   zdot   }
+   - `p`: heliocentric position, au
+   - `v`: heliocentric velocity, au/d
 
    The reference frame is equatorial and is with respect to the
    mean equator and equinox of epoch J2000.0.
@@ -480,16 +475,16 @@ Neptune (but not the Earth itself).
    ephemeris DE102, they quote the following maximum errors
    over the interval 1800-2050:
 
-                   L (arcsec)    B (arcsec)      R (km)
-
-      Mercury          4             1             300
-      Venus            5             1             800
-      EMB              6             1            1000
-      Mars            17             1            7700
-      Jupiter         71             5           76000
-      Saturn          81            13          267000
-      Uranus          86             7          712000
-      Neptune         11             1          253000
+   |               | L (arcsec)  | B (arcsec) | R (km) |
+   |:--------------|:------------|:-----------|:-------|
+   | Mercury       |  4          |  1         | 300    |
+   | Venus         |  5          |  1         | 800    |
+   | EMB           |  6          |  1         | 1000   |
+   | Mars          | 17          |  1         | 7700   |
+   | Jupiter       | 71          |  5         | 76000  |
+   | Saturn        | 81          | 13         | 267000 |
+   | Uranus        | 86          |  7         | 712000 |
+   | Neptune       | 11          |  1         | 253000 |
 
    Over the interval 1000-3000, they report that the accuracy is no
    worse than 1.5 times that over 1800-2050.  Outside 1000-3000 the
@@ -498,31 +493,31 @@ Neptune (but not the Earth itself).
    Comparisons of the present function with the JPL DE200 ephemeris
    give the following RMS errors over the interval 1960-2025:
 
-                    position (km)     velocity (m/s)
-
-      Mercury            334               0.437
-      Venus             1060               0.855
-      EMB               2010               0.815
-      Mars              7690               1.98
-      Jupiter          71700               7.70
-      Saturn          199000              19.4
-      Uranus          564000              16.4
-      Neptune         158000              14.4
+   |              | position (km)   | velocity (m/s) |
+   |:-------------|:----------------|:---------------|
+   |  Mercury     |      334        |      0.437     |
+   |  Venus       |     1060        |      0.855     |
+   |  EMB         |     2010        |      0.815     |
+   |  Mars        |     7690        |      1.98      |
+   |  Jupiter     |    71700        |      7.70      |
+   |  Saturn      |   199000        |     19.4       |
+   |  Uranus      |   564000        |     16.4       |
+   |  Neptune     |   158000        |     14.4       |
 
    Comparisons against DE200 over the interval 1800-2100 gave the
    following maximum absolute differences.  (The results using
    DE406 were essentially the same.)
 
-                 L (arcsec)   B (arcsec)     R (km)   Rdot (m/s)
-
-      Mercury        7            1            500       0.7
-      Venus          7            1           1100       0.9
-      EMB            9            1           1300       1.0
-      Mars          26            1           9000       2.5
-      Jupiter       78            6          82000       8.2
-      Saturn        87           14         263000      24.6
-      Uranus        86            7         661000      27.4
-      Neptune       11            2         248000      21.4
+   |           | L (arcsec) | B (arcsec)  |  R (km) | Rdot (m/s) |
+   |:----------|:-----------|:------------|:--------|:-----------|
+   |  Mercury  |     7      |     1       |    500  |    0.7     |
+   |  Venus    |     7      |     1       |   1100  |    0.9     |
+   |  EMB      |     9      |     1       |   1300  |    1.0     |
+   |  Mars     |    26      |     1       |   9000  |    2.5     |
+   |  Jupiter  |    78      |     6       |  82000  |    8.2     |
+   |  Saturn   |    87      |    14       | 263000  |   24.6     |
+   |  Uranus   |    86      |     7       | 661000  |   27.4     |
+   |  Neptune  |    11      |     2       | 248000  |   21.4     |
 
 6. The present ERFA re-implementation of the original Simon et al.
    Fortran code differs from the original in the following respects:
@@ -560,26 +555,27 @@ Neptune (but not the Earth itself).
 
 - `eraAnp`: normalize angle into range 0 to 2pi
 
-Reference:  Simon, J.L, Bretagnon, P., Chapront, J.,
-            Chapront-Touze, M., Francou, G., and Laskar, J.,
-            Astron. Astrophys. 282, 663 (1994).
+### Reference ###
+
+- Simon, J.L, Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+    Francou, G., and Laskar, J., Astron. Astrophys. 282, 663 (1994).
 
 """
 function plan94(date1, date2, np)
-    pv = zeros((2, 3))
+    pv = zeros((3, 2))
     i = ccall((:eraPlan94, liberfa), Cint,
               (Cdouble, Cdouble, Cint, Ptr{Cdouble}),
               date1, date2, np, pv)
     if i == -1
-        throw(ERFAException("illegal np,  not in range(1,8) for planet"))
+        throw(ERFAException("illegal np, not in range(1,8) for planet"))
     elseif i == 1
         @warn "year outside range(1000:3000)"
-        return pv
     elseif i == 2
         throw(ERFAException("computation failed to converge"))
     elseif i == 0
-        return pv
+        # pass
     end
+    return pv[:, 1], pv[:, 2]
 end
 
 """

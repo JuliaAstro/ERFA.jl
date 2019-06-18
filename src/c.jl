@@ -68,7 +68,6 @@ the bias-precession-nutation matrix.  IAU 2000.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 function c2ibpn(date1, date2, rbpn)
     rc2i = zeros((3, 3))
@@ -99,7 +98,6 @@ P-vector to spherical coordinates.
 2. If p is null, zero theta and phi are returned.
 
 3. At either pole, zero theta is returned.
-
 """
 function c2s(p)
     theta = Ref(0.0)
@@ -144,7 +142,6 @@ Gregorian Calendar to Julian Date.
 - Explanatory Supplement to the Astronomical Almanac,
     P. Kenneth Seidelmann (ed), University Science Books (1992),
     Section 12.92 (p604).
-
 """
 function cal2jd(iy, imo, id)
     r1 = Ref(0.0)
@@ -153,11 +150,11 @@ function cal2jd(iy, imo, id)
               (Cint, Cint, Cint, Ref{Cdouble}, Ref{Cdouble}),
               iy, imo, id, r1, r2)
     if i == -1
-        throw(ERFAExcpetion("bad year"))
+        throw(ERFAException("bad year"))
     elseif i == -2
-        throw(ERFAExcpetion("bad month"))
+        throw(ERFAException("bad month"))
     elseif i == -3
-        throw(ERFAExcpetion("bad day"))
+        throw(ERFAException("bad day"))
     end
     r1[], r2[]
 end
@@ -212,7 +209,6 @@ Angle and the polar motion matrix).
 
 - McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
-
 """
 c2tcio
 
@@ -266,7 +262,6 @@ Sidereal Time and the polar motion matrix).
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 c2teqx
 
@@ -357,7 +352,6 @@ the polar motion, using the IAU 2000A nutation model.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 c2t00a
 
@@ -432,7 +426,6 @@ the polar motion, using the IAU 2000B nutation model.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 c2t00b
 
@@ -506,7 +499,6 @@ nutation models.
 
 - McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
-
 """
 c2t06a
 
@@ -606,7 +598,6 @@ the nutation and the polar motion.  IAU 2000.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 c2tpe
 
@@ -686,7 +677,6 @@ the CIP coordinates and the polar motion.  IAU 2000.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 c2txy
 
@@ -772,7 +762,6 @@ IAU 2000A precession-nutation model.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 c2i00a
 
@@ -843,7 +832,6 @@ IAU 2000B precession-nutation model.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 c2i00b
 
@@ -905,7 +893,6 @@ IAU 2006 precession and IAU 2000A nutation models.
 
 - McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
     IERS Technical Note No. 32, BKG
-
 """
 c2i06a
 
@@ -988,7 +975,6 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 function c2ixy(x, y, s, t)
     r = zeros((3, 3))
@@ -1044,7 +1030,6 @@ X,Y and the CIO locator s.
 
 - McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
     IERS Technical Note No. 32, BKG (2004)
-
 """
 function c2ixys(x, y, s)
     r = zeros((3, 3))

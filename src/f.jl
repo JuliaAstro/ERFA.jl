@@ -38,7 +38,7 @@ function fk5hip()
     r5h = zeros((3, 3))
     s5h = zeros(3)
     ccall((:eraFk5hip, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           r5h, s5h)
     r5h, s5h
 end
@@ -810,7 +810,7 @@ Form rotation matrix given the Fukushima-Williams angles.
 function fw2m(x, y, s, t)
     r = zeros((3, 3))
     ccall((:eraFw2m, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, t, r)
     r
 end

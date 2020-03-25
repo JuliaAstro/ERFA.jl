@@ -23,7 +23,7 @@ Transpose an r-matrix.
 function tr(r)
     rt = zeros((3, 3))
     ccall((:eraTr, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           r, rt)
     rt
 end
@@ -55,7 +55,7 @@ Multiply a pv-vector by the transpose of an r-matrix.
 function trxpv(r, p)
     rp = zeros((2, 3))
     ccall((:eraTrxpv, liberfa), Cvoid,
-            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
             r, p, rp)
     rp
 end
@@ -87,7 +87,7 @@ Multiply a p-vector by the transpose of an r-matrix.
 function trxp(r, p)
     rp = zeros(3)
     ccall((:eraTrxp, liberfa), Cvoid,
-            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
             r, p, rp)
     rp
 end

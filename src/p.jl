@@ -46,7 +46,7 @@ Proper motion and parallax.
 function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
     pco = zeros(3)
     ccall((:eraPmpx, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, pmt, vob, pco)
     pco
 end
@@ -223,7 +223,7 @@ function p2s(p)
     phi = Ref(0.0)
     r = Ref(0.0)
     ccall((:eraP2s, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi, r)
     theta[], phi[], r[]
 end
@@ -250,7 +250,7 @@ Extend a p-vector to a pv-vector by appending a zero velocity.
 function p2pv(p)
     pv = zeros((2, 3))
     ccall((:eraP2pv, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           p, pv)
     pv
 end
@@ -564,7 +564,7 @@ Neptune (but not the Earth itself).
 function plan94(date1, date2, np)
     pv = zeros((3, 2))
     i = ccall((:eraPlan94, liberfa), Cint,
-              (Cdouble, Cdouble, Cint, Ptr{Cdouble}),
+              (Cdouble, Cdouble, Cint, Ref{Cdouble}),
               date1, date2, np, pv)
     if i == -1
         throw(ERFAException("illegal np, not in range(1,8) for planet"))
@@ -593,7 +593,7 @@ Modulus of p-vector.
 
 """
 function pm(p)
-    ccall((:eraPm, liberfa), Cdouble, (Ptr{Cdouble},), p)
+    ccall((:eraPm, liberfa), Cdouble, (Ref{Cdouble},), p)
 end
 
 """
@@ -745,7 +745,7 @@ function pn(p::AbstractArray)
     r = Ref(0.0)
     u = zeros(3)
     ccall((:eraPn, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, r, u)
     r[], u
 end
@@ -778,7 +778,7 @@ P-vector plus scaled p-vector.
 function ppsp(a, s, b)
     apsb = zeros(3)
     ccall((:eraPpsp, liberfa), Cvoid,
-          (Ptr{Cdouble}, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           a, s, b, apsb)
     apsb
 end
@@ -898,7 +898,7 @@ function pv2s(pv)
     pd = Ref(0.0)
     rd = Ref(0.0)
     ccall((:eraPv2s, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           pv, theta, phi, r, td, pd, rd)
     theta[], phi[], r[], td[], pd[], rd[]
 end
@@ -924,7 +924,7 @@ Discard velocity component of a pv-vector.
 function pv2p(pv)
     p = zeros(3)
     ccall((:eraPv2p, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           pv, p)
     p
 end
@@ -958,7 +958,7 @@ Inner (=scalar=dot) product of two pv-vectors.
 function pvdpv(a, b)
     adb = zeros(2)
     ccall((:eraPvdpv, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           a, b, adb)
     adb
 end
@@ -986,7 +986,7 @@ function pvm(pv)
     s = Ref(0.0)
     r = Ref(0.0)
     ccall((:eraPvm, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           pv, r, s)
     r[], s[]
 end
@@ -1086,7 +1086,7 @@ function pvstar(pv)
     px = Ref(0.0)
     rv = Ref(0.0)
     i = ccall((:eraPvstar, liberfa), Cint,
-              (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               pv, ra, dec, pmr, pmd, px, rv)
     if i == -1
         throw(ERFAException("superluminal speed"))
@@ -1160,7 +1160,7 @@ Position and velocity of a terrestrial observing station.
 function pvtob(elong, phi, height, xp, yp, sp, theta)
     pv = zeros((2, 3))
     ccall((:eraPvtob, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           elong, phi, height, xp, yp, sp, theta, pv)
     pv
 end
@@ -1197,7 +1197,7 @@ Update a pv-vector.
 function pvu(dt, pv)
     upv = zeros((2, 3))
     ccall((:eraPvu, liberfa), Cvoid,
-          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           dt, pv, upv)
     upv
 end
@@ -1227,7 +1227,7 @@ Update a pv-vector, discarding the velocity component.
 function pvup(dt, pv)
     p = zeros(3)
     ccall((:eraPvup, liberfa), Cvoid,
-          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           dt, pv, p)
     p
 end
@@ -1433,7 +1433,7 @@ for name in ("pn00",
             rn = zeros((3, 3))
             rbpn = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
             epsa[], rb, rp, rbp, rn, rbpn
         end
@@ -1515,7 +1515,7 @@ for name in ("pmp",
         function ($f)(a, b)
             ab = zeros(3)
             ccall(($fc, liberfa), Cvoid,
-                  (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, ab)
             ab
         end
@@ -1616,7 +1616,7 @@ for name in ("pvmpv",
         function ($f)(a, b)
             ab = zeros((2, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, ab)
             ab
         end
@@ -1914,7 +1914,7 @@ for name in ("pn00a",
             rn = zeros((3, 3))
             rbpn = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
             dpsi[], deps[], epsa[], rb, rp, rbp, rn, rbpn
         end
@@ -2014,7 +2014,7 @@ for name in ("pap",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
-            ccall(($fc, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
+            ccall(($fc, liberfa), Cdouble, (Ref{Cdouble}, Ref{Cdouble}), a, b)
         end
     end
 end
@@ -2503,7 +2503,7 @@ for name in ("pmat00",
         function ($f)(a, b)
             r = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}),
                   a, b, r)
             r
         end
@@ -2560,7 +2560,7 @@ Form the matrix of polar motion for a given date, IAU 2000.
 function pom00(x, y, s)
     r = zeros((3, 3))
     ccall((:eraPom00, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, r)
     r
 end

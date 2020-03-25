@@ -42,7 +42,7 @@ Form the matrix of nutation.
 function numat(epsa, dpsi, deps)
     rmatn = zeros((3, 3))
     ccall((:eraNumat, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           epsa, dpsi, deps, rmatn)
     rmatn
 end
@@ -685,7 +685,7 @@ for name in ("num00a",
         function ($f)(a, b)
             r = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}),
                   a, b, r)
             r
         end

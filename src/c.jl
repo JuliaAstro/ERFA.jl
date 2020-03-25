@@ -72,7 +72,7 @@ the bias-precession-nutation matrix.  IAU 2000.
 function c2ibpn(date1, date2, rbpn)
     rc2i = zeros((3, 3))
     ccall((:eraC2ibpn, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           date1, date2, rbpn, rc2i)
     rc2i
 end
@@ -103,7 +103,7 @@ function c2s(p)
     theta = Ref(0.0)
     phi = Ref(0.0)
     ccall((:eraC2s, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi)
     theta[], phi[]
 end
@@ -273,7 +273,7 @@ for name in ("c2tcio",
         function ($f)(rc2i, era, rpom)
             rc2t = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Ptr{Cdouble}, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   rc2i, era, rpom, rc2t)
             rc2t
         end
@@ -511,7 +511,7 @@ for name in ("c2t00a",
         function ($f)(tta, ttb, uta, utb, xp, yp)
             rc2t = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
                   tta, ttb, uta, utb, xp, yp, rc2t)
             rc2t
         end
@@ -688,7 +688,7 @@ for name in ("c2tpe",
         function ($f)(tta, ttb, uta, utb, x, y, xp, yp)
             rc2t = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
                   tta, ttb, uta, utb, x, y, xp, yp, rc2t)
             rc2t
         end
@@ -905,7 +905,7 @@ for name in ("c2i00a",
         function ($f)(a, b)
             r = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}),
                   a, b, r)
             r
         end
@@ -979,7 +979,7 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 function c2ixy(x, y, s, t)
     r = zeros((3, 3))
     ccall((:eraC2ixy, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, t, r)
     r
 end
@@ -1034,7 +1034,7 @@ X,Y and the CIO locator s.
 function c2ixys(x, y, s)
     r = zeros((3, 3))
     ccall((:eraC2ixys, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, r)
     r
 end

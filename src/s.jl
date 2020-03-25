@@ -16,7 +16,7 @@ Convert spherical coordinates to Cartesian.
 function s2c(theta, phi)
     c = zeros(3)
     ccall((:eraS2c, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, c)
     c
 end
@@ -45,7 +45,7 @@ Convert spherical polar coordinates to p-vector.
 function s2p(theta, phi, r)
     p = zeros(3)
     ccall((:eraS2p, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, r, p)
     p
 end
@@ -72,7 +72,7 @@ Convert position/velocity from spherical to Cartesian coordinates.
 function s2pv(theta, phi, r, td, pd, rd)
     pv = zeros((2, 3))
     ccall((:eraS2pv, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, r, td, pd, rd, pv)
     pv
 end
@@ -104,7 +104,7 @@ Multiply a pv-vector by two scalars.
 function s2xpv(s1, s2, pv)
     spv = zeros((2, 3))
     ccall((:eraS2xpv, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           s1, s2, pv, spv)
     spv
 end
@@ -335,7 +335,7 @@ Convert star catalog coordinates to position+velocity vector.
 function starpv(ra, dec, pmr, pmd, px, rv)
     pv = zeros((2, 3))
     i = ccall((:eraStarpv, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               ra, dec, pmr, pmd, px, rv, pv)
     if i == 1
         @warn "distance overridden"
@@ -371,7 +371,7 @@ Multiply a p-vector by a scalar.
 function sxp(s, p)
     sp = zeros(3)
     ccall((:eraSxp, liberfa), Cvoid,
-          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           s, p, sp)
     sp
 end
@@ -402,7 +402,7 @@ Multiply a pv-vector by a scalar.
 function sxpv(s, pv)
     spv = zeros((2, 3))
     ccall((:eraSxpv, liberfa), Cvoid,
-          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           s, pv, spv)
     spv
 end
@@ -465,7 +465,7 @@ Angular separation between two p-vectors.
 
 """
 function sepp(a, b)
-    ccall((:eraSepp, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
+    ccall((:eraSepp, liberfa), Cdouble, (Ref{Cdouble}, Ref{Cdouble}), a, b)
 end
 
 """

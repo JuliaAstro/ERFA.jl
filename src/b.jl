@@ -86,7 +86,7 @@ function bpn2xy(rbpn)
     x = Ref(0.0)
     y = Ref(0.0)
     ccall((:eraBpn2xy, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           rbpn, x, y)
     x[], y[]
 end
@@ -241,7 +241,7 @@ for name in ("bp00",
             rbp = zeros((3, 3))
             ccall(($fc, liberfa),
                   Cvoid,
-                  (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, rb, rp, rbp)
             rb, rp, rbp
         end

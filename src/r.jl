@@ -183,7 +183,7 @@ Express an r-matrix as an r-vector.
 function rm2v(r)
     w = zeros(3)
     ccall((:eraRm2v, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           r, w)
     w
 end
@@ -217,7 +217,7 @@ Form the r-matrix corresponding to a given r-vector.
 function rv2m(w)
     r = zeros((3, 3))
     ccall((:eraRv2m, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           w, r)
     r
 end
@@ -250,7 +250,7 @@ function rxr(a, b)
     atb = zeros((3, 3))
     ccall((:eraRxr, liberfa),
           Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           a, b, atb)
     atb
 end
@@ -353,7 +353,7 @@ for name in ("rx",
     @eval begin
         function ($f)(a, r)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Ref{Cdouble}),
                   a, r)
             r
         end
@@ -386,7 +386,7 @@ Multiply a pv-vector by an r-matrix.
 function rxpv(r, p)
     rp = zeros((2, 3))
     ccall((:eraRxpv, liberfa), Cvoid,
-            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
             r, p, rp)
     rp
 end
@@ -415,9 +415,11 @@ Multiply a p-vector by an r-matrix.
 
 """
 function rxp(r, p)
+    @checkdims 3 3 r
+    @checkdims 3 p
     rp = zeros(3)
     ccall((:eraRxp, liberfa), Cvoid,
-            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
-            r, p, rp)
-    rp
+            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+            permutedims(r), p, rp)
+    return rp
 end

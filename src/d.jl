@@ -353,7 +353,7 @@ function d2dtf(scale::AbstractString, ndp, d1, d2)
     id = Ref{Cint}(0)
     ihmsf = Cint[0, 0, 0, 0]
     i = ccall((:eraD2dtf, liberfa), Cint,
-              (Cstring, Cint, Cdouble, Cdouble, Ref{Cint}, Ref{Cint}, Ref{Cint}, Ptr{Cint}),
+              (Cstring, Cint, Cdouble, Cdouble, Ref{Cint}, Ref{Cint}, Ref{Cint}, Ref{Cint}),
               scale, ndp, d1, d2, iy, imo, id, ihmsf)
     if i == +1
         @warn "dubious year (Note 5)"
@@ -505,7 +505,7 @@ function d2tf(ndp, a)
     s = Ref{Cchar}('+')
     i = zeros(Cint, 4)
     ccall((:eraD2tf, liberfa), Cvoid,
-            (Cint, Cdouble, Ptr{Cchar}, Ptr{Cint}),
+            (Cint, Cdouble, Ref{Cchar}, Ref{Cint}),
             ndp, a, s, i)
     Char(s[]), i[1], i[2], i[3], i[4]
 end

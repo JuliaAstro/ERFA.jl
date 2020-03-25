@@ -49,7 +49,7 @@ direction.
 function ab(pnat, v, s, bm1)
     ppr = zeros(3)
     ccall((:eraAb, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Ref{Cdouble}),
           pnat, v, s, bm1, ppr)
     ppr
 end
@@ -158,7 +158,7 @@ transformation chain.
 function apcg(date1, date2, ebpv, ehp)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     ccall((:eraApcg, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{ASTROM}),
           date1, date2, ebpv, ehp, astrom)
     astrom
 end
@@ -389,7 +389,7 @@ parts of the astrometric transformation chain.
 function apci(date1, date2, ebpv, ehp, x, y, s)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     ccall((:eraApci, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, ebpv, ehp, x, y, s, astrom)
     astrom
 end
@@ -663,7 +663,7 @@ site coordinates.
 function apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     ccall((:eraApco, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb, astrom)
     astrom
 end
@@ -972,7 +972,7 @@ astrometric transformation chain.
 function apcs(date1, date2, pv, ebpv, ehp)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     ccall((:eraApcs, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{ASTROM}),
           date1, date2, pv, ebpv, ehp, astrom)
     astrom
 end
@@ -1091,7 +1091,7 @@ astrometric transformation chain.
 function apcs13(date1, date2, pv)
     astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     ccall((:eraApcs13, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{ASTROM}),
           date1, date2, pv, astrom)
     astrom
 end
@@ -1857,7 +1857,7 @@ function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Vector{LDBODY})
     di = Ref(0.0)
     n = length(b)
     ccall((:eraAtciqn, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Cint, Ptr{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, astrom, n, b, ri, di)
     ri[], di[]
 end
@@ -2341,7 +2341,7 @@ function aticqn(ri, di, astrom, b::Array{LDBODY})
     dc = Ref(0.0)
     n = length(b)
     ccall((:eraAticqn, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{ASTROM}, Cint, Ptr{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Ref{ASTROM}, Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, n, b, rc, dc)
     rc[], dc[]
 end
@@ -3146,7 +3146,7 @@ for name in ("a2af",
             s = Ref{Cchar}('+')
             i = zeros(Cint, 4)
             ccall(($fc, liberfa), Cvoid,
-                  (Cint, Cdouble, Ptr{Cchar}, Ptr{Cint}),
+                  (Cint, Cdouble, Ref{Cchar}, Ref{Cint}),
                   ndp, a, s, i)
             Char(s[]), i[1], i[2], i[3], i[4]
         end

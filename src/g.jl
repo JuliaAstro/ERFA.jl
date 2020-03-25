@@ -44,7 +44,7 @@ function gc2gd(n, xyz)
     phi = Ref(0.0)
     height = Ref(0.0)
     i = ccall((:eraGc2gd, liberfa), Cint,
-              (Cint, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              (Cint, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               n, xyz, elong, phi, height)
     if i == -1
         throw(ERFAException("illegal identifier"))
@@ -109,7 +109,7 @@ function gc2gde(a, f, xyz)
     phi = Ref(0.0)
     height = Ref(0.0)
     i = ccall((:eraGc2gde, liberfa), Cint,
-              (Cdouble, Cdouble, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               a, f, xyz, elong, phi, height)
     if i == -1
         throw(ERFAException("illegal f"))
@@ -171,7 +171,7 @@ reference ellipsoid.
 function gd2gc(n, elong, phi, height)
     xyz = zeros(3)
     i = ccall((:eraGd2gc, liberfa), Cint,
-              (Cint, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+              (Cint, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               n, elong, phi, height, xyz)
     if i == -1
         throw(ERFAException("illegal identifier"))
@@ -235,7 +235,7 @@ ellipsoid of specified form.
 function gd2gce(a, f, elong, phi, height)
     xyz = zeros(3)
     i = ccall((:eraGd2gce, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               a, f, elong, phi, height, xyz)
     if i == -1
         throw(ERFAException("illegal case"))
@@ -309,7 +309,7 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 """
 function gst06(uta, utb, tta, ttb, rnpb)
     ccall((:eraGst06, liberfa), Cdouble,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           uta, utb, tta, ttb, rnpb)
 end
 

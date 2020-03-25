@@ -69,7 +69,7 @@ transforming coordinate direction into natural direction.
 function ld(bm, p::AbstractArray, q::AbstractArray, e::AbstractArray, em, dlim)
     p1 = zeros(3)
     ccall((:eraLd, liberfa), Cvoid,
-          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Ref{Cdouble}),
           bm, p, q, e, em, dlim, p1)
     p1
 end
@@ -156,7 +156,7 @@ function ldn(l::Vector{LDBODY}, ob::AbstractArray, sc::AbstractArray)
     sn = zeros(3)
     n = length(l)
     ccall((:eraLdn, liberfa), Cvoid,
-          (Cint, Ptr{LDBODY}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           n, l, ob, sc, sn)
     sn
 end
@@ -198,7 +198,7 @@ Deflection of starlight by the Sun.
 function ldsun(p, e, em)
     p1 = zeros(3)
     ccall((:eraLdsun, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Cdouble, Ref{Cdouble}),
           p, e, em, p1)
     p1
 end
@@ -368,7 +368,7 @@ for name in ("ltecm",
         function ($f)(epj)
             rp = zeros((3, 3))
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Ref{Cdouble}),
                   epj, rp)
             rp
         end
@@ -459,7 +459,7 @@ for name in ("ltpecl",
         function ($f)(epj)
             vec = zeros(3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Ref{Cdouble}),
                   epj, vec)
             vec
         end
@@ -582,7 +582,7 @@ for name in ("lteceq",
             r1 = [0.0]
             r2 = [0.0]
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   epj, d1, d2, r1, r2)
             r1[1], r2[1]
         end

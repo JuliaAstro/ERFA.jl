@@ -91,7 +91,7 @@ quantity s.
 """
 function eors(rnpb, s)
     ccall((:eraEors, liberfa), Cdouble,
-          (Ptr{Cdouble}, Cdouble),
+          (Ref{Cdouble}, Cdouble),
           rnpb, s)
 end
 
@@ -188,7 +188,7 @@ function epv00(date1, date2)
     pvb = zeros((2, 3))
     i = ccall((:eraEpv00, liberfa),
               Cint,
-              (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+              (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               date1, date2, pvh, pvb)
     if i == 1
         @warn "date outside the range 1900-2100 AD"
@@ -316,7 +316,7 @@ for name in ("eceq06",
             r1 = [0.0]
             r2 = [0.0]
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, d1, d2, r1, r2)
             r1[1], r2[1]
         end
@@ -1034,7 +1034,7 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 function ecm06(date1, date2)
     r = zeros((3, 3))
     ccall((:eraEcm06, liberfa), Cvoid,
-            (Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Ref{Cdouble}),
             date1, date2, r)
     r
 end

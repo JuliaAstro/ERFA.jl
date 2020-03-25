@@ -83,11 +83,12 @@ of the Celestial Intermediate Pole.
 
 """
 function bpn2xy(rbpn)
+    @checkdims 3 3 rbpn
     x = Ref(0.0)
     y = Ref(0.0)
     ccall((:eraBpn2xy, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
-          rbpn, x, y)
+          permutedims(rbpn), x, y)
     x[], y[]
 end
 

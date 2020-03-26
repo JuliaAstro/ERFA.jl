@@ -62,10 +62,11 @@ Transformation from ICRS to Galactic Coordinates.
 
 """
 function icrs2g(a, b)
-    r1 = Ref(0.0)
-    r2 = Ref(0.0)
+    r1 = Ref{Cdouble}()
+    r2 = Ref{Cdouble}()
     ccall((:eraIcrs2g, liberfa), Cvoid,
             (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
             a, b, r1, r2)
-    r1[], r2[]
+    return r1[], r2[]
 end
+

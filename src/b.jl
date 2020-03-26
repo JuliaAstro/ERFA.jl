@@ -244,7 +244,7 @@ for name in ("bp00",
                   Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, rb, rp, rbp)
-            rb, rp, rbp
+            return permutedims(rb), permutedims(rp), permutedims(rbp)
         end
     end
 end

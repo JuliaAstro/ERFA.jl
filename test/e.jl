@@ -38,12 +38,13 @@ end
 
 # ERFA.eors
 @testset "eors" begin
-    r = [[0.9999989440476103608,-0.1332881761240011518e-2,-0.5790767434730085097e-3];
-         [0.1332858254308954453e-2,0.9999991109044505944,-0.4097782710401555759e-4];
-         [0.5791308472168153320e-3,0.4020595661593994396e-4,0.9999998314954572365]]
+    r = [0.9999989440476103608 -0.1332881761240011518e-2 -0.5790767434730085097e-3;
+         0.1332858254308954453e-2 0.9999991109044505944 -0.4097782710401555759e-4;
+         0.5791308472168153320e-3 0.4020595661593994396e-4 0.9999998314954572365]
     s = -0.1220040848472271978e-7
     eo = ERFA.eors(r, s)
     @test isapprox(eo, -0.1332882715130744606e-2, atol = 1e-15)
+    @test_throws ArgumentError ERFA.eors(r[1:2,:], s)
 end
 
 # ERFA.eform
@@ -88,18 +89,18 @@ end
 # ERFA.epv00
 @testset "epv00" begin
     pvh, pvb = ERFA.epv00(2400000.5, 53411.52501161)
-    @test isapprox(pvh[1], -0.7757238809297706813, atol = 1e-14)
-    @test isapprox(pvh[2], 0.5598052241363340596, atol = 1e-14)
-    @test isapprox(pvh[3], 0.2426998466481686993, atol = 1e-14)
-    @test isapprox(pvh[4], -0.1091891824147313846e-1, atol = 1e-15)
-    @test isapprox(pvh[5], -0.1247187268440845008e-1, atol = 1e-15)
-    @test isapprox(pvh[6], -0.5407569418065039061e-2, atol = 1e-15)
-    @test isapprox(pvb[1], -0.7714104440491111971, atol = 1e-14)
-    @test isapprox(pvb[2], 0.5598412061824171323, atol = 1e-14)
-    @test isapprox(pvb[3], 0.2425996277722452400, atol = 1e-14)
-    @test isapprox(pvb[4], -0.1091874268116823295e-1, atol = 1e-15)
-    @test isapprox(pvb[5], -0.1246525461732861538e-1, atol = 1e-15)
-    @test isapprox(pvb[6], -0.5404773180966231279e-2, atol = 1e-15)
+    @test isapprox(pvh[1][1], -0.7757238809297706813, atol = 1e-14)
+    @test isapprox(pvh[1][2], 0.5598052241363340596, atol = 1e-14)
+    @test isapprox(pvh[1][3], 0.2426998466481686993, atol = 1e-14)
+    @test isapprox(pvh[2][1], -0.1091891824147313846e-1, atol = 1e-15)
+    @test isapprox(pvh[2][2], -0.1247187268440845008e-1, atol = 1e-15)
+    @test isapprox(pvh[2][3], -0.5407569418065039061e-2, atol = 1e-15)
+    @test isapprox(pvb[1][1], -0.7714104440491111971, atol = 1e-14)
+    @test isapprox(pvb[1][2], 0.5598412061824171323, atol = 1e-14)
+    @test isapprox(pvb[1][3], 0.2425996277722452400, atol = 1e-14)
+    @test isapprox(pvb[2][1], -0.1091874268116823295e-1, atol = 1e-15)
+    @test isapprox(pvb[2][2], -0.1246525461732861538e-1, atol = 1e-15)
+    @test isapprox(pvb[2][3], -0.5404773180966231279e-2, atol = 1e-15)
 end
 
 # ERFA.eqeq94
@@ -131,14 +132,14 @@ end
 # ERFA.ecm06
 @testset "ecm06" begin
     rm = ERFA.ecm06(2456165.5, 0.401182685)
-    @test isapprox(rm[1], 0.9999952427708701137, atol = 1e-14)
-    @test isapprox(rm[2], -0.2829062057663042347e-2, atol = 1e-14)
-    @test isapprox(rm[3], -0.1229163741100017629e-2, atol = 1e-14)
-    @test isapprox(rm[4], 0.3084546876908653562e-2, atol = 1e-14)
-    @test isapprox(rm[5], 0.9174891871550392514, atol = 1e-14)
-    @test isapprox(rm[6], 0.3977487611849338124, atol = 1e-14)
-    @test isapprox(rm[7], 0.2488512951527405928e-5, atol = 1e-14)
-    @test isapprox(rm[8], -0.3977506604161195467, atol = 1e-14)
-    @test isapprox(rm[9], 0.9174935488232863071, atol = 1e-14)
+    @test isapprox(rm[1,1], 0.9999952427708701137, atol = 1e-14)
+    @test isapprox(rm[1,2], -0.2829062057663042347e-2, atol = 1e-14)
+    @test isapprox(rm[1,3], -0.1229163741100017629e-2, atol = 1e-14)
+    @test isapprox(rm[2,1], 0.3084546876908653562e-2, atol = 1e-14)
+    @test isapprox(rm[2,2], 0.9174891871550392514, atol = 1e-14)
+    @test isapprox(rm[2,3], 0.3977487611849338124, atol = 1e-14)
+    @test isapprox(rm[3,1], 0.2488512951527405928e-5, atol = 1e-14)
+    @test isapprox(rm[3,2], -0.3977506604161195467, atol = 1e-14)
+    @test isapprox(rm[3,3], 0.9174935488232863071, atol = 1e-14)
 end
 

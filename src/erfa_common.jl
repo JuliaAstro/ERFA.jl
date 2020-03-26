@@ -158,6 +158,16 @@ mutable struct ASTROM
     refb::Cdouble
 end
 
+function Base.getproperty(a::ASTROM, field::Symbol)
+    val = getfield(a, field)
+    if field in (:eb, :eh, :v)
+        return collect(val)
+    elseif field == :bpn
+        return reshape(collect(val), 3, 3)
+    end
+    return val
+end
+
 struct LDBODY
     bm::Cdouble
     dl::Cdouble
@@ -195,6 +205,33 @@ macro checkdims(len, arr::Symbol...)
         push!(ex.args, expr)
     end
     :($ex; nothing)
+end
+
+function array_to_cmatrix(array; n=0)
+    cmat = hcat(array...)
+    if n != 0
+        m = size(cmat, 1)
+        m != n && throw(ArgumentError("Expected each vector to have $n elements."))
+    end
+    cmat
+end
+
+function array_to_cmatrix(array::Vector{Vector{Int}}; n=0)
+    array = map(x->Cint.(x), array)
+    cmat = hcat(array...)
+    if n != 0
+        m = size(cmat, 1)
+        m != n && throw(ArgumentError("Expected each vector to have $n elements."))
+    end
+    cmat
+end
+
+function cmatrix_to_array(matrix)
+    arr = [matrix[:, i] for i in 1:size(matrix, 2)]
+end
+
+function cmatrix_to_array(matrix::Matrix{Cint})
+    arr = [Int.(matrix[:, i]) for i in 1:size(matrix, 2)]
 end
 
 

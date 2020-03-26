@@ -208,30 +208,22 @@ macro checkdims(len, arr::Symbol...)
 end
 
 function array_to_cmatrix(array; n=0)
-    cmat = hcat(array...)
-    if n != 0
-        m = size(cmat, 1)
-        m != n && throw(ArgumentError("Expected each vector to have $n elements."))
-    end
-    cmat
+    any(length.(array) .!= n) && throw(ArgumentError("Expected each vector to have $n elements."))
+    return hcat(array...)
 end
 
 function array_to_cmatrix(array::Vector{Vector{Int}}; n=0)
+    any(length.(array) .!= n) && throw(ArgumentError("Expected each vector to have $n elements."))
     array = map(x->Cint.(x), array)
-    cmat = hcat(array...)
-    if n != 0
-        m = size(cmat, 1)
-        m != n && throw(ArgumentError("Expected each vector to have $n elements."))
-    end
-    cmat
+    return hcat(array...)
 end
 
 function cmatrix_to_array(matrix)
-    arr = [matrix[:, i] for i in 1:size(matrix, 2)]
+    return [matrix[:, i] for i in 1:size(matrix, 2)]
 end
 
 function cmatrix_to_array(matrix::Matrix{Cint})
-    arr = [Int.(matrix[:, i]) for i in 1:size(matrix, 2)]
+    return [Int.(matrix[:, i]) for i in 1:size(matrix, 2)]
 end
 
 

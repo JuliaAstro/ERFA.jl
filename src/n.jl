@@ -44,7 +44,7 @@ function numat(epsa, dpsi, deps)
     ccall((:eraNumat, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           epsa, dpsi, deps, rmatn)
-    rmatn
+    return permutedims(rmatn)
 end
 
 """
@@ -453,12 +453,12 @@ for name in ("nut00a",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
-            r1 = Ref(0.0)
-            r2 = Ref(0.0)
+            r1 = Ref{Cdouble}()
+            r2 = Ref{Cdouble}()
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, r1, r2)
-            r1[], r2[]
+            return r1[], r2[]
         end
     end
 end
@@ -687,7 +687,8 @@ for name in ("num00a",
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}),
                   a, b, r)
-            r
+            return permutedims(r)
         end
     end
 end
+

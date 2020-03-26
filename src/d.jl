@@ -168,29 +168,29 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 !!! warning "IMPORTANT"
     A new version of this function must be
     produced whenever a new leap second is
-    announced.  There are four items to   
-    change on each such occasion:         
-                                            
+    announced.  There are four items to
+    change on each such occasion:
+
     1. A new line must be added to the set
-        of statements that initialize the  
-        array "changes".                   
-                                            
+        of statements that initialize the
+        array "changes".
+
     2. The constant IYV must be set to the
-        current year.                      
-                                            
-    3. The "Latest leap second" comment   
-        below must be set to the new leap  
-        second date.                       
-                                            
+        current year.
+
+    3. The "Latest leap second" comment
+        below must be set to the new leap
+        second date.
+
     4. The "This revision" comment, later,
-        must be set to the current date.   
-                                            
-    Change (2) must also be carried out   
-    whenever the function is re-issued,   
-    even if no leap seconds have been     
-    added.                                
-                                            
-    Latest leap second:  2016 December 31 
+        must be set to the current date.
+
+    Change (2) must also be carried out
+    whenever the function is re-issued,
+    even if no leap seconds have been
+    added.
+
+    Latest leap second:  2016 December 31
 
 ### Given ###
 
@@ -279,7 +279,7 @@ function dat(iy, im, id, fd)
     elseif i == -5
         throw(ERFAException("internal error (Note 5)"))
     end
-    d[]
+    return d[]
 end
 
 """
@@ -308,15 +308,16 @@ quasi-JD form that includes special provision for leap seconds).
 2. ndp is the number of decimal places in the seconds field, and can
    have negative as well as positive values, such as:
 
-   ndp         resolution
-   -4            1 00 00
-   -3            0 10 00
-   -2            0 01 00
-   -1            0 00 10
-    0            0 00 01
-    1            0 00 00.1
-    2            0 00 00.01
-    3            0 00 00.001
+   | ndp       | resolution    |
+   |:----------|:--------------|
+   | -4        |   1 00 00     |
+   | -3        |   0 10 00     |
+   | -2        |   0 01 00     |
+   | -1        |   0 00 10     |
+   |  0        |   0 00 01     |
+   |  1        |   0 00 00.1   |
+   |  2        |   0 00 00.01  |
+   |  3        |   0 00 00.001 |
 
    The limits are platform dependent, but a safe range is -5 to +9.
 
@@ -360,7 +361,7 @@ function d2dtf(scale::AbstractString, ndp, d1, d2)
     elseif i == -1
         throw(ERFAException("unacceptable date (Note 6)"))
     end
-    iy[], imo[], id[], ihmsf[1], ihmsf[2], ihmsf[3], ihmsf[4]
+    return iy[], imo[], id[], ihmsf[1], ihmsf[2], ihmsf[3], ihmsf[4]
 end
 
 """
@@ -450,7 +451,7 @@ function dtf2d(scale::AbstractString, iy, imo, id, ih, imi, sec)
     elseif i == -6
         throw(ERFAException("bad second (<0)"))
     end
-    r1[], r2[]
+    return r1[], r2[]
 end
 
 """
@@ -507,5 +508,5 @@ function d2tf(ndp, a)
     ccall((:eraD2tf, liberfa), Cvoid,
             (Cint, Cdouble, Ref{Cchar}, Ref{Cint}),
             ndp, a, s, i)
-    Char(s[]), i[1], i[2], i[3], i[4]
+    return Char(s[]), i[1], i[2], i[3], i[4]
 end

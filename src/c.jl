@@ -70,11 +70,12 @@ the bias-precession-nutation matrix.  IAU 2000.
     IERS Technical Note No. 32, BKG (2004)
 """
 function c2ibpn(date1, date2, rbpn)
+    @checkdims 3 3 rbpn
     rc2i = zeros((3, 3))
     ccall((:eraC2ibpn, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
-          date1, date2, rbpn, rc2i)
-    rc2i
+          date1, date2, permutedims(rbpn), rc2i)
+    return permutedims(rc2i)
 end
 
 """
@@ -100,12 +101,13 @@ P-vector to spherical coordinates.
 3. At either pole, zero theta is returned.
 """
 function c2s(p)
+    @checkdims 3 p
     theta = Ref(0.0)
     phi = Ref(0.0)
     ccall((:eraC2s, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi)
-    theta[], phi[]
+    return theta[], phi[]
 end
 
 """
@@ -156,7 +158,7 @@ function cal2jd(iy, imo, id)
     elseif i == -3
         throw(ERFAException("bad day"))
     end
-    r1[], r2[]
+    return r1[], r2[]
 end
 
 """
@@ -275,7 +277,7 @@ for name in ("c2tcio",
             ccall(($fc, liberfa), Cvoid,
                   (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   rc2i, era, rpom, rc2t)
-            rc2t
+            return permutedims(rc2t)
         end
     end
 end
@@ -513,7 +515,7 @@ for name in ("c2t00a",
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
                   tta, ttb, uta, utb, xp, yp, rc2t)
-            rc2t
+            return permutedims(rc2t)
         end
     end
 end
@@ -690,7 +692,7 @@ for name in ("c2tpe",
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
                   tta, ttb, uta, utb, x, y, xp, yp, rc2t)
-            rc2t
+            return permutedims(rc2t)
         end
     end
 end
@@ -907,7 +909,7 @@ for name in ("c2i00a",
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}),
                   a, b, r)
-            r
+            return permutedims(r)
         end
     end
 end
@@ -981,7 +983,7 @@ function c2ixy(x, y, s, t)
     ccall((:eraC2ixy, liberfa), Cvoid,
             (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, t, r)
-    r
+    return permutedims(r)
 end
 
 """
@@ -1036,5 +1038,6 @@ function c2ixys(x, y, s)
     ccall((:eraC2ixys, liberfa), Cvoid,
             (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, r)
-    r
+    return permutedims(r)
 end
+

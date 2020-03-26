@@ -10,6 +10,9 @@
     @test isapprox(p1[1], -0.7632762548968159627, atol = 1e-12)
     @test isapprox(p1[2], -0.6086337670823762701, atol = 1e-12)
     @test isapprox(p1[3], -0.2167355431320546947, atol = 1e-12)
+    @test_throws ArgumentError ERFA.ld(bm, p[1:2], q, e, em, dlim)
+    @test_throws ArgumentError ERFA.ld(bm, p, q[1:2], e, em, dlim)
+    @test_throws ArgumentError ERFA.ld(bm, p, q, e[1:2], em, dlim)
 end
 
 # ERFA.ldn
@@ -30,6 +33,8 @@ end
     @test isapprox(sn[1], -0.7632762579693333866, atol = 1e-12)
     @test isapprox(sn[2], -0.6086337636093002660, atol = 1e-12)
     @test isapprox(sn[3], -0.2167355420646328159, atol = 1e-12)
+    @test_throws ArgumentError ERFA.ldn(l, ob[1:2], sc)
+    @test_throws ArgumentError ERFA.ldn(l, ob, sc[1:2])
 end
 
 # ERFA.ldsun
@@ -41,34 +46,36 @@ end
     @test isapprox(p1[1], -0.7632762580731413169, atol = 1e-12)
     @test isapprox(p1[2], -0.6086337635262647900, atol = 1e-12)
     @test isapprox(p1[3], -0.2167355419322321302, atol = 1e-12)
+    @test_throws ArgumentError ERFA.ldsun(p[1:2], e, em)
+    @test_throws ArgumentError ERFA.ldsun(p, e[1:2], em)
 end
 
 # ERFA.ltp
 @testset "ltp" begin
     rp = ERFA.ltp(1666.666)
-    @test isapprox(rp[1], 0.9967044141159213819, atol = 1e-14)
-    @test isapprox(rp[2], 0.7437801893193210840e-1, atol = 1e-14)
-    @test isapprox(rp[3], 0.3237624409345603401e-1, atol = 1e-14)
-    @test isapprox(rp[4], -0.7437802731819618167e-1, atol = 1e-14)
-    @test isapprox(rp[5], 0.9972293894454533070, atol = 1e-14)
-    @test isapprox(rp[6], -0.1205768842723593346e-2, atol = 1e-14)
-    @test isapprox(rp[7], -0.3237622482766575399e-1, atol = 1e-14)
-    @test isapprox(rp[8], -0.1206286039697609008e-2, atol = 1e-14)
-    @test isapprox(rp[9], 0.9994750246704010914, atol = 1e-14)
+    @test isapprox(rp[1,1], 0.9967044141159213819, atol = 1e-14)
+    @test isapprox(rp[1,2], 0.7437801893193210840e-1, atol = 1e-14)
+    @test isapprox(rp[1,3], 0.3237624409345603401e-1, atol = 1e-14)
+    @test isapprox(rp[2,1], -0.7437802731819618167e-1, atol = 1e-14)
+    @test isapprox(rp[2,2], 0.9972293894454533070, atol = 1e-14)
+    @test isapprox(rp[2,3], -0.1205768842723593346e-2, atol = 1e-14)
+    @test isapprox(rp[3,1], -0.3237622482766575399e-1, atol = 1e-14)
+    @test isapprox(rp[3,2], -0.1206286039697609008e-2, atol = 1e-14)
+    @test isapprox(rp[3,3], 0.9994750246704010914, atol = 1e-14)
 end
 
 # ERFA.ltpb
 @testset "ltpb" begin
     rp = ERFA.ltpb(1666.666)
-    @test isapprox(rp[1], 0.9967044167723271851, atol = 1e-14)
-    @test isapprox(rp[2], 0.7437794731203340345e-1, atol = 1e-14)
-    @test isapprox(rp[3], 0.3237632684841625547e-1, atol = 1e-14)
-    @test isapprox(rp[4], -0.7437795663437177152e-1, atol = 1e-14)
-    @test isapprox(rp[5], 0.9972293947500013666, atol = 1e-14)
-    @test isapprox(rp[6], -0.1205741865911243235e-2, atol = 1e-14)
-    @test isapprox(rp[7], -0.3237630543224664992e-1, atol = 1e-14)
-    @test isapprox(rp[8], -0.1206316791076485295e-2, atol = 1e-14)
-    @test isapprox(rp[9], 0.9994750220222438819, atol = 1e-14)
+    @test isapprox(rp[1,1], 0.9967044167723271851, atol = 1e-14)
+    @test isapprox(rp[1,2], 0.7437794731203340345e-1, atol = 1e-14)
+    @test isapprox(rp[1,3], 0.3237632684841625547e-1, atol = 1e-14)
+    @test isapprox(rp[2,1], -0.7437795663437177152e-1, atol = 1e-14)
+    @test isapprox(rp[2,2], 0.9972293947500013666, atol = 1e-14)
+    @test isapprox(rp[2,3], -0.1205741865911243235e-2, atol = 1e-14)
+    @test isapprox(rp[3,1], -0.3237630543224664992e-1, atol = 1e-14)
+    @test isapprox(rp[3,2], -0.1206316791076485295e-2, atol = 1e-14)
+    @test isapprox(rp[3,3], 0.9994750220222438819, atol = 1e-14)
 end
 
 # ERFA.ltpecl
@@ -90,15 +97,15 @@ end
 # ERFA.ltecm
 @testset "ltecm" begin
     rm = ERFA.ltecm(-3000.0)
-    @test isapprox(rm[1], 0.3564105644859788825, atol = 1e-14)
-    @test isapprox(rm[2], 0.8530575738617682284, atol = 1e-14)
-    @test isapprox(rm[3], 0.3811355207795060435, atol = 1e-14)
-    @test isapprox(rm[4], -0.9343283469640709942, atol = 1e-14)
-    @test isapprox(rm[5], 0.3247830597681745976, atol = 1e-14)
-    @test isapprox(rm[6], 0.1467872751535940865, atol = 1e-14)
-    @test isapprox(rm[7], 0.1431636191201167793e-2, atol = 1e-14)
-    @test isapprox(rm[8], -0.4084222566960599342, atol = 1e-14)
-    @test isapprox(rm[9], 0.9127919865189030899, atol = 1e-14)
+    @test isapprox(rm[1,1], 0.3564105644859788825, atol = 1e-14)
+    @test isapprox(rm[1,2], 0.8530575738617682284, atol = 1e-14)
+    @test isapprox(rm[1,3], 0.3811355207795060435, atol = 1e-14)
+    @test isapprox(rm[2,1], -0.9343283469640709942, atol = 1e-14)
+    @test isapprox(rm[2,2], 0.3247830597681745976, atol = 1e-14)
+    @test isapprox(rm[2,3], 0.1467872751535940865, atol = 1e-14)
+    @test isapprox(rm[3,1], 0.1431636191201167793e-2, atol = 1e-14)
+    @test isapprox(rm[3,2], -0.4084222566960599342, atol = 1e-14)
+    @test isapprox(rm[3,3], 0.9127919865189030899, atol = 1e-14)
 end
 
 # ERFA.lteceq

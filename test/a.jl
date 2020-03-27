@@ -18,6 +18,8 @@ end
     @test isapprox(ppr[1], -0.7631631094219556269, atol = 1e-12)
     @test isapprox(ppr[2], -0.6087553082505590832, atol = 1e-12)
     @test isapprox(ppr[3], -0.2167926269368471279, atol = 1e-12)
+    @test_throws ArgumentError ERFA.ab(pnat[1:2], v, s, bm1)
+    @test_throws ArgumentError ERFA.ab(pnat, v[1:2], s, bm1)
 end
 
 # ERFA.af2a
@@ -44,7 +46,7 @@ end
 @testset "apcg" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    ebpv = [[0.901310875,-0.417402664,-0.180982288];
+    ebpv = [[0.901310875,-0.417402664,-0.180982288],
             [0.00742727954,0.0140507459,0.00609045792]]
     ehp = [0.903358544,-0.415395237,-0.180084014]
     astrom = ERFA.apcg(date1, date2, ebpv, ehp)
@@ -60,15 +62,19 @@ end
     @test isapprox(astrom.v[2], 0.8115034051581320575e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], 0.3517555136380563427e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999951686012981, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 1.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[4], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[7], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[2], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[5], 1.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[8], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[3], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[6], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[9], 1.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,1], 1.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,1], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,1], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,2], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,2], 1.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,2], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,3], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,3], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,3], 1.0, atol = 1e-10)
+    ebpve = [[-0.417402664,-0.180982288],
+            [0.00742727954,0.0140507459,0.00609045792]]
+    @test_throws ArgumentError ERFA.apcg(date1, date2, ebpve, ehp)
+    @test_throws ArgumentError ERFA.apcg(date1, date2, ebpv, ehp[1:2])
 end
 
 # ERFA.apcg13
@@ -88,22 +94,22 @@ end
     @test isapprox(astrom.v[2], 0.8115034032405042132e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], 0.3517555135536470279e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999951686013142, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 1.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[4], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[7], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[2], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[5], 1.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[8], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[3], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[6], 0.0, atol = 1e-10)
-    @test isapprox(astrom.bpn[9], 1.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,1], 1.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,1], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,1], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,2], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,2], 1.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,2], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,3], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,3], 0.0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,3], 1.0, atol = 1e-10)
 end
 
 # ERFA.apci
 @testset "apci" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    ebpv = [[0.901310875,-0.417402664,-0.180982288];
+    ebpv = [[0.901310875,-0.417402664,-0.180982288],
             [0.00742727954,0.0140507459,0.00609045792]]
     ehp = [0.903358544,-0.415395237,-0.180084014]
     x =  0.0013122272
@@ -122,15 +128,19 @@ end
     @test isapprox(astrom.v[2], 0.8115034051581320575e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], 0.3517555136380563427e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999951686012981, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 0.9999991390295159156, atol = 1e-12)
-    @test isapprox(astrom.bpn[4], 0.4978650072505016932e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[7], 0.1312227200000000000e-2, atol = 1e-12)
-    @test isapprox(astrom.bpn[2], -0.1136336653771609630e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[5], 0.9999999995713154868, atol = 1e-12)
-    @test isapprox(astrom.bpn[8], -0.2928086230000000000e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[3], -0.1312227200895260194e-2, atol = 1e-12)
-    @test isapprox(astrom.bpn[6], 0.2928082217872315680e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[9], 0.9999991386008323373, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,1], 0.9999991390295159156, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,1], 0.4978650072505016932e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,1], 0.1312227200000000000e-2, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,2], -0.1136336653771609630e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,2], 0.9999999995713154868, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,2], -0.2928086230000000000e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,3], -0.1312227200895260194e-2, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,3], 0.2928082217872315680e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,3], 0.9999991386008323373, atol = 1e-12)
+    ebpve = [[-0.417402664,-0.180982288],
+            [0.00742727954,0.0140507459,0.00609045792]]
+    @test_throws ArgumentError ERFA.apci(date1, date2, ebpve, ehp, x, y, s)
+    @test_throws ArgumentError ERFA.apci(date1, date2, ebpv, ehp[1:2], x, y, s)
 end
 
 # ERFA.apci13
@@ -150,15 +160,15 @@ end
     @test isapprox(astrom.v[2], 0.8115034032405042132e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], 0.3517555135536470279e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999951686013142, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 0.9999992060376761710, atol = 1e-12)
-    @test isapprox(astrom.bpn[4], 0.4124244860106037157e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[7], 0.1260128571051709670e-2, atol = 1e-12)
-    @test isapprox(astrom.bpn[2], -0.1282291987222130690e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[5], 0.9999999997456835325, atol = 1e-12)
-    @test isapprox(astrom.bpn[8], -0.2255288829420524935e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[3], -0.1260128571661374559e-2, atol = 1e-12)
-    @test isapprox(astrom.bpn[6], 0.2255285422953395494e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[9], 0.9999992057833604343, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,1], 0.9999992060376761710, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,1], 0.4124244860106037157e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,1], 0.1260128571051709670e-2, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,2], -0.1282291987222130690e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,2], 0.9999999997456835325, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,2], -0.2255288829420524935e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,3], -0.1260128571661374559e-2, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,3], 0.2255285422953395494e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,3], 0.9999992057833604343, atol = 1e-12)
     @test isapprox(eo, -0.2900618712657375647e-2, atol = 1e-12)
 end
 
@@ -166,7 +176,7 @@ end
 @testset "apco" begin
     date1 = 2456384.5
     date2 = 0.970031644
-    ebpv = [[-0.974170438,-0.211520082,-0.0917583024];
+    ebpv = [[-0.974170438,-0.211520082,-0.0917583024],
             [0.00364365824,-0.0154287319,-0.00668922024]]
     ehp = [-0.973458265,-0.209215307,-0.0906996477]
     x = 0.0013122272
@@ -194,15 +204,15 @@ end
     @test isapprox(astrom.v[2], -0.8955360107151952319e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], -0.3863338994288951082e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999950277561236, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 0.9999991390295159156, atol = 1e-12)
-    @test isapprox(astrom.bpn[4], 0.4978650072505016932e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[7], 0.1312227200000000000e-2, atol = 1e-12)
-    @test isapprox(astrom.bpn[2], -0.1136336653771609630e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[5], 0.9999999995713154868, atol = 1e-12)
-    @test isapprox(astrom.bpn[8], -0.2928086230000000000e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[3], -0.1312227200895260194e-2, atol = 1e-12)
-    @test isapprox(astrom.bpn[6], 0.2928082217872315680e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[9], 0.9999991386008323373, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,1], 0.9999991390295159156, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,1], 0.4978650072505016932e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,1], 0.1312227200000000000e-2, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,2], -0.1136336653771609630e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,2], 0.9999999995713154868, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,2], -0.2928086230000000000e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,3], -0.1312227200895260194e-2, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,3], 0.2928082217872315680e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,3], 0.9999991386008323373, atol = 1e-12)
     @test isapprox(astrom.along, -0.5278008060301974337, atol = 1e-12)
     @test isapprox(astrom.xpl, 0.1133427418174939329e-5, atol = 1e-17)
     @test isapprox(astrom.ypl, 0.1453347595745898629e-5, atol = 1e-17)
@@ -212,6 +222,12 @@ end
     @test isapprox(astrom.eral, 2.617608903969802566, atol = 1e-12)
     @test isapprox(astrom.refa, 0.2014187790000000000e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408310000000000e-6, atol = 1e-18)
+    ebpve = [[-0.211520082,-0.0917583024],
+            [0.00364365824,-0.0154287319,-0.00668922024]]
+    @test_throws ArgumentError ERFA.apco(date1, date2, ebpve, ehp, x, y, s, theta, elong,
+                                         phi, hm, xp, yp, sp, refa, refb)
+    @test_throws ArgumentError ERFA.apco(date1, date2, ebpve, ehp[1:2], x, y, s, theta,
+                                         elong, phi, hm, xp, yp, sp, refa, refb)
 end
 
 # ERFA.apco13
@@ -242,15 +258,15 @@ end
     @test isapprox(astrom.v[2], -0.8955360133238868938e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], -0.3863338993055887398e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999950277561004, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 0.9999991390295147999, atol = 1e-12)
-    @test isapprox(astrom.bpn[4], 0.4978650075315529277e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[7], 0.001312227200850293372, atol = 1e-12)
-    @test isapprox(astrom.bpn[2], -0.1136336652812486604e-7, atol = 1e-12)
-    @test isapprox(astrom.bpn[5], 0.9999999995713154865, atol = 1e-12)
-    @test isapprox(astrom.bpn[8], -0.2928086230975367296e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[3], -0.001312227201745553566, atol = 1e-12)
-    @test isapprox(astrom.bpn[6], 0.2928082218847679162e-4, atol = 1e-12)
-    @test isapprox(astrom.bpn[9], 0.9999991386008312212, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,1], 0.9999991390295147999, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,1], 0.4978650075315529277e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,1], 0.001312227200850293372, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,2], -0.1136336652812486604e-7, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,2], 0.9999999995713154865, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,2], -0.2928086230975367296e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[1,3], -0.001312227201745553566, atol = 1e-12)
+    @test isapprox(astrom.bpn[2,3], 0.2928082218847679162e-4, atol = 1e-12)
+    @test isapprox(astrom.bpn[3,3], 0.9999991386008312212, atol = 1e-12)
     @test isapprox(astrom.along, -0.5278008060301974337, atol = 1e-12)
     @test isapprox(astrom.xpl, 0.1133427418174939329e-5, atol = 1e-17)
     @test isapprox(astrom.ypl, 0.1453347595745898629e-5, atol = 1e-17)
@@ -267,9 +283,9 @@ end
 @testset "apcs" begin
     date1 = 2456384.5
     date2 = 0.970031644
-    pv = [[-1836024.09,1056607.72,-5998795.26];
+    pv = [[-1836024.09,1056607.72,-5998795.26],
           [-77.0361767,-133.310856,0.0971855934]]
-    ebpv = [[-0.974170438,-0.211520082,-0.0917583024];
+    ebpv = [[-0.974170438,-0.211520082,-0.0917583024],
             [0.00364365824,-0.0154287319,-0.00668922024]]
     ehp = [-0.973458265,-0.209215307,-0.0906996477]
     astrom = ERFA.apcs(date1, date2, pv, ebpv, ehp)
@@ -285,22 +301,27 @@ end
     @test isapprox(astrom.v[2], -0.8955360106989405683e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], -0.3863338994289409097e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999950277561237, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 1, atol = 1e-10)
-    @test isapprox(astrom.bpn[4], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[7], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[2], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[5], 1, atol = 1e-10)
-    @test isapprox(astrom.bpn[8], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[3], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[6], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[9], 1, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,1], 1, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,1], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,1], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,2], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,2], 1, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,2], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,3], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,3], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,3], 1, atol = 1e-10)
+    ebpve = [[-0.211520082,-0.0917583024],
+            [0.00364365824,-0.0154287319,-0.00668922024]]
+    @test_throws ArgumentError ERFA.apcs(date1, date2, ebpve, ebpv, ehp)
+    @test_throws ArgumentError ERFA.apcs(date1, date2, pv, ebpve, ehp)
+    @test_throws ArgumentError ERFA.apcs(date1, date2, pv, ebpv, ehp[1:2])
 end
 
 # ERFA.apcs13
 @testset "apcs13" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    pv = [[-6241497.16,401346.896,-1251136.04];
+    pv = [[-6241497.16,401346.896,-1251136.04],
           [-29.264597,-455.021831,0.0266151194]]
     astrom = ERFA.apcs13(date1, date2, pv)
     @test isapprox(astrom.pmt, 12.65133794027378508, atol = 1e-11)
@@ -315,15 +336,18 @@ end
     @test isapprox(astrom.v[2], 0.7963255087052120678e-4, atol = 1e-16)
     @test isapprox(astrom.v[3], 0.3517564013384691531e-4, atol = 1e-16)
     @test isapprox(astrom.bm1, 0.9999999952947980978, atol = 1e-12)
-    @test isapprox(astrom.bpn[1], 1, atol = 1e-10)
-    @test isapprox(astrom.bpn[4], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[7], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[2], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[5], 1, atol = 1e-10)
-    @test isapprox(astrom.bpn[8], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[3], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[6], 0, atol = 1e-10)
-    @test isapprox(astrom.bpn[9], 1, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,1], 1, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,1], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,1], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,2], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,2], 1, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,2], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[1,3], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[2,3], 0, atol = 1e-10)
+    @test isapprox(astrom.bpn[3,3], 1, atol = 1e-10)
+    pve = [[401346.896,-1251136.04],
+          [-29.264597,-455.021831,0.0266151194]]
+    @test_throws ArgumentError ERFA.apcs13(date1, date2, pve)
 end
 
 # ERFA.aper

@@ -158,12 +158,34 @@ mutable struct ASTROM
     refb::Cdouble
 end
 
+function ASTROM()
+    ASTROM(
+        0.0,
+        zeros(3),
+        zeros(3),
+        0.0,
+        zeros(3),
+        0.0,
+        zeros((3, 3)),
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+    )
+end
+
 function Base.getproperty(a::ASTROM, field::Symbol)
     val = getfield(a, field)
     if field in (:eb, :eh, :v)
         return collect(val)
     elseif field == :bpn
-        return reshape(collect(val), 3, 3)
+        return permutedims(reshape(collect(val), 3, 3))
     end
     return val
 end

@@ -47,6 +47,7 @@ direction.
 
 """
 function ab(pnat, v, s, bm1)
+    @checkdims 3 pnat v
     ppr = zeros(3)
     ccall((:eraAb, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Ref{Cdouble}),
@@ -156,11 +157,13 @@ transformation chain.
 
 """
 function apcg(date1, date2, ebpv, ehp)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    @checkdims 3 ehp
+    _ebpv = array_to_cmatrix(ebpv; n=3)
+    astrom = ASTROM()
     ccall((:eraApcg, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{ASTROM}),
-          date1, date2, ebpv, ehp, astrom)
-    astrom
+          date1, date2, _ebpv, ehp, astrom)
+    return astrom
 end
 
 """
@@ -269,11 +272,11 @@ transformation chain.
 
 """
 function apcg13(date1, date2)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    astrom = ASTROM()
     ccall((:eraApcg13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, astrom)
-    astrom
+    return astrom
 end
 
 """
@@ -387,11 +390,13 @@ parts of the astrometric transformation chain.
 
 """
 function apci(date1, date2, ebpv, ehp, x, y, s)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    @checkdims 3 ehp
+    _ebpv = array_to_cmatrix(ebpv; n=3)
+    astrom = ASTROM()
     ccall((:eraApci, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
-          date1, date2, ebpv, ehp, x, y, s, astrom)
-    astrom
+          date1, date2, _ebpv, ehp, x, y, s, astrom)
+    return astrom
 end
 
 """
@@ -505,12 +510,12 @@ parts of the astrometric transformation chain.
 
 """
 function apci13(date1, date2)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    astrom = ASTROM()
     eo = Ref(0.0)
     ccall((:eraApci13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}),
           date1, date2, astrom, eo)
-    astrom, eo[]
+    return astrom, eo[]
 end
 
 """
@@ -661,11 +666,13 @@ site coordinates.
 
 """
 function apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    @checkdims 3 ehp
+    _ebpv = array_to_cmatrix(ebpv; n=3)
+    astrom = ASTROM()
     ccall((:eraApco, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
-          date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb, astrom)
-    astrom
+          date1, date2, _ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb, astrom)
+    return astrom
 end
 
 """
@@ -835,17 +842,18 @@ parts of the ICRS/CIRS transformations.
 
 """
 function apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    astrom = ASTROM()
     eo = Ref(0.0)
     i = ccall((:eraApco13, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}),
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+               Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}),
               utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, astrom, eo)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
         @warn "dubious year"
     end
-    astrom, eo[]
+    return astrom, eo[]
 end
 
 """
@@ -970,11 +978,14 @@ astrometric transformation chain.
 
 """
 function apcs(date1, date2, pv, ebpv, ehp)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    @checkdims 3 ehp
+    _pv = array_to_cmatrix(pv; n=3)
+    _ebpv = array_to_cmatrix(ebpv; n=3)
+    astrom = ASTROM()
     ccall((:eraApcs, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{ASTROM}),
-          date1, date2, pv, ebpv, ehp, astrom)
-    astrom
+          date1, date2, _pv, _ebpv, ehp, astrom)
+    return astrom
 end
 
 """
@@ -1089,11 +1100,12 @@ astrometric transformation chain.
 
 """
 function apcs13(date1, date2, pv)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    _pv = array_to_cmatrix(pv; n=3)
+    astrom = ASTROM()
     ccall((:eraApcs13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{ASTROM}),
-          date1, date2, pv, astrom)
-    astrom
+          date1, date2, _pv, astrom)
+    return astrom
 end
 
 """
@@ -1189,7 +1201,7 @@ function aper(theta, astrom)
     ccall((:eraAper, liberfa), Cvoid,
           (Cdouble, Ref{ASTROM}),
           theta, astrom)
-    astrom
+    return astrom
 end
 
 """
@@ -1305,7 +1317,7 @@ function aper13(ut11, ut12, astrom)
     ccall((:eraAper13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}),
           ut11, ut12, astrom)
-    astrom
+    return astrom
 end
 
 """
@@ -1420,11 +1432,11 @@ and the refraction constants as well as the site coordinates.
 
 """
 function apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    astrom = ASTROM()
     ccall((:eraApio, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           sp, theta, elong, phi, hm, xp, yp, refa, refb, astrom)
-    astrom
+    return astrom
 end
 
 """
@@ -1583,16 +1595,17 @@ conditions and observing wavelength.
 
 """
 function apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
-    astrom = ASTROM(0.0, zeros(3), zeros(3), 0.0, zeros(3), 0.0, zeros((3, 3)), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    astrom = ASTROM()
     i = ccall((:eraApio13, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+               Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
               utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, astrom)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
         @warn "dubious year"
     end
-    astrom
+    return astrom
 end
 
 """
@@ -1676,9 +1689,10 @@ function atci13(rc, dc, pr, pd, px, rv, date1, date2)
     di = Ref(0.0)
     eo = Ref(0.0)
     ccall((:eraAtci13, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+           Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, date1, date2, ri, di, eo)
-    ri[], di[], eo[]
+    return ri[], di[], eo[]
 end
 
 """
@@ -1748,9 +1762,10 @@ function atciq(rc, dc, pr, pd, px, rv, astrom)
     ri = Ref(0.0)
     di = Ref(0.0)
     ccall((:eraAtciq, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM},
+           Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, astrom, ri, di)
-    ri[], di[]
+    return ri[], di[]
 end
 
 """
@@ -1857,9 +1872,10 @@ function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Vector{LDBODY})
     di = Ref(0.0)
     n = length(b)
     ccall((:eraAtciqn, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Cint,
+           Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, astrom, n, b, ri, di)
-    ri[], di[]
+    return ri[], di[]
 end
 
 """
@@ -1931,7 +1947,7 @@ function atciqz(rc, dc, astrom)
     ccall((:eraAtciqz, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, astrom, ri, di)
-    ri[], di[]
+    return ri[], di[]
 end
 
 """
@@ -2083,14 +2099,18 @@ function atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp
     rob = Ref(0.0)
     eo = Ref(0.0)
     i = ccall((:eraAtco13, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
-              rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, aob, zob, hob, dob, rob, eo)
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+               Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+               Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble},
+               Ref{Cdouble}),
+              rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh,
+              wl, aob, zob, hob, dob, rob, eo)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
         @warn "dubious year"
     end
-    aob[], zob[], hob[], dob[], rob[], eo[]
+    return aob[], zob[], hob[], dob[], rob[], eo[]
 end
 
 """
@@ -2171,7 +2191,7 @@ function atic13(ri, di, date1, date2)
     ccall((:eraAtic13, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, date1, date2, rc, dc, eo)
-    rc[], dc[], eo[]
+    return rc[], dc[], eo[]
 end
 
 """
@@ -2239,7 +2259,7 @@ function aticq(ri, di, astrom)
     ccall((:eraAticq, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, rc, dc)
-    rc[], dc[]
+    return rc[], dc[]
 end
 
 """
@@ -2343,7 +2363,7 @@ function aticqn(ri, di, astrom, b::Array{LDBODY})
     ccall((:eraAticqn, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, n, b, rc, dc)
-    rc[], dc[]
+    return rc[], dc[]
 end
 
 """
@@ -2478,14 +2498,17 @@ function atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, 
     dob = Ref(0.0)
     rob = Ref(0.0)
     i = ccall((:eraAtio13, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
-              ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, aob, zob, hob, dob, rob)
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+               Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble},
+               Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, aob,
+              zob, hob, dob, rob)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
         @warn "dubious year"
     end
-    aob[], zob[], hob[], dob[], rob[]
+    return aob[], zob[], hob[], dob[], rob[]
 end
 
 """
@@ -2589,9 +2612,10 @@ function atioq(ri, di, astrom)
     dob = Ref(0.0)
     rob = Ref(0.0)
     ccall((:eraAtioq, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble},
+           Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, aob, zob, hob, dob, rob)
-    aob[], zob[], hob[], dob[], rob[]
+    return aob[], zob[], hob[], dob[], rob[]
 end
 
 """
@@ -2734,8 +2758,11 @@ function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
         typeofcoordinates = "A"
     end
     i = ccall((:eraAtoc13, liberfa), Cint,
-              (Cstring, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
-              typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, rc, dc)
+              (Cstring, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+               Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble},
+               Ref{Cdouble}),
+              typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa,
+              tk, rh, wl, rc, dc)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
@@ -2880,14 +2907,17 @@ function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
     ri = Ref(0.0)
     di = Ref(0.0)
     i = ccall((:eraAtoi13, liberfa), Cint,
-              (Cstring, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
-              typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl, ri, di)
+              (Cstring, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+               Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble},
+               Ref{Cdouble}),
+              typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa,
+              tk, rh, wl, ri, di)
     if i == -1
         throw(ERFAException("unacceptable date"))
     elseif i == +1
         @warn "dubious year"
     end
-    ri[], di[]
+    return ri[], di[]
 end
 
 """
@@ -2983,7 +3013,7 @@ function atoiq(typeofcoordinates, ob1, ob2, astrom)
     ccall((:eraAtoiq, liberfa),
           Cvoid, (Cstring, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           typeofcoordinates, ob1, ob2, astrom, ri, di)
-    ri[], di[]
+    return ri[], di[]
 end
 
 """
@@ -3148,7 +3178,7 @@ for name in ("a2af",
             ccall(($fc, liberfa), Cvoid,
                   (Cint, Cdouble, Ref{Cchar}, Ref{Cint}),
                   ndp, a, s, i)
-            Char(s[]), i[1], i[2], i[3], i[4]
+            return Char(s[]), i[1], i[2], i[3], i[4]
         end
     end
 end
@@ -3192,5 +3222,6 @@ function af2a(s, ideg, iamin, asec)
     elseif i == 3
         throw(ERFAException("asec outside range 0-59.999..."))
     end
-    rad[]
+    return rad[]
 end
+

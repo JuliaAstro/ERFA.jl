@@ -190,13 +190,13 @@ for name in ("ut1tai",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b, c)
-            r1 = Ref(0.0)
-            r2 = Ref(0.0)
+            r1 = Ref{Cdouble}()
+            r2 = Ref{Cdouble}()
             i = ccall(($fc, liberfa), Cint,
                       (Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                       a, b, c, r1, r2)
             @assert i == 0
-            r1[], r2[]
+            return r1[], r2[]
         end
     end
 end
@@ -256,8 +256,8 @@ International Atomic Time, TAI.
 
 """
 function utctai(a, b)
-    r1 = Ref(0.0)
-    r2 = Ref(0.0)
+    r1 = Ref{Cdouble}()
+    r2 = Ref{Cdouble}()
     i = ccall((:eraUtctai, liberfa), Cint,
                 (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                 a, b, r1, r2)
@@ -266,5 +266,6 @@ function utctai(a, b)
     elseif i == -1
         throw(ERFAException("unacceptable date"))
     end
-    r1[], r2[]
+    return r1[], r2[]
 end
+

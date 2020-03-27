@@ -21,11 +21,12 @@ Transpose an r-matrix.
 
 """
 function tr(r)
+    @checkdims 3 3 r
     rt = zeros((3, 3))
     ccall((:eraTr, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}),
-          r, rt)
-    rt
+          permutedims(r), rt)
+    return permutedims(rt)
 end
 
 """
@@ -52,12 +53,14 @@ Multiply a pv-vector by the transpose of an r-matrix.
 - `eraRxpv`: product of r-matrix and pv-vector
 
 """
-function trxpv(r, p)
-    rp = zeros((2, 3))
+function trxpv(r, pv)
+    @checkdims 3 3 r
+    _pv = array_to_cmatrix(pv; n=3)
+    rp = zeros(Cdouble, 3, 2)
     ccall((:eraTrxpv, liberfa), Cvoid,
             (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
-            r, p, rp)
-    rp
+            permutedims(r), _pv, rp)
+    return cmatrix_to_array(rp)
 end
 
 """
@@ -85,11 +88,13 @@ Multiply a p-vector by the transpose of an r-matrix.
 
 """
 function trxp(r, p)
+    @checkdims 3 3 r
+    @checkdims 3 p
     rp = zeros(3)
     ccall((:eraTrxp, liberfa), Cvoid,
             (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
-            r, p, rp)
-    rp
+            permutedims(r), p, rp)
+    return rp
 end
 
 """
@@ -251,8 +256,8 @@ for name in ("taiut1",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b, c)
-            r1 = Ref(0.0)
-            r2 = Ref(0.0)
+            r1 = Ref{Cdouble}()
+            r2 = Ref{Cdouble}()
             i = ccall(($fc, liberfa), Cint,
                       (Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                       a, b, c, r1, r2)
@@ -545,13 +550,13 @@ for name in ("taitt",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
-            r1 = Ref(0.0)
-            r2 = Ref(0.0)
+            r1 = Ref{Cdouble}()
+            r2 = Ref{Cdouble}()
             i = ccall(($fc, liberfa), Cint,
                       (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                       a, b, r1, r2)
             @assert i == 0
-            r1[], r2[]
+            return r1[], r2[]
         end
     end
 end
@@ -620,7 +625,7 @@ for name in ("tf2a",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(s, ideg, iamin, asec)
-            rad = Ref(0.0)
+            rad = Ref{Cdouble}()
             i = ccall(($fc, liberfa), Cint,
                       (Cchar, Cint, Cint, Cdouble, Ref{Cdouble}),
                        s, ideg, iamin, asec, rad)
@@ -631,7 +636,8 @@ for name in ("tf2a",
             elseif i == 3
                 throw(ERFAException("sec outside range 0-59.999..."))
             end
-            rad[]
+            return rad[]
         end
     end
 end
+

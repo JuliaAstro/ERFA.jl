@@ -51,27 +51,30 @@ end
 # ERFA.s2pv
 @testset "s2pv" begin
     pv = ERFA.s2pv(-3.21, 0.123, 0.456, -7.8e-6, 9.01e-6, -1.23e-5)
-    @test isapprox(pv[1], -0.4514964673880165228, atol = 1e-12)
-    @test isapprox(pv[2], 0.0309339427734258688, atol = 1e-12)
-    @test isapprox(pv[3], 0.0559466810510877933, atol = 1e-12)
-    @test isapprox(pv[4], 0.1292270850663260170e-4, atol = 1e-16)
-    @test isapprox(pv[5], 0.2652814182060691422e-5, atol = 1e-16)
-    @test isapprox(pv[6], 0.2568431853930292259e-5, atol = 1e-16)
+    @test isapprox(pv[1][1], -0.4514964673880165228, atol = 1e-12)
+    @test isapprox(pv[1][2], 0.0309339427734258688, atol = 1e-12)
+    @test isapprox(pv[1][3], 0.0559466810510877933, atol = 1e-12)
+    @test isapprox(pv[2][1], 0.1292270850663260170e-4, atol = 1e-16)
+    @test isapprox(pv[2][2], 0.2652814182060691422e-5, atol = 1e-16)
+    @test isapprox(pv[2][3], 0.2568431853930292259e-5, atol = 1e-16)
 end
 
 # ERFA.s2xpv
 @testset "s2xpv" begin
     s1 = 2.0
     s2 = 3.0
-    pv = [[0.3,1.2,-2.5];
+    pv = [[0.3,1.2,-2.5],
           [0.5,2.3,-0.4]]
     spv = ERFA.s2xpv(s1, s2, pv)
-    @test isapprox(spv[1], 0.6, atol = 1e-12)
-    @test isapprox(spv[2], 2.4, atol = 1e-12)
-    @test isapprox(spv[3], -5.0, atol = 1e-12)
-    @test isapprox(spv[4], 1.5, atol = 1e-12)
-    @test isapprox(spv[5], 6.9, atol = 1e-12)
-    @test isapprox(spv[6], -1.2, atol = 1e-12)
+    @test isapprox(spv[1][1], 0.6, atol = 1e-12)
+    @test isapprox(spv[1][2], 2.4, atol = 1e-12)
+    @test isapprox(spv[1][3], -5.0, atol = 1e-12)
+    @test isapprox(spv[2][1], 1.5, atol = 1e-12)
+    @test isapprox(spv[2][2], 6.9, atol = 1e-12)
+    @test isapprox(spv[2][3], -1.2, atol = 1e-12)
+    pve = [[1.2,-2.5],
+          [0.5,2.3,-0.4]]
+    @test_throws ArgumentError ERFA.s2xpv(s1, s2, pve)
 end
 
 # ERFA.sepp
@@ -121,12 +124,12 @@ end
     px =   0.74723
     rv = -21.6
     pv = ERFA.starpv(ra, dec, pmr, pmd, px, rv)
-    @test isapprox(pv[1], 126668.5912743160601, atol = 1e-10)
-    @test isapprox(pv[2], 2136.792716839935195, atol = 1e-12)
-    @test isapprox(pv[3], -245251.2339876830091, atol = 1e-10)
-    @test isapprox(pv[4], -0.4051854008955659551e-2, atol = 1e-13)
-    @test isapprox(pv[5], -0.6253919754414777970e-2, atol = 1e-15)
-    @test isapprox(pv[6], 0.1189353714588109341e-1, atol = 1e-13)
+    @test isapprox(pv[1][1], 126668.5912743160601, atol = 1e-10)
+    @test isapprox(pv[1][2], 2136.792716839935195, atol = 1e-12)
+    @test isapprox(pv[1][3], -245251.2339876830091, atol = 1e-10)
+    @test isapprox(pv[2][1], -0.4051854008955659551e-2, atol = 1e-13)
+    @test isapprox(pv[2][2], -0.6253919754414777970e-2, atol = 1e-15)
+    @test isapprox(pv[2][3], 0.1189353714588109341e-1, atol = 1e-13)
 end
 
 # ERFA.sxp
@@ -137,18 +140,21 @@ end
     @test isapprox(sp[1], 0.6, atol = 0.0)
     @test isapprox(sp[2], 2.4, atol = 0.0)
     @test isapprox(sp[3], -5.0, atol = 0.0)
+    @test_throws ArgumentError ERFA.sxp(s, p[1:2])
 end
 
 # ERFA.sxpv
 @testset "sxpv" begin
     s = 2.0
-    pv = [[0.3,1.2,-2.5];[0.5,3.2,-0.7]]
+    pv = [[0.3,1.2,-2.5],[0.5,3.2,-0.7]]
     spv = ERFA.sxpv(s, pv)
-    @test isapprox(spv[1], 0.6, atol = 0.0)
-    @test isapprox(spv[2], 2.4, atol = 0.0)
-    @test isapprox(spv[3], -5.0, atol = 0.0)
-    @test isapprox(spv[4], 1.0, atol = 0.0)
-    @test isapprox(spv[5], 6.4, atol = 0.0)
-    @test isapprox(spv[6], -1.4, atol = 0.0)
+    @test isapprox(spv[1][1], 0.6, atol = 0.0)
+    @test isapprox(spv[1][2], 2.4, atol = 0.0)
+    @test isapprox(spv[1][3], -5.0, atol = 0.0)
+    @test isapprox(spv[2][1], 1.0, atol = 0.0)
+    @test isapprox(spv[2][2], 6.4, atol = 0.0)
+    @test isapprox(spv[2][3], -1.4, atol = 0.0)
+    pve = [[1.2,-2.5],[0.5,3.2,-0.7]]
+    @test_throws ArgumentError ERFA.sxpv(s, pve)
 end
 

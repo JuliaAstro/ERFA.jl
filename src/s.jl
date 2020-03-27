@@ -18,7 +18,7 @@ function s2c(theta, phi)
     ccall((:eraS2c, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, c)
-    c
+    return c
 end
 
 """
@@ -47,7 +47,7 @@ function s2p(theta, phi, r)
     ccall((:eraS2p, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, r, p)
-    p
+    return p
 end
 
 """
@@ -70,11 +70,11 @@ Convert position/velocity from spherical to Cartesian coordinates.
 
 """
 function s2pv(theta, phi, r, td, pd, rd)
-    pv = zeros((2, 3))
+    pv = zeros(Cdouble, 3, 2)
     ccall((:eraS2pv, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, r, td, pd, rd, pv)
-    pv
+    return cmatrix_to_array(pv)
 end
 
 """
@@ -102,11 +102,12 @@ Multiply a pv-vector by two scalars.
 
 """
 function s2xpv(s1, s2, pv)
-    spv = zeros((2, 3))
+    _pv = array_to_cmatrix(pv; n=3)
+    spv = zeros(Cdouble, 3, 2)
     ccall((:eraS2xpv, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
-          s1, s2, pv, spv)
-    spv
+          s1, s2, _pv, spv)
+    return cmatrix_to_array(spv)
 end
 
 """
@@ -204,12 +205,12 @@ Star proper motion:  update star catalog data for space motion.
 
 """
 function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
-    ra2 = Ref(0.0)
-    dec2 = Ref(0.0)
-    pmr2 = Ref(0.0)
-    pmd2 = Ref(0.0)
-    px2 = Ref(0.0)
-    rv2 = Ref(0.0)
+    ra2 = Ref{Cdouble}()
+    dec2 = Ref{Cdouble}()
+    pmr2 = Ref{Cdouble}()
+    pmd2 = Ref{Cdouble}()
+    px2 = Ref{Cdouble}()
+    rv2 = Ref{Cdouble}()
     i = ccall((:eraStarpm, liberfa), Cint,
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble},
               Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
@@ -225,7 +226,7 @@ function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
     elseif i == 4
         throw(ERFAException("solution didn't converge"))
     end
-    ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
+    return ra2[], dec2[], pmr2[], pmd2[], px2[], rv2[]
 end
 
 """
@@ -333,7 +334,7 @@ Convert star catalog coordinates to position+velocity vector.
 
 """
 function starpv(ra, dec, pmr, pmd, px, rv)
-    pv = zeros((2, 3))
+    pv = zeros(Cdouble, 3, 2)
     i = ccall((:eraStarpv, liberfa), Cint,
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               ra, dec, pmr, pmd, px, rv, pv)
@@ -346,7 +347,7 @@ function starpv(ra, dec, pmr, pmd, px, rv)
     elseif i == 4
         throw(ERFAException("solution didn't converge"))
     end
-    pv
+    return cmatrix_to_array(pv)
 end
 
 """
@@ -369,11 +370,12 @@ Multiply a p-vector by a scalar.
 
 """
 function sxp(s, p)
+    @checkdims 3 p
     sp = zeros(3)
     ccall((:eraSxp, liberfa), Cvoid,
           (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           s, p, sp)
-    sp
+    return sp
 end
 
 """
@@ -400,11 +402,12 @@ Multiply a pv-vector by a scalar.
 
 """
 function sxpv(s, pv)
-    spv = zeros((2, 3))
+    _pv = array_to_cmatrix(pv; n=3)
+    spv = zeros(Cdouble, 3, 2)
     ccall((:eraSxpv, liberfa), Cvoid,
           (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
-          s, pv, spv)
-    spv
+          s, _pv, spv)
+    return cmatrix_to_array(spv)
 end
 
 """

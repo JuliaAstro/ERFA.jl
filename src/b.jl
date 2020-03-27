@@ -237,9 +237,9 @@ for name in ("bp00",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
-            rb = zeros((3, 3))
-            rp = zeros((3, 3))
-            rbp = zeros((3, 3))
+            rb = zeros(Cdouble, 3, 3)
+            rp = zeros(Cdouble, 3, 3)
+            rbp = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa),
                   Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),

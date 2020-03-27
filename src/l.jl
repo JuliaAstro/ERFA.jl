@@ -369,7 +369,7 @@ for name in ("ltecm",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj)
-            rp = zeros((3, 3))
+            rp = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Ref{Cdouble}),
                   epj, rp)

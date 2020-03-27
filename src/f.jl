@@ -35,7 +35,7 @@ FK5 to Hipparcos rotation and spin.
 
 """
 function fk5hip()
-    r5h = zeros((3, 3))
+    r5h = zeros(Cdouble, 3, 3)
     s5h = zeros(Cdouble, 3)
     ccall((:eraFk5hip, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}),
@@ -808,7 +808,7 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 """
 function fw2m(x, y, s, t)
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraFw2m, liberfa), Cvoid,
             (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, t, r)

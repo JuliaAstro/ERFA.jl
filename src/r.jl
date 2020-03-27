@@ -217,7 +217,7 @@ Form the r-matrix corresponding to a given r-vector.
 """
 function rv2m(w)
     @checkdims 3 w
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraRv2m, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}),
           w, r)
@@ -250,7 +250,7 @@ Multiply two r-matrices.
 """
 function rxr(a, b)
     @checkdims 3 3 a b
-    atb = zeros((3, 3))
+    atb = zeros(Cdouble, 3, 3)
     ccall((:eraRxr, liberfa),
           Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),

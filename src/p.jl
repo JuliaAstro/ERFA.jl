@@ -1443,11 +1443,11 @@ for name in ("pn00",
     @eval begin
         function ($f)(date1, date2, dpsi, deps)
             epsa = Ref{Cdouble}()
-            rb = zeros((3, 3))
-            rp = zeros((3, 3))
-            rbp = zeros((3, 3))
-            rn = zeros((3, 3))
-            rbpn = zeros((3, 3))
+            rb = zeros(Cdouble, 3, 3)
+            rp = zeros(Cdouble, 3, 3)
+            rbp = zeros(Cdouble, 3, 3)
+            rn = zeros(Cdouble, 3, 3)
+            rbpn = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
@@ -1927,11 +1927,11 @@ for name in ("pn00a",
             dpsi = Ref{Cdouble}()
             deps = Ref{Cdouble}()
             epsa = Ref{Cdouble}()
-            rb = zeros((3, 3))
-            rp = zeros((3, 3))
-            rbp = zeros((3, 3))
-            rn = zeros((3, 3))
-            rbpn = zeros((3, 3))
+            rb = zeros(Cdouble, 3, 3)
+            rp = zeros(Cdouble, 3, 3)
+            rbp = zeros(Cdouble, 3, 3)
+            rn = zeros(Cdouble, 3, 3)
+            rbpn = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
@@ -2521,7 +2521,7 @@ for name in ("pmat00",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
-            r = zeros((3, 3))
+            r = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}),
                   a, b, r)
@@ -2578,7 +2578,7 @@ Form the matrix of polar motion for a given date, IAU 2000.
 
 """
 function pom00(x, y, s)
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraPom00, liberfa), Cvoid,
             (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, r)

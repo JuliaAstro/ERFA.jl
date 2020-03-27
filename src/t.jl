@@ -22,7 +22,7 @@ Transpose an r-matrix.
 """
 function tr(r)
     @checkdims 3 3 r
-    rt = zeros((3, 3))
+    rt = zeros(Cdouble, 3, 3)
     ccall((:eraTr, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}),
           permutedims(r), rt)

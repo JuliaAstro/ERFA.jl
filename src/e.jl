@@ -1036,7 +1036,7 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
 """
 function ecm06(date1, date2)
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraEcm06, liberfa), Cvoid,
             (Cdouble, Cdouble, Ref{Cdouble}),
             date1, date2, r)

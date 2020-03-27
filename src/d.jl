@@ -262,7 +262,7 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 
 """
 function dat(iy, im, id, fd)
-    d = Ref(0.0)
+    d = Ref{Cdouble}()
     i = ccall((:eraDat, liberfa), Cint,
               (Cint, Cint, Cint, Cdouble, Ref{Cdouble}),
               iy, im, id, fd, d)
@@ -349,9 +349,9 @@ quasi-JD form that includes special provision for leap seconds).
 
 """
 function d2dtf(scale::AbstractString, ndp, d1, d2)
-    iy = Ref{Cint}(0)
-    imo = Ref{Cint}(0)
-    id = Ref{Cint}(0)
+    iy = Ref{Cint}()
+    imo = Ref{Cint}()
+    id = Ref{Cint}()
     ihmsf = Cint[0, 0, 0, 0]
     i = ccall((:eraD2dtf, liberfa), Cint,
               (Cstring, Cint, Cdouble, Cdouble, Ref{Cint}, Ref{Cint}, Ref{Cint}, Ref{Cint}),
@@ -427,8 +427,8 @@ seconds).
 
 """
 function dtf2d(scale::AbstractString, iy, imo, id, ih, imi, sec)
-    r1 = Ref(0.0)
-    r2 = Ref(0.0)
+    r1 = Ref{Cdouble}()
+    r2 = Ref{Cdouble}()
     i = ccall((:eraDtf2d, liberfa), Cint,
               (Cstring, Cint, Cint, Cint, Cint, Cint, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               scale, iy, imo, id, ih, imi, sec, r1, r2)

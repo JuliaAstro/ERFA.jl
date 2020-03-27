@@ -511,7 +511,7 @@ parts of the astrometric transformation chain.
 """
 function apci13(date1, date2)
     astrom = ASTROM()
-    eo = Ref(0.0)
+    eo = Ref{Cdouble}()
     ccall((:eraApci13, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}),
           date1, date2, astrom, eo)
@@ -843,7 +843,7 @@ parts of the ICRS/CIRS transformations.
 """
 function apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
     astrom = ASTROM()
-    eo = Ref(0.0)
+    eo = Ref{Cdouble}()
     i = ccall((:eraApco13, liberfa), Cint,
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
                Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}),
@@ -1685,9 +1685,9 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 
 """
 function atci13(rc, dc, pr, pd, px, rv, date1, date2)
-    ri = Ref(0.0)
-    di = Ref(0.0)
-    eo = Ref(0.0)
+    ri = Ref{Cdouble}()
+    di = Ref{Cdouble}()
+    eo = Ref{Cdouble}()
     ccall((:eraAtci13, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
            Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
@@ -1759,8 +1759,8 @@ can be used instead.
 
 """
 function atciq(rc, dc, pr, pd, px, rv, astrom)
-    ri = Ref(0.0)
-    di = Ref(0.0)
+    ri = Ref{Cdouble}()
+    di = Ref{Cdouble}()
     ccall((:eraAtciq, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM},
            Ref{Cdouble}, Ref{Cdouble}),
@@ -1868,8 +1868,8 @@ used.
 
 """
 function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Vector{LDBODY})
-    ri = Ref(0.0)
-    di = Ref(0.0)
+    ri = Ref{Cdouble}()
+    di = Ref{Cdouble}()
     n = length(b)
     ccall((:eraAtciqn, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}, Cint,
@@ -1942,8 +1942,8 @@ proper motion is eraAtciq.
 
 """
 function atciqz(rc, dc, astrom)
-    ri = Ref(0.0)
-    di = Ref(0.0)
+    ri = Ref{Cdouble}()
+    di = Ref{Cdouble}()
     ccall((:eraAtciqz, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, astrom, ri, di)
@@ -2092,12 +2092,12 @@ nutation, Earth orientation and refraction.
 
 """
 function atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
-    aob = Ref(0.0)
-    zob = Ref(0.0)
-    hob = Ref(0.0)
-    dob = Ref(0.0)
-    rob = Ref(0.0)
-    eo = Ref(0.0)
+    aob = Ref{Cdouble}()
+    zob = Ref{Cdouble}()
+    hob = Ref{Cdouble}()
+    dob = Ref{Cdouble}()
+    rob = Ref{Cdouble}()
+    eo = Ref{Cdouble}()
     i = ccall((:eraAtco13, liberfa), Cint,
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
                Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
@@ -2185,9 +2185,9 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
 
 """
 function atic13(ri, di, date1, date2)
-    rc = Ref(0.0)
-    dc = Ref(0.0)
-    eo = Ref(0.0)
+    rc = Ref{Cdouble}()
+    dc = Ref{Cdouble}()
+    eo = Ref{Cdouble}()
     ccall((:eraAtic13, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, date1, date2, rc, dc, eo)
@@ -2254,8 +2254,8 @@ or eraApcs[13].
 
 """
 function aticq(ri, di, astrom)
-    rc = Ref(0.0)
-    dc = Ref(0.0)
+    rc = Ref{Cdouble}()
+    dc = Ref{Cdouble}()
     ccall((:eraAticq, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           ri, di, astrom, rc, dc)
@@ -2357,8 +2357,8 @@ or eraApcs[13].
 
 """
 function aticqn(ri, di, astrom, b::Array{LDBODY})
-    rc = Ref(0.0)
-    dc = Ref(0.0)
+    rc = Ref{Cdouble}()
+    dc = Ref{Cdouble}()
     n = length(b)
     ccall((:eraAticqn, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}),
@@ -2492,11 +2492,11 @@ coordinates, ambient air conditions and observing wavelength.
 
 """
 function atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
-    aob = Ref(0.0)
-    zob = Ref(0.0)
-    hob = Ref(0.0)
-    dob = Ref(0.0)
-    rob = Ref(0.0)
+    aob = Ref{Cdouble}()
+    zob = Ref{Cdouble}()
+    hob = Ref{Cdouble}()
+    dob = Ref{Cdouble}()
+    rob = Ref{Cdouble}()
     i = ccall((:eraAtio13, liberfa), Cint,
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
                Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble},
@@ -2606,11 +2606,11 @@ calling eraApio[13] or eraApco[13].
 
 """
 function atioq(ri, di, astrom)
-    aob = Ref(0.0)
-    zob = Ref(0.0)
-    hob = Ref(0.0)
-    dob = Ref(0.0)
-    rob = Ref(0.0)
+    aob = Ref{Cdouble}()
+    zob = Ref{Cdouble}()
+    hob = Ref{Cdouble}()
+    dob = Ref{Cdouble}()
+    rob = Ref{Cdouble}()
     ccall((:eraAtioq, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble},
            Ref{Cdouble}, Ref{Cdouble}),
@@ -2752,8 +2752,8 @@ and observing wavelength.
 
 """
 function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
-    rc = Ref(0.0)
-    dc = Ref(0.0)
+    rc = Ref{Cdouble}()
+    dc = Ref{Cdouble}()
     if !(typeofcoordinates in ("R", "r", "H", "h", "A", "a"))
         typeofcoordinates = "A"
     end
@@ -2904,8 +2904,8 @@ ambient air conditions and observing wavelength.
 
 """
 function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
-    ri = Ref(0.0)
-    di = Ref(0.0)
+    ri = Ref{Cdouble}()
+    di = Ref{Cdouble}()
     i = ccall((:eraAtoi13, liberfa), Cint,
               (Cstring, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
                Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble},
@@ -3008,8 +3008,8 @@ calling eraApio[13] or eraApco[13].
 
 """
 function atoiq(typeofcoordinates, ob1, ob2, astrom)
-    ri = Ref(0.0)
-    di = Ref(0.0)
+    ri = Ref{Cdouble}()
+    di = Ref{Cdouble}()
     ccall((:eraAtoiq, liberfa),
           Cvoid, (Cstring, Cdouble, Cdouble, Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
           typeofcoordinates, ob1, ob2, astrom, ri, di)
@@ -3211,7 +3211,7 @@ Convert degrees, arcminutes, arcseconds to radians.
 
 """
 function af2a(s, ideg, iamin, asec)
-    rad = Ref(0.0)
+    rad = Ref{Cdouble}()
     i = ccall((:eraAf2a, liberfa), Cint,
                 (Cchar, Cint, Cint, Cdouble, Ref{Cdouble}),
                 s, ideg, iamin, asec, rad)

@@ -45,8 +45,8 @@ Earth reference ellipsoids.
 
 """
 function eform(n::Ellipsoid)
-    a = Ref(0.0)
-    f = Ref(0.0)
+    a = Ref{Cdouble}()
+    f = Ref{Cdouble}()
     i = ccall((:eraEform, liberfa), Cint,
               (Cint, Ref{Cdouble}, Ref{Cdouble}),
               n, a, f)

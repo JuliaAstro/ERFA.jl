@@ -39,9 +39,9 @@ of MHB2000 with additions).
 
 """
 function bi00()
-    dpsibi = Ref(0.0)
-    depsbi = Ref(0.0)
-    dra = Ref(0.0)
+    dpsibi = Ref{Cdouble}()
+    depsbi = Ref{Cdouble}()
+    dra = Ref{Cdouble}()
     ccall((:eraBi00, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           dpsibi, depsbi, dra)
@@ -84,8 +84,8 @@ of the Celestial Intermediate Pole.
 """
 function bpn2xy(rbpn)
     @checkdims 3 3 rbpn
-    x = Ref(0.0)
-    y = Ref(0.0)
+    x = Ref{Cdouble}()
+    y = Ref{Cdouble}()
     ccall((:eraBpn2xy, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           permutedims(rbpn), x, y)

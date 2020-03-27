@@ -102,8 +102,8 @@ P-vector to spherical coordinates.
 """
 function c2s(p)
     @checkdims 3 p
-    theta = Ref(0.0)
-    phi = Ref(0.0)
+    theta = Ref{Cdouble}()
+    phi = Ref{Cdouble}()
     ccall((:eraC2s, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi)
@@ -146,8 +146,8 @@ Gregorian Calendar to Julian Date.
     Section 12.92 (p604).
 """
 function cal2jd(iy, imo, id)
-    r1 = Ref(0.0)
-    r2 = Ref(0.0)
+    r1 = Ref{Cdouble}()
+    r2 = Ref{Cdouble}()
     i = ccall((:eraCal2jd, liberfa), Cint,
               (Cint, Cint, Cint, Ref{Cdouble}, Ref{Cdouble}),
               iy, imo, id, r1, r2)

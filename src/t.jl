@@ -90,7 +90,7 @@ Multiply a p-vector by the transpose of an r-matrix.
 function trxp(r, p)
     @checkdims 3 3 r
     @checkdims 3 p
-    rp = zeros(3)
+    rp = zeros(Cdouble, 3)
     ccall((:eraTrxp, liberfa), Cvoid,
             (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
             permutedims(r), p, rp)

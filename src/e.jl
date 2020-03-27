@@ -185,8 +185,8 @@ respect to the Barycentric Celestial Reference System.
 
 """
 function epv00(date1, date2)
-    pvh = zeros(3, 2)
-    pvb = zeros(3, 2)
+    pvh = zeros(Cdouble, 3, 2)
+    pvb = zeros(Cdouble, 3, 2)
     i = ccall((:eraEpv00, liberfa),
               Cint,
               (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),

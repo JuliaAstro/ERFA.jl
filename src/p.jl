@@ -44,7 +44,7 @@ Proper motion and parallax.
 
 """
 function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
-    pco = zeros(3)
+    pco = zeros(Cdouble, 3)
     ccall((:eraPmpx, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           rc, dc, pr, pd, px, rv, pmt, vob, pco)
@@ -749,7 +749,7 @@ Convert a p-vector into modulus and unit vector.
 function pn(p)
     @checkdims 3 p
     r = Ref{Cdouble}()
-    u = zeros(3)
+    u = zeros(Cdouble, 3)
     ccall((:eraPn, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, r, u)
@@ -783,7 +783,7 @@ P-vector plus scaled p-vector.
 """
 function ppsp(a, s, b)
     @checkdims 3 a b
-    apsb = zeros(3)
+    apsb = zeros(Cdouble, 3)
     ccall((:eraPpsp, liberfa), Cvoid,
           (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           a, s, b, apsb)
@@ -931,7 +931,7 @@ Discard velocity component of a pv-vector.
 """
 function pv2p(pv)
     _pv = array_to_cmatrix(pv; n=3)
-    p = zeros(3)
+    p = zeros(Cdouble, 3)
     ccall((:eraPv2p, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}),
           _pv, p)
@@ -967,7 +967,7 @@ Inner (=scalar=dot) product of two pv-vectors.
 function pvdpv(a, b)
     _a = array_to_cmatrix(a; n=3)
     _b = array_to_cmatrix(b; n=3)
-    adb = zeros(2)
+    adb = zeros(Cdouble, 2)
     ccall((:eraPvdpv, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           _a, _b, adb)
@@ -1241,7 +1241,7 @@ Update a pv-vector, discarding the velocity component.
 """
 function pvup(dt, pv)
     _pv = array_to_cmatrix(pv; n=3)
-    p = zeros(3)
+    p = zeros(Cdouble, 3)
     ccall((:eraPvup, liberfa), Cvoid,
           (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           dt, _pv, p)
@@ -1530,7 +1530,7 @@ for name in ("pmp",
     @eval begin
         function ($f)(a, b)
             @checkdims 3 a b
-            ab = zeros(3)
+            ab = zeros(Cdouble, 3)
             ccall(($fc, liberfa), Cvoid,
                   (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, ab)

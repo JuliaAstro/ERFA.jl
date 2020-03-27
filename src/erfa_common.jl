@@ -161,10 +161,10 @@ end
 function ASTROM()
     ASTROM(
         0.0,
-        zeros(3),
-        zeros(3),
+        zeros(Cdouble, 3),
+        zeros(Cdouble, 3),
         0.0,
-        zeros(3),
+        zeros(Cdouble, 3),
         0.0,
         zeros((3, 3)),
         0.0,

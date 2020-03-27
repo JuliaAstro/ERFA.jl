@@ -48,7 +48,7 @@ direction.
 """
 function ab(pnat, v, s, bm1)
     @checkdims 3 pnat v
-    ppr = zeros(3)
+    ppr = zeros(Cdouble, 3)
     ccall((:eraAb, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Ref{Cdouble}),
           pnat, v, s, bm1, ppr)

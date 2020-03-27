@@ -354,12 +354,12 @@ end
 @testset "aper" begin
     theta = 5.678
     pmt = 0.
-    eb = zeros(3)
-    eh = zeros(3)
+    eb = zeros(Cdouble, 3)
+    eh = zeros(Cdouble, 3)
     em = 0.
-    v = zeros(3)
+    v = zeros(Cdouble, 3)
     bm1 = 0.
-    bpn = zeros(9)
+    bpn = zeros(Cdouble, 9)
     along = 1.234
     phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb = 0., 0., 0., 0., 0., 0., 0., 0., 0.
     astrom = ERFA.ASTROM(pmt, eb, eh, em, v, bm1, bpn, along,
@@ -373,12 +373,12 @@ end
     ut11 = 2456165.5
     ut12 = 0.401182685
     pmt = 0.
-    eb = zeros(3)
-    eh = zeros(3)
+    eb = zeros(Cdouble, 3)
+    eh = zeros(Cdouble, 3)
     em = 0.
-    v = zeros(3)
+    v = zeros(Cdouble, 3)
     bm1 = 0.
-    bpn = zeros(9)
+    bpn = zeros(Cdouble, 9)
     along = 1.234
     phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb = 0., 0., 0., 0., 0., 0., 0., 0., 0.
     astrom = ERFA.ASTROM(pmt, eb, eh, em, v, bm1, bpn, along,

@@ -68,7 +68,7 @@ transforming coordinate direction into natural direction.
 """
 function ld(bm, p, q, e, em, dlim)
     @checkdims 3 p q e
-    p1 = zeros(3)
+    p1 = zeros(Cdouble, 3)
     ccall((:eraLd, liberfa), Cvoid,
           (Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Ref{Cdouble}),
           bm, p, q, e, em, dlim, p1)
@@ -155,7 +155,7 @@ as part of transforming coordinate direction into natural direction.
 """
 function ldn(l::Vector{LDBODY}, ob, sc)
     @checkdims 3 ob sc
-    sn = zeros(3)
+    sn = zeros(Cdouble, 3)
     n = length(l)
     ccall((:eraLdn, liberfa), Cvoid,
           (Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
@@ -199,7 +199,7 @@ Deflection of starlight by the Sun.
 """
 function ldsun(p, e, em)
     @checkdims 3 p e
-    p1 = zeros(3)
+    p1 = zeros(Cdouble, 3)
     ccall((:eraLdsun, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Cdouble, Ref{Cdouble}),
           p, e, em, p1)
@@ -460,7 +460,7 @@ for name in ("ltpecl",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj)
-            vec = zeros(3)
+            vec = zeros(Cdouble, 3)
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Ref{Cdouble}),
                   epj, vec)

@@ -14,7 +14,7 @@ Convert spherical coordinates to Cartesian.
 
 """
 function s2c(theta, phi)
-    c = zeros(3)
+    c = zeros(Cdouble, 3)
     ccall((:eraS2c, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, c)
@@ -43,7 +43,7 @@ Convert spherical polar coordinates to p-vector.
 
 """
 function s2p(theta, phi, r)
-    p = zeros(3)
+    p = zeros(Cdouble, 3)
     ccall((:eraS2p, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
           theta, phi, r, p)
@@ -371,7 +371,7 @@ Multiply a p-vector by a scalar.
 """
 function sxp(s, p)
     @checkdims 3 p
-    sp = zeros(3)
+    sp = zeros(Cdouble, 3)
     ccall((:eraSxp, liberfa), Cvoid,
           (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           s, p, sp)

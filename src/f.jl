@@ -36,7 +36,7 @@ FK5 to Hipparcos rotation and spin.
 """
 function fk5hip()
     r5h = zeros((3, 3))
-    s5h = zeros(3)
+    s5h = zeros(Cdouble, 3)
     ccall((:eraFk5hip, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}),
           r5h, s5h)

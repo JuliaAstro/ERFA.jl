@@ -171,7 +171,7 @@ reference ellipsoid.
 
 """
 function gd2gc(n, elong, phi, height)
-    xyz = zeros(3)
+    xyz = zeros(Cdouble, 3)
     i = ccall((:eraGd2gc, liberfa), Cint,
               (Cint, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               n, elong, phi, height, xyz)
@@ -235,7 +235,7 @@ ellipsoid of specified form.
 
 """
 function gd2gce(a, f, elong, phi, height)
-    xyz = zeros(3)
+    xyz = zeros(Cdouble, 3)
     i = ccall((:eraGd2gce, liberfa), Cint,
               (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               a, f, elong, phi, height, xyz)

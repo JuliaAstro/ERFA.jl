@@ -45,7 +45,7 @@ function bi00()
     ccall((:eraBi00, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           dpsibi, depsbi, dra)
-    dpsibi[], depsbi[], dra[]
+    return dpsibi[], depsbi[], dra[]
 end
 
 """
@@ -89,7 +89,7 @@ function bpn2xy(rbpn)
     ccall((:eraBpn2xy, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           permutedims(rbpn), x, y)
-    x[], y[]
+    return x[], y[]
 end
 
 """

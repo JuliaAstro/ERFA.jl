@@ -39,13 +39,13 @@ of MHB2000 with additions).
 
 """
 function bi00()
-    dpsibi = Ref(0.0)
-    depsbi = Ref(0.0)
-    dra = Ref(0.0)
+    dpsibi = Ref{Cdouble}()
+    depsbi = Ref{Cdouble}()
+    dra = Ref{Cdouble}()
     ccall((:eraBi00, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           dpsibi, depsbi, dra)
-    dpsibi[], depsbi[], dra[]
+    return dpsibi[], depsbi[], dra[]
 end
 
 """
@@ -83,12 +83,13 @@ of the Celestial Intermediate Pole.
 
 """
 function bpn2xy(rbpn)
-    x = Ref(0.0)
-    y = Ref(0.0)
+    @checkdims 3 3 rbpn
+    x = Ref{Cdouble}()
+    y = Ref{Cdouble}()
     ccall((:eraBpn2xy, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
-          rbpn, x, y)
-    x[], y[]
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          permutedims(rbpn), x, y)
+    return x[], y[]
 end
 
 """
@@ -236,14 +237,14 @@ for name in ("bp00",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
-            rb = zeros((3, 3))
-            rp = zeros((3, 3))
-            rbp = zeros((3, 3))
+            rb = zeros(Cdouble, 3, 3)
+            rp = zeros(Cdouble, 3, 3)
+            rbp = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa),
                   Cvoid,
-                  (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   a, b, rb, rp, rbp)
-            rb, rp, rbp
+            return permutedims(rb), permutedims(rp), permutedims(rbp)
         end
     end
 end

@@ -143,12 +143,12 @@ zenith distance.
 
 """
 function refco(phpa, tk, rh, wl)
-    refa = Ref(0.0)
-    refb = Ref(0.0)
+    refa = Ref{Cdouble}()
+    refb = Ref{Cdouble}()
     ccall((:eraRefco, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           phpa, tk, rh, wl, refa, refb)
-    refa[], refb[]
+    return refa[], refb[]
 end
 
 """
@@ -181,11 +181,12 @@ Express an r-matrix as an r-vector.
 
 """
 function rm2v(r)
-    w = zeros(3)
+    @checkdims 3 3 r
+    w = zeros(Cdouble, 3)
     ccall((:eraRm2v, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
-          r, w)
-    w
+          (Ref{Cdouble}, Ref{Cdouble}),
+          permutedims(r), w)
+    return w
 end
 
 """
@@ -215,11 +216,12 @@ Form the r-matrix corresponding to a given r-vector.
 
 """
 function rv2m(w)
-    r = zeros((3, 3))
+    @checkdims 3 w
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraRv2m, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           w, r)
-    r
+    return permutedims(r)
 end
 
 """
@@ -247,12 +249,13 @@ Multiply two r-matrices.
 
 """
 function rxr(a, b)
-    atb = zeros((3, 3))
+    @checkdims 3 3 a b
+    atb = zeros(Cdouble, 3, 3)
     ccall((:eraRxr, liberfa),
           Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
-          a, b, atb)
-    atb
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          permutedims(a), permutedims(b), atb)
+    return permutedims(atb)
 end
 
 """
@@ -352,10 +355,12 @@ for name in ("rx",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, r)
+            @checkdims 3 3 r
+            _r = permutedims(r)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Ptr{Cdouble}),
-                  a, r)
-            r
+                  (Cdouble, Ref{Cdouble}),
+                  a, _r)
+            return permutedims(_r)
         end
     end
 end
@@ -383,12 +388,14 @@ Multiply a pv-vector by an r-matrix.
 - `eraRxp`: product of r-matrix and p-vector
 
 """
-function rxpv(r, p)
-    rp = zeros((2, 3))
+function rxpv(r, pv)
+    @checkdims 3 3 r
+    _pv = array_to_cmatrix(pv; n=3)
+    rpv = zeros(Cdouble, 3, 2)
     ccall((:eraRxpv, liberfa), Cvoid,
-            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
-            r, p, rp)
-    rp
+            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+            permutedims(r), _pv, rpv)
+    return cmatrix_to_array(rpv)
 end
 
 """
@@ -415,9 +422,12 @@ Multiply a p-vector by an r-matrix.
 
 """
 function rxp(r, p)
-    rp = zeros(3)
+    @checkdims 3 3 r
+    @checkdims 3 p
+    rp = zeros(Cdouble, 3)
     ccall((:eraRxp, liberfa), Cvoid,
-            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
-            r, p, rp)
-    rp
+            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+            permutedims(r), p, rp)
+    return rp
 end
+

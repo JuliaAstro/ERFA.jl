@@ -66,12 +66,13 @@ transforming coordinate direction into natural direction.
 - `eraPxp`: vector product of two p-vectors
 
 """
-function ld(bm, p::AbstractArray, q::AbstractArray, e::AbstractArray, em, dlim)
-    p1 = zeros(3)
+function ld(bm, p, q, e, em, dlim)
+    @checkdims 3 p q e
+    p1 = zeros(Cdouble, 3)
     ccall((:eraLd, liberfa), Cvoid,
-          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Ptr{Cdouble}),
+          (Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Ref{Cdouble}),
           bm, p, q, e, em, dlim, p1)
-    p1
+    return p1
 end
 
 """
@@ -152,13 +153,14 @@ as part of transforming coordinate direction into natural direction.
 - `eraLd`: light deflection by a solar-system body
 
 """
-function ldn(l::Vector{LDBODY}, ob::AbstractArray, sc::AbstractArray)
-    sn = zeros(3)
+function ldn(l::Vector{LDBODY}, ob, sc)
+    @checkdims 3 ob sc
+    sn = zeros(Cdouble, 3)
     n = length(l)
     ccall((:eraLdn, liberfa), Cvoid,
-          (Cint, Ptr{LDBODY}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          (Cint, Ref{LDBODY}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           n, l, ob, sc, sn)
-    sn
+    return sn
 end
 
 """
@@ -196,11 +198,12 @@ Deflection of starlight by the Sun.
 
 """
 function ldsun(p, e, em)
-    p1 = zeros(3)
+    @checkdims 3 p e
+    p1 = zeros(Cdouble, 3)
     ccall((:eraLdsun, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Cdouble, Ref{Cdouble}),
           p, e, em, p1)
-    p1
+    return p1
 end
 
 """
@@ -366,11 +369,11 @@ for name in ("ltecm",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj)
-            rp = zeros((3, 3))
+            rp = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Ref{Cdouble}),
                   epj, rp)
-            rp
+            return permutedims(rp)
         end
     end
 end
@@ -457,11 +460,11 @@ for name in ("ltpecl",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj)
-            vec = zeros(3)
+            vec = zeros(Cdouble, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Ref{Cdouble}),
                   epj, vec)
-            vec
+            return vec
         end
     end
 end
@@ -579,12 +582,13 @@ for name in ("lteceq",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(epj, d1, d2)
-            r1 = [0.0]
-            r2 = [0.0]
+            r1 = Ref{Cdouble}()
+            r2 = Ref{Cdouble}()
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   epj, d1, d2, r1, r2)
-            r1[1], r2[1]
+            return r1[], r2[]
         end
     end
 end
+

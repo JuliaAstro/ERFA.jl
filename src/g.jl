@@ -40,18 +40,19 @@ reference ellipsoid.
 
 """
 function gc2gd(n, xyz)
-    elong = Ref(0.0)
-    phi = Ref(0.0)
-    height = Ref(0.0)
+    @checkdims 3 xyz
+    elong = Ref{Cdouble}()
+    phi = Ref{Cdouble}()
+    height = Ref{Cdouble}()
     i = ccall((:eraGc2gd, liberfa), Cint,
-              (Cint, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              (Cint, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               n, xyz, elong, phi, height)
     if i == -1
         throw(ERFAException("illegal identifier"))
     elseif i == -2
         throw(ERFAException("internal error"))
     end
-    elong[], phi[], height[]
+    return elong[], phi[], height[]
 end
 
 """
@@ -105,18 +106,19 @@ ellipsoid of specified form.
 
 """
 function gc2gde(a, f, xyz)
-    elong = Ref(0.0)
-    phi = Ref(0.0)
-    height = Ref(0.0)
+    @checkdims 3 xyz
+    elong = Ref{Cdouble}()
+    phi = Ref{Cdouble}()
+    height = Ref{Cdouble}()
     i = ccall((:eraGc2gde, liberfa), Cint,
-              (Cdouble, Cdouble, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               a, f, xyz, elong, phi, height)
     if i == -1
         throw(ERFAException("illegal f"))
     elseif i == -2
         throw(ERFAException("internal a"))
     end
-    elong[], phi[], height[]
+    return elong[], phi[], height[]
 end
 
 """
@@ -169,16 +171,16 @@ reference ellipsoid.
 
 """
 function gd2gc(n, elong, phi, height)
-    xyz = zeros(3)
+    xyz = zeros(Cdouble, 3)
     i = ccall((:eraGd2gc, liberfa), Cint,
-              (Cint, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+              (Cint, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               n, elong, phi, height, xyz)
     if i == -1
         throw(ERFAException("illegal identifier"))
     elseif i == -2
         throw(ERFAException("illegal case"))
     end
-    xyz
+    return xyz
 end
 
 """
@@ -233,14 +235,14 @@ ellipsoid of specified form.
 
 """
 function gd2gce(a, f, elong, phi, height)
-    xyz = zeros(3)
+    xyz = zeros(Cdouble, 3)
     i = ccall((:eraGd2gce, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
               a, f, elong, phi, height, xyz)
     if i == -1
         throw(ERFAException("illegal case"))
     end
-    xyz
+    return xyz
 end
 
 """
@@ -308,9 +310,10 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
 """
 function gst06(uta, utb, tta, ttb, rnpb)
-    ccall((:eraGst06, liberfa), Cdouble,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
-          uta, utb, tta, ttb, rnpb)
+    @checkdims 3 3 rnpb
+    return ccall((:eraGst06, liberfa), Cdouble,
+                 (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+                 uta, utb, tta, ttb, permutedims(rnpb))
 end
 
 """
@@ -802,7 +805,9 @@ for name in ("gmst00",
              "gst06a")
     f = Symbol(name)
     fc = "era" * uppercasefirst(name)
-    @eval ($f)(d1, d2, t1, t2) = ccall(($fc, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), d1, d2, t1, t2)
+    @eval ($f)(d1, d2, t1, t2) = ccall(($fc, liberfa), Cdouble,
+                                       (Cdouble, Cdouble, Cdouble, Cdouble),
+                                       d1, d2, t1, t2)
 end
 
 """
@@ -869,10 +874,11 @@ Transformation from Galactic Coordinates to ICRS.
 
 """
 function g2icrs(a, b)
-    r1 = Ref(0.0)
-    r2 = Ref(0.0)
+    r1 = Ref{Cdouble}()
+    r2 = Ref{Cdouble}()
     ccall((:eraG2icrs, liberfa), Cvoid,
             (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
             a, b, r1, r2)
-    r1[], r2[]
+    return r1[], r2[]
 end
+

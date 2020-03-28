@@ -85,12 +85,12 @@ on IAU 2006 precession and IAU 2000A nutation.
 
 """
 function xy06(date1, date2)
-    x = Ref(0.0)
-    y = Ref(0.0)
+    x = Ref{Cdouble}()
+    y = Ref{Cdouble}()
     ccall((:eraXy06, liberfa), Cvoid,
           (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           date1, date2, x, y)
-    x[], y[]
+    return x[], y[]
 end
 
 """
@@ -283,13 +283,14 @@ for name in ("xys00a",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(date1, date2)
-            x = Ref(0.0)
-            y = Ref(0.0)
-            s = Ref(0.0)
+            x = Ref{Cdouble}()
+            y = Ref{Cdouble}()
+            s = Ref{Cdouble}()
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, x, y, s)
-            x[], y[], s[]
+            return x[], y[], s[]
         end
     end
 end
+

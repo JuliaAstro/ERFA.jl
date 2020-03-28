@@ -70,11 +70,12 @@ the bias-precession-nutation matrix.  IAU 2000.
     IERS Technical Note No. 32, BKG (2004)
 """
 function c2ibpn(date1, date2, rbpn)
-    rc2i = zeros((3, 3))
+    @checkdims 3 3 rbpn
+    rc2i = zeros(Cdouble, 3, 3)
     ccall((:eraC2ibpn, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
-          date1, date2, rbpn, rc2i)
-    rc2i
+          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          date1, date2, permutedims(rbpn), rc2i)
+    return permutedims(rc2i)
 end
 
 """
@@ -100,12 +101,13 @@ P-vector to spherical coordinates.
 3. At either pole, zero theta is returned.
 """
 function c2s(p)
-    theta = Ref(0.0)
-    phi = Ref(0.0)
+    @checkdims 3 p
+    theta = Ref{Cdouble}()
+    phi = Ref{Cdouble}()
     ccall((:eraC2s, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi)
-    theta[], phi[]
+    return theta[], phi[]
 end
 
 """
@@ -144,8 +146,8 @@ Gregorian Calendar to Julian Date.
     Section 12.92 (p604).
 """
 function cal2jd(iy, imo, id)
-    r1 = Ref(0.0)
-    r2 = Ref(0.0)
+    r1 = Ref{Cdouble}()
+    r2 = Ref{Cdouble}()
     i = ccall((:eraCal2jd, liberfa), Cint,
               (Cint, Cint, Cint, Ref{Cdouble}, Ref{Cdouble}),
               iy, imo, id, r1, r2)
@@ -156,7 +158,7 @@ function cal2jd(iy, imo, id)
     elseif i == -3
         throw(ERFAException("bad day"))
     end
-    r1[], r2[]
+    return r1[], r2[]
 end
 
 """
@@ -271,11 +273,11 @@ for name in ("c2tcio",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(rc2i, era, rpom)
-            rc2t = zeros((3, 3))
+            rc2t = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Ptr{Cdouble}, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   rc2i, era, rpom, rc2t)
-            rc2t
+            return permutedims(rc2t)
         end
     end
 end
@@ -509,11 +511,11 @@ for name in ("c2t00a",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(tta, ttb, uta, utb, xp, yp)
-            rc2t = zeros((3, 3))
+            rc2t = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
                   tta, ttb, uta, utb, xp, yp, rc2t)
-            rc2t
+            return permutedims(rc2t)
         end
     end
 end
@@ -686,11 +688,11 @@ for name in ("c2tpe",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(tta, ttb, uta, utb, x, y, xp, yp)
-            rc2t = zeros((3, 3))
+            rc2t = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
                   tta, ttb, uta, utb, x, y, xp, yp, rc2t)
-            rc2t
+            return permutedims(rc2t)
         end
     end
 end
@@ -903,11 +905,11 @@ for name in ("c2i00a",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(a, b)
-            r = zeros((3, 3))
+            r = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}),
                   a, b, r)
-            r
+            return permutedims(r)
         end
     end
 end
@@ -977,11 +979,11 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
     IERS Technical Note No. 32, BKG (2004)
 """
 function c2ixy(x, y, s, t)
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraC2ixy, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, t, r)
-    r
+    return permutedims(r)
 end
 
 """
@@ -1032,9 +1034,10 @@ X,Y and the CIO locator s.
     IERS Technical Note No. 32, BKG (2004)
 """
 function c2ixys(x, y, s)
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraC2ixys, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, r)
-    r
+    return permutedims(r)
 end
+

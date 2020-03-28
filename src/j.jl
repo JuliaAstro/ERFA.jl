@@ -43,10 +43,10 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
 
 """
 function jd2cal(d1, d2)
-    iy = Ref{Cint}(0)
-    imo = Ref{Cint}(0)
-    id = Ref{Cint}(0)
-    fd = Ref(0.0)
+    iy = Ref{Cint}()
+    imo = Ref{Cint}()
+    id = Ref{Cint}()
+    fd = Ref{Cdouble}()
     i = ccall((:eraJd2cal, liberfa), Cint,
               (Cdouble, Cdouble, Ref{Cint}, Ref{Cint}, Ref{Cint}, Ref{Cdouble}),
               d1, d2, iy, imo, id, fd)
@@ -106,9 +106,9 @@ for formatting messages:  rounded to a specified precision.
 
 """
 function jdcalf(ndp, d1, d2)
-    iymdf = Int32[0, 0, 0, 0]
+    iymdf = zeros(Cint, 4)
     i = ccall((:eraJdcalf, liberfa), Cint,
-              (Cint, Cdouble, Cdouble, Ptr{Cint}),
+              (Cint, Cdouble, Cdouble, Ref{Cint}),
               ndp, d1, d2, iymdf)
 
     if i == -1

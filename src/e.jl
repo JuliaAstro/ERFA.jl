@@ -45,15 +45,15 @@ Earth reference ellipsoids.
 
 """
 function eform(n::Ellipsoid)
-    a = Ref(0.0)
-    f = Ref(0.0)
+    a = Ref{Cdouble}()
+    f = Ref{Cdouble}()
     i = ccall((:eraEform, liberfa), Cint,
               (Cint, Ref{Cdouble}, Ref{Cdouble}),
               n, a, f)
     if i == -1
         throw(ERFAException("illegal identifier"))
     end
-    a[], f[]
+    return a[], f[]
 end
 
 """
@@ -90,9 +90,10 @@ quantity s.
 
 """
 function eors(rnpb, s)
-    ccall((:eraEors, liberfa), Cdouble,
-          (Ptr{Cdouble}, Cdouble),
-          rnpb, s)
+    @checkdims 3 3 rnpb
+    return ccall((:eraEors, liberfa), Cdouble,
+          (Ref{Cdouble}, Cdouble),
+          permutedims(rnpb), s)
 end
 
 """
@@ -184,16 +185,16 @@ respect to the Barycentric Celestial Reference System.
 
 """
 function epv00(date1, date2)
-    pvh = zeros((2, 3))
-    pvb = zeros((2, 3))
+    pvh = zeros(Cdouble, 3, 2)
+    pvb = zeros(Cdouble, 3, 2)
     i = ccall((:eraEpv00, liberfa),
               Cint,
-              (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+              (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               date1, date2, pvh, pvb)
     if i == 1
         @warn "date outside the range 1900-2100 AD"
     end
-    pvh, pvb
+    return cmatrix_to_array(pvh), cmatrix_to_array(pvb)
 end
 
 """
@@ -313,12 +314,12 @@ for name in ("eceq06",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(date1, date2, d1, d2)
-            r1 = [0.0]
-            r2 = [0.0]
+            r1 = Ref{Cdouble}()
+            r2 = Ref{Cdouble}()
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   date1, date2, d1, d2, r1, r2)
-            r1[1], r2[1]
+            return r1[], r2[]
         end
     end
 end
@@ -385,12 +386,12 @@ for name in ("epb2jd",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(d)
-            r1 = Ref(0.0)
-            r2 = Ref(0.0)
+            r1 = Ref{Cdouble}()
+            r2 = Ref{Cdouble}()
             ccall(($fc, liberfa), Cvoid,
                   (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
                   d, r1, r2)
-            r1[], r2[]
+            return r1[], r2[]
         end
     end
 end
@@ -969,7 +970,10 @@ given the nutation in longitude and the mean obliquity.
     IERS Technical Note No. 32, BKG (2004)
 
 """
-ee00(date1, date2, epsa, dpsi) = ccall((:eraEe00, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble), date1, date2, epsa, dpsi)
+function ee00(date1, date2, epsa, dpsi)
+    return ccall((:eraEe00, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble, Cdouble),
+        date1, date2, epsa, dpsi)
+end
 
 """
     ecm06(date1, date2)
@@ -1032,9 +1036,10 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
 """
 function ecm06(date1, date2)
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraEcm06, liberfa), Cvoid,
-            (Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Ref{Cdouble}),
             date1, date2, r)
-    r
+    return permutedims(r)
 end
+

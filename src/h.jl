@@ -73,14 +73,14 @@ zero Hipparcos proper motion.
 
 """
 function hfk5z(rh, dh, date1, date2)
-    r5 = Ref(0.0)
-    d5 = Ref(0.0)
-    dr5 = Ref(0.0)
-    dd5 = Ref(0.0)
+    r5 = Ref{Cdouble}()
+    d5 = Ref{Cdouble}()
+    dr5 = Ref{Cdouble}()
+    dd5 = Ref{Cdouble}()
     ccall((:eraHfk5z, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           rh, dh, date1, date2, r5, d5, dr5, dd5)
-    r5[], d5[], dr5[], dd5[]
+    return r5[], d5[], dr5[], dd5[]
 end
 
 """
@@ -137,14 +137,15 @@ Transform Hipparcos star data into the FK5 (J2000.0) system.
 
 """
 function h2fk5(ra, dec, dra, ddec, px, rv)
-    r = Ref(0.0)
-    d = Ref(0.0)
-    dr = Ref(0.0)
-    dd = Ref(0.0)
-    p = Ref(0.0)
-    v = Ref(0.0)
+    r = Ref{Cdouble}()
+    d = Ref{Cdouble}()
+    dr = Ref{Cdouble}()
+    dd = Ref{Cdouble}()
+    p = Ref{Cdouble}()
+    v = Ref{Cdouble}()
     ccall((:eraH2fk5, liberfa), Cvoid,
             (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
             ra, dec, dra, ddec, px, rv, r, d, dr, dd, p, v)
-    r[], d[], dr[], dd[], p[], v[]
+    return r[], d[], dr[], dd[], p[], v[]
 end
+

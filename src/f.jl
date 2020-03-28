@@ -35,10 +35,10 @@ FK5 to Hipparcos rotation and spin.
 
 """
 function fk5hip()
-    r5h = zeros((3, 3))
-    s5h = zeros(3)
+    r5h = zeros(Cdouble, 3, 3)
+    s5h = zeros(Cdouble, 3)
     ccall((:eraFk5hip, liberfa), Cvoid,
-          (Ptr{Cdouble}, Ptr{Cdouble}),
+          (Ref{Cdouble}, Ref{Cdouble}),
           r5h, s5h)
     r5h, s5h
 end
@@ -113,8 +113,8 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
 
 """
 function fk5hz(r5, d5, date1, date2)
-    rh = Ref(0.0)
-    dh = Ref(0.0)
+    rh = Ref{Cdouble}()
+    dh = Ref{Cdouble}()
     ccall((:eraFk5hz, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           r5, d5, date1, date2, rh, dh)
@@ -172,8 +172,8 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
 """
 function fw2xy(gamb, phib, psi, eps)
-    x = Ref(0.0)
-    y = Ref(0.0)
+    x = Ref{Cdouble}()
+    y = Ref{Cdouble}()
     ccall((:eraFw2xy, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           gamb, phib, psi, eps, x, y)
@@ -730,12 +730,12 @@ Transform FK5 (J2000.0) star data into the Hipparcos system.
 
 """
 function fk52h(ra, dec, dra, ddec, px, rv)
-    r = Ref(0.0)
-    d = Ref(0.0)
-    dr = Ref(0.0)
-    dd = Ref(0.0)
-    p = Ref(0.0)
-    v = Ref(0.0)
+    r = Ref{Cdouble}()
+    d = Ref{Cdouble}()
+    dr = Ref{Cdouble}()
+    dd = Ref{Cdouble}()
+    p = Ref{Cdouble}()
+    v = Ref{Cdouble}()
     ccall((:eraFk52h, liberfa), Cvoid,
             (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
             ra, dec, dra, ddec, px, rv, r, d, dr, dd, p, v)
@@ -808,9 +808,9 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 """
 function fw2m(x, y, s, t)
-    r = zeros((3, 3))
+    r = zeros(Cdouble, 3, 3)
     ccall((:eraFw2m, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, t, r)
     r
 end

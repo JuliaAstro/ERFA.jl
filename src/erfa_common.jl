@@ -1,3 +1,5 @@
+export ERFAException
+
 """
 Pi
 """
@@ -156,6 +158,38 @@ mutable struct ASTROM
     refb::Cdouble
 end
 
+function ASTROM()
+    ASTROM(
+        0.0,
+        zeros(Cdouble, 3),
+        zeros(Cdouble, 3),
+        0.0,
+        zeros(Cdouble, 3),
+        0.0,
+        zeros(Cdouble, 3, 3),
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+    )
+end
+
+function Base.getproperty(a::ASTROM, field::Symbol)
+    val = getfield(a, field)
+    if field in (:eb, :eh, :v)
+        return collect(val)
+    elseif field == :bpn
+        return permutedims(reshape(collect(val), 3, 3))
+    end
+    return val
+end
+
 struct LDBODY
     bm::Cdouble
     dl::Cdouble
@@ -168,4 +202,54 @@ end
 
 Base.showerror(io::IO, ex::ERFAException) = print(io, ex.msg)
 
-export ERFAException
+macro checkdims(m::Int, n::Int, arr::Symbol...)
+    ex = :()
+    for a in arr
+        name = string(a)
+        expr = quote
+            m1, n1 = size($(esc(a)))
+            if (m1, n1) != ($m, $n)
+                msg = string("`$($name)` must be a $($m)x$($n) matrix but is ", m1, "x", n1, ".")
+                throw(ArgumentError(msg))
+            end
+        end
+        push!(ex.args, expr)
+    end
+    :($ex; nothing)
+end
+
+macro checkdims(len::Int, arr::Symbol...)
+    ex = :()
+    for a in arr
+        name = string(a)
+        expr = quote
+            n = length($(esc(a)))
+            if n != $(esc(len))
+                throw(ArgumentError("`$($name)` must have $($(esc(len))) elements but has $n."))
+            end
+        end
+        push!(ex.args, expr)
+    end
+    :($ex; nothing)
+end
+
+function array_to_cmatrix(array; n=0)
+    any(length.(array) .!= n) && throw(ArgumentError("Expected each vector to have $n elements."))
+    return hcat(array...)
+end
+
+function array_to_cmatrix(array::Vector{Vector{Int}}; n=0)
+    any(length.(array) .!= n) && throw(ArgumentError("Expected each vector to have $n elements."))
+    array = map(x->Cint.(x), array)
+    return hcat(array...)
+end
+
+function cmatrix_to_array(matrix)
+    return [matrix[:, i] for i in 1:size(matrix, 2)]
+end
+
+function cmatrix_to_array(matrix::Matrix{Cint})
+    return [Int.(matrix[:, i]) for i in 1:size(matrix, 2)]
+end
+
+

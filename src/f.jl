@@ -40,7 +40,7 @@ function fk5hip()
     ccall((:eraFk5hip, liberfa), Cvoid,
           (Ref{Cdouble}, Ref{Cdouble}),
           r5h, s5h)
-    r5h, s5h
+    return r5h, s5h
 end
 
 """
@@ -118,7 +118,7 @@ function fk5hz(r5, d5, date1, date2)
     ccall((:eraFk5hz, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           r5, d5, date1, date2, rh, dh)
-    rh[], dh[]
+    return rh[], dh[]
 end
 
 """
@@ -177,7 +177,7 @@ function fw2xy(gamb, phib, psi, eps)
     ccall((:eraFw2xy, liberfa), Cvoid,
           (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
           gamb, phib, psi, eps, x, y)
-    x[], y[]
+    return x[], y[]
 end
 
 """
@@ -737,9 +737,10 @@ function fk52h(ra, dec, dra, ddec, px, rv)
     p = Ref{Cdouble}()
     v = Ref{Cdouble}()
     ccall((:eraFk52h, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
-            ra, dec, dra, ddec, px, rv, r, d, dr, dd, p, v)
-    r[], d[], dr[], dd[], p[], v[]
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble},
+           Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          ra, dec, dra, ddec, px, rv, r, d, dr, dd, p, v)
+    return r[], d[], dr[], dd[], p[], v[]
 end
 
 """
@@ -812,5 +813,5 @@ function fw2m(x, y, s, t)
     ccall((:eraFw2m, liberfa), Cvoid,
             (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
             x, y, s, t, r)
-    r
+    return permutedims(r)
 end

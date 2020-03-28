@@ -115,15 +115,15 @@ end
     psi  = -0.9501954178013015092e-3
     eps  =  0.4091014316587367472
     r = ERFA.fw2m(gamb, phib, psi, eps)
-    @test isapprox(r[1], 0.9999995505176007047, atol = 1e-12)
-    @test isapprox(r[2], 0.8695404617348192957e-3, atol = 1e-12)
-    @test isapprox(r[3], 0.3779735201865582571e-3, atol = 1e-12)
-    @test isapprox(r[4], -0.8695404723772016038e-3, atol = 1e-12)
-    @test isapprox(r[5], 0.9999996219496027161, atol = 1e-12)
-    @test isapprox(r[6], -0.1361752496887100026e-6, atol = 1e-12)
-    @test isapprox(r[7], -0.3779734957034082790e-3, atol = 1e-12)
-    @test isapprox(r[8], -0.1924880848087615651e-6, atol = 1e-12)
-    @test isapprox(r[9], 0.9999999285679971958, atol = 1e-12)
+    @test isapprox(r[1,1], 0.9999995505176007047, atol = 1e-12)
+    @test isapprox(r[1,2], 0.8695404617348192957e-3, atol = 1e-12)
+    @test isapprox(r[1,3], 0.3779735201865582571e-3, atol = 1e-12)
+    @test isapprox(r[2,1], -0.8695404723772016038e-3, atol = 1e-12)
+    @test isapprox(r[2,2], 0.9999996219496027161, atol = 1e-12)
+    @test isapprox(r[2,3], -0.1361752496887100026e-6, atol = 1e-12)
+    @test isapprox(r[3,1], -0.3779734957034082790e-3, atol = 1e-12)
+    @test isapprox(r[3,2], -0.1924880848087615651e-6, atol = 1e-12)
+    @test isapprox(r[3,3], 0.9999999285679971958, atol = 1e-12)
 end
 
 # ERFA.fw2xy

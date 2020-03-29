@@ -273,10 +273,11 @@ for name in ("c2tcio",
     fc = "era" * uppercasefirst(name)
     @eval begin
         function ($f)(rc2i, era, rpom)
+            @checkdims 3 3 rc2i rpom
             rc2t = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
                   (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
-                  rc2i, era, rpom, rc2t)
+                  permutedims(rc2i), era, permutedims(rpom), rc2t)
             return permutedims(rc2t)
         end
     end

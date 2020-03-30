@@ -1,5 +1,6 @@
 using ERFA
 
+using StaticArrays: @SVector
 using Test
 
 @testset "ERFA" begin
@@ -32,6 +33,11 @@ using Test
         d1, d2 = ERFA.epj2jd(e)
         d = d1 + d2
         @test isapprox(d, 2457073.056310000, atol = 5e-10)
+    end
+    @testset "StaticArrays" begin
+        base = ERFA.gc2gde(6378.137 * 1000, 1 / 298.257223563, [6378.137 * 1000 + 100, 0, 0])
+        static = ERFA.gc2gde(6378.137 * 1000, 1 / 298.257223563, @SVector[6378.137 * 1000 + 100, 0, 0])
+        @test base == static
     end
 
     include("a.jl")

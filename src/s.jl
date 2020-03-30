@@ -16,7 +16,7 @@ Convert spherical coordinates to Cartesian.
 function s2c(theta, phi)
     c = zeros(Cdouble, 3)
     ccall((:eraS2c, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}),
+          (Cdouble, Cdouble, Ptr{Cdouble}),
           theta, phi, c)
     return c
 end
@@ -45,7 +45,7 @@ Convert spherical polar coordinates to p-vector.
 function s2p(theta, phi, r)
     p = zeros(Cdouble, 3)
     ccall((:eraS2p, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           theta, phi, r, p)
     return p
 end
@@ -72,7 +72,7 @@ Convert position/velocity from spherical to Cartesian coordinates.
 function s2pv(theta, phi, r, td, pd, rd)
     pv = zeros(Cdouble, 3, 2)
     ccall((:eraS2pv, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           theta, phi, r, td, pd, rd, pv)
     return cmatrix_to_array(pv)
 end
@@ -105,7 +105,7 @@ function s2xpv(s1, s2, pv)
     _pv = array_to_cmatrix(pv; n=3)
     spv = zeros(Cdouble, 3, 2)
     ccall((:eraS2xpv, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           s1, s2, _pv, spv)
     return cmatrix_to_array(spv)
 end
@@ -336,7 +336,7 @@ Convert star catalog coordinates to position+velocity vector.
 function starpv(ra, dec, pmr, pmd, px, rv)
     pv = zeros(Cdouble, 3, 2)
     i = ccall((:eraStarpv, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
               ra, dec, pmr, pmd, px, rv, pv)
     if i == 1
         @warn "distance overridden"
@@ -373,7 +373,7 @@ function sxp(s, p)
     @checkdims 3 p
     sp = zeros(Cdouble, 3)
     ccall((:eraSxp, liberfa), Cvoid,
-          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           s, p, sp)
     return sp
 end
@@ -405,7 +405,7 @@ function sxpv(s, pv)
     _pv = array_to_cmatrix(pv; n=3)
     spv = zeros(Cdouble, 3, 2)
     ccall((:eraSxpv, liberfa), Cvoid,
-          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           s, _pv, spv)
     return cmatrix_to_array(spv)
 end
@@ -468,7 +468,8 @@ Angular separation between two p-vectors.
 
 """
 function sepp(a, b)
-    ccall((:eraSepp, liberfa), Cdouble, (Ref{Cdouble}, Ref{Cdouble}), a, b)
+    @checkdims 3 a b
+    ccall((:eraSepp, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
 end
 
 """

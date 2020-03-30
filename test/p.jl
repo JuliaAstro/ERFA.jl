@@ -129,11 +129,12 @@ end
     px = 1e-2
     rv = 10.0
     pmt = 8.75
-    pob = [0.9, 0.4, 0.1]
-    pco = ERFA.pmpx(rc, dc, pr, pd, px, rv, pmt, pob)
+    vob = [0.9, 0.4, 0.1]
+    pco = ERFA.pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
     @test isapprox(pco[1], 0.2328137623960308440, atol = 1e-12)
     @test isapprox(pco[2], 0.6651097085397855317, atol = 1e-12)
     @test isapprox(pco[3], 0.7095257765896359847, atol = 1e-12)
+    @test_throws ArgumentError ERFA.pmpx(rc, dc, pr, pd, px, rv, pmt, vob[1:2])
 end
 
 # ERFA.pmsafe

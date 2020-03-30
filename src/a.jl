@@ -50,7 +50,7 @@ function ab(pnat, v, s, bm1)
     @checkdims 3 pnat v
     ppr = zeros(Cdouble, 3)
     ccall((:eraAb, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Ptr{Cdouble}),
           pnat, v, s, bm1, ppr)
     ppr
 end
@@ -161,7 +161,7 @@ function apcg(date1, date2, ebpv, ehp)
     _ebpv = array_to_cmatrix(ebpv; n=3)
     astrom = ASTROM()
     ccall((:eraApcg, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ref{ASTROM}),
           date1, date2, _ebpv, ehp, astrom)
     return astrom
 end
@@ -394,7 +394,7 @@ function apci(date1, date2, ebpv, ehp, x, y, s)
     _ebpv = array_to_cmatrix(ebpv; n=3)
     astrom = ASTROM()
     ccall((:eraApci, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, _ebpv, ehp, x, y, s, astrom)
     return astrom
 end
@@ -670,7 +670,8 @@ function apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, s
     _ebpv = array_to_cmatrix(ebpv; n=3)
     astrom = ASTROM()
     ccall((:eraApco, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Cdouble, Cdouble, Cdouble, Cdouble,
+           Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{ASTROM}),
           date1, date2, _ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb, astrom)
     return astrom
 end
@@ -983,7 +984,7 @@ function apcs(date1, date2, pv, ebpv, ehp)
     _ebpv = array_to_cmatrix(ebpv; n=3)
     astrom = ASTROM()
     ccall((:eraApcs, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ref{ASTROM}),
           date1, date2, _pv, _ebpv, ehp, astrom)
     return astrom
 end
@@ -1103,7 +1104,7 @@ function apcs13(date1, date2, pv)
     _pv = array_to_cmatrix(pv; n=3)
     astrom = ASTROM()
     ccall((:eraApcs13, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}, Ref{ASTROM}),
+          (Cdouble, Cdouble, Ptr{Cdouble}, Ref{ASTROM}),
           date1, date2, _pv, astrom)
     return astrom
 end
@@ -3176,7 +3177,7 @@ for name in ("a2af",
             s = Ref{Cchar}('+')
             i = zeros(Cint, 4)
             ccall(($fc, liberfa), Cvoid,
-                  (Cint, Cdouble, Ref{Cchar}, Ref{Cint}),
+                  (Cint, Cdouble, Ref{Cchar}, Ptr{Cint}),
                   ndp, a, s, i)
             return Char(s[]), i[1], i[2], i[3], i[4]
         end

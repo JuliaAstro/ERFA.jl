@@ -83,6 +83,8 @@ end
     b = [-3.,1e-3,0.2]
     s = ERFA.sepp(a, b)
     @test isapprox(s, 2.860391919024660768, atol = 1e-12)
+    @test_throws ArgumentError ERFA.sepp(a[1:2], b)
+    @test_throws ArgumentError ERFA.sepp(a, b[1:2])
 end
 
 # ERFA.seps

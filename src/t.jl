@@ -24,7 +24,7 @@ function tr(r)
     @checkdims 3 3 r
     rt = zeros(Cdouble, 3, 3)
     ccall((:eraTr, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}),
           permutedims(r), rt)
     return permutedims(rt)
 end
@@ -58,7 +58,7 @@ function trxpv(r, pv)
     _pv = array_to_cmatrix(pv; n=3)
     rp = zeros(Cdouble, 3, 2)
     ccall((:eraTrxpv, liberfa), Cvoid,
-            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
             permutedims(r), _pv, rp)
     return cmatrix_to_array(rp)
 end
@@ -92,7 +92,7 @@ function trxp(r, p)
     @checkdims 3 p
     rp = zeros(Cdouble, 3)
     ccall((:eraTrxp, liberfa), Cvoid,
-            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
             permutedims(r), p, rp)
     return rp
 end

@@ -506,7 +506,7 @@ function d2tf(ndp, a)
     s = Ref{Cchar}('+')
     i = zeros(Cint, 4)
     ccall((:eraD2tf, liberfa), Cvoid,
-            (Cint, Cdouble, Ref{Cchar}, Ref{Cint}),
+            (Cint, Cdouble, Ref{Cchar}, Ptr{Cint}),
             ndp, a, s, i)
     return Char(s[]), i[1], i[2], i[3], i[4]
 end

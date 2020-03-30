@@ -184,7 +184,7 @@ function rm2v(r)
     @checkdims 3 3 r
     w = zeros(Cdouble, 3)
     ccall((:eraRm2v, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}),
           permutedims(r), w)
     return w
 end
@@ -219,7 +219,7 @@ function rv2m(w)
     @checkdims 3 w
     r = zeros(Cdouble, 3, 3)
     ccall((:eraRv2m, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}),
           w, r)
     return permutedims(r)
 end
@@ -253,7 +253,7 @@ function rxr(a, b)
     atb = zeros(Cdouble, 3, 3)
     ccall((:eraRxr, liberfa),
           Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
           permutedims(a), permutedims(b), atb)
     return permutedims(atb)
 end
@@ -358,7 +358,7 @@ for name in ("rx",
             @checkdims 3 3 r
             _r = permutedims(r)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Ref{Cdouble}),
+                  (Cdouble, Ptr{Cdouble}),
                   a, _r)
             return permutedims(_r)
         end
@@ -393,7 +393,7 @@ function rxpv(r, pv)
     _pv = array_to_cmatrix(pv; n=3)
     rpv = zeros(Cdouble, 3, 2)
     ccall((:eraRxpv, liberfa), Cvoid,
-            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
             permutedims(r), _pv, rpv)
     return cmatrix_to_array(rpv)
 end
@@ -426,7 +426,7 @@ function rxp(r, p)
     @checkdims 3 p
     rp = zeros(Cdouble, 3)
     ccall((:eraRxp, liberfa), Cvoid,
-            (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+            (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
             permutedims(r), p, rp)
     return rp
 end

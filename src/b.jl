@@ -87,7 +87,7 @@ function bpn2xy(rbpn)
     x = Ref{Cdouble}()
     y = Ref{Cdouble}()
     ccall((:eraBpn2xy, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           permutedims(rbpn), x, y)
     return x[], y[]
 end
@@ -242,7 +242,7 @@ for name in ("bp00",
             rbp = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa),
                   Cvoid,
-                  (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   a, b, rb, rp, rbp)
             return permutedims(rb), permutedims(rp), permutedims(rbp)
         end

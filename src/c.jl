@@ -73,7 +73,7 @@ function c2ibpn(date1, date2, rbpn)
     @checkdims 3 3 rbpn
     rc2i = zeros(Cdouble, 3, 3)
     ccall((:eraC2ibpn, liberfa), Cvoid,
-          (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           date1, date2, permutedims(rbpn), rc2i)
     return permutedims(rc2i)
 end
@@ -105,7 +105,7 @@ function c2s(p)
     theta = Ref{Cdouble}()
     phi = Ref{Cdouble}()
     ccall((:eraC2s, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi)
     return theta[], phi[]
 end
@@ -276,7 +276,7 @@ for name in ("c2tcio",
             @checkdims 3 3 rc2i rpom
             rc2t = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+                  (Ptr{Cdouble}, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
                   permutedims(rc2i), era, permutedims(rpom), rc2t)
             return permutedims(rc2t)
         end
@@ -514,7 +514,7 @@ for name in ("c2t00a",
         function ($f)(tta, ttb, uta, utb, xp, yp)
             rc2t = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
                   tta, ttb, uta, utb, xp, yp, rc2t)
             return permutedims(rc2t)
         end
@@ -691,7 +691,7 @@ for name in ("c2tpe",
         function ($f)(tta, ttb, uta, utb, x, y, xp, yp)
             rc2t = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
                   tta, ttb, uta, utb, x, y, xp, yp, rc2t)
             return permutedims(rc2t)
         end
@@ -908,7 +908,7 @@ for name in ("c2i00a",
         function ($f)(a, b)
             r = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Ptr{Cdouble}),
                   a, b, r)
             return permutedims(r)
         end
@@ -982,7 +982,7 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 function c2ixy(x, y, s, t)
     r = zeros(Cdouble, 3, 3)
     ccall((:eraC2ixy, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
             x, y, s, t, r)
     return permutedims(r)
 end
@@ -1037,7 +1037,7 @@ X,Y and the CIO locator s.
 function c2ixys(x, y, s)
     r = zeros(Cdouble, 3, 3)
     ccall((:eraC2ixys, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
             x, y, s, r)
     return permutedims(r)
 end

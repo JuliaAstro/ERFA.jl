@@ -11,7 +11,7 @@ Proper motion and parallax.
 - `px`: Parallax (arcsec)
 - `rv`: Radial velocity (km/s, +ve if receding)
 - `pmt`: Proper motion time interval (SSB, Julian years)
-- `pob`: SSB to observer vector (au)
+- `vob`: SSB to observer vector (au)
 
 ### Returned ###
 
@@ -44,9 +44,10 @@ Proper motion and parallax.
 
 """
 function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
+    @checkdims 3 vob
     pco = zeros(Cdouble, 3)
     ccall((:eraPmpx, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           rc, dc, pr, pd, px, rv, pmt, vob, pco)
     return pco
 end
@@ -224,7 +225,7 @@ function p2s(p)
     phi = Ref{Cdouble}()
     r = Ref{Cdouble}()
     ccall((:eraP2s, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           p, theta, phi, r)
     return theta[], phi[], r[]
 end
@@ -252,7 +253,7 @@ function p2pv(p)
     @checkdims 3 p
     pv = zeros(Cdouble, 3, 2)
     ccall((:eraP2pv, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}),
           p, pv)
     return cmatrix_to_array(pv)
 end
@@ -566,7 +567,7 @@ Neptune (but not the Earth itself).
 function plan94(date1, date2, np)
     pv = zeros(Cdouble, 3, 2)
     i = ccall((:eraPlan94, liberfa), Cint,
-              (Cdouble, Cdouble, Cint, Ref{Cdouble}),
+              (Cdouble, Cdouble, Cint, Ptr{Cdouble}),
               date1, date2, np, pv)
     if i == -1
         throw(ERFAException("illegal np, not in range(1,8) for planet"))
@@ -596,7 +597,7 @@ Modulus of p-vector.
 """
 function pm(p)
     @checkdims 3 p
-    ccall((:eraPm, liberfa), Cdouble, (Ref{Cdouble},), p)
+    return ccall((:eraPm, liberfa), Cdouble, (Ptr{Cdouble},), p)
 end
 
 """
@@ -751,7 +752,7 @@ function pn(p)
     r = Ref{Cdouble}()
     u = zeros(Cdouble, 3)
     ccall((:eraPn, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ref{Cdouble}, Ptr{Cdouble}),
           p, r, u)
     return r[], u
 end
@@ -785,7 +786,7 @@ function ppsp(a, s, b)
     @checkdims 3 a b
     apsb = zeros(Cdouble, 3)
     ccall((:eraPpsp, liberfa), Cvoid,
-          (Ref{Cdouble}, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           a, s, b, apsb)
     return apsb
 end
@@ -906,7 +907,7 @@ function pv2s(pv)
     pd = Ref{Cdouble}()
     rd = Ref{Cdouble}()
     ccall((:eraPv2s, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           _pv, theta, phi, r, td, pd, rd)
     return theta[], phi[], r[], td[], pd[], rd[]
 end
@@ -933,7 +934,7 @@ function pv2p(pv)
     _pv = array_to_cmatrix(pv; n=3)
     p = zeros(Cdouble, 3)
     ccall((:eraPv2p, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}),
           _pv, p)
     return p
 end
@@ -969,7 +970,7 @@ function pvdpv(a, b)
     _b = array_to_cmatrix(b; n=3)
     adb = zeros(Cdouble, 2)
     ccall((:eraPvdpv, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
           _a, _b, adb)
     return adb
 end
@@ -998,7 +999,7 @@ function pvm(pv)
     s = Ref{Cdouble}()
     r = Ref{Cdouble}()
     ccall((:eraPvm, liberfa), Cvoid,
-          (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+          (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
           _pv, r, s)
     return r[], s[]
 end
@@ -1099,7 +1100,7 @@ function pvstar(pv)
     px = Ref{Cdouble}()
     rv = Ref{Cdouble}()
     i = ccall((:eraPvstar, liberfa), Cint,
-              (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble},
+              (Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble},
                Ref{Cdouble}, Ref{Cdouble}),
               _pv, ra, dec, pmr, pmd, px, rv)
     if i == -1
@@ -1174,7 +1175,7 @@ Position and velocity of a terrestrial observing station.
 function pvtob(elong, phi, height, xp, yp, sp, theta)
     pv = zeros(Cdouble, 3, 2)
     ccall((:eraPvtob, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           elong, phi, height, xp, yp, sp, theta, pv)
     return cmatrix_to_array(pv)
 end
@@ -1212,7 +1213,7 @@ function pvu(dt, pv)
     _pv = array_to_cmatrix(pv; n=3)
     upv = zeros(Cdouble, 3, 2)
     ccall((:eraPvu, liberfa), Cvoid,
-          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           dt, _pv, upv)
     return cmatrix_to_array(upv)
 end
@@ -1243,7 +1244,7 @@ function pvup(dt, pv)
     _pv = array_to_cmatrix(pv; n=3)
     p = zeros(Cdouble, 3)
     ccall((:eraPvup, liberfa), Cvoid,
-          (Cdouble, Ref{Cdouble}, Ref{Cdouble}),
+          (Cdouble, Ptr{Cdouble}, Ptr{Cdouble}),
           dt, _pv, p)
     return p
 end
@@ -1449,7 +1450,8 @@ for name in ("pn00",
             rn = zeros(Cdouble, 3, 3)
             rbpn = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}, Ptr{Cdouble},
+                   Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
             return epsa[], permutedims(rb), permutedims(rp), permutedims(rbp), permutedims(rn), permutedims(rbpn)
         end
@@ -1532,7 +1534,7 @@ for name in ("pmp",
             @checkdims 3 a b
             ab = zeros(Cdouble, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+                  (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   a, b, ab)
             ab
         end
@@ -1635,7 +1637,7 @@ for name in ("pvmpv",
             _b = array_to_cmatrix(b; n=3)
             ab = zeros(Cdouble, 3, 2)
             ccall(($fc, liberfa), Cvoid,
-                  (Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+                  (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   _a, _b, ab)
             return cmatrix_to_array(ab)
         end
@@ -1933,7 +1935,8 @@ for name in ("pn00a",
             rn = zeros(Cdouble, 3, 3)
             rbpn = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ptr{Cdouble},
+                   Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
                   date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
             return dpsi[], deps[], epsa[], permutedims(rb), permutedims(rp), permutedims(rbp), permutedims(rn), permutedims(rbpn)
         end
@@ -2034,7 +2037,7 @@ for name in ("pap",
     @eval begin
         function ($f)(a, b)
             @checkdims 3 a b
-            return ccall(($fc, liberfa), Cdouble, (Ref{Cdouble}, Ref{Cdouble}), a, b)
+            return ccall(($fc, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
         end
     end
 end
@@ -2523,7 +2526,7 @@ for name in ("pmat00",
         function ($f)(a, b)
             r = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Ptr{Cdouble}),
                   a, b, r)
             return permutedims(r)
         end
@@ -2580,7 +2583,7 @@ Form the matrix of polar motion for a given date, IAU 2000.
 function pom00(x, y, s)
     r = zeros(Cdouble, 3, 3)
     ccall((:eraPom00, liberfa), Cvoid,
-            (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+            (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
             x, y, s, r)
     return permutedims(r)
 end

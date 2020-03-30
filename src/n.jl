@@ -42,7 +42,7 @@ Form the matrix of nutation.
 function numat(epsa, dpsi, deps)
     rmatn = zeros(Cdouble, 3, 3)
     ccall((:eraNumat, liberfa), Cvoid,
-          (Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+          (Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
           epsa, dpsi, deps, rmatn)
     return permutedims(rmatn)
 end
@@ -685,7 +685,7 @@ for name in ("num00a",
         function ($f)(a, b)
             r = zeros(Cdouble, 3, 3)
             ccall(($fc, liberfa), Cvoid,
-                  (Cdouble, Cdouble, Ref{Cdouble}),
+                  (Cdouble, Cdouble, Ptr{Cdouble}),
                   a, b, r)
             return permutedims(r)
         end

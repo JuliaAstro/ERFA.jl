@@ -108,7 +108,7 @@ for formatting messages:  rounded to a specified precision.
 function jdcalf(ndp, d1, d2)
     iymdf = zeros(Cint, 4)
     i = ccall((:eraJdcalf, liberfa), Cint,
-              (Cint, Cdouble, Cdouble, Ref{Cint}),
+              (Cint, Cdouble, Cdouble, Ptr{Cint}),
               ndp, d1, d2, iymdf)
 
     if i == -1

@@ -45,7 +45,7 @@ function gc2gd(n, xyz)
     phi = Ref{Cdouble}()
     height = Ref{Cdouble}()
     i = ccall((:eraGc2gd, liberfa), Cint,
-              (Cint, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              (Cint, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               n, xyz, elong, phi, height)
     if i == -1
         throw(ERFAException("illegal identifier"))
@@ -111,7 +111,7 @@ function gc2gde(a, f, xyz)
     phi = Ref{Cdouble}()
     height = Ref{Cdouble}()
     i = ccall((:eraGc2gde, liberfa), Cint,
-              (Cdouble, Cdouble, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
+              (Cdouble, Cdouble, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               a, f, xyz, elong, phi, height)
     if i == -1
         throw(ERFAException("illegal f"))
@@ -173,7 +173,7 @@ reference ellipsoid.
 function gd2gc(n, elong, phi, height)
     xyz = zeros(Cdouble, 3)
     i = ccall((:eraGd2gc, liberfa), Cint,
-              (Cint, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+              (Cint, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
               n, elong, phi, height, xyz)
     if i == -1
         throw(ERFAException("illegal identifier"))
@@ -237,7 +237,7 @@ ellipsoid of specified form.
 function gd2gce(a, f, elong, phi, height)
     xyz = zeros(Cdouble, 3)
     i = ccall((:eraGd2gce, liberfa), Cint,
-              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+              (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
               a, f, elong, phi, height, xyz)
     if i == -1
         throw(ERFAException("illegal case"))
@@ -312,7 +312,7 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 function gst06(uta, utb, tta, ttb, rnpb)
     @checkdims 3 3 rnpb
     return ccall((:eraGst06, liberfa), Cdouble,
-                 (Cdouble, Cdouble, Cdouble, Cdouble, Ref{Cdouble}),
+                 (Cdouble, Cdouble, Cdouble, Cdouble, Ptr{Cdouble}),
                  uta, utb, tta, ttb, permutedims(rnpb))
 end
 

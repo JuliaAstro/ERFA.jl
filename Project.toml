@@ -1,6 +1,6 @@
 name = "ERFA"
 uuid = "17511681-8477-586a-8d98-4cfd5a1f2ec3"
-version = "0.6.2"
+version = "0.6.3"
 
 [deps]
 BinaryProvider = "b99e7846-7c00-51b0-8f62-c81ae34c0232"

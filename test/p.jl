@@ -84,7 +84,7 @@ end
 # ERFA.plan94
 @testset "plan94" begin
     @test_throws ERFAException ERFA.plan94(2400000.5, -320000., 10)
-    p, v = ERFA.plan94(2400000.5, -320000., 3)
+    @test_logs (:warn,) p, v = ERFA.plan94(2400000.5, -320000., 3)
     @test isapprox(p[1], 0.9308038666832975759, atol = 1e-11)
     @test isapprox(p[2], 0.3258319040261346000, atol = 1e-11)
     @test isapprox(p[3], 0.1422794544481140560, atol = 1e-11)

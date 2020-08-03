@@ -1,13 +1,6 @@
-__precompile__()
-
 module ERFA
 
-const depsfile = joinpath(dirname(dirname(@__FILE__)), "deps", "deps.jl")
-if isfile(depsfile)
-    include(depsfile)
-else
-    error("ERFA is not properly installed. Please run Pkg.build(\"ERFA\")")
-end
+using ERFA_jll
 
 include("erfa_common.jl")
 include("deprecated.jl")

@@ -93,7 +93,7 @@ end
     rh, dh, drh, ddh, pxh, rvh = ERFA.fk52h(r5, d5, dr5, dd5, px5, rv5)
     @test isapprox(rh, 1.767794226299947632, atol = 1e-14)
     @test isapprox(dh, -0.2917516070530391757, atol = 1e-14)
-    @test isapprox(drh, -0.19618741256057224e-6, atol = 1e-19)
+    @test isapprox(drh, -0.1961874125605721270e-6, atol = 1e-19)
     @test isapprox(ddh, -0.58459905176693911e-5, atol = 1e-19)
     @test isapprox(pxh, 0.37921, atol = 1e-14)
     @test isapprox(rvh, -7.6000000940000254, atol = 1e-11)

@@ -213,13 +213,13 @@ end
     @test isapprox(astrom.bpn[1,3], -0.1312227200895260194e-2, atol = 1e-12)
     @test isapprox(astrom.bpn[2,3], 0.2928082217872315680e-4, atol = 1e-12)
     @test isapprox(astrom.bpn[3,3], 0.9999991386008323373, atol = 1e-12)
-    @test isapprox(astrom.along, -0.5278008060301974337, atol = 1e-12)
-    @test isapprox(astrom.xpl, 0.1133427418174939329e-5, atol = 1e-17)
-    @test isapprox(astrom.ypl, 0.1453347595745898629e-5, atol = 1e-17)
+    @test isapprox(astrom.along, -0.5278008060295995734, atol = 1e-12)
+    @test isapprox(astrom.xpl, 0.1133427418130752958e-5, atol = 1e-17)
+    @test isapprox(astrom.ypl, 0.1453347595780646207e-5, atol = 1e-17)
     @test isapprox(astrom.sphi, -0.9440115679003211329, atol = 1e-12)
     @test isapprox(astrom.cphi, 0.3299123514971474711, atol = 1e-12)
     @test isapprox(astrom.diurab, 0, atol = 1e-10)
-    @test isapprox(astrom.eral, 2.617608903969802566, atol = 1e-12)
+    @test isapprox(astrom.eral, 2.617608903970400427, atol = 1e-12)
     @test isapprox(astrom.refa, 0.2014187790000000000e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408310000000000e-6, atol = 1e-18)
     ebpve = [[-0.211520082,-0.0917583024],
@@ -267,13 +267,13 @@ end
     @test isapprox(astrom.bpn[1,3], -0.001312227201745553566, atol = 1e-12)
     @test isapprox(astrom.bpn[2,3], 0.2928082218847679162e-4, atol = 1e-12)
     @test isapprox(astrom.bpn[3,3], 0.9999991386008312212, atol = 1e-12)
-    @test isapprox(astrom.along, -0.5278008060301974337, atol = 1e-12)
-    @test isapprox(astrom.xpl, 0.1133427418174939329e-5, atol = 1e-17)
-    @test isapprox(astrom.ypl, 0.1453347595745898629e-5, atol = 1e-17)
+    @test isapprox(astrom.along, -0.5278008060295995733, atol = 1e-12)
+    @test isapprox(astrom.xpl, 0.1133427418130752958e-5, atol = 1e-17)
+    @test isapprox(astrom.ypl, 0.1453347595780646207e-5, atol = 1e-17)
     @test isapprox(astrom.sphi, -0.9440115679003211329, atol = 1e-12)
     @test isapprox(astrom.cphi, 0.3299123514971474711, atol = 1e-12)
     @test isapprox(astrom.diurab, 0, atol = 1e-10)
-    @test isapprox(astrom.eral, 2.617608909189066140, atol = 1e-12)
+    @test isapprox(astrom.eral, 2.617608909189664000, atol = 1e-12)
     @test isapprox(astrom.refa, 0.2014187785940396921e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408314943696227e-6, atol = 1e-18)
     @test isapprox(eo, -0.003020548354802412839, atol = 1e-14)
@@ -399,13 +399,13 @@ end
     refa = 0.000201418779
     refb = -2.36140831e-7
     astrom = ERFA.apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
-    @test isapprox(astrom.along, -0.5278008060301974337, atol = 1e-12)
-    @test isapprox(astrom.xpl, 0.1133427418174939329e-5, atol = 1e-17)
-    @test isapprox(astrom.ypl, 0.1453347595745898629e-5, atol = 1e-17)
+    @test isapprox(astrom.along, -0.5278008060295995734, atol = 1e-12)
+    @test isapprox(astrom.xpl, 0.1133427418130752958e-5, atol = 1e-17)
+    @test isapprox(astrom.ypl, 0.1453347595780646207e-5, atol = 1e-17)
     @test isapprox(astrom.sphi, -0.9440115679003211329, atol = 1e-12)
     @test isapprox(astrom.cphi, 0.3299123514971474711, atol = 1e-12)
     @test isapprox(astrom.diurab, 0.5135843661699913529e-6, atol = 1e-12)
-    @test isapprox(astrom.eral, 2.617608903969802566, atol = 1e-12)
+    @test isapprox(astrom.eral, 2.617608903970400427, atol = 1e-12)
     @test isapprox(astrom.refa, 0.2014187790000000000e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408310000000000e-6, atol = 1e-18)
 end
@@ -425,13 +425,13 @@ end
     rh = 0.59
     wl = 0.55
     astrom = ERFA.apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(astrom.along, -0.5278008060301974337, atol = 1e-12)
-    @test isapprox(astrom.xpl, 0.1133427418174939329e-5, atol = 1e-17)
-    @test isapprox(astrom.ypl, 0.1453347595745898629e-5, atol = 1e-17)
+    @test isapprox(astrom.along, -0.5278008060295995733, atol = 1e-12)
+    @test isapprox(astrom.xpl, 0.1133427418130752958e-5, atol = 1e-17)
+    @test isapprox(astrom.ypl, 0.1453347595780646207e-5, atol = 1e-17)
     @test isapprox(astrom.sphi, -0.9440115679003211329, atol = 1e-12)
     @test isapprox(astrom.cphi, 0.3299123514971474711, atol = 1e-12)
     @test isapprox(astrom.diurab, 0.5135843661699913529e-6, atol = 1e-12)
-    @test isapprox(astrom.eral, 2.617608909189066140, atol = 1e-12)
+    @test isapprox(astrom.eral, 2.617608909189664000, atol = 1e-12)
     @test isapprox(astrom.refa, 0.2014187785940396921e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408314943696227e-6, atol = 1e-18)
 end
@@ -529,11 +529,11 @@ end
     aob, zob, hob, dob, rob, eo = ERFA.atco13(rc, dc, pr, pd, px, rv,
                                               utc1, utc2, dut1, elong, phi, hm, xp, yp,
                                               phpa, tc, rh, wl)
-    @test isapprox(aob, 0.09251774485358230653, atol = 1e-12)
-    @test isapprox(zob, 1.407661405256767021, atol = 1e-12)
-    @test isapprox(hob, -0.09265154431403157925, atol = 1e-12)
-    @test isapprox(dob, 0.1716626560075591655, atol = 1e-12)
-    @test isapprox(rob, 2.710260453503097719, atol = 1e-12)
+    @test isapprox(aob, 0.9251774485485515207e-1, atol = 1e-12)
+    @test isapprox(zob, 1.407661405256499357, atol = 1e-12)
+    @test isapprox(hob, -0.9265154431529724692e-1, atol = 1e-12)
+    @test isapprox(dob, 0.1716626560072526200, atol = 1e-12)
+    @test isapprox(rob, 2.710260453504961012, atol = 1e-12)
     @test isapprox(eo, -0.003020548354802412839, atol = 1e-14)
 end
 
@@ -600,11 +600,11 @@ end
     rh = 0.59
     wl = 0.55
     aob, zob, hob, dob, rob = ERFA.atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(aob, 0.09233952224794989993, atol = 1e-12)
-    @test isapprox(zob, 1.407758704513722461, atol = 1e-12)
-    @test isapprox(hob, -0.09247619879782006106, atol = 1e-12)
-    @test isapprox(dob, 0.1717653435758265198, atol = 1e-12)
-    @test isapprox(rob, 2.710085107986886201, atol = 1e-12)
+    @test isapprox(aob, 0.9233952224895122499e-1, atol = 1e-12)
+    @test isapprox(zob, 1.407758704513549991, atol = 1e-12)
+    @test isapprox(hob, -0.9247619879881698140e-1, atol = 1e-12)
+    @test isapprox(dob, 0.1717653435756234676, atol = 1e-12)
+    @test isapprox(rob, 2.710085107988480746, atol = 1e-12)
 end
 
 # ERFA.atioq
@@ -626,11 +626,11 @@ end
     ri = 2.710121572969038991
     di = 0.1729371367218230438
     aob, zob, hob, dob, rob = ERFA.atioq(ri, di, astrom)
-    @test isapprox(aob, 0.09233952224794989993, atol = 1e-12)
-    @test isapprox(zob, 1.407758704513722461, atol = 1e-12)
-    @test isapprox(hob, -0.09247619879782006106, atol = 1e-12)
-    @test isapprox(dob, 0.1717653435758265198, atol = 1e-12)
-    @test isapprox(rob, 2.710085107986886201, atol = 1e-12)
+    @test isapprox(aob, 0.9233952224895122499e-1, atol = 1e-12)
+    @test isapprox(zob, 1.407758704513549991, atol = 1e-12)
+    @test isapprox(hob, -0.9247619879881698140e-1, atol = 1e-12)
+    @test isapprox(dob, 0.1717653435756234676, atol = 1e-12)
+    @test isapprox(rob, 2.710085107988480746, atol = 1e-12)
 end
 
 # ERFA.atoc13
@@ -651,20 +651,20 @@ end
     ob2 = 0.1717653435758265198
     rc, dc = ERFA.atoc13("r", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(rc, 2.709956744661000609, atol = 1e-12)
-    @test isapprox(dc, 0.1741696500895398562, atol = 1e-12)
+    @test isapprox(rc, 2.709956744659136129, atol = 1e-12)
+    @test isapprox(dc, 0.1741696500898471362, atol = 1e-12)
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
     rc, dc = ERFA.atoc13("h", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(rc, 2.709956744661000609, atol = 1e-12)
-    @test isapprox(dc, 0.1741696500895398562, atol = 1e-12)
+    @test isapprox(rc, 2.709956744659734086, atol = 1e-12)
+    @test isapprox(dc, 0.1741696500898471362, atol = 1e-12)
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
     rc, dc = ERFA.atoc13("a", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(rc, 2.709956744661000609, atol = 1e-12)
-    @test isapprox(dc, 0.1741696500895398562, atol = 1e-12)
+    @test isapprox(rc, 2.709956744659734086, atol = 1e-12)
+    @test isapprox(dc, 0.1741696500898471366, atol = 1e-12)
 end
 
 # ERFA.atoi13
@@ -685,20 +685,20 @@ end
     ob2 = 0.1717653435758265198
     ri, di = ERFA.atoi13("r", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
-    @test isapprox(di, 0.1729371839114567725, atol = 1e-12)
+    @test isapprox(ri, 2.710121574447540810, atol = 1e-12)
+    @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
     ri, di = ERFA.atoi13("h", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
-    @test isapprox(di, 0.1729371839114567725, atol = 1e-12)
+    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
+    @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
     ri, di = ERFA.atoi13("a", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
-    @test isapprox(di, 0.1729371839114567728, atol = 1e-12)
+    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
+    @test isapprox(di, 0.1729371839116608781, atol = 1e-12)
 end
 
 # ERFA.atoiq
@@ -720,17 +720,17 @@ end
     ob1 = 2.710085107986886201
     ob2 = 0.1717653435758265198
     ri, di = ERFA.atoiq("r", ob1, ob2, astrom)
-    @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
-    @test isapprox(di, 0.1729371839114567725, atol = 1e-12)
+    @test isapprox(ri, 2.710121574447540810, atol = 1e-12)
+    @test isapprox(di, 0.17293718391166087785, atol = 1e-12)
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
     ri, di = ERFA.atoiq("h", ob1, ob2, astrom)
-    @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
-    @test isapprox(di, 0.1729371839114567725, atol = 1e-12)
+    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
+    @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
     ri, di = ERFA.atoiq("a", ob1, ob2, astrom)
-    @test isapprox(ri, 2.710121574449135955, atol = 1e-12)
-    @test isapprox(di, 0.1729371839114567728, atol = 1e-12)
+    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
+    @test isapprox(di, 0.1729371839116608781, atol = 1e-12)
 end
 

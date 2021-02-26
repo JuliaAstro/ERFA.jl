@@ -2,7 +2,11 @@
 
 *Julia wrapper for [liberfa](https://github.com/liberfa/erfa)*
 
-[![Build Status Unix][travis-badge]][travis-url] [![Build Status Windows][av-badge]][av-url] [![Coveralls][coveralls-badge]][coveralls-url] [![Codecov][codecov-badge]][codecov-url] [![Docs Stable][docs-badge-stable]][docs-url-stable] [![Docs Latest][docs-badge-dev]][docs-url-dev]
+[![Build Status](https://github.com/juliaastro/ERFA.jl/workflows/CI/badge.svg)](https://github.com/juliaastro/ERFA.jl/actions)
+[![Coverage](https://codecov.io/gh/juliaastro/ERFA.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/juliaastro/ERFA.jl)
+
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliaastro.github.io/ERFA.jl/stable)
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://juliaastro.github.io/ERFA.jl/dev)
 
 
 ## Installation
@@ -31,18 +35,6 @@ julia> ERFA.d2dtf("tt", 3, t1, t2)
 
 ## Documentation
 
-Please refer to the [documentation][docs-url-stable] for additional
+Please refer to the [documentation](https://juliaastro.github.io/ERFA.jl/stable) for additional
 information.
 
-[travis-badge]: https://travis-ci.org/JuliaAstro/ERFA.jl.svg?branch=master
-[travis-url]: https://travis-ci.org/JuliaAstro/ERFA.jl
-[av-badge]: https://img.shields.io/appveyor/ci/kbarbary/erfa-jl.svg?label=windows
-[av-url]: https://ci.appveyor.com/project/kbarbary/erfa-jl/branch/master
-[coveralls-badge]: https://coveralls.io/repos/github/JuliaAstro/ERFA.jl/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/JuliaAstro/ERFA.jl?branch=master
-[codecov-badge]: https://codecov.io/github/JuliaAstro/ERFA.jl/coverage.svg?branch=master
-[codecov-url]: https://codecov.io/github/JuliaAstro/ERFA.jl?branch=master
-[docs-badge-dev]: https://img.shields.io/badge/docs-dev-blue.svg
-[docs-url-dev]: https://juliaastro.github.io/ERFA.jl/dev
-[docs-badge-stable]: https://img.shields.io/badge/docs-stable-blue.svg
-[docs-url-stable]: https://juliaastro.github.io/ERFA.jl/stable

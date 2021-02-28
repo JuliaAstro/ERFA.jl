@@ -1070,7 +1070,7 @@ end
 @deprecate erfa_cp copy
 
 """
-    cpv(p)
+    cpv(pv)
 
 Copy a position/velocity vector.
 

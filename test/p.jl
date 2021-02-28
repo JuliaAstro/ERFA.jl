@@ -1,3 +1,5 @@
+using LinearAlgebra: cross, dot, norm, normalize
+
 # ERFA.p06e
 @testset "p06e" begin
     eps0, psia, oma, bpa, bqa, pia, bpia, epsa, chia, za, zetaa, thetaa, pa, gam, phi, psi = ERFA.p06e(2400000.5, 52541.0)
@@ -21,14 +23,16 @@ end
 
 # ERFA.p2pv
 @testset "p2pv" begin
-    pv = ERFA.p2pv([0.25,1.2,3.0])
+    p = [0.25,1.2,3.0]
+    pv = ERFA._p2pv(p)
     @test isapprox(pv[1][1], 0.25, atol = 1e-12)
     @test isapprox(pv[1][2], 1.2, atol = 1e-12)
     @test isapprox(pv[1][3], 3.0, atol = 1e-12)
     @test isapprox(pv[2][1], 0.0, atol = 1e-12)
     @test isapprox(pv[2][2], 0.0, atol = 1e-12)
     @test isapprox(pv[2][3], 0.0, atol = 1e-12)
-    @test_throws ArgumentError ERFA.p2pv([0.25,1.2])
+    @test_throws ArgumentError ERFA._p2pv([0.25,1.2])
+    @test pv == [p, zeros(3)]
 end
 
 # ERFA.p2s
@@ -75,10 +79,13 @@ end
 
 # ERFA.pdp
 @testset "pdp" begin
-    ab = ERFA.pdp([2.,2.,3.], [1.,3.,4.])
+    a = [2.,2.,3.]
+    b = [1.,3.,4.]
+    ab = ERFA._pdp(a, b)
     @test isapprox(ab, 20, atol = 1e-12)
-    @test_throws ArgumentError ERFA.pdp([2.,2.,3.], [1.,3.])
-    @test_throws ArgumentError ERFA.pdp([2.,3.], [1.,3.,4.])
+    @test ab ≈ dot(a, b) atol=1e-12
+    @test_throws ArgumentError ERFA._pdp([2.,2.,3.], [1.,3.])
+    @test_throws ArgumentError ERFA._pdp([2.,3.], [1.,3.,4.])
 end
 
 # ERFA.plan94
@@ -103,21 +110,24 @@ end
 
 # ERFA.pm
 @testset "pm" begin
-    m = ERFA.pm([0.3,1.2,-2.5])
+    p = [0.3,1.2,-2.5]
+    m = ERFA._pm(p)
     @test isapprox(m, 2.789265136196270604, atol = 1e-14)
-    @test_throws ArgumentError ERFA.pm([0.3,1.2])
+    @test_throws ArgumentError ERFA._pm([0.3,1.2])
+    @test m ≈ norm(p) atol=1e-14
 end
 
 # ERFA.pmp
 @testset "pmp" begin
     a = [2.0,2.0,3.0]
     b = [1.0,3.0,4.0]
-    amb = ERFA.pmp(a, b)
+    amb = ERFA._pmp(a, b)
     @test isapprox(amb[1], 1.0, atol = 1e-12)
     @test isapprox(amb[2], -1.0, atol = 1e-12)
     @test isapprox(amb[3], -1.0, atol = 1e-12)
-    @test_throws ArgumentError ERFA.pmp(a[1:2], b)
-    @test_throws ArgumentError ERFA.pmp(a, b[1:2])
+    @test_throws ArgumentError ERFA._pmp(a[1:2], b)
+    @test_throws ArgumentError ERFA._pmp(a, b[1:2])
+    @test amb ≈ a .- b
 end
 
 # ERFA.pmpx
@@ -202,12 +212,16 @@ end
 
 # ERFA.pn
 @testset "pn" begin
-    r, u = ERFA.pn([0.3,1.2,-2.5])
+    p = [0.3,1.2,-2.5]
+    r, u = ERFA._pn(p)
     @test isapprox(r, 2.789265136196270604, atol = 1e-12)
     @test isapprox(u[1], 0.1075552109073112058, atol = 1e-12)
     @test isapprox(u[2], 0.4302208436292448232, atol = 1e-12)
     @test isapprox(u[3], -0.8962934242275933816, atol = 1e-12)
-    @test_throws ArgumentError ERFA.pn([0.3,1.2])
+    @test_throws ArgumentError ERFA._pn([0.3,1.2])
+    r1, u1 = norm(p), normalize(p)
+    @test r ≈ r1 atol=1e-12
+    @test u ≈ u1 atol=1e-12
 end
 
 # ERFA.pn00
@@ -550,12 +564,15 @@ end
 
 # ERFA.ppp
 @testset "ppp" begin
-    apb = ERFA.ppp([2.0,2.0,3.0], [1.0,3.0,4.0])
+    a = [2.0,2.0,3.0]
+    b = [1.0,3.0,4.0]
+    apb = ERFA._ppp(a, b)
     @test isapprox(apb[1], 3.0, atol = 1e-12)
     @test isapprox(apb[2], 5.0, atol = 1e-12)
     @test isapprox(apb[3], 7.0, atol = 1e-12)
-    @test_throws ArgumentError ERFA.ppp([2.0,3.0], [1.0,3.0,4.0])
-    @test_throws ArgumentError ERFA.ppp([2.0,2.0,3.0], [3.0,4.0])
+    @test_throws ArgumentError ERFA._ppp([2.0,3.0], [1.0,3.0,4.0])
+    @test_throws ArgumentError ERFA._ppp([2.0,2.0,3.0], [3.0,4.0])
+    @test apb ≈ a .+ b
 end
 
 # ERFA.ppsp
@@ -750,11 +767,14 @@ end
 
 # ERFA.pxp
 @testset "pxp" begin
-    axb = ERFA.pxp([2.0,2.0,3.0], [1.0,3.0,4.0])
+    a = [2.0,2.0,3.0]
+    b = [1.0,3.0,4.0]
+    axb = ERFA._pxp(a, b)
     @test isapprox(axb[1], -1.0, atol = 1e-12)
     @test isapprox(axb[2], -5.0, atol = 1e-12)
     @test isapprox(axb[3], 4.0, atol = 1e-12)
-    @test_throws ArgumentError ERFA.pxp([2.0,2.0], [1.0,3.0,4.0])
-    @test_throws ArgumentError ERFA.pxp([2.0,2.0,3.0], [3.0,4.0])
+    @test_throws ArgumentError ERFA._pxp([2.0,2.0], [1.0,3.0,4.0])
+    @test_throws ArgumentError ERFA._pxp([2.0,2.0,3.0], [3.0,4.0])
+    @test axb ≈ cross(a, b)
 end
 

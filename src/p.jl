@@ -233,6 +233,9 @@ end
 """
     p2pv(p)
 
+!!! warning "Deprecated"
+    Use `[p, zeros(3)]` instead.
+
 Extend a p-vector to a pv-vector by appending a zero velocity.
 
 ### Given ###
@@ -249,7 +252,9 @@ Extend a p-vector to a pv-vector by appending a zero velocity.
 - `eraZp`: zero p-vector
 
 """
-function p2pv(p)
+p2pv
+
+function _p2pv(p)
     @checkdims 3 p
     pv = zeros(Cdouble, 3, 2)
     ccall((:eraP2pv, liberfa), Cvoid,
@@ -257,6 +262,8 @@ function p2pv(p)
           p, pv)
     return cmatrix_to_array(pv)
 end
+
+@deprecate p2pv(p) [p, zeros(3)]
 
 """
     pb06(date1, date2)
@@ -586,6 +593,9 @@ end
 
 Modulus of p-vector.
 
+!!! warning "Deprecated"
+    Use `LinearAlgebra.norm` instead.
+
 ### Given ###
 
 - `p`: P-vector
@@ -595,10 +605,12 @@ Modulus of p-vector.
 - Modulus
 
 """
-function pm(p)
+function _pm(p)
     @checkdims 3 p
     return ccall((:eraPm, liberfa), Cdouble, (Ptr{Cdouble},), p)
 end
+
+@deprecate pm norm
 
 """
     pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -723,6 +735,9 @@ end
 
 Convert a p-vector into modulus and unit vector.
 
+!!! warning "Deprecated"
+    Use `(LinearAlgebra.norm(p), LinearAlgebra.normalize(p))` instead.
+
 ### Given ###
 
 - `p`: P-vector
@@ -747,7 +762,7 @@ Convert a p-vector into modulus and unit vector.
 - `eraSxp`: multiply p-vector by scalar
 
 """
-function pn(p)
+function _pn(p)
     @checkdims 3 p
     r = Ref{Cdouble}()
     u = zeros(Cdouble, 3)
@@ -756,6 +771,8 @@ function pn(p)
           p, r, u)
     return r[], u
 end
+
+@deprecate pn(p) (norm(p), normalize(p))
 
 """
     ppsp(a, s, b)
@@ -1463,6 +1480,9 @@ end
 
 P-vector subtraction.
 
+!!! warning "Deprecated"
+    Use `a .- b` instead.
+
 ### Given ###
 
 - `a`: First p-vector
@@ -1470,20 +1490,29 @@ P-vector subtraction.
 
 ### Returned ###
 
-- `amb`: A - b
-
-### Note ###
-
-   It is permissible to re-use the same array for any of the
-   arguments.
+- `amb`: a - b
 
 """
 pmp
+
+function _pmp(a, b)
+    @checkdims 3 a b
+    ab = zeros(Cdouble, 3)
+    ccall((:eraPmp, liberfa), Cvoid,
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          a, b, ab)
+    return ab
+end
+
+@deprecate pmp(a, b) a .- b
 
 """
     ppp(a, b)
 
 P-vector addition.
+
+!!! warning "Deprecated"
+    Use `a .+ b` instead.
 
 ### Given ###
 
@@ -1494,18 +1523,27 @@ P-vector addition.
 
 - `apb`: A + b
 
-### Note ###
-
-   It is permissible to re-use the same array for any of the
-   arguments.
-
 """
 ppp
+
+function _ppp(a, b)
+    @checkdims 3 a b
+    ab = zeros(Cdouble, 3)
+    ccall((:eraPpp, liberfa), Cvoid,
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          a, b, ab)
+    return ab
+end
+
+@deprecate ppp(a, b) a .+ b
 
 """
     pxp(a, b)
 
 p-vector outer (=vector=cross) product.
+
+!!! warning "Deprecated"
+    Use `LinearAlgebra.cross` instead.
 
 ### Given ###
 
@@ -1516,30 +1554,19 @@ p-vector outer (=vector=cross) product.
 
 - `axb`: A x b
 
-### Note ###
-
-   It is permissible to re-use the same array for any of the
-   arguments.
-
 """
 pxp
 
-for name in ("pmp",
-             "ppp",
-             "pxp")
-    f = Symbol(name)
-    fc = "era" * uppercasefirst(name)
-    @eval begin
-        function ($f)(a, b)
-            @checkdims 3 a b
-            ab = zeros(Cdouble, 3)
-            ccall(($fc, liberfa), Cvoid,
-                  (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
-                  a, b, ab)
-            ab
-        end
-    end
+function _pxp(a, b)
+    @checkdims 3 a b
+    ab = zeros(Cdouble, 3)
+    ccall((:eraPxp, liberfa), Cvoid,
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          a, b, ab)
+    return ab
 end
+
+@deprecate pxp cross
 
 """
     pvmpv(a, b)
@@ -2011,12 +2038,18 @@ Position-angle from two p-vectors.
 - `eraPdp`: scalar product of two p-vectors
 
 """
-pap
+function pap(a, b)
+    @checkdims 3 a b
+    return ccall((:eraPap, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
+end
 
 """
     pdp(a, b)
 
 p-vector inner (=scalar=dot) product.
+
+!!! warning "Deprecated"
+    Use `LinearAlgebra.dot(a, b)` instead.
 
 ### Given ###
 
@@ -2028,19 +2061,12 @@ p-vector inner (=scalar=dot) product.
 - ``a \\cdot b``
 
 """
-pdp
-
-for name in ("pap",
-             "pdp")
-    f = Symbol(name)
-    fc = "era" * uppercasefirst(name)
-    @eval begin
-        function ($f)(a, b)
-            @checkdims 3 a b
-            return ccall(($fc, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
-        end
-    end
+function _pdp(a, b)
+    @checkdims 3 a b
+    return ccall((:eraPdp, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
 end
+
+@deprecate pdp dot
 
 """
     pr00(date1, date2)

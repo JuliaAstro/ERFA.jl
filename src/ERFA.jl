@@ -1,6 +1,6 @@
 module ERFA
 
-using LinearAlgebra: I
+using LinearAlgebra: I, cross, dot, norm, normalize
 
 using ERFA_jll
 

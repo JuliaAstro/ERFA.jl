@@ -1,5 +1,7 @@
 module ERFA
 
+using LinearAlgebra: I
+
 using ERFA_jll
 
 include("erfa_common.jl")

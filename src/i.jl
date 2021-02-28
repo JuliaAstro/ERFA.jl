@@ -70,3 +70,25 @@ function icrs2g(a, b)
     return r1[], r2[]
 end
 
+"""
+    ir()
+
+Initialize an r-matrix to the identity matrix.
+
+!!! warning "Deprecated"
+    Use `Array{Float64}(LinearAlgebra.I, 3, 3)` instead.
+
+### Returned ###
+
+- `r`: r-matrix
+"""
+ir
+
+function _ir()
+    r = Array{Cdouble}(undef, 3, 3)
+    ccall((:eraIr, liberfa), Cvoid, (Ptr{Cdouble},), r)
+    return r
+end
+
+@deprecate ir() Array{Float64}(I, 3, 3)
+

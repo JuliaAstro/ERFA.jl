@@ -255,3 +255,37 @@ end
     @test isapprox(dmj0, 2400000.5, atol = 1e-9)
     @test isapprox(dmj, 52791.0, atol = 1e-9)
 end
+
+@testset "cp" begin
+    a = randn(3)
+    b1 = ERFA._cp(a)
+    b2 = copy(a)
+    b1[1] = 1.0
+    b2[1] = 1.0
+    @test a != b1
+    @test a != b2
+    @test b1 == b2
+end
+
+@testset "cpv" begin
+    a = [randn(3), randn(3)]
+    b1 = ERFA._cpv(a)
+    b2 = deepcopy(a)
+    b1[1][1] = 1.0
+    b2[1][1] = 1.0
+    @test a != b1
+    @test a != b2
+    @test b1 == b2
+end
+
+@testset "cr" begin
+    a = randn(3, 3)
+    b1 = ERFA._cr(a)
+    b2 = copy(a)
+    b1[1,1] = 1.0
+    b2[1,1] = 1.0
+    @test a != b1
+    @test a != b2
+    @test b1 == b2
+end
+

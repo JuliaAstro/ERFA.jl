@@ -93,7 +93,12 @@ end
     pve = [[1.5,0.1],
           [1.5,0.2,0.1]]
     @test_throws ArgumentError ERFA._rxpv(r, pve)
-    @test rpv == [r * pv[1], r * pv[2]]
+    rpj = [r * pv[1], r * pv[2]]
+    for (v, vj) in zip(rpv, rpj)
+        for i in eachindex(v, vj)
+            @test v[i] ≈ vj[i]
+        end
+    end
 end
 
 # ERFA.rxr

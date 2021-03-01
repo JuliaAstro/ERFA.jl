@@ -111,7 +111,12 @@ end
           [1.5,0.2,0.1]]
     @test_throws ArgumentError ERFA._trxpv(r[1:2,:], pv)
     @test_throws ArgumentError ERFA._trxpv(r, pve)
-    @test trpv == [r' * pv[1], r' * pv[2]]
+    trpvj = [r' * pv[1], r' * pv[2]]
+    for (v, vj) in zip(trpv, trpvj)
+        for i in eachindex(v, vj)
+            @test v[i] ≈ vj[i]
+        end
+    end
 end
 
 # ERFA.tttai

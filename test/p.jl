@@ -83,7 +83,7 @@ end
     b = [1.,3.,4.]
     ab = ERFA._pdp(a, b)
     @test isapprox(ab, 20, atol = 1e-12)
-    @test ab ≈ dot(a, b) atol=1e-12
+    @test ab == dot(a, b)
     @test_throws ArgumentError ERFA._pdp([2.,2.,3.], [1.,3.])
     @test_throws ArgumentError ERFA._pdp([2.,3.], [1.,3.,4.])
 end
@@ -127,7 +127,7 @@ end
     @test isapprox(amb[3], -1.0, atol = 1e-12)
     @test_throws ArgumentError ERFA._pmp(a[1:2], b)
     @test_throws ArgumentError ERFA._pmp(a, b[1:2])
-    @test amb ≈ a .- b
+    @test amb == a .- b
 end
 
 # ERFA.pmpx
@@ -572,17 +572,21 @@ end
     @test isapprox(apb[3], 7.0, atol = 1e-12)
     @test_throws ArgumentError ERFA._ppp([2.0,3.0], [1.0,3.0,4.0])
     @test_throws ArgumentError ERFA._ppp([2.0,2.0,3.0], [3.0,4.0])
-    @test apb ≈ a .+ b
+    @test apb == a .+ b
 end
 
 # ERFA.ppsp
 @testset "ppsp" begin
-    apsb = ERFA.ppsp([2.0,2.0,3.0], 5.0, [1.0,3.0,4.0])
+    a = [2.0,2.0,3.0]
+    s = 5.0
+    b = [1.0,3.0,4.0]
+    apsb = ERFA._ppsp(a, s, b)
     @test isapprox(apsb[1], 7.0, atol = 1e-12)
     @test isapprox(apsb[2], 17.0, atol = 1e-12)
     @test isapprox(apsb[3], 23.0, atol = 1e-12)
-    @test_throws ArgumentError ERFA.ppsp([2.0,2.0], 5.0, [1.0,3.0,4.0])
-    @test_throws ArgumentError ERFA.ppsp([2.0,2.0,0.0], 5.0, [3.0,4.0])
+    @test_throws ArgumentError ERFA._ppsp([2.0,2.0], 5.0, [1.0,3.0,4.0])
+    @test_throws ArgumentError ERFA._ppsp([2.0,2.0,0.0], 5.0, [3.0,4.0])
+    @test apsb == a .+ s .* b
 end
 
 # ERFA.pr00
@@ -606,11 +610,13 @@ end
 
 # ERFA.pv2p
 @testset "pv2p" begin
-    p = ERFA.pv2p([[0.3,1.2,-2.5],[-0.5,3.1,0.9]])
+    pv = [[0.3,1.2,-2.5],[-0.5,3.1,0.9]]
+    p = ERFA._pv2p(pv)
     @test isapprox(p[1], 0.3, atol = 0.0)
     @test isapprox(p[2], 1.2, atol = 0.0)
     @test isapprox(p[3], -2.5, atol = 0.0)
-    @test_throws ArgumentError ERFA.pv2p([[0.3,1.2],[-0.5,3.1,0.9]])
+    @test_throws ArgumentError ERFA._pv2p([[0.3,1.2],[-0.5,3.1,0.9]])
+    @test p == first(pv)
 end
 
 # ERFA.pv2s
@@ -645,18 +651,19 @@ end
 # ERFA.pvm
 @testset "pvm" begin
     pv = [[0.3,1.2,-2.5],[0.45,-0.25,1.1]]
-    r, s = ERFA.pvm(pv)
+    r, s = ERFA._pvm(pv)
     @test isapprox(r, 2.789265136196270604, atol = 1e-12)
     @test isapprox(s, 1.214495780149111922, atol = 1e-12)
     pve = [[1.2,-2.5],[0.45,-0.25,1.1]]
-    @test_throws ArgumentError ERFA.pvm(pve)
+    @test_throws ArgumentError ERFA._pvm(pve)
+    @test [r, s] == norm.(pv)
 end
 
 # ERFA.pvmpv
 @testset "pvmpv" begin
     a = [[2.0,2.0,3.0],[5.0,6.0,3.0]]
     b = [[1.0,3.0,4.0],[3.0,2.0,1.0]]
-    amb = ERFA.pvmpv(a, b)
+    amb = ERFA._pvmpv(a, b)
     @test isapprox(amb[1][1], 1.0, atol = 1e-12)
     @test isapprox(amb[1][2], -1.0, atol = 1e-12)
     @test isapprox(amb[1][3], -1.0, atol = 1e-12)
@@ -664,15 +671,16 @@ end
     @test isapprox(amb[2][2], 4.0, atol = 1e-12)
     @test isapprox(amb[2][3], 2.0, atol = 1e-12)
     ae = [[2.0,3.0],[5.0,6.0,3.0]]
-    @test_throws ArgumentError ERFA.pvmpv(ae, b)
-    @test_throws ArgumentError ERFA.pvmpv(a, ae)
+    @test_throws ArgumentError ERFA._pvmpv(ae, b)
+    @test_throws ArgumentError ERFA._pvmpv(a, ae)
+    @test amb == a .- b
 end
 
 # ERFA.pvppv
 @testset "pvppv" begin
     a = [[2.0,2.0,3.0],[5.0,6.0,3.0]]
     b = [[1.0,3.0,4.0],[3.0,2.0,1.0]]
-    apb = ERFA.pvppv(a, b)
+    apb = ERFA._pvppv(a, b)
     @test isapprox(apb[1][1], 3.0, atol = 1e-12)
     @test isapprox(apb[1][2], 5.0, atol = 1e-12)
     @test isapprox(apb[1][3], 7.0, atol = 1e-12)
@@ -680,8 +688,9 @@ end
     @test isapprox(apb[2][2], 8.0, atol = 1e-12)
     @test isapprox(apb[2][3], 4.0, atol = 1e-12)
     ae = [[2.0,3.0],[5.0,6.0,3.0]]
-    @test_throws ArgumentError ERFA.pvppv(ae, b)
-    @test_throws ArgumentError ERFA.pvppv(a, ae)
+    @test_throws ArgumentError ERFA._pvppv(ae, b)
+    @test_throws ArgumentError ERFA._pvppv(a, ae)
+    @test apb == a .+ b
 end
 
 # ERFA.pvxpv

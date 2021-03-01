@@ -26,6 +26,7 @@ include("s.jl")
 include("t.jl")
 include("u.jl")
 include("x.jl")
+include("z.jl")
 
 function ASTROM(pmt, eb::AbstractArray, eh::AbstractArray, em, v::AbstractArray, bm1, bpn::AbstractArray, along, phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb)
     ASTROM(pmt,

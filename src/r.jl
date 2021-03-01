@@ -229,6 +229,9 @@ end
 
 Multiply two r-matrices.
 
+!!! warning "Deprecated"
+    Use `a * b` instead.
+
 ### Given ###
 
 - `a`: First r-matrix
@@ -236,7 +239,7 @@ Multiply two r-matrices.
 
 ### Returned ###
 
-- `atb`: A * b
+- `atb`: a * b
 
 ### Note ###
 
@@ -248,7 +251,9 @@ Multiply two r-matrices.
 - `eraCr`: copy r-matrix
 
 """
-function rxr(a, b)
+rxr
+
+function _rxr(a, b)
     @checkdims 3 3 a b
     atb = zeros(Cdouble, 3, 3)
     ccall((:eraRxr, liberfa),
@@ -257,6 +262,8 @@ function rxr(a, b)
           permutedims(a), permutedims(b), atb)
     return permutedims(atb)
 end
+
+@deprecate rxr(a, b) a * b
 
 """
     rx(phi, r)
@@ -370,6 +377,9 @@ end
 
 Multiply a pv-vector by an r-matrix.
 
+!!! warning "Deprecated"
+    Use `[r * pv[1], r * pv[2]]` instead.
+
 ### Given ###
 
 - `r`: R-matrix
@@ -388,7 +398,9 @@ Multiply a pv-vector by an r-matrix.
 - `eraRxp`: product of r-matrix and p-vector
 
 """
-function rxpv(r, pv)
+rxpv
+
+function _rxpv(r, pv)
     @checkdims 3 3 r
     _pv = array_to_cmatrix(pv; n=3)
     rpv = zeros(Cdouble, 3, 2)
@@ -398,10 +410,15 @@ function rxpv(r, pv)
     return cmatrix_to_array(rpv)
 end
 
+@deprecate rxpv(r, pv) [r * pv[1], r * pv[2]]
+
 """
     rxp(r, p)
 
 Multiply a p-vector by an r-matrix.
+
+!!! warning "Deprecated"
+    Use `r * p` instead.
 
 ### Given ###
 
@@ -410,7 +427,7 @@ Multiply a p-vector by an r-matrix.
 
 ### Returned ###
 
-- `rp`: R * p
+- `rp`: r * p
 
 ### Note ###
 
@@ -421,7 +438,9 @@ Multiply a p-vector by an r-matrix.
 - `eraCp`: copy p-vector
 
 """
-function rxp(r, p)
+rxp
+
+function _rxp(r, p)
     @checkdims 3 3 r
     @checkdims 3 p
     rp = zeros(Cdouble, 3)
@@ -430,4 +449,6 @@ function rxp(r, p)
             permutedims(r), p, rp)
     return rp
 end
+
+@deprecate rxp(r, p) r * p
 

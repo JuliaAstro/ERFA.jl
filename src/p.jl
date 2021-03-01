@@ -605,6 +605,8 @@ Modulus of p-vector.
 - Modulus
 
 """
+pm
+
 function _pm(p)
     @checkdims 3 p
     return ccall((:eraPm, liberfa), Cdouble, (Ptr{Cdouble},), p)
@@ -762,6 +764,8 @@ Convert a p-vector into modulus and unit vector.
 - `eraSxp`: multiply p-vector by scalar
 
 """
+pn
+
 function _pn(p)
     @checkdims 3 p
     r = Ref{Cdouble}()
@@ -779,6 +783,9 @@ end
 
 P-vector plus scaled p-vector.
 
+!!! warning "Deprecated"
+    Use `a .+ s .* b` instead.
+
 ### Given ###
 
 - `a`: First p-vector
@@ -787,11 +794,11 @@ P-vector plus scaled p-vector.
 
 ### Returned ###
 
-- `apsb`: A + s*b
+- `apsb`: a + s*b
 
 ### Note ###
 
-   It is permissible for any of a, b and apsb to be the same array.
+It is permissible for any of a, b and apsb to be the same array.
 
 ### Called ###
 
@@ -799,7 +806,9 @@ P-vector plus scaled p-vector.
 - `eraPpp`: p-vector plus p-vector
 
 """
-function ppsp(a, s, b)
+ppsp
+
+function _ppsp(a, s, b)
     @checkdims 3 a b
     apsb = zeros(Cdouble, 3)
     ccall((:eraPpsp, liberfa), Cvoid,
@@ -807,6 +816,8 @@ function ppsp(a, s, b)
           a, s, b, apsb)
     return apsb
 end
+
+@deprecate ppsp(a, s, b) a .+ s .* b
 
 """
     prec76(date01, date02, date11, date12)
@@ -934,6 +945,9 @@ end
 
 Discard velocity component of a pv-vector.
 
+!!! warning "Deprecated"
+    Use `first(pv)` instead.
+
 ### Given ###
 
 - `pv`: Pv-vector
@@ -947,7 +961,9 @@ Discard velocity component of a pv-vector.
 - `eraCp`: copy p-vector
 
 """
-function pv2p(pv)
+pv2p
+
+function _pv2p(pv)
     _pv = array_to_cmatrix(pv; n=3)
     p = zeros(Cdouble, 3)
     ccall((:eraPv2p, liberfa), Cvoid,
@@ -955,6 +971,8 @@ function pv2p(pv)
           _pv, p)
     return p
 end
+
+@deprecate pv2p first
 
 """
     pvdpv(a, b)
@@ -968,7 +986,7 @@ Inner (=scalar=dot) product of two pv-vectors.
 
 ### Returned ###
 
-- `adb`: A . b (see note)
+- `adb`: ``a \\cdot b`` (see note)
 
 ### Note ###
 
@@ -997,6 +1015,9 @@ end
 
 Modulus of pv-vector.
 
+!!! warning "Deprecated"
+    Use `LinearAlgebra.norm.(pv)` instead.
+
 ### Given ###
 
 - `pv`: Pv-vector
@@ -1011,7 +1032,9 @@ Modulus of pv-vector.
 - `eraPm`: modulus of p-vector
 
 """
-function pvm(pv)
+pvm
+
+function _pvm(pv)
     _pv = array_to_cmatrix(pv; n=3)
     s = Ref{Cdouble}()
     r = Ref{Cdouble}()
@@ -1020,6 +1043,8 @@ function pvm(pv)
           _pv, r, s)
     return r[], s[]
 end
+
+@deprecate pvm(pv) norm.(pv)
 
 """
     pvstar(pv)
@@ -1573,6 +1598,9 @@ end
 
 Subtract one pv-vector from another.
 
+!!! warning "Deprecated"
+    Use `a .- b` instead.
+
 ### Given ###
 
 - `a`: First pv-vector
@@ -1594,10 +1622,25 @@ Subtract one pv-vector from another.
 """
 pvmpv
 
+function _pvmpv(a, b)
+    _a = array_to_cmatrix(a; n=3)
+    _b = array_to_cmatrix(b; n=3)
+    ab = zeros(Cdouble, 3, 2)
+    ccall((:eraPvmpv, liberfa), Cvoid,
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          _a, _b, ab)
+    return cmatrix_to_array(ab)
+end
+
+@deprecate pvmpv(a, b) a .- b
+
 """
     pvppv(a, b)
 
 Add one pv-vector to another.
+
+!!! warning "Deprecated"
+    Use `a .+ b` instead.
 
 ### Given ###
 
@@ -1619,6 +1662,18 @@ Add one pv-vector to another.
 
 """
 pvppv
+
+function _pvppv(a, b)
+    _a = array_to_cmatrix(a; n=3)
+    _b = array_to_cmatrix(b; n=3)
+    ab = zeros(Cdouble, 3, 2)
+    ccall((:eraPvppv, liberfa), Cvoid,
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          _a, _b, ab)
+    return cmatrix_to_array(ab)
+end
+
+@deprecate pvppv(a, b) a .+ b
 
 """
     pvxpv(a, b)
@@ -1651,24 +1706,14 @@ Outer (=vector=cross) product of two pv-vectors.
 - `eraPpp`: p-vector plus p-vector
 
 """
-pvxpv
-
-for name in ("pvmpv",
-             "pvppv",
-             "pvxpv")
-    f = Symbol(name)
-    fc = "era" * uppercasefirst(name)
-    @eval begin
-        function ($f)(a, b)
-            _a = array_to_cmatrix(a; n=3)
-            _b = array_to_cmatrix(b; n=3)
-            ab = zeros(Cdouble, 3, 2)
-            ccall(($fc, liberfa), Cvoid,
-                  (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
-                  _a, _b, ab)
-            return cmatrix_to_array(ab)
-        end
-    end
+function pvxpv(a, b)
+    _a = array_to_cmatrix(a; n=3)
+    _b = array_to_cmatrix(b; n=3)
+    ab = zeros(Cdouble, 3, 2)
+    ccall((:eraPvxpv, liberfa), Cvoid,
+          (Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}),
+          _a, _b, ab)
+    return cmatrix_to_array(ab)
 end
 
 """
@@ -2061,6 +2106,8 @@ p-vector inner (=scalar=dot) product.
 - ``a \\cdot b``
 
 """
+pdp
+
 function _pdp(a, b)
     @checkdims 3 a b
     return ccall((:eraPdp, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)

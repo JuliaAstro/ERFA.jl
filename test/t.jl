@@ -64,7 +64,7 @@ end
     r = [2.0 3.0 2.0;
          3.0 2.0 3.0;
          3.0 4.0 5.0]
-    rt = ERFA.tr(r)
+    rt = ERFA._tr(r)
     @test isapprox(rt[1,1], 2.0, atol = 0.0)
     @test isapprox(rt[1,2], 3.0, atol = 0.0)
     @test isapprox(rt[1,3], 3.0, atol = 0.0)
@@ -74,7 +74,8 @@ end
     @test isapprox(rt[3,1], 2.0, atol = 0.0)
     @test isapprox(rt[3,2], 3.0, atol = 0.0)
     @test isapprox(rt[3,3], 5.0, atol = 0.0)
-    @test_throws ArgumentError ERFA.tr(r[1:2,:])
+    @test_throws ArgumentError ERFA._tr(r[1:2,:])
+    @test rt == r'
 end
 
 # ERFA.trxp
@@ -83,12 +84,13 @@ end
          3.0 2.0 3.0;
          3.0 4.0 5.0]
     p = [0.2,1.5,0.1]
-    trp = ERFA.trxp(r, p)
+    trp = ERFA._trxp(r, p)
     @test isapprox(trp[1], 5.2, atol = 1e-12)
     @test isapprox(trp[2], 4.0, atol = 1e-12)
     @test isapprox(trp[3], 5.4, atol = 1e-12)
-    @test_throws ArgumentError ERFA.trxp(r[1:2,:], p)
-    @test_throws ArgumentError ERFA.trxp(r, p[1:2])
+    @test_throws ArgumentError ERFA._trxp(r[1:2,:], p)
+    @test_throws ArgumentError ERFA._trxp(r, p[1:2])
+    @test trp == r' * p
 end
 
 # ERFA.trxpv
@@ -98,7 +100,7 @@ end
          3.0 4.0 5.0]
     pv = [[0.2,1.5,0.1],
           [1.5,0.2,0.1]]
-    trpv = ERFA.trxpv(r, pv)
+    trpv = ERFA._trxpv(r, pv)
     @test isapprox(trpv[1][1], 5.2, atol = 1e-12)
     @test isapprox(trpv[1][2], 4.0, atol = 1e-12)
     @test isapprox(trpv[1][3], 5.4, atol = 1e-12)
@@ -107,8 +109,9 @@ end
     @test isapprox(trpv[2][3], 4.1, atol = 1e-12)
     pve = [[1.5,0.1],
           [1.5,0.2,0.1]]
-    @test_throws ArgumentError ERFA.trxpv(r[1:2,:], pv)
-    @test_throws ArgumentError ERFA.trxpv(r, pve)
+    @test_throws ArgumentError ERFA._trxpv(r[1:2,:], pv)
+    @test_throws ArgumentError ERFA._trxpv(r, pve)
+    @test trpv == [r' * pv[1], r' * pv[2]]
 end
 
 # ERFA.tttai

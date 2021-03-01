@@ -59,4 +59,5 @@ using Test
     include("t.jl")
     include("u.jl")
     include("x.jl")
+    include("z.jl")
 end

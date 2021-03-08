@@ -32,8 +32,9 @@ end
 
 # ERFA.anp
 @testset "anp" begin
-    r = ERFA.anp(-0.1)
+    r = ERFA._anp(-0.1)
     @test isapprox(r, 6.183185307179586477, atol = 1e-15)
+    @test r ≈ mod2pi(-0.1) atol=1-15
 end
 
 # ERFA.anpm

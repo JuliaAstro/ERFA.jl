@@ -1042,3 +1042,84 @@ function c2ixys(x, y, s)
     return permutedims(r)
 end
 
+"""
+    erfa_cp(p)
+
+Copy a p-vector.
+
+!!! warning "Deprecated"
+    Use `Base.copy` instead.
+
+### Given ###
+
+- `p`: p-vector to be copied
+
+### Returned ###
+
+- `c`: copy
+"""
+erfa_cp
+
+function _cp(p)
+    @checkdims 3 p
+    c = Array{Cdouble}(undef, 3)
+    ccall((:eraCp, liberfa), Cvoid, (Ptr{Cdouble}, Ptr{Cdouble}), p, c)
+    return c
+end
+
+@deprecate erfa_cp copy
+
+"""
+    cpv(pv)
+
+Copy a position/velocity vector.
+
+!!! warning "Deprecated"
+    Use `Base.deepcopy` instead.
+
+### Given ###
+
+- `pv`: position/velocity vector to be copied
+
+### Returned ###
+
+- `c`: copy
+"""
+cpv
+
+function _cpv(pv)
+    _pv = array_to_cmatrix(pv; n=3)
+    c = Array{Cdouble}(undef, 3, 2)
+    ccall((:eraCpv, liberfa), Cvoid, (Ptr{Cdouble}, Ptr{Cdouble}), _pv, c)
+    return cmatrix_to_array(c)
+end
+
+@deprecate cpv deepcopy
+
+"""
+    cr(p)
+
+Copy an r-vector.
+
+!!! warning "Deprecated"
+    Use `Base.copy` instead.
+
+### Given ###
+
+- `r`: r-matrix to be copied
+
+### Returned ###
+
+- `c`: copy
+"""
+cr
+
+function _cr(r)
+    @checkdims 3 3 r
+    c = Array{Cdouble}(undef, 3, 3)
+    ccall((:eraCr, liberfa), Cvoid, (Ptr{Cdouble}, Ptr{Cdouble}), permutedims(r), c)
+    return permutedims(c)
+end
+
+@deprecate cr copy
+

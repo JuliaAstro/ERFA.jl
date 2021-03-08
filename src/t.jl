@@ -3,6 +3,9 @@
 
 Transpose an r-matrix.
 
+!!! warning "Deprecated"
+    Use `r'` instead.
+
 ### Given ###
 
 - `r`: R-matrix
@@ -20,7 +23,9 @@ Transpose an r-matrix.
 - `eraCr`: copy r-matrix
 
 """
-function tr(r)
+tr
+
+function _tr(r)
     @checkdims 3 3 r
     rt = zeros(Cdouble, 3, 3)
     ccall((:eraTr, liberfa), Cvoid,
@@ -29,10 +34,15 @@ function tr(r)
     return permutedims(rt)
 end
 
+@deprecate tr(r) r'
+
 """
     trxpv(r, pv)
 
 Multiply a pv-vector by the transpose of an r-matrix.
+
+!!! warning "Deprecated"
+    Use `[r' * pv[1], r' * pv[2]]` instead.
 
 ### Given ###
 
@@ -53,7 +63,9 @@ Multiply a pv-vector by the transpose of an r-matrix.
 - `eraRxpv`: product of r-matrix and pv-vector
 
 """
-function trxpv(r, pv)
+trxpv
+
+function _trxpv(r, pv)
     @checkdims 3 3 r
     _pv = array_to_cmatrix(pv; n=3)
     rp = zeros(Cdouble, 3, 2)
@@ -63,10 +75,15 @@ function trxpv(r, pv)
     return cmatrix_to_array(rp)
 end
 
+@deprecate trxpv(r, pv) [r' * pv[1], r' * pv[2]]
+
 """
     trxp(r, p)
 
 Multiply a p-vector by the transpose of an r-matrix.
+
+!!! warning "Deprecated"
+    Use `r' * p` instead.
 
 ### Given ###
 
@@ -87,7 +104,9 @@ Multiply a p-vector by the transpose of an r-matrix.
 - `eraRxp`: product of r-matrix and p-vector
 
 """
-function trxp(r, p)
+trxp
+
+function _trxp(r, p)
     @checkdims 3 3 r
     @checkdims 3 p
     rp = zeros(Cdouble, 3)
@@ -96,6 +115,8 @@ function trxp(r, p)
             permutedims(r), p, rp)
     return rp
 end
+
+@deprecate trxp(r, p) r' * p
 
 """
     taiut1(tai1, tai2, dta)

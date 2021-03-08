@@ -82,6 +82,9 @@ end
 
 Multiply a pv-vector by two scalars.
 
+!!! warning "Deprecated"
+    Use `[s1 .* pv[1], s2 .* pv[2]]` instead.
+
 ### Given ###
 
 - `s1`: Scalar to multiply position component by
@@ -101,7 +104,9 @@ Multiply a pv-vector by two scalars.
 - `eraSxp`: multiply p-vector by scalar
 
 """
-function s2xpv(s1, s2, pv)
+s2xpv
+
+function _s2xpv(s1, s2, pv)
     _pv = array_to_cmatrix(pv; n=3)
     spv = zeros(Cdouble, 3, 2)
     ccall((:eraS2xpv, liberfa), Cvoid,
@@ -109,6 +114,8 @@ function s2xpv(s1, s2, pv)
           s1, s2, _pv, spv)
     return cmatrix_to_array(spv)
 end
+
+@deprecate s2xpv(s1, s2, pv) [s1 .* pv[1], s2 .* pv[2]]
 
 """
     starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -355,6 +362,9 @@ end
 
 Multiply a p-vector by a scalar.
 
+!!! warning "Deprecated"
+    Use `s .* p` instead.
+
 ### Given ###
 
 - `s`: Scalar
@@ -369,7 +379,9 @@ Multiply a p-vector by a scalar.
    It is permissible for p and sp to be the same array.
 
 """
-function sxp(s, p)
+sxp
+
+function _sxp(s, p)
     @checkdims 3 p
     sp = zeros(Cdouble, 3)
     ccall((:eraSxp, liberfa), Cvoid,
@@ -378,10 +390,15 @@ function sxp(s, p)
     return sp
 end
 
+@deprecate sxp(s, p) s .* p
+
 """
     sxpv(s, pv)
 
 Multiply a pv-vector by a scalar.
+
+!!! warning "Deprecated"
+    Use `s .* pv` instead.
 
 ### Given ###
 
@@ -390,7 +407,7 @@ Multiply a pv-vector by a scalar.
 
 ### Returned ###
 
-- `spv`: S * pv
+- `spv`: s * pv
 
 ### Note ###
 
@@ -401,7 +418,9 @@ Multiply a pv-vector by a scalar.
 - `eraS2xpv`: multiply pv-vector by two scalars
 
 """
-function sxpv(s, pv)
+sxpv
+
+function _sxpv(s, pv)
     _pv = array_to_cmatrix(pv; n=3)
     spv = zeros(Cdouble, 3, 2)
     ccall((:eraSxpv, liberfa), Cvoid,
@@ -409,6 +428,8 @@ function sxpv(s, pv)
           s, _pv, spv)
     return cmatrix_to_array(spv)
 end
+
+@deprecate sxpv(s, pv) s .* pv
 
 """
     seps(al, ap, bl, bp)

@@ -60,7 +60,7 @@ end
          3.0 2.0 3.0;
          3.0 4.0 5.0]
     p = [0.2,1.5,0.1]
-    rp = ERFA.rxp(r, p)
+    rp = ERFA._rxp(r, p)
     @test isapprox(rp[1], 5.1, atol = 1e-12)
     @test isapprox(rp[2], 3.9, atol = 1e-12)
     @test isapprox(rp[3], 7.1, atol = 1e-12)
@@ -71,8 +71,8 @@ end
     for i in eachindex(rp, rp_exp)
         @test rp[i] ≈ rp_exp[i]
     end
-    @test_throws ArgumentError ERFA.rxp(r[1:2,:], p)
-    @test_throws ArgumentError ERFA.rxp(r, p[1:2])
+    @test_throws ArgumentError ERFA._rxp(r[1:2,:], p)
+    @test_throws ArgumentError ERFA._rxp(r, p[1:2])
 end
 
 # ERFA.rxpv
@@ -82,17 +82,23 @@ end
          3.0 4.0 5.0]
     pv = [[0.2,1.5,0.1],
           [1.5,0.2,0.1]]
-    rpv = ERFA.rxpv(r, pv)
+    rpv = ERFA._rxpv(r, pv)
     @test isapprox(rpv[1][1], 5.1, atol = 1e-12)
     @test isapprox(rpv[1][2], 3.9, atol = 1e-12)
     @test isapprox(rpv[1][3], 7.1, atol = 1e-12)
     @test isapprox(rpv[2][1], 3.8, atol = 1e-12)
     @test isapprox(rpv[2][2], 5.2, atol = 1e-12)
     @test isapprox(rpv[2][3], 5.8, atol = 1e-12)
-    @test_throws ArgumentError ERFA.rxpv(r[1:2,:], pv)
+    @test_throws ArgumentError ERFA._rxpv(r[1:2,:], pv)
     pve = [[1.5,0.1],
           [1.5,0.2,0.1]]
-    @test_throws ArgumentError ERFA.rxpv(r, pve)
+    @test_throws ArgumentError ERFA._rxpv(r, pve)
+    rpj = [r * pv[1], r * pv[2]]
+    for (v, vj) in zip(rpv, rpj)
+        for i in eachindex(v, vj)
+            @test v[i] ≈ vj[i]
+        end
+    end
 end
 
 # ERFA.rxr
@@ -103,7 +109,7 @@ end
     b = [1.0 2.0 2.0;
          4.0 1.0 1.0;
          3.0 0.0 1.0]
-    atb = ERFA.rxr(a, b)
+    atb = ERFA._rxr(a, b)
     @test isapprox(atb[1,1], 20.0, atol = 1e-12)
     @test isapprox(atb[1,2], 7.0, atol = 1e-12)
     @test isapprox(atb[1,3], 9.0, atol = 1e-12)
@@ -113,8 +119,9 @@ end
     @test isapprox(atb[3,1], 34.0, atol = 1e-12)
     @test isapprox(atb[3,2], 10.0, atol = 1e-12)
     @test isapprox(atb[3,3], 15.0, atol = 1e-12)
-    @test_throws ArgumentError ERFA.rxr(a[1:2,:], b)
-    @test_throws ArgumentError ERFA.rxr(a, b[1:2,:])
+    @test_throws ArgumentError ERFA._rxr(a[1:2,:], b)
+    @test_throws ArgumentError ERFA._rxr(a, b[1:2,:])
+    @test atb == a * b
 end
 
 # ERFA.ry

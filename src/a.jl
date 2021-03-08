@@ -3022,6 +3022,9 @@ end
 
 Normalize angle into the range 0 <= a < 2pi.
 
+!!! warning "Deprecated"
+    Use `Base.mod2pi` instead.
+
 ### Given ###
 
 - `a`: Angle (radians)
@@ -3032,6 +3035,9 @@ Normalize angle into the range 0 <= a < 2pi.
 
 """
 anp
+
+@deprecate anp mod2pi
+_anp(a) = ccall((:eraAnp, liberfa), Cdouble, (Cdouble,), a)
 
 """
     anpm(a)
@@ -3047,18 +3053,7 @@ Normalize angle into the range -pi <= a < +pi.
 - Angle in range +/-pi
 
 """
-anpm
-
-for name in ("anp",
-             "anpm")
-    f = Symbol(name)
-    fc = "era" * uppercasefirst(name)
-    @eval begin
-        function ($f)(a)
-            ccall(($fc, liberfa), Cdouble, (Cdouble,), a)
-        end
-    end
-end
+anpm(a) = ccall((:eraAnpm, liberfa), Cdouble, (Cdouble,), a)
 
 """
     a2af(ndp, a)

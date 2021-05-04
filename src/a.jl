@@ -1260,12 +1260,12 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    ut12.  For example, JD(UT1)=2450123.7 could be expressed in any
    of these ways, among others:
 
-          ut11           ut12
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   |    ut11   |   ut12  |                      |
+   |:----------|:--------|----------------------|
+   | 2450123.7 |     0.0 | (JD method)          |
+   | 2451545.0 | -1421.3 | (J2000 method)       |
+   | 2400000.5 | 50123.2 | (MJD method)         |
+   | 2450123.5 |     0.2 | (date & time method) |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -2335,11 +2335,11 @@ or `apcs[13]`.
    for phi = 0.   Example values suitable for a terrestrial
    observer, together with masses, are as follows:
 
-      body i     b[i].bm        b[i].dl
-
-      Sun        1.0            6e-6
-      Jupiter    0.00095435     3e-9
-      Saturn     0.00028574     3e-10
+   | body i  | b[i].bm    | b[i].dl |
+   |:--------|:-----------|:--------|
+   | Sun     | 1.0        | 6e-6    |
+   | Jupiter | 0.00095435 | 3e-9    |
+   | Saturn  | 0.00028574 | 3e-10   |
 
 7. For efficiency, validation of the contents of the b array is
    omitted.  The supplied masses must be greater than zero, the

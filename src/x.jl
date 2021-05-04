@@ -42,7 +42,7 @@ on IAU 2006 precession and IAU 2000A nutation.
    (1999).
 
 4. This is an alternative to the angles-based method, via the ERFA
-   function eraFw2xy and as used in eraXys06a for example.  The two
+   function [`fw2xy`](@ref) and as used in [`xys06a`](@ref) for example.  The two
    methods agree at the 1 microarcsecond level (at present), a
    negligible amount compared with the intrinsic accuracy of the
    models.  However, it would be unwise to mix the two methods
@@ -138,7 +138,7 @@ precession-nutation model.
    Intermediate Origin on the equator of the CIP.
 
 4. A faster, but slightly less accurate result (about 1 mas for
-   X,Y), can be obtained by using instead the eraXys00b function.
+   X,Y), can be obtained by using instead the [`xys00b`](@ref) function.
 
 ### Called ###
 
@@ -199,7 +199,7 @@ precession-nutation model.
    Intermediate Origin on the equator of the CIP.
 
 4. The present function is faster, but slightly less accurate (about
-   1 mas in X,Y), than the eraXys00a function.
+   1 mas in X,Y), than the [`xys00a`](@ref) function.
 
 ### Called ###
 

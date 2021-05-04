@@ -198,7 +198,7 @@ Star proper motion:  update star catalog data for space motion.
    constant VMAX in the function eraStarpv), it is arbitrarily set
    to zero.  When this action occurs, 2 is added to the status.
 
-8. The relativistic adjustment carried out in the eraStarpv function
+8. The relativistic adjustment carried out in the [`starpv`](@ref) function
    involves an iterative calculation.  If the process fails to
    converge within a set number of iterations, 4 is added to the
    status.
@@ -611,7 +611,7 @@ precession-nutation model.
    are the x and y components of the CIP unit vector;  this series
    is more compact than a direct series for s would be.  The present
    function uses the IAU 2000B truncated nutation model when
-   predicting the CIP position.  The function eraS00a uses instead
+   predicting the CIP position.  The function [`s00a`](@ref) uses instead
    the full IAU 2000A model, but with no significant increase in
    accuracy and at some cost in speed.
 

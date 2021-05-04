@@ -125,7 +125,7 @@ as part of transforming coordinate direction into natural direction.
    the light time from that point to the observer.  For cases where
    the body is "behind" the observer no such shift is applied.  If
    a different treatment is preferred, the user has the option of
-   instead using the eraLd function.  Similarly, eraLd can be used
+   instead using the [`ld`](@ref) function.  Similarly, [`ld`](@ref) can be used
    for cases where the source is nearby, not a star.
 
 6. The returned vector sn is not normalized, but the consequential

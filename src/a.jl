@@ -232,7 +232,7 @@ transformation chain.
 2. All the vectors are with respect to BCRS axes.
 
 3. In cases where the caller wishes to supply his own Earth
-   ephemeris, the function eraApcg can be used instead of the present
+   ephemeris, the function [`apcg`](@ref) can be used instead of the present
    function.
 
 4. This is one of several functions that inserts into the astrom
@@ -349,7 +349,7 @@ parts of the astrometric transformation chain.
 2. All the vectors are with respect to BCRS axes.
 
 3. In cases where the caller does not wish to provide the Earth
-   ephemeris and CIP/CIO, the function eraApci13 can be used instead
+   ephemeris and CIP/CIO, the function [`apci13`](@ref) can be used instead
    of the present function.  This computes the required quantities
    using other ERFA functions.
 
@@ -466,7 +466,7 @@ parts of the astrometric transformation chain.
 2. All the vectors are with respect to BCRS axes.
 
 3. In cases where the caller wishes to supply his own Earth
-   ephemeris and CIP/CIO, the function eraApci can be used instead
+   ephemeris and CIP/CIO, the function [`apci`](@ref) can be used instead
    of the present function.
 
 4. This is one of several functions that inserts into the astrom
@@ -621,7 +621,7 @@ site coordinates.
 
 7. In cases where the caller does not wish to provide the Earth
    Ephemeris, the Earth rotation information and refraction
-   constants, the function eraApco13 can be used instead of the
+   constants, the function [`apco13`](@ref) can be used instead of the
    present function.  This starts from UTC and weather readings etc.
    and computes suitable values using other ERFA functions.
 
@@ -735,14 +735,14 @@ parts of the ICRS/CIRS transformations.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -794,7 +794,7 @@ parts of the ICRS/CIRS transformations.
 
 9.  In cases where the caller wishes to supply his own Earth
     ephemeris, Earth rotation information and refraction constants,
-    the function eraApco can be used instead of the present function.
+    the function [`apco`](@ref) can be used instead of the present function.
 
 10. This is one of several functions that inserts into the astrom
     structure star-independent parameters needed for the chain of
@@ -936,7 +936,7 @@ astrometric transformation chain.
    heliocentric and barycentric vectors.
 
 4. In cases where the caller does not wish to provide the Earth
-   ephemeris, the function eraApcs13 can be used instead of the
+   ephemeris, the function [`apcs13`](@ref) can be used instead of the
    present function.  This computes the Earth ephemeris using the
    ERFA function eraEpv00.
 
@@ -1061,7 +1061,7 @@ astrometric transformation chain.
    terrestrial.
 
 4. In cases where the caller wishes to supply his own Earth
-   ephemeris, the function eraApcs can be used instead of the present
+   ephemeris, the function [`apcs`](@ref) can be used instead of the present
    function.
 
 5. This is one of several functions that inserts into the astrom
@@ -1167,7 +1167,7 @@ Earth rotation angle, supplied by the caller explicitly.
    Greenwich apparent sidereal time rather than Earth rotation
    angle.
 
-3. The function eraAper13 can be used instead of the present
+3. The function [`aper13`](@ref) can be used instead of the present
    function, and starts from UT1 rather than ERA itself.
 
 4. This is one of several functions that inserts into the astrom
@@ -1277,7 +1277,7 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    versa.
 
 2. If the caller wishes to provide the Earth rotation angle itself,
-   the function eraAper can be used instead.  One use of this
+   the function [`aper`](@ref) can be used instead.  One use of this
    technique is to substitute Greenwich apparent sidereal time and
    thereby to support equinox based transformations directly.
 
@@ -1392,7 +1392,7 @@ and the refraction constants as well as the site coordinates.
 
 6. In cases where the caller does not wish to provide the Earth
    rotation information and refraction constants, the function
-   eraApio13 can be used instead of the present function.  This
+   [`apio13`](@ref) can be used instead of the present function.  This
    starts from UTC and weather readings etc. and computes suitable
    values using other ERFA functions.
 
@@ -1424,7 +1424,7 @@ and the refraction constants as well as the site coordinates.
    transformation), and atmospheric refraction.
 
 8. The context structure astrom produced by this function is used by
-   eraAtioq and eraAtoiq.
+   [`atioq`](@ref) and eraAtoiq.
 
 ### Called ###
 
@@ -1493,14 +1493,14 @@ conditions and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the future
-    to be trusted.  See eraDat for further details.
+    to be trusted.  See [`dat`](@ref) for further details.
 
 3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -1552,7 +1552,7 @@ conditions and observing wavelength.
 
 9.  In cases where the caller wishes to supply his own Earth
     rotation information and refraction constants, the function
-    eraApc can be used instead of the present function.
+    `apc*` can be used instead of the present function.
 
 10. This is one of several functions that inserts into the astrom
     structure star-independent parameters needed for the chain of
@@ -1582,7 +1582,7 @@ conditions and observing wavelength.
     transformation), and atmospheric refraction.
 
 11. The context structure astrom produced by this function is used
-    by eraAtioq and eraAtoiq.
+    by [`atioq`](@ref) and eraAtoiq.
 
 ### Called ###
 
@@ -1634,7 +1634,7 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 
 1. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
-   preliminary call to eraPmsafe before use.
+   preliminary call to [`pmsafe`](@ref) before use.
 
 2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
@@ -1668,7 +1668,7 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
    errors of up to several milliarcseconds can occur because of
    unmodeled light deflection;  however, the Sun's contribution is
    taken into account, to first order.  The accuracy limitations of
-   the ERFA function eraEpv00 (used to compute Earth position and
+   the ERFA function [`epv00`](@ref) (used to compute Earth position and
    velocity) can contribute aberration errors of up to
    5 microarcseconds.  Light deflection at the Sun's limb is
    uncertain at the 0.4 mas level.
@@ -1676,7 +1676,7 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 5. Should the transformation to (equinox based) apparent place be
    required rather than (CIO based) intermediate place, subtract the
    equation of the origins from the returned right ascension:
-   RA = RI - EO. (The eraAnp function can then be applied, as
+   RA = RI - EO. (The [`anp`](@ref) function can then be applied, as
    required, to keep the result in the conventional 0-2pi range.)
 
 ### Called ###
@@ -1707,7 +1707,7 @@ where many star positions are to be transformed for one date.  The
 star-independent parameters can be obtained by calling one of the
 functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
 
-If the parallax and proper motions are zero the eraAtciqz function
+If the parallax and proper motions are zero the [`atciqz`](@ref) function
 can be used instead.
 
 ### Given ###
@@ -1745,7 +1745,7 @@ can be used instead.
 
 2. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
-   preliminary call to eraPmsafe before use.
+   preliminary call to [`pmsafe`](@ref) before use.
 
 3. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
@@ -1782,8 +1782,8 @@ star-independent parameters can be obtained by calling one of the
 functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
 
 If the only light-deflecting body to be taken into account is the
-Sun, the eraAtciq function can be used instead.  If in addition the
-parallax and proper motions are zero, the eraAtciqz function can be
+Sun, the [`atciq`](@ref) function can be used instead.  If in addition the
+parallax and proper motions are zero, the [`atciqz`](@ref) function can be
 used.
 
 ### Given ###
@@ -1824,7 +1824,7 @@ used.
 
 1. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
-   preliminary call to eraPmsafe before use.
+   preliminary call to [`pmsafe`](@ref) before use.
 
 2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
@@ -1992,7 +1992,7 @@ nutation, Earth orientation and refraction.
 
 1.  Star data for an epoch other than J2000.0 (for example from the
     Hipparcos catalog, which has an epoch of J1991.25) will require
-    a preliminary call to eraPmsafe before use.
+    a preliminary call to [`pmsafe`](@ref) before use.
 
 2.  The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
@@ -2005,14 +2005,14 @@ nutation, Earth orientation and refraction.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2064,8 +2064,8 @@ nutation, Earth orientation and refraction.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-    Without refraction, the complementary functions eraAtco13 and
-    eraAtoc13 are self-consistent to better than 1 microarcsecond
+    Without refraction, the complementary functions [`atco13`](@ref) and
+    [`atoc13`](@ref) are self-consistent to better than 1 microarcsecond
     all over the celestial sphere.  With refraction included,
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
@@ -2157,8 +2157,8 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    accuracy.
 
 2. Iterative techniques are used for the aberration and light
-   deflection corrections so that the functions eraAtic13 (or
-   eraAticq) and eraAtci13 (or eraAtciq) are accurate inverses;
+   deflection corrections so that the functions [`atic13`](@ref) (or
+   eraAticq) and [`atci13`](@ref) (or eraAtciq) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
    1 nanoarcsecond.
 
@@ -2168,7 +2168,7 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    errors of up to several milliarcseconds can occur because of
    unmodeled light deflection;  however, the Sun's contribution is
    taken into account, to first order.  The accuracy limitations of
-   the ERFA function eraEpv00 (used to compute Earth position and
+   the ERFA function [`epv00`](@ref) (used to compute Earth position and
    velocity) can contribute aberration errors of up to
    5 microarcseconds.  Light deflection at the Sun's limb is
    uncertain at the 0.4 mas level.
@@ -2176,7 +2176,7 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
 4. Should the transformation to (equinox based) J2000.0 mean place
    be required rather than (CIO based) ICRS coordinates, subtract the
    equation of the origins from the returned right ascension:
-   RA = RI - EO.  (The eraAnp function can then be applied, as
+   RA = RI - EO.  (The [`anp`](@ref) function can then be applied, as
    required, to keep the result in the conventional 0-2pi range.)
 
 ### Called ###
@@ -2238,8 +2238,8 @@ or eraApcs[13].
    correction.
 
 2. Iterative techniques are used for the aberration and light
-   deflection corrections so that the functions eraAtic13 (or
-   eraAticq) and eraAtci13 (or eraAtciq) are accurate inverses;
+   deflection corrections so that the functions [`atic13`](@ref) (or
+   eraAticq) and [`atci13`](@ref) (or eraAtciq) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
    1 nanoarcsecond.
 
@@ -2309,12 +2309,12 @@ or eraApcs[13].
 ### Notes ###
 
 1. Iterative techniques are used for the aberration and light
-   deflection corrections so that the functions eraAticqn and
-   eraAtciqn are accurate inverses; even at the edge of the Sun's
+   deflection corrections so that the functions [`aticqn`](@ref) and
+   [`atciqn`](@ref) are accurate inverses; even at the edge of the Sun's
    disk the discrepancy is only about 1 nanoarcsecond.
 
 2. If the only light-deflecting body to be taken into account is the
-   Sun, the eraAticq function can be used instead.
+   Sun, the [`aticq`](@ref) function can be used instead.
 
 3. The struct b contains n entries, one for each body to be
    considered.  If n = 0, no gravitational light deflection will be
@@ -2408,14 +2408,14 @@ coordinates, ambient air conditions and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2478,7 +2478,7 @@ coordinates, ambient air conditions and observing wavelength.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-10. The complementary functions eraAtio13 and eraAtoi13 are self-
+10. The complementary functions [`atio13`](@ref) and [`atoi13`](@ref) are self-
     consistent to better than 1 microarcsecond all over the
     celestial sphere.
 
@@ -2567,8 +2567,8 @@ calling eraApio[13] or eraApco[13].
    than 30 arcsec (optical or radio) at 85 degrees and better
    than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-   Without refraction, the complementary functions eraAtioq and
-   eraAtoiq are self-consistent to better than 1 microarcsecond all
+   Without refraction, the complementary functions [`atioq`](@ref) and
+   [`atoiq`](@ref) are self-consistent to better than 1 microarcsecond all
    over the celestial sphere.  With refraction included, consistency
    falls off at high zenith distances, but is still better than
    0.05 arcsec at 85 degrees.
@@ -2581,7 +2581,7 @@ calling eraApio[13] or eraApco[13].
    allowing for space motion, parallax, the Sun's gravitational lens
    effect, annual aberration and precession-nutation.  For star
    positions in the ICRS, these effects can be applied by means of
-   the eraAtci13 (etc.) functions.  Starting from classical "mean
+   the [`atci13`](@ref) (etc.) functions.  Starting from classical "mean
    place" systems, additional transformations will be needed first.
 
 5. "Observed" Az,El means the position that would be seen by a
@@ -2676,14 +2676,14 @@ and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2735,8 +2735,8 @@ and observing wavelength.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-    Without refraction, the complementary functions eraAtco13 and
-    eraAtoc13 are self-consistent to better than 1 microarcsecond
+    Without refraction, the complementary functions [`atco13`](@ref) and
+    [`atoc13`](@ref) are self-consistent to better than 1 microarcsecond
     all over the celestial sphere.  With refraction included,
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
@@ -2829,14 +2829,14 @@ ambient air conditions and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2888,8 +2888,8 @@ ambient air conditions and observing wavelength.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-    Without refraction, the complementary functions eraAtio13 and
-    eraAtoi13 are self-consistent to better than 1 microarcsecond
+    Without refraction, the complementary functions [`atio13`](@ref) and
+    [`atoi13`](@ref) are self-consistent to better than 1 microarcsecond
     all over the celestial sphere.  With refraction included,
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
@@ -2991,8 +2991,8 @@ calling eraApio[13] or eraApco[13].
    than 30 arcsec (optical or radio) at 85 degrees and better than
    20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-   Without refraction, the complementary functions eraAtioq and
-   eraAtoiq are self-consistent to better than 1 microarcsecond all
+   Without refraction, the complementary functions [`atioq`](@ref) and
+   [`atoiq`](@ref) are self-consistent to better than 1 microarcsecond all
    over the celestial sphere.  With refraction included, consistency
    falls off at high zenith distances, but is still better than
    0.05 arcsec at 85 degrees.

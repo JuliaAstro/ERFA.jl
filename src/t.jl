@@ -351,13 +351,13 @@ Coordinated Universal Time, UTC.
    linear UTC(TAI) expression was changed, and these "mini-leaps"
    are also included in the ERFA convention.
 
-3. The function eraD2dtf can be used to transform the UTC quasi-JD
+3. The function [`d2dtf`](@ref) can be used to transform the UTC quasi-JD
    into calendar date and clock time, including UTC leap second
    handling.
 
 4. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
 ### Called ###
 

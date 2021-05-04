@@ -129,11 +129,11 @@ Precession angles, IAU 2006, equinox based.
    IAU 2000A frame bias and nutation.  The quoted polynomials are
    used in other ERFA functions:
 
-   . eraXy06  contains the polynomial parts of the X and Y series.
+   . [`xy06`](@ref)  contains the polynomial parts of the X and Y series.
 
-   . eraS06  contains the polynomial part of the s+XY/2 series.
+   . [`s06`](@ref)  contains the polynomial part of the s+XY/2 series.
 
-   . eraPfw06  implements the series for the Fukushima-Williams
+   . [`pfw06`](@ref)  implements the series for the Fukushima-Williams
      angles that are with respect to the GCRS pole (i.e. the variants
      that include frame bias).
 
@@ -696,7 +696,7 @@ special handling to handle the zero parallax case.
    constant VMAX in the function eraStarpv), it is arbitrarily set
    to zero.  When this action occurs, 2 is added to the status.
 
-8. The relativistic adjustment carried out in the eraStarpv function
+8. The relativistic adjustment carried out in the [`starpv`](@ref) function
    involves an iterative calculation.  If the process fails to
    converge within a set number of iterations, 4 is added to the
    status.
@@ -1761,9 +1761,9 @@ use indirectly.
 2.  The nutation components (luni-solar + planetary, IAU 2000A) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  Free core nutation is omitted;
-    for the utmost accuracy, use the eraPn00  function, where the
+    for the utmost accuracy, use the [`pn00`](@ref)  function, where the
     nutation components are caller-specified.  For faster but
-    slightly less accurate results, use the eraPn00b function.
+    slightly less accurate results, use the [`pn00b`](@ref) function.
 
 3.  The mean obliquity is consistent with the IAU 2000 precession.
 
@@ -1856,8 +1856,8 @@ use indirectly.
 2.  The nutation components (luni-solar + planetary, IAU 2000B) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  For more accurate results, but
-    at the cost of increased computation, use the eraPn00a function.
-    For the utmost accuracy, use the eraPn00  function, where the
+    at the cost of increased computation, use the [`pn00a`](@ref) function.
+    For the utmost accuracy, use the [`pn00`](@ref)  function, where the
     nutation components are caller-specified.
 
 3.  The mean obliquity is consistent with the IAU 2000 precession.
@@ -1951,7 +1951,7 @@ indirectly.
 2.  The nutation components (luni-solar + planetary, IAU 2000A) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  Free core nutation is omitted;
-    for the utmost accuracy, use the eraPn06 function, where the
+    for the utmost accuracy, use the [`pn06`](@ref) function, where the
     nutation components are caller-specified.
 
 3.  The mean obliquity is consistent with the IAU 2006 precession.
@@ -2407,7 +2407,7 @@ frame bias), equinox-based, IAU 2000A model.
    the Geocentric Celestial Reference System (IAU, 2000).
 
 3. A faster, but slightly less accurate result (about 1 mas), can be
-   obtained by using instead the eraPnm00b function.
+   obtained by using instead the [`pnm00b`](@ref) function.
 
 ### Called ###
 
@@ -2463,7 +2463,7 @@ frame bias), equinox-based, IAU 2000B model.
    the Geocentric Celestial Reference System (IAU, 2000).
 
 3. The present function is faster, but slightly less accurate (about
-   1 mas), than the eraPnm00a function.
+   1 mas), than the [`pnm00a`](@ref) function.
 
 ### Called ###
 

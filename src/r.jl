@@ -63,7 +63,7 @@ zenith distance.
 
    the results were as follows:
 
-     ZD       raytrace     eraRefco   Saastamoinen
+     ZD       raytrace     [`refco`](@ref)   Saastamoinen
 
      10         10.27        10.27        10.27
      20         21.19        21.20        21.19

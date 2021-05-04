@@ -17,7 +17,7 @@ related to each other:
            :
           TCG             <-  time scale for GCRS
            :
-    "periodic" terms      <-  eraDtdb  is an implementation
+    "periodic" terms      <-  [`dtdb`](@ref)  is an implementation
            :
   rate adjustment (L_C)   <-  function of solar-system ephemeris
            :
@@ -337,7 +337,7 @@ quasi-JD form that includes special provision for leap seconds).
 
 5. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
 6. For calendar conventions and limitations, see eraCal2jd.
 
@@ -410,7 +410,7 @@ seconds).
 
 6. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
 7. Only in the case of continuous and regular time scales (TAI, TT,
    TCG, TCB and TDB) is the result d1+d2 a Julian Date, strictly

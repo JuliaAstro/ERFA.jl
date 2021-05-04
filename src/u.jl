@@ -97,13 +97,13 @@ Universal Time, UTC.
    function is that the returned quasi JD day UTC1+UTC2 represents
    UTC days whether the length is 86399, 86400 or 86401 SI seconds.
 
-4. The function eraD2dtf can be used to transform the UTC quasi-JD
+4. The function [`d2dtf`](@ref) can be used to transform the UTC quasi-JD
    into calendar date and clock time, including UTC leap second
    handling.
 
 5. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
 ### Called ###
 
@@ -150,9 +150,9 @@ Universal Time, UT1.
 
 3. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
-4. The function eraDtf2d converts from calendar date and time of
+4. The function [`dtf2d`](@ref) converts from calendar date and time of
    day into 2-part Julian Date, and in the case of UTC implements
    the leap-second-ambiguity convention described above.
 
@@ -231,9 +231,9 @@ International Atomic Time, TAI.
 
 3. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
-4. The function eraDtf2d converts from calendar date and time of day
+4. The function [`dtf2d`](@ref) converts from calendar date and time of day
    into 2-part Julian Date, and in the case of UTC implements the
    leap-second-ambiguity convention described above.
 

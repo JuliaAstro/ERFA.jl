@@ -341,7 +341,7 @@ the polar motion, using the IAU 2000A nutation model.
    angle and RPOM is the polar motion matrix.
 
 4. A faster, but slightly less accurate result (about 1 mas), can
-   be obtained by using instead the eraC2t00b function.
+   be obtained by using instead the [`c2t00b`](@ref) function.
 
 ### Called ###
 
@@ -416,7 +416,7 @@ the polar motion, using the IAU 2000B nutation model.
    angle and RPOM is the polar motion matrix.
 
 4. The present function is faster, but slightly less accurate (about
-   1 mas), than the eraC2t00a function.
+   1 mas), than the [`c2t00a`](@ref) function.
 
 ### Called ###
 
@@ -746,7 +746,7 @@ IAU 2000A precession-nutation model.
    Rotation Angle and RPOM is the polar motion matrix.
 
 3. A faster, but slightly less accurate result (about 1 mas), can be
-   obtained by using instead the eraC2i00b function.
+   obtained by using instead the [`c2i00b`](@ref) function.
 
 ### Called ###
 
@@ -816,7 +816,7 @@ IAU 2000B precession-nutation model.
    Rotation Angle and RPOM is the polar motion matrix.
 
 3. The present function is faster, but slightly less accurate (about
-   1 mas), than the eraC2i00a function.
+   1 mas), than the [`c2i00a`](@ref) function.
 
 ### Called ###
 

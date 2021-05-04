@@ -3078,20 +3078,21 @@ Decompose radians into degrees, arcminutes, arcseconds, fraction.
 
 1. The argument ndp is interpreted as follows:
 
-   ndp         resolution
-    :      ...0000 00 00
-   -7         1000 00 00
-   -6          100 00 00
-   -5           10 00 00
-   -4            1 00 00
-   -3            0 10 00
-   -2            0 01 00
-   -1            0 00 10
-    0            0 00 01
-    1            0 00 00.1
-    2            0 00 00.01
-    3            0 00 00.001
-    :            0 00 00.000...
+   | ndp |     resolution       |
+   |:----|:---------------------|
+   |  :  | ...0000 00 00        |
+   | -7  |    1000 00 00        |
+   | -6  |     100 00 00        |
+   | -5  |      10 00 00        |
+   | -4  |       1 00 00        |
+   | -3  |       0 10 00        |
+   | -2  |       0 01 00        |
+   | -1  |       0 00 10        |
+   |  0  |       0 00 01        |
+   |  1  |       0 00 00.1      |
+   |  2  |       0 00 00.01     |
+   |  3  |       0 00 00.001    |
+   |  :  |       0 00 00.000... |
 
 2. The largest positive useful value for ndp is determined by the
    size of angle, the format of doubles on the target platform, and
@@ -3132,20 +3133,21 @@ Decompose radians into hours, minutes, seconds, fraction.
 
 1. The argument ndp is interpreted as follows:
 
-   ndp         resolution
-    :      ...0000 00 00
-   -7         1000 00 00
-   -6          100 00 00
-   -5           10 00 00
-   -4            1 00 00
-   -3            0 10 00
-   -2            0 01 00
-   -1            0 00 10
-    0            0 00 01
-    1            0 00 00.1
-    2            0 00 00.01
-    3            0 00 00.001
-    :            0 00 00.000...
+   | ndp |     resolution       |
+   |:----|:---------------------|
+   |  :  | ...0000 00 00        |
+   | -7  |    1000 00 00        |
+   | -6  |     100 00 00        |
+   | -5  |      10 00 00        |
+   | -4  |       1 00 00        |
+   | -3  |       0 10 00        |
+   | -2  |       0 01 00        |
+   | -1  |       0 00 10        |
+   |  0  |       0 00 01        |
+   |  1  |       0 00 00.1      |
+   |  2  |       0 00 00.01     |
+   |  3  |       0 00 00.001    |
+   |  :  |       0 00 00.000... |
 
 2. The largest positive useful value for ndp is determined by the
    size of angle, the format of doubles on the target platform, and

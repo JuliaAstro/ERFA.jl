@@ -242,12 +242,12 @@ of date) to ICRS RA,Dec, using the IAU 2006 precession model.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraEcm06`: J2000.0 to ecliptic rotation matrix, IAU 2006
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraC2s`: unit vector to spherical coordinates
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`ecm06`](@ref): J2000.0 to ecliptic rotation matrix, IAU 2006
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`c2s`](@ref): unit vector to spherical coordinates
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
 
 """
 eceq06
@@ -298,12 +298,12 @@ precession model.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraEcm06`: J2000.0 to ecliptic rotation matrix, IAU 2006
-- `eraRxp`: product of r-matrix and p-vector
-- `eraC2s`: unit vector to spherical coordinates
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`ecm06`](@ref): J2000.0 to ecliptic rotation matrix, IAU 2006
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`c2s`](@ref): unit vector to spherical coordinates
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
 
 """
 eqec06
@@ -440,10 +440,10 @@ Equation of the equinoxes, compatible with IAU 2000 resolutions.
 
 ### Called ###
 
-- `eraPr00`: IAU 2000 precession adjustments
-- `eraObl80`: mean obliquity, IAU 1980
-- `eraNut00a`: nutation, IAU 2000A
-- `eraEe00`: equation of the equinoxes, IAU 2000
+- [`pr00`](@ref): IAU 2000 precession adjustments
+- [`obl80`](@ref): mean obliquity, IAU 1980
+- [`nut00a`](@ref): nutation, IAU 2000A
+- [`ee00`](@ref): equation of the equinoxes, IAU 2000
 
 ### References ###
 
@@ -503,10 +503,10 @@ using the truncated nutation model IAU 2000B.
 
 ### Called ###
 
-- `eraPr00`: IAU 2000 precession adjustments
-- `eraObl80`: mean obliquity, IAU 1980
-- `eraNut00b`: nutation, IAU 2000B
-- `eraEe00`: equation of the equinoxes, IAU 2000
+- [`pr00`](@ref): IAU 2000 precession adjustments
+- [`obl80`](@ref): mean obliquity, IAU 1980
+- [`nut00b`](@ref): nutation, IAU 2000B
+- [`ee00`](@ref): equation of the equinoxes, IAU 2000
 
 ### References ###
 
@@ -565,9 +565,9 @@ IAU 2006/2000A precession-nutation.
 
 ### Called ###
 
-- `eraAnpm`: normalize angle into range +/- pi
-- `eraGst06a`: Greenwich apparent sidereal time, IAU 2006/2000A
-- `eraGmst06`: Greenwich mean sidereal time, IAU 2006
+- [`anpm`](@ref): normalize angle into range +/- pi
+- [`gst06a`](@ref): Greenwich apparent sidereal time, IAU 2006/2000A
+- [`gmst06`](@ref): Greenwich mean sidereal time, IAU 2006
 
 ### Reference ###
 
@@ -645,14 +645,14 @@ IAU 2000 resolutions.
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFalp03`: mean anomaly of the Sun
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFad03`: mean elongation of the Moon from the Sun
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`falp03`](@ref): mean anomaly of the Sun
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`fad03`](@ref): mean elongation of the Moon from the Sun
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 
@@ -714,10 +714,10 @@ Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraEors`: equation of the origins, given NPB matrix and s
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`eors`](@ref): equation of the origins, given NPB matrix and s
 
 ### References ###
 
@@ -824,9 +824,9 @@ Equation of the equinoxes, IAU 1994 model.
 
 ### Called ###
 
-- `eraAnpm`: normalize angle into range +/- pi
-- `eraNut80`: nutation, IAU 1980
-- `eraObl80`: mean obliquity, IAU 1980
+- [`anpm`](@ref): normalize angle into range +/- pi
+- [`nut80`](@ref): nutation, IAU 1980
+- [`obl80`](@ref): mean obliquity, IAU 1980
 
 ### References ###
 
@@ -882,7 +882,7 @@ Earth rotation angle (IAU 2000 model).
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -958,7 +958,7 @@ given the nutation in longitude and the mean obliquity.
 
 ### Called ###
 
-- `eraEect00`: equation of the equinoxes complementary terms
+- [`eect00`](@ref): equation of the equinoxes complementary terms
 
 ### References ###
 
@@ -1028,11 +1028,11 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
 ### Called ###
 
-- `eraObl06`: mean obliquity, IAU 2006
-- `eraPmat06`: PB matrix, IAU 2006
-- `eraIr`: initialize r-matrix to identity
-- `eraRx`: rotate around X-axis
-- `eraRxr`: product of two r-matrices
+- [`obl06`](@ref): mean obliquity, IAU 2006
+- [`pmat06`](@ref): PB matrix, IAU 2006
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rx`](@ref): rotate around X-axis
+- [`rxr`](@ref): product of two r-matrices
 
 """
 function ecm06(date1, date2)

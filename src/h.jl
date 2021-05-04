@@ -57,15 +57,15 @@ zero Hipparcos proper motion.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraFk5hip`: FK5 to Hipparcos rotation and spin
-- `eraRxp`: product of r-matrix and p-vector
-- `eraSxp`: multiply p-vector by scalar
-- `eraRxr`: product of two r-matrices
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPv2s`: pv-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`fk5hip`](@ref): FK5 to Hipparcos rotation and spin
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`rxr`](@ref): product of two r-matrices
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pv2s`](@ref): pv-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -122,14 +122,14 @@ Transform Hipparcos star data into the FK5 (J2000.0) system.
 
 ### Called ###
 
-- `eraStarpv`: star catalog data to space motion pv-vector
-- `eraFk5hip`: FK5 to Hipparcos rotation and spin
-- `eraRv2m`: r-vector to r-matrix
-- `eraRxp`: product of r-matrix and p-vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPmp`: p-vector minus p-vector
-- `eraPvstar`: space motion pv-vector to star catalog data
+- [`starpv`](@ref): star catalog data to space motion pv-vector
+- [`fk5hip`](@ref): FK5 to Hipparcos rotation and spin
+- [`rv2m`](@ref): r-vector to r-matrix
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pmp`](@ref): p-vector minus p-vector
+- [`pvstar`](@ref): space motion pv-vector to star catalog data
 
 ### Reference ###
 

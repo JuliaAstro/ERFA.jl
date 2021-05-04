@@ -54,8 +54,8 @@ the bias-precession-nutation matrix.  IAU 2000.
 
 ### Called ###
 
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`c2ixy`](@ref): celestial-to-intermediate matrix, given X,Y
 
 ### References ###
 
@@ -203,9 +203,9 @@ Angle and the polar motion matrix).
 
 ### Called ###
 
-- `eraCr`: copy r-matrix
-- `eraRz`: rotate around Z-axis
-- `eraRxr`: product of two r-matrices
+- [`cr`](@ref): copy r-matrix
+- [`rz`](@ref): rotate around Z-axis
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -256,9 +256,9 @@ Sidereal Time and the polar motion matrix).
 
 ### Called ###
 
-- `eraCr`: copy r-matrix
-- `eraRz`: rotate around Z-axis
-- `eraRxr`: product of two r-matrices
+- [`cr`](@ref): copy r-matrix
+- [`rz`](@ref): rotate around Z-axis
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -345,11 +345,11 @@ the polar motion, using the IAU 2000A nutation model.
 
 ### Called ###
 
-- `eraC2i00a`: celestial-to-intermediate matrix, IAU 2000A
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2i00a`](@ref): celestial-to-intermediate matrix, IAU 2000A
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -420,10 +420,10 @@ the polar motion, using the IAU 2000B nutation model.
 
 ### Called ###
 
-- `eraC2i00b`: celestial-to-intermediate matrix, IAU 2000B
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2i00b`](@ref): celestial-to-intermediate matrix, IAU 2000B
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -492,11 +492,11 @@ nutation models.
 
 ### Called ###
 
-- `eraC2i06a`: celestial-to-intermediate matrix, IAU 2006/2000A
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2i06a`](@ref): celestial-to-intermediate matrix, IAU 2006/2000A
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -590,12 +590,12 @@ the nutation and the polar motion.  IAU 2000.
 
 ### Called ###
 
-- `eraPn00`: bias/precession/nutation results, IAU 2000
-- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraEe00`: equation of the equinoxes, IAU 2000
-- `eraPom00`: polar motion matrix
-- `eraC2teqx`: form equinox-based celestial-to-terrestrial matrix
+- [`pn00`](@ref): bias/precession/nutation results, IAU 2000
+- [`gmst00`](@ref): Greenwich mean sidereal time, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`ee00`](@ref): equation of the equinoxes, IAU 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2teqx`](@ref): form equinox-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -670,11 +670,11 @@ the CIP coordinates and the polar motion.  IAU 2000.
 
 ### Called ###
 
-- `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2ixy`](@ref): celestial-to-intermediate matrix, given X,Y
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -750,8 +750,8 @@ IAU 2000A precession-nutation model.
 
 ### Called ###
 
-- `eraPnm00a`: classical NPB matrix, IAU 2000A
-- `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
+- [`pnm00a`](@ref): classical NPB matrix, IAU 2000A
+- [`c2ibpn`](@ref): celestial-to-intermediate matrix, given NPB matrix
 
 ### References ###
 
@@ -820,8 +820,8 @@ IAU 2000B precession-nutation model.
 
 ### Called ###
 
-- `eraPnm00b`: classical NPB matrix, IAU 2000B
-- `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
+- [`pnm00b`](@ref): classical NPB matrix, IAU 2000B
+- [`c2ibpn`](@ref): celestial-to-intermediate matrix, given NPB matrix
 
 ### References ###
 
@@ -887,10 +887,10 @@ IAU 2006 precession and IAU 2000A nutation models.
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
 
 ### References ###
 
@@ -971,8 +971,8 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 
 ### Called ###
 
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
@@ -1025,9 +1025,9 @@ X,Y and the CIO locator s.
 
 ### Called ###
 
-- `eraIr`: initialize r-matrix to identity
-- `eraRz`: rotate around Z-axis
-- `eraRy`: rotate around Y-axis
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rz`](@ref): rotate around Z-axis
+- [`ry`](@ref): rotate around Y-axis
 
 ### Reference ###
 

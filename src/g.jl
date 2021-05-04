@@ -35,8 +35,8 @@ reference ellipsoid.
 
 ### Called ###
 
-- `eraEform`: Earth reference ellipsoids
-- `eraGc2gde`: geocentric to geodetic transformation, general
+- [`eform`](@ref): Earth reference ellipsoids
+- [`gc2gde`](@ref): geocentric to geodetic transformation, general
 
 """
 function gc2gd(n, xyz)
@@ -165,9 +165,9 @@ reference ellipsoid.
 
 ### Called ###
 
-- `eraEform`: Earth reference ellipsoids
-- `eraGd2gce`: geodetic to geocentric transformation, general
-- `eraZp`: zero p-vector
+- [`eform`](@ref): Earth reference ellipsoids
+- [`gd2gce`](@ref): geodetic to geocentric transformation, general
+- [`zp`](@ref): zero p-vector
 
 """
 function gd2gc(n, elong, phi, height)
@@ -298,11 +298,11 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
 ### Called ###
 
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraEors`: equation of the origins, given NPB matrix and s
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`eors`](@ref): equation of the origins, given NPB matrix and s
 
 ### Reference ###
 
@@ -367,7 +367,7 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -439,9 +439,9 @@ resolutions but using the truncated nutation model IAU 2000B).
 
 ### Called ###
 
-- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-- `eraEe00b`: equation of the equinoxes, IAU 2000B
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`gmst00`](@ref): Greenwich mean sidereal time, IAU 2000
+- [`ee00b`](@ref): equation of the equinoxes, IAU 2000B
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -510,9 +510,9 @@ resolutions).
 
 ### Called ###
 
-- `eraGmst82`: Greenwich mean sidereal time, IAU 1982
-- `eraEqeq94`: equation of the equinoxes, IAU 1994
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`gmst82`](@ref): Greenwich mean sidereal time, IAU 1982
+- [`eqeq94`](@ref): equation of the equinoxes, IAU 1994
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -588,8 +588,8 @@ resolutions).
 
 ### Called ###
 
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -653,8 +653,8 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 
 ### Called ###
 
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -720,9 +720,9 @@ resolutions).
 
 ### Called ###
 
-- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-- `eraEe00a`: equation of the equinoxes, IAU 2000A
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`gmst00`](@ref): Greenwich mean sidereal time, IAU 2000
+- [`ee00a`](@ref): equation of the equinoxes, IAU 2000A
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -789,8 +789,8 @@ resolutions).
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraGst06`: Greenwich apparent ST, IAU 2006, given NPB matrix
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`gst06`](@ref): Greenwich apparent ST, IAU 2006, given NPB matrix
 
 ### Reference ###
 
@@ -859,11 +859,11 @@ Transformation from Galactic Coordinates to ICRS.
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
-- `eraS2c`: spherical coordinates to unit vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraC2s`: p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`c2s`](@ref): p-vector to spherical
 
 ### Reference ###
 

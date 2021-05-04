@@ -47,11 +47,11 @@ Transformation from ICRS to Galactic Coordinates.
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
-- `eraS2c`: spherical coordinates to unit vector
-- `eraRxp`: product of r-matrix and p-vector
-- `eraC2s`: p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`c2s`](@ref): p-vector to spherical
 
 ### Reference ###
 

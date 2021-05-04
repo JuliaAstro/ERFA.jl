@@ -258,7 +258,7 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 
 ### Called ###
 
-- `eraCal2jd`: Gregorian calendar to JD
+- [`cal2jd`](@ref): Gregorian calendar to JD
 
 """
 function dat(iy, im, id, fd)
@@ -343,9 +343,9 @@ quasi-JD form that includes special provision for leap seconds).
 
 ### Called ###
 
-- `eraJd2cal`: JD to Gregorian calendar
-- `eraD2tf`: decompose days to hms
-- `eraDat`: delta(AT) = TAI-UTC
+- [`jd2cal`](@ref): JD to Gregorian calendar
+- [`d2tf`](@ref): decompose days to hms
+- [`dat`](@ref): delta(AT) = TAI-UTC
 
 """
 function d2dtf(scale::AbstractString, ndp, d1, d2)
@@ -421,9 +421,9 @@ seconds).
 
 ### Called ###
 
-- `eraCal2jd`: Gregorian calendar to JD
-- `eraDat`: delta(AT) = TAI-UTC
-- `eraJd2cal`: JD to Gregorian calendar
+- [`cal2jd`](@ref): Gregorian calendar to JD
+- [`dat`](@ref): delta(AT) = TAI-UTC
+- [`jd2cal`](@ref): JD to Gregorian calendar
 
 """
 function dtf2d(scale::AbstractString, iy, imo, id, ih, imi, sec)

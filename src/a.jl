@@ -29,7 +29,7 @@ direction.
       0.4 microarcsecond.
 
 2. In almost all cases, the maximum accuracy will be limited by the
-   supplied velocity.  For example, if the ERFA `eraEpv00` function is
+   supplied velocity.  For example, if the ERFA [`epv00`](@ref) function is
    used, errors of up to 5 microarcseconds could occur.
 
 ### References ###
@@ -43,7 +43,7 @@ direction.
 
 ### Called ###
 
-- `eraPdp`: scalar product of two p-vectors
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function ab(pnat, v, s, bm1)
@@ -89,7 +89,7 @@ transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -149,11 +149,11 @@ transformation chain.
    transformation), and atmospheric refraction.
 
 4. The context structure astrom produced by this function is used by
-   `eraAtciq` and `eraAticq`.
+   [`atciq`](@ref) and [`aticq`](@ref).
 
 ### Called ###
 
-- `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
+- [`apcs`](@ref): astrometry parameters, ICRS-GCRS, space observer
 
 """
 function apcg(date1, date2, ebpv, ehp)
@@ -199,7 +199,7 @@ transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -267,8 +267,8 @@ transformation chain.
 
 ### Called ###
 
-- `eraEpv00`: Earth position and velocity
-- `eraApcg`: astrometry parameters, ICRS-GCRS, geocenter
+- [`epv00`](@ref): Earth position and velocity
+- [`apcg`](@ref): astrometry parameters, ICRS-GCRS, geocenter
 
 """
 function apcg13(date1, date2)
@@ -316,7 +316,7 @@ parts of the astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -385,8 +385,8 @@ parts of the astrometric transformation chain.
 
 ### Called ###
 
-- `eraApcg`: astrometry parameters, ICRS-GCRS, geocenter
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
+- [`apcg`](@ref): astrometry parameters, ICRS-GCRS, geocenter
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
 
 """
 function apci(date1, date2, ebpv, ehp, x, y, s)
@@ -432,7 +432,7 @@ parts of the astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 - `eo`: Equation of the origins (ERA-GST)
@@ -501,12 +501,12 @@ parts of the astrometric transformation chain.
 
 ### Called ###
 
-- `eraEpv00`: Earth position and velocity
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraApci`: astrometry parameters, ICRS-CIRS
-- `eraEors`: equation of the origins, given NPB matrix and s
+- [`epv00`](@ref): Earth position and velocity
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`apci`](@ref): astrometry parameters, ICRS-CIRS
+- [`eors`](@ref): equation of the origins, given NPB matrix and s
 
 """
 function apci13(date1, date2)
@@ -560,7 +560,7 @@ site coordinates.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -653,16 +653,16 @@ site coordinates.
    transformation), and atmospheric refraction.
 
 9. The context structure astrom produced by this function is used by
-   `eraAtioq`, `eraAtoiq`, `eraAtciq` and `eraAticq`.
+   [`atioq`](@ref), [`atoiq`](@ref), [`atciq`](@ref) and [`aticq`](@ref).
 
 ### Called ###
 
-- `eraAper`: astrometry parameters: update ERA
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
-- `eraPvtob`: position/velocity of terrestrial station
-- `eraTrxpv`: product of transpose of r-matrix and pv-vector
-- `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
-- `eraCr`: copy r-matrix
+- [`aper`](@ref): astrometry parameters: update ERA
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
+- [`pvtob`](@ref): position/velocity of terrestrial station
+- [`trxpv`](@ref): product of transpose of r-matrix and pv-vector
+- [`apcs`](@ref): astrometry parameters, ICRS-GCRS, space observer
+- [`cr`](@ref): copy r-matrix
 
 """
 function apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
@@ -719,7 +719,7 @@ parts of the ICRS/CIRS transformations.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 - `eo`: Equation of the origins (ERA-GST)
@@ -828,18 +828,18 @@ parts of the ICRS/CIRS transformations.
 
 ### Called ###
 
-- `eraUtctai`: UTC to TAI
-- `eraTaitt`: TAI to TT
-- `eraUtcut1`: UTC to UT1
-- `eraEpv00`: Earth position and velocity
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraRefco`: refraction constants for given ambient conditions
-- `eraApco`: astrometry parameters, ICRS-observed
-- `eraEors`: equation of the origins, given NPB matrix and s
+- [`utctai`](@ref): UTC to TAI
+- [`taitt`](@ref): TAI to TT
+- [`utcut1`](@ref): UTC to UT1
+- [`epv00`](@ref): Earth position and velocity
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`refco`](@ref): refraction constants for given ambient conditions
+- [`apco`](@ref): astrometry parameters, ICRS-observed
+- [`eors`](@ref): equation of the origins, given NPB matrix and s
 
 """
 function apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -893,7 +893,7 @@ astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -972,10 +972,10 @@ astrometric transformation chain.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
-- `eraPm`: modulus of p-vector
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraIr`: initialize r-matrix to identity
+- [`erfa_cp`](@ref): copy p-vector
+- [`pm`](@ref): modulus of p-vector
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`ir`](@ref): initialize r-matrix to identity
 
 """
 function apcs(date1, date2, pv, ebpv, ehp)
@@ -1022,7 +1022,7 @@ astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1096,8 +1096,8 @@ astrometric transformation chain.
 
 ### Called ###
 
-- `eraEpv00`: Earth position and velocity
-- `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
+- [`epv00`](@ref): Earth position and velocity
+- [`apcs`](@ref): astrometry parameters, ICRS-GCRS, space observer
 
 """
 function apcs13(date1, date2, pv)
@@ -1132,7 +1132,7 @@ Earth rotation angle, supplied by the caller explicitly.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1152,7 +1152,7 @@ Earth rotation angle, supplied by the caller explicitly.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1229,7 +1229,7 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1249,7 +1249,7 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1310,8 +1310,8 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
 
 ### Called ###
 
-- `eraAper`: astrometry parameters: update ERA
-- `eraEra00`: Earth rotation angle, IAU 2000
+- [`aper`](@ref): astrometry parameters: update ERA
+- [`era00`](@ref): Earth rotation angle, IAU 2000
 
 """
 function aper13(ut11, ut12, astrom)
@@ -1356,7 +1356,7 @@ and the refraction constants as well as the site coordinates.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1428,8 +1428,8 @@ and the refraction constants as well as the site coordinates.
 
 ### Called ###
 
-- `eraPvtob`: position/velocity of terrestrial station
-- `eraAper`: astrometry parameters: update ERA
+- [`pvtob`](@ref): position/velocity of terrestrial station
+- [`aper`](@ref): astrometry parameters: update ERA
 
 """
 function apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
@@ -1478,7 +1478,7 @@ conditions and observing wavelength.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1586,13 +1586,13 @@ conditions and observing wavelength.
 
 ### Called ###
 
-- `eraUtctai`: UTC to TAI
-- `eraTaitt`: TAI to TT
-- `eraUtcut1`: UTC to UT1
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraRefco`: refraction constants for given ambient conditions
-- `eraApio`: astrometry parameters, CIRS-observed
+- [`utctai`](@ref): UTC to TAI
+- [`taitt`](@ref): TAI to TT
+- [`utcut1`](@ref): UTC to UT1
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`refco`](@ref): refraction constants for given ambient conditions
+- [`apio`](@ref): astrometry parameters, CIRS-observed
 
 """
 function apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -1681,8 +1681,8 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 
 ### Called ###
 
-- `eraApci13`: astrometry parameters, ICRS-CIRS, 2013
-- `eraAtciq`: quick ICRS to CIRS
+- [`apci13`](@ref): astrometry parameters, ICRS-CIRS, 2013
+- [`atciq`](@ref): quick ICRS to CIRS
 
 """
 function atci13(rc, dc, pr, pd, px, rv, date1, date2)
@@ -1731,7 +1731,7 @@ can be used instead.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1751,12 +1751,12 @@ can be used instead.
 
 ### Called ###
 
-- `eraPmpx`: proper motion and parallax
-- `eraLdsun`: light deflection by the Sun
-- `eraAb`: stellar aberration
-- `eraRxp`: product of r-matrix and pv-vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`pmpx`](@ref): proper motion and parallax
+- [`ldsun`](@ref): light deflection by the Sun
+- [`ab`](@ref): stellar aberration
+- [`rxp`](@ref): product of r-matrix and pv-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atciq(rc, dc, pr, pd, px, rv, astrom)
@@ -1807,7 +1807,7 @@ used.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 - `n`: Number of bodies (Note 3)
@@ -1860,12 +1860,12 @@ used.
 
 ### Called ###
 
-- `eraPmpx`: proper motion and parallax
-- `eraLdn`: light deflection by n bodies
-- `eraAb`: stellar aberration
-- `eraRxp`: product of r-matrix and pv-vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`pmpx`](@ref): proper motion and parallax
+- [`ldn`](@ref): light deflection by n bodies
+- [`ab`](@ref): stellar aberration
+- [`rxp`](@ref): product of r-matrix and pv-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Vector{LDBODY})
@@ -1911,7 +1911,7 @@ proper motion is eraAtciq.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1934,12 +1934,12 @@ proper motion is eraAtciq.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraLdsun`: light deflection due to Sun
-- `eraAb`: stellar aberration
-- `eraRxp`: product of r-matrix and p-vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`ldsun`](@ref): light deflection due to Sun
+- [`ab`](@ref): stellar aberration
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range +/- pi
 
 """
 function atciqz(rc, dc, astrom)
@@ -2087,9 +2087,9 @@ nutation, Earth orientation and refraction.
 
 ### Called ###
 
-- `eraApco13`: astrometry parameters, ICRS-observed, 2013
-- `eraAtciq`: quick ICRS to CIRS
-- `eraAtioq`: quick CIRS to observed
+- [`apco13`](@ref): astrometry parameters, ICRS-observed, 2013
+- [`atciq`](@ref): quick ICRS to CIRS
+- [`atioq`](@ref): quick CIRS to observed
 
 """
 function atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2181,8 +2181,8 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
 
 ### Called ###
 
-- `eraApci13`: astrometry parameters, ICRS-CIRS, 2013
-- `eraAticq`: quick CIRS to ICRS astrometric
+- [`apci13`](@ref): astrometry parameters, ICRS-CIRS, 2013
+- [`aticq`](@ref): quick CIRS to ICRS astrometric
 
 """
 function atic13(ri, di, date1, date2)
@@ -2224,7 +2224,7 @@ or eraApcs[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -2245,13 +2245,13 @@ or eraApcs[13].
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraZp`: zero p-vector
-- `eraAb`: stellar aberration
-- `eraLdsun`: light deflection by the Sun
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`zp`](@ref): zero p-vector
+- [`ab`](@ref): stellar aberration
+- [`ldsun`](@ref): light deflection by the Sun
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range +/- pi
 
 """
 function aticq(ri, di, astrom)
@@ -2293,7 +2293,7 @@ or eraApcs[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 - `n`: Number of bodies (Note 3)
@@ -2348,13 +2348,13 @@ or eraApcs[13].
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraZp`: zero p-vector
-- `eraAb`: stellar aberration
-- `eraLdn`: light deflection by n bodies
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`zp`](@ref): zero p-vector
+- [`ab`](@ref): stellar aberration
+- [`ldn`](@ref): light deflection by n bodies
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range +/- pi
 
 """
 function aticqn(ri, di, astrom, b::Array{LDBODY})
@@ -2488,8 +2488,8 @@ coordinates, ambient air conditions and observing wavelength.
 
 ### Called ###
 
-- `eraApio13`: astrometry parameters, CIRS-observed, 2013
-- `eraAtioq`: quick CIRS to observed
+- [`apio13`](@ref): astrometry parameters, CIRS-observed, 2013
+- [`atioq`](@ref): quick CIRS to observed
 
 """
 function atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2540,7 +2540,7 @@ calling eraApio[13] or eraApco[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -2601,9 +2601,9 @@ calling eraApio[13] or eraApco[13].
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atioq(ri, di, astrom)
@@ -2747,9 +2747,9 @@ and observing wavelength.
 
 ### Called ###
 
-- `eraApco13`: astrometry parameters, ICRS-observed
-- `eraAtoiq`: quick observed to CIRS
-- `eraAticq`: quick CIRS to ICRS
+- [`apco13`](@ref): astrometry parameters, ICRS-observed
+- [`atoiq`](@ref): quick observed to CIRS
+- [`aticq`](@ref): quick CIRS to ICRS
 
 """
 function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2900,8 +2900,8 @@ ambient air conditions and observing wavelength.
 
 ### Called ###
 
-- `eraApio13`: astrometry parameters, CIRS-observed, 2013
-- `eraAtoiq`: quick observed to CIRS
+- [`apio13`](@ref): astrometry parameters, CIRS-observed, 2013
+- [`atoiq`](@ref): quick observed to CIRS
 
 """
 function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2951,7 +2951,7 @@ calling eraApio[13] or eraApco[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -3003,9 +3003,9 @@ calling eraApio[13] or eraApco[13].
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atoiq(typeofcoordinates, ob1, ob2, astrom)
@@ -3072,7 +3072,7 @@ Decompose radians into degrees, arcminutes, arcseconds, fraction.
 
 ### Called ###
 
-- `eraD2tf`: decompose days to hms
+- [`d2tf`](@ref): decompose days to hms
 
 ### Notes ###
 
@@ -3126,7 +3126,7 @@ Decompose radians into hours, minutes, seconds, fraction.
 
 ### Called ###
 
-- `eraD2tf`: decompose days to hms
+- [`d2tf`](@ref): decompose days to hms
 
 ### Notes ###
 

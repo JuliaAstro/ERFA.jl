@@ -39,8 +39,8 @@ Proper motion and parallax.
 
 ### Called ###
 
-- `eraPdp`: scalar product of two p-vectors
-- `eraPn`: decompose p-vector into modulus and direction
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pn`](@ref): decompose p-vector into modulus and direction
 
 """
 function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
@@ -165,7 +165,7 @@ Precession angles, IAU 2006, equinox based.
 
 ### Called ###
 
-- `eraObl06`: mean obliquity, IAU 2006
+- [`obl06`](@ref): mean obliquity, IAU 2006
 
 """
 function p06e(date1, date2)
@@ -215,8 +215,8 @@ P-vector to spherical polar coordinates.
 
 ### Called ###
 
-- `eraC2s`: p-vector to spherical
-- `eraPm`: modulus of p-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`pm`](@ref): modulus of p-vector
 
 """
 function p2s(p)
@@ -248,8 +248,8 @@ Extend a p-vector to a pv-vector by appending a zero velocity.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
-- `eraZp`: zero p-vector
+- [`erfa_cp`](@ref): copy p-vector
+- [`zp`](@ref): zero p-vector
 
 """
 p2pv
@@ -324,8 +324,8 @@ bias (the offset between ICRS and mean J2000.0) is included.
 
 ### Called ###
 
-- `eraPmat06`: PB matrix, IAU 2006
-- `eraRz`: rotate around Z-axis
+- [`pmat06`](@ref): PB matrix, IAU 2006
+- [`rz`](@ref): rotate around Z-axis
 
 """
 function pb06(date1, date2)
@@ -409,7 +409,7 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 ### Called ###
 
-- `eraObl06`: mean obliquity, IAU 2006
+- [`obl06`](@ref): mean obliquity, IAU 2006
 
 """
 function pfw06(date1, date2)
@@ -563,7 +563,7 @@ Neptune (but not the Earth itself).
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -703,8 +703,8 @@ special handling to handle the zero parallax case.
 
 ### Called ###
 
-- `eraSeps`: angle between two points
-- `eraStarpm`: update star catalog data for space motion
+- [`seps`](@ref): angle between two points
+- [`starpm`](@ref): update star catalog data for space motion
 
 """
 function pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -759,9 +759,9 @@ Convert a p-vector into modulus and unit vector.
 
 ### Called ###
 
-- `eraPm`: modulus of p-vector
-- `eraZp`: zero p-vector
-- `eraSxp`: multiply p-vector by scalar
+- [`pm`](@ref): modulus of p-vector
+- [`zp`](@ref): zero p-vector
+- [`sxp`](@ref): multiply p-vector by scalar
 
 """
 pn
@@ -802,8 +802,8 @@ It is permissible for any of a, b and apsb to be the same array.
 
 ### Called ###
 
-- `eraSxp`: multiply p-vector by scalar
-- `eraPpp`: p-vector plus p-vector
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`ppp`](@ref): p-vector plus p-vector
 
 """
 ppsp
@@ -958,7 +958,7 @@ Discard velocity component of a pv-vector.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
+- [`erfa_cp`](@ref): copy p-vector
 
 """
 pv2p
@@ -997,7 +997,7 @@ Inner (=scalar=dot) product of two pv-vectors.
 
 ### Called ###
 
-- `eraPdp`: scalar product of two p-vectors
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function pvdpv(a, b)
@@ -1029,7 +1029,7 @@ Modulus of pv-vector.
 
 ### Called ###
 
-- `eraPm`: modulus of p-vector
+- [`pm`](@ref): modulus of p-vector
 
 """
 pvm
@@ -1119,14 +1119,14 @@ Convert star position+velocity vector to catalog coordinates.
 
 ### Called ###
 
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraPdp`: scalar product of two p-vectors
-- `eraSxp`: multiply p-vector by scalar
-- `eraPmp`: p-vector minus p-vector
-- `eraPm`: modulus of p-vector
-- `eraPpp`: p-vector plus p-vector
-- `eraPv2s`: pv-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`pmp`](@ref): p-vector minus p-vector
+- [`pm`](@ref): modulus of p-vector
+- [`ppp`](@ref): p-vector plus p-vector
+- [`pv2s`](@ref): pv-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -1209,9 +1209,9 @@ Position and velocity of a terrestrial observing station.
 
 ### Called ###
 
-- `eraGd2gc`: geodetic to geocentric transformation
-- `eraPom00`: polar motion matrix
-- `eraTrxp`: product of transpose of r-matrix and p-vector
+- [`gd2gc`](@ref): geodetic to geocentric transformation
+- [`pom00`](@ref): polar motion matrix
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
 
 """
 function pvtob(elong, phi, height, xp, yp, sp, theta)
@@ -1247,8 +1247,8 @@ Update a pv-vector.
 
 ### Called ###
 
-- `eraPpsp`: p-vector plus scaled p-vector
-- `eraCp`: copy p-vector
+- [`ppsp`](@ref): p-vector plus scaled p-vector
+- [`erfa_cp`](@ref): copy p-vector
 
 """
 function pvu(dt, pv)
@@ -1366,12 +1366,12 @@ use indirectly.
 
 ### Called ###
 
-- `eraPr00`: IAU 2000 precession adjustments
-- `eraObl80`: mean obliquity, IAU 1980
-- `eraBp00`: frame bias and precession matrices, IAU 2000
-- `eraCr`: copy r-matrix
-- `eraNumat`: form nutation matrix
-- `eraRxr`: product of two r-matrices
+- [`pr00`](@ref): IAU 2000 precession adjustments
+- [`obl80`](@ref): mean obliquity, IAU 1980
+- [`bp00`](@ref): frame bias and precession matrices, IAU 2000
+- [`cr`](@ref): copy r-matrix
+- [`numat`](@ref): form nutation matrix
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -1464,11 +1464,11 @@ indirectly.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraFw2m`: F-W angles to r-matrix
-- `eraCr`: copy r-matrix
-- `eraTr`: transpose r-matrix
-- `eraRxr`: product of two r-matrices
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`fw2m`](@ref): F-W angles to r-matrix
+- [`cr`](@ref): copy r-matrix
+- [`tr`](@ref): transpose r-matrix
+- [`rxr`](@ref): product of two r-matrices
 
 ### References ###
 
@@ -1617,7 +1617,7 @@ Subtract one pv-vector from another.
 
 ### Called ###
 
-- `eraPmp`: p-vector minus p-vector
+- [`pmp`](@ref): p-vector minus p-vector
 
 """
 pvmpv
@@ -1658,7 +1658,7 @@ Add one pv-vector to another.
 
 ### Called ###
 
-- `eraPpp`: p-vector plus p-vector
+- [`ppp`](@ref): p-vector plus p-vector
 
 """
 pvppv
@@ -1701,9 +1701,9 @@ Outer (=vector=cross) product of two pv-vectors.
 
 ### Called ###
 
-- `eraCpv`: copy pv-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPpp`: p-vector plus p-vector
+- [`cpv`](@ref): copy pv-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`ppp`](@ref): p-vector plus p-vector
 
 """
 function pvxpv(a, b)
@@ -1795,8 +1795,8 @@ use indirectly.
 
 ### Called ###
 
-- `eraNut00a`: nutation, IAU 2000A
-- `eraPn00`: bias/precession/nutation results, IAU 2000
+- [`nut00a`](@ref): nutation, IAU 2000A
+- [`pn00`](@ref): bias/precession/nutation results, IAU 2000
 
 ### Reference ###
 
@@ -1890,8 +1890,8 @@ use indirectly.
 
 ### Called ###
 
-- `eraNut00b`: nutation, IAU 2000B
-- `eraPn00`: bias/precession/nutation results, IAU 2000
+- [`nut00b`](@ref): nutation, IAU 2000B
+- [`pn00`](@ref): bias/precession/nutation results, IAU 2000
 
 ### Reference ###
 
@@ -1981,8 +1981,8 @@ indirectly.
 
 ### Called ###
 
-- `eraNut06a`: nutation, IAU 2006/2000A
-- `eraPn06`: bias/precession/nutation results, IAU 2006
+- [`nut06a`](@ref): nutation, IAU 2006/2000A
+- [`pn06`](@ref): bias/precession/nutation results, IAU 2006
 
 ### Reference ###
 
@@ -2076,11 +2076,11 @@ Position-angle from two p-vectors.
 
 ### Called ###
 
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraPm`: modulus of p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPmp`: p-vector minus p-vector
-- `eraPdp`: scalar product of two p-vectors
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`pm`](@ref): modulus of p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pmp`](@ref): p-vector minus p-vector
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function pap(a, b)
@@ -2232,7 +2232,7 @@ date, IAU 2000 model.
 
 ### Called ###
 
-- `eraBp00`: frame bias and precession matrices, IAU 2000
+- [`bp00`](@ref): frame bias and precession matrices, IAU 2000
 
 ### Reference ###
 
@@ -2285,8 +2285,8 @@ date, IAU 2006 model.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraFw2m`: F-W angles to r-matrix
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`fw2m`](@ref): F-W angles to r-matrix
 
 ### References ###
 
@@ -2350,11 +2350,11 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 
 ### Called ###
 
-- `eraPrec76`: accumulated precession angles, IAU 1976
-- `eraIr`: initialize r-matrix to identity
-- `eraRz`: rotate around Z-axis
-- `eraRy`: rotate around Y-axis
-- `eraCr`: copy r-matrix
+- [`prec76`](@ref): accumulated precession angles, IAU 1976
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rz`](@ref): rotate around Z-axis
+- [`ry`](@ref): rotate around Y-axis
+- [`cr`](@ref): copy r-matrix
 
 ### References ###
 
@@ -2411,7 +2411,7 @@ frame bias), equinox-based, IAU 2000A model.
 
 ### Called ###
 
-- `eraPn00a`: bias/precession/nutation, IAU 2000A
+- [`pn00a`](@ref): bias/precession/nutation, IAU 2000A
 
 ### Reference ###
 
@@ -2467,7 +2467,7 @@ frame bias), equinox-based, IAU 2000B model.
 
 ### Called ###
 
-- `eraPn00b`: bias/precession/nutation, IAU 2000B
+- [`pn00b`](@ref): bias/precession/nutation, IAU 2000B
 
 ### Reference ###
 
@@ -2520,9 +2520,9 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraNut06a`: nutation, IAU 2006/2000A
-- `eraFw2m`: F-W angles to r-matrix
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`nut06a`](@ref): nutation, IAU 2006/2000A
+- [`fw2m`](@ref): F-W angles to r-matrix
 
 ### Reference ###
 
@@ -2573,9 +2573,9 @@ precession model, IAU 1980 nutation model.
 
 ### Called ###
 
-- `eraPmat76`: precession matrix, IAU 1976
-- `eraNutm80`: nutation matrix, IAU 1980
-- `eraRxr`: product of two r-matrices
+- [`pmat76`](@ref): precession matrix, IAU 1976
+- [`nutm80`](@ref): nutation matrix, IAU 1980
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -2642,10 +2642,10 @@ Form the matrix of polar motion for a given date, IAU 2000.
 
 ### Called ###
 
-- `eraIr`: initialize r-matrix to identity
-- `eraRz`: rotate around Z-axis
-- `eraRy`: rotate around Y-axis
-- `eraRx`: rotate around X-axis
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rz`](@ref): rotate around Z-axis
+- [`ry`](@ref): rotate around Y-axis
+- [`rx`](@ref): rotate around X-axis
 
 ### Reference ###
 

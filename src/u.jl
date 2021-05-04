@@ -107,9 +107,9 @@ Universal Time, UTC.
 
 ### Called ###
 
-- `eraJd2cal`: JD to Gregorian calendar
-- `eraDat`: delta(AT) = TAI-UTC
-- `eraCal2jd`: Gregorian calendar to JD
+- [`jd2cal`](@ref): JD to Gregorian calendar
+- [`dat`](@ref): delta(AT) = TAI-UTC
+- [`cal2jd`](@ref): Gregorian calendar to JD
 
 ### References ###
 
@@ -174,10 +174,10 @@ Universal Time, UT1.
 
 ### Called ###
 
-- `eraJd2cal`: JD to Gregorian calendar
-- `eraDat`: delta(AT) = TAI-UTC
-- `eraUtctai`: UTC to TAI
-- `eraTaiut1`: TAI to UT1
+- [`jd2cal`](@ref): JD to Gregorian calendar
+- [`dat`](@ref): delta(AT) = TAI-UTC
+- [`utctai`](@ref): UTC to TAI
+- [`taiut1`](@ref): TAI to UT1
 
 """
 utcut1
@@ -242,9 +242,9 @@ International Atomic Time, TAI.
 
 ### Called ###
 
-- `eraJd2cal`: JD to Gregorian calendar
-- `eraDat`: delta(AT) = TAI-UTC
-- `eraCal2jd`: Gregorian calendar to JD
+- [`jd2cal`](@ref): JD to Gregorian calendar
+- [`dat`](@ref): delta(AT) = TAI-UTC
+- [`cal2jd`](@ref): Gregorian calendar to JD
 
 ### References ###
 

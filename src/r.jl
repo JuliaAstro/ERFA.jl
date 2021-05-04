@@ -248,7 +248,7 @@ Multiply two r-matrices.
 
 ### Called ###
 
-- `eraCr`: copy r-matrix
+- [`cr`](@ref): copy r-matrix
 
 """
 rxr
@@ -395,7 +395,7 @@ Multiply a pv-vector by an r-matrix.
 
 ### Called ###
 
-- `eraRxp`: product of r-matrix and p-vector
+- [`rxp`](@ref): product of r-matrix and p-vector
 
 """
 rxpv
@@ -435,7 +435,7 @@ Multiply a p-vector by an r-matrix.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
+- [`erfa_cp`](@ref): copy p-vector
 
 """
 rxp

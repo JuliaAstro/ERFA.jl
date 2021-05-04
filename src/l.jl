@@ -62,8 +62,8 @@ transforming coordinate direction into natural direction.
 
 ### Called ###
 
-- `eraPdp`: scalar product of two p-vectors
-- `eraPxp`: vector product of two p-vectors
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pxp`](@ref): vector product of two p-vectors
 
 """
 function ld(bm, p, q, e, em, dlim)
@@ -145,12 +145,12 @@ as part of transforming coordinate direction into natural direction.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
-- `eraPdp`: scalar product of two p-vectors
-- `eraPmp`: p-vector minus p-vector
-- `eraPpsp`: p-vector plus scaled p-vector
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraLd`: light deflection by a solar-system body
+- [`erfa_cp`](@ref): copy p-vector
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pmp`](@ref): p-vector minus p-vector
+- [`ppsp`](@ref): p-vector plus scaled p-vector
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`ld`](@ref): light deflection by a solar-system body
 
 """
 function ldn(l::Vector{LDBODY}, ob, sc)
@@ -194,7 +194,7 @@ Deflection of starlight by the Sun.
 
 ### Called ###
 
-- `eraLd`: light deflection by a solar-system body
+- [`ld`](@ref): light deflection by a solar-system body
 
 """
 function ldsun(p, e, em)
@@ -247,10 +247,10 @@ ICRS equatorial to ecliptic rotation matrix, long-term.
 
 ### Called ###
 
-- `eraLtpequ`: equator pole, long term
-- `eraLtpecl`: ecliptic pole, long term
-- `eraPxp`: vector product
-- `eraPn`: normalize vector
+- [`ltpequ`](@ref): equator pole, long term
+- [`ltpecl`](@ref): ecliptic pole, long term
+- [`pxp`](@ref): vector product
+- [`pn`](@ref): normalize vector
 
 ### References ###
 
@@ -297,10 +297,10 @@ Long-term precession matrix.
 
 ### Called ###
 
-- `eraLtpequ`: equator pole, long term
-- `eraLtpecl`: ecliptic pole, long term
-- `eraPxp`: vector product
-- `eraPn`: normalize vector
+- [`ltpequ`](@ref): equator pole, long term
+- [`ltpecl`](@ref): ecliptic pole, long term
+- [`pxp`](@ref): vector product
+- [`pn`](@ref): normalize vector
 
 ### References ###
 
@@ -502,12 +502,12 @@ of date) to ICRS RA,Dec, using a long-term precession model.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraLtecm`: J2000.0 to ecliptic rotation matrix, long term
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraC2s`: unit vector to spherical coordinates
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`ltecm`](@ref): J2000.0 to ecliptic rotation matrix, long term
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`c2s`](@ref): unit vector to spherical coordinates
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
 
 ### References ###
 
@@ -556,12 +556,12 @@ precession model.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraLtecm`: J2000.0 to ecliptic rotation matrix, long term
-- `eraRxp`: product of r-matrix and p-vector
-- `eraC2s`: unit vector to spherical coordinates
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`ltecm`](@ref): J2000.0 to ecliptic rotation matrix, long term
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`c2s`](@ref): unit vector to spherical coordinates
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
 
 ### References ###
 

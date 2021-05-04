@@ -27,7 +27,7 @@ FK5 to Hipparcos rotation and spin.
 
 ### Called ###
 
-- `eraRv2m`: r-vector to r-matrix
+- [`rv2m`](@ref): r-vector to r-matrix
 
 ### Reference ###
 
@@ -98,14 +98,14 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraFk5hip`: FK5 to Hipparcos rotation and spin
-- `eraSxp`: multiply p-vector by scalar
-- `eraRv2m`: r-vector to r-matrix
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`fk5hip`](@ref): FK5 to Hipparcos rotation and spin
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`rv2m`](@ref): r-vector to r-matrix
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -163,8 +163,8 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
 ### Called ###
 
-- `eraFw2m`: F-W angles to r-matrix
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
+- [`fw2m`](@ref): F-W angles to r-matrix
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
 
 ### Reference ###
 
@@ -717,12 +717,12 @@ Transform FK5 (J2000.0) star data into the Hipparcos system.
 
 ### Called ###
 
-- `eraStarpv`: star catalog data to space motion pv-vector
-- `eraFk5hip`: FK5 to Hipparcos rotation and spin
-- `eraRxp`: product of r-matrix and p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPpp`: p-vector plus p-vector
-- `eraPvstar`: space motion pv-vector to star catalog data
+- [`starpv`](@ref): star catalog data to space motion pv-vector
+- [`fk5hip`](@ref): FK5 to Hipparcos rotation and spin
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`ppp`](@ref): p-vector plus p-vector
+- [`pvstar`](@ref): space motion pv-vector to star catalog data
 
 ### Reference ###
 
@@ -799,9 +799,9 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 ### Called ###
 
-- `eraIr`: initialize r-matrix to identity
-- `eraRz`: rotate around Z-axis
-- `eraRx`: rotate around X-axis
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rz`](@ref): rotate around Z-axis
+- [`rx`](@ref): rotate around X-axis
 
 ### Reference ###
 

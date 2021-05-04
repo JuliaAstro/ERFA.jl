@@ -20,7 +20,7 @@ Transpose an r-matrix.
 
 ### Called ###
 
-- `eraCr`: copy r-matrix
+- [`cr`](@ref): copy r-matrix
 
 """
 tr
@@ -59,8 +59,8 @@ Multiply a pv-vector by the transpose of an r-matrix.
 
 ### Called ###
 
-- `eraTr`: transpose r-matrix
-- `eraRxpv`: product of r-matrix and pv-vector
+- [`tr`](@ref): transpose r-matrix
+- [`rxpv`](@ref): product of r-matrix and pv-vector
 
 """
 trxpv
@@ -100,8 +100,8 @@ Multiply a p-vector by the transpose of an r-matrix.
 
 ### Called ###
 
-- `eraTr`: transpose r-matrix
-- `eraRxp`: product of r-matrix and p-vector
+- [`tr`](@ref): transpose r-matrix
+- [`rxp`](@ref): product of r-matrix and p-vector
 
 """
 trxp
@@ -361,7 +361,7 @@ Coordinated Universal Time, UTC.
 
 ### Called ###
 
-- `eraUtctai`: UTC to TAI
+- [`utctai`](@ref): UTC to TAI
 
 ### References ###
 

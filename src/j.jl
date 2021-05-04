@@ -96,7 +96,7 @@ for formatting messages:  rounded to a specified precision.
 
 ### Called ###
 
-- `eraJd2cal`: JD to Gregorian calendar
+- [`jd2cal`](@ref): JD to Gregorian calendar
 
 ### Reference ###
 

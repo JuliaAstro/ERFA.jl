@@ -28,9 +28,9 @@ Form the matrix of nutation.
 
 ### Called ###
 
-- `eraIr`: initialize r-matrix to identity
-- `eraRx`: rotate around X-axis
-- `eraRz`: rotate around Z-axis
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rx`](@ref): rotate around X-axis
+- [`rz`](@ref): rotate around Z-axis
 
 ### Reference ###
 
@@ -162,17 +162,17 @@ with free core nutation omitted).
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFame03`: mean longitude of Mercury
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFama03`: mean longitude of Mars
-- `eraFaju03`: mean longitude of Jupiter
-- `eraFasa03`: mean longitude of Saturn
-- `eraFaur03`: mean longitude of Uranus
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fame03`](@ref): mean longitude of Mercury
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fama03`](@ref): mean longitude of Mars
+- [`faju03`](@ref): mean longitude of Jupiter
+- [`fasa03`](@ref): mean longitude of Saturn
+- [`faur03`](@ref): mean longitude of Uranus
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 
@@ -368,7 +368,7 @@ precession.
 
 ### Called ###
 
-- `eraNut00a`: nutation, IAU 2000A
+- [`nut00a`](@ref): nutation, IAU 2000A
 
 ### References ###
 
@@ -434,7 +434,7 @@ Nutation, IAU 1980 model.
 
 ### Called ###
 
-- `eraAnpm`: normalize angle into range +/- pi
+- [`anpm`](@ref): normalize angle into range +/- pi
 
 ### Reference ###
 
@@ -507,7 +507,7 @@ Form the matrix of nutation for a given date, IAU 2000A model.
 
 ### Called ###
 
-- `eraPn00a`: bias/precession/nutation, IAU 2000A
+- [`pn00a`](@ref): bias/precession/nutation, IAU 2000A
 
 ### Reference ###
 
@@ -562,7 +562,7 @@ Form the matrix of nutation for a given date, IAU 2000B model.
 
 ### Called ###
 
-- `eraPn00b`: bias/precession/nutation, IAU 2000B
+- [`pn00b`](@ref): bias/precession/nutation, IAU 2000B
 
 ### Reference ###
 
@@ -614,9 +614,9 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
 
 ### Called ###
 
-- `eraObl06`: mean obliquity, IAU 2006
-- `eraNut06a`: nutation, IAU 2006/2000A
-- `eraNumat`: form nutation matrix
+- [`obl06`](@ref): mean obliquity, IAU 2006
+- [`nut06a`](@ref): nutation, IAU 2006/2000A
+- [`numat`](@ref): form nutation matrix
 
 ### Reference ###
 
@@ -668,9 +668,9 @@ Form the matrix of nutation for a given date, IAU 1980 model.
 
 ### Called ###
 
-- `eraNut80`: nutation, IAU 1980
-- `eraObl80`: mean obliquity, IAU 1980
-- `eraNumat`: form nutation matrix
+- [`nut80`](@ref): nutation, IAU 1980
+- [`obl80`](@ref): mean obliquity, IAU 1980
+- [`numat`](@ref): form nutation matrix
 
 """
 nutm80

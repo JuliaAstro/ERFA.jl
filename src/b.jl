@@ -144,14 +144,14 @@ Frame bias and precession, IAU 2000.
 
 ### Called ###
 
-- `eraBi00`: frame bias components, IAU 2000
-- `eraPr00`: IAU 2000 precession adjustments
-- `eraIr`: initialize r-matrix to identity
-- `eraRx`: rotate around X-axis
-- `eraRy`: rotate around Y-axis
-- `eraRz`: rotate around Z-axis
-- `eraCr`: copy r-matrix
-- `eraRxr`: product of two r-matrices
+- [`bi00`](@ref): frame bias components, IAU 2000
+- [`pr00`](@ref): IAU 2000 precession adjustments
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rx`](@ref): rotate around X-axis
+- [`ry`](@ref): rotate around Y-axis
+- [`rz`](@ref): rotate around Z-axis
+- [`cr`](@ref): copy r-matrix
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -215,12 +215,12 @@ Frame bias and precession, IAU 2006.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraFw2m`: F-W angles to r-matrix
-- `eraPmat06`: PB matrix, IAU 2006
-- `eraTr`: transpose r-matrix
-- `eraRxr`: product of two r-matrices
-- `eraCr`: copy r-matrix
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`fw2m`](@ref): F-W angles to r-matrix
+- [`pmat06`](@ref): PB matrix, IAU 2006
+- [`tr`](@ref): transpose r-matrix
+- [`rxr`](@ref): product of two r-matrices
+- [`cr`](@ref): copy r-matrix
 
 ### References ###
 

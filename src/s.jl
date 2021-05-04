@@ -38,8 +38,8 @@ Convert spherical polar coordinates to p-vector.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraSxp`: multiply p-vector by scalar
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`sxp`](@ref): multiply p-vector by scalar
 
 """
 function s2p(theta, phi, r)
@@ -101,7 +101,7 @@ Multiply a pv-vector by two scalars.
 
 ### Called ###
 
-- `eraSxp`: multiply p-vector by scalar
+- [`sxp`](@ref): multiply p-vector by scalar
 
 """
 s2xpv
@@ -205,10 +205,10 @@ Star proper motion:  update star catalog data for space motion.
 
 ### Called ###
 
-- `eraStarpv`: star catalog data to space motion pv-vector
-- `eraPvu`: update a pv-vector
-- `eraPdp`: scalar product of two p-vectors
-- `eraPvstar`: space motion pv-vector to star catalog data
+- [`starpv`](@ref): star catalog data to space motion pv-vector
+- [`pvu`](@ref): update a pv-vector
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pvstar`](@ref): space motion pv-vector to star catalog data
 
 """
 function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -326,14 +326,14 @@ Convert star catalog coordinates to position+velocity vector.
 
 ### Called ###
 
-- `eraS2pv`: spherical coordinates to pv-vector
-- `eraPm`: modulus of p-vector
-- `eraZp`: zero p-vector
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraPdp`: scalar product of two p-vectors
-- `eraSxp`: multiply p-vector by scalar
-- `eraPmp`: p-vector minus p-vector
-- `eraPpp`: p-vector plus p-vector
+- [`s2pv`](@ref): spherical coordinates to pv-vector
+- [`pm`](@ref): modulus of p-vector
+- [`zp`](@ref): zero p-vector
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`pmp`](@ref): p-vector minus p-vector
+- [`ppp`](@ref): p-vector plus p-vector
 
 ### Reference ###
 
@@ -415,7 +415,7 @@ Multiply a pv-vector by a scalar.
 
 ### Called ###
 
-- `eraS2xpv`: multiply pv-vector by two scalars
+- [`s2xpv`](@ref): multiply pv-vector by two scalars
 
 """
 sxpv
@@ -449,8 +449,8 @@ Angular separation between two sets of spherical coordinates.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraSepp`: angular separation between two p-vectors
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`sepp`](@ref): angular separation between two p-vectors
 
 """
 function seps(al, ap, bl, bp)
@@ -483,9 +483,9 @@ Angular separation between two p-vectors.
 
 ### Called ###
 
-- `eraPxp`: vector product of two p-vectors
-- `eraPm`: modulus of p-vector
-- `eraPdp`: scalar product of two p-vectors
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pm`](@ref): modulus of p-vector
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function sepp(a, b)
@@ -545,9 +545,9 @@ precession-nutation model.
 
 ### Called ###
 
-- `eraPnm00a`: classical NPB matrix, IAU 2000A
-- `eraBnp2xy`: extract CIP X,Y from the BPN matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00a`](@ref): classical NPB matrix, IAU 2000A
+- [`bpn2xy`](@ref): extract CIP X,Y from the BPN matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### References ###
 
@@ -617,9 +617,9 @@ precession-nutation model.
 
 ### Called ###
 
-- `eraPnm00b`: classical NPB matrix, IAU 2000B
-- `eraBnp2xy`: extract CIP X,Y from the BPN matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00b`](@ref): classical NPB matrix, IAU 2000B
+- [`bpn2xy`](@ref): extract CIP X,Y from the BPN matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### References ###
 
@@ -687,9 +687,9 @@ precession and IAU 2000A nutation models.
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
 
 ### References ###
 
@@ -823,14 +823,14 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFalp03`: mean anomaly of the Sun
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFad03`: mean elongation of the Moon from the Sun
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`falp03`](@ref): mean anomaly of the Sun
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`fad03`](@ref): mean elongation of the Moon from the Sun
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 
@@ -904,14 +904,14 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFalp03`: mean anomaly of the Sun
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFad03`: mean elongation of the Moon from the Sun
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`falp03`](@ref): mean anomaly of the Sun
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`fad03`](@ref): mean elongation of the Moon from the Sun
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 

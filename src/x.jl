@@ -50,20 +50,20 @@ on IAU 2006 precession and IAU 2000A nutation.
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFalp03`: mean anomaly of the Sun
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFad03`: mean elongation of the Moon from the Sun
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFame03`: mean longitude of Mercury
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFama03`: mean longitude of Mars
-- `eraFaju03`: mean longitude of Jupiter
-- `eraFasa03`: mean longitude of Saturn
-- `eraFaur03`: mean longitude of Uranus
-- `eraFane03`: mean longitude of Neptune
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`falp03`](@ref): mean anomaly of the Sun
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`fad03`](@ref): mean elongation of the Moon from the Sun
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fame03`](@ref): mean longitude of Mercury
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fama03`](@ref): mean longitude of Mars
+- [`faju03`](@ref): mean longitude of Jupiter
+- [`fasa03`](@ref): mean longitude of Saturn
+- [`faur03`](@ref): mean longitude of Uranus
+- [`fane03`](@ref): mean longitude of Neptune
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 
@@ -142,9 +142,9 @@ precession-nutation model.
 
 ### Called ###
 
-- `eraPnm00a`: classical NPB matrix, IAU 2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00a`](@ref): classical NPB matrix, IAU 2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
@@ -203,9 +203,9 @@ precession-nutation model.
 
 ### Called ###
 
-- `eraPnm00b`: classical NPB matrix, IAU 2000B
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00b`](@ref): classical NPB matrix, IAU 2000B
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
@@ -263,9 +263,9 @@ precession and IAU 2000A nutation models.
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
 
 ### References ###
 

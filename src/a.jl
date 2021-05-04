@@ -149,7 +149,7 @@ transformation chain.
    transformation), and atmospheric refraction.
 
 4. The context structure astrom produced by this function is used by
-   [`atciq`](@ref) and [`aticq`](@ref).
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
@@ -263,7 +263,7 @@ transformation chain.
    transformation), and atmospheric refraction.
 
 5. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
@@ -381,7 +381,7 @@ parts of the astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 5. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
@@ -497,7 +497,7 @@ parts of the astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 5. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
@@ -824,7 +824,7 @@ parts of the ICRS/CIRS transformations.
     transformation), and atmospheric refraction.
 
 11. The context structure astrom produced by this function is used
-    by [`atioq`](@ref), [`atoiq`](@ref), eraAtciq* and eraAticq*.
+    by [`atioq`](@ref), [`atoiq`](@ref), `atciq*` and `aticq*`.
 
 ### Called ###
 
@@ -968,7 +968,7 @@ astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 6. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
@@ -1092,7 +1092,7 @@ astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 6. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
@@ -1705,7 +1705,7 @@ star-independent astrometry parameters.
 Use of this function is appropriate when efficiency is important and
 where many star positions are to be transformed for one date.  The
 star-independent parameters can be obtained by calling one of the
-functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
+functions `apci[13]`, `apcg[13]`, `apco[13]` or `apcs[13]`.
 
 If the parallax and proper motions are zero the [`atciqz`](@ref) function
 can be used instead.
@@ -1779,7 +1779,7 @@ deflecting bodies.
 Use of this function is appropriate when efficiency is important and
 where many star positions are to be transformed for one date.  The
 star-independent parameters can be obtained by calling one of the
-functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
+functions `apci[13]`, `apcg[13]`, `apco[13]` or `apcs[13]`.
 
 If the only light-deflecting body to be taken into account is the
 Sun, the [`atciq`](@ref) function can be used instead.  If in addition the
@@ -1889,7 +1889,7 @@ proper motion.
 Use of this function is appropriate when efficiency is important and
 where many star positions are to be transformed for one date.  The
 star-independent parameters can be obtained by calling one of the
-functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
+functions `apci[13]`, `apcg[13]`, `apco[13]` or `apcs[13]`.
 
 The corresponding function for the case of non-zero parallax and
 proper motion is [`atciq`](@ref).
@@ -2204,8 +2204,8 @@ independent astrometry parameters.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling one of the functions eraApci[13], eraApcg[13], eraApco[13]
-or eraApcs[13].
+calling one of the functions `apci[13]`, `apcg[13]`, `apco[13]`
+or `apcs[13]`.
 
 ### Given ###
 
@@ -2273,8 +2273,8 @@ bodies.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling one of the functions eraApci[13], eraApcg[13], eraApco[13]
-or eraApcs[13].
+calling one of the functions `apci[13]`, `apcg[13]`, `apco[13]`
+or `apcs[13]`.
 
 ### Given ###
 
@@ -2520,7 +2520,7 @@ Quick CIRS to observed place transformation.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling eraApio[13] or eraApco[13].
+calling `apio[13]` or `apco[13]`.
 
 ### Given ###
 
@@ -2595,8 +2595,8 @@ calling eraApio[13] or eraApco[13].
    obtained by subtracting the HA from the local ERA.
 
 6. The star-independent CIRS-to-observed-place parameters in ASTROM
-   may be computed with eraApio[13] or eraApco[13].  If nothing has
-   changed significantly except the time, eraAper[13] may be used to
+   may be computed with `apio[13]` or `apco[13]`.  If nothing has
+   changed significantly except the time, `aper[13]` may be used to
    perform the requisite adjustment to the astrom structure.
 
 ### Called ###
@@ -2930,7 +2930,7 @@ parameters.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling eraApio[13] or eraApco[13].
+calling `apio[13]` or `apco[13]`.
 
 ### Given ###
 

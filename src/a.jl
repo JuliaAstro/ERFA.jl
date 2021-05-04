@@ -824,7 +824,7 @@ parts of the ICRS/CIRS transformations.
     transformation), and atmospheric refraction.
 
 11. The context structure astrom produced by this function is used
-    by eraAtioq, eraAtoiq, eraAtciq* and eraAticq*.
+    by [`atioq`](@ref), [`atoiq`](@ref), eraAtciq* and eraAticq*.
 
 ### Called ###
 
@@ -938,7 +938,7 @@ astrometric transformation chain.
 4. In cases where the caller does not wish to provide the Earth
    ephemeris, the function [`apcs13`](@ref) can be used instead of the
    present function.  This computes the Earth ephemeris using the
-   ERFA function eraEpv00.
+   ERFA function [`epv00`](@ref).
 
 5. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
@@ -1364,7 +1364,7 @@ and the refraction constants as well as the site coordinates.
 
 1. sp, the TIO locator s', is a tiny quantity needed only by the
    most precise applications.  It can either be set to zero or
-   predicted using the ERFA function eraSp00.
+   predicted using the ERFA function [`sp00`](@ref).
 
 2. The geographical coordinates are with respect to the ERFA_WGS84
    reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
@@ -1424,7 +1424,7 @@ and the refraction constants as well as the site coordinates.
    transformation), and atmospheric refraction.
 
 8. The context structure astrom produced by this function is used by
-   [`atioq`](@ref) and eraAtoiq.
+   [`atioq`](@ref) and [`atoiq`](@ref).
 
 ### Called ###
 
@@ -1582,7 +1582,7 @@ conditions and observing wavelength.
     transformation), and atmospheric refraction.
 
 11. The context structure astrom produced by this function is used
-    by [`atioq`](@ref) and eraAtoiq.
+    by [`atioq`](@ref) and [`atoiq`](@ref).
 
 ### Called ###
 
@@ -1892,7 +1892,7 @@ star-independent parameters can be obtained by calling one of the
 functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
 
 The corresponding function for the case of non-zero parallax and
-proper motion is eraAtciq.
+proper motion is [`atciq`](@ref).
 
 ### Given ###
 
@@ -2158,7 +2158,7 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
 
 2. Iterative techniques are used for the aberration and light
    deflection corrections so that the functions [`atic13`](@ref) (or
-   eraAticq) and [`atci13`](@ref) (or eraAtciq) are accurate inverses;
+   [`aticq`](@ref)) and [`atci13`](@ref) (or [`atciq`](@ref)) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
    1 nanoarcsecond.
 
@@ -2239,7 +2239,7 @@ or eraApcs[13].
 
 2. Iterative techniques are used for the aberration and light
    deflection corrections so that the functions [`atic13`](@ref) (or
-   eraAticq) and [`atci13`](@ref) (or eraAtciq) are accurate inverses;
+   [`aticq`](@ref)) and [`atci13`](@ref) (or [`atciq`](@ref)) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
    1 nanoarcsecond.
 

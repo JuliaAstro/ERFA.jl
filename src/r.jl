@@ -170,7 +170,7 @@ Express an r-matrix as an r-vector.
    some arbitrary axis called the Euler axis.  The "rotation vector"
    returned by this function has the same direction as the Euler axis,
    and its magnitude is the angle in radians.  (The magnitude and
-   direction can be separated by means of the function eraPn.)
+   direction can be separated by means of the function [`pn`](@ref).)
 
 2. If r is null, so is the result.  If r is not a rotation matrix
    the result is undefined;  r must be proper (i.e. have a positive

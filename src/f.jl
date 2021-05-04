@@ -94,7 +94,7 @@ Hipparcos catalogue, assuming zero Hipparcos proper motion.
 4. The position returned by this function is in the Hipparcos
    reference system but at date date1+date2.
 
-5. See also eraFk52h, eraH2fk5, eraHfk5z.
+5. See also [`fk52h`](@ref), [`h2fk5`](@ref), [`hfk5z`](@ref).
 
 ### Called ###
 
@@ -713,7 +713,7 @@ Transform FK5 (J2000.0) star data into the Hipparcos system.
    rotation and spin;  zonal errors in the FK5 catalog are not
    taken into account.
 
-4. See also eraH2fk5, eraFk5hz, eraHfk5z.
+4. See also [`h2fk5`](@ref), [`fk5hz`](@ref), [`hfk5z`](@ref).
 
 ### Called ###
 

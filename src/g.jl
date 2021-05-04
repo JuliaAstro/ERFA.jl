@@ -31,7 +31,7 @@ reference ellipsoid.
    error status -2 is theoretically impossible.  In all error cases,
    all three results are set to -1e9.
 
-4. The inverse transformation is performed in the function eraGd2gc.
+4. The inverse transformation is performed in the function [`gd2gc`](@ref).
 
 ### Called ###
 
@@ -92,10 +92,10 @@ ellipsoid of specified form.
    unchanged.
 
 6. The inverse transformation is performed in the function
-   eraGd2gce.
+   [`gd2gce`](@ref).
 
 7. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
-   more conveniently be performed by calling eraGc2gd, which uses a
+   more conveniently be performed by calling [`gc2gd`](@ref), which uses a
    numerical code to identify the required A and F values.
 
 ### Reference ###
@@ -161,7 +161,7 @@ reference ellipsoid.
    lead to arithmetic exceptions.  In all error cases, xyz is set
    to zeros.
 
-4. The inverse transformation is performed in the function eraGc2gd.
+4. The inverse transformation is performed in the function [`gc2gd`](@ref).
 
 ### Called ###
 
@@ -218,10 +218,10 @@ ellipsoid of specified form.
    to arithmetic exceptions.  If an error occurs, xyz is unchanged.
 
 5. The inverse transformation is performed in the function
-   eraGc2gde.
+   [`gc2gde`](@ref).
 
 6. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
-   more conveniently be performed by calling eraGd2gc,  which uses a
+   more conveniently be performed by calling [`gd2gc`](@ref),  which uses a
    numerical code to identify the required a and f values.
 
 ### References ###
@@ -855,7 +855,7 @@ Transformation from Galactic Coordinates to ICRS.
    recomputed from the canonical three angles and are given to 30
    decimal places.
 
-2. The inverse transformation is performed by the function eraIcrs2g.
+2. The inverse transformation is performed by the function [`icrs2g`](@ref).
 
 ### Called ###
 

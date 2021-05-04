@@ -89,7 +89,7 @@ for formatting messages:  rounded to a specified precision.
    the Gregorian Calendar, nor is the AD/BC numbering convention
    observed.
 
-3. Refer to the function eraJd2cal.
+3. Refer to the function [`jd2cal`](@ref).
 
 4. NDP should be 4 or less if internal overflows are to be
    avoided on machines which use 16-bit integers.

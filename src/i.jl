@@ -43,7 +43,7 @@ Transformation from ICRS to Galactic Coordinates.
    recomputed from the canonical three angles and are given to 30
    decimal places.
 
-2. The inverse transformation is performed by the function eraG2icrs.
+2. The inverse transformation is performed by the function [`g2icrs`](@ref).
 
 ### Called ###
 

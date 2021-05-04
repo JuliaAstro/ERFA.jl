@@ -259,7 +259,7 @@ precession and IAU 2000A nutation models.
    Intermediate Origin on the equator of the CIP.
 
 4. Series-based solutions for generating X and Y are also available:
-   see Capitaine & Wallace (2006) and eraXy06.
+   see Capitaine & Wallace (2006) and [`xy06`](@ref).
 
 ### Called ###
 

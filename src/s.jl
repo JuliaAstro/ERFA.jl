@@ -190,12 +190,12 @@ Star proper motion:  update star catalog data for space motion.
 
 6. An extremely small (or zero or negative) parallax is interpreted
    to mean that the object is on the "celestial sphere", the radius
-   of which is an arbitrary (large) value (see the eraStarpv
+   of which is an arbitrary (large) value (see the [`starpv`](@ref)
    function for the value used).  When the distance is overridden in
    this way, the status, initially zero, has 1 added to it.
 
 7. If the space velocity is a significant fraction of c (see the
-   constant VMAX in the function eraStarpv), it is arbitrarily set
+   constant VMAX in the function [`starpv`](@ref)), it is arbitrarily set
    to zero.  When this action occurs, 2 is added to the status.
 
 8. The relativistic adjustment carried out in the [`starpv`](@ref) function
@@ -322,7 +322,7 @@ Convert star catalog coordinates to position+velocity vector.
    iterations, 4 is added to the status.
 
 9. The inverse transformation is performed by the function
-   eraPvstar.
+   [`pvstar`](@ref).
 
 ### Called ###
 
@@ -540,7 +540,7 @@ precession-nutation model.
    is more compact than a direct series for s would be.  The present
    function uses the full IAU 2000A nutation model when predicting
    the CIP position.  Faster results, with no significant loss of
-   accuracy, can be obtained via the function eraS00b, which uses
+   accuracy, can be obtained via the function [`s00b`](@ref), which uses
    instead the IAU 2000B truncated model.
 
 ### Called ###

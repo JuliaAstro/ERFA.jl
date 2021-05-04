@@ -178,7 +178,7 @@ Terrestrial Time, TT.
    adopted solar-system ephemeris, and can be obtained by numerical
    integration, by interrogating a precomputed time ephemeris or by
    evaluating a model such as that implemented in the ERFA function
-   eraDtdb.   The quantity is dominated by an annual term of 1.7 ms
+   [`dtdb`](@ref).   The quantity is dominated by an annual term of 1.7 ms
    amplitude.
 
 3. TDB is essentially the same as Teph, the time argument for the
@@ -221,7 +221,7 @@ Dynamical Time, TDB.
    adopted solar-system ephemeris, and can be obtained by numerical
    integration, by interrogating a precomputed time ephemeris or by
    evaluating a model such as that implemented in the ERFA function
-   eraDtdb.   The quantity is dominated by an annual term of 1.7 ms
+   [`dtdb`](@ref).   The quantity is dominated by an annual term of 1.7 ms
    amplitude.
 
 3. TDB is essentially the same as Teph, the time argument for the JPL

@@ -339,7 +339,7 @@ quasi-JD form that includes special provision for leap seconds).
    introduction of the time scale or that are too far in the future
    to be trusted.  See [`dat`](@ref) for further details.
 
-6. For calendar conventions and limitations, see eraCal2jd.
+6. For calendar conventions and limitations, see [`cal2jd`](@ref).
 
 ### Called ###
 
@@ -388,7 +388,7 @@ seconds).
    case) is significant, and enables handling of leap seconds (see
    Note 4).
 
-2. For calendar conventions and limitations, see eraCal2jd.
+2. For calendar conventions and limitations, see [`cal2jd`](@ref).
 
 3. The sum of the results, d1+d2, is Julian Date, where normally d1
    is the Julian Day Number and d2 is the fraction of a day.  In the

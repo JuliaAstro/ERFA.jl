@@ -32,9 +32,9 @@ of MHB2000 with additions).
     Astrophys., 387, 700, 2002.
 
 - Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
-    and precession   New nutation series for nonrigid Earth and
-    insights into the Earth's interior", J.Geophys.Res., 107, B4,
-    2002.  The MHB2000 code itself was obtained on 9th September 2002
+    and precession: New nutation series for nonrigid Earth and
+    insights into the Earth's interior", J.Geophys.Res., 107, B4, 2002.
+    The MHB2000 code itself was obtained on 9th September 2002
     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
 """
@@ -114,12 +114,12 @@ Frame bias and precession, IAU 2000.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-           date1         date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -187,12 +187,12 @@ Frame bias and precession, IAU 2006.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-           date1         date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution

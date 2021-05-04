@@ -1414,12 +1414,12 @@ indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution
@@ -1744,12 +1744,12 @@ use indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution
@@ -1839,12 +1839,12 @@ use indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution
@@ -1934,12 +1934,12 @@ indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution

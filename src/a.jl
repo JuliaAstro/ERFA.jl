@@ -1260,12 +1260,12 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    ut12.  For example, JD(UT1)=2450123.7 could be expressed in any
    of these ways, among others:
 
-   |    ut11   |   ut12  |                      |
+   |  `ut11`   | `ut12`  | Method               |
    |:----------|:--------|----------------------|
-   | 2450123.7 |     0.0 | (JD method)          |
-   | 2451545.0 | -1421.3 | (J2000 method)       |
-   | 2400000.5 | 50123.2 | (MJD method)         |
-   | 2450123.5 |     0.2 | (date & time method) |
+   | 2450123.7 |     0.0 | JD                   |
+   | 2451545.0 | -1421.3 | J2000                |
+   | 2400000.5 | 50123.2 | MJD                  |
+   | 2450123.5 |     0.2 | date & time          |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -2056,7 +2056,7 @@ nutation, Earth orientation and refraction.
     occur at 100 micrometers (about 3000 GHz).
 
 10. The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted observed
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2470,7 +2470,7 @@ coordinates, ambient air conditions and observing wavelength.
     with its polar axis aligned to the Earth's axis of rotation.
 
 9.  The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2559,7 +2559,7 @@ calling `apio[13]` or `apco[13]`.
    depression of the horizon.
 
 2. The accuracy of the result is limited by the corrections for
-   refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+   refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
    Providing the meteorological parameters are known accurately and
    there are no gross local effects, the predicted observed
    coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2727,7 +2727,7 @@ and observing wavelength.
     occur at 100 micrometers (about 3000 GHz).
 
 10. The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2880,7 +2880,7 @@ ambient air conditions and observing wavelength.
     occur at 100 micrometers (about 3000 GHz).
 
 10. The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2983,7 +2983,7 @@ calling `apio[13]` or `apco[13]`.
    allowance is made for depression of the horizon.)
 
 3. The accuracy of the result is limited by the corrections for
-   refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+   refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
    Providing the meteorological parameters are known accurately and
    there are no gross local effects, the predicted observed
    coordinates should be within 0.05 arcsec (optical) or 1 arcsec

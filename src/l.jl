@@ -114,11 +114,11 @@ as part of transforming coordinate direction into natural direction.
    for phi = 0.   Example values suitable for a terrestrial
    observer, together with masses, are as follows:
 
-      body i     b[i].bm        b[i].dl
-
-      Sun        1.0            6e-6
-      Jupiter    0.00095435     3e-9
-      Saturn     0.00028574     3e-10
+   | `body i` | `b[i].bm`  | `b[i].dl` |
+   |:---------|:-----------|:----------|
+   |  Sun     | 1.0        |  6e-6     |
+   |  Jupiter | 0.00095435 |  3e-9     |
+   |  Saturn  | 0.00028574 |  3e-10    |
 
 5. For cases where the starlight passes the body before reaching the
    observer, the body is placed back along its barycentric track by

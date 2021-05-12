@@ -611,7 +611,7 @@ site coordinates.
    local meridian.
 
 5. The refraction constants refa and refb are for use in a
-   dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
+   ``dZ = A*\\tan(Z)+B*\\tan^3(Z)`` model, where Z is the observed
    (i.e. refracted) zenith distance and dZ is the amount of
    refraction.
 
@@ -1386,7 +1386,7 @@ and the refraction constants as well as the site coordinates.
    local meridian.
 
 4. The refraction constants refa and refb are for use in a
-   dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
+   ``dZ = A*\\tan(Z)+B*\\tan^3(Z)`` model, where Z is the observed
    (i.e. refracted) zenith distance and dZ is the amount of
    refraction.
 
@@ -1855,11 +1855,11 @@ used.
    for phi = 0.   Example values suitable for a terrestrial
    observer, together with masses, are as follows:
 
-      body i     b[i].bm        b[i].dl
-
-      Sun        1.0            6e-6
-      Jupiter    0.00095435     3e-9
-      Saturn     0.00028574     3e-10
+   | `body i` | `b[i].bm`  | `b[i].dl` |
+   |:---------|:-----------|:----------|
+   |  Sun     | 1.0        |  6e-6     |
+   |  Jupiter | 0.00095435 |  3e-9     |
+   |  Saturn  | 0.00028574 |  3e-10    |
 
 7. For efficiency, validation of the contents of the b array is
    omitted.  The supplied masses must be greater than zero, the
@@ -2347,11 +2347,11 @@ or `apcs[13]`.
    for phi = 0.   Example values suitable for a terrestrial
    observer, together with masses, are as follows:
 
-   | body i  | b[i].bm    | b[i].dl |
-   |:--------|:-----------|:--------|
-   | Sun     | 1.0        | 6e-6    |
-   | Jupiter | 0.00095435 | 3e-9    |
-   | Saturn  | 0.00028574 | 3e-10   |
+   | `body i` | `b[i].bm`  | `b[i].dl` |
+   |:---------|:-----------|:----------|
+   |  Sun     | 1.0        |  6e-6     |
+   |  Jupiter | 0.00095435 |  3e-9     |
+   |  Saturn  | 0.00028574 |  3e-10    |
 
 7. For efficiency, validation of the contents of the b array is
    omitted.  The supplied masses must be greater than zero, the

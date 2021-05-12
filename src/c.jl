@@ -40,9 +40,9 @@ the bias-precession-nutation matrix.  IAU 2000.
 3. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = RC2T * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -193,9 +193,9 @@ Angle and the polar motion matrix).
 
 2. The relationship between the arguments is as follows:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -246,9 +246,9 @@ Sidereal Time and the polar motion matrix).
 
 2. The relationship between the arguments is as follows:
 
-      [TRS] = rpom * R_3(gst) * rbpn * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = rpom * R_3(gst) * rbpn * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -330,9 +330,9 @@ the polar motion, using the IAU 2000A nutation model.
 3. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -405,9 +405,9 @@ the polar motion, using the IAU 2000B nutation model.
 3. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -480,9 +480,9 @@ nutation models.
 3. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -575,9 +575,9 @@ the nutation and the polar motion.  IAU 2000.
 4. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(GST) * RBPN * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(GST) * RBPN * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -656,9 +656,9 @@ the CIP coordinates and the polar motion.  IAU 2000.
 4. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -736,9 +736,9 @@ IAU 2000A precession-nutation model.
 2. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS]
-
-             =  rc2t * [CRS]
+    ```
+    [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS] =  rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -806,9 +806,9 @@ IAU 2000B precession-nutation model.
 2. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS]
-
-             =  rc2t * [CRS]
+    ```
+    [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS] =  rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -876,9 +876,9 @@ IAU 2006 precession and IAU 2000A nutation models.
 2. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS]
-
-             =  RC2T * [CRS]
+    ```
+    [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS] =  RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -957,9 +957,9 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 3. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = RC2T * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -1014,9 +1014,9 @@ X,Y and the CIO locator s.
 3. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = RC2T * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial

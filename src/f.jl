@@ -141,24 +141,24 @@ CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 
 1. Naming the following points:
 
-         e = J2000.0 ecliptic pole,
-         p = GCRS pole
-         E = ecliptic pole of date,
-   and   P = CIP,
+   - e = J2000.0 ecliptic pole,
+   - p = GCRS pole
+   - E = ecliptic pole of date,
+   - and P = CIP,
 
    the four Fukushima-Williams angles are as follows:
 
-      gamb = gamma = epE
-      phib = phi = pE
-      psi = psi = pEP
-      eps = epsilon = EP
+   - gamb = gamma = epE
+   - phib = phi = pE
+   - psi = psi = pEP
+   - eps = epsilon = EP
 
 2. The matrix representing the combined effects of frame bias,
    precession and nutation is:
 
-      NxPxB = R_1(-epsA).R_3(-psi).R_1(phib).R_3(gamb)
+   `NxPxB = R_1(-epsA).R_3(-psi).R_1(phib).R_3(gamb)`
 
-   The returned values x,y are elements [2][0] and [2][1] of the
+   The returned values x,y are elements `[3, 1]` and `[2, 1]` of the
    matrix.  Near J2000.0, they are essentially angles in radians.
 
 ### Called ###
@@ -763,35 +763,35 @@ Form rotation matrix given the Fukushima-Williams angles.
 
 1. Naming the following points:
 
-         e = J2000.0 ecliptic pole,
-         p = GCRS pole,
-         E = ecliptic pole of date,
-   and   P = CIP,
+   - e = J2000.0 ecliptic pole,
+   - p = GCRS pole,
+   - E = ecliptic pole of date,
+   - and P = CIP,
 
    the four Fukushima-Williams angles are as follows:
 
-      gamb = gamma = epE
-      phib = phi = pE
-      psi = psi = pEP
-      eps = epsilon = EP
+    - gamb = gamma = epE
+    - phib = phi = pE
+    - psi = psi = pEP
+    - eps = epsilon = EP
 
 2. The matrix representing the combined effects of frame bias,
    precession and nutation is:
 
-      NxPxB = R_1(-eps).R_3(-psi).R_1(phib).R_3(gamb)
+   `NxPxB = R_1(-eps).R_3(-psi).R_1(phib).R_3(gamb)`
 
 3. Three different matrices can be constructed, depending on the
    supplied angles:
 
-   o  To obtain the nutation x precession x frame bias matrix,
+   -  To obtain the nutation x precession x frame bias matrix,
       generate the four precession angles, generate the nutation
-      components and add them to the psi_bar and epsilon_A angles,
+      components and add them to the `psi_bar` and `epsilon_A` angles,
       and call the present function.
 
-   o  To obtain the precession x frame bias matrix, generate the
+   -  To obtain the precession x frame bias matrix, generate the
       four precession angles and call the present function.
 
-   o  To obtain the frame bias matrix, generate the four precession
+   -  To obtain the frame bias matrix, generate the four precession
       angles for date J2000.0 and call the present function.
 
    The nutation-only and precession-only matrices can if necessary

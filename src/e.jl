@@ -138,21 +138,23 @@ respect to the Barycentric Celestial Reference System.
 
 2. On return, the arrays pvh and pvb contain the following:
 
-      pvh[0][0]  x       }
-      pvh[0][1]  y       } heliocentric position, au
-      pvh[0][2]  z       }
+   ```
+   pvh[0][0]  x       }
+   pvh[0][1]  y       } heliocentric position, au
+   pvh[0][2]  z       }
 
-      pvh[1][0]  xdot    }
-      pvh[1][1]  ydot    } heliocentric velocity, au/d
-      pvh[1][2]  zdot    }
+   pvh[1][0]  xdot    }
+   pvh[1][1]  ydot    } heliocentric velocity, au/d
+   pvh[1][2]  zdot    }
 
-      pvb[0][0]  x       }
-      pvb[0][1]  y       } barycentric position, au
-      pvb[0][2]  z       }
+   pvb[0][0]  x       }
+   pvb[0][1]  y       } barycentric position, au
+   pvb[0][2]  z       }
 
-      pvb[1][0]  xdot    }
-      pvb[1][1]  ydot    } barycentric velocity, au/d
-      pvb[1][2]  zdot    }
+   pvb[1][0]  xdot    }
+   pvb[1][1]  ydot    } barycentric velocity, au/d
+   pvb[1][2]  zdot    }
+   ```
 
    The vectors are with respect to the Barycentric Celestial
    Reference System.  The time unit is one day in TDB.
@@ -165,14 +167,16 @@ respect to the Barycentric Celestial Reference System.
 4. Comparisons over the time span 1900-2100 with this simplified
    solution and the JPL DE405 ephemeris give the following results:
 
-                              RMS    max
-         Heliocentric:
-            position error    3.7   11.2   km
-            velocity error    1.4    5.0   mm/s
+   ```
+                         RMS    max
+   Heliocentric:
+       position error    3.7   11.2   km
+       velocity error    1.4    5.0   mm/s
 
-         Barycentric:
-            position error    4.6   13.4   km
-            velocity error    1.4    4.9   mm/s
+   Barycentric:
+       position error    4.6   13.4   km
+       velocity error    1.4    4.9   mm/s
+   ```
 
    Comparisons with the JPL DE406 ephemeris show that by 1800 and
    2200 the position errors are approximately double their 1900-2100
@@ -874,8 +878,8 @@ Earth rotation angle (IAU 2000 model).
    question and the dj2 argument lies in the range 0 to 1, or vice
    versa.
 
-2. The algorithm is adapted from Expression 22 of Capitaine et al.
-   2000.  The time argument has been expressed in days directly,
+2. The algorithm is adapted from Expression 22 of Capitaine et al. 2000.
+   The time argument has been expressed in days directly,
    and, to retain precision, integer contributions have been
    eliminated.  The same formulation is given in IERS Conventions
    (2003), Chap. 5, Eq. 14.
@@ -1011,13 +1015,15 @@ ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 
 1. The matrix is in the sense
 
-      E_ep = rm x P_ICRS,
+   ```
+   E_ep = rm x P_ICRS,
+   ```
 
-   where P_ICRS is a vector with respect to ICRS right ascension
-   and declination axes and E_ep is the same vector with respect to
+   where `P_ICRS` is a vector with respect to ICRS right ascension
+   and declination axes and `E_ep` is the same vector with respect to
    the (inertial) ecliptic and equinox of date.
 
-2. P_ICRS is a free vector, merely a direction, typically of unit
+2. `P_ICRS` is a free vector, merely a direction, typically of unit
    magnitude, and not bound to any particular spatial origin, such
    as the Earth, Sun or SSB.  No assumptions are made about whether
    it represents starlight and embodies astrometric effects such as

@@ -107,8 +107,8 @@ Conventions (McCarthy & Petit 2003).
 
 6. The geocentric TDB-TT model used in the present function is that of
    Fairhead & Bretagnon (1990), in its full form.  It was originally
-   supplied by Fairhead (private communications with P.T.Wallace,
-   1990. as a Fortran subroutine.  The present C function contains an
+   supplied by Fairhead (private communications with P.T.Wallace, 1990)
+   as a Fortran subroutine.  The present C function contains an
    adaptation of the Fairhead code.  The numerical results are
    essentially unaffected by the changes, the differences with
    respect to the Fairhead & Bretagnon original being at the 1e-20 s
@@ -475,20 +475,21 @@ Decompose days to hours, minutes, seconds, fraction.
 
 1. The argument ndp is interpreted as follows:
 
-   ndp         resolution
-    :      ...0000 00 00
-   -7         1000 00 00
-   -6          100 00 00
-   -5           10 00 00
-   -4            1 00 00
-   -3            0 10 00
-   -2            0 01 00
-   -1            0 00 10
-    0            0 00 01
-    1            0 00 00.1
-    2            0 00 00.01
-    3            0 00 00.001
-    :            0 00 00.000...
+   | ndp |     resolution       |
+   |:----|:---------------------|
+   |  :  | ...0000 00 00        |
+   | -7  |    1000 00 00        |
+   | -6  |     100 00 00        |
+   | -5  |      10 00 00        |
+   | -4  |       1 00 00        |
+   | -3  |       0 10 00        |
+   | -2  |       0 01 00        |
+   | -1  |       0 00 10        |
+   |  0  |       0 00 01        |
+   |  1  |       0 00 00.1      |
+   |  2  |       0 00 00.01     |
+   |  3  |       0 00 00.001    |
+   |  :  |       0 00 00.000... |
 
 2. The largest positive useful value for ndp is determined by the
    size of days, the format of double on the target platform, and

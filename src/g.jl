@@ -20,9 +20,9 @@ reference ellipsoid.
 1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-        - `WGS84`
-        - `GRS80`
-        - `WGS72`
+   - `WGS84`
+   - `GRS80`
+   - `WGS72`
 
 2. The geocentric vector (xyz, given) and height (height, returned)
    are in meters.
@@ -832,15 +832,15 @@ Transformation from Galactic Coordinates to ICRS.
    interpreting the system in a modern context, several factors have
    to be taken into account:
 
-   . The inclusion in FK4 positions of the E-terms of aberration.
+   - The inclusion in FK4 positions of the E-terms of aberration.
 
-   . The distortion of the FK4 proper motion system by differential
-     Galactic rotation.
+   - The distortion of the FK4 proper motion system by differential
+   - Galactic rotation.
 
-   . The use of the B1950.0 equinox rather than the now-standard
-     J2000.0.
+   - The use of the B1950.0 equinox rather than the now-standard
+   - J2000.0.
 
-   . The frame bias between ICRS and the J2000.0 mean place system.
+   - The frame bias between ICRS and the J2000.0 mean place system.
 
    The Hipparcos Catalogue (Perryman & ESA 1997) provides a rotation
    matrix that transforms directly between ICRS and Galactic

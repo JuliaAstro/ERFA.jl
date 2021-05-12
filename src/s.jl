@@ -287,12 +287,12 @@ Convert star catalog coordinates to position+velocity vector.
    "space motion" transformation.  The differences, which are the
    subject of the Stumpff paper referenced below, are:
 
-   (i) In stars with significant radial velocity and proper motion,
-   the constantly changing light-time distorts the apparent proper
-   motion.  Note that this is a classical, not a relativistic,
-   effect.
+   - In stars with significant radial velocity and proper motion,
+     the constantly changing light-time distorts the apparent proper
+     motion.  Note that this is a classical, not a relativistic,
+     effect.
 
-   (ii) The transformation complies with special relativity.
+   - The transformation complies with special relativity.
 
 3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the

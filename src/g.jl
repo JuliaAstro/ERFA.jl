@@ -421,11 +421,11 @@ resolutions but using the truncated nutation model IAU 2000B).
    that accuracy has been compromised for the sake of speed and
    convenience in two respects:
 
-   . UT is used instead of TDB (or TT) to compute the precession
+   - UT is used instead of TDB (or TT) to compute the precession
      component of GMST and the equation of the equinoxes.  This
      results in errors of order 0.1 mas at present.
 
-   . The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
+   - The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
      is used, introducing errors of up to 1 mas.
 
 3. This GAST is compatible with the IAU 2000 resolutions and must be

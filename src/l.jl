@@ -223,13 +223,15 @@ ICRS equatorial to ecliptic rotation matrix, long-term.
 
 1. The matrix is in the sense
 
-      E_ep = rm x P_ICRS,
+   ```
+   E_ep = rm x P_ICRS,
+   ```
 
-   where P_ICRS is a vector with respect to ICRS right ascension
-   and declination axes and E_ep is the same vector with respect to
+   where `P_ICRS` is a vector with respect to ICRS right ascension
+   and declination axes and `E_ep` is the same vector with respect to
    the (inertial) ecliptic and equinox of epoch epj.
 
-2. P_ICRS is a free vector, merely a direction, typically of unit
+2. `P_ICRS` is a free vector, merely a direction, typically of unit
    magnitude, and not bound to any particular spatial origin, such
    as the Earth, Sun or SSB.  No assumptions are made about whether
    it represents starlight and embodies astrometric effects such as
@@ -282,10 +284,12 @@ Long-term precession matrix.
 
 1. The matrix is in the sense
 
-      P_date = rp x P_J2000,
+   ```
+   P_date = rp x P_J2000,
+   ```
 
-   where P_J2000 is a vector with respect to the J2000.0 mean
-   equator and equinox and P_date is the same vector with respect to
+   where `P_J2000` is a vector with respect to the J2000.0 mean
+   equator and equinox and `P_date` is the same vector with respect to
    the equator and equinox of epoch epj.
 
 2. The Vondrak et al. (2011, 2012) 400 millennia precession model
@@ -332,10 +336,12 @@ Long-term precession matrix, including ICRS frame bias.
 
 1. The matrix is in the sense
 
-      P_date = rpb x P_ICRS,
+   ```
+   P_date = rpb x P_ICRS,
+   ```
 
-   where P_ICRS is a vector in the Geocentric Celestial Reference
-   System, and P_date is the vector with respect to the Celestial
+   where `P_ICRS` is a vector in the Geocentric Celestial Reference
+   System, and `P_date` is the vector with respect to the Celestial
    Intermediate Reference System at that date but with nutation
    neglected.
 

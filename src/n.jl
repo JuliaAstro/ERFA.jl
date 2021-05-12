@@ -126,29 +126,29 @@ with free core nutation omitted).
    must be taken into account if more accurate or definitive results
    are required (see Wallace 2002):
 
-     (i) The MHB2000 total nutations are simply arithmetic sums,
-         yet in reality the various components are successive Euler
-         rotations.  This slight lack of rigor leads to cross terms
-         that exceed 1 mas after a century.  The rigorous procedure
-         is to form the GCRS-to-true rotation matrix by applying the
-         bias, precession and nutation in that order.
+   - The MHB2000 total nutations are simply arithmetic sums,
+     yet in reality the various components are successive Euler
+     rotations.  This slight lack of rigor leads to cross terms
+     that exceed 1 mas after a century.  The rigorous procedure
+     is to form the GCRS-to-true rotation matrix by applying the
+     bias, precession and nutation in that order.
 
-    (ii) Although the precession adjustments are stated to be with
-         respect to Lieske et al. (1977), the MHB2000 model does
-         not specify which set of Euler angles are to be used and
-         how the adjustments are to be applied.  The most literal
-         and straightforward procedure is to adopt the 4-rotation
-         epsilon_0, psi_A, omega_A, xi_A option, and to add DPSIPR
-         to psi_A and DEPSPR to both omega_A and eps_A.
+   - Although the precession adjustments are stated to be with
+     respect to Lieske et al. (1977), the MHB2000 model does
+     not specify which set of Euler angles are to be used and
+     how the adjustments are to be applied.  The most literal
+     and straightforward procedure is to adopt the 4-rotation
+     epsilon_0, psi_A, omega_A, xi_A option, and to add DPSIPR
+     to psi_A and DEPSPR to both omega_A and eps_A.
 
-   (iii) The MHB2000 model predates the determination by Chapront
-         et al. (2002) of a 14.6 mas displacement between the
-         J2000.0 mean equinox and the origin of the ICRS frame.  It
-         should, however, be noted that neglecting this displacement
-         when calculating star coordinates does not lead to a
-         14.6 mas change in right ascension, only a small second-
-         order distortion in the pattern of the precession-nutation
-         effect.
+   - The MHB2000 model predates the determination by Chapront
+     et al. (2002) of a 14.6 mas displacement between the
+     J2000.0 mean equinox and the origin of the ICRS frame.  It
+     should, however, be noted that neglecting this displacement
+     when calculating star coordinates does not lead to a
+     14.6 mas change in right ascension, only a small second-
+     order distortion in the pattern of the precession-nutation
+     effect.
 
    For these reasons, the ERFA functions do not generate the "total
    nutations" directly, though they can of course easily be
@@ -244,8 +244,8 @@ Nutation, IAU 2000B model.
    period planetary terms (Note 7).
 
 3. This function is an implementation of the IAU 2000B abridged
-   nutation model formally adopted by the IAU General Assembly in
-   2000.  The function computes the MHB_2000_SHORT luni-solar
+   nutation model formally adopted by the IAU General Assembly in 2000.
+   The function computes the MHB_2000_SHORT luni-solar
    nutation series (Luzum 2001), but without the associated
    corrections for the precession rate adjustments and the offset
    between the GCRS and J2000.0 mean poles.

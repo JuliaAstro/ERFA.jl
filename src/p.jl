@@ -102,8 +102,8 @@ Precession angles, IAU 2006, equinox based.
    are both good compromises between resolution and convenience.
 
 2. This function returns the set of equinox based angles for the
-   Capitaine et al. "P03" precession theory, adopted by the IAU in
-   2006.  The angles are set out in Table 1 of Hilton et al. (2006):
+   Capitaine et al. "P03" precession theory, adopted by the IAU in 2006.
+   The angles are set out in Table 1 of Hilton et al. (2006):
 
    | Angle    | Name          | Description                                    |
    |:---------|:--------------|:-----------------------------------------------|
@@ -131,11 +131,11 @@ Precession angles, IAU 2006, equinox based.
    IAU 2000A frame bias and nutation.  The quoted polynomials are
    used in other ERFA functions:
 
-   . [`xy06`](@ref)  contains the polynomial parts of the X and Y series.
+   - [`xy06`](@ref)  contains the polynomial parts of the X and Y series.
 
-   . [`s06`](@ref)  contains the polynomial part of the s+XY/2 series.
+   - [`s06`](@ref)  contains the polynomial part of the s+XY/2 series.
 
-   . [`pfw06`](@ref)  implements the series for the Fukushima-Williams
+   - [`pfw06`](@ref)  implements the series for the Fukushima-Williams
      angles that are with respect to the GCRS pole (i.e. the variants
      that include frame bias).
 
@@ -318,9 +318,9 @@ bias (the offset between ICRS and mean J2000.0) is included.
 3. The three angles are returned in the conventional order, which
    is not the same as the order of the corresponding Euler
    rotations.  The precession-bias matrix is
-   R_3(-z) x R_2(+theta) x R_3(-zeta).
+   `R_3(-z) x R_2(+theta) x R_3(-zeta)`.
 
-4. Should zeta_A, z_A, theta_A angles be required that do not
+4. Should `zeta_A`, `z_A`, `theta_A` angles be required that do not
    contain frame bias, they are available by calling the ERFA
    function [`p06e`](@ref).
 
@@ -380,27 +380,31 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 2. Naming the following points:
 
-         e = J2000.0 ecliptic pole,
-         p = GCRS pole,
-         E = mean ecliptic pole of date,
-   and   P = mean pole of date,
+   - e = J2000.0 ecliptic pole,
+   - p = GCRS pole,
+   - E = mean ecliptic pole of date,
+   - and P = mean pole of date,
 
    the four Fukushima-Williams angles are as follows:
 
-      gamb = gamma_bar = epE
-      phib = phi_bar = pE
-      psib = psi_bar = pEP
-      epsa = epsilon_A = EP
+   - gamb = gamma_bar = epE
+   - phib = phi_bar = pE
+   - psib = psi_bar = pEP
+   - epsa = epsilon_A = EP
 
 3. The matrix representing the combined effects of frame bias and
    precession is:
 
-      PxB = R_1(-epsa).R_3(-psib).R_1(phib).R_3(gamb)
+   ```
+   PxB = R_1(-epsa).R_3(-psib).R_1(phib).R_3(gamb)
+   ```
 
 4. The matrix representing the combined effects of frame bias,
    precession and nutation is simply:
 
-      NxPxB = R_1(-epsa-dE).R_3(-psib-dP).R_1(phib).R_3(gamb)
+   ```
+   NxPxB = R_1(-epsa-dE).R_3(-psib-dP).R_1(phib).R_3(gamb)
+   ```
 
    where dP and dE are the nutation components with respect to the
    ecliptic of date.
@@ -878,7 +882,7 @@ FK5 catalog).
 3. The three angles are returned in the conventional order, which
    is not the same as the order of the corresponding Euler
    rotations.  The precession matrix is
-   R_3(-z) x R_2(+theta) x R_3(-zeta).
+   `R_3(-z) x R_2(+theta) x R_3(-zeta)`.
 
 ### Reference ###
 
@@ -1095,12 +1099,12 @@ Convert star position+velocity vector to catalog coordinates.
    differences, which are the subject of the Stumpff paper cited
    below, are:
 
-   (i) In stars with significant radial velocity and proper motion,
-   the constantly changing light-time distorts the apparent proper
-   motion.  Note that this is a classical, not a relativistic,
-   effect.
+   - In stars with significant radial velocity and proper motion,
+     the constantly changing light-time distorts the apparent proper
+     motion.  Note that this is a classical, not a relativistic,
+     effect.
 
-   (ii) The transformation complies with special relativity.
+   - The transformation complies with special relativity.
 
 3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the
@@ -1459,7 +1463,7 @@ indirectly.
     bias, precession and nutation in that order.
 
 9.  The X,Y,Z coordinates of the Celestial Intermediate Pole are
-    elements (3,1-3) of the GCRS-to-true matrix, i.e. rbpn[2][0-2].
+    elements (3,1-3) of the GCRS-to-true matrix, i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
@@ -1790,7 +1794,7 @@ use indirectly.
 
 9.  The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate
     Pole are elements (3,1-3) of the GCRS-to-true matrix,
-    i.e. rbpn[2][0-2].
+    i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the order given.
@@ -1885,7 +1889,7 @@ use indirectly.
 
 9.  The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate
     Pole are elements (3,1-3) of the GCRS-to-true matrix,
-    i.e. rbpn[2][0-2].
+    i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
@@ -1976,7 +1980,7 @@ indirectly.
 
 9.  The X,Y,Z coordinates of the IAU 2006/2000A Celestial
     Intermediate Pole are elements (3,1-3) of the GCRS-to-true
-    matrix, i.e. rbpn[2][0-2].
+    matrix, i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
@@ -2160,8 +2164,8 @@ Precession-rate part of the IAU 2000 precession-nutation models
    to Lieske et al. (1977), the MHB2000 model does not specify which
    set of Euler angles are to be used and how the adjustments are to
    be applied.  The most literal and straightforward procedure is to
-   adopt the 4-rotation epsilon_0, psi_A, omega_A, xi_A option, and
-   to add dpsipr to psi_A and depspr to both omega_A and eps_A.
+   adopt the 4-rotation `epsilon_0`, `psi_A`, `omega_A`, `xi_A` option, and
+   to add `dpsipr` to `psi_A` and `depspr` to both `omega_A` and `eps_A`.
 
 4. This is an implementation of one aspect of the IAU 2000A nutation
    model, formally adopted by the IAU General Assembly in 2000,
@@ -2175,8 +2179,8 @@ Precession-rate part of the IAU 2000 precession-nutation models
 
 - Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
     and precession   New nutation series for nonrigid Earth and
-    insights into the Earth's interior", J.Geophys.Res., 107, B4,
-    2002.  The MHB2000 code itself was obtained on 9th September 2002
+    insights into the Earth's interior", J.Geophys.Res., 107, B4, 2002.
+    The MHB2000 code itself was obtained on 9th September 2002
     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
 - Wallace, P.T., "Software for Implementing the IAU 2000

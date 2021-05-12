@@ -7,6 +7,7 @@ dynamical time and terrestrial time, for an observer on the Earth.
 The different time scales - proper, coordinate and realized - are
 related to each other:
 
+```
           TAI             <-  physically realized
            :
         offset            <-  observed (nominally +32.184s)
@@ -30,6 +31,7 @@ related to each other:
     "periodic" terms      <-  -eraDtdb is an approximation
            :
           TT              <-  terrestrial time
+```
 
 Adopted values for the various constants can be found in the IERS
 Conventions (McCarthy & Petit 2003).
@@ -53,12 +55,12 @@ Conventions (McCarthy & Petit 2003).
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution

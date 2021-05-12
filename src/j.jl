@@ -23,12 +23,12 @@ Julian Date to Gregorian year, month, day, and fraction of a day.
    the arguments dj1 and dj2.  For example, JD=2450123.7 could
    be expressed in any of these ways, among others:
 
-          dj1             dj2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `dj1`     |     `dj2`   | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
 3. In early eras the conversion is from the "proleptic Gregorian
    calendar";  no account is taken of the date(s) of adoption of
@@ -77,12 +77,12 @@ for formatting messages:  rounded to a specified precision.
    the arguments dj1 and dj2.  For example, JD=2450123.7 could
    be expressed in any of these ways, among others:
 
-           dj1            dj2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `dj1`     |     `dj2`   | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
 2. In early eras the conversion is from the "Proleptic Gregorian
    Calendar";  no account is taken of the date(s) of adoption of

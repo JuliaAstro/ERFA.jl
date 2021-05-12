@@ -20,12 +20,12 @@ the bias-precession-nutation matrix.  IAU 2000.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -40,9 +40,9 @@ the bias-precession-nutation matrix.  IAU 2000.
 3. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = RC2T * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -54,8 +54,8 @@ the bias-precession-nutation matrix.  IAU 2000.
 
 ### Called ###
 
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`c2ixy`](@ref): celestial-to-intermediate matrix, given X,Y
 
 ### References ###
 
@@ -193,9 +193,9 @@ Angle and the polar motion matrix).
 
 2. The relationship between the arguments is as follows:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -203,9 +203,9 @@ Angle and the polar motion matrix).
 
 ### Called ###
 
-- `eraCr`: copy r-matrix
-- `eraRz`: rotate around Z-axis
-- `eraRxr`: product of two r-matrices
+- [`cr`](@ref): copy r-matrix
+- [`rz`](@ref): rotate around Z-axis
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -246,9 +246,9 @@ Sidereal Time and the polar motion matrix).
 
 2. The relationship between the arguments is as follows:
 
-      [TRS] = rpom * R_3(gst) * rbpn * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = rpom * R_3(gst) * rbpn * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -256,9 +256,9 @@ Sidereal Time and the polar motion matrix).
 
 ### Called ###
 
-- `eraCr`: copy r-matrix
-- `eraRz`: rotate around Z-axis
-- `eraRxr`: product of two r-matrices
+- [`cr`](@ref): copy r-matrix
+- [`rz`](@ref): rotate around Z-axis
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -306,12 +306,12 @@ the polar motion, using the IAU 2000A nutation model.
    utb.  For example, JD(UT1)=2450123.7 could be expressed in any of
    these ways, among others:
 
-           uta            utb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `uta`     |       `utb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution is
@@ -330,9 +330,9 @@ the polar motion, using the IAU 2000A nutation model.
 3. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -341,15 +341,15 @@ the polar motion, using the IAU 2000A nutation model.
    angle and RPOM is the polar motion matrix.
 
 4. A faster, but slightly less accurate result (about 1 mas), can
-   be obtained by using instead the eraC2t00b function.
+   be obtained by using instead the [`c2t00b`](@ref) function.
 
 ### Called ###
 
-- `eraC2i00a`: celestial-to-intermediate matrix, IAU 2000A
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2i00a`](@ref): celestial-to-intermediate matrix, IAU 2000A
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -381,12 +381,12 @@ the polar motion, using the IAU 2000B nutation model.
    utb.  For example, JD(UT1)=2450123.7 could be expressed in any of
    these ways, among others:
 
-           uta            utb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `uta`     |       `utb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution is
@@ -405,9 +405,9 @@ the polar motion, using the IAU 2000B nutation model.
 3. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -416,14 +416,14 @@ the polar motion, using the IAU 2000B nutation model.
    angle and RPOM is the polar motion matrix.
 
 4. The present function is faster, but slightly less accurate (about
-   1 mas), than the eraC2t00a function.
+   1 mas), than the [`c2t00a`](@ref) function.
 
 ### Called ###
 
-- `eraC2i00b`: celestial-to-intermediate matrix, IAU 2000B
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2i00b`](@ref): celestial-to-intermediate matrix, IAU 2000B
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -456,12 +456,12 @@ nutation models.
    utb.  For example, JD(UT1)=2450123.7 could be expressed in any of
    these ways, among others:
 
-           uta            utb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `uta`     |       `utb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution is
@@ -480,9 +480,9 @@ nutation models.
 3. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -492,11 +492,11 @@ nutation models.
 
 ### Called ###
 
-- `eraC2i06a`: celestial-to-intermediate matrix, IAU 2006/2000A
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2i06a`](@ref): celestial-to-intermediate matrix, IAU 2006/2000A
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -545,12 +545,12 @@ the nutation and the polar motion.  IAU 2000.
    utb.  For example, JD(UT1)=2450123.7 could be expressed in any of
    these ways, among others:
 
-           uta            utb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `uta`     |     `utb`   | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution is
@@ -575,9 +575,9 @@ the nutation and the polar motion.  IAU 2000.
 4. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(GST) * RBPN * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(GST) * RBPN * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -590,12 +590,12 @@ the nutation and the polar motion.  IAU 2000.
 
 ### Called ###
 
-- `eraPn00`: bias/precession/nutation results, IAU 2000
-- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraEe00`: equation of the equinoxes, IAU 2000
-- `eraPom00`: polar motion matrix
-- `eraC2teqx`: form equinox-based celestial-to-terrestrial matrix
+- [`pn00`](@ref): bias/precession/nutation results, IAU 2000
+- [`gmst00`](@ref): Greenwich mean sidereal time, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`ee00`](@ref): equation of the equinoxes, IAU 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2teqx`](@ref): form equinox-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -628,12 +628,12 @@ the CIP coordinates and the polar motion.  IAU 2000.
    utb.  For example, JD(UT1)=2450123.7 could be expressed in any o
    these ways, among others:
 
-           uta            utb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `uta`     |       `utb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution is
@@ -656,9 +656,9 @@ the CIP coordinates and the polar motion.  IAU 2000.
 4. The matrix rc2t transforms from celestial to terrestrial
    coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * RC2I * [CRS]
-
-            = rc2t * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * RC2I * [CRS] = rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -670,11 +670,11 @@ the CIP coordinates and the polar motion.  IAU 2000.
 
 ### Called ###
 
-- `eraC2ixy`: celestial-to-intermediate matrix, given X,Y
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraPom00`: polar motion matrix
-- `eraC2tcio`: form CIO-based celestial-to-terrestrial matrix
+- [`c2ixy`](@ref): celestial-to-intermediate matrix, given X,Y
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`pom00`](@ref): polar motion matrix
+- [`c2tcio`](@ref): form CIO-based celestial-to-terrestrial matrix
 
 ### Reference ###
 
@@ -719,12 +719,12 @@ IAU 2000A precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -736,9 +736,9 @@ IAU 2000A precession-nutation model.
 2. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS]
-
-             =  rc2t * [CRS]
+    ```
+    [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS] =  rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -746,12 +746,12 @@ IAU 2000A precession-nutation model.
    Rotation Angle and RPOM is the polar motion matrix.
 
 3. A faster, but slightly less accurate result (about 1 mas), can be
-   obtained by using instead the eraC2i00b function.
+   obtained by using instead the [`c2i00b`](@ref) function.
 
 ### Called ###
 
-- `eraPnm00a`: classical NPB matrix, IAU 2000A
-- `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
+- [`pnm00a`](@ref): classical NPB matrix, IAU 2000A
+- [`c2ibpn`](@ref): celestial-to-intermediate matrix, given NPB matrix
 
 ### References ###
 
@@ -789,12 +789,12 @@ IAU 2000B precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -806,9 +806,9 @@ IAU 2000B precession-nutation model.
 2. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS]
-
-             =  rc2t * [CRS]
+    ```
+    [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS] =  rc2t * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -816,12 +816,12 @@ IAU 2000B precession-nutation model.
    Rotation Angle and RPOM is the polar motion matrix.
 
 3. The present function is faster, but slightly less accurate (about
-   1 mas), than the eraC2i00a function.
+   1 mas), than the [`c2i00a`](@ref) function.
 
 ### Called ###
 
-- `eraPnm00b`: classical NPB matrix, IAU 2000B
-- `eraC2ibpn`: celestial-to-intermediate matrix, given NPB matrix
+- [`pnm00b`](@ref): classical NPB matrix, IAU 2000B
+- [`c2ibpn`](@ref): celestial-to-intermediate matrix, given NPB matrix
 
 ### References ###
 
@@ -859,12 +859,12 @@ IAU 2006 precession and IAU 2000A nutation models.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -876,9 +876,9 @@ IAU 2006 precession and IAU 2000A nutation models.
 2. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS]
-
-             =  RC2T * [CRS]
+    ```
+    [TRS]  =  RPOM * R_3(ERA) * rc2i * [CRS] =  RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -887,10 +887,10 @@ IAU 2006 precession and IAU 2000A nutation models.
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
 
 ### References ###
 
@@ -937,12 +937,12 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -957,9 +957,9 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 3. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = RC2T * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -971,8 +971,8 @@ date when the CIP X,Y coordinates are known.  IAU 2000.
 
 ### Called ###
 
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
@@ -1014,9 +1014,9 @@ X,Y and the CIO locator s.
 3. The matrix rc2i is the first stage in the transformation from
    celestial to terrestrial coordinates:
 
-      [TRS] = RPOM * R_3(ERA) * rc2i * [CRS]
-
-            = RC2T * [CRS]
+    ```
+    [TRS] = RPOM * R_3(ERA) * rc2i * [CRS] = RC2T * [CRS]
+    ```
 
    where [CRS] is a vector in the Geocentric Celestial Reference
    System and [TRS] is a vector in the International Terrestrial
@@ -1025,9 +1025,9 @@ X,Y and the CIO locator s.
 
 ### Called ###
 
-- `eraIr`: initialize r-matrix to identity
-- `eraRz`: rotate around Z-axis
-- `eraRy`: rotate around Y-axis
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rz`](@ref): rotate around Z-axis
+- [`ry`](@ref): rotate around Y-axis
 
 ### Reference ###
 

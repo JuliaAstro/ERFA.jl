@@ -29,7 +29,7 @@ direction.
       0.4 microarcsecond.
 
 2. In almost all cases, the maximum accuracy will be limited by the
-   supplied velocity.  For example, if the ERFA `eraEpv00` function is
+   supplied velocity.  For example, if the ERFA [`epv00`](@ref) function is
    used, errors of up to 5 microarcseconds could occur.
 
 ### References ###
@@ -43,7 +43,7 @@ direction.
 
 ### Called ###
 
-- `eraPdp`: scalar product of two p-vectors
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function ab(pnat, v, s, bm1)
@@ -89,7 +89,7 @@ transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -100,12 +100,12 @@ transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -128,14 +128,14 @@ transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -149,11 +149,11 @@ transformation chain.
    transformation), and atmospheric refraction.
 
 4. The context structure astrom produced by this function is used by
-   `eraAtciq` and `eraAticq`.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
-- `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
+- [`apcs`](@ref): astrometry parameters, ICRS-GCRS, space observer
 
 """
 function apcg(date1, date2, ebpv, ehp)
@@ -199,7 +199,7 @@ transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -210,12 +210,12 @@ transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -232,7 +232,7 @@ transformation chain.
 2. All the vectors are with respect to BCRS axes.
 
 3. In cases where the caller wishes to supply his own Earth
-   ephemeris, the function eraApcg can be used instead of the present
+   ephemeris, the function [`apcg`](@ref) can be used instead of the present
    function.
 
 4. This is one of several functions that inserts into the astrom
@@ -242,14 +242,14 @@ transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -263,12 +263,12 @@ transformation chain.
    transformation), and atmospheric refraction.
 
 5. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
-- `eraEpv00`: Earth position and velocity
-- `eraApcg`: astrometry parameters, ICRS-GCRS, geocenter
+- [`epv00`](@ref): Earth position and velocity
+- [`apcg`](@ref): astrometry parameters, ICRS-GCRS, geocenter
 
 """
 function apcg13(date1, date2)
@@ -316,7 +316,7 @@ parts of the astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -327,12 +327,12 @@ parts of the astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -349,7 +349,7 @@ parts of the astrometric transformation chain.
 2. All the vectors are with respect to BCRS axes.
 
 3. In cases where the caller does not wish to provide the Earth
-   ephemeris and CIP/CIO, the function eraApci13 can be used instead
+   ephemeris and CIP/CIO, the function [`apci13`](@ref) can be used instead
    of the present function.  This computes the required quantities
    using other ERFA functions.
 
@@ -360,14 +360,14 @@ parts of the astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -381,12 +381,12 @@ parts of the astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 5. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
-- `eraApcg`: astrometry parameters, ICRS-GCRS, geocenter
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
+- [`apcg`](@ref): astrometry parameters, ICRS-GCRS, geocenter
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
 
 """
 function apci(date1, date2, ebpv, ehp, x, y, s)
@@ -432,7 +432,7 @@ parts of the astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 - `eo`: Equation of the origins (ERA-GST)
@@ -444,12 +444,12 @@ parts of the astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -466,7 +466,7 @@ parts of the astrometric transformation chain.
 2. All the vectors are with respect to BCRS axes.
 
 3. In cases where the caller wishes to supply his own Earth
-   ephemeris and CIP/CIO, the function eraApci can be used instead
+   ephemeris and CIP/CIO, the function [`apci`](@ref) can be used instead
    of the present function.
 
 4. This is one of several functions that inserts into the astrom
@@ -476,14 +476,14 @@ parts of the astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -497,16 +497,16 @@ parts of the astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 5. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
-- `eraEpv00`: Earth position and velocity
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraApci`: astrometry parameters, ICRS-CIRS
-- `eraEors`: equation of the origins, given NPB matrix and s
+- [`epv00`](@ref): Earth position and velocity
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`apci`](@ref): astrometry parameters, ICRS-CIRS
+- [`eors`](@ref): equation of the origins, given NPB matrix and s
 
 """
 function apci13(date1, date2)
@@ -560,7 +560,7 @@ site coordinates.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -571,12 +571,12 @@ site coordinates.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -593,7 +593,7 @@ site coordinates.
 2. The vectors eb, eh, and all the astrom vectors, are with respect
    to BCRS axes.
 
-3. The geographical coordinates are with respect to the ERFA_WGS84
+3. The geographical coordinates are with respect to the [`WGS84`](@ref)
    reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN
    CONVENTION:  the longitude required by the present function is
    right-handed, i.e. east-positive, in accordance with geographical
@@ -611,7 +611,7 @@ site coordinates.
    local meridian.
 
 5. The refraction constants refa and refb are for use in a
-   dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
+   ``dZ = A*\\tan(Z)+B*\\tan^3(Z)`` model, where Z is the observed
    (i.e. refracted) zenith distance and dZ is the amount of
    refraction.
 
@@ -621,7 +621,7 @@ site coordinates.
 
 7. In cases where the caller does not wish to provide the Earth
    Ephemeris, the Earth rotation information and refraction
-   constants, the function eraApco13 can be used instead of the
+   constants, the function [`apco13`](@ref) can be used instead of the
    present function.  This starts from UTC and weather readings etc.
    and computes suitable values using other ERFA functions.
 
@@ -632,14 +632,14 @@ site coordinates.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -653,16 +653,16 @@ site coordinates.
    transformation), and atmospheric refraction.
 
 9. The context structure astrom produced by this function is used by
-   `eraAtioq`, `eraAtoiq`, `eraAtciq` and `eraAticq`.
+   [`atioq`](@ref), [`atoiq`](@ref), [`atciq`](@ref) and [`aticq`](@ref).
 
 ### Called ###
 
-- `eraAper`: astrometry parameters: update ERA
-- `eraC2ixys`: celestial-to-intermediate matrix, given X,Y and s
-- `eraPvtob`: position/velocity of terrestrial station
-- `eraTrxpv`: product of transpose of r-matrix and pv-vector
-- `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
-- `eraCr`: copy r-matrix
+- [`aper`](@ref): astrometry parameters: update ERA
+- [`c2ixys`](@ref): celestial-to-intermediate matrix, given X,Y and s
+- [`pvtob`](@ref): position/velocity of terrestrial station
+- [`trxpv`](@ref): product of transpose of r-matrix and pv-vector
+- [`apcs`](@ref): astrometry parameters, ICRS-GCRS, space observer
+- [`cr`](@ref): copy r-matrix
 
 """
 function apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
@@ -719,7 +719,7 @@ parts of the ICRS/CIRS transformations.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 - `eo`: Equation of the origins (ERA-GST)
@@ -735,14 +735,14 @@ parts of the ICRS/CIRS transformations.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -750,7 +750,7 @@ parts of the ICRS/CIRS transformations.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4.  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -770,7 +770,9 @@ parts of the ICRS/CIRS transformations.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -778,7 +780,9 @@ parts of the ICRS/CIRS transformations.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -794,7 +798,7 @@ parts of the ICRS/CIRS transformations.
 
 9.  In cases where the caller wishes to supply his own Earth
     ephemeris, Earth rotation information and refraction constants,
-    the function eraApco can be used instead of the present function.
+    the function [`apco`](@ref) can be used instead of the present function.
 
 10. This is one of several functions that inserts into the astrom
     structure star-independent parameters needed for the chain of
@@ -803,14 +807,14 @@ parts of the ICRS/CIRS transformations.
     The various functions support different classes of observer and
     portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
     Those with names ending in "13" use contemporary ERFA models to
     compute the various ephemerides.  The others accept ephemerides
@@ -824,22 +828,22 @@ parts of the ICRS/CIRS transformations.
     transformation), and atmospheric refraction.
 
 11. The context structure astrom produced by this function is used
-    by eraAtioq, eraAtoiq, eraAtciq* and eraAticq*.
+    by [`atioq`](@ref), [`atoiq`](@ref), `atciq*` and `aticq*`.
 
 ### Called ###
 
-- `eraUtctai`: UTC to TAI
-- `eraTaitt`: TAI to TT
-- `eraUtcut1`: UTC to UT1
-- `eraEpv00`: Earth position and velocity
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraRefco`: refraction constants for given ambient conditions
-- `eraApco`: astrometry parameters, ICRS-observed
-- `eraEors`: equation of the origins, given NPB matrix and s
+- [`utctai`](@ref): UTC to TAI
+- [`taitt`](@ref): TAI to TT
+- [`utcut1`](@ref): UTC to UT1
+- [`epv00`](@ref): Earth position and velocity
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`refco`](@ref): refraction constants for given ambient conditions
+- [`apco`](@ref): astrometry parameters, ICRS-observed
+- [`eors`](@ref): equation of the origins, given NPB matrix and s
 
 """
 function apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -893,7 +897,7 @@ astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -904,12 +908,12 @@ astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -936,9 +940,9 @@ astrometric transformation chain.
    heliocentric and barycentric vectors.
 
 4. In cases where the caller does not wish to provide the Earth
-   ephemeris, the function eraApcs13 can be used instead of the
+   ephemeris, the function [`apcs13`](@ref) can be used instead of the
    present function.  This computes the Earth ephemeris using the
-   ERFA function eraEpv00.
+   ERFA function [`epv00`](@ref).
 
 5. This is one of several functions that inserts into the astrom
    structure star-independent parameters needed for the chain of
@@ -947,14 +951,14 @@ astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -968,14 +972,14 @@ astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 6. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
-- `eraPm`: modulus of p-vector
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraIr`: initialize r-matrix to identity
+- [`erfa_cp`](@ref): copy p-vector
+- [`pm`](@ref): modulus of p-vector
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`ir`](@ref): initialize r-matrix to identity
 
 """
 function apcs(date1, date2, pv, ebpv, ehp)
@@ -1022,7 +1026,7 @@ astrometric transformation chain.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1033,12 +1037,12 @@ astrometric transformation chain.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -1061,7 +1065,7 @@ astrometric transformation chain.
    terrestrial.
 
 4. In cases where the caller wishes to supply his own Earth
-   ephemeris, the function eraApcs can be used instead of the present
+   ephemeris, the function [`apcs`](@ref) can be used instead of the present
    function.
 
 5. This is one of several functions that inserts into the astrom
@@ -1071,14 +1075,14 @@ astrometric transformation chain.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1092,12 +1096,12 @@ astrometric transformation chain.
    transformation), and atmospheric refraction.
 
 6. The context structure astrom produced by this function is used by
-   eraAtciq* and eraAticq*.
+   `atciq*` and `aticq*`.
 
 ### Called ###
 
-- `eraEpv00`: Earth position and velocity
-- `eraApcs`: astrometry parameters, ICRS-GCRS, space observer
+- [`epv00`](@ref): Earth position and velocity
+- [`apcs`](@ref): astrometry parameters, ICRS-GCRS, space observer
 
 """
 function apcs13(date1, date2, pv)
@@ -1132,7 +1136,7 @@ Earth rotation angle, supplied by the caller explicitly.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1152,7 +1156,7 @@ Earth rotation angle, supplied by the caller explicitly.
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1167,7 +1171,7 @@ Earth rotation angle, supplied by the caller explicitly.
    Greenwich apparent sidereal time rather than Earth rotation
    angle.
 
-3. The function eraAper13 can be used instead of the present
+3. The function [`aper13`](@ref) can be used instead of the present
    function, and starts from UT1 rather than ERA itself.
 
 4. This is one of several functions that inserts into the astrom
@@ -1177,14 +1181,14 @@ Earth rotation angle, supplied by the caller explicitly.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1229,7 +1233,7 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: unchanged
+    - `l`: unchanged
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1249,7 +1253,7 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
     - `sphi`: unchanged
     - `cphi`: unchanged
     - `diurab`: unchanged
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: unchanged
     - `refb`: unchanged
 
@@ -1260,12 +1264,12 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    ut12.  For example, JD(UT1)=2450123.7 could be expressed in any
    of these ways, among others:
 
-          ut11           ut12
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   |  `ut11`   | `ut12`  | Method               |
+   |:----------|:--------|----------------------|
+   | 2450123.7 |     0.0 | JD                   |
+   | 2451545.0 | -1421.3 | J2000                |
+   | 2400000.5 | 50123.2 | MJD                  |
+   | 2450123.5 |     0.2 | date & time          |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -1277,7 +1281,7 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    versa.
 
 2. If the caller wishes to provide the Earth rotation angle itself,
-   the function eraAper can be used instead.  One use of this
+   the function [`aper`](@ref) can be used instead.  One use of this
    technique is to substitute Greenwich apparent sidereal time and
    thereby to support equinox based transformations directly.
 
@@ -1288,14 +1292,14 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1310,8 +1314,8 @@ Earth rotation angle.  The caller provides UT1, (n.b. not UTC).
 
 ### Called ###
 
-- `eraAper`: astrometry parameters: update ERA
-- `eraEra00`: Earth rotation angle, IAU 2000
+- [`aper`](@ref): astrometry parameters: update ERA
+- [`era00`](@ref): Earth rotation angle, IAU 2000
 
 """
 function aper13(ut11, ut12, astrom)
@@ -1356,7 +1360,7 @@ and the refraction constants as well as the site coordinates.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1364,9 +1368,9 @@ and the refraction constants as well as the site coordinates.
 
 1. sp, the TIO locator s', is a tiny quantity needed only by the
    most precise applications.  It can either be set to zero or
-   predicted using the ERFA function eraSp00.
+   predicted using the ERFA function [`sp00`](@ref).
 
-2. The geographical coordinates are with respect to the ERFA_WGS84
+2. The geographical coordinates are with respect to the [`WGS84`](@ref)
    reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
    longitude required by the present function is east-positive
    (i.e. right-handed), in accordance with geographical convention.
@@ -1382,7 +1386,7 @@ and the refraction constants as well as the site coordinates.
    local meridian.
 
 4. The refraction constants refa and refb are for use in a
-   dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
+   ``dZ = A*\\tan(Z)+B*\\tan^3(Z)`` model, where Z is the observed
    (i.e. refracted) zenith distance and dZ is the amount of
    refraction.
 
@@ -1392,7 +1396,7 @@ and the refraction constants as well as the site coordinates.
 
 6. In cases where the caller does not wish to provide the Earth
    rotation information and refraction constants, the function
-   eraApio13 can be used instead of the present function.  This
+   [`apio13`](@ref) can be used instead of the present function.  This
    starts from UTC and weather readings etc. and computes suitable
    values using other ERFA functions.
 
@@ -1403,14 +1407,14 @@ and the refraction constants as well as the site coordinates.
    The various functions support different classes of observer and
    portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
    Those with names ending in "13" use contemporary ERFA models to
    compute the various ephemerides.  The others accept ephemerides
@@ -1424,12 +1428,12 @@ and the refraction constants as well as the site coordinates.
    transformation), and atmospheric refraction.
 
 8. The context structure astrom produced by this function is used by
-   eraAtioq and eraAtoiq.
+   [`atioq`](@ref) and [`atoiq`](@ref).
 
 ### Called ###
 
-- `eraPvtob`: position/velocity of terrestrial station
-- `eraAper`: astrometry parameters: update ERA
+- [`pvtob`](@ref): position/velocity of terrestrial station
+- [`aper`](@ref): astrometry parameters: update ERA
 
 """
 function apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
@@ -1478,7 +1482,7 @@ conditions and observing wavelength.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1493,14 +1497,14 @@ conditions and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the future
-    to be trusted.  See eraDat for further details.
+    to be trusted.  See [`dat`](@ref) for further details.
 
 3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -1508,7 +1512,7 @@ conditions and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4.  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -1528,7 +1532,9 @@ conditions and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -1536,7 +1542,9 @@ conditions and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to the
     pressure and that an accurate phpa value is important for
@@ -1552,7 +1560,7 @@ conditions and observing wavelength.
 
 9.  In cases where the caller wishes to supply his own Earth
     rotation information and refraction constants, the function
-    eraApc can be used instead of the present function.
+    `apc*` can be used instead of the present function.
 
 10. This is one of several functions that inserts into the astrom
     structure star-independent parameters needed for the chain of
@@ -1561,14 +1569,14 @@ conditions and observing wavelength.
     The various functions support different classes of observer and
     portions of the transformation chain:
 
-   |    Functions      |  Observer    | Transformation        |
-   |:------------------|:-------------|:----------------------|
-   | eraApcg eraApcg13 |  geocentric  | ICRS <-> GCRS         |
-   | eraApci eraApci13 |  terrestrial | ICRS <-> CIRS         |
-   | eraApco eraApco13 |  terrestrial | ICRS <-> observed     |
-   | eraApcs eraApcs13 |  space       | ICRS <-> GCRS         |
-   | eraAper eraAper13 |  terrestrial | update Earth rotation |
-   | eraApio eraApio13 |  terrestrial | CIRS <-> observed     |
+   | Functions                       | Observer       | Transformation          |
+   | :-------------------------------| :------------- | :---------------------- |
+   | [`apcg`](@ref) [`apcg13`](@ref) | geocentric     | ICRS <-> GCRS           |
+   | [`apci`](@ref) [`apci13`](@ref) | terrestrial    | ICRS <-> CIRS           |
+   | [`apco`](@ref) [`apco13`](@ref) | terrestrial    | ICRS <-> observed       |
+   | [`apcs`](@ref) [`apcs13`](@ref) | space          | ICRS <-> GCRS           |
+   | [`aper`](@ref) [`aper13`](@ref) | terrestrial    | update Earth rotation   |
+   | [`apio`](@ref) [`apio13`](@ref) | terrestrial    | CIRS <-> observed       |
 
     Those with names ending in "13" use contemporary ERFA models to
     compute the various ephemerides.  The others accept ephemerides
@@ -1582,17 +1590,17 @@ conditions and observing wavelength.
     transformation), and atmospheric refraction.
 
 11. The context structure astrom produced by this function is used
-    by eraAtioq and eraAtoiq.
+    by [`atioq`](@ref) and [`atoiq`](@ref).
 
 ### Called ###
 
-- `eraUtctai`: UTC to TAI
-- `eraTaitt`: TAI to TT
-- `eraUtcut1`: UTC to UT1
-- `eraSp00`: the TIO locator s', IERS 2000
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraRefco`: refraction constants for given ambient conditions
-- `eraApio`: astrometry parameters, CIRS-observed
+- [`utctai`](@ref): UTC to TAI
+- [`taitt`](@ref): TAI to TT
+- [`utcut1`](@ref): UTC to UT1
+- [`sp00`](@ref): the TIO locator s', IERS 2000
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`refco`](@ref): refraction constants for given ambient conditions
+- [`apio`](@ref): astrometry parameters, CIRS-observed
 
 """
 function apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -1634,7 +1642,7 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 
 1. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
-   preliminary call to eraPmsafe before use.
+   preliminary call to [`pmsafe`](@ref) before use.
 
 2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
@@ -1643,12 +1651,12 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -1668,7 +1676,7 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
    errors of up to several milliarcseconds can occur because of
    unmodeled light deflection;  however, the Sun's contribution is
    taken into account, to first order.  The accuracy limitations of
-   the ERFA function eraEpv00 (used to compute Earth position and
+   the ERFA function [`epv00`](@ref) (used to compute Earth position and
    velocity) can contribute aberration errors of up to
    5 microarcseconds.  Light deflection at the Sun's limb is
    uncertain at the 0.4 mas level.
@@ -1676,13 +1684,13 @@ Transform ICRS star data, epoch J2000.0, to CIRS.
 5. Should the transformation to (equinox based) apparent place be
    required rather than (CIO based) intermediate place, subtract the
    equation of the origins from the returned right ascension:
-   RA = RI - EO. (The eraAnp function can then be applied, as
+   RA = RI - EO. (The [`anp`](@ref) function can then be applied, as
    required, to keep the result in the conventional 0-2pi range.)
 
 ### Called ###
 
-- `eraApci13`: astrometry parameters, ICRS-CIRS, 2013
-- `eraAtciq`: quick ICRS to CIRS
+- [`apci13`](@ref): astrometry parameters, ICRS-CIRS, 2013
+- [`atciq`](@ref): quick ICRS to CIRS
 
 """
 function atci13(rc, dc, pr, pd, px, rv, date1, date2)
@@ -1705,9 +1713,9 @@ star-independent astrometry parameters.
 Use of this function is appropriate when efficiency is important and
 where many star positions are to be transformed for one date.  The
 star-independent parameters can be obtained by calling one of the
-functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
+functions `apci[13]`, `apcg[13]`, `apco[13]` or `apcs[13]`.
 
-If the parallax and proper motions are zero the eraAtciqz function
+If the parallax and proper motions are zero the [`atciqz`](@ref) function
 can be used instead.
 
 ### Given ###
@@ -1731,7 +1739,7 @@ can be used instead.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1745,18 +1753,18 @@ can be used instead.
 
 2. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
-   preliminary call to eraPmsafe before use.
+   preliminary call to [`pmsafe`](@ref) before use.
 
 3. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
 ### Called ###
 
-- `eraPmpx`: proper motion and parallax
-- `eraLdsun`: light deflection by the Sun
-- `eraAb`: stellar aberration
-- `eraRxp`: product of r-matrix and pv-vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`pmpx`](@ref): proper motion and parallax
+- [`ldsun`](@ref): light deflection by the Sun
+- [`ab`](@ref): stellar aberration
+- [`rxp`](@ref): product of r-matrix and pv-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atciq(rc, dc, pr, pd, px, rv, astrom)
@@ -1779,11 +1787,11 @@ deflecting bodies.
 Use of this function is appropriate when efficiency is important and
 where many star positions are to be transformed for one date.  The
 star-independent parameters can be obtained by calling one of the
-functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
+functions `apci[13]`, `apcg[13]`, `apco[13]` or `apcs[13]`.
 
 If the only light-deflecting body to be taken into account is the
-Sun, the eraAtciq function can be used instead.  If in addition the
-parallax and proper motions are zero, the eraAtciqz function can be
+Sun, the [`atciq`](@ref) function can be used instead.  If in addition the
+parallax and proper motions are zero, the [`atciqz`](@ref) function can be
 used.
 
 ### Given ###
@@ -1807,7 +1815,7 @@ used.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 - `n`: Number of bodies (Note 3)
@@ -1824,7 +1832,7 @@ used.
 
 1. Star data for an epoch other than J2000.0 (for example from the
    Hipparcos catalog, which has an epoch of J1991.25) will require a
-   preliminary call to eraPmsafe before use.
+   preliminary call to [`pmsafe`](@ref) before use.
 
 2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
@@ -1847,11 +1855,11 @@ used.
    for phi = 0.   Example values suitable for a terrestrial
    observer, together with masses, are as follows:
 
-      body i     b[i].bm        b[i].dl
-
-      Sun        1.0            6e-6
-      Jupiter    0.00095435     3e-9
-      Saturn     0.00028574     3e-10
+   | `body i` | `b[i].bm`  | `b[i].dl` |
+   |:---------|:-----------|:----------|
+   |  Sun     | 1.0        |  6e-6     |
+   |  Jupiter | 0.00095435 |  3e-9     |
+   |  Saturn  | 0.00028574 |  3e-10    |
 
 7. For efficiency, validation of the contents of the b array is
    omitted.  The supplied masses must be greater than zero, the
@@ -1860,12 +1868,12 @@ used.
 
 ### Called ###
 
-- `eraPmpx`: proper motion and parallax
-- `eraLdn`: light deflection by n bodies
-- `eraAb`: stellar aberration
-- `eraRxp`: product of r-matrix and pv-vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`pmpx`](@ref): proper motion and parallax
+- [`ldn`](@ref): light deflection by n bodies
+- [`ab`](@ref): stellar aberration
+- [`rxp`](@ref): product of r-matrix and pv-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atciqn(rc, dc, pr, pd, px, rv, astrom, b::Vector{LDBODY})
@@ -1889,10 +1897,10 @@ proper motion.
 Use of this function is appropriate when efficiency is important and
 where many star positions are to be transformed for one date.  The
 star-independent parameters can be obtained by calling one of the
-functions eraApci[13], eraApcg[13], eraApco[13] or eraApcs[13].
+functions `apci[13]`, `apcg[13]`, `apco[13]` or `apcs[13]`.
 
 The corresponding function for the case of non-zero parallax and
-proper motion is eraAtciq.
+proper motion is [`atciq`](@ref).
 
 ### Given ###
 
@@ -1911,7 +1919,7 @@ proper motion is eraAtciq.
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -1934,12 +1942,12 @@ proper motion is eraAtciq.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraLdsun`: light deflection due to Sun
-- `eraAb`: stellar aberration
-- `eraRxp`: product of r-matrix and p-vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`ldsun`](@ref): light deflection due to Sun
+- [`ab`](@ref): stellar aberration
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range +/- pi
 
 """
 function atciqz(rc, dc, astrom)
@@ -1992,7 +2000,7 @@ nutation, Earth orientation and refraction.
 
 1.  Star data for an epoch other than J2000.0 (for example from the
     Hipparcos catalog, which has an epoch of J1991.25) will require
-    a preliminary call to eraPmsafe before use.
+    a preliminary call to [`pmsafe`](@ref) before use.
 
 2.  The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 
@@ -2005,14 +2013,14 @@ nutation, Earth orientation and refraction.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2020,7 +2028,7 @@ nutation, Earth orientation and refraction.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6.  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2037,7 +2045,9 @@ nutation, Earth orientation and refraction.
     is available, an adequate estimate of hm can be obtained from
     the expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2045,7 +2055,9 @@ nutation, Earth orientation and refraction.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -2056,7 +2068,7 @@ nutation, Earth orientation and refraction.
     occur at 100 micrometers (about 3000 GHz).
 
 10. The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted observed
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2064,8 +2076,8 @@ nutation, Earth orientation and refraction.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-    Without refraction, the complementary functions eraAtco13 and
-    eraAtoc13 are self-consistent to better than 1 microarcsecond
+    Without refraction, the complementary functions [`atco13`](@ref) and
+    [`atoc13`](@ref) are self-consistent to better than 1 microarcsecond
     all over the celestial sphere.  With refraction included,
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
@@ -2087,9 +2099,9 @@ nutation, Earth orientation and refraction.
 
 ### Called ###
 
-- `eraApco13`: astrometry parameters, ICRS-observed, 2013
-- `eraAtciq`: quick ICRS to CIRS
-- `eraAtioq`: quick CIRS to observed
+- [`apco13`](@ref): astrometry parameters, ICRS-observed, 2013
+- [`atciq`](@ref): quick ICRS to CIRS
+- [`atioq`](@ref): quick CIRS to observed
 
 """
 function atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2137,12 +2149,12 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    JD(TDB)=2450123.7 could be expressed in any of these ways, among
    others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -2157,8 +2169,8 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    accuracy.
 
 2. Iterative techniques are used for the aberration and light
-   deflection corrections so that the functions eraAtic13 (or
-   eraAticq) and eraAtci13 (or eraAtciq) are accurate inverses;
+   deflection corrections so that the functions [`atic13`](@ref) (or
+   [`aticq`](@ref)) and [`atci13`](@ref) (or [`atciq`](@ref)) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
    1 nanoarcsecond.
 
@@ -2168,7 +2180,7 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
    errors of up to several milliarcseconds can occur because of
    unmodeled light deflection;  however, the Sun's contribution is
    taken into account, to first order.  The accuracy limitations of
-   the ERFA function eraEpv00 (used to compute Earth position and
+   the ERFA function [`epv00`](@ref) (used to compute Earth position and
    velocity) can contribute aberration errors of up to
    5 microarcseconds.  Light deflection at the Sun's limb is
    uncertain at the 0.4 mas level.
@@ -2176,13 +2188,13 @@ Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
 4. Should the transformation to (equinox based) J2000.0 mean place
    be required rather than (CIO based) ICRS coordinates, subtract the
    equation of the origins from the returned right ascension:
-   RA = RI - EO.  (The eraAnp function can then be applied, as
+   RA = RI - EO.  (The [`anp`](@ref) function can then be applied, as
    required, to keep the result in the conventional 0-2pi range.)
 
 ### Called ###
 
-- `eraApci13`: astrometry parameters, ICRS-CIRS, 2013
-- `eraAticq`: quick CIRS to ICRS astrometric
+- [`apci13`](@ref): astrometry parameters, ICRS-CIRS, 2013
+- [`aticq`](@ref): quick CIRS to ICRS astrometric
 
 """
 function atic13(ri, di, date1, date2)
@@ -2204,8 +2216,8 @@ independent astrometry parameters.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling one of the functions eraApci[13], eraApcg[13], eraApco[13]
-or eraApcs[13].
+calling one of the functions `apci[13]`, `apcg[13]`, `apco[13]`
+or `apcs[13]`.
 
 ### Given ###
 
@@ -2224,7 +2236,7 @@ or eraApcs[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -2238,20 +2250,20 @@ or eraApcs[13].
    correction.
 
 2. Iterative techniques are used for the aberration and light
-   deflection corrections so that the functions eraAtic13 (or
-   eraAticq) and eraAtci13 (or eraAtciq) are accurate inverses;
+   deflection corrections so that the functions [`atic13`](@ref) (or
+   [`aticq`](@ref)) and [`atci13`](@ref) (or [`atciq`](@ref)) are accurate inverses;
    even at the edge of the Sun's disk the discrepancy is only about
    1 nanoarcsecond.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraZp`: zero p-vector
-- `eraAb`: stellar aberration
-- `eraLdsun`: light deflection by the Sun
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`zp`](@ref): zero p-vector
+- [`ab`](@ref): stellar aberration
+- [`ldsun`](@ref): light deflection by the Sun
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range +/- pi
 
 """
 function aticq(ri, di, astrom)
@@ -2273,8 +2285,8 @@ bodies.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling one of the functions eraApci[13], eraApcg[13], eraApco[13]
-or eraApcs[13].
+calling one of the functions `apci[13]`, `apcg[13]`, `apco[13]`
+or `apcs[13]`.
 
 ### Given ###
 
@@ -2293,7 +2305,7 @@ or eraApcs[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 - `n`: Number of bodies (Note 3)
@@ -2309,12 +2321,12 @@ or eraApcs[13].
 ### Notes ###
 
 1. Iterative techniques are used for the aberration and light
-   deflection corrections so that the functions eraAticqn and
-   eraAtciqn are accurate inverses; even at the edge of the Sun's
+   deflection corrections so that the functions [`aticqn`](@ref) and
+   [`atciqn`](@ref) are accurate inverses; even at the edge of the Sun's
    disk the discrepancy is only about 1 nanoarcsecond.
 
 2. If the only light-deflecting body to be taken into account is the
-   Sun, the eraAticq function can be used instead.
+   Sun, the [`aticq`](@ref) function can be used instead.
 
 3. The struct b contains n entries, one for each body to be
    considered.  If n = 0, no gravitational light deflection will be
@@ -2335,11 +2347,11 @@ or eraApcs[13].
    for phi = 0.   Example values suitable for a terrestrial
    observer, together with masses, are as follows:
 
-      body i     b[i].bm        b[i].dl
-
-      Sun        1.0            6e-6
-      Jupiter    0.00095435     3e-9
-      Saturn     0.00028574     3e-10
+   | `body i` | `b[i].bm`  | `b[i].dl` |
+   |:---------|:-----------|:----------|
+   |  Sun     | 1.0        |  6e-6     |
+   |  Jupiter | 0.00095435 |  3e-9     |
+   |  Saturn  | 0.00028574 |  3e-10    |
 
 7. For efficiency, validation of the contents of the b array is
    omitted.  The supplied masses must be greater than zero, the
@@ -2348,13 +2360,13 @@ or eraApcs[13].
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraZp`: zero p-vector
-- `eraAb`: stellar aberration
-- `eraLdn`: light deflection by n bodies
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`zp`](@ref): zero p-vector
+- [`ab`](@ref): stellar aberration
+- [`ldn`](@ref): light deflection by n bodies
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range +/- pi
 
 """
 function aticqn(ri, di, astrom, b::Array{LDBODY})
@@ -2408,14 +2420,14 @@ coordinates, ambient air conditions and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 2.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2423,7 +2435,7 @@ coordinates, ambient air conditions and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4.  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2440,7 +2452,9 @@ coordinates, ambient air conditions and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2448,7 +2462,9 @@ coordinates, ambient air conditions and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -2470,7 +2486,7 @@ coordinates, ambient air conditions and observing wavelength.
     with its polar axis aligned to the Earth's axis of rotation.
 
 9.  The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2478,7 +2494,7 @@ coordinates, ambient air conditions and observing wavelength.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-10. The complementary functions eraAtio13 and eraAtoi13 are self-
+10. The complementary functions [`atio13`](@ref) and [`atoi13`](@ref) are self-
     consistent to better than 1 microarcsecond all over the
     celestial sphere.
 
@@ -2488,8 +2504,8 @@ coordinates, ambient air conditions and observing wavelength.
 
 ### Called ###
 
-- `eraApio13`: astrometry parameters, CIRS-observed, 2013
-- `eraAtioq`: quick CIRS to observed
+- [`apio13`](@ref): astrometry parameters, CIRS-observed, 2013
+- [`atioq`](@ref): quick CIRS to observed
 
 """
 function atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2520,7 +2536,7 @@ Quick CIRS to observed place transformation.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling eraApio[13] or eraApco[13].
+calling `apio[13]` or `apco[13]`.
 
 ### Given ###
 
@@ -2540,7 +2556,7 @@ calling eraApio[13] or eraApco[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -2559,7 +2575,7 @@ calling eraApio[13] or eraApco[13].
    depression of the horizon.
 
 2. The accuracy of the result is limited by the corrections for
-   refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+   refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
    Providing the meteorological parameters are known accurately and
    there are no gross local effects, the predicted observed
    coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2567,8 +2583,8 @@ calling eraApio[13] or eraApco[13].
    than 30 arcsec (optical or radio) at 85 degrees and better
    than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-   Without refraction, the complementary functions eraAtioq and
-   eraAtoiq are self-consistent to better than 1 microarcsecond all
+   Without refraction, the complementary functions [`atioq`](@ref) and
+   [`atoiq`](@ref) are self-consistent to better than 1 microarcsecond all
    over the celestial sphere.  With refraction included, consistency
    falls off at high zenith distances, but is still better than
    0.05 arcsec at 85 degrees.
@@ -2581,7 +2597,7 @@ calling eraApio[13] or eraApco[13].
    allowing for space motion, parallax, the Sun's gravitational lens
    effect, annual aberration and precession-nutation.  For star
    positions in the ICRS, these effects can be applied by means of
-   the eraAtci13 (etc.) functions.  Starting from classical "mean
+   the [`atci13`](@ref) (etc.) functions.  Starting from classical "mean
    place" systems, additional transformations will be needed first.
 
 5. "Observed" Az,El means the position that would be seen by a
@@ -2595,15 +2611,15 @@ calling eraApio[13] or eraApco[13].
    obtained by subtracting the HA from the local ERA.
 
 6. The star-independent CIRS-to-observed-place parameters in ASTROM
-   may be computed with eraApio[13] or eraApco[13].  If nothing has
-   changed significantly except the time, eraAper[13] may be used to
+   may be computed with `apio[13]` or `apco[13]`.  If nothing has
+   changed significantly except the time, `aper[13]` may be used to
    perform the requisite adjustment to the astrom structure.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atioq(ri, di, astrom)
@@ -2676,14 +2692,14 @@ and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2691,7 +2707,7 @@ and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6.  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2708,7 +2724,9 @@ and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2716,7 +2734,9 @@ and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -2727,7 +2747,7 @@ and observing wavelength.
     occur at 100 micrometers (about 3000 GHz).
 
 10. The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2735,8 +2755,8 @@ and observing wavelength.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-    Without refraction, the complementary functions eraAtco13 and
-    eraAtoc13 are self-consistent to better than 1 microarcsecond
+    Without refraction, the complementary functions [`atco13`](@ref) and
+    [`atoc13`](@ref) are self-consistent to better than 1 microarcsecond
     all over the celestial sphere.  With refraction included,
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
@@ -2747,9 +2767,9 @@ and observing wavelength.
 
 ### Called ###
 
-- `eraApco13`: astrometry parameters, ICRS-observed
-- `eraAtoiq`: quick observed to CIRS
-- `eraAticq`: quick CIRS to ICRS
+- [`apco13`](@ref): astrometry parameters, ICRS-observed
+- [`atoiq`](@ref): quick observed to CIRS
+- [`aticq`](@ref): quick CIRS to ICRS
 
 """
 function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2829,14 +2849,14 @@ ambient air conditions and observing wavelength.
     present function is that the JD day represents UTC days whether
     the length is 86399, 86400 or 86401 SI seconds.
 
-    Applications should use the function eraDtf2d to convert from
+    Applications should use the function [`dtf2d`](@ref) to convert from
     calendar date and time of day into 2-part quasi Julian Date, as
     it implements the leap-second-ambiguity convention just
     described.
 
 4.  The warning status "dubious year" flags UTCs that predate the
     introduction of the time scale or that are too far in the
-    future to be trusted.  See eraDat for further details.
+    future to be trusted.  See [`dat`](@ref) for further details.
 
 5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
     one second at the end of each positive UTC leap second,
@@ -2844,7 +2864,7 @@ ambient air conditions and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6.  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2861,7 +2881,9 @@ ambient air conditions and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2869,7 +2891,9 @@ ambient air conditions and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -2880,7 +2904,7 @@ ambient air conditions and observing wavelength.
     occur at 100 micrometers (about 3000 GHz).
 
 10. The accuracy of the result is limited by the corrections for
-    refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+    refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
     Providing the meteorological parameters are known accurately and
     there are no gross local effects, the predicted astrometric
     coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2888,8 +2912,8 @@ ambient air conditions and observing wavelength.
     than 30 arcsec (optical or radio) at 85 degrees and better
     than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-    Without refraction, the complementary functions eraAtio13 and
-    eraAtoi13 are self-consistent to better than 1 microarcsecond
+    Without refraction, the complementary functions [`atio13`](@ref) and
+    [`atoi13`](@ref) are self-consistent to better than 1 microarcsecond
     all over the celestial sphere.  With refraction included,
     consistency falls off at high zenith distances, but is still
     better than 0.05 arcsec at 85 degrees.
@@ -2900,8 +2924,8 @@ ambient air conditions and observing wavelength.
 
 ### Called ###
 
-- `eraApio13`: astrometry parameters, CIRS-observed, 2013
-- `eraAtoiq`: quick observed to CIRS
+- [`apio13`](@ref): astrometry parameters, CIRS-observed, 2013
+- [`atoiq`](@ref): quick observed to CIRS
 
 """
 function atoi13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
@@ -2930,7 +2954,7 @@ parameters.
 Use of this function is appropriate when efficiency is important and
 where many star positions are all to be transformed for one date.
 The star-independent astrometry parameters can be obtained by
-calling eraApio[13] or eraApco[13].
+calling `apio[13]` or `apco[13]`.
 
 ### Given ###
 
@@ -2951,7 +2975,7 @@ calling eraApio[13] or eraApco[13].
     - `sphi`: Sine of geodetic latitude
     - `cphi`: Cosine of geodetic latitude
     - `diurab`: Magnitude of diurnal aberration vector
-    - `eral`: "Local" Earth rotation angle (radians)
+    - `l`: "Local" Earth rotation angle (radians)
     - `refa`: Refraction constant A (radians)
     - `refb`: Refraction constant B (radians)
 
@@ -2983,7 +3007,7 @@ calling eraApio[13] or eraApco[13].
    allowance is made for depression of the horizon.)
 
 3. The accuracy of the result is limited by the corrections for
-   refraction, which use a simple A*tan(z) + B*tan^3(z) model.
+   refraction, which use a simple ``A*tan(z) + B*tan^3(z)`` model.
    Providing the meteorological parameters are known accurately and
    there are no gross local effects, the predicted observed
    coordinates should be within 0.05 arcsec (optical) or 1 arcsec
@@ -2991,8 +3015,8 @@ calling eraApio[13] or eraApco[13].
    than 30 arcsec (optical or radio) at 85 degrees and better than
    20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 
-   Without refraction, the complementary functions eraAtioq and
-   eraAtoiq are self-consistent to better than 1 microarcsecond all
+   Without refraction, the complementary functions [`atioq`](@ref) and
+   [`atoiq`](@ref) are self-consistent to better than 1 microarcsecond all
    over the celestial sphere.  With refraction included, consistency
    falls off at high zenith distances, but is still better than
    0.05 arcsec at 85 degrees.
@@ -3003,9 +3027,9 @@ calling eraApio[13] or eraApco[13].
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraC2s`: p-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 """
 function atoiq(typeofcoordinates, ob1, ob2, astrom)
@@ -3072,26 +3096,27 @@ Decompose radians into degrees, arcminutes, arcseconds, fraction.
 
 ### Called ###
 
-- `eraD2tf`: decompose days to hms
+- [`d2tf`](@ref): decompose days to hms
 
 ### Notes ###
 
 1. The argument ndp is interpreted as follows:
 
-   ndp         resolution
-    :      ...0000 00 00
-   -7         1000 00 00
-   -6          100 00 00
-   -5           10 00 00
-   -4            1 00 00
-   -3            0 10 00
-   -2            0 01 00
-   -1            0 00 10
-    0            0 00 01
-    1            0 00 00.1
-    2            0 00 00.01
-    3            0 00 00.001
-    :            0 00 00.000...
+   | ndp |     resolution       |
+   |:----|:---------------------|
+   |  :  | ...0000 00 00        |
+   | -7  |    1000 00 00        |
+   | -6  |     100 00 00        |
+   | -5  |      10 00 00        |
+   | -4  |       1 00 00        |
+   | -3  |       0 10 00        |
+   | -2  |       0 01 00        |
+   | -1  |       0 00 10        |
+   |  0  |       0 00 01        |
+   |  1  |       0 00 00.1      |
+   |  2  |       0 00 00.01     |
+   |  3  |       0 00 00.001    |
+   |  :  |       0 00 00.000... |
 
 2. The largest positive useful value for ndp is determined by the
    size of angle, the format of doubles on the target platform, and
@@ -3126,26 +3151,27 @@ Decompose radians into hours, minutes, seconds, fraction.
 
 ### Called ###
 
-- `eraD2tf`: decompose days to hms
+- [`d2tf`](@ref): decompose days to hms
 
 ### Notes ###
 
 1. The argument ndp is interpreted as follows:
 
-   ndp         resolution
-    :      ...0000 00 00
-   -7         1000 00 00
-   -6          100 00 00
-   -5           10 00 00
-   -4            1 00 00
-   -3            0 10 00
-   -2            0 01 00
-   -1            0 00 10
-    0            0 00 01
-    1            0 00 00.1
-    2            0 00 00.01
-    3            0 00 00.001
-    :            0 00 00.000...
+   | ndp |     resolution       |
+   |:----|:---------------------|
+   |  :  | ...0000 00 00        |
+   | -7  |    1000 00 00        |
+   | -6  |     100 00 00        |
+   | -5  |      10 00 00        |
+   | -4  |       1 00 00        |
+   | -3  |       0 10 00        |
+   | -2  |       0 01 00        |
+   | -1  |       0 00 10        |
+   |  0  |       0 00 01        |
+   |  1  |       0 00 00.1      |
+   |  2  |       0 00 00.01     |
+   |  3  |       0 00 00.001    |
+   |  :  |       0 00 00.000... |
 
 2. The largest positive useful value for ndp is determined by the
    size of angle, the format of doubles on the target platform, and

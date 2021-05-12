@@ -20,7 +20,7 @@ Transpose an r-matrix.
 
 ### Called ###
 
-- `eraCr`: copy r-matrix
+- [`cr`](@ref): copy r-matrix
 
 """
 tr
@@ -59,8 +59,8 @@ Multiply a pv-vector by the transpose of an r-matrix.
 
 ### Called ###
 
-- `eraTr`: transpose r-matrix
-- `eraRxpv`: product of r-matrix and pv-vector
+- [`tr`](@ref): transpose r-matrix
+- [`rxpv`](@ref): product of r-matrix and pv-vector
 
 """
 trxpv
@@ -100,8 +100,8 @@ Multiply a p-vector by the transpose of an r-matrix.
 
 ### Called ###
 
-- `eraTr`: transpose r-matrix
-- `eraRxp`: product of r-matrix and p-vector
+- [`tr`](@ref): transpose r-matrix
+- [`rxp`](@ref): product of r-matrix and p-vector
 
 """
 trxp
@@ -178,7 +178,7 @@ Terrestrial Time, TT.
    adopted solar-system ephemeris, and can be obtained by numerical
    integration, by interrogating a precomputed time ephemeris or by
    evaluating a model such as that implemented in the ERFA function
-   eraDtdb.   The quantity is dominated by an annual term of 1.7 ms
+   [`dtdb`](@ref).   The quantity is dominated by an annual term of 1.7 ms
    amplitude.
 
 3. TDB is essentially the same as Teph, the time argument for the
@@ -221,7 +221,7 @@ Dynamical Time, TDB.
    adopted solar-system ephemeris, and can be obtained by numerical
    integration, by interrogating a precomputed time ephemeris or by
    evaluating a model such as that implemented in the ERFA function
-   eraDtdb.   The quantity is dominated by an annual term of 1.7 ms
+   [`dtdb`](@ref).   The quantity is dominated by an annual term of 1.7 ms
    amplitude.
 
 3. TDB is essentially the same as Teph, the time argument for the JPL
@@ -351,17 +351,17 @@ Coordinated Universal Time, UTC.
    linear UTC(TAI) expression was changed, and these "mini-leaps"
    are also included in the ERFA convention.
 
-3. The function eraD2dtf can be used to transform the UTC quasi-JD
+3. The function [`d2dtf`](@ref) can be used to transform the UTC quasi-JD
    into calendar date and clock time, including UTC leap second
    handling.
 
 4. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
 ### Called ###
 
-- `eraUtctai`: UTC to TAI
+- [`utctai`](@ref): UTC to TAI
 
 ### References ###
 

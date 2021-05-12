@@ -20,15 +20,15 @@ Transformation from ICRS to Galactic Coordinates.
    interpreting the system in a modern context, several factors have
    to be taken into account:
 
-   . The inclusion in FK4 positions of the E-terms of aberration.
+   - The inclusion in FK4 positions of the E-terms of aberration.
 
-   . The distortion of the FK4 proper motion system by differential
+   - The distortion of the FK4 proper motion system by differential
      Galactic rotation.
 
-   . The use of the B1950.0 equinox rather than the now-standard
+   - The use of the B1950.0 equinox rather than the now-standard
      J2000.0.
 
-   . The frame bias between ICRS and the J2000.0 mean place system.
+   - The frame bias between ICRS and the J2000.0 mean place system.
 
    The Hipparcos Catalogue (Perryman & ESA 1997) provides a rotation
    matrix that transforms directly between ICRS and Galactic
@@ -43,15 +43,15 @@ Transformation from ICRS to Galactic Coordinates.
    recomputed from the canonical three angles and are given to 30
    decimal places.
 
-2. The inverse transformation is performed by the function eraG2icrs.
+2. The inverse transformation is performed by the function [`g2icrs`](@ref).
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
-- `eraS2c`: spherical coordinates to unit vector
-- `eraRxp`: product of r-matrix and p-vector
-- `eraC2s`: p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`c2s`](@ref): p-vector to spherical
 
 ### Reference ###
 

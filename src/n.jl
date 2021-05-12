@@ -28,9 +28,9 @@ Form the matrix of nutation.
 
 ### Called ###
 
-- `eraIr`: initialize r-matrix to identity
-- `eraRx`: rotate around X-axis
-- `eraRz`: rotate around Z-axis
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rx`](@ref): rotate around X-axis
+- [`rz`](@ref): rotate around Z-axis
 
 ### Reference ###
 
@@ -68,12 +68,12 @@ with free core nutation omitted).
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -113,46 +113,46 @@ with free core nutation omitted).
    offsets between the GCRS and mean poles and (ii) the adjustments
    in longitude and obliquity due to the changed precession rates.
    These additional functions, namely frame bias and precession
-   adjustments, are supported by the ERFA functions eraBi00  and
-   eraPr00.
+   adjustments, are supported by the ERFA functions [`bi00`](@ref)  and
+   [`pr00`](@ref).
 
 6. The MHB2000 algorithm also provides "total" nutations, comprising
    the arithmetic sum of the frame bias, precession adjustments,
    luni-solar nutation and planetary nutation.  These total
    nutations can be used in combination with an existing IAU 1976
-   precession implementation, such as eraPmat76,  to deliver GCRS-
+   precession implementation, such as [`pmat76`](@ref),  to deliver GCRS-
    to-true predictions of sub-mas accuracy at current dates.
    However, there are three shortcomings in the MHB2000 model that
    must be taken into account if more accurate or definitive results
    are required (see Wallace 2002):
 
-     (i) The MHB2000 total nutations are simply arithmetic sums,
-         yet in reality the various components are successive Euler
-         rotations.  This slight lack of rigor leads to cross terms
-         that exceed 1 mas after a century.  The rigorous procedure
-         is to form the GCRS-to-true rotation matrix by applying the
-         bias, precession and nutation in that order.
+   - The MHB2000 total nutations are simply arithmetic sums,
+     yet in reality the various components are successive Euler
+     rotations.  This slight lack of rigor leads to cross terms
+     that exceed 1 mas after a century.  The rigorous procedure
+     is to form the GCRS-to-true rotation matrix by applying the
+     bias, precession and nutation in that order.
 
-    (ii) Although the precession adjustments are stated to be with
-         respect to Lieske et al. (1977), the MHB2000 model does
-         not specify which set of Euler angles are to be used and
-         how the adjustments are to be applied.  The most literal
-         and straightforward procedure is to adopt the 4-rotation
-         epsilon_0, psi_A, omega_A, xi_A option, and to add DPSIPR
-         to psi_A and DEPSPR to both omega_A and eps_A.
+   - Although the precession adjustments are stated to be with
+     respect to Lieske et al. (1977), the MHB2000 model does
+     not specify which set of Euler angles are to be used and
+     how the adjustments are to be applied.  The most literal
+     and straightforward procedure is to adopt the 4-rotation
+     epsilon_0, psi_A, omega_A, xi_A option, and to add DPSIPR
+     to psi_A and DEPSPR to both omega_A and eps_A.
 
-   (iii) The MHB2000 model predates the determination by Chapront
-         et al. (2002) of a 14.6 mas displacement between the
-         J2000.0 mean equinox and the origin of the ICRS frame.  It
-         should, however, be noted that neglecting this displacement
-         when calculating star coordinates does not lead to a
-         14.6 mas change in right ascension, only a small second-
-         order distortion in the pattern of the precession-nutation
-         effect.
+   - The MHB2000 model predates the determination by Chapront
+     et al. (2002) of a 14.6 mas displacement between the
+     J2000.0 mean equinox and the origin of the ICRS frame.  It
+     should, however, be noted that neglecting this displacement
+     when calculating star coordinates does not lead to a
+     14.6 mas change in right ascension, only a small second-
+     order distortion in the pattern of the precession-nutation
+     effect.
 
    For these reasons, the ERFA functions do not generate the "total
    nutations" directly, though they can of course easily be
-   generated by calling eraBi00, eraPr00 and the present function
+   generated by calling [`bi00`](@ref), [`pr00`](@ref) and the present function
    and adding the results.
 
 7. The MHB2000 model contains 41 instances where the same frequency
@@ -162,17 +162,17 @@ with free core nutation omitted).
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFame03`: mean longitude of Mercury
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFama03`: mean longitude of Mars
-- `eraFaju03`: mean longitude of Jupiter
-- `eraFasa03`: mean longitude of Saturn
-- `eraFaur03`: mean longitude of Uranus
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fame03`](@ref): mean longitude of Mercury
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fama03`](@ref): mean longitude of Mars
+- [`faju03`](@ref): mean longitude of Jupiter
+- [`fasa03`](@ref): mean longitude of Saturn
+- [`faur03`](@ref): mean longitude of Uranus
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 
@@ -218,12 +218,12 @@ Nutation, IAU 2000B model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -244,8 +244,8 @@ Nutation, IAU 2000B model.
    period planetary terms (Note 7).
 
 3. This function is an implementation of the IAU 2000B abridged
-   nutation model formally adopted by the IAU General Assembly in
-   2000.  The function computes the MHB_2000_SHORT luni-solar
+   nutation model formally adopted by the IAU General Assembly in 2000.
+   The function computes the MHB_2000_SHORT luni-solar
    nutation series (Luzum 2001), but without the associated
    corrections for the precession rate adjustments and the offset
    between the GCRS and J2000.0 mean poles.
@@ -260,7 +260,7 @@ Nutation, IAU 2000B model.
    The function delivers a pole accurate to 1 mas from 1900 to 2100
    (usually better than 1 mas, very occasionally just outside
    1 mas).  The full IAU 2000A model, which is implemented in the
-   function eraNut00a (q.v.), delivers considerably greater accuracy
+   function [`nut00a`](@ref) (q.v.), delivers considerably greater accuracy
    at current dates;  however, to realize this improved accuracy,
    corrections for the essentially unpredictable free-core-nutation
    (FCN) must also be included.
@@ -271,18 +271,18 @@ Nutation, IAU 2000B model.
    adjustments in longitude and obliquity due to the changed
    precession rates.  These additional functions, namely frame bias
    and precession adjustments, are supported by the ERFA functions
-   eraBi00  and eraPr00.
+   [`bi00`](@ref)  and [`pr00`](@ref).
 
 6. The MHB_2000_SHORT algorithm also provides "total" nutations,
    comprising the arithmetic sum of the frame bias, precession
    adjustments, and nutation (luni-solar + planetary).  These total
    nutations can be used in combination with an existing IAU 1976
-   precession implementation, such as eraPmat76,  to deliver GCRS-
+   precession implementation, such as [`pmat76`](@ref),  to deliver GCRS-
    to-true predictions of mas accuracy at current epochs.  However,
-   for symmetry with the eraNut00a  function (q.v. for the reasons),
+   for symmetry with the [`nut00a`](@ref)  function (q.v. for the reasons),
    the ERFA functions do not generate the "total nutations"
    directly.  Should they be required, they could of course easily
-   be generated by calling eraBi00, eraPr00 and the present function
+   be generated by calling [`bi00`](@ref), [`pr00`](@ref) and the present function
    and adding the results.
 
 7. The IAU 2000B model includes "planetary bias" terms that are
@@ -337,12 +337,12 @@ precession.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -368,7 +368,7 @@ precession.
 
 ### Called ###
 
-- `eraNut00a`: nutation, IAU 2000A
+- [`nut00a`](@ref): nutation, IAU 2000A
 
 ### References ###
 
@@ -415,12 +415,12 @@ Nutation, IAU 1980 model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -434,7 +434,7 @@ Nutation, IAU 1980 model.
 
 ### Called ###
 
-- `eraAnpm`: normalize angle into range +/- pi
+- [`anpm`](@ref): normalize angle into range +/- pi
 
 ### Reference ###
 
@@ -483,12 +483,12 @@ Form the matrix of nutation for a given date, IAU 2000A model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -503,11 +503,11 @@ Form the matrix of nutation for a given date, IAU 2000A model.
    equatorial triad of date.
 
 3. A faster, but slightly less accurate result (about 1 mas), can be
-   obtained by using instead the eraNum00b function.
+   obtained by using instead the [`num00b`](@ref) function.
 
 ### Called ###
 
-- `eraPn00a`: bias/precession/nutation, IAU 2000A
+- [`pn00a`](@ref): bias/precession/nutation, IAU 2000A
 
 ### Reference ###
 
@@ -538,12 +538,12 @@ Form the matrix of nutation for a given date, IAU 2000B model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -558,11 +558,11 @@ Form the matrix of nutation for a given date, IAU 2000B model.
    equatorial triad of date.
 
 3. The present function is faster, but slightly less accurate (about
-   1 mas), than the eraNum00a function.
+   1 mas), than the [`num00a`](@ref) function.
 
 ### Called ###
 
-- `eraPn00b`: bias/precession/nutation, IAU 2000B
+- [`pn00b`](@ref): bias/precession/nutation, IAU 2000B
 
 ### Reference ###
 
@@ -593,12 +593,12 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -614,9 +614,9 @@ Form the matrix of nutation for a given date, IAU 2006/2000A model.
 
 ### Called ###
 
-- `eraObl06`: mean obliquity, IAU 2006
-- `eraNut06a`: nutation, IAU 2006/2000A
-- `eraNumat`: form nutation matrix
+- [`obl06`](@ref): mean obliquity, IAU 2006
+- [`nut06a`](@ref): nutation, IAU 2006/2000A
+- [`numat`](@ref): form nutation matrix
 
 ### Reference ###
 
@@ -647,12 +647,12 @@ Form the matrix of nutation for a given date, IAU 1980 model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -668,9 +668,9 @@ Form the matrix of nutation for a given date, IAU 1980 model.
 
 ### Called ###
 
-- `eraNut80`: nutation, IAU 1980
-- `eraObl80`: mean obliquity, IAU 1980
-- `eraNumat`: form nutation matrix
+- [`nut80`](@ref): nutation, IAU 1980
+- [`obl80`](@ref): mean obliquity, IAU 1980
+- [`numat`](@ref): form nutation matrix
 
 """
 nutm80

@@ -24,12 +24,12 @@ zero Hipparcos proper motion.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -53,19 +53,19 @@ zero Hipparcos proper motion.
 5. The position returned by this function is in the FK5 J2000.0
    reference system but at date date1+date2.
 
-6. See also eraFk52h, eraH2fk5, eraFk5zhz.
+6. See also [`fk52h`](@ref), [`h2fk5`](@ref), [`fk5hz`](@ref).
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraFk5hip`: FK5 to Hipparcos rotation and spin
-- `eraRxp`: product of r-matrix and p-vector
-- `eraSxp`: multiply p-vector by scalar
-- `eraRxr`: product of two r-matrices
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPv2s`: pv-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`fk5hip`](@ref): FK5 to Hipparcos rotation and spin
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`rxr`](@ref): product of two r-matrices
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pv2s`](@ref): pv-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -118,18 +118,18 @@ Transform Hipparcos star data into the FK5 (J2000.0) system.
    rotation and spin;  zonal errors in the FK5 catalog are not
    taken into account.
 
-4. See also eraFk52h, eraFk5hz, eraHfk5z.
+4. See also [`fk52h`](@ref), [`fk5hz`](@ref), [`hfk5z`](@ref).
 
 ### Called ###
 
-- `eraStarpv`: star catalog data to space motion pv-vector
-- `eraFk5hip`: FK5 to Hipparcos rotation and spin
-- `eraRv2m`: r-vector to r-matrix
-- `eraRxp`: product of r-matrix and p-vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPmp`: p-vector minus p-vector
-- `eraPvstar`: space motion pv-vector to star catalog data
+- [`starpv`](@ref): star catalog data to space motion pv-vector
+- [`fk5hip`](@ref): FK5 to Hipparcos rotation and spin
+- [`rv2m`](@ref): r-vector to r-matrix
+- [`rxp`](@ref): product of r-matrix and p-vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pmp`](@ref): p-vector minus p-vector
+- [`pvstar`](@ref): space motion pv-vector to star catalog data
 
 ### Reference ###
 

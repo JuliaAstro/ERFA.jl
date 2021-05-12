@@ -38,8 +38,8 @@ Convert spherical polar coordinates to p-vector.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraSxp`: multiply p-vector by scalar
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`sxp`](@ref): multiply p-vector by scalar
 
 """
 function s2p(theta, phi, r)
@@ -101,7 +101,7 @@ Multiply a pv-vector by two scalars.
 
 ### Called ###
 
-- `eraSxp`: multiply p-vector by scalar
+- [`sxp`](@ref): multiply p-vector by scalar
 
 """
 s2xpv
@@ -151,12 +151,12 @@ Star proper motion:  update star catalog data for space motion.
    parts (A and B).  For example, JD(TDB)=2450123.7 could be
    expressed in any of these ways, among others:
 
-           epna          epnb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `epna`    |      `epnb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -190,25 +190,25 @@ Star proper motion:  update star catalog data for space motion.
 
 6. An extremely small (or zero or negative) parallax is interpreted
    to mean that the object is on the "celestial sphere", the radius
-   of which is an arbitrary (large) value (see the eraStarpv
+   of which is an arbitrary (large) value (see the [`starpv`](@ref)
    function for the value used).  When the distance is overridden in
    this way, the status, initially zero, has 1 added to it.
 
 7. If the space velocity is a significant fraction of c (see the
-   constant VMAX in the function eraStarpv), it is arbitrarily set
+   constant VMAX in the function [`starpv`](@ref)), it is arbitrarily set
    to zero.  When this action occurs, 2 is added to the status.
 
-8. The relativistic adjustment carried out in the eraStarpv function
+8. The relativistic adjustment carried out in the [`starpv`](@ref) function
    involves an iterative calculation.  If the process fails to
    converge within a set number of iterations, 4 is added to the
    status.
 
 ### Called ###
 
-- `eraStarpv`: star catalog data to space motion pv-vector
-- `eraPvu`: update a pv-vector
-- `eraPdp`: scalar product of two p-vectors
-- `eraPvstar`: space motion pv-vector to star catalog data
+- [`starpv`](@ref): star catalog data to space motion pv-vector
+- [`pvu`](@ref): update a pv-vector
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pvstar`](@ref): space motion pv-vector to star catalog data
 
 """
 function starpm(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -287,12 +287,12 @@ Convert star catalog coordinates to position+velocity vector.
    "space motion" transformation.  The differences, which are the
    subject of the Stumpff paper referenced below, are:
 
-   (i) In stars with significant radial velocity and proper motion,
-   the constantly changing light-time distorts the apparent proper
-   motion.  Note that this is a classical, not a relativistic,
-   effect.
+   - In stars with significant radial velocity and proper motion,
+     the constantly changing light-time distorts the apparent proper
+     motion.  Note that this is a classical, not a relativistic,
+     effect.
 
-   (ii) The transformation complies with special relativity.
+   - The transformation complies with special relativity.
 
 3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the
@@ -322,18 +322,18 @@ Convert star catalog coordinates to position+velocity vector.
    iterations, 4 is added to the status.
 
 9. The inverse transformation is performed by the function
-   eraPvstar.
+   [`pvstar`](@ref).
 
 ### Called ###
 
-- `eraS2pv`: spherical coordinates to pv-vector
-- `eraPm`: modulus of p-vector
-- `eraZp`: zero p-vector
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraPdp`: scalar product of two p-vectors
-- `eraSxp`: multiply p-vector by scalar
-- `eraPmp`: p-vector minus p-vector
-- `eraPpp`: p-vector plus p-vector
+- [`s2pv`](@ref): spherical coordinates to pv-vector
+- [`pm`](@ref): modulus of p-vector
+- [`zp`](@ref): zero p-vector
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`pmp`](@ref): p-vector minus p-vector
+- [`ppp`](@ref): p-vector plus p-vector
 
 ### Reference ###
 
@@ -415,7 +415,7 @@ Multiply a pv-vector by a scalar.
 
 ### Called ###
 
-- `eraS2xpv`: multiply pv-vector by two scalars
+- [`s2xpv`](@ref): multiply pv-vector by two scalars
 
 """
 sxpv
@@ -449,8 +449,8 @@ Angular separation between two sets of spherical coordinates.
 
 ### Called ###
 
-- `eraS2c`: spherical coordinates to unit vector
-- `eraSepp`: angular separation between two p-vectors
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`sepp`](@ref): angular separation between two p-vectors
 
 """
 function seps(al, ap, bl, bp)
@@ -483,9 +483,9 @@ Angular separation between two p-vectors.
 
 ### Called ###
 
-- `eraPxp`: vector product of two p-vectors
-- `eraPm`: modulus of p-vector
-- `eraPdp`: scalar product of two p-vectors
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pm`](@ref): modulus of p-vector
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function sepp(a, b)
@@ -515,12 +515,12 @@ precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -540,14 +540,14 @@ precession-nutation model.
    is more compact than a direct series for s would be.  The present
    function uses the full IAU 2000A nutation model when predicting
    the CIP position.  Faster results, with no significant loss of
-   accuracy, can be obtained via the function eraS00b, which uses
+   accuracy, can be obtained via the function [`s00b`](@ref), which uses
    instead the IAU 2000B truncated model.
 
 ### Called ###
 
-- `eraPnm00a`: classical NPB matrix, IAU 2000A
-- `eraBnp2xy`: extract CIP X,Y from the BPN matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00a`](@ref): classical NPB matrix, IAU 2000A
+- [`bpn2xy`](@ref): extract CIP X,Y from the BPN matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### References ###
 
@@ -587,12 +587,12 @@ precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -611,15 +611,15 @@ precession-nutation model.
    are the x and y components of the CIP unit vector;  this series
    is more compact than a direct series for s would be.  The present
    function uses the IAU 2000B truncated nutation model when
-   predicting the CIP position.  The function eraS00a uses instead
+   predicting the CIP position.  The function [`s00a`](@ref) uses instead
    the full IAU 2000A model, but with no significant increase in
    accuracy and at some cost in speed.
 
 ### Called ###
 
-- `eraPnm00b`: classical NPB matrix, IAU 2000B
-- `eraBnp2xy`: extract CIP X,Y from the BPN matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00b`](@ref): classical NPB matrix, IAU 2000B
+- [`bpn2xy`](@ref): extract CIP X,Y from the BPN matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### References ###
 
@@ -659,12 +659,12 @@ precession and IAU 2000A nutation models.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -687,9 +687,9 @@ precession and IAU 2000A nutation models.
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
 
 ### References ###
 
@@ -732,12 +732,12 @@ on the equator of the Celestial Intermediate Pole.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -792,12 +792,12 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -823,14 +823,14 @@ coordinates.  Compatible with IAU 2000A precession-nutation.
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFalp03`: mean anomaly of the Sun
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFad03`: mean elongation of the Moon from the Sun
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`falp03`](@ref): mean anomaly of the Sun
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`fad03`](@ref): mean elongation of the Moon from the Sun
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 
@@ -871,12 +871,12 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -904,14 +904,14 @@ coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFalp03`: mean anomaly of the Sun
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFad03`: mean elongation of the Moon from the Sun
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`falp03`](@ref): mean anomaly of the Sun
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`fad03`](@ref): mean elongation of the Moon from the Sun
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 

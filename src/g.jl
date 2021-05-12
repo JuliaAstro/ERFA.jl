@@ -20,9 +20,9 @@ reference ellipsoid.
 1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-        - `WGS84`
-        - `GRS80`
-        - `WGS72`
+   - [`WGS84`](@ref)
+   - [`GRS80`](@ref)
+   - [`WGS72`](@ref)
 
 2. The geocentric vector (xyz, given) and height (height, returned)
    are in meters.
@@ -31,12 +31,12 @@ reference ellipsoid.
    error status -2 is theoretically impossible.  In all error cases,
    all three results are set to -1e9.
 
-4. The inverse transformation is performed in the function eraGd2gc.
+4. The inverse transformation is performed in the function [`gd2gc`](@ref).
 
 ### Called ###
 
-- `eraEform`: Earth reference ellipsoids
-- `eraGc2gde`: geocentric to geodetic transformation, general
+- [`eform`](@ref): Earth reference ellipsoids
+- [`gc2gde`](@ref): geocentric to geodetic transformation, general
 
 """
 function gc2gd(n, xyz)
@@ -92,10 +92,10 @@ ellipsoid of specified form.
    unchanged.
 
 6. The inverse transformation is performed in the function
-   eraGd2gce.
+   [`gd2gce`](@ref).
 
-7. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
-   more conveniently be performed by calling eraGc2gd, which uses a
+7. The transformation for a standard ellipsoid (such as [`WGS84`](@ref)) can
+   more conveniently be performed by calling [`gc2gd`](@ref), which uses a
    numerical code to identify the required A and F values.
 
 ### Reference ###
@@ -143,14 +143,14 @@ reference ellipsoid.
 1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-      n    ellipsoid
-
-      1     ERFA_WGS84
-      2     ERFA_GRS80
-      3     ERFA_WGS72
+   | n | ellipsoid       |
+   |:--|:----------------|
+   | 1 | [`WGS84`](@ref) |
+   | 2 | [`GRS80`](@ref) |
+   | 3 | [`WGS72`](@ref) |
 
    The n value has no significance outside the ERFA software.  For
-   convenience, symbols ERFA_WGS84 etc. are defined in erfam.h.
+   convenience, the [`Ellipsoid`](@ref) enum provides these values.
 
 2. The height (height, given) and the geocentric vector (xyz,
    returned) are in meters.
@@ -161,13 +161,13 @@ reference ellipsoid.
    lead to arithmetic exceptions.  In all error cases, xyz is set
    to zeros.
 
-4. The inverse transformation is performed in the function eraGc2gd.
+4. The inverse transformation is performed in the function [`gc2gd`](@ref).
 
 ### Called ###
 
-- `eraEform`: Earth reference ellipsoids
-- `eraGd2gce`: geodetic to geocentric transformation, general
-- `eraZp`: zero p-vector
+- [`eform`](@ref): Earth reference ellipsoids
+- [`gd2gce`](@ref): geodetic to geocentric transformation, general
+- [`zp`](@ref): zero p-vector
 
 """
 function gd2gc(n, elong, phi, height)
@@ -218,10 +218,10 @@ ellipsoid of specified form.
    to arithmetic exceptions.  If an error occurs, xyz is unchanged.
 
 5. The inverse transformation is performed in the function
-   eraGc2gde.
+   [`gc2gde`](@ref).
 
-6. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
-   more conveniently be performed by calling eraGd2gc,  which uses a
+6. The transformation for a standard ellipsoid (such as [`WGS84`](@ref)) can
+   more conveniently be performed by calling [`gd2gc`](@ref),  which uses a
    numerical code to identify the required a and f values.
 
 ### References ###
@@ -267,12 +267,12 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
 
-          Part A        Part B
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | Part A    | Part B      | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -298,11 +298,11 @@ Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 
 ### Called ###
 
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraEors`: equation of the origins, given NPB matrix and s
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`eors`](@ref): equation of the origins, given NPB matrix and s
 
 ### Reference ###
 
@@ -336,12 +336,12 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
    JD(UT1)=2450123.7 could be expressed in any of these ways,
    among others:
 
-           dj1            dj2
-
-       2450123.7          0          (JD method)
-        2451545        -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5         0.2         (date & time method)
+   | `dj1`     |       `dj2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -367,7 +367,7 @@ Universal Time to Greenwich mean sidereal time (IAU 1982 model).
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -400,12 +400,12 @@ resolutions but using the truncated nutation model IAU 2000B).
    JD=2450123.7 could be expressed in any of these ways, among
    others:
 
-           uta            utb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `uta`     |       `utb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -421,11 +421,11 @@ resolutions but using the truncated nutation model IAU 2000B).
    that accuracy has been compromised for the sake of speed and
    convenience in two respects:
 
-   . UT is used instead of TDB (or TT) to compute the precession
+   - UT is used instead of TDB (or TT) to compute the precession
      component of GMST and the equation of the equinoxes.  This
      results in errors of order 0.1 mas at present.
 
-   . The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
+   - The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
      is used, introducing errors of up to 1 mas.
 
 3. This GAST is compatible with the IAU 2000 resolutions and must be
@@ -439,9 +439,9 @@ resolutions but using the truncated nutation model IAU 2000B).
 
 ### Called ###
 
-- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-- `eraEe00b`: equation of the equinoxes, IAU 2000B
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`gmst00`](@ref): Greenwich mean sidereal time, IAU 2000
+- [`ee00b`](@ref): equation of the equinoxes, IAU 2000B
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -480,12 +480,12 @@ resolutions).
    JD=2450123.7 could be expressed in any of these ways, among
    others:
 
-           uta            utb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `uta`     |       `utb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -510,9 +510,9 @@ resolutions).
 
 ### Called ###
 
-- `eraGmst82`: Greenwich mean sidereal time, IAU 1982
-- `eraEqeq94`: equation of the equinoxes, IAU 1994
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`gmst82`](@ref): Greenwich mean sidereal time, IAU 1982
+- [`eqeq94`](@ref): equation of the equinoxes, IAU 1994
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -554,12 +554,12 @@ resolutions).
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
 
-          Part A         Part B
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | Part A    | Part B      | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -588,8 +588,8 @@ resolutions).
 
 ### Called ###
 
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -624,12 +624,12 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
 
-          Part A        Part B
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | Part A    | Part B      | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -653,8 +653,8 @@ Greenwich mean sidereal time (consistent with IAU 2006 precession).
 
 ### Called ###
 
-- `eraEra00`: Earth rotation angle, IAU 2000
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`era00`](@ref): Earth rotation angle, IAU 2000
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -686,12 +686,12 @@ resolutions).
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
 
-          Part A        Part B
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | Part A    | Part B      | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -720,9 +720,9 @@ resolutions).
 
 ### Called ###
 
-- `eraGmst00`: Greenwich mean sidereal time, IAU 2000
-- `eraEe00a`: equation of the equinoxes, IAU 2000A
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`gmst00`](@ref): Greenwich mean sidereal time, IAU 2000
+- [`ee00a`](@ref): equation of the equinoxes, IAU 2000A
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -758,12 +758,12 @@ resolutions).
    argument pairs.  For example, JD=2450123.7 could be expressed in
    any of these ways, among others:
 
-          Part A        Part B
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | Part A    | Part B      | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -789,8 +789,8 @@ resolutions).
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraGst06`: Greenwich apparent ST, IAU 2006, given NPB matrix
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`gst06`](@ref): Greenwich apparent ST, IAU 2006, given NPB matrix
 
 ### Reference ###
 
@@ -832,15 +832,15 @@ Transformation from Galactic Coordinates to ICRS.
    interpreting the system in a modern context, several factors have
    to be taken into account:
 
-   . The inclusion in FK4 positions of the E-terms of aberration.
+   - The inclusion in FK4 positions of the E-terms of aberration.
 
-   . The distortion of the FK4 proper motion system by differential
-     Galactic rotation.
+   - The distortion of the FK4 proper motion system by differential
+   - Galactic rotation.
 
-   . The use of the B1950.0 equinox rather than the now-standard
-     J2000.0.
+   - The use of the B1950.0 equinox rather than the now-standard
+   - J2000.0.
 
-   . The frame bias between ICRS and the J2000.0 mean place system.
+   - The frame bias between ICRS and the J2000.0 mean place system.
 
    The Hipparcos Catalogue (Perryman & ESA 1997) provides a rotation
    matrix that transforms directly between ICRS and Galactic
@@ -855,15 +855,15 @@ Transformation from Galactic Coordinates to ICRS.
    recomputed from the canonical three angles and are given to 30
    decimal places.
 
-2. The inverse transformation is performed by the function eraIcrs2g.
+2. The inverse transformation is performed by the function [`icrs2g`](@ref).
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
-- `eraAnpm`: normalize angle into range +/- pi
-- `eraS2c`: spherical coordinates to unit vector
-- `eraTrxp`: product of transpose of r-matrix and p-vector
-- `eraC2s`: p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`anpm`](@ref): normalize angle into range +/- pi
+- [`s2c`](@ref): spherical coordinates to unit vector
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
+- [`c2s`](@ref): p-vector to spherical
 
 ### Reference ###
 

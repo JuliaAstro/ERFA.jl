@@ -19,12 +19,12 @@ on IAU 2006 precession and IAU 2000A nutation.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -42,7 +42,7 @@ on IAU 2006 precession and IAU 2000A nutation.
    (1999).
 
 4. This is an alternative to the angles-based method, via the ERFA
-   function eraFw2xy and as used in eraXys06a for example.  The two
+   function [`fw2xy`](@ref) and as used in [`xys06a`](@ref) for example.  The two
    methods agree at the 1 microarcsecond level (at present), a
    negligible amount compared with the intrinsic accuracy of the
    models.  However, it would be unwise to mix the two methods
@@ -50,20 +50,20 @@ on IAU 2006 precession and IAU 2000A nutation.
 
 ### Called ###
 
-- `eraFal03`: mean anomaly of the Moon
-- `eraFalp03`: mean anomaly of the Sun
-- `eraFaf03`: mean argument of the latitude of the Moon
-- `eraFad03`: mean elongation of the Moon from the Sun
-- `eraFaom03`: mean longitude of the Moon's ascending node
-- `eraFame03`: mean longitude of Mercury
-- `eraFave03`: mean longitude of Venus
-- `eraFae03`: mean longitude of Earth
-- `eraFama03`: mean longitude of Mars
-- `eraFaju03`: mean longitude of Jupiter
-- `eraFasa03`: mean longitude of Saturn
-- `eraFaur03`: mean longitude of Uranus
-- `eraFane03`: mean longitude of Neptune
-- `eraFapa03`: general accumulated precession in longitude
+- [`fal03`](@ref): mean anomaly of the Moon
+- [`falp03`](@ref): mean anomaly of the Sun
+- [`faf03`](@ref): mean argument of the latitude of the Moon
+- [`fad03`](@ref): mean elongation of the Moon from the Sun
+- [`faom03`](@ref): mean longitude of the Moon's ascending node
+- [`fame03`](@ref): mean longitude of Mercury
+- [`fave03`](@ref): mean longitude of Venus
+- [`fae03`](@ref): mean longitude of Earth
+- [`fama03`](@ref): mean longitude of Mars
+- [`faju03`](@ref): mean longitude of Jupiter
+- [`fasa03`](@ref): mean longitude of Saturn
+- [`faur03`](@ref): mean longitude of Uranus
+- [`fane03`](@ref): mean longitude of Neptune
+- [`fapa03`](@ref): general accumulated precession in longitude
 
 ### References ###
 
@@ -116,12 +116,12 @@ precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -138,13 +138,13 @@ precession-nutation model.
    Intermediate Origin on the equator of the CIP.
 
 4. A faster, but slightly less accurate result (about 1 mas for
-   X,Y), can be obtained by using instead the eraXys00b function.
+   X,Y), can be obtained by using instead the [`xys00b`](@ref) function.
 
 ### Called ###
 
-- `eraPnm00a`: classical NPB matrix, IAU 2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00a`](@ref): classical NPB matrix, IAU 2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
@@ -177,12 +177,12 @@ precession-nutation model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -199,13 +199,13 @@ precession-nutation model.
    Intermediate Origin on the equator of the CIP.
 
 4. The present function is faster, but slightly less accurate (about
-   1 mas in X,Y), than the eraXys00a function.
+   1 mas in X,Y), than the [`xys00a`](@ref) function.
 
 ### Called ###
 
-- `eraPnm00b`: classical NPB matrix, IAU 2000B
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS00`: the CIO locator s, given X,Y, IAU 2000A
+- [`pnm00b`](@ref): classical NPB matrix, IAU 2000B
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s00`](@ref): the CIO locator s, given X,Y, IAU 2000A
 
 ### Reference ###
 
@@ -238,12 +238,12 @@ precession and IAU 2000A nutation models.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -259,13 +259,13 @@ precession and IAU 2000A nutation models.
    Intermediate Origin on the equator of the CIP.
 
 4. Series-based solutions for generating X and Y are also available:
-   see Capitaine & Wallace (2006) and eraXy06.
+   see Capitaine & Wallace (2006) and [`xy06`](@ref).
 
 ### Called ###
 
-- `eraPnm06a`: classical NPB matrix, IAU 2006/2000A
-- `eraBpn2xy`: extract CIP X,Y coordinates from NPB matrix
-- `eraS06`: the CIO locator s, given X,Y, IAU 2006
+- [`pnm06a`](@ref): classical NPB matrix, IAU 2006/2000A
+- [`bpn2xy`](@ref): extract CIP X,Y coordinates from NPB matrix
+- [`s06`](@ref): the CIO locator s, given X,Y, IAU 2006
 
 ### References ###
 

@@ -39,8 +39,8 @@ Proper motion and parallax.
 
 ### Called ###
 
-- `eraPdp`: scalar product of two p-vectors
-- `eraPn`: decompose p-vector into modulus and direction
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pn`](@ref): decompose p-vector into modulus and direction
 
 """
 function pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
@@ -87,12 +87,12 @@ Precession angles, IAU 2006, equinox based.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -102,25 +102,27 @@ Precession angles, IAU 2006, equinox based.
    are both good compromises between resolution and convenience.
 
 2. This function returns the set of equinox based angles for the
-   Capitaine et al. "P03" precession theory, adopted by the IAU in
-   2006.  The angles are set out in Table 1 of Hilton et al. (2006):
+   Capitaine et al. "P03" precession theory, adopted by the IAU in 2006.
+   The angles are set out in Table 1 of Hilton et al. (2006):
 
-   eps0   epsilon_0   obliquity at J2000.0
-   psia   psi_A       luni-solar precession
-   oma    omega_A     inclination of equator wrt J2000.0 ecliptic
-   bpa    P_A         ecliptic pole x, J2000.0 ecliptic triad
-   bqa    Q_A         ecliptic pole -y, J2000.0 ecliptic triad
-   pia    pi_A        angle between moving and J2000.0 ecliptics
-   bpia   Pi_A        longitude of ascending node of the ecliptic
-   epsa   epsilon_A   obliquity of the ecliptic
-   chia   chi_A       planetary precession
-   za     z_A         equatorial precession: -3rd 323 Euler angle
-   zetaa  zeta_A      equatorial precession: -1st 323 Euler angle
-   thetaa theta_A     equatorial precession: 2nd 323 Euler angle
-   pa     p_A         general precession
-   gam    gamma_J2000 J2000.0 RA difference of ecliptic poles
-   phi    phi_J2000   J2000.0 codeclination of ecliptic pole
-   psi    psi_J2000   longitude difference of equator poles, J2000.0
+   | Angle    | Name          | Description                                    |
+   |:---------|:--------------|:-----------------------------------------------|
+   | eps0     | epsilon_0     | obliquity at J2000.0                           |
+   | psia     | psi_A         | luni-solar precession                          |
+   | oma      | omega_A       | inclination of equator wrt J2000.0 ecliptic    |
+   | bpa      | P_A           | ecliptic pole x, J2000.0 ecliptic triad        |
+   | bqa      | Q_A           | ecliptic pole -y, J2000.0 ecliptic triad       |
+   | pia      | pi_A          | angle between moving and J2000.0 ecliptics     |
+   | bpia     | Pi_A          | longitude of ascending node of the ecliptic    |
+   | epsa     | epsilon_A     | obliquity of the ecliptic                      |
+   | chia     | chi_A         | planetary precession                           |
+   | za       | z_A           | equatorial precession: -3rd 323 Euler angle    |
+   | zetaa    | zeta_A        | equatorial precession: -1st 323 Euler angle    |
+   | thetaa   | theta_A       | equatorial precession: 2nd 323 Euler angle     |
+   | pa       | p_A           | general precession                             |
+   | gam      | gamma_J2000   | J2000.0 RA difference of ecliptic poles        |
+   | phi      | phi_J2000     | J2000.0 codeclination of ecliptic pole         |
+   | psi      | psi_J2000     | longitude difference of equator poles, J2000.0 |
 
    The returned values are all radians.
 
@@ -129,11 +131,11 @@ Precession angles, IAU 2006, equinox based.
    IAU 2000A frame bias and nutation.  The quoted polynomials are
    used in other ERFA functions:
 
-   . eraXy06  contains the polynomial parts of the X and Y series.
+   - [`xy06`](@ref)  contains the polynomial parts of the X and Y series.
 
-   . eraS06  contains the polynomial part of the s+XY/2 series.
+   - [`s06`](@ref)  contains the polynomial part of the s+XY/2 series.
 
-   . eraPfw06  implements the series for the Fukushima-Williams
+   - [`pfw06`](@ref)  implements the series for the Fukushima-Williams
      angles that are with respect to the GCRS pole (i.e. the variants
      that include frame bias).
 
@@ -144,9 +146,9 @@ Precession angles, IAU 2006, equinox based.
 
 5. The parameterization used by ERFA is the version of the Fukushima-
    Williams angles that refers directly to the GCRS pole.  These
-   angles may be calculated by calling the function eraPfw06.  ERFA
+   angles may be calculated by calling the function [`pfw06`](@ref).  ERFA
    also supports the direct computation of the CIP GCRS X,Y by
-   series, available by calling eraXy06.
+   series, available by calling [`xy06`](@ref).
 
 6. The agreement between the different parameterizations is at the
    1 microarcsecond level in the present era.
@@ -165,7 +167,7 @@ Precession angles, IAU 2006, equinox based.
 
 ### Called ###
 
-- `eraObl06`: mean obliquity, IAU 2006
+- [`obl06`](@ref): mean obliquity, IAU 2006
 
 """
 function p06e(date1, date2)
@@ -215,8 +217,8 @@ P-vector to spherical polar coordinates.
 
 ### Called ###
 
-- `eraC2s`: p-vector to spherical
-- `eraPm`: modulus of p-vector
+- [`c2s`](@ref): p-vector to spherical
+- [`pm`](@ref): modulus of p-vector
 
 """
 function p2s(p)
@@ -248,8 +250,8 @@ Extend a p-vector to a pv-vector by appending a zero velocity.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
-- `eraZp`: zero p-vector
+- [`erfa_cp`](@ref): copy p-vector
+- [`zp`](@ref): zero p-vector
 
 """
 p2pv
@@ -289,12 +291,12 @@ bias (the offset between ICRS and mean J2000.0) is included.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -316,16 +318,16 @@ bias (the offset between ICRS and mean J2000.0) is included.
 3. The three angles are returned in the conventional order, which
    is not the same as the order of the corresponding Euler
    rotations.  The precession-bias matrix is
-   R_3(-z) x R_2(+theta) x R_3(-zeta).
+   `R_3(-z) x R_2(+theta) x R_3(-zeta)`.
 
-4. Should zeta_A, z_A, theta_A angles be required that do not
+4. Should `zeta_A`, `z_A`, `theta_A` angles be required that do not
    contain frame bias, they are available by calling the ERFA
-   function eraP06e.
+   function [`p06e`](@ref).
 
 ### Called ###
 
-- `eraPmat06`: PB matrix, IAU 2006
-- `eraRz`: rotate around Z-axis
+- [`pmat06`](@ref): PB matrix, IAU 2006
+- [`rz`](@ref): rotate around Z-axis
 
 """
 function pb06(date1, date2)
@@ -362,12 +364,12 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -378,27 +380,31 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 2. Naming the following points:
 
-         e = J2000.0 ecliptic pole,
-         p = GCRS pole,
-         E = mean ecliptic pole of date,
-   and   P = mean pole of date,
+   - e = J2000.0 ecliptic pole,
+   - p = GCRS pole,
+   - E = mean ecliptic pole of date,
+   - and P = mean pole of date,
 
    the four Fukushima-Williams angles are as follows:
 
-      gamb = gamma_bar = epE
-      phib = phi_bar = pE
-      psib = psi_bar = pEP
-      epsa = epsilon_A = EP
+   - gamb = gamma_bar = epE
+   - phib = phi_bar = pE
+   - psib = psi_bar = pEP
+   - epsa = epsilon_A = EP
 
 3. The matrix representing the combined effects of frame bias and
    precession is:
 
-      PxB = R_1(-epsa).R_3(-psib).R_1(phib).R_3(gamb)
+   ```
+   PxB = R_1(-epsa).R_3(-psib).R_1(phib).R_3(gamb)
+   ```
 
 4. The matrix representing the combined effects of frame bias,
    precession and nutation is simply:
 
-      NxPxB = R_1(-epsa-dE).R_3(-psib-dP).R_1(phib).R_3(gamb)
+   ```
+   NxPxB = R_1(-epsa-dE).R_3(-psib-dP).R_1(phib).R_3(gamb)
+   ```
 
    where dP and dE are the nutation components with respect to the
    ecliptic of date.
@@ -409,7 +415,7 @@ Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 
 ### Called ###
 
-- `eraObl06`: mean obliquity, IAU 2006
+- [`obl06`](@ref): mean obliquity, IAU 2006
 
 """
 function pfw06(date1, date2)
@@ -448,12 +454,12 @@ Neptune (but not the Earth itself).
    between the two arguments.  For example, JD(TDB)=2450123.7 could
    be expressed in any of these ways, among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -469,7 +475,7 @@ Neptune (but not the Earth itself).
 
 3. For np=3 the result is for the Earth-Moon Barycenter.  To obtain
    the heliocentric position and velocity of the Earth, use instead
-   the ERFA function eraEpv00.
+   the ERFA function [`epv00`](@ref).
 
 4. On successful return, the arrays `p` and `v` contain the following:
 
@@ -563,7 +569,7 @@ Neptune (but not the Earth itself).
 
 ### Called ###
 
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -649,12 +655,12 @@ special handling to handle the zero parallax case.
    parts (A and B).  For example, JD(TDB)=2450123.7 could be
    expressed in any of these ways, among others:
 
-          epNa            epNb
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `epNa`    |      `epNb` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -693,18 +699,18 @@ special handling to handle the zero parallax case.
    status of 1 is added to the status if this action has been taken.
 
 7. If the space velocity is a significant fraction of c (see the
-   constant VMAX in the function eraStarpv), it is arbitrarily set
+   constant VMAX in the function [`starpv`](@ref)), it is arbitrarily set
    to zero.  When this action occurs, 2 is added to the status.
 
-8. The relativistic adjustment carried out in the eraStarpv function
+8. The relativistic adjustment carried out in the [`starpv`](@ref) function
    involves an iterative calculation.  If the process fails to
    converge within a set number of iterations, 4 is added to the
    status.
 
 ### Called ###
 
-- `eraSeps`: angle between two points
-- `eraStarpm`: update star catalog data for space motion
+- [`seps`](@ref): angle between two points
+- [`starpm`](@ref): update star catalog data for space motion
 
 """
 function pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
@@ -759,9 +765,9 @@ Convert a p-vector into modulus and unit vector.
 
 ### Called ###
 
-- `eraPm`: modulus of p-vector
-- `eraZp`: zero p-vector
-- `eraSxp`: multiply p-vector by scalar
+- [`pm`](@ref): modulus of p-vector
+- [`zp`](@ref): zero p-vector
+- [`sxp`](@ref): multiply p-vector by scalar
 
 """
 pn
@@ -802,8 +808,8 @@ It is permissible for any of a, b and apsb to be the same array.
 
 ### Called ###
 
-- `eraSxp`: multiply p-vector by scalar
-- `eraPpp`: p-vector plus p-vector
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`ppp`](@ref): p-vector plus p-vector
 
 """
 ppsp
@@ -846,12 +852,12 @@ FK5 catalog).
    and daten2.  For example, JD(TDB)=2450123.7 could be expressed in
    any of these ways, among others:
 
-         daten1        daten2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   | `daten1`  |    `daten2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in cases
    where the loss of several decimal digits of resolution is
@@ -876,7 +882,7 @@ FK5 catalog).
 3. The three angles are returned in the conventional order, which
    is not the same as the order of the corresponding Euler
    rotations.  The precession matrix is
-   R_3(-z) x R_2(+theta) x R_3(-zeta).
+   `R_3(-z) x R_2(+theta) x R_3(-zeta)`.
 
 ### Reference ###
 
@@ -958,7 +964,7 @@ Discard velocity component of a pv-vector.
 
 ### Called ###
 
-- `eraCp`: copy p-vector
+- [`erfa_cp`](@ref): copy p-vector
 
 """
 pv2p
@@ -997,7 +1003,7 @@ Inner (=scalar=dot) product of two pv-vectors.
 
 ### Called ###
 
-- `eraPdp`: scalar product of two p-vectors
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function pvdpv(a, b)
@@ -1029,7 +1035,7 @@ Modulus of pv-vector.
 
 ### Called ###
 
-- `eraPm`: modulus of p-vector
+- [`pm`](@ref): modulus of p-vector
 
 """
 pvm
@@ -1079,7 +1085,7 @@ Convert star position+velocity vector to catalog coordinates.
    limited by the intrinsic accuracy of the proper-motion and
    radial-velocity data;  moreover, the supplied pv-vector is likely
    to be merely an intermediate result (for example generated by the
-   function eraStarpv), so that a change of time unit will cancel
+   function [`starpv`](@ref)), so that a change of time unit will cancel
    out overall.
 
    In accordance with normal star-catalog conventions, the object's
@@ -1093,12 +1099,12 @@ Convert star position+velocity vector to catalog coordinates.
    differences, which are the subject of the Stumpff paper cited
    below, are:
 
-   (i) In stars with significant radial velocity and proper motion,
-   the constantly changing light-time distorts the apparent proper
-   motion.  Note that this is a classical, not a relativistic,
-   effect.
+   - In stars with significant radial velocity and proper motion,
+     the constantly changing light-time distorts the apparent proper
+     motion.  Note that this is a classical, not a relativistic,
+     effect.
 
-   (ii) The transformation complies with special relativity.
+   - The transformation complies with special relativity.
 
 3. Care is needed with units.  The star coordinates are in radians
    and the proper motions in radians per Julian year, but the
@@ -1115,18 +1121,18 @@ Convert star position+velocity vector to catalog coordinates.
    assumed.  If the speed is greater than or equal to the speed of
    light, the function aborts with an error status.
 
-6. The inverse transformation is performed by the function eraStarpv.
+6. The inverse transformation is performed by the function [`starpv`](@ref).
 
 ### Called ###
 
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraPdp`: scalar product of two p-vectors
-- `eraSxp`: multiply p-vector by scalar
-- `eraPmp`: p-vector minus p-vector
-- `eraPm`: modulus of p-vector
-- `eraPpp`: p-vector plus p-vector
-- `eraPv2s`: pv-vector to spherical
-- `eraAnp`: normalize angle into range 0 to 2pi
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`sxp`](@ref): multiply p-vector by scalar
+- [`pmp`](@ref): p-vector minus p-vector
+- [`pm`](@ref): modulus of p-vector
+- [`ppp`](@ref): p-vector plus p-vector
+- [`pv2s`](@ref): pv-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### Reference ###
 
@@ -1174,7 +1180,7 @@ Position and velocity of a terrestrial observing station.
 
 ### Notes ###
 
-1. The terrestrial coordinates are with respect to the ERFA_WGS84
+1. The terrestrial coordinates are with respect to the [`WGS84`](@ref)
    reference ellipsoid.
 
 2. xp and yp are the coordinates (in radians) of the Celestial
@@ -1195,7 +1201,7 @@ Position and velocity of a terrestrial observing station.
    era.
 
 5. No validation is performed on the arguments.  Error cases that
-   could lead to arithmetic exceptions are trapped by the eraGd2gc
+   could lead to arithmetic exceptions are trapped by the [`gd2gc`](@ref)
    function, and the result set to zeros.
 
 ### References ###
@@ -1209,9 +1215,9 @@ Position and velocity of a terrestrial observing station.
 
 ### Called ###
 
-- `eraGd2gc`: geodetic to geocentric transformation
-- `eraPom00`: polar motion matrix
-- `eraTrxp`: product of transpose of r-matrix and p-vector
+- [`gd2gc`](@ref): geodetic to geocentric transformation
+- [`pom00`](@ref): polar motion matrix
+- [`trxp`](@ref): product of transpose of r-matrix and p-vector
 
 """
 function pvtob(elong, phi, height, xp, yp, sp, theta)
@@ -1247,8 +1253,8 @@ Update a pv-vector.
 
 ### Called ###
 
-- `eraPpsp`: p-vector plus scaled p-vector
-- `eraCp`: copy p-vector
+- [`ppsp`](@ref): p-vector plus scaled p-vector
+- [`erfa_cp`](@ref): copy p-vector
 
 """
 function pvu(dt, pv)
@@ -1319,12 +1325,12 @@ use indirectly.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -1366,12 +1372,12 @@ use indirectly.
 
 ### Called ###
 
-- `eraPr00`: IAU 2000 precession adjustments
-- `eraObl80`: mean obliquity, IAU 1980
-- `eraBp00`: frame bias and precession matrices, IAU 2000
-- `eraCr`: copy r-matrix
-- `eraNumat`: form nutation matrix
-- `eraRxr`: product of two r-matrices
+- [`pr00`](@ref): IAU 2000 precession adjustments
+- [`obl80`](@ref): mean obliquity, IAU 1980
+- [`bp00`](@ref): frame bias and precession matrices, IAU 2000
+- [`cr`](@ref): copy r-matrix
+- [`numat`](@ref): form nutation matrix
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -1414,12 +1420,12 @@ indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution
@@ -1457,18 +1463,18 @@ indirectly.
     bias, precession and nutation in that order.
 
 9.  The X,Y,Z coordinates of the Celestial Intermediate Pole are
-    elements (3,1-3) of the GCRS-to-true matrix, i.e. rbpn[2][0-2].
+    elements (3,1-3) of the GCRS-to-true matrix, i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraFw2m`: F-W angles to r-matrix
-- `eraCr`: copy r-matrix
-- `eraTr`: transpose r-matrix
-- `eraRxr`: product of two r-matrices
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`fw2m`](@ref): F-W angles to r-matrix
+- [`cr`](@ref): copy r-matrix
+- [`tr`](@ref): transpose r-matrix
+- [`rxr`](@ref): product of two r-matrices
 
 ### References ###
 
@@ -1617,7 +1623,7 @@ Subtract one pv-vector from another.
 
 ### Called ###
 
-- `eraPmp`: p-vector minus p-vector
+- [`pmp`](@ref): p-vector minus p-vector
 
 """
 pvmpv
@@ -1658,7 +1664,7 @@ Add one pv-vector to another.
 
 ### Called ###
 
-- `eraPpp`: p-vector plus p-vector
+- [`ppp`](@ref): p-vector plus p-vector
 
 """
 pvppv
@@ -1701,9 +1707,9 @@ Outer (=vector=cross) product of two pv-vectors.
 
 ### Called ###
 
-- `eraCpv`: copy pv-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPpp`: p-vector plus p-vector
+- [`cpv`](@ref): copy pv-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`ppp`](@ref): p-vector plus p-vector
 
 """
 function pvxpv(a, b)
@@ -1744,12 +1750,12 @@ use indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution
@@ -1761,9 +1767,9 @@ use indirectly.
 2.  The nutation components (luni-solar + planetary, IAU 2000A) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  Free core nutation is omitted;
-    for the utmost accuracy, use the eraPn00  function, where the
+    for the utmost accuracy, use the [`pn00`](@ref)  function, where the
     nutation components are caller-specified.  For faster but
-    slightly less accurate results, use the eraPn00b function.
+    slightly less accurate results, use the [`pn00b`](@ref) function.
 
 3.  The mean obliquity is consistent with the IAU 2000 precession.
 
@@ -1788,15 +1794,15 @@ use indirectly.
 
 9.  The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate
     Pole are elements (3,1-3) of the GCRS-to-true matrix,
-    i.e. rbpn[2][0-2].
+    i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the order given.
 
 ### Called ###
 
-- `eraNut00a`: nutation, IAU 2000A
-- `eraPn00`: bias/precession/nutation results, IAU 2000
+- [`nut00a`](@ref): nutation, IAU 2000A
+- [`pn00`](@ref): bias/precession/nutation results, IAU 2000
 
 ### Reference ###
 
@@ -1839,12 +1845,12 @@ use indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution
@@ -1856,8 +1862,8 @@ use indirectly.
 2.  The nutation components (luni-solar + planetary, IAU 2000B) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  For more accurate results, but
-    at the cost of increased computation, use the eraPn00a function.
-    For the utmost accuracy, use the eraPn00  function, where the
+    at the cost of increased computation, use the [`pn00a`](@ref) function.
+    For the utmost accuracy, use the [`pn00`](@ref)  function, where the
     nutation components are caller-specified.
 
 3.  The mean obliquity is consistent with the IAU 2000 precession.
@@ -1883,15 +1889,15 @@ use indirectly.
 
 9.  The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate
     Pole are elements (3,1-3) of the GCRS-to-true matrix,
-    i.e. rbpn[2][0-2].
+    i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
 
 ### Called ###
 
-- `eraNut00b`: nutation, IAU 2000B
-- `eraPn00`: bias/precession/nutation results, IAU 2000
+- [`nut00b`](@ref): nutation, IAU 2000B
+- [`pn00`](@ref): bias/precession/nutation results, IAU 2000
 
 ### Reference ###
 
@@ -1934,12 +1940,12 @@ indirectly.
     JD(TT)=2450123.7 could be expressed in any of these ways,
     among others:
 
-           date1          date2
-
-        2450123.7           0.0       (JD method)
-        2451545.0       -1421.3       (J2000 method)
-        2400000.5       50123.2       (MJD method)
-        2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
     The JD method is the most natural and convenient to use in
     cases where the loss of several decimal digits of resolution
@@ -1951,7 +1957,7 @@ indirectly.
 2.  The nutation components (luni-solar + planetary, IAU 2000A) in
     longitude and obliquity are in radians and with respect to the
     equinox and ecliptic of date.  Free core nutation is omitted;
-    for the utmost accuracy, use the eraPn06 function, where the
+    for the utmost accuracy, use the [`pn06`](@ref) function, where the
     nutation components are caller-specified.
 
 3.  The mean obliquity is consistent with the IAU 2006 precession.
@@ -1974,15 +1980,15 @@ indirectly.
 
 9.  The X,Y,Z coordinates of the IAU 2006/2000A Celestial
     Intermediate Pole are elements (3,1-3) of the GCRS-to-true
-    matrix, i.e. rbpn[2][0-2].
+    matrix, i.e. `rbpn[3,1:3]`.
 
 10. It is permissible to re-use the same array in the returned
     arguments.  The arrays are filled in the stated order.
 
 ### Called ###
 
-- `eraNut06a`: nutation, IAU 2006/2000A
-- `eraPn06`: bias/precession/nutation results, IAU 2006
+- [`nut06a`](@ref): nutation, IAU 2006/2000A
+- [`pn06`](@ref): bias/precession/nutation results, IAU 2006
 
 ### Reference ###
 
@@ -2076,11 +2082,11 @@ Position-angle from two p-vectors.
 
 ### Called ###
 
-- `eraPn`: decompose p-vector into modulus and direction
-- `eraPm`: modulus of p-vector
-- `eraPxp`: vector product of two p-vectors
-- `eraPmp`: p-vector minus p-vector
-- `eraPdp`: scalar product of two p-vectors
+- [`pn`](@ref): decompose p-vector into modulus and direction
+- [`pm`](@ref): modulus of p-vector
+- [`pxp`](@ref): vector product of two p-vectors
+- [`pmp`](@ref): p-vector minus p-vector
+- [`pdp`](@ref): scalar product of two p-vectors
 
 """
 function pap(a, b)
@@ -2136,12 +2142,12 @@ Precession-rate part of the IAU 2000 precession-nutation models
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2158,8 +2164,8 @@ Precession-rate part of the IAU 2000 precession-nutation models
    to Lieske et al. (1977), the MHB2000 model does not specify which
    set of Euler angles are to be used and how the adjustments are to
    be applied.  The most literal and straightforward procedure is to
-   adopt the 4-rotation epsilon_0, psi_A, omega_A, xi_A option, and
-   to add dpsipr to psi_A and depspr to both omega_A and eps_A.
+   adopt the 4-rotation `epsilon_0`, `psi_A`, `omega_A`, `xi_A` option, and
+   to add `dpsipr` to `psi_A` and `depspr` to both `omega_A` and `eps_A`.
 
 4. This is an implementation of one aspect of the IAU 2000A nutation
    model, formally adopted by the IAU General Assembly in 2000,
@@ -2173,8 +2179,8 @@ Precession-rate part of the IAU 2000 precession-nutation models
 
 - Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
     and precession   New nutation series for nonrigid Earth and
-    insights into the Earth's interior", J.Geophys.Res., 107, B4,
-    2002.  The MHB2000 code itself was obtained on 9th September 2002
+    insights into the Earth's interior", J.Geophys.Res., 107, B4, 2002.
+    The MHB2000 code itself was obtained on 9th September 2002
     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
 - Wallace, P.T., "Software for Implementing the IAU 2000
@@ -2211,12 +2217,12 @@ date, IAU 2000 model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2232,7 +2238,7 @@ date, IAU 2000 model.
 
 ### Called ###
 
-- `eraBp00`: frame bias and precession matrices, IAU 2000
+- [`bp00`](@ref): frame bias and precession matrices, IAU 2000
 
 ### Reference ###
 
@@ -2264,12 +2270,12 @@ date, IAU 2006 model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2285,8 +2291,8 @@ date, IAU 2006 model.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraFw2m`: F-W angles to r-matrix
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`fw2m`](@ref): F-W angles to r-matrix
 
 ### References ###
 
@@ -2317,12 +2323,12 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2350,11 +2356,11 @@ Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 
 ### Called ###
 
-- `eraPrec76`: accumulated precession angles, IAU 1976
-- `eraIr`: initialize r-matrix to identity
-- `eraRz`: rotate around Z-axis
-- `eraRy`: rotate around Y-axis
-- `eraCr`: copy r-matrix
+- [`prec76`](@ref): accumulated precession angles, IAU 1976
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rz`](@ref): rotate around Z-axis
+- [`ry`](@ref): rotate around Y-axis
+- [`cr`](@ref): copy r-matrix
 
 ### References ###
 
@@ -2387,12 +2393,12 @@ frame bias), equinox-based, IAU 2000A model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2407,11 +2413,11 @@ frame bias), equinox-based, IAU 2000A model.
    the Geocentric Celestial Reference System (IAU, 2000).
 
 3. A faster, but slightly less accurate result (about 1 mas), can be
-   obtained by using instead the eraPnm00b function.
+   obtained by using instead the [`pnm00b`](@ref) function.
 
 ### Called ###
 
-- `eraPn00a`: bias/precession/nutation, IAU 2000A
+- [`pn00a`](@ref): bias/precession/nutation, IAU 2000A
 
 ### Reference ###
 
@@ -2443,12 +2449,12 @@ frame bias), equinox-based, IAU 2000B model.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2463,11 +2469,11 @@ frame bias), equinox-based, IAU 2000B model.
    the Geocentric Celestial Reference System (IAU, 2000).
 
 3. The present function is faster, but slightly less accurate (about
-   1 mas), than the eraPnm00a function.
+   1 mas), than the [`pnm00a`](@ref) function.
 
 ### Called ###
 
-- `eraPn00b`: bias/precession/nutation, IAU 2000B
+- [`pn00b`](@ref): bias/precession/nutation, IAU 2000B
 
 ### Reference ###
 
@@ -2499,12 +2505,12 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2520,9 +2526,9 @@ frame bias), IAU 2006 precession and IAU 2000A nutation models.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraNut06a`: nutation, IAU 2006/2000A
-- `eraFw2m`: F-W angles to r-matrix
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`nut06a`](@ref): nutation, IAU 2006/2000A
+- [`fw2m`](@ref): F-W angles to r-matrix
 
 ### Reference ###
 
@@ -2552,12 +2558,12 @@ precession model, IAU 1980 nutation model.
    JD(TDB)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -2573,9 +2579,9 @@ precession model, IAU 1980 nutation model.
 
 ### Called ###
 
-- `eraPmat76`: precession matrix, IAU 1976
-- `eraNutm80`: nutation matrix, IAU 1980
-- `eraRxr`: product of two r-matrices
+- [`pmat76`](@ref): precession matrix, IAU 1976
+- [`nutm80`](@ref): nutation matrix, IAU 1980
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -2633,7 +2639,7 @@ Form the matrix of polar motion for a given date, IAU 2000.
    integration, and so is in essence unpredictable.  However, it is
    dominated by a secular drift of about 47 microarcseconds per
    century, and so can be taken into account by using s' = -47*t,
-   where t is centuries since J2000.0.  The function eraSp00
+   where t is centuries since J2000.0.  The function [`sp00`](@ref)
    implements this approximation.
 
 3. The matrix operates in the sense V(TRS) = rpom * V(CIP), meaning
@@ -2642,10 +2648,10 @@ Form the matrix of polar motion for a given date, IAU 2000.
 
 ### Called ###
 
-- `eraIr`: initialize r-matrix to identity
-- `eraRz`: rotate around Z-axis
-- `eraRy`: rotate around Y-axis
-- `eraRx`: rotate around X-axis
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rz`](@ref): rotate around Z-axis
+- [`ry`](@ref): rotate around Y-axis
+- [`rx`](@ref): rotate around X-axis
 
 ### Reference ###
 

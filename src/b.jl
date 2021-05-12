@@ -32,9 +32,9 @@ of MHB2000 with additions).
     Astrophys., 387, 700, 2002.
 
 - Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
-    and precession   New nutation series for nonrigid Earth and
-    insights into the Earth's interior", J.Geophys.Res., 107, B4,
-    2002.  The MHB2000 code itself was obtained on 9th September 2002
+    and precession: New nutation series for nonrigid Earth and
+    insights into the Earth's interior", J.Geophys.Res., 107, B4, 2002.
+    The MHB2000 code itself was obtained on 9th September 2002
     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 
 """
@@ -114,12 +114,12 @@ Frame bias and precession, IAU 2000.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-           date1         date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -144,14 +144,14 @@ Frame bias and precession, IAU 2000.
 
 ### Called ###
 
-- `eraBi00`: frame bias components, IAU 2000
-- `eraPr00`: IAU 2000 precession adjustments
-- `eraIr`: initialize r-matrix to identity
-- `eraRx`: rotate around X-axis
-- `eraRy`: rotate around Y-axis
-- `eraRz`: rotate around Z-axis
-- `eraCr`: copy r-matrix
-- `eraRxr`: product of two r-matrices
+- [`bi00`](@ref): frame bias components, IAU 2000
+- [`pr00`](@ref): IAU 2000 precession adjustments
+- [`ir`](@ref): initialize r-matrix to identity
+- [`rx`](@ref): rotate around X-axis
+- [`ry`](@ref): rotate around Y-axis
+- [`rz`](@ref): rotate around Z-axis
+- [`cr`](@ref): copy r-matrix
+- [`rxr`](@ref): product of two r-matrices
 
 ### Reference ###
 
@@ -187,12 +187,12 @@ Frame bias and precession, IAU 2006.
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-           date1         date2
-
-       2450123.7           0.0       (JD method)
-       2451545.0       -1421.3       (J2000 method)
-       2400000.5       50123.2       (MJD method)
-       2450123.5           0.2       (date & time method)
+   |   `date1` | `date2` | Method      |
+   |:----------|:--------|:------------|
+   | 2450123.7 |     0.0 | JD          |
+   | 2451545.0 | -1421.3 | J2000       |
+   | 2400000.5 | 50123.2 | MJD         |
+   | 2450123.5 |     0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -215,12 +215,12 @@ Frame bias and precession, IAU 2006.
 
 ### Called ###
 
-- `eraPfw06`: bias-precession F-W angles, IAU 2006
-- `eraFw2m`: F-W angles to r-matrix
-- `eraPmat06`: PB matrix, IAU 2006
-- `eraTr`: transpose r-matrix
-- `eraRxr`: product of two r-matrices
-- `eraCr`: copy r-matrix
+- [`pfw06`](@ref): bias-precession F-W angles, IAU 2006
+- [`fw2m`](@ref): F-W angles to r-matrix
+- [`pmat06`](@ref): PB matrix, IAU 2006
+- [`tr`](@ref): transpose r-matrix
+- [`rxr`](@ref): product of two r-matrices
+- [`cr`](@ref): copy r-matrix
 
 ### References ###
 

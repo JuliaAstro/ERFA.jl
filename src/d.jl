@@ -7,6 +7,7 @@ dynamical time and terrestrial time, for an observer on the Earth.
 The different time scales - proper, coordinate and realized - are
 related to each other:
 
+```
           TAI             <-  physically realized
            :
         offset            <-  observed (nominally +32.184s)
@@ -17,7 +18,7 @@ related to each other:
            :
           TCG             <-  time scale for GCRS
            :
-    "periodic" terms      <-  eraDtdb  is an implementation
+    "periodic" terms      <-  [`dtdb`](@ref)  is an implementation
            :
   rate adjustment (L_C)   <-  function of solar-system ephemeris
            :
@@ -30,6 +31,7 @@ related to each other:
     "periodic" terms      <-  -eraDtdb is an approximation
            :
           TT              <-  terrestrial time
+```
 
 Adopted values for the various constants can be found in the IERS
 Conventions (McCarthy & Petit 2003).
@@ -53,12 +55,12 @@ Conventions (McCarthy & Petit 2003).
    JD(TT)=2450123.7 could be expressed in any of these ways,
    among others:
 
-   | `date1`   |     `date2` |                    |
-   |:----------|:------------|:-------------------|
-   | 2450123.7 |         0.0 | JD method          |
-   | 2451545.0 |     -1421.3 | J2000 method       |
-   | 2400000.5 |     50123.2 | MJD method         |
-   | 2450123.5 |         0.2 | date & time method |
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
 
    The JD method is the most natural and convenient to use in
    cases where the loss of several decimal digits of resolution
@@ -105,8 +107,8 @@ Conventions (McCarthy & Petit 2003).
 
 6. The geocentric TDB-TT model used in the present function is that of
    Fairhead & Bretagnon (1990), in its full form.  It was originally
-   supplied by Fairhead (private communications with P.T.Wallace,
-   1990. as a Fortran subroutine.  The present C function contains an
+   supplied by Fairhead (private communications with P.T.Wallace, 1990)
+   as a Fortran subroutine.  The present C function contains an
    adaptation of the Fairhead code.  The numerical results are
    essentially unaffected by the changes, the differences with
    respect to the Fairhead & Bretagnon original being at the 1e-20 s
@@ -258,7 +260,7 @@ For a given UTC date, calculate delta(AT) = TAI-UTC.
 
 ### Called ###
 
-- `eraCal2jd`: Gregorian calendar to JD
+- [`cal2jd`](@ref): Gregorian calendar to JD
 
 """
 function dat(iy, im, id, fd)
@@ -337,15 +339,15 @@ quasi-JD form that includes special provision for leap seconds).
 
 5. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
-6. For calendar conventions and limitations, see eraCal2jd.
+6. For calendar conventions and limitations, see [`cal2jd`](@ref).
 
 ### Called ###
 
-- `eraJd2cal`: JD to Gregorian calendar
-- `eraD2tf`: decompose days to hms
-- `eraDat`: delta(AT) = TAI-UTC
+- [`jd2cal`](@ref): JD to Gregorian calendar
+- [`d2tf`](@ref): decompose days to hms
+- [`dat`](@ref): delta(AT) = TAI-UTC
 
 """
 function d2dtf(scale::AbstractString, ndp, d1, d2)
@@ -388,7 +390,7 @@ seconds).
    case) is significant, and enables handling of leap seconds (see
    Note 4).
 
-2. For calendar conventions and limitations, see eraCal2jd.
+2. For calendar conventions and limitations, see [`cal2jd`](@ref).
 
 3. The sum of the results, d1+d2, is Julian Date, where normally d1
    is the Julian Day Number and d2 is the fraction of a day.  In the
@@ -410,7 +412,7 @@ seconds).
 
 6. The warning status "dubious year" flags UTCs that predate the
    introduction of the time scale or that are too far in the future
-   to be trusted.  See eraDat for further details.
+   to be trusted.  See [`dat`](@ref) for further details.
 
 7. Only in the case of continuous and regular time scales (TAI, TT,
    TCG, TCB and TDB) is the result d1+d2 a Julian Date, strictly
@@ -421,9 +423,9 @@ seconds).
 
 ### Called ###
 
-- `eraCal2jd`: Gregorian calendar to JD
-- `eraDat`: delta(AT) = TAI-UTC
-- `eraJd2cal`: JD to Gregorian calendar
+- [`cal2jd`](@ref): Gregorian calendar to JD
+- [`dat`](@ref): delta(AT) = TAI-UTC
+- [`jd2cal`](@ref): JD to Gregorian calendar
 
 """
 function dtf2d(scale::AbstractString, iy, imo, id, ih, imi, sec)
@@ -473,20 +475,21 @@ Decompose days to hours, minutes, seconds, fraction.
 
 1. The argument ndp is interpreted as follows:
 
-   ndp         resolution
-    :      ...0000 00 00
-   -7         1000 00 00
-   -6          100 00 00
-   -5           10 00 00
-   -4            1 00 00
-   -3            0 10 00
-   -2            0 01 00
-   -1            0 00 10
-    0            0 00 01
-    1            0 00 00.1
-    2            0 00 00.01
-    3            0 00 00.001
-    :            0 00 00.000...
+   | ndp |     resolution       |
+   |:----|:---------------------|
+   |  :  | ...0000 00 00        |
+   | -7  |    1000 00 00        |
+   | -6  |     100 00 00        |
+   | -5  |      10 00 00        |
+   | -4  |       1 00 00        |
+   | -3  |       0 10 00        |
+   | -2  |       0 01 00        |
+   | -1  |       0 00 10        |
+   |  0  |       0 00 01        |
+   |  1  |       0 00 00.1      |
+   |  2  |       0 00 00.01     |
+   |  3  |       0 00 00.001    |
+   |  :  |       0 00 00.000... |
 
 2. The largest positive useful value for ndp is determined by the
    size of days, the format of double on the target platform, and

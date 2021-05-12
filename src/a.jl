@@ -770,7 +770,9 @@ parts of the ICRS/CIRS transformations.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -778,7 +780,9 @@ parts of the ICRS/CIRS transformations.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -1528,7 +1532,9 @@ conditions and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -1536,7 +1542,9 @@ conditions and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to the
     pressure and that an accurate phpa value is important for
@@ -2037,7 +2045,9 @@ nutation, Earth orientation and refraction.
     is available, an adequate estimate of hm can be obtained from
     the expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2045,7 +2055,9 @@ nutation, Earth orientation and refraction.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -2440,7 +2452,9 @@ coordinates, ambient air conditions and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2448,7 +2462,9 @@ coordinates, ambient air conditions and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -2708,7 +2724,9 @@ and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2716,7 +2734,9 @@ and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for
@@ -2861,7 +2881,9 @@ ambient air conditions and observing wavelength.
     available, an adequate estimate of hm can be obtained from the
     expression
 
-          hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
+    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+    ```
 
     where tsl is the approximate sea-level air temperature in K
     (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
@@ -2869,7 +2891,9 @@ ambient air conditions and observing wavelength.
     estimated from the height of the observing station, hm, as
     follows:
 
-          phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
+    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+    ```
 
     Note, however, that the refraction is nearly proportional to
     the pressure and that an accurate phpa value is important for

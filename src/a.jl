@@ -593,7 +593,7 @@ site coordinates.
 2. The vectors eb, eh, and all the astrom vectors, are with respect
    to BCRS axes.
 
-3. The geographical coordinates are with respect to the ERFA_WGS84
+3. The geographical coordinates are with respect to the [`WGS84`](@ref)
    reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN
    CONVENTION:  the longitude required by the present function is
    right-handed, i.e. east-positive, in accordance with geographical
@@ -750,7 +750,7 @@ parts of the ICRS/CIRS transformations.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4.  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -1370,7 +1370,7 @@ and the refraction constants as well as the site coordinates.
    most precise applications.  It can either be set to zero or
    predicted using the ERFA function [`sp00`](@ref).
 
-2. The geographical coordinates are with respect to the ERFA_WGS84
+2. The geographical coordinates are with respect to the [`WGS84`](@ref)
    reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
    longitude required by the present function is east-positive
    (i.e. right-handed), in accordance with geographical convention.
@@ -1512,7 +1512,7 @@ conditions and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4.  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2028,7 +2028,7 @@ nutation, Earth orientation and refraction.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6.  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2435,7 +2435,7 @@ coordinates, ambient air conditions and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-4.  The geographical coordinates are with respect to the ERFA_WGS84
+4.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2707,7 +2707,7 @@ and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6.  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.
@@ -2864,7 +2864,7 @@ ambient air conditions and observing wavelength.
     practice is under review, and in the future UT1-UTC may grow
     essentially without limit.
 
-6.  The geographical coordinates are with respect to the ERFA_WGS84
+6.  The geographical coordinates are with respect to the [`WGS84`](@ref)
     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
     longitude required by the present function is east-positive
     (i.e. right-handed), in accordance with geographical convention.

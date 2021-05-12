@@ -20,9 +20,9 @@ reference ellipsoid.
 1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-   - `WGS84`
-   - `GRS80`
-   - `WGS72`
+   - [`WGS84`](@ref)
+   - [`GRS80`](@ref)
+   - [`WGS72`](@ref)
 
 2. The geocentric vector (xyz, given) and height (height, returned)
    are in meters.
@@ -94,7 +94,7 @@ ellipsoid of specified form.
 6. The inverse transformation is performed in the function
    [`gd2gce`](@ref).
 
-7. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
+7. The transformation for a standard ellipsoid (such as [`WGS84`](@ref)) can
    more conveniently be performed by calling [`gc2gd`](@ref), which uses a
    numerical code to identify the required A and F values.
 
@@ -143,14 +143,14 @@ reference ellipsoid.
 1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-      n    ellipsoid
-
-      1     ERFA_WGS84
-      2     ERFA_GRS80
-      3     ERFA_WGS72
+   | n | ellipsoid       |
+   |:--|:----------------|
+   | 1 | [`WGS84`](@ref) |
+   | 2 | [`GRS80`](@ref) |
+   | 3 | [`WGS72`](@ref) |
 
    The n value has no significance outside the ERFA software.  For
-   convenience, symbols ERFA_WGS84 etc. are defined in erfam.h.
+   convenience, the [`Ellipsoid`](@ref) enum provides these values.
 
 2. The height (height, given) and the geocentric vector (xyz,
    returned) are in meters.
@@ -220,7 +220,7 @@ ellipsoid of specified form.
 5. The inverse transformation is performed in the function
    [`gc2gde`](@ref).
 
-6. The transformation for a standard ellipsoid (such as ERFA_WGS84) can
+6. The transformation for a standard ellipsoid (such as [`WGS84`](@ref)) can
    more conveniently be performed by calling [`gd2gc`](@ref),  which uses a
    numerical code to identify the required a and f values.
 

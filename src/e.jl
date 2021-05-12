@@ -17,9 +17,9 @@ Earth reference ellipsoids.
 1. The identifier n is a number that specifies the choice of
    reference ellipsoid.  The following are supported:
 
-   - `WGS84`
-   - `GRS80`
-   - `WGS72`
+   - [`WGS84`](@ref)
+   - [`GRS80`](@ref)
+   - [`WGS72`](@ref)
 
 2. The ellipsoid parameters are returned in the form of equatorial
    radius in meters (a) and flattening (f).  The latter is a number

@@ -191,7 +191,13 @@ Schwarzschild radius of the Sun (au) =
 const SRS = 1.97412574336e-8
 
 """
+    Ellipsoid
+
 Reference ellipsoids
+
+- [`WGS84`](@ref)
+- [`GRS80`](@ref)
+- [`WGS72`](@ref)
 """
 @enum Ellipsoid WGS84=1 GRS80=2 WGS72=3
 

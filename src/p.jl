@@ -1176,7 +1176,7 @@ Position and velocity of a terrestrial observing station.
 
 ### Notes ###
 
-1. The terrestrial coordinates are with respect to the ERFA_WGS84
+1. The terrestrial coordinates are with respect to the [`WGS84`](@ref)
    reference ellipsoid.
 
 2. xp and yp are the coordinates (in radians) of the Celestial

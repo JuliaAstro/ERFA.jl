@@ -15,6 +15,18 @@
     @test isapprox(rv5, -7.6000001309071126, atol = 1e-10)
 end
 
+# ERFA.hd2ae
+@testset "hd2ae" begin
+    h = 1.1
+    d = 1.2
+    p = 0.3
+
+    a, e = ERFA.hd2ae(h, d, p)
+
+    @test a ≈ 5.916889243730066194 atol=1e-13
+    @test e ≈ 0.4472186304990486228 atol=1e-14
+end
+
 # ERFA.hfk5z
 @testset "hfk5z" begin
     rh =  1.767794352

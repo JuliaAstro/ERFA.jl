@@ -98,7 +98,7 @@ to hour angle and declination.
    adjusted for deflection of the vertical (often tens of
    arcseconds), and the zero point of ha will also be affected.
 
-7. The transformation is the same as Ve = Ry(phi-pi/2)*Rz(pi)*Vh,
+7. The transformation is the same as `Ve = Ry(phi-pi/2)*Rz(pi)*Vh`,
    where Ve and Vh are lefthanded unit vectors in the (ha,dec. and
    (az,el. systems respectively and Rz and Ry are rotations about
    first the z-axis and then the y-axis.  (n.b. Rz(pi. simply

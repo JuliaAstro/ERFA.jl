@@ -115,7 +115,7 @@ end
 end
 
 # ERFA.fk524
-@testset "fk534" begin
+@testset "fk524" begin
     r2000 = 0.8723503576487275595
     d2000 = -0.7517076365138887672
     dr2000 = 0.2019447755430472323e-4
@@ -149,6 +149,20 @@ end
     @test isapprox(ddh, -0.58459905176693911e-5, atol = 1e-19)
     @test isapprox(pxh, 0.37921, atol = 1e-14)
     @test isapprox(rvh, -7.6000000940000254, atol = 1e-11)
+end
+
+# ERFA.fk54z
+@testset "fk54z" begin
+    r2000 = 0.02719026625066316119
+    d2000 = -0.1115815170738754813
+    bepoch = 1954.677308160316374
+
+    r1950, d1950, dr1950, dd1950 = ERFA.fk54z(r2000, d2000, bepoch)
+
+    @test r1950 ≈ 0.01602015588390065476 atol=1e-14
+    @test d1950 ≈ -0.1164397101110765346 atol=1e-13
+    @test dr1950 ≈ -0.1175712648471090704e-7 atol=1e-20
+    @test dd1950 ≈ 0.2108109051316431056e-7 atol=1e-20
 end
 
 # ERFA.fk5hz

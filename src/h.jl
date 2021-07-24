@@ -62,6 +62,54 @@ function hd2ae(h, d, p)
 end
 
 """
+    hd2pa(h, d, p)
+
+Parallactic angle for a given hour angle and declination.
+
+### Given ###
+
+- `ha`: hour angle
+- `dec`: declination
+- `phi`: site latitude
+
+### Returned ###
+
+Returns the parallactic angle
+
+### Notes ###
+
+1. All the arguments are angles in radians.
+
+2. The parallactic angle at a point in the sky is the position
+   angle of the vertical, i.e. the angle between the directions to
+   the north celestial pole and to the zenith respectively.
+
+3. The result is returned in the range -pi to +pi.
+
+4. At the pole itself a zero result is returned.
+
+5. The latitude phi is pi/2 minus the angle between the Earth's
+   rotation axis and the adopted zenith.  In many applications it
+   will be sufficient to use the published geodetic latitude of the
+   site.  In very precise (sub-arcsecond) applications, phi can be
+   corrected for polar motion.
+
+6. Should the user wish to work with respect to the astronomical
+   zenith rather than the geodetic zenith, phi will need to be
+   adjusted for deflection of the vertical (often tens of
+   arcseconds), and the zero point of the hour angle ha will also
+   be affected.
+
+### Reference ###
+
+- Smart, W.M., "Spherical Astronomy", Cambridge University Press,
+  6th edition (Green, 1977), p49.
+"""
+function hd2pa(h, d, p)
+    ccall((:eraHd2pa, liberfa), Cdouble, (Cdouble, Cdouble, Cdouble), h, d, p)
+end
+
+"""
     hfk5z(rh, dh, date1, date2)
 
 Transform a Hipparcos star position into FK5 J2000.0, assuming

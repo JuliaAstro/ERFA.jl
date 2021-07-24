@@ -27,6 +27,17 @@ end
     @test e ≈ 0.4472186304990486228 atol=1e-14
 end
 
+# ERFA.hd2pa
+@testset "hd2pa" begin
+    h = 1.1
+    d = 1.2
+    p = 0.3
+
+    q = ERFA.hd2pa(h, d, p)
+
+    @test q ≈ 1.906227428001995580 atol=1e-13
+end
+
 # ERFA.hfk5z
 @testset "hfk5z" begin
     rh =  1.767794352

@@ -22,6 +22,18 @@ end
     @test_throws ArgumentError ERFA.ab(pnat, v[1:2], s, bm1)
 end
 
+# ERFA.ae2hd
+@testset "ae2hd" begin
+   a = 5.5
+   e = 1.1
+   p = 0.7
+
+   h, d = ERFA.ae2hd(a, e, p)
+
+   @test h ≈ 0.5933291115507309663 atol=1e-14
+   @test d ≈ 0.9613934761647817620 atol=1e-14
+end
+
 # ERFA.af2a
 @testset "af2a" begin
     r = ERFA.af2a('-', 45, 13, 27.2)

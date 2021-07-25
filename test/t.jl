@@ -77,6 +77,28 @@ end
     @test status == 2
 end
 
+# ERFA.tporv
+@testset "tporv" begin
+    xi = -0.03
+    eta = 0.07
+    ra = 1.3
+    dec = 1.5
+
+    v = ERFA.s2c(ra, dec)
+
+    status, vz1, vz2 = ERFA.tporv(xi, eta, v)
+
+    @test vz1[1] ≈ -0.02206252822366888610 atol=1e-15
+    @test vz1[2] ≈ 0.1318251060359645016 atol=1e-14
+    @test vz1[3] ≈ 0.9910274397144543895 atol=1e-14
+
+    @test vz2[1] ≈ -0.003712211763801968173 atol=1e-16
+    @test vz2[2] ≈ -0.004341519956299836813 atol=1e-16
+    @test vz2[3] ≈ 0.9999836852110587012 atol=1e-14
+
+    @test status == 2
+end
+
 # ERFA.tr
 @testset "tr" begin
     r = [2.0 3.0 2.0;

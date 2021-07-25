@@ -99,6 +99,19 @@ end
     @test status == 2
 end
 
+# ERFA.tpsts
+@testset "tpsts" begin
+    xi = -0.03
+    eta = 0.07
+    raz = 2.3
+    decz = 1.5
+
+    ra, dec = ERFA.tpsts(xi, eta, raz, decz)
+
+    @test ra ≈ 0.7596127167359629775 atol=1e-14
+    @test dec ≈ 1.540864645109263028 atol=1e-13
+end
+
 # ERFA.tr
 @testset "tr" begin
     r = [2.0 3.0 2.0;

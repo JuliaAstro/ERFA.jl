@@ -74,13 +74,13 @@ Bessel-Newcomb) system to the later IAU 1976 FK5 (Fricke) system.
 
 ### Called ###
 
-- [`Anp`](@ref) Normalize angle into range 0 to 2pi
-- [`Pv2s`](@ref) Pv-vector to spherical coordinates
-- [`Pdp`](@ref) Scalar product of two p-vectors
-- [`Pvmpv`](@ref) Pv-vector minus pv_vector
-- [`Pvppv`](@ref) Pv-vector plus pv_vector
-- [`S2pv`](@ref) Spherical coordinates to pv-vector
-- [`Sxp`](@ref) Multiply p-vector by scalar
+- [`anp`](@ref) Normalize angle into range 0 to 2pi
+- [`pv2s`](@ref) Pv-vector to spherical coordinates
+- [`pdp`](@ref) Scalar product of two p-vectors
+- [`pvmpv`](@ref) Pv-vector minus pv_vector
+- [`pvppv`](@ref) Pv-vector plus pv_vector
+- [`s2pv`](@ref) Spherical coordinates to pv-vector
+- [`sxp`](@ref) Multiply p-vector by scalar
 
 ### References ###
 

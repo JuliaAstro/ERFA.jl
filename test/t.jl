@@ -143,6 +143,23 @@ end
     @test status == 0
 end
 
+# ERFA.tpxev
+@testset "tpxev" begin
+    ra = 1.3
+    dec = 1.55
+    raz = 2.3
+    decz = 1.5
+    v = ERFA.s2c(ra, dec)
+    vz = ERFA.s2c(raz, decz)
+
+    status, xi, eta = ERFA.tpxev(v, vz)
+
+    @test xi ≈ -0.01753200983236980595 atol=1e-15
+    @test eta ≈ 0.05962940005778712891 atol=1e-15
+
+    @test status == 0
+end
+
 # ERFA.tr
 @testset "tr" begin
     r = [2.0 3.0 2.0;

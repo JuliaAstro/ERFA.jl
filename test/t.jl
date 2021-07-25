@@ -59,6 +59,24 @@ end
     @test isapprox(d, 0.9966539351851851852, atol = 1e-12)
 end
 
+# ERFA.tpors
+@testset "tpors" begin
+    xi = -0.03
+    eta = 0.07
+    ra = 1.3
+    dec = 1.5
+
+    status, az1, bz1, az2, bz2 = ERFA.tpors(xi, eta, ra, dec)
+
+    @test az1 ≈ 1.736621577783208748 atol=1e-13
+    @test bz1 ≈ 1.436736561844090323 atol=1e-13
+
+    @test az2 ≈ 4.004971075806584490 atol=1e-13
+    @test bz2 ≈ 1.565084088476417917 atol=1e-13
+
+    @test status == 2
+end
+
 # ERFA.tr
 @testset "tr" begin
     r = [2.0 3.0 2.0;

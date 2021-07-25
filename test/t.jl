@@ -112,6 +112,22 @@ end
     @test dec ≈ 1.540864645109263028 atol=1e-13
 end
 
+# ERFA.tpstv
+@testset "tpstv" begin
+    xi = -0.03
+    eta = 0.07
+    raz = 2.3
+    decz = 1.5
+
+    vz = ERFA.s2c(raz, decz)
+
+    v = ERFA.tpstv(xi, eta, vz)
+
+    @test v[1] ≈ 0.02170030454907376677 atol=1e-15
+    @test v[2] ≈ 0.02060909590535367447 atol=1e-15
+    @test v[3] ≈ 0.9995520806583523804 atol=1e-14
+end
+
 # ERFA.tr
 @testset "tr" begin
     r = [2.0 3.0 2.0;

@@ -128,6 +128,21 @@ end
     @test v[3] ≈ 0.9995520806583523804 atol=1e-14
 end
 
+# ERFA.tpxes
+@testset "tpxes" begin
+    ra = 1.3
+    dec = 1.55
+    raz = 2.3
+    decz = 1.5
+
+    status, xi, eta = ERFA.tpxes(ra, dec, raz, decz)
+
+    @test xi ≈ -0.01753200983236980595 atol=1e-15
+    @test eta ≈ 0.05962940005778712891 atol=1e-15
+
+    @test status == 0
+end
+
 # ERFA.tr
 @testset "tr" begin
     r = [2.0 3.0 2.0;

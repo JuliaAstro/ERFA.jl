@@ -74,13 +74,13 @@ Bessel-Newcomb) system to the later IAU 1976 FK5 (Fricke) system.
 
 ### Called ###
 
-- [`anp`](@ref) Normalize angle into range 0 to 2pi
-- [`pv2s`](@ref) Pv-vector to spherical coordinates
-- [`pdp`](@ref) Scalar product of two p-vectors
-- [`pvmpv`](@ref) Pv-vector minus pv_vector
-- [`pvppv`](@ref) Pv-vector plus pv_vector
-- [`s2pv`](@ref) Spherical coordinates to pv-vector
-- [`sxp`](@ref) Multiply p-vector by scalar
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`pv2s`](@ref): pv-vector to spherical coordinates
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pvmpv`](@ref): pv-vector minus pv_vector
+- [`pvppv`](@ref): pv-vector plus pv_vector
+- [`s2pv`](@ref): spherical coordinates to pv-vector
+- [`sxp`](@ref): multiply p-vector by scalar
 
 ### References ###
 
@@ -186,15 +186,15 @@ system was determined.
 
 ### Called ###
 
-- [`anp`](@ref) normalize angle into range 0 to 2pi
-- [`c2s`](@ref) p-vector to spherical
-- [`epb2jd`](@ref) Besselian epoch to Julian date
-- [`epj`](@ref) Julian date to Julian epoch
-- [`pdp`](@ref) scalar product of two p-vectors
-- [`pmp`](@ref) p-vector minus p-vector
-- [`ppsp`](@ref) p-vector plus scaled p-vector
-- [`pvu`](@ref) update a pv-vector
-- [`s2c`](@ref) spherical to p-vectors
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`c2s`](@ref): p-vector to spherical
+- [`epb2jd`](@ref): Besselian epoch to Julian date
+- [`epj`](@ref): Julian date to Julian epoch
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pmp`](@ref): p-vector minus p-vector
+- [`ppsp`](@ref): p-vector plus scaled p-vector
+- [`pvu`](@ref): update a pv-vector
+- [`s2c`](@ref): spherical to p-vectors
 """
 function fk45z(r1950, d1950, bepoch)
     r2000 = Ref{Cdouble}()
@@ -274,14 +274,14 @@ Convert J2000.0 FK5 star catalog data to B1950.0 FK4.
 
 ### Called ###
 
-- [`anp`](@ref) normalize angle into range 0 to 2pi
-- [`pdp`](@ref) scalar product of two p-vectors
-- [`pm`](@ref) modulus of p-vector
-- [`pmp`](@ref) p-vector minus p-vector
-- [`ppp`](@ref) p-vector plus p-vector
-- [`pv2s`](@ref) pv-vector to spherical coordinates
-- [`s2pv`](@ref) spherical coordinates to pv-vector
-- [`sxp`](@ref) multiply p-vector by scalar
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`pdp`](@ref): scalar product of two p-vectors
+- [`pm`](@ref): modulus of p-vector
+- [`pmp`](@ref): p-vector minus p-vector
+- [`ppp`](@ref): p-vector plus p-vector
+- [`pv2s`](@ref): pv-vector to spherical coordinates
+- [`s2pv`](@ref): spherical coordinates to pv-vector
+- [`sxp`](@ref): multiply p-vector by scalar
 
 ### References ###
 
@@ -342,7 +342,7 @@ proper motion in FK5 and parallax.
    motions, the parallax and the radial velocity are presumed zero.
 
 2. This function converts a star position from the IAU 1976 FK5
-  (Fricke) system to the former FK4 (Bessel-Newcomb) system, for
+   (Fricke) system to the former FK4 (Bessel-Newcomb) system, for
    cases such as distant radio sources where it is presumed there is
    zero parallax and no proper motion.  Because of the E-terms of
    aberration, such objects have (in general) non-zero proper motion
@@ -364,10 +364,10 @@ proper motion in FK5 and parallax.
 
 ### Called ###
 
-- [`anp`](@ref) normalize angle into range 0 to 2pi
-- [`c2s`](@ref) p-vector to spherical
-- [`fk524`](@ref) FK4 to FK5
-- [`s2c`](@ref) spherical to p-vector
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+- [`c2s`](@ref): p-vector to spherical
+- [`fk524`](@ref): FK4 to FK5
+- [`s2c`](@ref): spherical to p-vector
 """
 function fk54z(r2000, d2000, bepoch)
     r1950 = Ref{Cdouble}()

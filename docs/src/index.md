@@ -1,9 +1,6 @@
 ERFA.jl
 =======
 
-[![Build Status](https://img.shields.io/travis/JuliaAstro/ERFA.jl.svg?style=flat-square)](https://travis-ci.org/JuliaAstro/ERFA.jl)
-[![Build status](https://img.shields.io/appveyor/ci/kbarbary/erfa-jl.svg?style=flat-square&label=windows)](https://ci.appveyor.com/project/kbarbary/erfa-jl/branch/master)
-
 Julia wrapper for [liberfa](https://github.com/liberfa/erfa).
 
 Installation

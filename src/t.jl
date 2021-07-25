@@ -60,15 +60,15 @@ coordinates of the tangent point.
 
 8. This function is a member of the following set:
 
-   |   spherical  |   vector   |   solve for |
-   |:-------------|:-----------|:------------|
-   |   eraTpxes   |  eraTpxev  |      xi,eta |
-   |   eraTpsts   |  eraTpstv  |        star |
-   | > eraTpors < |  eraTporv  |      origin |
+   | spherical         |   vector        | solve for |
+   |:------------------|:----------------|:----------|
+   |  [`tpxes`](@ref)  | [`tpxev`](@ref) | xi,eta    |
+   |  [`tpsts`](@ref)  | [`tpstv`](@ref) | star      |
+   | *[`tpors`](@ref)* | [`tporv`](@ref) | origin    |
 
 ### Called ###
 
-- [`anp`](@ref) normalize angle into range 0 to 2pi
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 
 ### References ###
 
@@ -104,7 +104,7 @@ cosines of the tangent point.
 
 ### Returned ###
 
-- `int`: number of solutions:
+- `status`: number of solutions:
     - 0 = no solutions returned (Note 4)
     - 1 = only the first solution is useful (Note 5)
     - 2 = both solutions are useful (Note 5)
@@ -150,11 +150,11 @@ cosines of the tangent point.
 
 7. This function is a member of the following set:
 
-     | spherical |    vector      |  solve for |
-     |:----------|:---------------|:-----------|
-     | eraTpxes  |   eraTpxev     |   xi,eta   |
-     | eraTpsts  |   eraTpstv     |    star    |
-     | eraTpors  | > eraTporv <   |   origin   |
+   | spherical       | vector            | solve for |
+   |:----------------|:------------------|:----------|
+   | [`tpxes`](@ref) |  [`tpxev`](@ref)  | xi,eta    |
+   | [`tpsts`](@ref) |  [`tpstv`](@ref)  | star      |
+   | [`tpors`](@ref) | *[`tporv`](@ref)* | origin    |
 
 ### References ###
 
@@ -315,7 +315,7 @@ rectangular coordinates in the tangent plane.
 
 ### Returned ###
 
-- `status`
+- `status`:
     - 0 = OK
     - 1 = star too far from axis
     - 2 = antistar on tangent plane
@@ -388,18 +388,18 @@ coordinates in the tangent plane.
    projection" and the "central projection".
 
 2. The eta axis points due north in the adopted coordinate system.
-   If the direction cosines represent observed (RA,Dec., the tangent
-   plane coordinates (xi,eta. are conventionally called the
+   If the direction cosines represent observed (RA,Dec), the tangent
+   plane coordinates (xi,eta) are conventionally called the
    "standard coordinates".  If the direction cosines are with
-   respect to a right-handed triad, (xi,eta. are also right-handed.
-   The units of (xi,eta. are, effectively, radians at the tangent
+   respect to a right-handed triad, (xi,eta) are also right-handed.
+   The units of (xi,eta) are, effectively, radians at the tangent
    point.
 
 3. The method used is to extend the star vector to the tangent
-   plane and then rotate the triad so that (x,y. becomes (xi,eta).
-   Writing (a,b. for the celestial spherical coordinates of the
-   star, the sequence of rotations is (a+pi/2. around the z-axis
-   followed by (pi/2-b. around the x-axis.
+   plane and then rotate the triad so that (x,y) becomes (xi,eta).
+   Writing (a,b) for the celestial spherical coordinates of the
+   star, the sequence of rotations is (a+pi/2) around the z-axis
+   followed by (pi/2-b) around the x-axis.
 
 4. If vector v0 is not of unit length, or if vector v is of zero
    length, the results will be wrong.
@@ -412,9 +412,9 @@ coordinates in the tangent plane.
 
    | spherical       | vector            | solve for |
    |:----------------|:------------------|:----------|
-   | [`Tpxes`](@ref) | *[`Tpxev`](@ref)* | xi,eta    |
-   | [`Tpsts`](@ref) |  [`Tpstv`](@ref)  | star      |
-   | [`Tpors`](@ref) |  [`Tporv`](@ref)  | origin    |
+   | [`tpxes`](@ref) | *[`tpxev`](@ref)* | xi,eta    |
+   | [`tpsts`](@ref) |  [`tpstv`](@ref)  | star      |
+   | [`tpors`](@ref) |  [`tporv`](@ref)  | origin    |
 
 ### References ###
 

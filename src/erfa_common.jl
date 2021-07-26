@@ -322,18 +322,31 @@ function array_to_cmatrix(array; n=0)
     return hcat(array...)
 end
 
-function array_to_cmatrix(array::Vector{Vector{Int}}; n=0)
-    any(length.(array) .!= n) && throw(ArgumentError("Expected each vector to have $n elements."))
-    array = map(x->Cint.(x), array)
-    return hcat(array...)
-end
-
 function cmatrix_to_array(matrix)
     return [matrix[:, i] for i in 1:size(matrix, 2)]
 end
 
-function cmatrix_to_array(matrix::Matrix{Cint})
-    return [Int.(matrix[:, i]) for i in 1:size(matrix, 2)]
+function ASTROM(pmt, eb::AbstractArray, eh::AbstractArray, em, v::AbstractArray, bm1, bpn::AbstractArray, along, phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb)
+    ASTROM(pmt,
+              (eb[1], eb[2], eb[3]),
+              (eh[1], eh[2], eh[3]),
+              em,
+              (v[1], v[2], v[3]),
+              bm1,
+              (bpn[1], bpn[2], bpn[3], bpn[4], bpn[5], bpn[6], bpn[7], bpn[8], bpn[9]),
+              along,
+              phi,
+              xpl,
+              ypl,
+              sphi,
+              cphi,
+              diurab,
+              eral,
+              refa,
+              refb)
 end
 
+function LDBODY(bm, dl, pv::AbstractArray)
+    LDBODY(bm, dl, (pv...,))
+end
 

@@ -33,17 +33,17 @@ end
     p = -0.5
     h = 2500.0
     xyz = gd2gc(WGS84, e, p, h)
-    @test isapprox(xyz[1], -5599000.5577049947, atol = 1e-7)
-    @test isapprox(xyz[2], 233011.67223479203, atol = 1e-7)
-    @test isapprox(xyz[3], -3040909.4706983363, atol = 1e-7)
+    @test xyz[1] ≈ -5599000.5577049947 atol=1e-7
+    @test xyz[2] ≈ 233011.67223479203 atol=1e-7
+    @test xyz[3] ≈ -3040909.4706983363 atol=1e-7
     xyz = gd2gc(GRS80, e, p, h)
-    @test isapprox(xyz[1], -5599000.5577260984, atol = 1e-7)
-    @test isapprox(xyz[2], 233011.6722356703, atol = 1e-7)
-    @test isapprox(xyz[3], -3040909.4706095476, atol = 1e-7)
+    @test xyz[1] ≈ -5599000.5577260984 atol=1e-7
+    @test xyz[2] ≈ 233011.6722356703 atol=1e-7
+    @test xyz[3] ≈ -3040909.4706095476 atol=1e-7
     xyz = gd2gc(WGS72, e, p, h)
-    @test isapprox(xyz[1], -5598998.7626301490, atol = 1e-7)
-    @test isapprox(xyz[2], 233011.5975297822, atol = 1e-7)
-    @test isapprox(xyz[3], -3040908.6861467111, atol = 1e-7)
+    @test xyz[1] ≈ -5598998.7626301490 atol=1e-7
+    @test xyz[2] ≈ 233011.5975297822 atol=1e-7
+    @test xyz[3] ≈ -3040908.6861467111 atol=1e-7
 end
 
 @testset "gd2gce" begin
@@ -53,9 +53,9 @@ end
     p = -0.5
     h = 2500.0
     xyz = gd2gce(a, f, e, p, h)
-    @test isapprox(xyz[1], -5598999.6665116328, atol = 1e-7)
-    @test isapprox(xyz[2], 233011.63514630572, atol = 1e-7)
-    @test isapprox(xyz[3], -3040909.0517314132, atol = 1e-7)
+    @test xyz[1] ≈ -5598999.6665116328 atol=1e-7
+    @test xyz[2] ≈ 233011.63514630572 atol=1e-7
+    @test xyz[3] ≈ -3040909.0517314132 atol=1e-7
 end
 
 @testset "gmst00" begin

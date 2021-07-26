@@ -160,15 +160,15 @@ end
     psi  = -0.9501954178013015092e-3
     eps  =  0.4091014316587367472
     r = fw2m(gamb, phib, psi, eps)
-    @test isapprox(r[1,1], 0.9999995505176007047, atol = 1e-12)
-    @test isapprox(r[1,2], 0.8695404617348192957e-3, atol = 1e-12)
-    @test isapprox(r[1,3], 0.3779735201865582571e-3, atol = 1e-12)
-    @test isapprox(r[2,1], -0.8695404723772016038e-3, atol = 1e-12)
-    @test isapprox(r[2,2], 0.9999996219496027161, atol = 1e-12)
-    @test isapprox(r[2,3], -0.1361752496887100026e-6, atol = 1e-12)
-    @test isapprox(r[3,1], -0.3779734957034082790e-3, atol = 1e-12)
-    @test isapprox(r[3,2], -0.1924880848087615651e-6, atol = 1e-12)
-    @test isapprox(r[3,3], 0.9999999285679971958, atol = 1e-12)
+    @test r[1,1] ≈ 0.9999995505176007047 atol=1e-12
+    @test r[1,2] ≈ 0.8695404617348192957e-3 atol=1e-12
+    @test r[1,3] ≈ 0.3779735201865582571e-3 atol=1e-12
+    @test r[2,1] ≈ -0.8695404723772016038e-3 atol=1e-12
+    @test r[2,2] ≈ 0.9999996219496027161 atol=1e-12
+    @test r[2,3] ≈ -0.1361752496887100026e-6 atol=1e-12
+    @test r[3,1] ≈ -0.3779734957034082790e-3 atol=1e-12
+    @test r[3,2] ≈ -0.1924880848087615651e-6 atol=1e-12
+    @test r[3,3] ≈ 0.9999999285679971958 atol=1e-12
 end
 
 @testset "fw2xy" begin
@@ -183,17 +183,17 @@ end
 
 @testset "fk5hip" begin
     r5h, s5h = fk5hip()
-    @test isapprox(r5h[1], 0.9999999999999928638, atol = 1e-14)
-    @test isapprox(r5h[2], 0.1110223351022919694e-6, atol = 1e-17)
-    @test isapprox(r5h[3], 0.4411803962536558154e-7, atol = 1e-17)
-    @test isapprox(r5h[4], -0.1110223308458746430e-6, atol = 1e-17)
-    @test isapprox(r5h[5], 0.9999999999999891830, atol = 1e-14)
-    @test isapprox(r5h[6], -0.9647792498984142358e-7, atol = 1e-17)
-    @test isapprox(r5h[7], -0.4411805033656962252e-7, atol = 1e-17)
-    @test isapprox(r5h[8], 0.9647792009175314354e-7, atol = 1e-17)
-    @test isapprox(r5h[9], 0.9999999999999943728, atol = 1e-14)
-    @test isapprox(s5h[1], -0.1454441043328607981e-8, atol = 1e-17)
-    @test isapprox(s5h[2], 0.2908882086657215962e-8, atol = 1e-17)
-    @test isapprox(s5h[3], 0.3393695767766751955e-8, atol = 1e-17)
+    @test r5h[1] ≈ 0.9999999999999928638 atol=1e-14
+    @test r5h[2] ≈ 0.1110223351022919694e-6 atol=1e-17
+    @test r5h[3] ≈ 0.4411803962536558154e-7 atol=1e-17
+    @test r5h[4] ≈ -0.1110223308458746430e-6 atol=1e-17
+    @test r5h[5] ≈ 0.9999999999999891830 atol=1e-14
+    @test r5h[6] ≈ -0.9647792498984142358e-7 atol=1e-17
+    @test r5h[7] ≈ -0.4411805033656962252e-7 atol=1e-17
+    @test r5h[8] ≈ 0.9647792009175314354e-7 atol=1e-17
+    @test r5h[9] ≈ 0.9999999999999943728 atol=1e-14
+    @test s5h[1] ≈ -0.1454441043328607981e-8 atol=1e-17
+    @test s5h[2] ≈ 0.2908882086657215962e-8 atol=1e-17
+    @test s5h[3] ≈ 0.3393695767766751955e-8 atol=1e-17
 end
 

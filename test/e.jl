@@ -76,18 +76,18 @@ end
 
 @testset "epv00" begin
     pvh, pvb = epv00(2400000.5, 53411.52501161)
-    @test isapprox(pvh[1][1], -0.7757238809297706813, atol = 1e-14)
-    @test isapprox(pvh[1][2], 0.5598052241363340596, atol = 1e-14)
-    @test isapprox(pvh[1][3], 0.2426998466481686993, atol = 1e-14)
-    @test isapprox(pvh[2][1], -0.1091891824147313846e-1, atol = 1e-15)
-    @test isapprox(pvh[2][2], -0.1247187268440845008e-1, atol = 1e-15)
-    @test isapprox(pvh[2][3], -0.5407569418065039061e-2, atol = 1e-15)
-    @test isapprox(pvb[1][1], -0.7714104440491111971, atol = 1e-14)
-    @test isapprox(pvb[1][2], 0.5598412061824171323, atol = 1e-14)
-    @test isapprox(pvb[1][3], 0.2425996277722452400, atol = 1e-14)
-    @test isapprox(pvb[2][1], -0.1091874268116823295e-1, atol = 1e-15)
-    @test isapprox(pvb[2][2], -0.1246525461732861538e-1, atol = 1e-15)
-    @test isapprox(pvb[2][3], -0.5404773180966231279e-2, atol = 1e-15)
+    @test pvh[1][1] ≈ -0.7757238809297706813 atol=1e-14
+    @test pvh[1][2] ≈ 0.5598052241363340596 atol=1e-14
+    @test pvh[1][3] ≈ 0.2426998466481686993 atol=1e-14
+    @test pvh[2][1] ≈ -0.1091891824147313846e-1 atol=1e-15
+    @test pvh[2][2] ≈ -0.1247187268440845008e-1 atol=1e-15
+    @test pvh[2][3] ≈ -0.5407569418065039061e-2 atol=1e-15
+    @test pvb[1][1] ≈ -0.7714104440491111971 atol=1e-14
+    @test pvb[1][2] ≈ 0.5598412061824171323 atol=1e-14
+    @test pvb[1][3] ≈ 0.2425996277722452400 atol=1e-14
+    @test pvb[2][1] ≈ -0.1091874268116823295e-1 atol=1e-15
+    @test pvb[2][2] ≈ -0.1246525461732861538e-1 atol=1e-15
+    @test pvb[2][3] ≈ -0.5404773180966231279e-2 atol=1e-15
     @test_logs (:warn,) epv00(2.5245935e6, 0.0)
 end
 
@@ -115,14 +115,14 @@ end
 
 @testset "ecm06" begin
     rm = ecm06(2456165.5, 0.401182685)
-    @test isapprox(rm[1,1], 0.9999952427708701137, atol = 1e-14)
-    @test isapprox(rm[1,2], -0.2829062057663042347e-2, atol = 1e-14)
-    @test isapprox(rm[1,3], -0.1229163741100017629e-2, atol = 1e-14)
-    @test isapprox(rm[2,1], 0.3084546876908653562e-2, atol = 1e-14)
-    @test isapprox(rm[2,2], 0.9174891871550392514, atol = 1e-14)
-    @test isapprox(rm[2,3], 0.3977487611849338124, atol = 1e-14)
-    @test isapprox(rm[3,1], 0.2488512951527405928e-5, atol = 1e-14)
-    @test isapprox(rm[3,2], -0.3977506604161195467, atol = 1e-14)
-    @test isapprox(rm[3,3], 0.9174935488232863071, atol = 1e-14)
+    @test rm[1,1] ≈ 0.9999952427708701137 atol=1e-14
+    @test rm[1,2] ≈ -0.2829062057663042347e-2 atol=1e-14
+    @test rm[1,3] ≈ -0.1229163741100017629e-2 atol=1e-14
+    @test rm[2,1] ≈ 0.3084546876908653562e-2 atol=1e-14
+    @test rm[2,2] ≈ 0.9174891871550392514 atol=1e-14
+    @test rm[2,3] ≈ 0.3977487611849338124 atol=1e-14
+    @test rm[3,1] ≈ 0.2488512951527405928e-5 atol=1e-14
+    @test rm[3,2] ≈ -0.3977506604161195467 atol=1e-14
+    @test rm[3,3] ≈ 0.9174935488232863071 atol=1e-14
 end
 

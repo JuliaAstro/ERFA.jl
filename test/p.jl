@@ -82,7 +82,7 @@ end
 
 @testset "plan94" begin
     @test_throws ERFAException plan94(2400000.5, -320000., 10)
-    @test_logs (:warn,) p, v = plan94(2400000.5, -320000., 3)
+    p, v = @test_logs (:warn,) plan94(2400000.5, -320000., 3)
     @test isapprox(p[1], 0.9308038666832975759, atol = 1e-11)
     @test isapprox(p[2], 0.3258319040261346000, atol = 1e-11)
     @test isapprox(p[3], 0.1422794544481140560, atol = 1e-11)
@@ -684,6 +684,8 @@ end
     pve = [[2137.792716839935195,-245251.2339876830091],
           [-0.4051854035740712739e-2,-0.6253919754866173866e-2,0.1189353719774107189e-1]]
     @test_throws ArgumentError pvstar(pve)
+    @test_throws ERFAException pvstar([pv[1], [1e12, 0.0, 0.0]])
+    @test_logs (:warn,) pvstar([zeros(3), zeros(3)])
 end
 
 @testset "pvtob" begin

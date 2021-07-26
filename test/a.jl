@@ -35,6 +35,9 @@ end
     @test r ≈ -0.7893115794313644842 atol=1e-15
     r = af2a('+', 45, 13, 27.2)
     @test r ≈ 0.7893115794313644842 atol=1e-15
+    @test_throws ERFAException af2a('+', 361, 13, 27.2)
+    @test_throws ERFAException af2a('+', 45, 60, 27.2)
+    @test_throws ERFAException af2a('+', 45, 13, 60.2)
 end
 
 @testset "anp" begin
@@ -277,6 +280,8 @@ end
     @test isapprox(astrom.refa, 0.2014187785940396921e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408314943696227e-6, atol = 1e-18)
     @test eo ≈ -0.003020548354802412839 atol=1e-14
+    @test_logs (:warn,) apco13(2.5245935e6, 0.0, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    @test_throws ERFAException apco13(-1e9, 0.0, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 end
 
 @testset "apcs" begin
@@ -428,6 +433,8 @@ end
     @test isapprox(astrom.eral, 2.617608909189664000, atol = 1e-12)
     @test isapprox(astrom.refa, 0.2014187785940396921e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408314943696227e-6, atol = 1e-18)
+    @test_logs (:warn,) apio13(2.5245935e6, 0.0, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    @test_throws ERFAException apio13(-1e9, 0.0, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 end
 
 @testset "atci13" begin
@@ -515,15 +522,18 @@ end
     tc = 12.8
     rh = 0.59
     wl = 0.55
-    aob, zob, hob, dob, rob, eo = atco13(rc, dc, pr, pd, px, rv,
-                                              utc1, utc2, dut1, elong, phi, hm, xp, yp,
-                                              phpa, tc, rh, wl)
+    aob, zob, hob, dob, rob, eo = atco13(rc, dc, pr, pd, px, rv, utc1, utc2, dut1, elong,
+                                         phi, hm, xp, yp, phpa, tc, rh, wl)
     @test aob ≈ 0.9251774485485515207e-1 atol=1e-12
     @test zob ≈ 1.407661405256499357 atol=1e-12
     @test hob ≈ -0.9265154431529724692e-1 atol=1e-12
     @test dob ≈ 0.1716626560072526200 atol=1e-12
     @test rob ≈ 2.710260453504961012 atol=1e-12
     @test eo ≈ -0.003020548354802412839 atol=1e-14
+    @test_logs (:warn,) atco13(rc, dc, pr, pd, px, rv, 2.5245935e6, 0.0, dut1, elong, phi,
+                               hm, xp, yp, phpa, tc, rh, wl)
+    @test_throws ERFAException atco13(rc, dc, pr, pd, px, rv, -1e9, 0.0, dut1, elong, phi,
+                                      hm, xp, yp, phpa, tc, rh, wl)
 end
 
 @testset "atic13" begin
@@ -590,6 +600,8 @@ end
     @test hob ≈ -0.9247619879881698140e-1 atol=1e-12
     @test dob ≈ 0.1717653435756234676 atol=1e-12
     @test rob ≈ 2.710085107988480746 atol=1e-12
+    @test_logs (:warn,) atio13(ri, di, 2.5245935e6, 0.0, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    @test_throws ERFAException atio13(ri, di, -1e9, 0.0, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 end
 
 @testset "atioq" begin
@@ -648,6 +660,14 @@ end
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test rc ≈ 2.709956744659734086 atol=1e-12
     @test dc ≈ 0.1741696500898471366 atol=1e-12
+    rc1, dc1 = @test_logs (:warn,) atoc13("foo", ob1, ob2, utc1, utc2, dut1,
+                                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    @test rc == rc1
+    @test dc == dc1
+    @test_logs (:warn,) atoc13("a", ob1, ob2, 2.5245935e6, 0.0, dut1, elong, phi, hm,
+                               xp, yp, phpa, tc, rh, wl)
+    @test_throws ERFAException atoc13("a", ob1, ob2, -1e9, 0.0, dut1, elong, phi, hm,
+                                      xp, yp, phpa, tc, rh, wl)
 end
 
 @testset "atoi13" begin
@@ -681,6 +701,10 @@ end
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test ri ≈ 2.710121574448138676 atol=1e-12
     @test di ≈ 0.1729371839116608781 atol=1e-12
+    @test_logs (:warn,) atoi13("a", ob1, ob2, 2.5245935e6, 0.0, dut1,
+                               elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    @test_throws ERFAException atoi13("a", ob1, ob2, -1e9, 0.0, dut1,
+                                      elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 end
 
 @testset "atoiq" begin

@@ -1,18 +1,18 @@
 @testset "gc2gd" begin
     xyz = [2.e6, 3.e6, 5.244e6]
-    e, p, h = gc2gd(1, xyz)
+    e, p, h = gc2gd(WGS84, xyz)
     @test e ≈ 0.98279372324732907 atol=1e-14
     @test p ≈ 0.97160184819075459 atol=1e-14
     @test h ≈ 331.41724614260599 atol=1e-8
-    e, p, h = gc2gd(2, xyz)
+    e, p, h = gc2gd(GRS80, xyz)
     @test e ≈ 0.98279372324732907 atol=1e-14
     @test p ≈ 0.97160184820607853 atol=1e-14
     @test h ≈ 331.41731754844348 atol=1e-8
-    e, p, h = gc2gd(3, xyz)
+    e, p, h = gc2gd(WGS72, xyz)
     @test e ≈ 0.98279372324732907 atol=1e-14
     @test p ≈ 0.97160181811015119 atol=1e-14
     @test h ≈ 333.27707261303181 atol=1e-8
-    @test_throws ArgumentError gc2gd(1, xyz[1:2])
+    @test_throws ArgumentError gc2gd(WGS84, xyz[1:2])
 end
 
 @testset "gc2gde" begin
@@ -24,21 +24,23 @@ end
     @test p ≈ 0.97160183775704115 atol=1e-14
     @test h ≈ 332.36862495764397 atol=1e-8
     @test_throws ArgumentError gc2gde(a, f, xyz[1:2])
+    @test_throws ERFAException gc2gde(-100, f, xyz)
+    @test_throws ERFAException gc2gde(a, -100, xyz)
 end
 
 @testset "gd2gc" begin
     e = 3.1
     p = -0.5
     h = 2500.0
-    xyz = gd2gc(1, e, p, h)
+    xyz = gd2gc(WGS84, e, p, h)
     @test isapprox(xyz[1], -5599000.5577049947, atol = 1e-7)
     @test isapprox(xyz[2], 233011.67223479203, atol = 1e-7)
     @test isapprox(xyz[3], -3040909.4706983363, atol = 1e-7)
-    xyz = gd2gc(2, e, p, h)
+    xyz = gd2gc(GRS80, e, p, h)
     @test isapprox(xyz[1], -5599000.5577260984, atol = 1e-7)
     @test isapprox(xyz[2], 233011.6722356703, atol = 1e-7)
     @test isapprox(xyz[3], -3040909.4706095476, atol = 1e-7)
-    xyz = gd2gc(3, e, p, h)
+    xyz = gd2gc(WGS72, e, p, h)
     @test isapprox(xyz[1], -5598998.7626301490, atol = 1e-7)
     @test isapprox(xyz[2], 233011.5975297822, atol = 1e-7)
     @test isapprox(xyz[3], -3040908.6861467111, atol = 1e-7)

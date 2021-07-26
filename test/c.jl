@@ -239,6 +239,9 @@ end
     dmj0, dmj = cal2jd(2003, 6, 1)
     @test dmj0 ≈ 2400000.5 atol=1e-9
     @test dmj ≈ 52791.0 atol=1e-9
+    @test_throws ERFAException cal2jd(-1e9, 6, 1)
+    @test_throws ERFAException cal2jd(2021, 13, 1)
+    @test_throws ERFAException cal2jd(2021, 6, 32)
 end
 
 @testset "cp" begin

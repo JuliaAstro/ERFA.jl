@@ -43,11 +43,17 @@ end
 @testset "tf2a" begin
     a = tf2a('+', 4, 58, 20.2)
     @test a ≈ 1.301739278189537429 atol=1e-12
+    @test_throws ERFAException tf2a('+', 24, 58, 20.2)
+    @test_throws ERFAException tf2a('+', 4, 60, 20.2)
+    @test_throws ERFAException tf2a('+', 4, 58, 60.2)
 end
 
 @testset "tf2d" begin
     d = tf2d('+', 23, 55, 10.9)
     @test d ≈ 0.9966539351851851852 atol=1e-12
+    @test_throws ERFAException tf2d('+', 24, 58, 20.2)
+    @test_throws ERFAException tf2d('+', 4, 60, 20.2)
+    @test_throws ERFAException tf2d('+', 4, 58, 60.2)
 end
 
 @testset "tpors" begin

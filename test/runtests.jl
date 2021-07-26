@@ -4,6 +4,7 @@ using StaticArrays: @SVector
 using Test
 
 @testset "ERFA" begin
+    @test sprint(Base.showerror, ERFAException("test")) == "test"
     @testset "Calendar Tools" begin
         u1, u2 = dtf2d("UTC", 2010, 7, 24, 11, 18, 7.318)
         a1, a2 = utctai(u1, u2)

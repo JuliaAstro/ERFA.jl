@@ -20,6 +20,8 @@ end
     u1, u2 = utctai(2453750.5, 0.892100694)
     @test u1 ≈ 2453750.5 atol=1e-6
     @test u2 ≈ 0.8924826384444444444 atol=1e-13
+    @test_logs (:warn,) utctai(2.4880695e6, 0.0)
+    @test_throws ERFAException utctai(typemax(Cdouble), 0.0)
 end
 
 @testset "utcut1" begin

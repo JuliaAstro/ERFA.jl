@@ -435,7 +435,7 @@ function dtf2d(scale::AbstractString, iy, imo, id, ih, imi, sec)
               (Cstring, Cint, Cint, Cint, Cint, Cint, Cdouble, Ref{Cdouble}, Ref{Cdouble}),
               scale, iy, imo, id, ih, imi, sec, r1, r2)
     if i == 3
-        @warn "both of next two"
+        @warn "time is after end of day (Note 5) and dubious year (Note 6)"
     elseif i == 2
         @warn "time is after end of day (Note 5)"
     elseif i == 1

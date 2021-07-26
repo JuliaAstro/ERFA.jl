@@ -88,6 +88,7 @@ end
     @test isapprox(pvb[2][1], -0.1091874268116823295e-1, atol = 1e-15)
     @test isapprox(pvb[2][2], -0.1246525461732861538e-1, atol = 1e-15)
     @test isapprox(pvb[2][3], -0.5404773180966231279e-2, atol = 1e-15)
+    @test_logs (:warn,) epv00(2.5245935e6, 0.0)
 end
 
 @testset "eqeq94" begin

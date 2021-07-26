@@ -1,9 +1,9 @@
 @testset "a2af" begin
-    @test ERFA.a2af(4, 2.345) == ('+', 134, 21, 30, 9706)
+    @test a2af(4, 2.345) == ('+', 134, 21, 30, 9706)
 end
 
 @testset "a2tf" begin
-    @test ERFA.a2tf(4, -3.01234) == ('-', 11, 30, 22, 6484)
+    @test a2tf(4, -3.01234) == ('-', 11, 30, 22, 6484)
 end
 
 @testset "ab" begin
@@ -11,12 +11,12 @@ end
     v = [2.1044018893653786e-5,-8.9108923304429319e-5,-3.8633714797716569e-5]
     s = 0.99980921395708788
     bm1 = 0.99999999506209258
-    ppr = ERFA.ab(pnat, v, s, bm1)
+    ppr = ab(pnat, v, s, bm1)
     @test isapprox(ppr[1], -0.7631631094219556269, atol = 1e-12)
     @test isapprox(ppr[2], -0.6087553082505590832, atol = 1e-12)
     @test isapprox(ppr[3], -0.2167926269368471279, atol = 1e-12)
-    @test_throws ArgumentError ERFA.ab(pnat[1:2], v, s, bm1)
-    @test_throws ArgumentError ERFA.ab(pnat, v[1:2], s, bm1)
+    @test_throws ArgumentError ab(pnat[1:2], v, s, bm1)
+    @test_throws ArgumentError ab(pnat, v[1:2], s, bm1)
 end
 
 @testset "ae2hd" begin
@@ -31,9 +31,9 @@ end
 end
 
 @testset "af2a" begin
-    r = ERFA.af2a('-', 45, 13, 27.2)
+    r = af2a('-', 45, 13, 27.2)
     @test isapprox(r, -0.7893115794313644842, atol = 1e-15)
-    r = ERFA.af2a('+', 45, 13, 27.2)
+    r = af2a('+', 45, 13, 27.2)
     @test isapprox(r, 0.7893115794313644842, atol = 1e-15)
 end
 
@@ -44,7 +44,7 @@ end
 end
 
 @testset "anpm" begin
-    r = ERFA.anpm(-4.0)
+    r = anpm(-4.0)
     @test isapprox(r, 2.283185307179586477, atol = 1e-15)
 end
 
@@ -54,7 +54,7 @@ end
     ebpv = [[0.901310875,-0.417402664,-0.180982288],
             [0.00742727954,0.0140507459,0.00609045792]]
     ehp = [0.903358544,-0.415395237,-0.180084014]
-    astrom = ERFA.apcg(date1, date2, ebpv, ehp)
+    astrom = apcg(date1, date2, ebpv, ehp)
     @test isapprox(astrom.pmt, 12.65133794027378508, atol = 1e-11)
     @test isapprox(astrom.eb[1], 0.901310875, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.417402664, atol = 1e-12)
@@ -78,14 +78,14 @@ end
     @test isapprox(astrom.bpn[3,3], 1.0, atol = 1e-10)
     ebpve = [[-0.417402664,-0.180982288],
             [0.00742727954,0.0140507459,0.00609045792]]
-    @test_throws ArgumentError ERFA.apcg(date1, date2, ebpve, ehp)
-    @test_throws ArgumentError ERFA.apcg(date1, date2, ebpv, ehp[1:2])
+    @test_throws ArgumentError apcg(date1, date2, ebpve, ehp)
+    @test_throws ArgumentError apcg(date1, date2, ebpv, ehp[1:2])
 end
 
 @testset "apcg13" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    astrom = ERFA.apcg13(date1, date2)
+    astrom = apcg13(date1, date2)
     @test isapprox(astrom.pmt, 12.65133794027378508, atol = 1e-12)
     @test isapprox(astrom.eb[1], 0.9013108747340644755, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.4174026640406119957, atol = 1e-12)
@@ -118,7 +118,7 @@ end
     x =  0.0013122272
     y = -2.92808623e-5
     s =  3.05749468e-8
-    astrom = ERFA.apci(date1, date2, ebpv, ehp, x, y, s)
+    astrom = apci(date1, date2, ebpv, ehp, x, y, s)
     @test isapprox(astrom.pmt, 12.65133794027378508, atol = 1e-11)
     @test isapprox(astrom.eb[1], 0.901310875, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.417402664, atol = 1e-12)
@@ -142,14 +142,14 @@ end
     @test isapprox(astrom.bpn[3,3], 0.9999991386008323373, atol = 1e-12)
     ebpve = [[-0.417402664,-0.180982288],
             [0.00742727954,0.0140507459,0.00609045792]]
-    @test_throws ArgumentError ERFA.apci(date1, date2, ebpve, ehp, x, y, s)
-    @test_throws ArgumentError ERFA.apci(date1, date2, ebpv, ehp[1:2], x, y, s)
+    @test_throws ArgumentError apci(date1, date2, ebpve, ehp, x, y, s)
+    @test_throws ArgumentError apci(date1, date2, ebpv, ehp[1:2], x, y, s)
 end
 
 @testset "apci13" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    astrom, eo = ERFA.apci13(date1, date2)
+    astrom, eo = apci13(date1, date2)
     @test isapprox(astrom.pmt, 12.65133794027378508, atol = 1e-11)
     @test isapprox(astrom.eb[1], 0.9013108747340644755, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.4174026640406119957, atol = 1e-12)
@@ -192,7 +192,7 @@ end
     sp = -3.01974337e-11
     refa = 0.000201418779
     refb = -2.36140831e-7
-    astrom = ERFA.apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
+    astrom = apco(date1, date2, ebpv, ehp, x, y, s, theta, elong, phi, hm, xp, yp, sp, refa, refb)
     @test isapprox(astrom.pmt, 13.25248468622587269, atol = 1e-11)
     @test isapprox(astrom.eb[1], -0.9741827110630897003, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.2115130190135014340, atol = 1e-12)
@@ -225,9 +225,9 @@ end
     @test isapprox(astrom.refb, -0.2361408310000000000e-6, atol = 1e-18)
     ebpve = [[-0.211520082,-0.0917583024],
             [0.00364365824,-0.0154287319,-0.00668922024]]
-    @test_throws ArgumentError ERFA.apco(date1, date2, ebpve, ehp, x, y, s, theta, elong,
+    @test_throws ArgumentError apco(date1, date2, ebpve, ehp, x, y, s, theta, elong,
                                          phi, hm, xp, yp, sp, refa, refb)
-    @test_throws ArgumentError ERFA.apco(date1, date2, ebpve, ehp[1:2], x, y, s, theta,
+    @test_throws ArgumentError apco(date1, date2, ebpve, ehp[1:2], x, y, s, theta,
                                          elong, phi, hm, xp, yp, sp, refa, refb)
 end
 
@@ -245,7 +245,7 @@ end
     tc = 12.8
     rh = 0.59
     wl = 0.55
-    astrom, eo = ERFA.apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    astrom, eo = apco13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(astrom.pmt, 13.25248468622475727, atol = 1e-11)
     @test isapprox(astrom.eb[1], -0.9741827107321449445, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.2115130190489386190, atol = 1e-12)
@@ -287,7 +287,7 @@ end
     ebpv = [[-0.974170438,-0.211520082,-0.0917583024],
             [0.00364365824,-0.0154287319,-0.00668922024]]
     ehp = [-0.973458265,-0.209215307,-0.0906996477]
-    astrom = ERFA.apcs(date1, date2, pv, ebpv, ehp)
+    astrom = apcs(date1, date2, pv, ebpv, ehp)
     @test isapprox(astrom.pmt, 13.25248468622587269, atol = 1e-11)
     @test isapprox(astrom.eb[1], -0.9741827110630456169, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.2115130190136085494, atol = 1e-12)
@@ -311,9 +311,9 @@ end
     @test isapprox(astrom.bpn[3,3], 1, atol = 1e-10)
     ebpve = [[-0.211520082,-0.0917583024],
             [0.00364365824,-0.0154287319,-0.00668922024]]
-    @test_throws ArgumentError ERFA.apcs(date1, date2, ebpve, ebpv, ehp)
-    @test_throws ArgumentError ERFA.apcs(date1, date2, pv, ebpve, ehp)
-    @test_throws ArgumentError ERFA.apcs(date1, date2, pv, ebpv, ehp[1:2])
+    @test_throws ArgumentError apcs(date1, date2, ebpve, ebpv, ehp)
+    @test_throws ArgumentError apcs(date1, date2, pv, ebpve, ehp)
+    @test_throws ArgumentError apcs(date1, date2, pv, ebpv, ehp[1:2])
 end
 
 @testset "apcs13" begin
@@ -321,7 +321,7 @@ end
     date2 = 0.401182685
     pv = [[-6241497.16,401346.896,-1251136.04],
           [-29.264597,-455.021831,0.0266151194]]
-    astrom = ERFA.apcs13(date1, date2, pv)
+    astrom = apcs13(date1, date2, pv)
     @test isapprox(astrom.pmt, 12.65133794027378508, atol = 1e-11)
     @test isapprox(astrom.eb[1], 0.9012691529023298391, atol = 1e-12)
     @test isapprox(astrom.eb[2], -0.4173999812023068781, atol = 1e-12)
@@ -345,7 +345,7 @@ end
     @test isapprox(astrom.bpn[3,3], 1, atol = 1e-10)
     pve = [[401346.896,-1251136.04],
           [-29.264597,-455.021831,0.0266151194]]
-    @test_throws ArgumentError ERFA.apcs13(date1, date2, pve)
+    @test_throws ArgumentError apcs13(date1, date2, pve)
 end
 
 @testset "aper" begin
@@ -361,7 +361,7 @@ end
     phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb = 0., 0., 0., 0., 0., 0., 0., 0., 0.
     astrom = ERFA.ASTROM(pmt, eb, eh, em, v, bm1, bpn, along,
                          phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb)
-    astrom = ERFA.aper(theta, astrom)
+    astrom = aper(theta, astrom)
     @test isapprox(astrom.eral, 6.912000000000000000, atol = 1e-12)
 end
 
@@ -379,7 +379,7 @@ end
     phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb = 0., 0., 0., 0., 0., 0., 0., 0., 0.
     astrom = ERFA.ASTROM(pmt, eb, eh, em, v, bm1, bpn, along,
                          phi, xpl, ypl, sphi, cphi, diurab, eral, refa, refb)
-    astrom = ERFA.aper13(ut11, ut12, astrom)
+    astrom = aper13(ut11, ut12, astrom)
     @test isapprox(astrom.eral, 3.316236661789694933, atol = 1e-12)
 end
 
@@ -393,7 +393,7 @@ end
     yp = 1.82640464e-6
     refa = 0.000201418779
     refb = -2.36140831e-7
-    astrom = ERFA.apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
+    astrom = apio(sp, theta, elong, phi, hm, xp, yp, refa, refb)
     @test isapprox(astrom.along, -0.5278008060295995734, atol = 1e-12)
     @test isapprox(astrom.xpl, 0.1133427418130752958e-5, atol = 1e-17)
     @test isapprox(astrom.ypl, 0.1453347595780646207e-5, atol = 1e-17)
@@ -418,7 +418,7 @@ end
     tc = 12.8
     rh = 0.59
     wl = 0.55
-    astrom = ERFA.apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    astrom = apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(astrom.along, -0.5278008060295995733, atol = 1e-12)
     @test isapprox(astrom.xpl, 0.1133427418130752958e-5, atol = 1e-17)
     @test isapprox(astrom.ypl, 0.1453347595780646207e-5, atol = 1e-17)
@@ -439,7 +439,7 @@ end
     rv = 55.0
     date1 = 2456165.5
     date2 = 0.401182685
-    ri, di, eo = ERFA.atci13(rc, dc, pr, pd, px, rv, date1, date2)
+    ri, di, eo = atci13(rc, dc, pr, pd, px, rv, date1, date2)
     @test isapprox(ri, 2.710121572969038991, atol = 1e-12)
     @test isapprox(di, 0.1729371367218230438, atol = 1e-12)
     @test isapprox(eo, -0.002900618712657375647, atol = 1e-14)
@@ -448,14 +448,14 @@ end
 @testset "atciq" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    astrom, eo = ERFA.apci13(date1, date2)
+    astrom, eo = apci13(date1, date2)
     rc = 2.71
     dc = 0.174
     pr = 1e-5
     pd = 5e-6
     px = 0.1
     rv = 55.0
-    ri, di = ERFA.atciq(rc, dc, pr, pd, px, rv, astrom)
+    ri, di = atciq(rc, dc, pr, pd, px, rv, astrom)
     @test isapprox(ri, 2.710121572969038991, atol = 1e-12)
     @test isapprox(di, 0.1729371367218230438, atol = 1e-12)
 end
@@ -463,7 +463,7 @@ end
 @testset "atciqn" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    astrom, eo = ERFA.apci13(date1, date2)
+    astrom, eo = apci13(date1, date2)
     rc = 2.71
     dc = 0.174
     pr = 1e-5
@@ -480,7 +480,7 @@ end
                      [[-0.000712174377, -0.00230478303, -0.00105865966];
                       [6.29235213e-6, -3.30888387e-7, -2.96486623e-7]])
     b = [b1; b2; b3]
-    ri, di = ERFA.atciqn(rc, dc, pr, pd, px, rv, astrom, b)
+    ri, di = atciqn(rc, dc, pr, pd, px, rv, astrom, b)
     @test isapprox(ri, 2.710122008105325582, atol = 1e-12)
     @test isapprox(di, 0.1729371916491459122, atol = 1e-12)
 end
@@ -488,10 +488,10 @@ end
 @testset "atciqz" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    astrom, eo = ERFA.apci13(date1, date2)
+    astrom, eo = apci13(date1, date2)
     rc = 2.71
     dc = 0.174
-    ri, di = ERFA.atciqz(rc, dc, astrom)
+    ri, di = atciqz(rc, dc, astrom)
     @test isapprox(ri, 2.709994899247599271, atol = 1e-12)
     @test isapprox(di, 0.1728740720983623469, atol = 1e-12)
 end
@@ -515,7 +515,7 @@ end
     tc = 12.8
     rh = 0.59
     wl = 0.55
-    aob, zob, hob, dob, rob, eo = ERFA.atco13(rc, dc, pr, pd, px, rv,
+    aob, zob, hob, dob, rob, eo = atco13(rc, dc, pr, pd, px, rv,
                                               utc1, utc2, dut1, elong, phi, hm, xp, yp,
                                               phpa, tc, rh, wl)
     @test isapprox(aob, 0.9251774485485515207e-1, atol = 1e-12)
@@ -531,7 +531,7 @@ end
     di = 0.1729371367218230438
     date1 = 2456165.5
     date2 = 0.401182685
-    rc, dc, eo = ERFA.atic13(ri, di, date1, date2)
+    rc, dc, eo = atic13(ri, di, date1, date2)
     @test isapprox(rc, 2.710126504531374930, atol = 1e-12)
     @test isapprox(dc, 0.1740632537628342320, atol = 1e-12)
     @test isapprox(eo, -0.002900618712657375647, atol = 1e-14)
@@ -542,8 +542,8 @@ end
     di = 0.1729371367218230438
     date1 = 2456165.5
     date2 = 0.401182685
-    astrom, eo = ERFA.apci13(date1, date2)
-    rc, dc = ERFA.aticq(ri, di, astrom)
+    astrom, eo = apci13(date1, date2)
+    rc, dc = aticq(ri, di, astrom)
     @test isapprox(rc, 2.710126504531374930, atol = 1e-12)
     @test isapprox(dc, 0.1740632537628342320, atol = 1e-12)
 end
@@ -551,7 +551,7 @@ end
 @testset "aticqn" begin
     date1 = 2456165.5
     date2 = 0.401182685
-    astrom, eo = ERFA.apci13(date1, date2)
+    astrom, eo = apci13(date1, date2)
     ri = 2.709994899247599271
     di = 0.1728740720983623469
     b1 = ERFA.LDBODY(0.00028574, 3e-10,
@@ -564,7 +564,7 @@ end
                      [[-0.000712174377, -0.00230478303, -0.00105865966];
                       [6.29235213e-6, -3.30888387e-7, -2.96486623e-7]])
     b = [b1; b2; b3]
-    rc, dc = ERFA.aticqn(ri, di, astrom, b)
+    rc, dc = aticqn(ri, di, astrom, b)
     @test isapprox(rc, 2.709999575032685412, atol = 1e-12)
     @test isapprox(dc, 0.1739999656317778034, atol = 1e-12)
 end
@@ -584,7 +584,7 @@ end
     tc = 12.8
     rh = 0.59
     wl = 0.55
-    aob, zob, hob, dob, rob = ERFA.atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
+    aob, zob, hob, dob, rob = atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(aob, 0.9233952224895122499e-1, atol = 1e-12)
     @test isapprox(zob, 1.407758704513549991, atol = 1e-12)
     @test isapprox(hob, -0.9247619879881698140e-1, atol = 1e-12)
@@ -605,11 +605,11 @@ end
     tc = 12.8
     rh = 0.59
     wl = 0.55
-    astrom = ERFA.apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp,
+    astrom = apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp,
                          phpa, tc, rh, wl)
     ri = 2.710121572969038991
     di = 0.1729371367218230438
-    aob, zob, hob, dob, rob = ERFA.atioq(ri, di, astrom)
+    aob, zob, hob, dob, rob = atioq(ri, di, astrom)
     @test isapprox(aob, 0.9233952224895122499e-1, atol = 1e-12)
     @test isapprox(zob, 1.407758704513549991, atol = 1e-12)
     @test isapprox(hob, -0.9247619879881698140e-1, atol = 1e-12)
@@ -632,19 +632,19 @@ end
     wl = 0.55
     ob1 = 2.710085107986886201
     ob2 = 0.1717653435758265198
-    rc, dc = ERFA.atoc13("r", ob1, ob2, utc1, utc2, dut1,
+    rc, dc = atoc13("r", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(rc, 2.709956744659136129, atol = 1e-12)
     @test isapprox(dc, 0.1741696500898471362, atol = 1e-12)
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
-    rc, dc = ERFA.atoc13("h", ob1, ob2, utc1, utc2, dut1,
+    rc, dc = atoc13("h", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(rc, 2.709956744659734086, atol = 1e-12)
     @test isapprox(dc, 0.1741696500898471362, atol = 1e-12)
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
-    rc, dc = ERFA.atoc13("a", ob1, ob2, utc1, utc2, dut1,
+    rc, dc = atoc13("a", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(rc, 2.709956744659734086, atol = 1e-12)
     @test isapprox(dc, 0.1741696500898471366, atol = 1e-12)
@@ -665,19 +665,19 @@ end
     wl = 0.55
     ob1 = 2.710085107986886201
     ob2 = 0.1717653435758265198
-    ri, di = ERFA.atoi13("r", ob1, ob2, utc1, utc2, dut1,
+    ri, di = atoi13("r", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(ri, 2.710121574447540810, atol = 1e-12)
     @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
-    ri, di = ERFA.atoi13("h", ob1, ob2, utc1, utc2, dut1,
+    ri, di = atoi13("h", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
     @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
-    ri, di = ERFA.atoi13("a", ob1, ob2, utc1, utc2, dut1,
+    ri, di = atoi13("a", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
     @test isapprox(di, 0.1729371839116608781, atol = 1e-12)
@@ -696,21 +696,21 @@ end
     tc = 12.8
     rh = 0.59
     wl = 0.55
-    astrom = ERFA.apio13(utc1, utc2, dut1,
+    astrom = apio13(utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
     ob1 = 2.710085107986886201
     ob2 = 0.1717653435758265198
-    ri, di = ERFA.atoiq("r", ob1, ob2, astrom)
+    ri, di = atoiq("r", ob1, ob2, astrom)
     @test isapprox(ri, 2.710121574447540810, atol = 1e-12)
     @test isapprox(di, 0.17293718391166087785, atol = 1e-12)
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
-    ri, di = ERFA.atoiq("h", ob1, ob2, astrom)
+    ri, di = atoiq("h", ob1, ob2, astrom)
     @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
     @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
-    ri, di = ERFA.atoiq("a", ob1, ob2, astrom)
+    ri, di = atoiq("a", ob1, ob2, astrom)
     @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
     @test isapprox(di, 0.1729371839116608781, atol = 1e-12)
 end

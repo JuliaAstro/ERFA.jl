@@ -1,12 +1,12 @@
 @testset "bi00" begin
-    dp, de, dr = ERFA.bi00()
+    dp, de, dr = bi00()
     @test isapprox(dp, -0.2025309152835086613e-6, atol = 1e-15)
     @test isapprox(de, -0.3306041454222147847e-7, atol = 1e-15)
     @test isapprox(dr, -0.7078279744199225506e-7, atol = 1e-15)
 end
 
 @testset "bp00" begin
-    rb, rp, rbp = ERFA.bp00(2400000.5, 50123.9999)
+    rb, rp, rbp = bp00(2400000.5, 50123.9999)
     @test isapprox(rb[1,1], 0.9999999999999942498, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078279744199196626e-7, atol = 1e-16)
     @test isapprox(rb[1,3], 0.8056217146976134152e-7, atol = 1e-16)
@@ -37,7 +37,7 @@ end
 end
 
 @testset "bp06" begin
-    rb, rp, rbp = ERFA.bp06(2400000.5, 50123.9999)
+    rb, rp, rbp = bp06(2400000.5, 50123.9999)
     @test isapprox(rb[1,1], 0.9999999999999942497, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078368960971557145e-7, atol = 1e-14)
     @test isapprox(rb[1,3], 0.8056213977613185606e-7, atol = 1e-14)
@@ -71,9 +71,9 @@ end
     rbpn = [9.999962358680738e-1 -2.516417057665452e-3 -1.093569785342370e-3;
             2.516462370370876e-3  9.999968329010883e-1 4.006159587358310e-5;
             1.093465510215479e-3 -4.281337229063151e-5 9.999994012499173e-1]
-    x, y = ERFA.bpn2xy(rbpn)
+    x, y = bpn2xy(rbpn)
     @test isapprox(x, 1.093465510215479e-3, atol = 1e-12)
     @test isapprox(y, -4.281337229063151e-5, atol = 1e-12)
-    @test_throws ArgumentError ERFA.bpn2xy(rbpn[1:2,:])
+    @test_throws ArgumentError bpn2xy(rbpn[1:2,:])
 end
 

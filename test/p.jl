@@ -1,7 +1,7 @@
 using LinearAlgebra: cross, dot, norm, normalize
 
 @testset "p06e" begin
-    eps0, psia, oma, bpa, bqa, pia, bpia, epsa, chia, za, zetaa, thetaa, pa, gam, phi, psi = ERFA.p06e(2400000.5, 52541.0)
+    eps0, psia, oma, bpa, bqa, pia, bpia, epsa, chia, za, zetaa, thetaa, pa, gam, phi, psi = p06e(2400000.5, 52541.0)
     @test isapprox(eps0, 0.4090926006005828715, atol = 1e-14)
     @test isapprox(psia, 0.6664369630191613431e-3, atol = 1e-14)
     @test isapprox(oma, 0.4090925973783255982, atol = 1e-14)
@@ -34,36 +34,36 @@ end
 end
 
 @testset "p2s" begin
-    theta, phi, r = ERFA.p2s([100.,-50.,25.])
+    theta, phi, r = p2s([100.,-50.,25.])
     @test isapprox(theta, -0.4636476090008061162, atol = 1e-12)
     @test isapprox(phi, 0.2199879773954594463, atol = 1e-12)
     @test isapprox(r, 114.5643923738960002, atol = 1e-12)
-    @test_throws ArgumentError ERFA.p2s([100.,-50.])
+    @test_throws ArgumentError p2s([100.,-50.])
 end
 
 @testset "pap" begin
     a = [1.,0.1,0.2]
     b = [-3.,1e-3,0.2]
-    theta = ERFA.pap(a, b)
+    theta = pap(a, b)
     @test isapprox(theta, 0.3671514267841113674, atol = 1e-12)
-    @test_throws ArgumentError ERFA.pap(a[1:2], b)
-    @test_throws ArgumentError ERFA.pap(a, b[1:2])
+    @test_throws ArgumentError pap(a[1:2], b)
+    @test_throws ArgumentError pap(a, b[1:2])
 end
 
 @testset "pas" begin
-    p = ERFA.pas(1.0, 0.1, 0.2, -1.0)
+    p = pas(1.0, 0.1, 0.2, -1.0)
     @test isapprox(p, -2.724544922932270424, atol = 1e-12)
 end
 
 @testset "pb06" begin
-    bzeta, bz, btheta = ERFA.pb06(2400000.5, 50123.9999)
+    bzeta, bz, btheta = pb06(2400000.5, 50123.9999)
     @test isapprox(bzeta, -0.5092634016326478238e-3, atol = 1e-12)
     @test isapprox(bz, -0.3602772060566044413e-3, atol = 1e-12)
     @test isapprox(btheta, -0.3779735537167811177e-3, atol = 1e-12)
 end
 
 @testset "pfw06" begin
-    gamb, phib, psib, epsa = ERFA.pfw06(2400000.5, 50123.9999)
+    gamb, phib, psib, epsa = pfw06(2400000.5, 50123.9999)
     @test isapprox(gamb, -0.2243387670997995690e-5, atol = 1e-16)
     @test isapprox(phib, 0.4091014602391312808, atol = 1e-12)
     @test isapprox(psib, -0.9501954178013031895e-3, atol = 1e-14)
@@ -81,8 +81,8 @@ end
 end
 
 @testset "plan94" begin
-    @test_throws ERFAException ERFA.plan94(2400000.5, -320000., 10)
-    @test_logs (:warn,) p, v = ERFA.plan94(2400000.5, -320000., 3)
+    @test_throws ERFAException plan94(2400000.5, -320000., 10)
+    @test_logs (:warn,) p, v = plan94(2400000.5, -320000., 3)
     @test isapprox(p[1], 0.9308038666832975759, atol = 1e-11)
     @test isapprox(p[2], 0.3258319040261346000, atol = 1e-11)
     @test isapprox(p[3], 0.1422794544481140560, atol = 1e-11)
@@ -90,7 +90,7 @@ end
     @test isapprox(v[2], 0.1468570657704237764e-1, atol = 1e-11)
     @test isapprox(v[3], 0.6406996426270981189e-2, atol = 1e-11)
 
-    p, v = ERFA.plan94(2400000.5, 43999.9, 1)
+    p, v = plan94(2400000.5, 43999.9, 1)
     @test isapprox(p[1], 0.2945293959257430832, atol = 1e-11)
     @test isapprox(p[2], -0.2452204176601049596, atol = 1e-11)
     @test isapprox(p[3], -0.1615427700571978153, atol = 1e-11)
@@ -128,11 +128,11 @@ end
     rv = 10.0
     pmt = 8.75
     vob = [0.9, 0.4, 0.1]
-    pco = ERFA.pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
+    pco = pmpx(rc, dc, pr, pd, px, rv, pmt, vob)
     @test isapprox(pco[1], 0.2328137623960308440, atol = 1e-12)
     @test isapprox(pco[2], 0.6651097085397855317, atol = 1e-12)
     @test isapprox(pco[3], 0.7095257765896359847, atol = 1e-12)
-    @test_throws ArgumentError ERFA.pmpx(rc, dc, pr, pd, px, rv, pmt, vob[1:2])
+    @test_throws ArgumentError pmpx(rc, dc, pr, pd, px, rv, pmt, vob[1:2])
 end
 
 @testset "pmsafe" begin
@@ -146,7 +146,7 @@ end
     ep1b = 48348.5625
     ep2a = 2400000.5
     ep2b = 51544.5
-    ra2, dec2, pmr2, pmd2, px2, rv2 = ERFA.pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
+    ra2, dec2, pmr2, pmd2, px2, rv2 = pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
     @test isapprox(ra2, 1.234087484501017061, atol = 1e-12)
     @test isapprox(dec2, 0.7888249982450468567, atol = 1e-12)
     @test isapprox(pmr2, 0.9996457663586073988e-5, atol = 1e-12)
@@ -156,7 +156,7 @@ end
 end
 
 @testset "pmat00" begin
-    rbp = ERFA.pmat00(2400000.5, 50123.9999)
+    rbp = pmat00(2400000.5, 50123.9999)
     @test isapprox(rbp[1,1], 0.9999995505175087260, atol = 1e-12)
     @test isapprox(rbp[1,2], 0.8695405883617884705e-3, atol = 1e-14)
     @test isapprox(rbp[1,3], 0.3779734722239007105e-3, atol = 1e-14)
@@ -169,7 +169,7 @@ end
 end
 
 @testset "pmat06" begin
-    rbp = ERFA.pmat06(2400000.5, 50123.9999)
+    rbp = pmat06(2400000.5, 50123.9999)
     @test isapprox(rbp[1,1], 0.9999995505176007047, atol = 1e-12)
     @test isapprox(rbp[1,2], 0.8695404617348208406e-3, atol = 1e-14)
     @test isapprox(rbp[1,3], 0.3779735201865589104e-3, atol = 1e-14)
@@ -182,7 +182,7 @@ end
 end
 
 @testset "pmat76" begin
-    rmatp = ERFA.pmat76(2400000.5, 50123.9999)
+    rmatp = pmat76(2400000.5, 50123.9999)
     @test isapprox(rmatp[1,1], 0.9999995504328350733, atol = 1e-12)
     @test isapprox(rmatp[1,2], 0.8696632209480960785e-3, atol = 1e-14)
     @test isapprox(rmatp[1,3], 0.3779153474959888345e-3, atol = 1e-14)
@@ -210,7 +210,7 @@ end
 @testset "pn00" begin
     dpsi = -0.9632552291149335877e-5
     deps =  0.4063197106621141414e-4
-    epsa, rb, rp, rbp, rn, rbpn = ERFA.pn00(2400000.5, 53736.0, dpsi, deps)
+    epsa, rb, rp, rbp, rn, rbpn = pn00(2400000.5, 53736.0, dpsi, deps)
     @test isapprox(epsa, 0.4090791789404229916, atol = 1e-12)
     @test isapprox(rb[1,1], 0.9999999999999942498, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078279744199196626e-7, atol = 1e-18)
@@ -260,7 +260,7 @@ end
 end
 
 @testset "pn00a" begin
-    dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = ERFA.pn00a(2400000.5, 53736.0)
+    dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = pn00a(2400000.5, 53736.0)
     @test isapprox(dpsi, -0.9630909107115518431e-5, atol = 1e-12)
     @test isapprox(deps, 0.4063239174001678710e-4, atol = 1e-12)
     @test isapprox(epsa, 0.4090791789404229916, atol = 1e-12)
@@ -314,7 +314,7 @@ end
 @testset "pn06" begin
     dpsi = -0.9632552291149335877e-5
     deps =  0.4063197106621141414e-4
-    epsa, rb, rp, rbp, rn, rbpn = ERFA.pn06(2400000.5, 53736.0, dpsi, deps)
+    epsa, rb, rp, rbp, rn, rbpn = pn06(2400000.5, 53736.0, dpsi, deps)
     @test isapprox(epsa, 0.4090789763356509926, atol = 1e-12)
     @test isapprox(rb[1,1], 0.9999999999999942497, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078368960971557145e-7, atol = 1e-14)
@@ -364,7 +364,7 @@ end
 end
 
 @testset "pn06a" begin
-    dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = ERFA.pn06a(2400000.5, 53736.0)
+    dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = pn06a(2400000.5, 53736.0)
     @test isapprox(dpsi, -0.9630912025820308797e-5, atol = 1e-12)
     @test isapprox(deps, 0.4063238496887249798e-4, atol = 1e-12)
     @test isapprox(epsa, 0.4090789763356509926, atol = 1e-12)
@@ -416,7 +416,7 @@ end
 end
 
 @testset "pnm00a" begin
-    rbpn = ERFA.pnm00a(2400000.5, 50123.9999)
+    rbpn = pnm00a(2400000.5, 50123.9999)
     @test isapprox(rbpn[1,1], 0.9999995832793134257, atol = 1e-12)
     @test isapprox(rbpn[1,2], 0.8372384254137809439e-3, atol = 1e-14)
     @test isapprox(rbpn[1,3], 0.3639684306407150645e-3, atol = 1e-14)
@@ -429,7 +429,7 @@ end
 end
 
 @testset "pn00b" begin
-    dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = ERFA.pn00b(2400000.5, 53736.0)
+    dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = pn00b(2400000.5, 53736.0)
     @test isapprox(dpsi, -0.9632552291148362783e-5, atol = 1e-12)
     @test isapprox(deps, 0.4063197106621159367e-4, atol = 1e-12)
     @test isapprox(epsa, 0.4090791789404229916, atol = 1e-12)
@@ -481,7 +481,7 @@ end
 end
 
 @testset "pnm00b" begin
-    rbpn = ERFA.pnm00b(2400000.5, 50123.9999)
+    rbpn = pnm00b(2400000.5, 50123.9999)
     @test isapprox(rbpn[1,1], 0.9999995832776208280, atol = 1e-12)
     @test isapprox(rbpn[1,2], 0.8372401264429654837e-3, atol = 1e-14)
     @test isapprox(rbpn[1,3], 0.3639691681450271771e-3, atol = 1e-14)
@@ -494,7 +494,7 @@ end
 end
 
 @testset "pnm06a" begin
-    rbpn = ERFA.pnm06a(2400000.5, 50123.9999)
+    rbpn = pnm06a(2400000.5, 50123.9999)
     @test isapprox(rbpn[1,1], 0.9999995832794205484, atol = 1e-12)
     @test isapprox(rbpn[1,2], 0.8372382772630962111e-3, atol = 1e-14)
     @test isapprox(rbpn[1,3], 0.3639684771140623099e-3, atol = 1e-14)
@@ -507,7 +507,7 @@ end
 end
 
 @testset "pnm80" begin
-    rmatpn = ERFA.pnm80(2400000.5, 50123.9999)
+    rmatpn = pnm80(2400000.5, 50123.9999)
     @test isapprox(rmatpn[1,1], 0.9999995831934611169, atol = 1e-12)
     @test isapprox(rmatpn[1,2], 0.8373654045728124011e-3, atol = 1e-14)
     @test isapprox(rmatpn[1,3], 0.3639121916933106191e-3, atol = 1e-14)
@@ -523,7 +523,7 @@ end
     xp =  2.55060238e-7
     yp =  1.860359247e-6
     sp = -0.1367174580728891460e-10
-    rpom = ERFA.pom00(xp, yp, sp)
+    rpom = pom00(xp, yp, sp)
     @test isapprox(rpom[1,1], 0.9999999999999674721, atol = 1e-12)
     @test isapprox(rpom[1,2], -0.1367174580728846989e-10, atol = 1e-16)
     @test isapprox(rpom[1,3], 0.2550602379999972345e-6, atol = 1e-16)
@@ -561,7 +561,7 @@ end
 end
 
 @testset "pr00" begin
-    dpsipr, depspr = ERFA.pr00(2400000.5, 53736.)
+    dpsipr, depspr = pr00(2400000.5, 53736.)
     @test isapprox(dpsipr, -0.8716465172668347629e-7, atol = 1e-22)
     @test isapprox(depspr, -0.7342018386722813087e-8, atol = 1e-22)
 end
@@ -571,7 +571,7 @@ end
     ep02 = 33282.0
     ep11 = 2400000.5
     ep12 = 51544.0
-    zeta, z, theta = ERFA.prec76(ep01, ep02, ep11, ep12)
+    zeta, z, theta = prec76(ep01, ep02, ep11, ep12)
     @test isapprox(zeta, 0.5588961642000161243e-2, atol = 1e-12)
     @test isapprox(z, 0.5589922365870680624e-2, atol = 1e-12)
     @test isapprox(theta, 0.4858945471687296760e-2, atol = 1e-12)
@@ -590,7 +590,7 @@ end
 @testset "pv2s" begin
     pv = [[-0.4514964673880165,0.03093394277342585,0.05594668105108779],
           [1.292270850663260e-5,2.652814182060692e-6,2.568431853930293e-6]]
-    theta, phi, r, td, pd, rd = ERFA.pv2s(pv)
+    theta, phi, r, td, pd, rd = pv2s(pv)
     @test isapprox(theta, 3.073185307179586515, atol = 1e-12)
     @test isapprox(phi, 0.1229999999999999992, atol = 1e-12)
     @test isapprox(r, 0.4559999999999999757, atol = 1e-12)
@@ -599,19 +599,19 @@ end
     @test isapprox(rd, -0.1229999999999999832e-4, atol = 1e-16)
     pve = [[0.03093394277342585,0.05594668105108779],
           [1.292270850663260e-5,2.652814182060692e-6,2.568431853930293e-6]]
-    @test_throws ArgumentError ERFA.pv2s(pve)
+    @test_throws ArgumentError pv2s(pve)
 end
 
 @testset "pvdpv" begin
     a = [[2.,2.,3.],[6.,0.,4.]]
     b = [[1.,3.,4.],[0.,2.,8.]]
-    adb = ERFA.pvdpv(a, b)
+    adb = pvdpv(a, b)
     @test isapprox(adb[1], 20.0, atol = 1e-12)
     @test isapprox(adb[2], 50.0, atol = 1e-12)
     ae = [[2.,3.],[6.,0.,4.]]
     be = [[3.,4.],[0.,2.,8.]]
-    @test_throws ArgumentError ERFA.pvdpv(ae, b)
-    @test_throws ArgumentError ERFA.pvdpv(a, be)
+    @test_throws ArgumentError pvdpv(ae, b)
+    @test_throws ArgumentError pvdpv(a, be)
 end
 
 @testset "pvm" begin
@@ -659,7 +659,7 @@ end
 @testset "pvxpv" begin
     a = [[2.0,2.0,3.0],[6.0,0.0,4.0]]
     b = [[1.0,3.0,4.0],[0.0,2.0,8.0]]
-    axb = ERFA.pvxpv(a, b)
+    axb = pvxpv(a, b)
     @test isapprox(axb[1][1], -1.0, atol = 1e-12)
     @test isapprox(axb[1][2], -5.0, atol = 1e-12)
     @test isapprox(axb[1][3], 4.0, atol = 1e-12)
@@ -667,14 +667,14 @@ end
     @test isapprox(axb[2][2], -36.0, atol = 1e-12)
     @test isapprox(axb[2][3], 22.0, atol = 1e-12)
     ae = [[2.0,3.0],[5.0,6.0,3.0]]
-    @test_throws ArgumentError ERFA.pvxpv(ae, b)
-    @test_throws ArgumentError ERFA.pvxpv(a, ae)
+    @test_throws ArgumentError pvxpv(ae, b)
+    @test_throws ArgumentError pvxpv(a, ae)
 end
 
 @testset "pvstar" begin
     pv = [[126668.5912743160601,2136.792716839935195,-245251.2339876830091],
           [-0.4051854035740712739e-2,-0.6253919754866173866e-2,0.1189353719774107189e-1]]
-    ra, dec, pmr, pmd, px, rv = ERFA.pvstar(pv)
+    ra, dec, pmr, pmd, px, rv = pvstar(pv)
     @test isapprox(ra, 0.1686756e-1, atol = 1e-12)
     @test isapprox(dec, -1.093989828, atol = 1e-12)
     @test isapprox(pmr, -0.1783235160000472788e-4, atol = 1e-16)
@@ -683,7 +683,7 @@ end
     @test isapprox(rv, -21.60000010107306010, atol = 1e-11)
     pve = [[2137.792716839935195,-245251.2339876830091],
           [-0.4051854035740712739e-2,-0.6253919754866173866e-2,0.1189353719774107189e-1]]
-    @test_throws ArgumentError ERFA.pvstar(pve)
+    @test_throws ArgumentError pvstar(pve)
 end
 
 @testset "pvtob" begin
@@ -694,7 +694,7 @@ end
     yp = -0.5e-6
     sp = 1e-8
     theta = 5.0
-    pv = ERFA.pvtob(elong, phi, hm, xp, yp, sp, theta)
+    pv = pvtob(elong, phi, hm, xp, yp, sp, theta)
     @test isapprox(pv[1][1], 4225081.367071159207, atol = 1e-5)
     @test isapprox(pv[1][2], 3681943.215856198144, atol = 1e-5)
     @test isapprox(pv[1][3], 3041149.399241260785, atol = 1e-5)
@@ -707,7 +707,7 @@ end
     dt = 2920.0
     pv = [[126668.5912743160734,2136.792716839935565,-245251.2339876830229],
           [-0.4051854035740713039e-2,-0.6253919754866175788e-2,0.1189353719774107615e-1]]
-    upv = ERFA.pvu(dt, pv)
+    upv = pvu(dt, pv)
     @test isapprox(upv[1][1], 126656.7598605317105, atol = 1e-6)
     @test isapprox(upv[1][2], 2118.531271155726332, atol = 1e-8)
     @test isapprox(upv[1][3], -245216.5048590656190, atol = 1e-6)
@@ -716,20 +716,20 @@ end
     @test isapprox(upv[2][3], 0.1189353719774107615e-1, atol = 1e-12)
     pve = [[2136.792716839935565,-245251.2339876830229],
           [-0.4051854035740713039e-2,-0.6253919754866175788e-2,0.1189353719774107615e-1]]
-    @test_throws ArgumentError ERFA.pvu(dt, pve)
+    @test_throws ArgumentError pvu(dt, pve)
 end
 
 @testset "pvup" begin
     dt = 2920.0
     pv = [[126668.5912743160734,2136.792716839935565,-245251.2339876830229],
           [-0.4051854035740713039e-2,-0.6253919754866175788e-2,0.1189353719774107615e-1]]
-    p = ERFA.pvup(dt, pv)
+    p = pvup(dt, pv)
     @test isapprox(p[1], 126656.7598605317105, atol = 1e-6)
     @test isapprox(p[2], 2118.531271155726332, atol = 1e-8)
     @test isapprox(p[3], -245216.5048590656190, atol = 1e-6)
     pve = [[2136.792716839935565,-245251.2339876830229],
           [-0.4051854035740713039e-2,-0.6253919754866175788e-2,0.1189353719774107615e-1]]
-    @test_throws ArgumentError ERFA.pvup(dt, pve)
+    @test_throws ArgumentError pvup(dt, pve)
 end
 
 @testset "pxp" begin

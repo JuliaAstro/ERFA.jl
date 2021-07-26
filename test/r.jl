@@ -3,23 +3,23 @@
     tc = 10.0
     rh = 0.9
     wl = 0.4
-    refa, refb = ERFA.refco(phpa, tc, rh, wl)
+    refa, refb = refco(phpa, tc, rh, wl)
     @test isapprox(refa, 0.2264949956241415009e-3, atol = 1e-15)
     @test isapprox(refb, -0.2598658261729343970e-6, atol = 1e-18)
 end
 
 @testset "rm2v" begin
-    w = ERFA.rm2v([0.0 -0.8 -0.6;
+    w = rm2v([0.0 -0.8 -0.6;
                    0.8 -0.36 0.48;
                    0.6 0.48 -0.64])
     @test isapprox(w[1], 0.0, atol = 1e-12)
     @test isapprox(w[2], 1.413716694115406957, atol = 1e-12)
     @test isapprox(w[3], -1.884955592153875943, atol = 1e-12)
-    @test_throws ArgumentError ERFA.rm2v([0.0 -0.8 -0.6])
+    @test_throws ArgumentError rm2v([0.0 -0.8 -0.6])
 end
 
 @testset "rv2m" begin
-    r = ERFA.rv2m([0.0, 1.41371669, -1.88495559])
+    r = rv2m([0.0, 1.41371669, -1.88495559])
     @test isapprox(r[1,1], -0.7071067782221119905, atol = 1e-14)
     @test isapprox(r[1,2], -0.5656854276809129651, atol = 1e-14)
     @test isapprox(r[1,3], -0.4242640700104211225, atol = 1e-14)
@@ -29,7 +29,7 @@ end
     @test isapprox(r[3,1], 0.4242640700104211225, atol = 1e-14)
     @test isapprox(r[3,2], -0.8194112531408833269, atol = 1e-14)
     @test isapprox(r[3,3], 0.3854415612311154341, atol = 1e-14)
-    @test_throws ArgumentError ERFA.rv2m([1.41371669, -1.88495559])
+    @test_throws ArgumentError rv2m([1.41371669, -1.88495559])
 end
 
 @testset "rx" begin
@@ -37,7 +37,7 @@ end
     r = [2.0 3.0 2.0;
          3.0 2.0 3.0;
          3.0 4.0 5.0]
-    r = ERFA.rx(phi, r)
+    r = rx(phi, r)
     @test isapprox(r[1,1], 2.0, atol = 0.0)
     @test isapprox(r[1,2], 3.0, atol = 0.0)
     @test isapprox(r[1,3], 2.0, atol = 0.0)
@@ -47,7 +47,7 @@ end
     @test isapprox(r[3,1], 1.806030415924501684, atol = 1e-12)
     @test isapprox(r[3,2], 3.085711545336372503, atol = 1e-12)
     @test isapprox(r[3,3], 3.687721683977873065, atol = 1e-12)
-    @test_throws ArgumentError ERFA.rx(phi, r[1:2,:])
+    @test_throws ArgumentError rx(phi, r[1:2,:])
 end
 
 @testset "rxp" begin
@@ -122,7 +122,7 @@ end
     r = [2.0 3.0 2.0;
          3.0 2.0 3.0;
          3.0 4.0 5.0]
-    r = ERFA.ry(theta, r)
+    r = ry(theta, r)
     @test isapprox(r[1,1], 0.8651847818978159930, atol = 1e-12)
     @test isapprox(r[1,2], 1.467194920539316554, atol = 1e-12)
     @test isapprox(r[1,3], 0.1875137911274457342, atol = 1e-12)
@@ -132,7 +132,7 @@ end
     @test isapprox(r[3,1], 3.500207892850427330, atol = 1e-12)
     @test isapprox(r[3,2], 4.779889022262298150, atol = 1e-12)
     @test isapprox(r[3,3], 5.381899160903798712, atol = 1e-12)
-    @test_throws ArgumentError ERFA.ry(theta, r[1:2,:])
+    @test_throws ArgumentError ry(theta, r[1:2,:])
 end
 
 @testset "rz" begin
@@ -140,7 +140,7 @@ end
     r = [2.0 3.0 2.0;
          3.0 2.0 3.0;
          3.0 4.0 5.0]
-    r = ERFA.rz(psi, r)
+    r = rz(psi, r)
     @test isapprox(r[1,1], 2.898197754208926769, atol = 1e-12)
     @test isapprox(r[1,2], 3.500207892850427330, atol = 1e-12)
     @test isapprox(r[1,3], 2.898197754208926769, atol = 1e-12)
@@ -150,6 +150,6 @@ end
     @test isapprox(r[3,1], 3.0, atol = 1e-12)
     @test isapprox(r[3,2], 4.0, atol = 1e-12)
     @test isapprox(r[3,3], 5.0, atol = 1e-12)
-    @test_throws ArgumentError ERFA.rz(psi, r[1:2,:])
+    @test_throws ArgumentError rz(psi, r[1:2,:])
 end
 

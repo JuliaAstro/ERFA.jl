@@ -59,6 +59,107 @@ end
     @test isapprox(d, 0.9966539351851851852, atol = 1e-12)
 end
 
+# ERFA.tpors
+@testset "tpors" begin
+    xi = -0.03
+    eta = 0.07
+    ra = 1.3
+    dec = 1.5
+
+    status, az1, bz1, az2, bz2 = ERFA.tpors(xi, eta, ra, dec)
+
+    @test az1 ≈ 1.736621577783208748 atol=1e-13
+    @test bz1 ≈ 1.436736561844090323 atol=1e-13
+
+    @test az2 ≈ 4.004971075806584490 atol=1e-13
+    @test bz2 ≈ 1.565084088476417917 atol=1e-13
+
+    @test status == 2
+end
+
+# ERFA.tporv
+@testset "tporv" begin
+    xi = -0.03
+    eta = 0.07
+    ra = 1.3
+    dec = 1.5
+
+    v = ERFA.s2c(ra, dec)
+
+    status, vz1, vz2 = ERFA.tporv(xi, eta, v)
+
+    @test vz1[1] ≈ -0.02206252822366888610 atol=1e-15
+    @test vz1[2] ≈ 0.1318251060359645016 atol=1e-14
+    @test vz1[3] ≈ 0.9910274397144543895 atol=1e-14
+
+    @test vz2[1] ≈ -0.003712211763801968173 atol=1e-16
+    @test vz2[2] ≈ -0.004341519956299836813 atol=1e-16
+    @test vz2[3] ≈ 0.9999836852110587012 atol=1e-14
+
+    @test status == 2
+end
+
+# ERFA.tpsts
+@testset "tpsts" begin
+    xi = -0.03
+    eta = 0.07
+    raz = 2.3
+    decz = 1.5
+
+    ra, dec = ERFA.tpsts(xi, eta, raz, decz)
+
+    @test ra ≈ 0.7596127167359629775 atol=1e-14
+    @test dec ≈ 1.540864645109263028 atol=1e-13
+end
+
+# ERFA.tpstv
+@testset "tpstv" begin
+    xi = -0.03
+    eta = 0.07
+    raz = 2.3
+    decz = 1.5
+
+    vz = ERFA.s2c(raz, decz)
+
+    v = ERFA.tpstv(xi, eta, vz)
+
+    @test v[1] ≈ 0.02170030454907376677 atol=1e-15
+    @test v[2] ≈ 0.02060909590535367447 atol=1e-15
+    @test v[3] ≈ 0.9995520806583523804 atol=1e-14
+end
+
+# ERFA.tpxes
+@testset "tpxes" begin
+    ra = 1.3
+    dec = 1.55
+    raz = 2.3
+    decz = 1.5
+
+    status, xi, eta = ERFA.tpxes(ra, dec, raz, decz)
+
+    @test xi ≈ -0.01753200983236980595 atol=1e-15
+    @test eta ≈ 0.05962940005778712891 atol=1e-15
+
+    @test status == 0
+end
+
+# ERFA.tpxev
+@testset "tpxev" begin
+    ra = 1.3
+    dec = 1.55
+    raz = 2.3
+    decz = 1.5
+    v = ERFA.s2c(ra, dec)
+    vz = ERFA.s2c(raz, decz)
+
+    status, xi, eta = ERFA.tpxev(v, vz)
+
+    @test xi ≈ -0.01753200983236980595 atol=1e-15
+    @test eta ≈ 0.05962940005778712891 atol=1e-15
+
+    @test status == 0
+end
+
 # ERFA.tr
 @testset "tr" begin
     r = [2.0 3.0 2.0;

@@ -1,4 +1,3 @@
-# ERFA.ld
 @testset "ld" begin
     bm = 0.00028574
     p = [-0.763276255, -0.608633767, -0.216735543]
@@ -15,7 +14,6 @@
     @test_throws ArgumentError ERFA.ld(bm, p, q, e[1:2], em, dlim)
 end
 
-# ERFA.ldn
 @testset "ldn" begin
     sc = [-0.763276255, -0.608633767, -0.216735543]
     ob = [-0.974170437, -0.2115201, -0.0917583114]
@@ -37,7 +35,6 @@ end
     @test_throws ArgumentError ERFA.ldn(l, ob, sc[1:2])
 end
 
-# ERFA.ldsun
 @testset "ldsun" begin
     p = [-0.763276255, -0.608633767, -0.216735543]
     e = [-0.973644023, -0.20925523, -0.0907169552]
@@ -50,7 +47,6 @@ end
     @test_throws ArgumentError ERFA.ldsun(p, e[1:2], em)
 end
 
-# ERFA.ltp
 @testset "ltp" begin
     rp = ERFA.ltp(1666.666)
     @test isapprox(rp[1,1], 0.9967044141159213819, atol = 1e-14)
@@ -64,7 +60,6 @@ end
     @test isapprox(rp[3,3], 0.9994750246704010914, atol = 1e-14)
 end
 
-# ERFA.ltpb
 @testset "ltpb" begin
     rp = ERFA.ltpb(1666.666)
     @test isapprox(rp[1,1], 0.9967044167723271851, atol = 1e-14)
@@ -78,7 +73,6 @@ end
     @test isapprox(rp[3,3], 0.9994750220222438819, atol = 1e-14)
 end
 
-# ERFA.ltpecl
 @testset "ltpecl" begin
     vec = ERFA.ltpecl(-1500.0)
     @test isapprox(vec[1], 0.4768625676477096525e-3, atol = 1e-14)
@@ -86,7 +80,6 @@ end
     @test isapprox(vec[3], 0.9142164401096448012, atol = 1e-14)
 end
 
-# ERFA.ltpequ
 @testset "ltpequ" begin
     vec = ERFA.ltpequ(-2500.0)
     @test isapprox(vec[1], -0.3586652560237326659, atol = 1e-14)
@@ -94,7 +87,6 @@ end
     @test isapprox(vec[3], 0.9118552442250819624, atol = 1e-14)
 end
 
-# ERFA.ltecm
 @testset "ltecm" begin
     rm = ERFA.ltecm(-3000.0)
     @test isapprox(rm[1,1], 0.3564105644859788825, atol = 1e-14)
@@ -108,14 +100,12 @@ end
     @test isapprox(rm[3,3], 0.9127919865189030899, atol = 1e-14)
 end
 
-# ERFA.lteceq
 @testset "lteceq" begin
     dr, dd = ERFA.lteceq(2500.0, 1.5, 0.6)
     @test isapprox(dr, 1.275156021861921167, atol = 1e-14)
     @test isapprox(dd, 0.9966573543519204791, atol = 1e-14)
 end
 
-# ERFA.lteqec
 @testset "lteqec" begin
     dl, db = ERFA.lteqec(-1500.0, 1.234, 0.987)
     @test isapprox(dl, 0.5039483649047114859, atol = 1e-14)

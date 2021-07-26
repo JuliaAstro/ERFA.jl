@@ -1,4 +1,3 @@
-# ERFA.s00
 @testset "s00" begin
     x = 0.5791308486706011000e-3
     y = 0.4020579816732961219e-4
@@ -6,19 +5,16 @@
     @test isapprox(s, -0.1220036263270905693e-7, atol = 1e-18)
 end
 
-# ERFA.s00a
 @testset "s00a" begin
     s = ERFA.s00a(2400000.5, 52541.0)
     @test isapprox(s, -0.1340684448919163584e-7, atol = 1e-18)
 end
 
-# ERFA.s00b
 @testset "s00b" begin
     s = ERFA.s00b(2400000.5, 52541.0)
     @test isapprox(s, -0.1340695782951026584e-7, atol = 1e-18)
 end
 
-# ERFA.s06
 @testset "s06" begin
     x = 0.5791308486706011000e-3
     y = 0.4020579816732961219e-4
@@ -26,13 +22,11 @@ end
     @test isapprox(s, -0.1220032213076463117e-7, atol = 1e-18)
 end
 
-# ERFA.s06a
 @testset "s06a" begin
     s = ERFA.s06a(2400000.5, 52541.0)
     @test isapprox(s, -0.1340680437291812383e-7, atol = 1e-18)
 end
 
-# ERFA.s2c
 @testset "s2c" begin
     c = ERFA.s2c(3.0123, -0.999)
     @test isapprox(c[1], -0.5366267667260523906, atol = 1e-12)
@@ -40,7 +34,6 @@ end
     @test isapprox(c[3], -0.8409302618566214041, atol = 1e-12)
 end
 
-# ERFA.s2p
 @testset "s2p" begin
     p = ERFA.s2p(-3.21, 0.123, 0.456)
     @test isapprox(p[1], -0.4514964673880165228, atol = 1e-12)
@@ -48,7 +41,6 @@ end
     @test isapprox(p[3], 0.0559466810510877933, atol = 1e-12)
 end
 
-# ERFA.s2pv
 @testset "s2pv" begin
     pv = ERFA.s2pv(-3.21, 0.123, 0.456, -7.8e-6, 9.01e-6, -1.23e-5)
     @test isapprox(pv[1][1], -0.4514964673880165228, atol = 1e-12)
@@ -59,7 +51,6 @@ end
     @test isapprox(pv[2][3], 0.2568431853930292259e-5, atol = 1e-16)
 end
 
-# ERFA.s2xpv
 @testset "s2xpv" begin
     s1 = 2.0
     s2 = 3.0
@@ -78,7 +69,6 @@ end
     @test spv == [s1 .* pv[1], s2 .* pv[2]]
 end
 
-# ERFA.sepp
 @testset "sepp" begin
     a = [1.,0.1,0.2]
     b = [-3.,1e-3,0.2]
@@ -88,19 +78,16 @@ end
     @test_throws ArgumentError ERFA.sepp(a, b[1:2])
 end
 
-# ERFA.seps
 @testset "seps" begin
     s = ERFA.seps(1., .1, .2, -3.)
     @test isapprox(s, 2.346722016996998842, atol = 1e-14)
 end
 
-# ERFA.sp00
 @testset "sp00" begin
     s = ERFA.sp00(2400000.5, 52541.0)
     @test isapprox(s, -0.6216698469981019309e-11, atol = 1e-12)
 end
 
-# ERFA.starpm
 @testset "starpm" begin
     ra1 =   0.01686756
     dec1 = -1.093989828
@@ -118,7 +105,6 @@ end
     @test isapprox(rv2, -21.59905170476417175, atol = 1e-11)
 end
 
-# ERFA.starpv
 @testset "starpv" begin
     ra =   0.01686756
     dec = -1.093989828
@@ -135,7 +121,6 @@ end
     @test isapprox(pv[2][3], 0.1189353714588109341e-1, atol = 1e-13)
 end
 
-# ERFA.sxp
 @testset "sxp" begin
     s = 2.0
     p = [0.3,1.2,-2.5]
@@ -147,7 +132,6 @@ end
     @test sp == s .* p
 end
 
-# ERFA.sxpv
 @testset "sxpv" begin
     s = 2.0
     pv = [[0.3,1.2,-2.5],[0.5,3.2,-0.7]]

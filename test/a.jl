@@ -1,14 +1,11 @@
-# ERFA.a2af
 @testset "a2af" begin
     @test ERFA.a2af(4, 2.345) == ('+', 134, 21, 30, 9706)
 end
 
-# ERFA.a2tf
 @testset "a2tf" begin
     @test ERFA.a2tf(4, -3.01234) == ('-', 11, 30, 22, 6484)
 end
 
-# ERFA.ab
 @testset "ab" begin
     pnat = [-0.76321968546737951,-0.60869453983060384,-0.21676408580639883]
     v = [2.1044018893653786e-5,-8.9108923304429319e-5,-3.8633714797716569e-5]
@@ -22,7 +19,6 @@ end
     @test_throws ArgumentError ERFA.ab(pnat, v[1:2], s, bm1)
 end
 
-# ERFA.ae2hd
 @testset "ae2hd" begin
    a = 5.5
    e = 1.1
@@ -34,7 +30,6 @@ end
    @test d ≈ 0.9613934761647817620 atol=1e-14
 end
 
-# ERFA.af2a
 @testset "af2a" begin
     r = ERFA.af2a('-', 45, 13, 27.2)
     @test isapprox(r, -0.7893115794313644842, atol = 1e-15)
@@ -42,20 +37,17 @@ end
     @test isapprox(r, 0.7893115794313644842, atol = 1e-15)
 end
 
-# ERFA.anp
 @testset "anp" begin
     r = ERFA._anp(-0.1)
     @test isapprox(r, 6.183185307179586477, atol = 1e-15)
     @test r ≈ mod2pi(-0.1) atol=1-15
 end
 
-# ERFA.anpm
 @testset "anpm" begin
     r = ERFA.anpm(-4.0)
     @test isapprox(r, 2.283185307179586477, atol = 1e-15)
 end
 
-# ERFA.apcg
 @testset "apcg" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -90,7 +82,6 @@ end
     @test_throws ArgumentError ERFA.apcg(date1, date2, ebpv, ehp[1:2])
 end
 
-# ERFA.apcg13
 @testset "apcg13" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -118,7 +109,6 @@ end
     @test isapprox(astrom.bpn[3,3], 1.0, atol = 1e-10)
 end
 
-# ERFA.apci
 @testset "apci" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -156,7 +146,6 @@ end
     @test_throws ArgumentError ERFA.apci(date1, date2, ebpv, ehp[1:2], x, y, s)
 end
 
-# ERFA.apci13
 @testset "apci13" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -185,7 +174,6 @@ end
     @test isapprox(eo, -0.2900618712657375647e-2, atol = 1e-12)
 end
 
-# ERFA.apco
 @testset "apco" begin
     date1 = 2456384.5
     date2 = 0.970031644
@@ -243,7 +231,6 @@ end
                                          elong, phi, hm, xp, yp, sp, refa, refb)
 end
 
-# ERFA.apco13
 @testset "apco13" begin
     utc1 = 2456384.5
     utc2 = 0.969254051
@@ -292,7 +279,6 @@ end
     @test isapprox(eo, -0.003020548354802412839, atol = 1e-14)
 end
 
-# ERFA.apcs
 @testset "apcs" begin
     date1 = 2456384.5
     date2 = 0.970031644
@@ -330,7 +316,6 @@ end
     @test_throws ArgumentError ERFA.apcs(date1, date2, pv, ebpv, ehp[1:2])
 end
 
-# ERFA.apcs13
 @testset "apcs13" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -363,7 +348,6 @@ end
     @test_throws ArgumentError ERFA.apcs13(date1, date2, pve)
 end
 
-# ERFA.aper
 @testset "aper" begin
     theta = 5.678
     pmt = 0.
@@ -381,7 +365,6 @@ end
     @test isapprox(astrom.eral, 6.912000000000000000, atol = 1e-12)
 end
 
-# ERFA.aper13
 @testset "aper13" begin
     ut11 = 2456165.5
     ut12 = 0.401182685
@@ -400,7 +383,6 @@ end
     @test isapprox(astrom.eral, 3.316236661789694933, atol = 1e-12)
 end
 
-# ERFA.apio
 @testset "apio" begin
     sp = -3.01974337e-11
     theta = 3.14540971
@@ -423,7 +405,6 @@ end
     @test isapprox(astrom.refb, -0.2361408310000000000e-6, atol = 1e-18)
 end
 
-# ERFA.apio13
 @testset "apio13" begin
     utc1 = 2456384.5
     utc2 = 0.969254051
@@ -449,7 +430,6 @@ end
     @test isapprox(astrom.refb, -0.2361408314943696227e-6, atol = 1e-18)
 end
 
-# ERFA.atci13
 @testset "atci13" begin
     rc = 2.71
     dc = 0.174
@@ -465,7 +445,6 @@ end
     @test isapprox(eo, -0.002900618712657375647, atol = 1e-14)
 end
 
-# ERFA.atciq
 @testset "atciq" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -481,7 +460,6 @@ end
     @test isapprox(di, 0.1729371367218230438, atol = 1e-12)
 end
 
-# ERFA.atciqn
 @testset "atciqn" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -507,7 +485,6 @@ end
     @test isapprox(di, 0.1729371916491459122, atol = 1e-12)
 end
 
-# ERFA.atciqz
 @testset "atciqz" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -519,7 +496,6 @@ end
     @test isapprox(di, 0.1728740720983623469, atol = 1e-12)
 end
 
-# ERFA.atco13
 @testset "atco13" begin
     rc = 2.71
     dc = 0.174
@@ -550,7 +526,6 @@ end
     @test isapprox(eo, -0.003020548354802412839, atol = 1e-14)
 end
 
-# ERFA.atic13
 @testset "atic13" begin
     ri = 2.710121572969038991
     di = 0.1729371367218230438
@@ -562,7 +537,6 @@ end
     @test isapprox(eo, -0.002900618712657375647, atol = 1e-14)
 end
 
-# ERFA.aticq
 @testset "aticq" begin
     ri = 2.710121572969038991
     di = 0.1729371367218230438
@@ -574,7 +548,6 @@ end
     @test isapprox(dc, 0.1740632537628342320, atol = 1e-12)
 end
 
-# ERFA.aticqn
 @testset "aticqn" begin
     date1 = 2456165.5
     date2 = 0.401182685
@@ -596,7 +569,6 @@ end
     @test isapprox(dc, 0.1739999656317778034, atol = 1e-12)
 end
 
-# ERFA.atio13
 @testset "atio13" begin
     ri = 2.710121572969038991
     di = 0.1729371367218230438
@@ -620,7 +592,6 @@ end
     @test isapprox(rob, 2.710085107988480746, atol = 1e-12)
 end
 
-# ERFA.atioq
 @testset "atioq" begin
     utc1 = 2456384.5
     utc2 = 0.969254051
@@ -646,7 +617,6 @@ end
     @test isapprox(rob, 2.710085107988480746, atol = 1e-12)
 end
 
-# ERFA.atoc13
 @testset "atoc13" begin
     utc1 = 2456384.5
     utc2 = 0.969254051
@@ -680,7 +650,6 @@ end
     @test isapprox(dc, 0.1741696500898471366, atol = 1e-12)
 end
 
-# ERFA.atoi13
 @testset "atoi13" begin
     utc1 = 2456384.5
     utc2 = 0.969254051
@@ -714,7 +683,6 @@ end
     @test isapprox(di, 0.1729371839116608781, atol = 1e-12)
 end
 
-# ERFA.atoiq
 @testset "atoiq" begin
     utc1 = 2456384.5
     utc2 = 0.969254051

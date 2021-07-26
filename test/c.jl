@@ -1,4 +1,3 @@
-# ERFA.c2i00a
 @testset "c2i00a" begin
     rc2i = ERFA.c2i00a(2400000.5, 53736.0)
     @test isapprox(rc2i[1,1], 0.9999998323037165557, atol = 1e-12)
@@ -12,7 +11,6 @@
     @test isapprox(rc2i[3,3], 0.9999998314954572304, atol = 1e-12)
 end
 
-# ERFA.c2i00b
 @testset "c2i00b" begin
     rc2i = ERFA.c2i00b(2400000.5, 53736.0)
     @test isapprox(rc2i[1,1], 0.9999998323040954356, atol = 1e-12)
@@ -26,7 +24,6 @@ end
     @test isapprox(rc2i[3,3], 0.9999998314958529887, atol = 1e-12)
 end
 
-# ERFA.c2i06a
 @testset "c2i06a" begin
     rc2i = ERFA.c2i06a(2400000.5, 53736.0)
     @test isapprox(rc2i[1,1], 0.9999998323037159379, atol = 1e-12)
@@ -40,7 +37,6 @@ end
     @test isapprox(rc2i[3,3], 0.9999998314954628695, atol = 1e-12)
 end
 
-# ERFA.c2ibpn
 @testset "c2ibpn" begin
     rbpn = [9.999962358680738e-1 -2.516417057665452e-3 -1.093569785342370e-3;
             2.516462370370876e-3 9.999968329010883e-1 4.006159587358310e-5;
@@ -58,7 +54,6 @@ end
     @test_throws ArgumentError ERFA.c2ibpn(2400000.5, 50123.9999, rbpn[1:2,:])
 end
 
-# ERFA.c2s
 @testset "c2s" begin
     t, p = ERFA.c2s([100.,-50.,25.])
     @test isapprox(t, -0.4636476090008061162, atol = 1e-15)
@@ -66,7 +61,6 @@ end
     @test_throws ArgumentError ERFA.c2s([100.,-50.])
 end
 
-# ERFA.c2ixy
 @testset "c2ixy" begin
     x = 0.5791308486706011000e-3
     y = 0.4020579816732961219e-4
@@ -82,7 +76,6 @@ end
     @test isapprox(rc2i[3,3], 0.9999998314954627590, atol = 1e-12)
 end
 
-# ERFA.c2ixys
 @testset "c2ixys" begin
     x =  0.5791308486706011000e-3
     y =  0.4020579816732961219e-4
@@ -99,7 +92,6 @@ end
     @test isapprox(rc2i[3,3], 0.9999998314954627590, atol = 1e-12)
 end
 
-# ERFA.c2t00a
 @testset "c2t00a" begin
     tta = 2400000.5
     uta = 2400000.5
@@ -119,7 +111,6 @@ end
     @test isapprox(rc2t[3,3], 0.9999998325501692289, atol = 1e-12)
 end
 
-# ERFA.c2t00b
 @testset "c2t00b" begin
     tta = 2400000.5
     uta = 2400000.5
@@ -139,7 +130,6 @@ end
     @test isapprox(rc2t[3,3], 0.9999998325505635738, atol = 1e-12)
 end
 
-# ERFA.c2t06a
 @testset "c2t06a" begin
     tta = 2400000.5
     uta = 2400000.5
@@ -159,7 +149,6 @@ end
     @test isapprox(rc2t[3,3], 0.9999998325501747785, atol = 1e-12)
 end
 
-# ERFA.c2tcio
 @testset "c2tcio" begin
     c = [0.9999998323037164738 0.5581526271714303683e-9 -0.5791308477073443903e-3;
          -0.2384266227524722273e-7 0.9999999991917404296 -0.4020594955030704125e-4;
@@ -182,7 +171,6 @@ end
     @test_throws ArgumentError ERFA.c2tcio(c, era, p[1:2,:])
 end
 
-# ERFA.c2teqx
 @testset "c2teqx" begin
     c = [0.9999989440476103608 -0.1332881761240011518e-2 -0.5790767434730085097e-3;
          0.1332858254308954453e-2 0.9999991109044505944 -0.4097782710401555759e-4;
@@ -205,7 +193,6 @@ end
     @test_throws ArgumentError ERFA.c2teqx(c, gst, p[1:2,:])
 end
 
-# ERFA.c2tpe
 @testset "c2tpe" begin
     tta = 2400000.5
     uta = 2400000.5
@@ -227,7 +214,6 @@ end
     @test isapprox(rc2t[3,3], 0.9174875068792735362, atol = 1e-12)
 end
 
-# ERFA.c2txy
 @testset "c2txy" begin
     tta = 2400000.5
     uta = 2400000.5
@@ -249,7 +235,6 @@ end
     @test isapprox(rc2t[3,3], 0.9999998325501746670, atol = 1e-12)
 end
 
-# ERFA.cal2jd
 @testset "cal2jd" begin
     dmj0, dmj = ERFA.cal2jd(2003, 6, 1)
     @test isapprox(dmj0, 2400000.5, atol = 1e-9)

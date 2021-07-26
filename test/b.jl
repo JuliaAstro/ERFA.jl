@@ -1,4 +1,3 @@
-# ERFA.bi00
 @testset "bi00" begin
     dp, de, dr = ERFA.bi00()
     @test isapprox(dp, -0.2025309152835086613e-6, atol = 1e-15)
@@ -6,7 +5,6 @@
     @test isapprox(dr, -0.7078279744199225506e-7, atol = 1e-15)
 end
 
-# ERFA.bp00
 @testset "bp00" begin
     rb, rp, rbp = ERFA.bp00(2400000.5, 50123.9999)
     @test isapprox(rb[1,1], 0.9999999999999942498, atol = 1e-12)
@@ -38,7 +36,6 @@ end
     @test isapprox(rbp[3,3], 0.9999999285680153377, atol = 1e-12)
 end
 
-# ERFA.bp06
 @testset "bp06" begin
     rb, rp, rbp = ERFA.bp06(2400000.5, 50123.9999)
     @test isapprox(rb[1,1], 0.9999999999999942497, atol = 1e-12)
@@ -70,7 +67,6 @@ end
     @test isapprox(rbp[3,3], 0.9999999285679971958, atol = 1e-12)
 end
 
-# ERFA.bpn2xy
 @testset "bpn2xy" begin
     rbpn = [9.999962358680738e-1 -2.516417057665452e-3 -1.093569785342370e-3;
             2.516462370370876e-3  9.999968329010883e-1 4.006159587358310e-5;

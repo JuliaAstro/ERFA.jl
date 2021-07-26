@@ -1,4 +1,3 @@
-# ERFA.gc2gd
 @testset "gc2gd" begin
     xyz = [2.e6, 3.e6, 5.244e6]
     e, p, h = ERFA.gc2gd(1, xyz)
@@ -16,7 +15,6 @@
     @test_throws ArgumentError ERFA.gc2gd(1, xyz[1:2])
 end
 
-# ERFA.gc2gde
 @testset "gc2gde" begin
     a = 6378136.0
     f = 0.0033528
@@ -28,7 +26,6 @@ end
     @test_throws ArgumentError ERFA.gc2gde(a, f, xyz[1:2])
 end
 
-# ERFA.gd2gc
 @testset "gd2gc" begin
     e = 3.1
     p = -0.5
@@ -47,7 +44,6 @@ end
     @test isapprox(xyz[3], -3040908.6861467111, atol = 1e-7)
 end
 
-# ERFA.gd2gce
 @testset "gd2gce" begin
     a = 6378136.0
     f = 0.0033528
@@ -60,37 +56,31 @@ end
     @test isapprox(xyz[3], -3040909.0517314132, atol = 1e-7)
 end
 
-# ERFA.gmst00
 @testset "gmst00" begin
     g = ERFA.gmst00(2400000.5, 53736.0, 2400000.5, 53736.0)
     @test isapprox(g, 1.754174972210740592, atol = 1e-14)
 end
 
-# ERFA.gmst06
 @testset "gmst06" begin
     g = ERFA.gmst06(2400000.5, 53736.0, 2400000.5, 53736.0)
     @test isapprox(g, 1.754174971870091203, atol = 1e-14)
 end
 
-# ERFA.gmst82
 @testset "gmst82" begin
     g = ERFA.gmst82(2400000.5, 53736.0)
     @test isapprox(g, 1.754174981860675096, atol = 1e-14)
 end
 
-# ERFA.gst00a
 @testset "gst00a" begin
     g = ERFA.gst00a(2400000.5, 53736.0, 2400000.5, 53736.0)
     @test isapprox(g, 1.754166138018281369, atol = 1e-14)
 end
 
-# ERFA.gst00b
 @testset "gst00b" begin
     g = ERFA.gst00b(2400000.5, 53736.0)
     @test isapprox(g, 1.754166136510680589, atol = 1e-14)
 end
 
-# ERFA.gst06
 @testset "gst06" begin
     rnpb = [0.9999989440476103608 -0.1332881761240011518e-2 -0.5790767434730085097e-3;
             0.1332858254308954453e-2 0.9999991109044505944 -0.4097782710401555759e-4;
@@ -100,19 +90,16 @@ end
     @test_throws ArgumentError ERFA.gst06(2400000.5, 53736.0, 2400000.5, 53736.0, rnpb[1:2,:])
 end
 
-# ERFA.gst06a
 @testset "gst06a" begin
     g = ERFA.gst06a(2400000.5, 53736.0, 2400000.5, 53736.0)
     @test isapprox(g, 1.754166137675019159, atol = 1e-14)
 end
 
-# ERFA.gst94
 @testset "gst94" begin
     g = ERFA.gst94(2400000.5, 53736.0)
     @test isapprox(g, 1.754166136020645203, atol = 1e-14)
 end
 
-# ERFA.g2icrs
 @testset "g2icrs" begin
     dr, dd = ERFA.g2icrs(5.5850536063818546461558105, -0.7853981633974483096156608)
     @test isapprox(dr, 5.9338074302227188048671, atol = 1e-14)

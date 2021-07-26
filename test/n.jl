@@ -1,4 +1,3 @@
-# ERFA.num00a
 @testset "num00a" begin
     rmatn = ERFA.num00a(2400000.5, 53736.0)
     @test isapprox(rmatn[1,1], 0.9999999999536227949, atol = 1e-12)
@@ -12,7 +11,6 @@
     @test isapprox(rmatn[3,3], 0.9999999991671660338, atol = 1e-12)
 end
 
-# ERFA.num00b
 @testset "num00b" begin
     rmatn = ERFA.num00b(2400000.5, 53736.0)
     @test isapprox(rmatn[1,1], 0.9999999999536069682, atol = 1e-12)
@@ -26,7 +24,6 @@ end
     @test isapprox(rmatn[3,3], 0.9999999991671806225, atol = 1e-12)
 end
 
-# ERFA.num06a
 @testset "num06a" begin
     rmatn = ERFA.num06a(2400000.5, 53736.)
     @test isapprox(rmatn[1,1], 0.9999999999536227668, atol = 1e-12)
@@ -40,7 +37,6 @@ end
     @test isapprox(rmatn[3,3], 0.9999999991671663114, atol = 1e-12)
 end
 
-# ERFA.numat
 @testset "numat" begin
     epsa =  0.4090789763356509900
     dpsi = -0.9630909107115582393e-5
@@ -57,35 +53,30 @@ end
     @test isapprox(rmatn[3,3], 0.9999999991671660407, atol = 1e-12)
 end
 
-# ERFA.nut00a
 @testset "nut00a" begin
     dpsi, deps = ERFA.nut00a(2400000.5, 53736.0)
     @test isapprox(dpsi, -0.9630909107115518431e-5, atol = 1e-13)
     @test isapprox(deps, 0.4063239174001678710e-4, atol = 1e-13)
 end
 
-# ERFA.nut00b
 @testset "nut00b" begin
     dpsi, deps = ERFA.nut00b(2400000.5, 53736.0)
     @test isapprox(dpsi, -0.9632552291148362783e-5, atol = 1e-13)
     @test isapprox(deps, 0.4063197106621159367e-4, atol = 1e-13)
 end
 
-# ERFA.nut06a
 @testset "nut06a" begin
     dpsi, deps = ERFA.nut06a(2400000.5, 53736.0)
     @test isapprox(dpsi, -0.9630912025820308797e-5, atol = 1e-13)
     @test isapprox(deps, 0.4063238496887249798e-4, atol = 1e-13)
 end
 
-# ERFA.nut80
 @testset "nut80" begin
     dpsi, deps = ERFA.nut80(2400000.5, 53736.0)
     @test isapprox(dpsi, -0.9643658353226563966e-5, atol = 1e-13)
     @test isapprox(deps, 0.4060051006879713322e-4, atol = 1e-13)
 end
 
-# ERFA.nutm80
 @testset "nutm80" begin
     rmatn = ERFA.nutm80(2400000.5, 53736.)
     @test isapprox(rmatn[1,1], 0.9999999999534999268, atol = 1e-12)

@@ -1,4 +1,3 @@
-# ERFA.h2fk5
 @testset "h2fk5" begin
     rh  =  1.767794352
     dh  = -0.2917512594
@@ -15,7 +14,6 @@
     @test isapprox(rv5, -7.6000001309071126, atol = 1e-10)
 end
 
-# ERFA.hd2ae
 @testset "hd2ae" begin
     h = 1.1
     d = 1.2
@@ -27,7 +25,6 @@ end
     @test e ≈ 0.4472186304990486228 atol=1e-14
 end
 
-# ERFA.hd2pa
 @testset "hd2pa" begin
     h = 1.1
     d = 1.2
@@ -38,7 +35,6 @@ end
     @test q ≈ 1.906227428001995580 atol=1e-13
 end
 
-# ERFA.hfk5z
 @testset "hfk5z" begin
     rh =  1.767794352
     dh = -0.2917512594

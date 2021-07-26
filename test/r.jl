@@ -1,4 +1,3 @@
-# ERFA.refco
 @testset "refco" begin
     phpa = 800.0
     tc = 10.0
@@ -9,7 +8,6 @@
     @test isapprox(refb, -0.2598658261729343970e-6, atol = 1e-18)
 end
 
-# ERFA.rm2v
 @testset "rm2v" begin
     w = ERFA.rm2v([0.0 -0.8 -0.6;
                    0.8 -0.36 0.48;
@@ -20,7 +18,6 @@ end
     @test_throws ArgumentError ERFA.rm2v([0.0 -0.8 -0.6])
 end
 
-# ERFA.rv2m
 @testset "rv2m" begin
     r = ERFA.rv2m([0.0, 1.41371669, -1.88495559])
     @test isapprox(r[1,1], -0.7071067782221119905, atol = 1e-14)
@@ -35,7 +32,6 @@ end
     @test_throws ArgumentError ERFA.rv2m([1.41371669, -1.88495559])
 end
 
-# ERFA.rx
 @testset "rx" begin
     phi = 0.3456789
     r = [2.0 3.0 2.0;
@@ -54,7 +50,6 @@ end
     @test_throws ArgumentError ERFA.rx(phi, r[1:2,:])
 end
 
-# ERFA.rxp
 @testset "rxp" begin
     r = [2.0 3.0 2.0;
          3.0 2.0 3.0;
@@ -75,7 +70,6 @@ end
     @test_throws ArgumentError ERFA._rxp(r, p[1:2])
 end
 
-# ERFA.rxpv
 @testset "rxpv" begin
     r = [2.0 3.0 2.0;
          3.0 2.0 3.0;
@@ -101,7 +95,6 @@ end
     end
 end
 
-# ERFA.rxr
 @testset "rxr" begin
     a = [2.0 3.0 2.0;
          3.0 2.0 3.0;
@@ -124,7 +117,6 @@ end
     @test atb == a * b
 end
 
-# ERFA.ry
 @testset "ry" begin
     theta = 0.3456789
     r = [2.0 3.0 2.0;
@@ -143,7 +135,6 @@ end
     @test_throws ArgumentError ERFA.ry(theta, r[1:2,:])
 end
 
-# ERFA.rz
 @testset "rz" begin
     psi = 0.3456789
     r = [2.0 3.0 2.0;

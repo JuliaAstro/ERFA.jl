@@ -1,88 +1,73 @@
-# ERFA.fad03
 @testset "fad03" begin
     d = ERFA.fad03(0.80)
     @test isapprox(d, 1.946709205396925672, atol = 1e-12)
 end
 
-# ERFA.fae03
 @testset "fae03" begin
     e = ERFA.fae03(0.80)
     @test isapprox(e, 1.744713738913081846, atol = 1e-12)
 end
 
-# ERFA.faf03
 @testset "faf03" begin
     f = ERFA.faf03(0.80)
     @test isapprox(f, 0.2597711366745499518, atol = 1e-12)
 end
 
-# ERFA.faju03
 @testset "faju03" begin
     l = ERFA.faju03(0.80)
     @test isapprox(l, 5.275711665202481138, atol = 1e-12)
 end
 
-# ERFA.fal03
 @testset "fal03" begin
     l = ERFA.fal03(0.80)
     @test isapprox(l, 5.132369751108684150, atol = 1e-12)
 end
 
-# ERFA.falp03
 @testset "falp03" begin
     lp = ERFA.falp03(0.80)
     @test isapprox(lp, 6.226797973505507345, atol = 1e-12)
 end
 
-# ERFA.fama03
 @testset "fama03" begin
     l = ERFA.fama03(0.80)
     @test isapprox(l, 3.275506840277781492, atol = 1e-12)
 end
 
-# ERFA.fame03
 @testset "fame03" begin
     l = ERFA.fame03(0.80)
     @test isapprox(l, 5.417338184297289661, atol = 1e-12)
 end
 
-# ERFA.fane03
 @testset "fane03" begin
     l = ERFA.fane03(0.80)
     @test isapprox(l, 2.079343830860413523, atol = 1e-12)
 end
 
-# ERFA.faom03
 @testset "faom03" begin
     l = ERFA.faom03(0.80)
     @test isapprox(l, -5.973618440951302183, atol = 1e-12)
 end
 
-# ERFA.fapa03
 @testset "fapa03" begin
     l = ERFA.fapa03(0.80)
     @test isapprox(l, 0.1950884762240000000e-1, atol = 1e-12)
 end
 
-# ERFA.fasa03
 @testset "fasa03" begin
     l = ERFA.fasa03(0.80)
     @test isapprox(l, 5.371574539440827046, atol = 1e-12)
 end
 
-# ERFA.faur03
 @testset "faur03" begin
     l = ERFA.faur03(0.80)
     @test isapprox(l, 5.180636450180413523, atol = 1e-12)
 end
 
-# ERFA.fave03
 @testset "fave03" begin
     l = ERFA.fave03(0.80)
     @test isapprox(l, 3.424900460533758000, atol = 1e-12)
 end
 
-# ERFA.fk425
 @testset "fk425" begin
     r1950 = 0.07626899753879587532
     d1950 = -1.137405378399605780
@@ -102,7 +87,6 @@ end
     @test v2000 ≈ 8.736999669183529069 atol=1e-12
 end
 
-# ERFA.fk45z
 @testset "fk45z" begin
     r1950 = 0.01602284975382960982
     d1950 = -0.1164347929099906024
@@ -114,7 +98,6 @@ end
     @test d2000 ≈ -0.1115766001565926892 atol=1e-13
 end
 
-# ERFA.fk524
 @testset "fk524" begin
     r2000 = 0.8723503576487275595
     d2000 = -0.7517076365138887672
@@ -134,7 +117,6 @@ end
     @test v1950 ≈ 86.79606353469163751 atol=1e-11
 end
 
-# ERFA.fk52h
 @testset "fk52h" begin
     r5  =  1.76779433
     d5  = -0.2917517103
@@ -151,7 +133,6 @@ end
     @test isapprox(rvh, -7.6000000940000254, atol = 1e-11)
 end
 
-# ERFA.fk54z
 @testset "fk54z" begin
     r2000 = 0.02719026625066316119
     d2000 = -0.1115815170738754813
@@ -165,7 +146,6 @@ end
     @test dd1950 ≈ 0.2108109051316431056e-7 atol=1e-20
 end
 
-# ERFA.fk5hz
 @testset "fk5hz" begin
     r5 =  1.76779433
     d5 = -0.2917517103
@@ -174,7 +154,6 @@ end
     @test isapprox(dh, -0.2917516001679884419, atol = 1e-12)
 end
 
-# ERFA.fw2m
 @testset "fw2m" begin
     gamb = -0.2243387670997992368e-5
     phib =  0.4091014602391312982
@@ -192,7 +171,6 @@ end
     @test isapprox(r[3,3], 0.9999999285679971958, atol = 1e-12)
 end
 
-# ERFA.fw2xy
 @testset "fw2xy" begin
     gamb = -0.2243387670997992368e-5
     phib =  0.4091014602391312982
@@ -203,7 +181,6 @@ end
     @test isapprox(y, -0.1924880848087615651e-6, atol = 1e-14)
 end
 
-# ERFA.fk5hip
 @testset "fk5hip" begin
     r5h, s5h = ERFA.fk5hip()
     @test isapprox(r5h[1], 0.9999999999999928638, atol = 1e-14)

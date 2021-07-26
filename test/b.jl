@@ -1,8 +1,8 @@
 @testset "bi00" begin
     dp, de, dr = bi00()
-    @test isapprox(dp, -0.2025309152835086613e-6, atol = 1e-15)
-    @test isapprox(de, -0.3306041454222147847e-7, atol = 1e-15)
-    @test isapprox(dr, -0.7078279744199225506e-7, atol = 1e-15)
+    @test dp ≈ -0.2025309152835086613e-6 atol=1e-15
+    @test de ≈ -0.3306041454222147847e-7 atol=1e-15
+    @test dr ≈ -0.7078279744199225506e-7 atol=1e-15
 end
 
 @testset "bp00" begin
@@ -72,8 +72,8 @@ end
             2.516462370370876e-3  9.999968329010883e-1 4.006159587358310e-5;
             1.093465510215479e-3 -4.281337229063151e-5 9.999994012499173e-1]
     x, y = bpn2xy(rbpn)
-    @test isapprox(x, 1.093465510215479e-3, atol = 1e-12)
-    @test isapprox(y, -4.281337229063151e-5, atol = 1e-12)
+    @test x ≈ 1.093465510215479e-3 atol=1e-12
+    @test y ≈ -4.281337229063151e-5 atol=1e-12
     @test_throws ArgumentError bpn2xy(rbpn[1:2,:])
 end
 

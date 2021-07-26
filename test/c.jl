@@ -56,8 +56,8 @@ end
 
 @testset "c2s" begin
     t, p = c2s([100.,-50.,25.])
-    @test isapprox(t, -0.4636476090008061162, atol = 1e-15)
-    @test isapprox(p, 0.2199879773954594463, atol = 1e-15)
+    @test t ≈ -0.4636476090008061162 atol=1e-15
+    @test p ≈ 0.2199879773954594463 atol=1e-15
     @test_throws ArgumentError c2s([100.,-50.])
 end
 
@@ -237,8 +237,8 @@ end
 
 @testset "cal2jd" begin
     dmj0, dmj = cal2jd(2003, 6, 1)
-    @test isapprox(dmj0, 2400000.5, atol = 1e-9)
-    @test isapprox(dmj, 52791.0, atol = 1e-9)
+    @test dmj0 ≈ 2400000.5 atol=1e-9
+    @test dmj ≈ 52791.0 atol=1e-9
 end
 
 @testset "cp" begin

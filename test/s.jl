@@ -2,29 +2,29 @@
     x = 0.5791308486706011000e-3
     y = 0.4020579816732961219e-4
     s = s00(2400000.5, 53736.0, x, y)
-    @test isapprox(s, -0.1220036263270905693e-7, atol = 1e-18)
+    @test s ≈ -0.1220036263270905693e-7 atol=1e-18
 end
 
 @testset "s00a" begin
     s = s00a(2400000.5, 52541.0)
-    @test isapprox(s, -0.1340684448919163584e-7, atol = 1e-18)
+    @test s ≈ -0.1340684448919163584e-7 atol=1e-18
 end
 
 @testset "s00b" begin
     s = s00b(2400000.5, 52541.0)
-    @test isapprox(s, -0.1340695782951026584e-7, atol = 1e-18)
+    @test s ≈ -0.1340695782951026584e-7 atol=1e-18
 end
 
 @testset "s06" begin
     x = 0.5791308486706011000e-3
     y = 0.4020579816732961219e-4
     s = s06(2400000.5, 53736.0, x, y)
-    @test isapprox(s, -0.1220032213076463117e-7, atol = 1e-18)
+    @test s ≈ -0.1220032213076463117e-7 atol=1e-18
 end
 
 @testset "s06a" begin
     s = s06a(2400000.5, 52541.0)
-    @test isapprox(s, -0.1340680437291812383e-7, atol = 1e-18)
+    @test s ≈ -0.1340680437291812383e-7 atol=1e-18
 end
 
 @testset "s2c" begin
@@ -73,19 +73,19 @@ end
     a = [1.,0.1,0.2]
     b = [-3.,1e-3,0.2]
     s = sepp(a, b)
-    @test isapprox(s, 2.860391919024660768, atol = 1e-12)
+    @test s ≈ 2.860391919024660768 atol=1e-12
     @test_throws ArgumentError sepp(a[1:2], b)
     @test_throws ArgumentError sepp(a, b[1:2])
 end
 
 @testset "seps" begin
     s = seps(1., .1, .2, -3.)
-    @test isapprox(s, 2.346722016996998842, atol = 1e-14)
+    @test s ≈ 2.346722016996998842 atol=1e-14
 end
 
 @testset "sp00" begin
     s = sp00(2400000.5, 52541.0)
-    @test isapprox(s, -0.6216698469981019309e-11, atol = 1e-12)
+    @test s ≈ -0.6216698469981019309e-11 atol=1e-12
 end
 
 @testset "starpm" begin
@@ -97,12 +97,12 @@ end
     rv1 = -21.6
     ra2, dec2, pmr2, pmd2, px2, rv2 = starpm(ra1, dec1, pmr1, pmd1, px1, rv1,
                                                   2400000.5, 50083.0, 2400000.5, 53736.0)
-    @test isapprox(ra2, 0.01668919069414256149, atol = 1e-13)
-    @test isapprox(dec2, -1.093966454217127897, atol = 1e-13)
-    @test isapprox(pmr2, -0.1783662682153176524e-4, atol = 1e-17)
-    @test isapprox(pmd2, 0.2338092915983989595e-5, atol = 1e-17)
-    @test isapprox(px2, 0.7473533835317719243, atol = 1e-13)
-    @test isapprox(rv2, -21.59905170476417175, atol = 1e-11)
+    @test ra2 ≈ 0.01668919069414256149 atol=1e-13
+    @test dec2 ≈ -1.093966454217127897 atol=1e-13
+    @test pmr2 ≈ -0.1783662682153176524e-4 atol=1e-17
+    @test pmd2 ≈ 0.2338092915983989595e-5 atol=1e-17
+    @test px2 ≈ 0.7473533835317719243 atol=1e-13
+    @test rv2 ≈ -21.59905170476417175 atol=1e-11
 end
 
 @testset "starpv" begin

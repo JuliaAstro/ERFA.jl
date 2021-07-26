@@ -16,23 +16,23 @@ using Test
         d = tf2d('+', ihour, imin, sec)
         d2 += d
         @test d1 == 2400000.5
-        @test isapprox(d2, 54525.999999, atol = 5e-7)
+        @test d2 ≈ 54525.999999 atol=5e-7
         iy, imo, id, fd = jd2cal(d1, d2)
         @test (iy, imo, id) == (2008, 2, 29)
-        @test isapprox(fd, 0.999999, atol = 5e-7)
+        @test fd ≈ 0.999999 atol=5e-7
         @test jdcalf(3, d1, d2) == (2008, 3, 1, 0)
 
         d = 2457073.05631
         e = epb(0., d)
-        @test isapprox(e, 2015.1365941021, atol = 5e-11)
+        @test e ≈ 2015.1365941021 atol=5e-11
         d1, d2 = epb2jd(e)
         d = d1 + d2
-        @test isapprox(d, 2457073.056310000, atol = 5e-10)
+        @test d ≈ 2457073.056310000 atol=5e-10
         e = epj(0., d)
-        @test isapprox(e, 2015.1349933196, atol = 5e-11)
+        @test e ≈ 2015.1349933196 atol=5e-11
         d1, d2 = epj2jd(e)
         d = d1 + d2
-        @test isapprox(d, 2457073.056310000, atol = 5e-10)
+        @test d ≈ 2457073.056310000 atol=5e-10
     end
     @testset "StaticArrays" begin
         base = gc2gde(6378.137 * 1000, 1 / 298.257223563, [6378.137 * 1000 + 100, 0, 0])

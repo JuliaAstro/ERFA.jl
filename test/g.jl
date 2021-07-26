@@ -1,17 +1,17 @@
 @testset "gc2gd" begin
     xyz = [2.e6, 3.e6, 5.244e6]
     e, p, h = gc2gd(1, xyz)
-    @test isapprox(e, 0.98279372324732907, atol = 1e-14)
-    @test isapprox(p, 0.97160184819075459, atol = 1e-14)
-    @test isapprox(h, 331.41724614260599, atol = 1e-8)
+    @test e ≈ 0.98279372324732907 atol=1e-14
+    @test p ≈ 0.97160184819075459 atol=1e-14
+    @test h ≈ 331.41724614260599 atol=1e-8
     e, p, h = gc2gd(2, xyz)
-    @test isapprox(e, 0.98279372324732907, atol = 1e-14)
-    @test isapprox(p, 0.97160184820607853, atol = 1e-14)
-    @test isapprox(h, 331.41731754844348, atol = 1e-8)
+    @test e ≈ 0.98279372324732907 atol=1e-14
+    @test p ≈ 0.97160184820607853 atol=1e-14
+    @test h ≈ 331.41731754844348 atol=1e-8
     e, p, h = gc2gd(3, xyz)
-    @test isapprox(e, 0.98279372324732907, atol = 1e-14)
-    @test isapprox(p, 0.97160181811015119, atol = 1e-14)
-    @test isapprox(h, 333.27707261303181, atol = 1e-8)
+    @test e ≈ 0.98279372324732907 atol=1e-14
+    @test p ≈ 0.97160181811015119 atol=1e-14
+    @test h ≈ 333.27707261303181 atol=1e-8
     @test_throws ArgumentError gc2gd(1, xyz[1:2])
 end
 
@@ -20,9 +20,9 @@ end
     f = 0.0033528
     xyz = [2e6, 3e6, 5.244e6]
     e, p, h = gc2gde(a, f, xyz)
-    @test isapprox(e, 0.98279372324732907, atol = 1e-14)
-    @test isapprox(p, 0.97160183775704115, atol = 1e-14)
-    @test isapprox(h, 332.36862495764397, atol = 1e-8)
+    @test e ≈ 0.98279372324732907 atol=1e-14
+    @test p ≈ 0.97160183775704115 atol=1e-14
+    @test h ≈ 332.36862495764397 atol=1e-8
     @test_throws ArgumentError gc2gde(a, f, xyz[1:2])
 end
 
@@ -58,27 +58,27 @@ end
 
 @testset "gmst00" begin
     g = gmst00(2400000.5, 53736.0, 2400000.5, 53736.0)
-    @test isapprox(g, 1.754174972210740592, atol = 1e-14)
+    @test g ≈ 1.754174972210740592 atol=1e-14
 end
 
 @testset "gmst06" begin
     g = gmst06(2400000.5, 53736.0, 2400000.5, 53736.0)
-    @test isapprox(g, 1.754174971870091203, atol = 1e-14)
+    @test g ≈ 1.754174971870091203 atol=1e-14
 end
 
 @testset "gmst82" begin
     g = gmst82(2400000.5, 53736.0)
-    @test isapprox(g, 1.754174981860675096, atol = 1e-14)
+    @test g ≈ 1.754174981860675096 atol=1e-14
 end
 
 @testset "gst00a" begin
     g = gst00a(2400000.5, 53736.0, 2400000.5, 53736.0)
-    @test isapprox(g, 1.754166138018281369, atol = 1e-14)
+    @test g ≈ 1.754166138018281369 atol=1e-14
 end
 
 @testset "gst00b" begin
     g = gst00b(2400000.5, 53736.0)
-    @test isapprox(g, 1.754166136510680589, atol = 1e-14)
+    @test g ≈ 1.754166136510680589 atol=1e-14
 end
 
 @testset "gst06" begin
@@ -86,23 +86,23 @@ end
             0.1332858254308954453e-2 0.9999991109044505944 -0.4097782710401555759e-4;
             0.5791308472168153320e-3 0.4020595661593994396e-4 0.9999998314954572365]
     g = gst06(2400000.5, 53736.0, 2400000.5, 53736.0, rnpb)
-    @test isapprox(g, 1.754166138018167568, atol = 1e-14)
+    @test g ≈ 1.754166138018167568 atol=1e-14
     @test_throws ArgumentError gst06(2400000.5, 53736.0, 2400000.5, 53736.0, rnpb[1:2,:])
 end
 
 @testset "gst06a" begin
     g = gst06a(2400000.5, 53736.0, 2400000.5, 53736.0)
-    @test isapprox(g, 1.754166137675019159, atol = 1e-14)
+    @test g ≈ 1.754166137675019159 atol=1e-14
 end
 
 @testset "gst94" begin
     g = gst94(2400000.5, 53736.0)
-    @test isapprox(g, 1.754166136020645203, atol = 1e-14)
+    @test g ≈ 1.754166136020645203 atol=1e-14
 end
 
 @testset "g2icrs" begin
     dr, dd = g2icrs(5.5850536063818546461558105, -0.7853981633974483096156608)
-    @test isapprox(dr, 5.9338074302227188048671, atol = 1e-14)
-    @test isapprox(dd, -1.1784870613579944551541, atol = 1e14)
+    @test dr ≈ 5.9338074302227188048671 atol=1e-14
+    @test dd ≈ -1.1784870613579944551541 atol=1e14
 end
 

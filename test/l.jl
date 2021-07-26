@@ -102,13 +102,13 @@ end
 
 @testset "lteceq" begin
     dr, dd = lteceq(2500.0, 1.5, 0.6)
-    @test isapprox(dr, 1.275156021861921167, atol = 1e-14)
-    @test isapprox(dd, 0.9966573543519204791, atol = 1e-14)
+    @test dr ≈ 1.275156021861921167 atol=1e-14
+    @test dd ≈ 0.9966573543519204791 atol=1e-14
 end
 
 @testset "lteqec" begin
     dl, db = lteqec(-1500.0, 1.234, 0.987)
-    @test isapprox(dl, 0.5039483649047114859, atol = 1e-14)
-    @test isapprox(db, 0.5848534459726224882, atol = 1e-14)
+    @test dl ≈ 0.5039483649047114859 atol=1e-14
+    @test db ≈ 0.5848534459726224882 atol=1e-14
 end
 

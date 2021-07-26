@@ -1,53 +1,53 @@
 @testset "taitt" begin
     t1, t2 = taitt(2453750.5, 0.892482639)
-    @test isapprox(t1, 2453750.5, atol = 1e-6)
-    @test isapprox(t2, 0.892855139, atol = 1e-12)
+    @test t1 ≈ 2453750.5 atol=1e-6
+    @test t2 ≈ 0.892855139 atol=1e-12
 end
 
 @testset "taiut1" begin
     u1, u2 = taiut1(2453750.5, 0.892482639, -32.6659)
-    @test isapprox(u1, 2453750.5, atol = 1e-6)
-    @test isapprox(u2, 0.8921045614537037037, atol = 1e-12)
+    @test u1 ≈ 2453750.5 atol=1e-6
+    @test u2 ≈ 0.8921045614537037037 atol=1e-12
 end
 
 @testset "taiutc" begin
     u1, u2 = taiutc(2453750.5, 0.892482639)
-    @test isapprox(u1, 2453750.5, atol = 1e-6)
-    @test isapprox(u2, 0.8921006945555555556, atol = 1e-12)
+    @test u1 ≈ 2453750.5 atol=1e-6
+    @test u2 ≈ 0.8921006945555555556 atol=1e-12
 end
 
 @testset "tcbtdb" begin
     b1, b2 = tcbtdb(2453750.5, 0.893019599)
-    @test isapprox(b1, 2453750.5, atol = 1e-6)
-    @test isapprox(b2, 0.8928551362746343397, atol = 1e-12)
+    @test b1 ≈ 2453750.5 atol=1e-6
+    @test b2 ≈ 0.8928551362746343397 atol=1e-12
 end
 
 @testset "tcgtt" begin
     t1, t2 = tcgtt(2453750.5,  0.892862531)
-    @test isapprox(t1, 2453750.5, atol = 1e-6)
-    @test isapprox(t2, 0.8928551387488816828, atol = 1e-12)
+    @test t1 ≈ 2453750.5 atol=1e-6
+    @test t2 ≈ 0.8928551387488816828 atol=1e-12
 end
 
 @testset "tdbtcb" begin
     b1, b2 = tdbtcb(2453750.5, 0.892855137)
-    @test isapprox(b1, 2453750.5, atol = 1e-6)
-    @test isapprox(b2, 0.8930195997253656716, atol = 1e-12)
+    @test b1 ≈ 2453750.5 atol=1e-6
+    @test b2 ≈ 0.8930195997253656716 atol=1e-12
 end
 
 @testset "tdbtt" begin
     t1, t2 = tdbtt(2453750.5,  0.892855137, -0.000201)
-    @test isapprox(t1, 2453750.5, atol = 1e-6)
-    @test isapprox(t2, 0.8928551393263888889, atol = 1e-12)
+    @test t1 ≈ 2453750.5 atol=1e-6
+    @test t2 ≈ 0.8928551393263888889 atol=1e-12
 end
 
 @testset "tf2a" begin
     a = tf2a('+', 4, 58, 20.2)
-    @test isapprox(a, 1.301739278189537429, atol = 1e-12)
+    @test a ≈ 1.301739278189537429 atol=1e-12
 end
 
 @testset "tf2d" begin
     d = tf2d('+', 23, 55, 10.9)
-    @test isapprox(d, 0.9966539351851851852, atol = 1e-12)
+    @test d ≈ 0.9966539351851851852 atol=1e-12
 end
 
 @testset "tpors" begin
@@ -204,25 +204,25 @@ end
 
 @testset "tttai" begin
     t1, t2 = tttai(2453750.5, 0.892482639)
-    @test isapprox(t1, 2453750.5, atol = 1e-6)
-    @test isapprox(t2, 0.892110139, atol = 1e-12)
+    @test t1 ≈ 2453750.5 atol=1e-6
+    @test t2 ≈ 0.892110139 atol=1e-12
 end
 
 @testset "tttcg" begin
     t1, t2 = tttcg(2453750.5, 0.892482639)
-    @test isapprox(t1, 2453750.5, atol = 1e-6)
-    @test isapprox(t2, 0.8924900312508587113, atol = 1e-12)
+    @test t1 ≈ 2453750.5 atol=1e-6
+    @test t2 ≈ 0.8924900312508587113 atol=1e-12
 end
 
 @testset "tttdb" begin
     t1, t2 = tttdb(2453750.5, 0.892855139, -0.000201)
-    @test isapprox(t1, 2453750.5, atol = 1e-6)
-    @test isapprox(t2, 0.8928551366736111111, atol = 1e-12)
+    @test t1 ≈ 2453750.5 atol=1e-6
+    @test t2 ≈ 0.8928551366736111111 atol=1e-12
 end
 
 @testset "ttut1" begin
     t1, t2 = ttut1(2453750.5, 0.892855139, 64.8499)
-    @test isapprox(t1, 2453750.5, atol = 1e-6)
-    @test isapprox(t2, 0.8921045614537037037, atol = 1e-12)
+    @test t1 ≈ 2453750.5 atol=1e-6
+    @test t2 ≈ 0.8921045614537037037 atol=1e-12
 end
 

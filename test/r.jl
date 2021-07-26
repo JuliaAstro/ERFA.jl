@@ -4,8 +4,8 @@
     rh = 0.9
     wl = 0.4
     refa, refb = refco(phpa, tc, rh, wl)
-    @test isapprox(refa, 0.2264949956241415009e-3, atol = 1e-15)
-    @test isapprox(refb, -0.2598658261729343970e-6, atol = 1e-18)
+    @test refa ≈ 0.2264949956241415009e-3 atol=1e-15
+    @test refb ≈ -0.2598658261729343970e-6 atol=1e-18
 end
 
 @testset "rm2v" begin

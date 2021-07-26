@@ -55,26 +55,26 @@ end
 
 @testset "nut00a" begin
     dpsi, deps = nut00a(2400000.5, 53736.0)
-    @test isapprox(dpsi, -0.9630909107115518431e-5, atol = 1e-13)
-    @test isapprox(deps, 0.4063239174001678710e-4, atol = 1e-13)
+    @test dpsi ≈ -0.9630909107115518431e-5 atol=1e-13
+    @test deps ≈ 0.4063239174001678710e-4 atol=1e-13
 end
 
 @testset "nut00b" begin
     dpsi, deps = nut00b(2400000.5, 53736.0)
-    @test isapprox(dpsi, -0.9632552291148362783e-5, atol = 1e-13)
-    @test isapprox(deps, 0.4063197106621159367e-4, atol = 1e-13)
+    @test dpsi ≈ -0.9632552291148362783e-5 atol=1e-13
+    @test deps ≈ 0.4063197106621159367e-4 atol=1e-13
 end
 
 @testset "nut06a" begin
     dpsi, deps = nut06a(2400000.5, 53736.0)
-    @test isapprox(dpsi, -0.9630912025820308797e-5, atol = 1e-13)
-    @test isapprox(deps, 0.4063238496887249798e-4, atol = 1e-13)
+    @test dpsi ≈ -0.9630912025820308797e-5 atol=1e-13
+    @test deps ≈ 0.4063238496887249798e-4 atol=1e-13
 end
 
 @testset "nut80" begin
     dpsi, deps = nut80(2400000.5, 53736.0)
-    @test isapprox(dpsi, -0.9643658353226563966e-5, atol = 1e-13)
-    @test isapprox(deps, 0.4060051006879713322e-4, atol = 1e-13)
+    @test dpsi ≈ -0.9643658353226563966e-5 atol=1e-13
+    @test deps ≈ 0.4060051006879713322e-4 atol=1e-13
 end
 
 @testset "nutm80" begin

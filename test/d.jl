@@ -1,8 +1,8 @@
 @testset "dat" begin
     d = dat(2003, 6, 1, 0.0)
-    @test isapprox(d, 32.0, atol = 1e-9)
+    @test d ≈ 32.0 atol=1e-9
     d = dat(2008, 1, 17, 0.0)
-    @test isapprox(d, 33.0, atol = 1e-9)
+    @test d ≈ 33.0 atol=1e-9
 end
 
 @testset "d2dtf" begin
@@ -16,7 +16,7 @@ end
 
 @testset "dtdb" begin
     d = dtdb(2448939.5, 0.123, 0.76543, 5.0123, 5525.242, 3190.0)
-    @test isapprox(d, -0.1280368005936998991e-2, atol = 1e-17)
+    @test d ≈ -0.1280368005936998991e-2 atol=1e-17
 end
 
 @testset "dtf2d" begin

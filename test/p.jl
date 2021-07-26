@@ -2,22 +2,22 @@ using LinearAlgebra: cross, dot, norm, normalize
 
 @testset "p06e" begin
     eps0, psia, oma, bpa, bqa, pia, bpia, epsa, chia, za, zetaa, thetaa, pa, gam, phi, psi = p06e(2400000.5, 52541.0)
-    @test isapprox(eps0, 0.4090926006005828715, atol = 1e-14)
-    @test isapprox(psia, 0.6664369630191613431e-3, atol = 1e-14)
-    @test isapprox(oma, 0.4090925973783255982, atol = 1e-14)
-    @test isapprox(bpa, 0.5561149371265209445e-6, atol = 1e-14)
-    @test isapprox(bqa, -0.6191517193290621270e-5, atol = 1e-14)
-    @test isapprox(pia, 0.6216441751884382923e-5, atol = 1e-14)
-    @test isapprox(bpia, 3.052014180023779882, atol = 1e-14)
-    @test isapprox(epsa, 0.4090864054922431688, atol = 1e-14)
-    @test isapprox(chia, 0.1387703379530915364e-5, atol = 1e-14)
-    @test isapprox(za, 0.2921789846651790546e-3, atol = 1e-14)
-    @test isapprox(zetaa, 0.3178773290332009310e-3, atol = 1e-14)
-    @test isapprox(thetaa, 0.2650932701657497181e-3, atol = 1e-14)
-    @test isapprox(pa, 0.6651637681381016344e-3, atol = 1e-14)
-    @test isapprox(gam, 0.1398077115963754987e-5, atol = 1e-14)
-    @test isapprox(phi, 0.4090864090837462602, atol = 1e-14)
-    @test isapprox(psi, 0.6664464807480920325e-3, atol = 1e-14)
+    @test eps0 ≈ 0.4090926006005828715 atol=1e-14
+    @test psia ≈ 0.6664369630191613431e-3 atol=1e-14
+    @test oma ≈ 0.4090925973783255982 atol=1e-14
+    @test bpa ≈ 0.5561149371265209445e-6 atol=1e-14
+    @test bqa ≈ -0.6191517193290621270e-5 atol=1e-14
+    @test pia ≈ 0.6216441751884382923e-5 atol=1e-14
+    @test bpia ≈ 3.052014180023779882 atol=1e-14
+    @test epsa ≈ 0.4090864054922431688 atol=1e-14
+    @test chia ≈ 0.1387703379530915364e-5 atol=1e-14
+    @test za ≈ 0.2921789846651790546e-3 atol=1e-14
+    @test zetaa ≈ 0.3178773290332009310e-3 atol=1e-14
+    @test thetaa ≈ 0.2650932701657497181e-3 atol=1e-14
+    @test pa ≈ 0.6651637681381016344e-3 atol=1e-14
+    @test gam ≈ 0.1398077115963754987e-5 atol=1e-14
+    @test phi ≈ 0.4090864090837462602 atol=1e-14
+    @test psi ≈ 0.6664464807480920325e-3 atol=1e-14
 end
 
 @testset "p2pv" begin
@@ -35,9 +35,9 @@ end
 
 @testset "p2s" begin
     theta, phi, r = p2s([100.,-50.,25.])
-    @test isapprox(theta, -0.4636476090008061162, atol = 1e-12)
-    @test isapprox(phi, 0.2199879773954594463, atol = 1e-12)
-    @test isapprox(r, 114.5643923738960002, atol = 1e-12)
+    @test theta ≈ -0.4636476090008061162 atol=1e-12
+    @test phi ≈ 0.2199879773954594463 atol=1e-12
+    @test r ≈ 114.5643923738960002 atol=1e-12
     @test_throws ArgumentError p2s([100.,-50.])
 end
 
@@ -45,36 +45,36 @@ end
     a = [1.,0.1,0.2]
     b = [-3.,1e-3,0.2]
     theta = pap(a, b)
-    @test isapprox(theta, 0.3671514267841113674, atol = 1e-12)
+    @test theta ≈ 0.3671514267841113674 atol=1e-12
     @test_throws ArgumentError pap(a[1:2], b)
     @test_throws ArgumentError pap(a, b[1:2])
 end
 
 @testset "pas" begin
     p = pas(1.0, 0.1, 0.2, -1.0)
-    @test isapprox(p, -2.724544922932270424, atol = 1e-12)
+    @test p ≈ -2.724544922932270424 atol=1e-12
 end
 
 @testset "pb06" begin
     bzeta, bz, btheta = pb06(2400000.5, 50123.9999)
-    @test isapprox(bzeta, -0.5092634016326478238e-3, atol = 1e-12)
-    @test isapprox(bz, -0.3602772060566044413e-3, atol = 1e-12)
-    @test isapprox(btheta, -0.3779735537167811177e-3, atol = 1e-12)
+    @test bzeta ≈ -0.5092634016326478238e-3 atol=1e-12
+    @test bz ≈ -0.3602772060566044413e-3 atol=1e-12
+    @test btheta ≈ -0.3779735537167811177e-3 atol=1e-12
 end
 
 @testset "pfw06" begin
     gamb, phib, psib, epsa = pfw06(2400000.5, 50123.9999)
-    @test isapprox(gamb, -0.2243387670997995690e-5, atol = 1e-16)
-    @test isapprox(phib, 0.4091014602391312808, atol = 1e-12)
-    @test isapprox(psib, -0.9501954178013031895e-3, atol = 1e-14)
-    @test isapprox(epsa, 0.4091014316587367491, atol = 1e-12)
+    @test gamb ≈ -0.2243387670997995690e-5 atol=1e-16
+    @test phib ≈ 0.4091014602391312808 atol=1e-12
+    @test psib ≈ -0.9501954178013031895e-3 atol=1e-14
+    @test epsa ≈ 0.4091014316587367491 atol=1e-12
 end
 
 @testset "pdp" begin
     a = [2.,2.,3.]
     b = [1.,3.,4.]
     ab = ERFA._pdp(a, b)
-    @test isapprox(ab, 20, atol = 1e-12)
+    @test ab ≈ 20 atol=1e-12
     @test ab == dot(a, b)
     @test_throws ArgumentError ERFA._pdp([2.,2.,3.], [1.,3.])
     @test_throws ArgumentError ERFA._pdp([2.,3.], [1.,3.,4.])
@@ -102,7 +102,7 @@ end
 @testset "pm" begin
     p = [0.3,1.2,-2.5]
     m = ERFA._pm(p)
-    @test isapprox(m, 2.789265136196270604, atol = 1e-14)
+    @test m ≈ 2.789265136196270604 atol=1e-14
     @test_throws ArgumentError ERFA._pm([0.3,1.2])
     @test m ≈ norm(p) atol=1e-14
 end
@@ -147,12 +147,12 @@ end
     ep2a = 2400000.5
     ep2b = 51544.5
     ra2, dec2, pmr2, pmd2, px2, rv2 = pmsafe(ra1, dec1, pmr1, pmd1, px1, rv1, ep1a, ep1b, ep2a, ep2b)
-    @test isapprox(ra2, 1.234087484501017061, atol = 1e-12)
-    @test isapprox(dec2, 0.7888249982450468567, atol = 1e-12)
-    @test isapprox(pmr2, 0.9996457663586073988e-5, atol = 1e-12)
-    @test isapprox(pmd2, -0.2000040085106754565e-4, atol = 1e-16)
-    @test isapprox(px2, 0.9999997295356830666e-2, atol = 1e-12)
-    @test isapprox(rv2, 10.38468380293920069, atol = 1e-10)
+    @test ra2 ≈ 1.234087484501017061 atol=1e-12
+    @test dec2 ≈ 0.7888249982450468567 atol=1e-12
+    @test pmr2 ≈ 0.9996457663586073988e-5 atol=1e-12
+    @test pmd2 ≈ -0.2000040085106754565e-4 atol=1e-16
+    @test px2 ≈ 0.9999997295356830666e-2 atol=1e-12
+    @test rv2 ≈ 10.38468380293920069 atol=1e-10
 end
 
 @testset "pmat00" begin
@@ -197,7 +197,7 @@ end
 @testset "pn" begin
     p = [0.3,1.2,-2.5]
     r, u = ERFA._pn(p)
-    @test isapprox(r, 2.789265136196270604, atol = 1e-12)
+    @test r ≈ 2.789265136196270604 atol=1e-12
     @test isapprox(u[1], 0.1075552109073112058, atol = 1e-12)
     @test isapprox(u[2], 0.4302208436292448232, atol = 1e-12)
     @test isapprox(u[3], -0.8962934242275933816, atol = 1e-12)
@@ -211,7 +211,7 @@ end
     dpsi = -0.9632552291149335877e-5
     deps =  0.4063197106621141414e-4
     epsa, rb, rp, rbp, rn, rbpn = pn00(2400000.5, 53736.0, dpsi, deps)
-    @test isapprox(epsa, 0.4090791789404229916, atol = 1e-12)
+    @test epsa ≈ 0.4090791789404229916 atol=1e-12
     @test isapprox(rb[1,1], 0.9999999999999942498, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078279744199196626e-7, atol = 1e-18)
     @test isapprox(rb[1,3], 0.8056217146976134152e-7, atol = 1e-18)
@@ -261,9 +261,9 @@ end
 
 @testset "pn00a" begin
     dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = pn00a(2400000.5, 53736.0)
-    @test isapprox(dpsi, -0.9630909107115518431e-5, atol = 1e-12)
-    @test isapprox(deps, 0.4063239174001678710e-4, atol = 1e-12)
-    @test isapprox(epsa, 0.4090791789404229916, atol = 1e-12)
+    @test dpsi ≈ -0.9630909107115518431e-5 atol=1e-12
+    @test deps ≈ 0.4063239174001678710e-4 atol=1e-12
+    @test epsa ≈ 0.4090791789404229916 atol=1e-12
     @test isapprox(rb[1,1], 0.9999999999999942498, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078279744199196626e-7, atol = 1e-16)
     @test isapprox(rb[1,3], 0.8056217146976134152e-7, atol = 1e-16)
@@ -315,7 +315,7 @@ end
     dpsi = -0.9632552291149335877e-5
     deps =  0.4063197106621141414e-4
     epsa, rb, rp, rbp, rn, rbpn = pn06(2400000.5, 53736.0, dpsi, deps)
-    @test isapprox(epsa, 0.4090789763356509926, atol = 1e-12)
+    @test epsa ≈ 0.4090789763356509926 atol=1e-12
     @test isapprox(rb[1,1], 0.9999999999999942497, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078368960971557145e-7, atol = 1e-14)
     @test isapprox(rb[1,3], 0.8056213977613185606e-7, atol = 1e-14)
@@ -365,9 +365,9 @@ end
 
 @testset "pn06a" begin
     dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = pn06a(2400000.5, 53736.0)
-    @test isapprox(dpsi, -0.9630912025820308797e-5, atol = 1e-12)
-    @test isapprox(deps, 0.4063238496887249798e-4, atol = 1e-12)
-    @test isapprox(epsa, 0.4090789763356509926, atol = 1e-12)
+    @test dpsi ≈ -0.9630912025820308797e-5 atol=1e-12
+    @test deps ≈ 0.4063238496887249798e-4 atol=1e-12
+    @test epsa ≈ 0.4090789763356509926 atol=1e-12
     @test isapprox(rb[1,1], 0.9999999999999942497, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078368960971557145e-7, atol = 1e-14)
     @test isapprox(rb[1,3], 0.8056213977613185606e-7, atol = 1e-14)
@@ -430,9 +430,9 @@ end
 
 @testset "pn00b" begin
     dpsi, deps, epsa, rb, rp, rbp, rn, rbpn = pn00b(2400000.5, 53736.0)
-    @test isapprox(dpsi, -0.9632552291148362783e-5, atol = 1e-12)
-    @test isapprox(deps, 0.4063197106621159367e-4, atol = 1e-12)
-    @test isapprox(epsa, 0.4090791789404229916, atol = 1e-12)
+    @test dpsi ≈ -0.9632552291148362783e-5 atol=1e-12
+    @test deps ≈ 0.4063197106621159367e-4 atol=1e-12
+    @test epsa ≈ 0.4090791789404229916 atol=1e-12
     @test isapprox(rb[1,1], 0.9999999999999942498, atol = 1e-12)
     @test isapprox(rb[1,2], -0.7078279744199196626e-7, atol = 1e-16)
     @test isapprox(rb[1,3], 0.8056217146976134152e-7, atol = 1e-16)
@@ -562,8 +562,8 @@ end
 
 @testset "pr00" begin
     dpsipr, depspr = pr00(2400000.5, 53736.)
-    @test isapprox(dpsipr, -0.8716465172668347629e-7, atol = 1e-22)
-    @test isapprox(depspr, -0.7342018386722813087e-8, atol = 1e-22)
+    @test dpsipr ≈ -0.8716465172668347629e-7 atol=1e-22
+    @test depspr ≈ -0.7342018386722813087e-8 atol=1e-22
 end
 
 @testset "prec76" begin
@@ -572,9 +572,9 @@ end
     ep11 = 2400000.5
     ep12 = 51544.0
     zeta, z, theta = prec76(ep01, ep02, ep11, ep12)
-    @test isapprox(zeta, 0.5588961642000161243e-2, atol = 1e-12)
-    @test isapprox(z, 0.5589922365870680624e-2, atol = 1e-12)
-    @test isapprox(theta, 0.4858945471687296760e-2, atol = 1e-12)
+    @test zeta ≈ 0.5588961642000161243e-2 atol=1e-12
+    @test z ≈ 0.5589922365870680624e-2 atol=1e-12
+    @test theta ≈ 0.4858945471687296760e-2 atol=1e-12
 end
 
 @testset "pv2p" begin
@@ -591,12 +591,12 @@ end
     pv = [[-0.4514964673880165,0.03093394277342585,0.05594668105108779],
           [1.292270850663260e-5,2.652814182060692e-6,2.568431853930293e-6]]
     theta, phi, r, td, pd, rd = pv2s(pv)
-    @test isapprox(theta, 3.073185307179586515, atol = 1e-12)
-    @test isapprox(phi, 0.1229999999999999992, atol = 1e-12)
-    @test isapprox(r, 0.4559999999999999757, atol = 1e-12)
-    @test isapprox(td, -0.7800000000000000364e-5, atol = 1e-16)
-    @test isapprox(pd, 0.9010000000000001639e-5, atol = 1e-16)
-    @test isapprox(rd, -0.1229999999999999832e-4, atol = 1e-16)
+    @test theta ≈ 3.073185307179586515 atol=1e-12
+    @test phi ≈ 0.1229999999999999992 atol=1e-12
+    @test r ≈ 0.4559999999999999757 atol=1e-12
+    @test td ≈ -0.7800000000000000364e-5 atol=1e-16
+    @test pd ≈ 0.9010000000000001639e-5 atol=1e-16
+    @test rd ≈ -0.1229999999999999832e-4 atol=1e-16
     pve = [[0.03093394277342585,0.05594668105108779],
           [1.292270850663260e-5,2.652814182060692e-6,2.568431853930293e-6]]
     @test_throws ArgumentError pv2s(pve)
@@ -617,8 +617,8 @@ end
 @testset "pvm" begin
     pv = [[0.3,1.2,-2.5],[0.45,-0.25,1.1]]
     r, s = ERFA._pvm(pv)
-    @test isapprox(r, 2.789265136196270604, atol = 1e-12)
-    @test isapprox(s, 1.214495780149111922, atol = 1e-12)
+    @test r ≈ 2.789265136196270604 atol=1e-12
+    @test s ≈ 1.214495780149111922 atol=1e-12
     pve = [[1.2,-2.5],[0.45,-0.25,1.1]]
     @test_throws ArgumentError ERFA._pvm(pve)
     @test [r, s] == norm.(pv)
@@ -675,12 +675,12 @@ end
     pv = [[126668.5912743160601,2136.792716839935195,-245251.2339876830091],
           [-0.4051854035740712739e-2,-0.6253919754866173866e-2,0.1189353719774107189e-1]]
     ra, dec, pmr, pmd, px, rv = pvstar(pv)
-    @test isapprox(ra, 0.1686756e-1, atol = 1e-12)
-    @test isapprox(dec, -1.093989828, atol = 1e-12)
-    @test isapprox(pmr, -0.1783235160000472788e-4, atol = 1e-16)
-    @test isapprox(pmd, 0.2336024047000619347e-5, atol = 1e-16)
-    @test isapprox(px, 0.74723, atol = 1e-12)
-    @test isapprox(rv, -21.60000010107306010, atol = 1e-11)
+    @test ra ≈ 0.1686756e-1 atol=1e-12
+    @test dec ≈ -1.093989828 atol=1e-12
+    @test pmr ≈ -0.1783235160000472788e-4 atol=1e-16
+    @test pmd ≈ 0.2336024047000619347e-5 atol=1e-16
+    @test px ≈ 0.74723 atol=1e-12
+    @test rv ≈ -21.60000010107306010 atol=1e-11
     pve = [[2137.792716839935195,-245251.2339876830091],
           [-0.4051854035740712739e-2,-0.6253919754866173866e-2,0.1189353719774107189e-1]]
     @test_throws ArgumentError pvstar(pve)

@@ -1,71 +1,71 @@
 @testset "fad03" begin
     d = fad03(0.80)
-    @test isapprox(d, 1.946709205396925672, atol = 1e-12)
+    @test d ≈ 1.946709205396925672 atol=1e-12
 end
 
 @testset "fae03" begin
     e = fae03(0.80)
-    @test isapprox(e, 1.744713738913081846, atol = 1e-12)
+    @test e ≈ 1.744713738913081846 atol=1e-12
 end
 
 @testset "faf03" begin
     f = faf03(0.80)
-    @test isapprox(f, 0.2597711366745499518, atol = 1e-12)
+    @test f ≈ 0.2597711366745499518 atol=1e-12
 end
 
 @testset "faju03" begin
     l = faju03(0.80)
-    @test isapprox(l, 5.275711665202481138, atol = 1e-12)
+    @test l ≈ 5.275711665202481138 atol=1e-12
 end
 
 @testset "fal03" begin
     l = fal03(0.80)
-    @test isapprox(l, 5.132369751108684150, atol = 1e-12)
+    @test l ≈ 5.132369751108684150 atol=1e-12
 end
 
 @testset "falp03" begin
     lp = falp03(0.80)
-    @test isapprox(lp, 6.226797973505507345, atol = 1e-12)
+    @test lp ≈ 6.226797973505507345 atol=1e-12
 end
 
 @testset "fama03" begin
     l = fama03(0.80)
-    @test isapprox(l, 3.275506840277781492, atol = 1e-12)
+    @test l ≈ 3.275506840277781492 atol=1e-12
 end
 
 @testset "fame03" begin
     l = fame03(0.80)
-    @test isapprox(l, 5.417338184297289661, atol = 1e-12)
+    @test l ≈ 5.417338184297289661 atol=1e-12
 end
 
 @testset "fane03" begin
     l = fane03(0.80)
-    @test isapprox(l, 2.079343830860413523, atol = 1e-12)
+    @test l ≈ 2.079343830860413523 atol=1e-12
 end
 
 @testset "faom03" begin
     l = faom03(0.80)
-    @test isapprox(l, -5.973618440951302183, atol = 1e-12)
+    @test l ≈ -5.973618440951302183 atol=1e-12
 end
 
 @testset "fapa03" begin
     l = fapa03(0.80)
-    @test isapprox(l, 0.1950884762240000000e-1, atol = 1e-12)
+    @test l ≈ 0.1950884762240000000e-1 atol=1e-12
 end
 
 @testset "fasa03" begin
     l = fasa03(0.80)
-    @test isapprox(l, 5.371574539440827046, atol = 1e-12)
+    @test l ≈ 5.371574539440827046 atol=1e-12
 end
 
 @testset "faur03" begin
     l = faur03(0.80)
-    @test isapprox(l, 5.180636450180413523, atol = 1e-12)
+    @test l ≈ 5.180636450180413523 atol=1e-12
 end
 
 @testset "fave03" begin
     l = fave03(0.80)
-    @test isapprox(l, 3.424900460533758000, atol = 1e-12)
+    @test l ≈ 3.424900460533758000 atol=1e-12
 end
 
 @testset "fk425" begin
@@ -125,12 +125,12 @@ end
     px5 =  0.379210
     rv5 = -7.6
     rh, dh, drh, ddh, pxh, rvh = fk52h(r5, d5, dr5, dd5, px5, rv5)
-    @test isapprox(rh, 1.767794226299947632, atol = 1e-14)
-    @test isapprox(dh, -0.2917516070530391757, atol = 1e-14)
-    @test isapprox(drh, -0.1961874125605721270e-6, atol = 1e-19)
-    @test isapprox(ddh, -0.58459905176693911e-5, atol = 1e-19)
-    @test isapprox(pxh, 0.37921, atol = 1e-14)
-    @test isapprox(rvh, -7.6000000940000254, atol = 1e-11)
+    @test rh ≈ 1.767794226299947632 atol=1e-14
+    @test dh ≈ -0.2917516070530391757 atol=1e-14
+    @test drh ≈ -0.1961874125605721270e-6 atol=1e-19
+    @test ddh ≈ -0.58459905176693911e-5 atol=1e-19
+    @test pxh ≈ 0.37921 atol=1e-14
+    @test rvh ≈ -7.6000000940000254 atol=1e-11
 end
 
 @testset "fk54z" begin
@@ -150,8 +150,8 @@ end
     r5 =  1.76779433
     d5 = -0.2917517103
     rh, dh = fk5hz(r5, d5, 2400000.5, 54479.0)
-    @test isapprox(rh, 1.767794191464423978, atol = 1e-12)
-    @test isapprox(dh, -0.2917516001679884419, atol = 1e-12)
+    @test rh ≈ 1.767794191464423978 atol=1e-12
+    @test dh ≈ -0.2917516001679884419 atol=1e-12
 end
 
 @testset "fw2m" begin
@@ -177,8 +177,8 @@ end
     psi  = -0.9501954178013015092e-3
     eps  =  0.4091014316587367472
     x, y = fw2xy(gamb, phib, psi, eps)
-    @test isapprox(x, -0.3779734957034082790e-3, atol = 1e-14)
-    @test isapprox(y, -0.1924880848087615651e-6, atol = 1e-14)
+    @test x ≈ -0.3779734957034082790e-3 atol=1e-14
+    @test y ≈ -0.1924880848087615651e-6 atol=1e-14
 end
 
 @testset "fk5hip" begin

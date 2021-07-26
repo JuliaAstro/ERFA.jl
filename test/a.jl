@@ -32,20 +32,20 @@ end
 
 @testset "af2a" begin
     r = af2a('-', 45, 13, 27.2)
-    @test isapprox(r, -0.7893115794313644842, atol = 1e-15)
+    @test r ≈ -0.7893115794313644842 atol=1e-15
     r = af2a('+', 45, 13, 27.2)
-    @test isapprox(r, 0.7893115794313644842, atol = 1e-15)
+    @test r ≈ 0.7893115794313644842 atol=1e-15
 end
 
 @testset "anp" begin
     r = ERFA._anp(-0.1)
-    @test isapprox(r, 6.183185307179586477, atol = 1e-15)
+    @test r ≈ 6.183185307179586477 atol=1e-15
     @test r ≈ mod2pi(-0.1) atol=1-15
 end
 
 @testset "anpm" begin
     r = anpm(-4.0)
-    @test isapprox(r, 2.283185307179586477, atol = 1e-15)
+    @test r ≈ 2.283185307179586477 atol=1e-15
 end
 
 @testset "apcg" begin
@@ -171,7 +171,7 @@ end
     @test isapprox(astrom.bpn[1,3], -0.1260128571661374559e-2, atol = 1e-12)
     @test isapprox(astrom.bpn[2,3], 0.2255285422953395494e-4, atol = 1e-12)
     @test isapprox(astrom.bpn[3,3], 0.9999992057833604343, atol = 1e-12)
-    @test isapprox(eo, -0.2900618712657375647e-2, atol = 1e-12)
+    @test eo ≈ -0.2900618712657375647e-2 atol=1e-12
 end
 
 @testset "apco" begin
@@ -276,7 +276,7 @@ end
     @test isapprox(astrom.eral, 2.617608909189664000, atol = 1e-12)
     @test isapprox(astrom.refa, 0.2014187785940396921e-3, atol = 1e-15)
     @test isapprox(astrom.refb, -0.2361408314943696227e-6, atol = 1e-18)
-    @test isapprox(eo, -0.003020548354802412839, atol = 1e-14)
+    @test eo ≈ -0.003020548354802412839 atol=1e-14
 end
 
 @testset "apcs" begin
@@ -440,9 +440,9 @@ end
     date1 = 2456165.5
     date2 = 0.401182685
     ri, di, eo = atci13(rc, dc, pr, pd, px, rv, date1, date2)
-    @test isapprox(ri, 2.710121572969038991, atol = 1e-12)
-    @test isapprox(di, 0.1729371367218230438, atol = 1e-12)
-    @test isapprox(eo, -0.002900618712657375647, atol = 1e-14)
+    @test ri ≈ 2.710121572969038991 atol=1e-12
+    @test di ≈ 0.1729371367218230438 atol=1e-12
+    @test eo ≈ -0.002900618712657375647 atol=1e-14
 end
 
 @testset "atciq" begin
@@ -456,8 +456,8 @@ end
     px = 0.1
     rv = 55.0
     ri, di = atciq(rc, dc, pr, pd, px, rv, astrom)
-    @test isapprox(ri, 2.710121572969038991, atol = 1e-12)
-    @test isapprox(di, 0.1729371367218230438, atol = 1e-12)
+    @test ri ≈ 2.710121572969038991 atol=1e-12
+    @test di ≈ 0.1729371367218230438 atol=1e-12
 end
 
 @testset "atciqn" begin
@@ -481,8 +481,8 @@ end
                       [6.29235213e-6, -3.30888387e-7, -2.96486623e-7]])
     b = [b1; b2; b3]
     ri, di = atciqn(rc, dc, pr, pd, px, rv, astrom, b)
-    @test isapprox(ri, 2.710122008105325582, atol = 1e-12)
-    @test isapprox(di, 0.1729371916491459122, atol = 1e-12)
+    @test ri ≈ 2.710122008105325582 atol=1e-12
+    @test di ≈ 0.1729371916491459122 atol=1e-12
 end
 
 @testset "atciqz" begin
@@ -492,8 +492,8 @@ end
     rc = 2.71
     dc = 0.174
     ri, di = atciqz(rc, dc, astrom)
-    @test isapprox(ri, 2.709994899247599271, atol = 1e-12)
-    @test isapprox(di, 0.1728740720983623469, atol = 1e-12)
+    @test ri ≈ 2.709994899247599271 atol=1e-12
+    @test di ≈ 0.1728740720983623469 atol=1e-12
 end
 
 @testset "atco13" begin
@@ -518,12 +518,12 @@ end
     aob, zob, hob, dob, rob, eo = atco13(rc, dc, pr, pd, px, rv,
                                               utc1, utc2, dut1, elong, phi, hm, xp, yp,
                                               phpa, tc, rh, wl)
-    @test isapprox(aob, 0.9251774485485515207e-1, atol = 1e-12)
-    @test isapprox(zob, 1.407661405256499357, atol = 1e-12)
-    @test isapprox(hob, -0.9265154431529724692e-1, atol = 1e-12)
-    @test isapprox(dob, 0.1716626560072526200, atol = 1e-12)
-    @test isapprox(rob, 2.710260453504961012, atol = 1e-12)
-    @test isapprox(eo, -0.003020548354802412839, atol = 1e-14)
+    @test aob ≈ 0.9251774485485515207e-1 atol=1e-12
+    @test zob ≈ 1.407661405256499357 atol=1e-12
+    @test hob ≈ -0.9265154431529724692e-1 atol=1e-12
+    @test dob ≈ 0.1716626560072526200 atol=1e-12
+    @test rob ≈ 2.710260453504961012 atol=1e-12
+    @test eo ≈ -0.003020548354802412839 atol=1e-14
 end
 
 @testset "atic13" begin
@@ -532,9 +532,9 @@ end
     date1 = 2456165.5
     date2 = 0.401182685
     rc, dc, eo = atic13(ri, di, date1, date2)
-    @test isapprox(rc, 2.710126504531374930, atol = 1e-12)
-    @test isapprox(dc, 0.1740632537628342320, atol = 1e-12)
-    @test isapprox(eo, -0.002900618712657375647, atol = 1e-14)
+    @test rc ≈ 2.710126504531374930 atol=1e-12
+    @test dc ≈ 0.1740632537628342320 atol=1e-12
+    @test eo ≈ -0.002900618712657375647 atol=1e-14
 end
 
 @testset "aticq" begin
@@ -544,8 +544,8 @@ end
     date2 = 0.401182685
     astrom, eo = apci13(date1, date2)
     rc, dc = aticq(ri, di, astrom)
-    @test isapprox(rc, 2.710126504531374930, atol = 1e-12)
-    @test isapprox(dc, 0.1740632537628342320, atol = 1e-12)
+    @test rc ≈ 2.710126504531374930 atol=1e-12
+    @test dc ≈ 0.1740632537628342320 atol=1e-12
 end
 
 @testset "aticqn" begin
@@ -565,8 +565,8 @@ end
                       [6.29235213e-6, -3.30888387e-7, -2.96486623e-7]])
     b = [b1; b2; b3]
     rc, dc = aticqn(ri, di, astrom, b)
-    @test isapprox(rc, 2.709999575032685412, atol = 1e-12)
-    @test isapprox(dc, 0.1739999656317778034, atol = 1e-12)
+    @test rc ≈ 2.709999575032685412 atol=1e-12
+    @test dc ≈ 0.1739999656317778034 atol=1e-12
 end
 
 @testset "atio13" begin
@@ -585,11 +585,11 @@ end
     rh = 0.59
     wl = 0.55
     aob, zob, hob, dob, rob = atio13(ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(aob, 0.9233952224895122499e-1, atol = 1e-12)
-    @test isapprox(zob, 1.407758704513549991, atol = 1e-12)
-    @test isapprox(hob, -0.9247619879881698140e-1, atol = 1e-12)
-    @test isapprox(dob, 0.1717653435756234676, atol = 1e-12)
-    @test isapprox(rob, 2.710085107988480746, atol = 1e-12)
+    @test aob ≈ 0.9233952224895122499e-1 atol=1e-12
+    @test zob ≈ 1.407758704513549991 atol=1e-12
+    @test hob ≈ -0.9247619879881698140e-1 atol=1e-12
+    @test dob ≈ 0.1717653435756234676 atol=1e-12
+    @test rob ≈ 2.710085107988480746 atol=1e-12
 end
 
 @testset "atioq" begin
@@ -610,11 +610,11 @@ end
     ri = 2.710121572969038991
     di = 0.1729371367218230438
     aob, zob, hob, dob, rob = atioq(ri, di, astrom)
-    @test isapprox(aob, 0.9233952224895122499e-1, atol = 1e-12)
-    @test isapprox(zob, 1.407758704513549991, atol = 1e-12)
-    @test isapprox(hob, -0.9247619879881698140e-1, atol = 1e-12)
-    @test isapprox(dob, 0.1717653435756234676, atol = 1e-12)
-    @test isapprox(rob, 2.710085107988480746, atol = 1e-12)
+    @test aob ≈ 0.9233952224895122499e-1 atol=1e-12
+    @test zob ≈ 1.407758704513549991 atol=1e-12
+    @test hob ≈ -0.9247619879881698140e-1 atol=1e-12
+    @test dob ≈ 0.1717653435756234676 atol=1e-12
+    @test rob ≈ 2.710085107988480746 atol=1e-12
 end
 
 @testset "atoc13" begin
@@ -634,20 +634,20 @@ end
     ob2 = 0.1717653435758265198
     rc, dc = atoc13("r", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(rc, 2.709956744659136129, atol = 1e-12)
-    @test isapprox(dc, 0.1741696500898471362, atol = 1e-12)
+    @test rc ≈ 2.709956744659136129 atol=1e-12
+    @test dc ≈ 0.1741696500898471362 atol=1e-12
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
     rc, dc = atoc13("h", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(rc, 2.709956744659734086, atol = 1e-12)
-    @test isapprox(dc, 0.1741696500898471362, atol = 1e-12)
+    @test rc ≈ 2.709956744659734086 atol=1e-12
+    @test dc ≈ 0.1741696500898471362 atol=1e-12
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
     rc, dc = atoc13("a", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(rc, 2.709956744659734086, atol = 1e-12)
-    @test isapprox(dc, 0.1741696500898471366, atol = 1e-12)
+    @test rc ≈ 2.709956744659734086 atol=1e-12
+    @test dc ≈ 0.1741696500898471366 atol=1e-12
 end
 
 @testset "atoi13" begin
@@ -667,20 +667,20 @@ end
     ob2 = 0.1717653435758265198
     ri, di = atoi13("r", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(ri, 2.710121574447540810, atol = 1e-12)
-    @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
+    @test ri ≈ 2.710121574447540810 atol=1e-12
+    @test di ≈ 0.1729371839116608778 atol=1e-12
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
     ri, di = atoi13("h", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
-    @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
+    @test ri ≈ 2.710121574448138676 atol=1e-12
+    @test di ≈ 0.1729371839116608778 atol=1e-12
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
     ri, di = atoi13("a", ob1, ob2, utc1, utc2, dut1,
                          elong, phi, hm, xp, yp, phpa, tc, rh, wl)
-    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
-    @test isapprox(di, 0.1729371839116608781, atol = 1e-12)
+    @test ri ≈ 2.710121574448138676 atol=1e-12
+    @test di ≈ 0.1729371839116608781 atol=1e-12
 end
 
 @testset "atoiq" begin
@@ -701,17 +701,17 @@ end
     ob1 = 2.710085107986886201
     ob2 = 0.1717653435758265198
     ri, di = atoiq("r", ob1, ob2, astrom)
-    @test isapprox(ri, 2.710121574447540810, atol = 1e-12)
-    @test isapprox(di, 0.17293718391166087785, atol = 1e-12)
+    @test ri ≈ 2.710121574447540810 atol=1e-12
+    @test di ≈ 0.17293718391166087785 atol=1e-12
     ob1 = -0.09247619879782006106
     ob2 = 0.1717653435758265198
     ri, di = atoiq("h", ob1, ob2, astrom)
-    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
-    @test isapprox(di, 0.1729371839116608778, atol = 1e-12)
+    @test ri ≈ 2.710121574448138676 atol=1e-12
+    @test di ≈ 0.1729371839116608778 atol=1e-12
     ob1 = 0.09233952224794989993
     ob2 = 1.407758704513722461
     ri, di = atoiq("a", ob1, ob2, astrom)
-    @test isapprox(ri, 2.710121574448138676, atol = 1e-12)
-    @test isapprox(di, 0.1729371839116608781, atol = 1e-12)
+    @test ri ≈ 2.710121574448138676 atol=1e-12
+    @test di ≈ 0.1729371839116608781 atol=1e-12
 end
 

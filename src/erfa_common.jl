@@ -1,5 +1,3 @@
-export ERFAException
-
 """
     DPI
 

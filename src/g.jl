@@ -1,5 +1,5 @@
 """
-    gc2gd(n, xyz)
+    gc2gd(n::Ellipsoid, xyz)
 
 Transform geocentric coordinates to geodetic using the specified
 reference ellipsoid.
@@ -39,7 +39,7 @@ reference ellipsoid.
 - [`gc2gde`](@ref): geocentric to geodetic transformation, general
 
 """
-function gc2gd(n, xyz)
+function gc2gd(n::Ellipsoid, xyz)
     @checkdims 3 xyz
     elong = Ref{Cdouble}()
     phi = Ref{Cdouble}()
@@ -47,9 +47,7 @@ function gc2gd(n, xyz)
     i = ccall((:eraGc2gd, liberfa), Cint,
               (Cint, Ptr{Cdouble}, Ref{Cdouble}, Ref{Cdouble}, Ref{Cdouble}),
               n, xyz, elong, phi, height)
-    if i == -1
-        throw(ERFAException("illegal identifier"))
-    elseif i == -2
+    if i == -2
         throw(ERFAException("internal error"))
     end
     return elong[], phi[], height[]

@@ -47,12 +47,11 @@ Earth reference ellipsoids.
 function eform(n::Ellipsoid)
     a = Ref{Cdouble}()
     f = Ref{Cdouble}()
-    i = ccall((:eraEform, liberfa), Cint,
-              (Cint, Ref{Cdouble}, Ref{Cdouble}),
-              n, a, f)
-    if i == -1
-        throw(ERFAException("illegal identifier"))
-    end
+    # We do not need to check the return code because `n` is constrained
+    # to valid values by being an enum
+    ccall((:eraEform, liberfa), Cint,
+          (Cint, Ref{Cdouble}, Ref{Cdouble}),
+          n, a, f)
     return a[], f[]
 end
 

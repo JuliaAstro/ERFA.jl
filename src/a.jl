@@ -2841,6 +2841,7 @@ function atoc13(typeofcoordinates, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, x
     rc = Ref{Cdouble}()
     dc = Ref{Cdouble}()
     if !(typeofcoordinates in ("R", "r", "H", "h", "A", "a"))
+        @warn "Unknown coordinate type '$typeofcoordinates'. Type has been set to 'A'."
         typeofcoordinates = "A"
     end
     i = ccall((:eraAtoc13, liberfa), Cint,

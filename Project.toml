@@ -1,6 +1,6 @@
 name = "ERFA"
 uuid = "17511681-8477-586a-8d98-4cfd5a1f2ec3"
-version = "0.7.0"
+version = "1.0.0"
 
 [deps]
 ERFA_jll = "a00367d1-88f1-52c5-9c6b-193aa5f849e1"

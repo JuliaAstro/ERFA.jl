@@ -52,6 +52,7 @@ using Test
     include("i.jl")
     include("j.jl")
     include("l.jl")
+    include("m.jl")
     include("n.jl")
     include("o.jl")
     include("p.jl")

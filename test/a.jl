@@ -437,6 +437,39 @@ end
     @test_throws ERFAException apio13(-1e9, 0.0, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl)
 end
 
+@testset "atcc13" begin
+   rc = 2.71
+   dc = 0.174
+   pr = 1e-5
+   pd = 5e-6
+   px = 0.1
+   rv = 55.0
+   date1 = 2456165.5
+   date2 = 0.401182685
+
+   ra, da = atcc13(rc, dc, pr, pd, px, rv, date1, date2)
+
+   @test ra ≈ 2.710126504531372384 atol=1e-12
+   @test da ≈ 0.1740632537628350152 atol=1e-12
+end
+
+@testset "atccq" begin
+   date1 = 2456165.5
+   date2 = 0.401182685
+   astrom, eo = apci13(date1, date2)
+   rc = 2.71
+   dc = 0.174
+   pr = 1e-5
+   pd = 5e-6
+   px = 0.1
+   rv = 55.0
+
+   ra, da = atccq(rc, dc, pr, pd, px, rv, astrom)
+
+   @test ra ≈ 2.710126504531372384 atol=1e-12
+   @test da ≈ 0.1740632537628350152 atol=1e-12
+end
+
 @testset "atci13" begin
     rc = 2.71
     dc = 0.174

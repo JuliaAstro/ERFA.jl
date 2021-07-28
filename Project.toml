@@ -1,14 +1,14 @@
 name = "ERFA"
 uuid = "17511681-8477-586a-8d98-4cfd5a1f2ec3"
-version = "1.0.0"
+version = "1.1.0"
 
 [deps]
 ERFA_jll = "a00367d1-88f1-52c5-9c6b-193aa5f849e1"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [compat]
-ERFA_jll = "1.7"
-julia = "1.3"
+ERFA_jll = "2"
+julia = "1.6"
 
 [extras]
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"

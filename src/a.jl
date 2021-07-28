@@ -1683,6 +1683,144 @@ function apio13(utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tk, rh, wl)
 end
 
 """
+    atcc13(rc, dc, pr, pd, px, rv, date1, date2)
+
+Transform a star's ICRS catalog entry (epoch J2000.0) into ICRS
+astrometric place.
+
+### Given ###
+
+- `rc`: ICRS right ascension at J2000.0 (radians, Note 1)
+- `dc`: ICRS declination at J2000.0 (radians, Note 1)
+- `pr`: RA proper motion (radians/year, Note 2)
+- `pd`: Dec proper motion (radians/year)
+- `px`: parallax (arcsec)
+- `rv`: radial velocity (km/s, +ve if receding)
+- `date1`: TDB as a 2-part...
+- `date2`: ...Julian Date (Note 3)
+
+### Returned ###
+
+- `ra`, `da`: ICRS astrometric RA,Dec (radians)
+
+### Notes ###
+
+1. Star data for an epoch other than J2000.0 (for example from the
+   Hipparcos catalog, which has an epoch of J1991.25) will require a
+   preliminary call to eraPmsafe before use.
+
+2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+
+3. The TDB date date1+date2 is a Julian Date, apportioned in any
+   convenient way between the two arguments.  For example,
+   JD(TDB)=2450123.7 could be expressed in any of these ways, among
+   others:
+
+   | `date1`   |     `date2` | Method      |
+   |:----------|:------------|:------------|
+   | 2450123.7 |         0.0 | JD          |
+   | 2451545.0 |     -1421.3 | J2000       |
+   | 2400000.5 |     50123.2 | MJD         |
+   | 2450123.5 |         0.2 | date & time |
+
+   The JD method is the most natural and convenient to use in cases
+   where the loss of several decimal digits of resolution is
+   acceptable.  The J2000 method is best matched to the way the
+   argument is handled internally and will deliver the optimum
+   resolution.  The MJD method and the date & time methods are both
+   good compromises between resolution and convenience.  For most
+   applications of this function the choice will not be at all
+   critical.
+
+   TT can be used instead of TDB without any significant impact on
+   accuracy.
+
+### Called ###
+
+- [`apci13`](@ref): astrometry parameters, ICRS-CIRS, 2013
+- [`atccq`](@ref): quick catalog ICRS to astrometric
+"""
+function atcc13(rc, dc, pr, pd, px, rv, date1, date2)
+    ra = Ref{Cdouble}()
+    da = Ref{Cdouble}()
+    ccall((:eraAtcc13, liberfa), Cvoid,
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+           Ref{Cdouble}, Ref{Cdouble}),
+          rc, dc, pr, pd, px, rv, date1, date2, ra, da)
+    return ra[], da[]
+end
+
+"""
+    atccq(rc, dc, pr, pd, px, rv, astrom)
+
+Quick transformation of a star's ICRS catalog entry (epoch J2000.0)
+into ICRS astrometric place, given precomputed star-independent
+astrometry parameters.
+
+Use of this function is appropriate when efficiency is important and
+where many star positions are to be transformed for one date.  The
+star-independent parameters can be obtained by calling one of the
+functions [`apci`](@ref), [`apci13`](@ref), [`apcg`](@ref), [`apcg13`](@ref),
+[`apco`](@ref), [`apco13`](@ref), [`apcs`](@ref), [`apcs13`](@ref).
+
+If the parallax and proper motions are zero the transformation has
+no effect.
+
+### Given ###
+
+- `rc`, `dc`: ICRS RA,Dec at J2000.0 (radians)
+- `pr`: RA proper motion (radians/year, Note 3)
+- `pd`: Dec proper motion (radians/year)
+- `px`: parallax (arcsec)
+- `rv`: radial velocity (km/s, +ve if receding)
+- `astrom`: Star-independent astrometry parameters:
+    - `pmt`: unchanged
+    - `eb`: unchanged
+    - `eh`: unchanged
+    - `em`: unchanged
+    - `v`: unchanged
+    - `bm1`: unchanged
+    - `bpn`: unchanged
+    - `along`: Longitude + s' (radians)
+    - `xp1`: Polar motion xp wrt local meridian (radians)
+    - `yp1`: Polar motion yp wrt local meridian (radians)
+    - `sphi`: Sine of geodetic latitude
+    - `cphi`: Cosine of geodetic latitude
+    - `diurab`: Magnitude of diurnal aberration vector
+    - `l`: "Local" Earth rotation angle (radians)
+    - `refa`: Refraction constant A (radians)
+    - `refb`: Refraction constant B (radians)
+
+### Returned ###
+- `ra`, `da`: ICRS astrometric RA,Dec (radians)
+
+### Notes ###
+
+1. All the vectors are with respect to BCRS axes.
+
+2. Star data for an epoch other than J2000.0 (for example from the
+   Hipparcos catalog, which has an epoch of J1991.25) will require a
+   preliminary call to eraPmsafe before use.
+
+3. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+
+### Called ###
+
+- [`pmpx`](@ref): proper motion and parallax
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
+"""
+function atccq(rc, dc, pr, pd, px, rv, astrom)
+    ra = Ref{Cdouble}()
+    da = Ref{Cdouble}()
+    ccall((:eraAtccq, liberfa), Cvoid,
+          (Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble,
+           Ref{ASTROM}, Ref{Cdouble}, Ref{Cdouble}),
+          rc, dc, pr, pd, px, rv, astrom, ra, da)
+    return ra[], da[]
+end
+
+"""
     atci13(rc, dc, pr, pd, px, rv, date1, date2)
 
 Transform ICRS star data, epoch J2000.0, to CIRS.

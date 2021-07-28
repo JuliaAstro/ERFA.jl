@@ -1806,9 +1806,9 @@ no effect.
 
 ### Called ###
 
-- [`Pmpx`](@ref): proper motion and parallax
-- [`C2s`](@ref): p-vector to spherical
-- [`Anp`](@ref): normalize angle into range 0 to 2pi
+- [`pmpx`](@ref): proper motion and parallax
+- [`c2s`](@ref): p-vector to spherical
+- [`anp`](@ref): normalize angle into range 0 to 2pi
 """
 function atccq(rc, dc, pr, pd, px, rv, astrom)
     ra = Ref{Cdouble}()

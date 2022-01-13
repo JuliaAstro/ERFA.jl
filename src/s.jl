@@ -490,7 +490,8 @@ Angular separation between two p-vectors.
 """
 function sepp(a, b)
     @checkdims 3 a b
-    ccall((:eraSepp, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}), a, b)
+    ccall((:eraSepp, liberfa), Cdouble, (Ptr{Cdouble}, Ptr{Cdouble}),
+          convert(Vector{Float64},a), convert(Vector{Float64}, b))
 end
 
 """

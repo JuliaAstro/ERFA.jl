@@ -71,9 +71,20 @@ end
 
 @testset "sepp" begin
     a = [1.,0.1,0.2]
+    i = [10,1,2]
     b = [-3.,1e-3,0.2]
+    ab = [1.,-3.,0.1,1e-3,0.2,0.2]
+    expected_s = 2.860391919024660768
     s = sepp(a, b)
-    @test s ≈ 2.860391919024660768 atol=1e-12
+    @test s ≈ expected_s atol=1e-12
+    s = sepp(i, b)
+    @test s ≈ expected_s atol=1e-12
+    s = sepp(b, i)
+    @test s ≈ expected_s atol=1e-12
+    s = sepp(ab[1:2:5], ab[2:2:6])
+    @test s ≈ expected_s atol=1e-12
+    s = @views sepp(ab[1:2:5], ab[2:2:6])
+    @test s ≈ expected_s atol=1e-12
     @test_throws ArgumentError sepp(a[1:2], b)
     @test_throws ArgumentError sepp(a, b[1:2])
 end

@@ -1,13 +1,12 @@
 using Documenter, ERFA
 
+include("pages.jl")
+
 makedocs(format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true",
     ),
     sitename = "ERFA.jl",
     authors = "The JuliaAstro Contributors",
-    pages = [
-        "Home" => "index.md",
-        "API" => "api.md",
-    ],
+    pages = pages,
     doctest = false,
 )
 

@@ -29,3 +29,21 @@ Modules = [ERFA]
 Private = true
 Order = [:function, :macro]
 ```
+
+## Index
+
+### Constants
+
+```@index
+Modules = [ERFA]
+Private = true
+Order = [:constant]
+```
+
+### Functions
+
+```@index
+Modules = [ERFA]
+Private = true
+Order = [:function, :macro]
+```

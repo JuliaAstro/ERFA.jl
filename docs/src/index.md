@@ -6,14 +6,14 @@ Julia wrapper for [liberfa](https://github.com/liberfa/erfa).
 Installation
 ------------
 
-```julia
+```julia-repl
 julia> import Pkg; Pkg.add("ERFA")
 ```
 
 Example
 -------
 
-```julia
+```jldoctest
 julia> using ERFA
 
 julia> u1, u2 = dtf2d("UTC", 2010, 7, 24, 11, 18, 7.318)

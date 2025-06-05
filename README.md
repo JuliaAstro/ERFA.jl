@@ -2,12 +2,11 @@
 
 *Julia wrapper for [liberfa](https://github.com/liberfa/erfa)*
 
-[![Build Status](https://github.com/juliaastro/ERFA.jl/workflows/CI/badge.svg)](https://github.com/juliaastro/ERFA.jl/actions)
-[![Coverage](https://codecov.io/gh/juliaastro/ERFA.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/juliaastro/ERFA.jl)
-
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliaastro.github.io/ERFA.jl/stable)
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliaastro.github.io/ERFA/stable)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://juliaastro.github.io/ERFA.jl/dev)
 
+[![CI](https://github.com/JuliaAstro/ERFA.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaAstro/ERFA.jl/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/gh/juliaastro/ERFA.jl/graph/badge.svg?token=q5WlA4TVIZ)](https://codecov.io/gh/juliaastro/ERFA.jl)
 
 ## Installation
 

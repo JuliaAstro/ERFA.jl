@@ -12,10 +12,12 @@ makedocs(
     authors = "The JuliaAstro Contributors",
     pages = pages,
     doctest = true,
+    canonical = "https://juliaastro.org/ERFA/stable"
 )
 
 deploydocs(
     repo = "github.com/JuliaAstro/ERFA.jl.git",
     target = "build",
     push_preview = true,
+    versions = ["stable" => "v^", "v#.#"], # Restrict to minor releases
 )

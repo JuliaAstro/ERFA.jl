@@ -2,8 +2,8 @@ using Documenter, ERFA
 
 include("pages.jl")
 
-makedocs(
-    format = Documenter.HTML(
+makedocs(;
+    format = Documenter.HTML(;
         prettyurls = get(ENV, "CI", nothing) == "true",
         size_threshold_warn = 400 * 1024, # 400 KiB
         size_threshold = 800 * 1024, # 800 KiB
@@ -15,7 +15,7 @@ makedocs(
     doctest = true,
 )
 
-deploydocs(
+deploydocs(;
     repo = "github.com/JuliaAstro/ERFA.jl.git",
     target = "build",
     push_preview = true,

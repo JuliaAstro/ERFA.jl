@@ -4,6 +4,6 @@ ERFA = "17511681-8477-586a-8d98-4cfd5a1f2ec3"
 
 [compat]
 Documenter = "1"
-
+ERFA = "1.1.1"
 [sources.ERFA]
 path = ".."

@@ -8,4 +8,10 @@ updates:
   - package-ecosystem: "julia"
     directories: ["/",  "/docs"]
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    ignore:
+      # Ignore package itself
+      - dependency-name: "ERFA"
+    groups:
+      julia-patch-updates:
+        update-types: ["patch"]

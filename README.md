@@ -1,3 +1,6 @@
+> [!WARNING]
+> **This repository has been archived. Please see [SOFA.jl](https://github.com/JuliaAstro/SOFA.jl) for a modern alternative implemented in Julia.**
+
 # ERFA.jl
 
 *Julia wrapper for [liberfa](https://github.com/liberfa/erfa)*

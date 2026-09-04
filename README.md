@@ -1,3 +1,8 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+> [!WARNING]
+> This package is archived and will no longer be maintained. Please see [JuliaAstro/SOFA.jl](https://github.com/JuliaAstro/SOFA.jl) for a well-maintained alternative.
+
 # ERFA.jl
 
 *Julia wrapper for [liberfa](https://github.com/liberfa/erfa)*
